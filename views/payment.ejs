@@ -1,0 +1,262 @@
+<% include template/header  %>
+    <!--    Breadcrumb-->
+    <!-- <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">My Cart</a></li>
+        </ul>
+    </div> -->
+    <!--    Breadcrumb-->
+    <!--    Product list starts here-->
+    <div class="container-fluid mycart" style="margin-bottom: 40px">
+        <div class="container payment">
+            <div class="row">
+                <div class="col-md-8 no-pad">
+                    <div id="exTab1">
+                        <div class="tabheader">
+                            <ul class="nav nav-pills">
+                                <li class="active shipping">
+                                    <a href="#a1" data-toggle="tab" class="shipping ship">Shipping</a>
+                                </li>
+                                <li class="bill">
+                                    <a href="#a2" data-toggle="tab" class="bill pay">Payment</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane active" id="a1">
+                                <form style="padding: 1px;background:none">
+                                    <div class="form-group marg-btm">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">NAME</label>
+                                    </div>
+                                    <div class="row form-align">
+                                        <div class="col-sm-1 col-xs-2">
+                                            <div class="form-group marg-btm">
+                                                <label class="label-num" for="phone">+971</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11 col-xs-10">
+                                            <div class="form-group marg-btm" style="margin-top: 35px;">
+                                                <input type="text" id="name" class="form-control form-control1">
+                                                <label class="form-control-placeholder" for="name">PHONE NUMBER</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group marg-btm" style="margin-top: 35px;">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">CITY</label>
+                                    </div>
+                                    <div class="form-group marg-btm" style="margin-top: 35px;">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">AREA</label>
+                                    </div>
+                                    <div class="form-group marg-btm" style="margin-top: 35px;">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">ROAD/STREET</label>
+                                    </div>
+                                    <div class="form-group marg-btm" style="margin-top: 35px;">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">BUILDING NAME</label>
+                                    </div>
+                                    <div class="form-group marg-btm" style="margin-top: 35px;">
+                                        <input type="text" id="name" class="form-control form-control1">
+                                        <label class="form-control-placeholder" for="name">FLOOR/FLAT NO</label>
+                                    </div>
+                                    <div class="slide-three margin-top">
+                                        <input type="checkbox" id="slide-three" />
+                                        <label for="slide-three" class="check-label">Set this as my default address</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="a2">
+                                <form>
+                                    <div class="card-mode">
+                                        <div class="radio">
+                                            <input type="radio" id="test1" name="radio-group" checked>
+                                            <label for="test1">Credit/Debit card</label>
+                                        </div>
+                                    </div>
+                                    <div style="padding: 15px 25px">
+                                        <div class="form-group marg-btm" style="margin-top: 55px;">
+                                            <input type="text" id="name" class="form-control form-control1">
+                                            <label class="form-control-placeholder" for="name">CARD NUMBER</label>
+                                        </div>
+                                        <div class="row form-align">
+                                            <div class="col-sm-6">
+                                                <div class="form-group marg-btm" style="margin-top: 35px;">
+                                                    <input type="text" id="name" class="form-control form-control1">
+                                                    <label class="form-control-placeholder" for="name">valid through(mm/yy)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group marg-btm" style="margin-top: 35px;">
+                                                    <input type="text" id="name" class="form-control form-control1">
+                                                    <label class="form-control-placeholder" for="name">CVV</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group marg-btm" style="margin-top: 35px;">
+                                            <input type="text" id="name" class="form-control form-control1">
+                                            <label class="form-control-placeholder" for="name">Name as on card</label>
+                                        </div>
+                                    </div>
+                                    <div class="card-mode" style="margin-top: 30px;">
+                                        <div class="radio">
+                                            <input type="radio" id="test2" name="radio-group">
+                                            <label for="test2">Cash on Delivery</label>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4" id="summary-desktop">
+                    <div class="summary">
+                        <h4 class="order">Order Summary</h4>
+                        <h6>Have a coupon code? Enter below to redeem</h6>
+                        <div class="input-group" style="margin-top: 20px;margin-bottom: 20px">
+                            <input type="text" class="form-control" placeholder="Enter Code">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-coupon">Apply</button>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <h5 class="marg-btm">Or see
+                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                <span class="coupons">applicable coupons</span>
+                            </a>
+                        </h5>
+                        <div id="subtotal">
+                            <h5 class="total">Subtotal</h5>
+                            <h5 class="total" style="float: right;">62.00 AED</h5>
+                            <hr>
+                        </div>
+                        <div id="delivery">
+                            <h5 class="total">Delivery Charges</h5>
+                            <h5 class="total" style="float: right;">15.00 AED</h5>
+                        </div>
+                        <div id="savings" style="margin-top: 20px">
+                            <h5 class="total">
+                                <strong>savings</strong>
+                            </h5>
+                            <h5 class="total" style="float: right;">
+                                <strong>7.50 AED</strong>
+                            </h5>
+                        </div>
+                        <div id="total" style="margin-top: 20px">
+                            <h5 class="total">
+                                <strong>Grand total</strong>
+                                <br>
+                                <span>(inclusive of 5%VAT)</span>
+                            </h5>
+                            <h5 class="total" style="float: right;">
+                                <strong>50.00 AED</strong>
+                            </h5>
+                        </div>
+                    </div>
+                    <a href="success">
+                        <button class="btn-proceed">Proceed to checkout</button>
+                    </a>
+                </div>
+
+                <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
+                    <button class="btn-proceed" style="margin-bottom: 10px">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--     Product list ends here-->
+
+    <!--Footer starts here-->
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="img/logo.png" class="img-responsive footer-logo">
+                    <ul class="footerlist">
+                        <li>About us</li>
+                        <li>Delivery policy</li>
+                        <li>Terms & Conditions</li>
+                        <li>Return policy</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Help</h4>
+                    <ul class="footerlist">
+                        <li>FAQ</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <h4>Follow us on:</h4>
+                    <ul class="footerlist list-inline">
+                        <a href="#">
+                            <li class="social">
+                                <i class="fa fa-facebook"></i>
+                            </li>
+                        </a>
+                        <a href="#">
+                            <li class="social">
+                                <i class="fa fa-twitter"></i>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h5>© 2018 Valucart. All rights reserved.</h5>
+    </footer>
+    <!--Footer ends here-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!--    Includes all functions-->
+    <script src="js/main.js"></script>
+    <!--    owlcarousel js-->
+    <script src="js/owlcarousel.js"></script>
+    <div class="modal fade mycart" id="myModal" role="dialog">
+        <div class="mycart modal-dialog">
+
+            <!-- Modal content-->
+            <div class="mycart modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <h4 class="modal-title">Modal Header</h4> -->
+                </div>
+                <div class="modal-body">
+                    <h3>Have a coupon code?
+                        <br> Enter below to redeem...</h3>
+                    <div class="input-group" style="padding: 18px;margin-bottom: 20px">
+                        <input type="text" class="form-control" placeholder="Enter Code">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-coupon">Apply</button>
+                        </div>
+                        <!-- /btn-group -->
+                    </div>
+                    <h5>or use one of the codes below...</h5>
+                    <div class="eyedio">
+                        <input class="eyedio__radio" type="radio" name="blink" id="yes">
+                        <span class="eyedio__eye"></span>
+                        <label class="eyedio__label" for="yes">
+                            <button class="btn1">VC20</button>
+                        </label>
+                        <h6>20% off on no minimum purchase. Valid till 31 May 2018.</h6>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+    </html>

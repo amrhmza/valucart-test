@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET cart page. */
 router.get('/', function(req, res, next) {
-  res.render('select-city', { title: '' });
+  res.render('payment', { title: 'Express' });
 });
-
 module.exports = router;

@@ -1,0 +1,176 @@
+<!--Footer starts here-->
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"> <img src="img/logo.png" class="img-responsive footer-logo">
+                <ul class="footerlist">
+                    <li>About us</li>
+                    <li>Delivery policy</li>
+                    <li>Terms & Conditions</li>
+                    <li>Return policy</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4>Help</h4>
+                <ul class="footerlist">
+                    <li>FAQ</li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h4>Follow us on:</h4>
+                <ul class="footerlist list-inline">
+                    <a href="#">
+                        <li class="social"><i class="fa fa-facebook"></i></li>
+                    </a>
+                    <a href="#">
+                        <li class="social"><i class="fa fa-twitter"></i></li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <h5>© 2018 Valucart. All rights reserved.</h5>
+</footer>
+<!--Footer ends here-->
+
+
+<!-- Modal -->
+<div class="modal fade profile-modal" id="myModal" role="dialog">
+<div class="modal-dialog profile-modal">
+
+  <!-- Modal content-->
+  <div class="modal-content profile-modal">
+    <div class="modal-header profile-modal">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <!-- <h4 class="modal-title">Modal Header</h4> -->
+    </div>
+    <div class="modal-body profile-modal">
+      <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="register-form-link">Register</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" id="login-form-link">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="register-form" role="form" style="display: block;margin-top: 20px;">
+                              <div class="form-group marg-btm">
+                                    <input type="text" id="name" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">name</label>
+                                  </div>
+                              <div class="form-group marg-btm">
+                                    <input type="text" id="email" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">E-mail id</label>
+                                  </div>
+                             <div class="form-group marg-btm">
+                                    <input type="text" id="phone" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">phone number</label>
+                                  </div>
+                               <div class="form-group">
+                                    <input type="text" id="pwd" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">password</label>
+                                  </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12" style="margin-top: 20px;">
+                                            <button type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <div class="col-sm-12">
+                                     <h5 style="display: inline-block;">or signup with</h5>
+                                     <div style="float:right">
+                                          <img src="img/fb.png" alt="google-plus" style="margin-right: 10px;"/>
+                                         <img src="img/google+.png" alt="google-plus" />
+                                     </div>
+                                  </div>
+                            </form>
+                                   <form id="login-form" role="form" style="display: none;margin-top: 20px;">
+                               <div class="form-group  marg-btm">
+                                    <input type="text" id="usr" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">username</label>
+                                  </div>
+                               <div class="form-group">
+                                    <input type="text" id="pwd" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">password</label>
+                                  </div>
+                                <div class="form-group text-center">
+                                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                    <label for="remember">Remember Me</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                             <button type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-register">Sign in</button>
+                                        </div>
+                                    </div>
+                                </div>
+<!--
+                               
+-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+  </div>
+  
+</div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.3.1.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<!--    Includes all functions-->
+<script src="js/main.js"></script>
+
+<!--    owlcarousel js-->
+<script src="js/owlcarousel.js"></script>
+<!--    nav js-->
+<script src="js/line.js"></script>
+
+<script>
+
+//Modal toggle 
+$(function() {
+
+$('#register-form-link').click(function(e) {
+    $("#register-form").delay(100).fadeIn(100);
+    $("#login-form").fadeOut(100);
+    $('#login-form-link').removeClass('active');
+    $(this).addClass('active');
+    e.preventDefault();
+});
+
+$('#login-form-link').click(function(e) {
+    $("#login-form").delay(100).fadeIn(100);
+    $("#register-form").fadeOut(100);
+    $('#register-form-link').removeClass('active');
+    $(this).addClass('active');
+    e.preventDefault();
+});
+
+});
+
+</script>
+</body>
+</html>
