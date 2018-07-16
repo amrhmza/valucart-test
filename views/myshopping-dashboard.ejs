@@ -12,8 +12,6 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- main css-->
     <link href="css/main.css" rel="stylesheet">
-    <!--    owl carousel css-->
-    <link href="css/OwlCarousel.css" rel="stylesheet">
     <!-- fontawesome-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,50 +28,29 @@
         <div class="container">
             <ul class="list-inline headerlist">
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    </a>
                 </li>
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
-                        <i class="fa fa-chevron-down"></i>
-                    </p>
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
+                            <i class="fa fa-chevron-down"></i>
+                        </p>
+                    </a>
                 </li>
                 <li style="margin-bottom: 10px;">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-responsive topnavlocationimg" src="img/user.png">Faheen Ahmed
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">My orders</a>
-                            </li>
-                            <li>
-                                <a href="#">Profile</a>
-                            </li>
-                            <li>
-                                <a href="#">Setting</a>
-                            </li>
-                            <li>
-                                <a href="#">Shopping list</a>
-                            </li>
-                            <li>
-                                <a href="#">My bundles</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-
+                    <a href="#">
+                        <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
                 </li>
             </ul>
         </div>
     </div>
     <!--    Header-->
     <!--    Navigation starts here-->
-    <div class="container-fluid navtop">
+    <div class="container-fluid navtop" style="margin-bottom: 40px;">
         <div class="container">
             <div class="row">
                 <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-3">
@@ -82,7 +59,7 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                    <a href="home"><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-3">
                     <ul class="list-inline navlist">
@@ -102,7 +79,6 @@
         </div>
     </div>
 
-    <!-- mobile menu -->
     <div id="mobileview" class="mobileview1" style="display: none">
         <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
             <div class="sideheader">
@@ -299,3 +275,108 @@
         </div>
     </div>
     <!--    Navigation ends here-->
+    <!--    Breadcrumb-->
+    <!-- <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">My Cart</a></li>
+            </ul>
+        </div> -->
+    <!--    Breadcrumb-->
+    <!-- main section -->
+    <div class="container-fluid mybundles">
+        <div class="container">
+            <div class="row" id="mybnd-desktop">
+                <div class="row text-center">
+                    <h4>
+                        <img src="img/mybundles.png" alt="mybundles" /> My shopping list</h4>
+                </div>
+                <div class="col-md-9 bn-list">
+                    <h5>Shopping list 01 (10 items)</h5>
+                </div>
+                <div class="col-md-3 bn-img" style="margin-top: 10px;">
+                    <img src="img/bn-edit.png" alt="bn-edit" />
+                    <img src="img/bn-del.png" alt="bn-del" />
+                </div>
+
+                <div class="col-md-9 bn-list">
+                    <h5>Shopping list 01 (15 items)</h5>
+                </div>
+                <div class="col-md-3 bn-img" style="margin-top: 10px;">
+                    <img src="img/bn-edit.png" alt="bn-edit" />
+                    <img src="img/bn-del.png" alt="bn-del" />
+                </div>
+            </div>
+            <div class="row" id="mybnd-mobile">
+                <h4 class="text-center">My shopping list</h4>
+                <div class="col-xs-12 bn-list">
+                    <h5>Shopping list 01 (10 items)</h5>
+                    <a href="#">
+                        <img src="img/bnd-list.png" alt="bnd-list" />
+                    </a>
+                </div>
+                <div class="col-xs-12 bn-list">
+                    <h5>Shopping list 02 (10 items)</h5>
+                    <a href="#">
+                        <img src="img/bnd-list.png" alt="bnd-list" />
+                    </a>
+                </div>
+                <a href="home.html">
+                    <p class="end-text">Back to home</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--Footer starts here-->
+    <section class="footer" id="mybnd-desktop">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="img/logo.png" class="img-responsive footer-logo">
+                    <ul class="footerlist">
+                        <li>About us</li>
+                        <li>Delivery policy</li>
+                        <li>Terms & Conditions</li>
+                        <li>Return policy</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Help</h4>
+                    <ul class="footerlist">
+                        <li>FAQ</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <h4>Follow us on:</h4>
+                    <ul class="footerlist list-inline">
+                        <a href="#">
+                            <li class="social">
+                                <i class="fa fa-facebook"></i>
+                            </li>
+                        </a>
+                        <a href="#">
+                            <li class="social">
+                                <i class="fa fa-twitter"></i>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="mybnd-desktop">
+        <h5>© 2018 Valucart. All rights reserved.</h5>
+    </footer>
+    <!--Footer ends here-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!--    Includes all functions-->
+    <script src="js/main.js"></script>
+    <!--    owlcarousel js-->
+    <script src="js/owlcarousel.js"></script>
+</body>
+
+</html>

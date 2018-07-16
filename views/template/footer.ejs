@@ -153,6 +153,11 @@
 <!--    nav js-->
 <script src="js/jquery.touchSwipe.min.js"></script>
 <script src="js/line.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/uisearch.js"></script>
+<script>
+    new UISearch(document.getElementById('sb-search'));
+</script>
 <script>
     $('.radio-group .radio').click(function () {
         $(this).parent().find('.radio').removeClass('selected');
@@ -218,6 +223,77 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group marg-btm">
+                                <input type="text" id="name" class="form-control form-control1" value="Bundle 01">
+                                <label class="form-control-placeholder" for="name">Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group marg-btm">
+                                <select>
+                                    <option>15 days</option>
+                                    <option value="dubai">1month</option>
+                                    <option value="sharjah">3months</option>
+                                    <option value="abu">6months</option>
+                                </select>
+                                <label class="form-control-placeholder" for="name">Frequency</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group marg-btm">
+                                <input type="text" id="name" class="form-control form-control1" value="20 jun 2018">
+                                <label class="form-control-placeholder" for="name">Next delivery date</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group marg-btm">
+                                <input type="text" id="name" class="form-control form-control1" value="5 jun 2018">
+                                <label class="form-control-placeholder" for="name">Previous delivery date</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group marg-btm">
+                                <input type="text" id="name" class="form-control form-control1" value="5 march 2018">
+                                <label class="form-control-placeholder" for="name">Start date</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-md-3 col-xs-6">
+                            <button class="btn btn-proceed">Save</button>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <button class="btn btn-proceedc">Cancel</button>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <a class="removebundle" href="#">
+                                <p>Remove Bundle</p>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends -->
 </body>
 
 </html>

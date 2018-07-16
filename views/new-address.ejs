@@ -24,49 +24,28 @@
         <![endif]-->
 </head>
 
-<body>
+<body class="change-pwd">
     <!--Header Desktop / this will hide on mobile -->
     <div class="container-fluid headertop">
         <div class="container">
             <ul class="list-inline headerlist">
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    </a>
                 </li>
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
-                        <i class="fa fa-chevron-down"></i>
-                    </p>
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
+                            <i class="fa fa-chevron-down"></i>
+                        </p>
+                    </a>
                 </li>
                 <li style="margin-bottom: 10px;">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-responsive topnavlocationimg" src="img/user.png">Faheen Ahmed
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">My orders</a>
-                            </li>
-                            <li>
-                                <a href="#">Profile</a>
-                            </li>
-                            <li>
-                                <a href="#">Setting</a>
-                            </li>
-                            <li>
-                                <a href="#">Shopping list</a>
-                            </li>
-                            <li>
-                                <a href="#">My bundles</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-
+                    <a href="#">
+                        <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
                 </li>
             </ul>
         </div>
@@ -82,7 +61,7 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                    <a href="home"><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-3">
                     <ul class="list-inline navlist">
@@ -111,13 +90,13 @@
             </div>
             <div class="tab">
                 <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
-                    <img class="svg" src="img/user.svg" alt="" />
+                    <i class="fa fa-user" aria-hidden="true"></i>
                     <br>My Account</button>
                 <button class="tablinks button1" onclick="openCity(event, 'categories')">
-                    <img class="svg" src="img/shop.svg" alt="" />
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
                     <br>Categories</button>
                 <button class="tablinks button1" onclick="openCity(event, 'offers')">
-                    <img class="svg" src="img/valucart.svg" alt="" />
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
                     <br>ValuCart Exclusives</button>
             </div>
             <div id="account" class="tabcontent">
@@ -299,3 +278,75 @@
         </div>
     </div>
     <!--    Navigation ends here-->
+    <!--    Breadcrumb-->
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">My accounts</a>
+            </li>
+            <li>
+                <a href="#">Settings</a>
+            </li>
+            <li class="lastcrumb">
+                <a href="#">Add new</a>
+            </li>
+        </ul>
+    </div>
+    <!--    Breadcrumb-->
+    <div class="container">
+        <h4>Add new address</h4>
+        <div class="panel1 panel-default">
+            <div class="panel-body">
+                <form style="margin-top: 20px">
+                    <div class="form-group marg-btm1">
+                        <input type="text" id="name" class="form-control form-control1">
+                        <label class="form-control-placeholder" for="name">FULL NAME</label>
+                    </div>
+                    <div class="row form-align  marg-btm1">
+                        <div class="col-sm-1 col-xs-2">
+                            <div class="form-group">
+                                <label class="phone-align" for="phone">+971</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-11 col-xs-10">
+                            <div class="form-group" style="margin-top: 35px;">
+                                <input type="text" id="phno" class="form-control form-control1">
+                                <label class="form-control-placeholder" for="phno">PHONE NUMBER</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group marg-btm1" style="margin-top: 35px;">
+                        <input type="text" id="flat" class="form-control form-control1">
+                        <label class="form-control-placeholder" for="flat">FLAT/HOUSE/FLOOR/BUILDING</label>
+                    </div>
+                    <div class="form-group  marg-btm1" style="margin-top: 35px;">
+                        <input type="text" id="street" class="form-control form-control1">
+                        <label class="form-control-placeholder" for="street">STREET/LOCALITY</label>
+                    </div>
+                    <div class="form-group marg-btm1" style="margin-top: 35px;">
+                        <input type="text" id="city" class="form-control form-control1">
+                        <label class="form-control-placeholder" for="city">CITY</label>
+                    </div>
+                    <div class="form-group btn-bottom text-right visible-lg visible-md hidden-sm hidden-xs">
+                        <button class="btn-pwd" style="width:200px;margin-right: 10px;">Save</button>
+                        <button class="btn-cnl" style="width:200px">Cancel</button>
+                    </div>
+                    <div class="form-group btn-bottom visible-xs visible-sm hidden-lg hidden-md">
+                        <button class="btn-pwd">Save</button>
+                        <button class="btn-cnl">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!--    Includes all functions-->
+    <script src="js/main.js"></script>
+    <!--    owlcarousel js-->
+    <script src="js/owlcarousel.js"></script>
+</body>
+
+</html>
