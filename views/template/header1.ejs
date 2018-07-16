@@ -6,11 +6,27 @@
     <!-- for-mobile-apps -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <base href="<%= process.env.BASEURL %>">
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <% if(angular){ %>
+        <!-- angular Libraries -->
+        <script src="angular/lib/angular.min.js"></script>
+        <script src="angular/lib/angular-route.min.js"></script>
+        <script src="angular/lib/angular-aria.min.js"></script>
+        <script src="angular/lib/angular-messages.min.js"></script>
+        <script src="angular/lib/angular-sanitize.min.js"></script>
+        <%  } %>
+            <% if(customjs){ 
+    jslist.forEach(function(js){ %>
+                <script src="<%- js %>"></script>
+                <% })
+    } %>
 </head>
 
 <body class="fullwidth">

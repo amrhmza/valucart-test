@@ -1,9 +1,9 @@
-(function (routeConfig) {
+(function(routeConfig) {
   "use strict";
 
-  routeConfig.init = function (app) {
+  routeConfig.init = function(app) {
     // *** routes *** //
-    const indexRouter = require("../routes/index");
+    const cityRouter = require("../routes/select_city");
     const areaRouter = require("../routes/select_area");
     const homeRouter = require("../routes/home");
     const usersRouter = require("../routes/users");
@@ -21,9 +21,9 @@
     const productdetailsRouter = require("../routes/product-listing");
 
     // *** register routes *** //
-    app.use("/", indexRouter);
+    app.use("/city", cityRouter);
     app.use("/area", areaRouter);
-    app.use("/home", homeRouter);
+    app.use("/", homeRouter);
     app.use("/users", usersRouter);
     app.use("/details", detailsRouter);
     app.use("/cart", cartRouter);
@@ -41,6 +41,5 @@
     app.use("/cancel-order", cancelorderRouter);
     app.use("/create-bundle", createbundleRouter);
     app.use("/create-bundle-cp", createbundlecpRouter);
-
   };
 })(module.exports);

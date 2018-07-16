@@ -2,15 +2,20 @@ var express = require("express");
 var router = express.Router();
 const selectCountry = require("../controllers/select_city.js");
 
-/* GET home page. */
+/* GET select page. */
 router.get("/", async (req, res, next) => {
   try {
     let data = await selectCountry.get_data();
-    console.log(data);
-    res.render("home", { title: "Express" });
+    res.render("select-city", {
+      data: data,
+      angular: true,
+      customjs: true,
+      jslist: ["angular/app.js", "angular/controllers/select_city.js"]
+    });
   } catch (error) {
+    console.log(error);
     res.status(401).json({
-      error: err
+      error: error
     });
   }
 });
