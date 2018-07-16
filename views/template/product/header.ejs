@@ -8,18 +8,19 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Valucart</title>
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- main css-->
     <link href="css/main.css" rel="stylesheet">
+    <!--    nav css-->
+    <link href="css/line.css" rel="stylesheet">
     <!--    owl carousel css-->
     <link href="css/OwlCarousel.css" rel="stylesheet">
-
-    <link href="css/line.css" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>
     <!-- fontawesome-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,16 +30,17 @@
     <![endif]-->
 </head>
 
+
 <body>
-    <!--Header Desktop / this will hide on mobile -->
+     <!--Header Desktop / this will hide on mobile -->
     <div class="container-fluid headertop">
         <div class="container">
             <ul class="list-inline headerlist">
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;"><img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    <a href="#"><p style="margin: 0px;padding-right: 5px;"><img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p></a>
                 </li>
                 <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;"><img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai <i class="fa fa-chevron-down"></i></p>
+                    <a href="#"><p style="margin: 0px;padding-right: 5px;"><img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai <i class="fa fa-chevron-down"></i></p></a>
                 </li>
                 <li style="margin-bottom: 10px;">
                     <div class="dropdown">
@@ -59,23 +61,16 @@
     </div>
     <!--    Header-->
     <!--    Navigation starts here-->
+    <!--    Navigation starts here-->
     <div class="container-fluid navtop">
         <div class="container">
             <div class="row">
-                <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-3">
-                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()"><i class="fa fa-ellipsis-v"></i></span>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
-                </div>
+                <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-3"> <span style="font-size:30px;cursor:pointer;" onclick="openNav()"><i class="fa fa-ellipsis-v"></i></span> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6"> <a href="home"><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a> </div>
                 <div class="col-md-6 col-sm-6 col-xs-3">
                     <ul class="list-inline navlist">
-                        <li class="hidden-xs">
-                            <a href="#"><img src="img/wishlist.png" class="img-responsive navbar-brand" alt="valucart-logo" style="margin-right: 10px;"></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="img/cart.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
-                        </li>
+                        <li class="hidden-xs"> <a href="#"><img src="img/wishlist.png" class="img-responsive navbar-brand" alt="valucart-logo" style="margin-right: 10px;"></a> </li>
+                        <li> <a href="#"><img src="img/cart.png" class="img-responsive navbar-brand" alt="valucart-logo"></a> </li>
                     </ul>
                 </div>
             </div>
@@ -268,14 +263,27 @@
                     </nav>
                     <!--nav navbar-nav-->
                 </div>
-                <div class="col-md-5 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
-                    <a href="#"><img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> Valucart Exclusives</a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6" style="z-index: 1000;">
-                    <input type="text" class="form-control" placeholder="What are you looking for?">
+                <div class="col-md-5 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;"> <a href="#"><img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> Valucart Exclusives</a> </div>
+                <div class="col-md-4 col-sm-4 col-xs-6" style="z-index: 1000;">					
+					<div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
+						<form class="mobsearchform">
+							<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+							<input class="sb-search-submit" type="submit" value="">
+							<span class="sb-icon-search"></span>
+						</form>
+					</div>
+				
+                    <div class="input-group hidden-xs">
+                        <input type="text" class="form-control desktopsearch" placeholder="Search for...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><img src="img/searchicon.png" class="img-responsive searchicon" /> </button>
+                      </span>
+                    </div>
                 </div>
                 <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
-                    <p class="navlocation"><img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
+                    <a href="#">
+                        <p class="navlocation"><img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
+                    </a>
                 </div>
             </div>
         </div>

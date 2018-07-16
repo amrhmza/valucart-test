@@ -1,7 +1,7 @@
-(function (routeConfig) {
+(function(routeConfig) {
   "use strict";
 
-  routeConfig.init = function (app) {
+  routeConfig.init = function(app) {
     // *** routes *** //
     const indexRouter = require("../routes/index");
     const areaRouter = require("../routes/select_area");
@@ -18,7 +18,22 @@
     const createbundleRouter = require("../routes/create-bundle");
     const createbundlecpRouter = require("../routes/create-bundle-cp");
     const productlistingRouter = require("../routes/product-listing");
-    const productdetailsRouter = require("../routes/product-listing");
+    const productdetailsRouter = require("../routes/product-detail");
+    const profileRouter = require("../routes/profile");
+    const editprofileRouter = require("../routes/edit-profile");
+    const mybundlesRouter = require("../routes/mybundles");
+    const mybundleeditRouter = require("../routes/mybundle-edit");
+    const myordersRouter = require("../routes/myorders");
+    const myorderdetailsRouter = require("../routes/myorder-details");
+    const myshoppingRouter = require("../routes/myshopping");
+    const myshoppingdashboardRouter = require("../routes/myshopping-dashboard");
+    const newaddressRouter = require("../routes/new-address");
+    const ordertrackingRouter = require("../routes/order-tracking");
+    const otpRouter = require("../routes/otp");
+    const replacementRouter = require("../routes/request-replacement");
+    const replacementsuccessRouter = require("../routes/replacement-success");
+    const servicerequestRouter = require("../routes/service-request");
+    const subscribeRouter = require("../routes/subscribe");
 
     // *** register routes *** //
     app.use("/", indexRouter);
@@ -41,6 +56,20 @@
     app.use("/cancel-order", cancelorderRouter);
     app.use("/create-bundle", createbundleRouter);
     app.use("/create-bundle-cp", createbundlecpRouter);
-
+    app.use("/profile", profileRouter);
+    app.use("/edit-profile", editprofileRouter);
+    app.use("/mybundles", mybundlesRouter);
+    app.use("/mybundle-edit", mybundleeditRouter);
+    app.use("/myorders", myordersRouter);
+    app.use("/myorder-details", myorderdetailsRouter);
+    app.use("/myshopping", myshoppingRouter);
+    app.use("/myshopping-dashboard", myshoppingdashboardRouter);
+    app.use("/new-address", newaddressRouter);
+    app.use("/order-tracking", ordertrackingRouter);
+    app.use("/otp", otpRouter);
+    app.use("/request-replacement", replacementRouter);
+    app.use("/replacement-success", replacementsuccessRouter);
+    app.use("/service-request", servicerequestRouter);
+    app.use("/subscribe", subscribeRouter);
   };
 })(module.exports);

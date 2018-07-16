@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Valucart
-        <%= title %>
-    </title>
+    <title>Valucart</title>
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
 
     <!-- Bootstrap -->
@@ -19,10 +17,10 @@
     <link href="css/line.css" rel="stylesheet">
     <!--    owl carousel css-->
     <link href="css/OwlCarousel.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
     <!-- fontawesome-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,17 +35,21 @@
     <div class="container-fluid headertop">
         <div class="container">
             <ul class="list-inline headerlist">
-                <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                <li style="border-right: 1px solid #9b9b9b;">
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                    </a>
                 </li>
-                <li style="border-right: 1px solid #fff; margin-bottom: 10px;">
-                    <p style="margin: 0px;padding-right: 5px;">
-                        <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
-                        <i class="fa fa-chevron-down"></i>
-                    </p>
+                <li style="border-right: 1px solid #9b9b9b;">
+                    <a href="#">
+                        <p style="margin: 0px;padding-right: 5px;">
+                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
+                            <i class="fa fa-chevron-down"></i>
+                        </p>
+                    </a>
                 </li>
-                <li style="margin-bottom: 10px;">
+                <li style="">
                     <a href="#" data-toggle="modal" data-target="#myModal">
                         <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
                 </li>
@@ -113,12 +115,10 @@
                                                         <a href="#subcategory-music">Chilled</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#subcategory-books">Food cupboard
-                                                        </a>
+                                                        <a href="#subcategory-books">Food cupboard</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#subcategory-fashion">Drinks
-                                                        </a>
+                                                        <a href="#subcategory-fashion">Drinks</a>
                                                     </li>
                                                     <li>
                                                         <a href="#subcategory-movies">Health & beauty</a>
@@ -169,7 +169,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                        href="#">See all New & trending</a>
                                                                 </li>
                                                             </ul>
 
@@ -182,7 +182,7 @@
                                                     <!-- /.subcategory-home -->
                                                     <div id="subcategory-sports">
                                                         <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-8 col-md-6">
+                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
                                                             <!--                                                            <h3 class="lnt-category-name">Sports and outdoors</h3>-->
                                                             <ul class="list-unstyled col-sm-12">
                                                                 <li>
@@ -211,7 +211,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                        href="#">See all Holiday shop</a>
                                                                 </li>
                                                             </ul>
 
@@ -224,7 +224,7 @@
                                                     <!-- /.subcategory-sports -->
                                                     <div id="subcategory-music">
                                                         <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-8 col-md-6">
+                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
                                                             <!--                                                            <h3 class="lnt-category-name">Digital music</h3>-->
                                                             <ul class="list-unstyled col-sm-12">
                                                                 <li>
@@ -253,7 +253,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                        href="#">See all Chilled</a>
                                                                 </li>
                                                             </ul>
 
@@ -265,7 +265,7 @@
                                                     </div>
                                                     <!-- /.subcategory-music -->
                                                     <div id="subcategory-books">
-                                                        <div class="lnt-subcategory col-sm-8 col-md-6">
+                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
                                                             <!--                                                            <h3 class="lnt-category-name">Books</h3>-->
                                                             <ul class="list-unstyled col-sm-12">
                                                                 <li>
@@ -307,7 +307,7 @@
                                                     <!-- /.subcategory-books -->
                                                     <div id="subcategory-fashion">
                                                         <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-8 col-md-6">
+                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
                                                             <!--                                                            <h3 class="lnt-category-name">Fashion and beauty</h3>-->
                                                             <ul class="list-unstyled col-sm-12">
                                                                 <li>
@@ -336,7 +336,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                        href="#">See all Drinks</a>
                                                                 </li>
                                                             </ul>
 
@@ -349,7 +349,7 @@
                                                     <!-- /.subcategory-fashion -->
                                                     <div id="subcategory-movies">
                                                         <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-8 col-md-6">
+                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
                                                             <!--                                                            <h3 class="lnt-category-name">Movies and games</h3>-->
                                                             <ul class="list-unstyled col-sm-12">
                                                                 <li>
@@ -378,7 +378,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                        href="#">See all Health & beauty</a>
                                                                 </li>
                                                             </ul>
 
@@ -413,11 +413,27 @@
                         <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> Valucart Exclusives</a>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-6" style="z-index: 1000;">
-                    <input type="text" class="form-control" placeholder="What are you looking for?">
+                    <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
+                        <form class="mobsearchform">
+                            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                            <input class="sb-search-submit" type="submit" value="">
+                            <span class="sb-icon-search"></span>
+                        </form>
+                    </div>
+
+                    <div class="input-group hidden-xs">
+                        <input type="text" class="form-control desktopsearch" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <img src="img/searchicon.png" class="img-responsive searchicon" /> </button>
+                        </span>
+                    </div>
                 </div>
                 <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
-                    <p class="navlocation">
-                        <img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
+                    <a href="#">
+                        <p class="navlocation">
+                            <img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -431,15 +447,14 @@
             </div>
             <div class="tab">
                 <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <br> My Account</button>
+                    <img class="svg" src="img/user.svg" alt="" />
+                    <br>My Account</button>
                 <button class="tablinks button1" onclick="openCity(event, 'categories')">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                    <br> Categories
-                </button>
+                    <img class="svg" src="img/shop.svg" alt="" />
+                    <br>Categories</button>
                 <button class="tablinks button1" onclick="openCity(event, 'offers')">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                    <br> ValuCart Exclusives</button>
+                    <img class="svg" src="img/valucart.svg" alt="" />
+                    <br>ValuCart Exclusives</button>
             </div>
             <div id="account" class="tabcontent">
                 <a href="#">
