@@ -1,8 +1,29 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const productListing = require("../controllers/product_list.js");
 
-/* GET cart page. */
-router.get('/', function(req, res, next) {
-  res.render('productlisting', { title: '' });
+/* GET product list page. */
+router.get("/:cat_id/:cat_name", async (req, res, next) => {
+  try {
+    let querydata = req.query;
+    let cat_id = req.param("cat_id");
+    let data = await productListing.get_data(querydata, cat_id);
+    res.render("productlisting", {
+      data: data,
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/product_list.js",
+        "angular/controllers/product_list.js"
+      ]
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      error: error
+    });
+  }
 });
+
 module.exports = router;

@@ -1,4 +1,4 @@
-<% include template/product/header %>
+<% include template/header %>
     <!--    Breadcrumb-->
     <div class="container">
         <ul class="breadcrumb">
@@ -52,7 +52,7 @@
     <!--    Carousel ends here-->
 
     <!--    Product list starts here-->
-    <div class="container-fluid productlistpage">
+    <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="product_listing">
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-3 col-sm-4 hidden-xs" style="padding-top: 30px;">
@@ -68,17 +68,23 @@
                             <a data-toggle="collapse" href="#collapse1">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        Breakfast Cereals (132)
+                                        <%= data.product_config["cat_filter"].cat %>
                                     </h4>
                                 </div>
                             </a>
                             <div id="collapse1" class="panel-collapse collapse in">
                                 <div class="panel-body" style="padding-left: 20px;">
                                     <ul class="list-group">
-                                        <li class="list-group-item">Flakes (50)</li>
-                                        <li class="list-group-item">Granola & Cereal bars (30)</li>
-                                        <li class="list-group-item">Museli (32)</li>
-                                        <li class="list-group-item">Oats & Porridge (20)</li>
+                                        <% if(data.product_config["cat_filter"].supcat!=""){
+                                            data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
+                                            %>
+                                            <li class="list-group-item">
+                                                <%= subcat.subcat_name %>
+                                                    (
+                                                    <%= subcat.c %>)
+                                            </li>
+                                            <% })
+                                        } %>
                                     </ul>
                                 </div>
                             </div>
@@ -98,81 +104,20 @@
                                         style="border: none;
         width: 100%;margin-bottom: 10px;outline: none;">
                                     <ul class="list-group brandlist" id="brandlist">
-                                        <li class="list-group-item">
-
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand1" type="checkbox">
-                                                <label for="brand1">
-                                                    Kellogg’s
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand2" type="checkbox">
-                                                <label for="brand2">
-                                                    Nestle
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand3" type="checkbox">
-                                                <label for="brand3">
-                                                    Tesco
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand4" type="checkbox">
-                                                <label for="brand4">
-                                                    Quaker’s
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand5" type="checkbox">
-                                                <label for="brand5">
-                                                    Sainbury’s
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand6" type="checkbox">
-                                                <label for="brand6">
-                                                    By Nature
-                                                </label>
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand7" type="checkbox">
-                                                <label for="brand7">
-                                                    Sainbury’s
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand8" type="checkbox">
-                                                <label for="brand8">
-                                                    By Nature
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="brand9" type="checkbox">
-                                                <label for="brand9">
-                                                    Quaker’s
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
+                                        <% if(data.product_config["brand_filter"]!=""){
+                                                data.product_config["brand_filter"].forEach(function(brand){ 
+                                                %>
+                                            <li class="list-group-item">
+                                                <div class="checkbox checkbox-info">
+                                                    <input id=" <%= brand.b_id %>" type="checkbox">
+                                                    <label for="brand1">
+                                                        <%= brand.b_name %>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <% })
+                                        } %>
+                                                <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
                                     </ul>
                                 </div>
                             </div>
@@ -188,113 +133,56 @@
                             <div id="collapse3" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item">
+                                        <% if(data.product_config["price_filter"]!=""){
+                                            data.product_config["price_filter"].forEach(function(price){ 
+                                                %>
+                                            <li class="list-group-item">
+                                                <div class="checkbox checkbox-info">
+                                                    <input id="price1" type="checkbox" ng-click="filter(price,<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                    <label for=" price1 ">
+                                                        <%=price.start==" "?"Less then ":"" %>
+                                                            <%=price.end==" "?"More then ":"" %>
+                                                                <%= price.start %>
+                                                                    <%= (price.start == "" || price.end == "")?"":" - " %>
+                                                                        <%= price.end %> AMD
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <% })
+                                         } %>
 
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price1" type="checkbox">
-                                                <label for="price1">
-                                                    Less than 20AED
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price2" type="checkbox">
-                                                <label for="price2">
-                                                    21 - 50 AED
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price3" type="checkbox">
-                                                <label for="price3">
-                                                    51 - 100 AED
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price4" type="checkbox">
-                                                <label for="price4">
-                                                    101 - 200 AED
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price5" type="checkbox">
-                                                <label for="price5">
-                                                    201 - 500 AED
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price6" type="checkbox">
-                                                <label for="price6">
-                                                    More than 500 AED
-                                                </label>
-                                            </div>
-
-
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <a data-toggle="collapse" href="#collapse4">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
+                        <div class="panel panel-default ">
+                            <a data-toggle="collapse " href="#collapse4 ">
+                                <div class="panel-heading ">
+                                    <h4 class="panel-title ">
                                         Discounts
                                     </h4>
                                 </div>
                             </a>
-                            <div id="collapse4" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-
-                                            <div class="checkbox checkbox-info">
-                                                <input id="discount1" type="checkbox">
-                                                <label for="discount1">
-                                                    Upto 5%
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="discount2" type="checkbox">
-                                                <label for="discount2">
-                                                    5% - 10%
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="discount3" type="checkbox">
-                                                <label for="discount3">
-                                                    10% - 15%
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="discount4" type="checkbox">
-                                                <label for="discount4">
-                                                    15% - 25%
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="discount5" type="checkbox">
-                                                <label for="discount5">
-                                                    More than 25%
-                                                </label>
-                                            </div>
-                                        </li>
+                            <div id="collapse4 " class="panel-collapse collapse in ">
+                                <div class="panel-body ">
+                                    <ul class="list-group ">
+                                        <% if(data.product_config["discount_filter"]!=""){
+                                                    data.product_config["discount_filter"].forEach(function(discount){ 
+                                                        %>
+                                            <li class="list-group-item ">
+                                                <div class="checkbox checkbox-info ">
+                                                    <input id="discount1" type="checkbox" ng-click="filter(discount,<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
+                                                    <label for="discount1">
+                                                        <%=discount.start==""?"Less then":"" %>
+                                                            <%=discount.end==""?"More then":"" %>
+                                                                <%= discount.start %>
+                                                                    <%= (discount.start == "" || discount.end == "")?"":" - " %>
+                                                                        <%= discount.end %> %
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <%  })
+                                        } %>
                                     </ul>
                                 </div>
                             </div>
@@ -549,7 +437,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6  col-sm-12">
+                        <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
                             <div class="panel panel-default productpanel">
                                 <div class="panel-body">
                                     <button type="button" class="wishheart">
@@ -557,319 +445,26 @@
                                     </button>
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <h4>Kellogg’s rice krispies multi- grain shapes</h4>
+                                            <h4 ng-bind-html="product.pd_name">
+
+                                            </h4>
                                             <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
+                                                <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
+                                            </h5>
+                                            <h6>
+                                                <strike ng-if="product.pdt_price">
+                                                    {{product.p_price}}
+                                                </strike> 
+                                                <span ng-if="product.pdt_price">
+                                                    {{product.pdt_price}}
+                                                </span> 
+                                                <span ng-if="!product.pdt_price">
+                                                  {{product.p_price}}
+                                                </span>
+                                            </h6>
                                         </div>
                                         <div class="col-xs-6">
                                             <img src="img/product3.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Quaker oats original
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product4.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Nestle Cheerios oat crisp</h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product5.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Strawberry granola by Sainbury’s
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product6.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Tesco Super Berry Granola</h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product7.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Strawberry granola by Sainbury’s
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product8.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Strawberry granola by Sainbury’s
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product8.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-sm-12">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4>Strawberry granola by Sainbury’s
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                            <h6>45.00 AED</h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product8.png" class="img-responsive productimg">
                                         </div>
 
                                     </div>
@@ -901,5 +496,10 @@
             </div>
         </div>
     </div>
+    <script>
+        app.constant("querydata", {
+            'queryparam': <%- JSON.stringify(data.querydata) %>
+        });
+    </script>
     <!--     Product list ends here-->
-    <% include template/product/footer %>
+    <% include template/footer %>

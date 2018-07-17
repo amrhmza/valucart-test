@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="<%= process.env.BASEURL %>">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Valucart</title>
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
@@ -28,6 +29,31 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+
+    <!--    owlcarousel js-->
+    <script src="js/owlcarousel.js"></script>
+    <!--    nav js-->
+    <script src="js/jquery.touchSwipe.min.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/uisearch.js"></script>
+    <% if(angular){ %>
+        <!-- angular Libraries -->
+        <script src="angular/lib/angular.min.js"></script>
+        <script src="angular/lib/angular-route.min.js"></script>
+        <script src="angular/lib/angular-aria.min.js"></script>
+        <script src="angular/lib/angular-messages.min.js"></script>
+        <script src="angular/lib/angular-sanitize.min.js"></script>
+        <%  } %>
+            <% if(customjs){ 
+    jslist.forEach(function(js){ %>
+                <script src="<%- js %>"></script>
+                <% })
+    } %>
 </head>
 
 <body>
@@ -168,8 +194,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all New & trending</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all New & trending</a>
                                                                 </li>
                                                             </ul>
 
@@ -210,8 +235,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all Holiday shop</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Holiday shop</a>
                                                                 </li>
                                                             </ul>
 
@@ -252,8 +276,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all Chilled</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Chilled</a>
                                                                 </li>
                                                             </ul>
 
@@ -293,8 +316,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all food cupboard</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all food cupboard</a>
                                                                 </li>
                                                             </ul>
 
@@ -335,8 +357,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all Drinks</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Drinks</a>
                                                                 </li>
                                                             </ul>
 
@@ -377,8 +398,7 @@
                                                                     <a href="#">Sugar & home baking</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;"
-                                                                        href="#">See all Health & beauty</a>
+                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Health & beauty</a>
                                                                 </li>
                                                             </ul>
 
