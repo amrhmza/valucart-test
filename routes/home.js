@@ -1,18 +1,22 @@
 var express = require("express");
 var router = express.Router();
-const selectCountry = require("../controllers/select_city.js");
+const getHome = require("../controllers/home.js");
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
   try {
-    let data = await selectCountry.get_data();
+    let data = await getHome.get_data();
     console.log(data);
-    res.render("home", { title: "Express" });
+    res.render("home", { 
+      data: data,
+      angular: false,
+      customjs: false
+    });
   } catch (error) {
     res.status(401).json({
       error: err
     });
-  }
+  } 
 });
 
 module.exports = router;
