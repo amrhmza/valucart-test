@@ -6,13 +6,22 @@
                 <a href="home">Home</a>
             </li>
             <li>
-                <a href="#">Food Cupboard</a>
+                <a href="#">
+                    <% if (data) %>
+                        <%= data.response[0].c_name %>
+                </a>
             </li>
             <li>
-                <a href="#">Breakfast Cereals</a>
+                <a href="#">
+                    <% if (data) %>
+                        <%= data.response[0].sub_category %>
+                </a>
             </li>
             <li class="lastcrumb">
-                <a href="product-listing">Kellogg’s rice krispies multi- grain shapes</a>
+                <a href="product-listing">
+                    <% if (data) %>
+                        <%= data.response[0].pd_name %>
+                </a>
             </li>
         </ul>
     </div>
@@ -38,44 +47,29 @@
 
                             <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
                             <div class="thumbnails">
-
                                 <div class="slider">
                                     <div class="indicator"></div>
                                 </div>
-
-                                <label for="image1" class="thumb" style="background-image: url('img/product1.png');"></label>
-
-                                <label for="image2" class="thumb" style="background-image: url('img/product2.png');"></label>
-
-                                <label for="image3" class="thumb" style="background-image: url('img/product3.png')"></label>
-
-                                <label for="image4" class="thumb" style="background-image: url('img/product4.png')"></label>
+                                <% if (data) {
+                                    data.response[0].img.forEach(function(pd_image){
+                                %>
+                                    <label for="image<%= pd_image.pi_id %>" class="thumb" style="background-image: url('<%= pd_image.pi_image %>');"></label>
+                                    <% })
+                            } 
+                           %>
                             </div>
                             <div class="wrap">
-
-                                <figure>
-                                    <label for="fullscreen">
-                                        <img src="img/product1.png" alt="image1" />
-                                    </label>
-                                </figure>
-
-                                <figure>
-                                    <label for="fullscreen">
-                                        <img src="img/product2.png" alt="image2" />
-                                    </label>
-                                </figure>
-
-                                <figure>
-                                    <label for="fullscreen">
-                                        <img src="img/product3.png" alt="image3" />
-                                    </label>
-                                </figure>
-
-                                <figure>
-                                    <label for="fullscreen">
-                                        <img src="img/product4.png" alt="image4" />
-                                    </label>
-                                </figure>
+                                <% if (data) {
+                                        data.response[0].img.forEach(function(pd_image){
+                                    %>
+                                    <figure>
+                                        <label for="fullscreen">
+                                            <img src="<%= data.response[0].img[0].pi_image %>" alt="image<%= pd_image.pi_id %>" />
+                                        </label>
+                                    </figure>
+                                    <% })
+                                } 
+                               %>
                             </div>
 
 
@@ -94,20 +88,15 @@
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="img/product1.png" alt="Los Angeles" style="height: 250px;margin: auto;">
-                            </div>
-
-                            <div class="item">
-                                <img src="img/product2.png" alt="Chicago" style="height: 250px;margin: auto;">
-                            </div>
-
-                            <div class="item">
-                                <img src="img/product3.png" alt="New York" style="height: 250px;margin: auto;">
-                            </div>
-                            <div class="item">
-                                <img src="img/product4.png" alt="New York" style="height: 250px;margin: auto;">
-                            </div>
+                            <% if (data) {
+                                    data.response[0].img.forEach(function(pd_image){
+                                %>
+                                <div class="item active">
+                                    <img src="<%= data.response[0].img[0].pi_image %>" alt="Product" style="height: 250px;margin: auto;">
+                                </div>
+                                <% })
+                            } 
+                           %>
                         </div>
 
 
@@ -123,10 +112,18 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-8">
-                                    <h4>Kellogg’s rice krispies multi- grain shapes</h4>
+                                    <h4>
+                                        <% if (data) %>
+                                            <%= data.response[0].pd_name %>
+                                    </h4>
                                     <h5 style="margin-bottom: 40px;">
-                                        <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                    <h6 style="margin-bottom: 40px;">45.00 AED</h6>
+                                        <img src="img/grammeter.png" class="img-responsive gramimg">
+                                        <% if (data) %>
+                                            <%= data.response[0].p_quantity %>
+                                    </h5>
+                                    <h6 style="margin-bottom: 40px;">
+                                        <% if (data) %>
+                                            <%= data.response[0].p_price %> AED</h6>
                                 </div>
                             </div>
                             <div class="row">
@@ -172,18 +169,21 @@
                 </div>
                 <div class="tab-content clearfix">
                     <div class="tab-pane active" id="1a">
-                        <ul>
+                            <% if(data.response[0].pd_description!=null) %>
+                            <%= data.response[0].pd_description %>
+                        <!-- <ul>
                             <li> Vitamin D important for healthy bones*</li>
                             <li> *Contains ≥ 15% of the nutrient reference value of vitamin D. Vitamin D contributes to the maintenance
                                 of bones.</li>
                             <li> We don't make cereals for anyone else</li>
                             <li> By Appointment to HM The Queen Purveyors of Cereals Kellogg Marketing and Sales Company (UK)
-                                Limited</li>
+                                Limited
+                            </li>
                             <li> With wholegrain and vitamin D, Contains folic acids, No artificial colours or flavours, Suitable
                                 for vegetarians, Halal - HFA approved, Kosher - MK</li>
                             <li> Enjoy as part of a varied and balanced diet and a healthy lifestyle.</li>
 
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="tab-pane" id="2a">
                         <h5>Allergen Information</h5>
@@ -253,7 +253,7 @@
                                     Donec rutrum diam eu mollis feugiat. Sed maximus gravida ligula eget porttitor. Suspendisse
                                     rhoncus, sem sed mollis egestas, ante lacus luctus ex, sed sollicitudin urna sem vitae
                                     est. Duis vitae elit in mi gravida hendrerit. Quisque congue at mauris in vestibulum.
-                                    </p>
+                                </p>
                             </div>
                             <div class="review">
                                 <p class="userdate">ABC,20th May 2018</p>
@@ -277,7 +277,7 @@
                                     Donec rutrum diam eu mollis feugiat. Sed maximus gravida ligula eget porttitor. Suspendisse
                                     rhoncus, sem sed mollis egestas, ante lacus luctus ex, sed sollicitudin urna sem vitae
                                     est. Duis vitae elit in mi gravida hendrerit. Quisque congue at mauris in vestibulum.
-                                    </p>
+                                </p>
                             </div>
                         </div>
                         <div class="writereview" style="float: none !important;">
