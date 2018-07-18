@@ -2383,6 +2383,10 @@ a.reviewlink:hover {
     display: inline-block;
 }
 
+.has-error .form-control{
+    border-color: #ff0500 !important;
+    color: #ff0500 !important;
+}
 /*mycart page css starts here*/
 
 .mycart .productpanel {
@@ -4444,7 +4448,10 @@ select:valid + .form-control-placeholder {
     /* letter-spacing: 1px; */
     font-weight: normal;
 }
+.has-error .form-control-placeholder{
+    color: #ff0500 !important;
 
+}
 .change-pwd .form-control1 {
     display: block;
     width: 100%;
