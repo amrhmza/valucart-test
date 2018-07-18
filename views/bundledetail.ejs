@@ -1,15 +1,19 @@
 <%include template/header %>
-    <!--    Breadcrumb-->
+
+<% 
+let productData= data.response[0];
+%>    
+<!--    Breadcrumb-->
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="home.html">Home</a></li>
-            <li><a href="#">Food Cupboard</a></li>
-            <li><a href="#">Breakfast Cereals</a></li>
-            <li class="lastcrumb"><a href="productlisting.html">Kellogg’s rice krispies multi- grain shapes</a></li>
+            <li><a href="#<%=productData.c_id; %></"><%=productData.c_name; %></a></li>
+            <li><a href="#<%=productData.pdt_subcat_id; %></"><%=productData.sub_category; %></a></li>
+            <li class="lastcrumb"><a href="#"><%= productData.pb_name;%></a></li>
         </ul>
     </div>
     <!--    Breadcrumb-->
-
+       
     <!--    Product list starts here-->
     <div class="container-fluid productlistpage">
         <div class="container productlistpagec">
@@ -115,10 +119,10 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <p>Pack of 2</p>
-                                    <h4>Nestle Cheerios oat crisp</h4>
+                                    <h4><%= productData.pb_name;%></h4>
                                     <h5>Start your day with the energy-filled and nourishing breakfast bundle. This bundle will serve 4 people for 2 months.</h5>
-                                    <h5 style="display: inline-block" class="offeredprice">27.40 AED</h5>
-                                    <h6 style="display: inline-block; margin-left: 10px">45.00 AED</h6>
+                                    <h5 style="display: inline-block" class="offeredprice"><%= productData.pb_price;%> AED</h5>
+                                    <h6 style="display: inline-block; margin-left: 10px"><%= productData.pb_price;%> AED</h6>
                                 </div>
 
 
@@ -142,6 +146,13 @@
                 </div>
             </div>
         </div>
+
+        <% 
+        let products= productData.product;
+        products.forEach(function(pro){     
+            if(pro){
+                if(pro.pbm_is_alternative!=1){
+        %>
         <div class="container bundledetailview">
             <h4>In your bundle..</h4>
             <div class="row">
@@ -150,14 +161,13 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <h4>Kellogg’s frosties rice krispies
-                                    </h4>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> 400g * 1</h5>
-                                    <h5 class="offeredprice">27.40 AED</h5>
-                                    <h6>45.00 AED</h6>
+                                    <h4><%=pro.pd_name%></h4>
+                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"><%= pro.p_quantity%>* 1</h5>
+                                    <h5 class="offeredprice"><%=pro.p_price;%> AED</h5>
+                                    <h6><%=pro.p_price;%> AED</h6>
                                 </div>
                                 <div class="col-xs-6">
-                                    <img src="img/kellogs.png" class="img-responsive productimg">
+                                    <img src="<%=pro.p_image%>" class="img-responsive productimg">
                                 </div>
                             </div>
                         </div>
@@ -182,83 +192,51 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <% 
+                }
+            else{
+        %>
         <div class="container bundledetailvieww">
             <h4>Choose from one of the below</h4>
             <div class="row radios">
+                <% 
+                let alterpro= pro.alternatives;
+                var i = 0;
+                    alterpro.forEach(function(alt){
+                        var select= (i==0)? "checked":"";
+                        i++;
+                %>
                 <div class="col-md-4 col-sm-6">
-                    <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
+                    <input type="radio" name="rGroup" value="<%= alt.pd_id;%>" id="r1" <%= select; %> />
                     <label class="radio" for="r1">
                         <div class="panel panel-default productpanel">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <h4>Hershey’s
-caramel
-syrup
-                                    </h4>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> 400g * 1</h5>
-                                    <h5 class="offeredprice">27.40 AED</h5>
-                                    <h6>45.00 AED</h6>
+                                    <h4><%= alt.pd_name;%></h4>
+                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> <%= alt.p_quantity;%> * 1</h5>
+                                    <h5 class="offeredprice"><%= alt.p_price;%> AED</h5>
+                                    <h6><%= alt.p_price;%> AED</h6>
                                 </div>
                                 <div class="col-xs-6">
-                                    <img src="img/syrub1.png" class="img-responsive productimg">
+                                    <img src="<%= alt.pd_name;%>" class="img-responsive productimg">
                                 </div>
                             </div>
                         </div>
                     </div>
                   </label>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <input type="radio" name="rGroup" value="2" id="r2" />
-                    <label class="radio" for="r2">
-                    <div class="panel panel-default productpanel">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h4>Hershey’s
-caramel
-syrup
-                                    </h4>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> 400g * 1</h5>
-                                    <h5 class="offeredprice">27.40 AED</h5>
-                                    <h6>45.00 AED</h6>
-                                </div>
-                                <div class="col-xs-6">
-                                    <img src="img/syrub2.png" class="img-responsive productimg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-      </label>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <input type="radio" name="rGroup" value="2" id="r3" />
-                    <label class="radio productpanel" for="r3">
-                    <div class="panel panel-default productpanel">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h4>Hershey’s
-caramel
-syrup
-                                    </h4>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> 400g * 1</h5>
-                                    <h5 class="offeredprice">27.40 AED</h5>
-                                    <h6>45.00 AED</h6>
-                                </div>
-                                <div class="col-xs-6">
-                                    <img src="img/syrub3.png" class="img-responsive productimg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-      </label>
-                </div>
+                <%
+                    });
+                %>
             </div>
-
         </div>
+        <%
+                }
+            }
+        });
+        %>
         <div class="container productdetail">
             <div id="exTab1" class="container">
                 <div class="tabheader">

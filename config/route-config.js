@@ -12,7 +12,7 @@
     const checkoutRouter = require("../routes/checkout");
     const paymentRouter = require("../routes/success");
     const bundlelistRouter = require("../routes/bundle_list");
-    const bundledetailRouter = require("../routes/bundle_detail");
+    const bundledetailRouter = require("../routes/bundle_details");
     const changepasswordRouter = require("../routes/change_password");
     const cancelorderRouter = require("../routes/cancelorder");
     const createbundleRouter = require("../routes/create-bundle");
