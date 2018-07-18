@@ -2,9 +2,10 @@ const axios_config = require("../config/axios-config.js").instance;
 const axios = require("axios");
 // const Logger = require("../lib/logger").Logger;
 
-let get_data = async () => {
+let get_data = async pb_id => {
   try {
-    let response = await axios.get("/dashboard/get", axios_config);
+    axios_config['params']= {product_id: pb_id};
+    let response = await axios.get(`/product/details_pb/get`, axios_config);
     return response.data.results;
   } catch (error) {
     console.log(error);
@@ -13,4 +14,3 @@ let get_data = async () => {
 module.exports = {
   get_data
 };
- 

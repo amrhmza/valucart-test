@@ -77,7 +77,7 @@
                                         <h4 class="producttitle"><%= cat.c_name;%></h4>
                                         <h6><%= cat.count;%> Bundles</h6>
 
-                                        <a href="bundle-detail">
+                                        <a href="bundle-detail/<%= cat.hbc_id;%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
@@ -125,7 +125,7 @@
                                     <div class="panel-body text-center">
                                         <img src="<%= cat.hc_image; %>" class="img-responsive productimg">
                                         <h4 class="producttitle"><%= cat.c_name;%></h4>
-                                        <a href="#">
+                                        <a href="bundle-detail/<%= cat.hc_id;%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
@@ -171,7 +171,7 @@
                                             <i class="fa fa-heart"></i>
                                         </button>
                                         <img src="<%= cat.p_image %>" class="img-responsive productimg">
-                                        <a href="product-detail">
+                                        <a href="product-detail/<%= cat.pd_id;%>">
                                             <h4><%= cat.pd_name;%></h4>
                                         </a>
                                         <h5>
