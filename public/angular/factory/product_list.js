@@ -8,7 +8,8 @@ app.factory("getProductList", function($http, config, $q) {
         url: suggestURL,
         type: "json",
         data: {
-          cat_id: queryParam.cat_id
+          cat_id: queryParam.cat_id,
+          page_no: page
         },
         headers: {
           "Content-Type": "application/json"

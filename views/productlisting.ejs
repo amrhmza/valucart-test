@@ -192,8 +192,8 @@
                 <div class="col-md-9 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-md-9 col-sm-9 hidden-xs" style="padding-top: 15px;">
-                            <h4 class="productlisttitle">Breakfast cereals
-                                <span class="titlecount">(132)</span>
+                            <h4 class="productlisttitle"> <%= data.product_config["cat_filter"].cat %>
+                                <span class="titlecount">({{productData.length}})</span>
                             </h4>
                         </div>
                         <div class="col-md-3 col-sm-3  col-xs-6 " style="padding-top: 20px;padding-bottom:10px;padding-left: 0px;padding-right: 15px;">
@@ -437,60 +437,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
-                            <div class="panel panel-default productpanel">
-                                <div class="panel-body">
-                                    <button type="button" class="wishheart">
-                                        <i class="fa fa-heart"></i>
-                                    </button>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <h4 ng-bind-html="product.pd_name">
-
-                                            </h4>
-                                            <h5>
-                                                <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
-                                            </h5>
-                                            <h6>
-                                                <strike ng-if="product.pdt_price">
-                                                    {{product.p_price}}
-                                                </strike> 
-                                                <span ng-if="product.pdt_price">
-                                                    {{product.pdt_price}}
-                                                </span> 
-                                                <span ng-if="!product.pdt_price">
-                                                  {{product.p_price}}
-                                                </span>
-                                            </h6>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <img src="img/product3.png" class="img-responsive productimg">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <!--<p class="productcount">1</p>-->
-                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="cart">
-                                                <button class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
+                        <div ng-include="'includes/product_list.html'"></div>
+                   </div>
                     </div>
                 </div>
             </div>
