@@ -9,7 +9,9 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
     // let pd_name = req.param("pd_name");
     let data = await productDetail.get_data(pd_id);
     res.render("productdetail", {
-      data: data
+      data: data,
+      angular: false,
+      customjs: false
     });
   } catch (error) {
     console.log(error);
