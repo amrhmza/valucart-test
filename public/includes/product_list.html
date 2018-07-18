@@ -1,0 +1,53 @@
+
+    <div class="panel panel-default productpanel">
+        <div class="panel-body">
+            <button type="button" class="wishheart">
+                <i class="fa fa-heart"></i>
+            </button>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4 ng-bind-html="product.pd_name">
+
+                    </h4>
+                    <h5>
+                        <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
+                    </h5>
+                    <h6>
+                        <strike ng-if="product.pdt_price">
+                            {{product.p_price}}
+                        </strike>
+                        <span ng-if="product.pdt_price">
+                            {{product.pdt_price}}
+                        </span>
+                        <span ng-if="!product.pdt_price">
+                            {{product.p_price}}
+                        </span>
+                    </h6>
+                </div>
+                <div class="col-xs-6">
+                    <img src="{{product.p_image}}" class="img-responsive productimg">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="productcountdiv button-container">
+                        <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',product.pd_id)" value="-">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <!--<p class="productcount">1</p>-->
+                        <input type="text" name="qty_{{product.pd_id}}" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
+                        <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',product.pd_id)" value="+">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <a href="cart">
+                        <button class="btn btn-info">
+                            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

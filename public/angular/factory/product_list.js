@@ -1,21 +1,17 @@
-app.factory("browse_all_purchase_orders", function($http, config, $q) {
+app.factory("getProductList", function($http, config, $q) {
   return {
-    getData: function(pageNumber) {
+    getlist: function(queryParam, page) {
       var q = $q.defer();
-      let access_token = $.cookie("access_token");
-      var suggestURL = config.getpurchaseorder;
+      var suggestURL = config.getproduct_list;
       $http({
         method: "POST",
         url: suggestURL,
         type: "json",
         data: {
-          browse: {
-            pageSize: "10",
-            pageNumber: "" + pageNumber + ""
-          }
+          cat_id: queryParam.cat_id,
+          page_no: page
         },
         headers: {
-          Authorization: "Bearer " + access_token,
           "Content-Type": "application/json"
         }
       })
@@ -26,9 +22,6 @@ app.factory("browse_all_purchase_orders", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
-    },
-    getPurchaseOrder: function(pageNumber) {
-      return this.getData(pageNumber);
     }
   };
 });
