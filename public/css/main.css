@@ -2219,7 +2219,9 @@ a.reviewlink:hover {
     position: relative;
     margin-bottom: 1.5rem;
 }
-
+.login-action-msg{
+    margin-bottom: 2.5rem;
+}
 .signincheck.checkbox label::before {
     content: "";
     display: inline-block;
@@ -4448,9 +4450,8 @@ select:valid + .form-control-placeholder {
     /* letter-spacing: 1px; */
     font-weight: normal;
 }
-.has-error .form-control-placeholder{
+.has-error,.has-error .form-control-placeholder{
     color: #ff0500 !important;
-
 }
 .change-pwd .form-control1 {
     display: block;
