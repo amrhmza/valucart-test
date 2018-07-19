@@ -21,3 +21,10 @@ app.constant("config", {
   baseURL: baseurl,
   getproduct_list: baseurl + "/product/list/product/post"
 });
+app.config(function(
+  $routeProvider,
+  $locationProvider,
+  $httpProvider,
+) {
+  $locationProvider.html5Mode(true);
+});
