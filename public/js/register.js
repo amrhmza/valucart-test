@@ -38,9 +38,9 @@ $(function() {
             $('#login-form-link').addClass('active');
             $("#login-form").delay(100).fadeIn(100);
             $("#register-form").fadeOut(100);
-          } else {
-            $("#reg_error").html();
           }
+        }, error: function(error){
+            $("#reg_error").html(error.responseJSON.error);
         }
       });      
     } else {
