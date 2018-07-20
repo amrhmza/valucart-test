@@ -5,11 +5,8 @@
             <li>
                 <a href="home">Home</a>
             </li>
-            <li>
-                <a href="#">Food Cupboard</a>
-            </li>
             <li class="lastcrumb">
-                <a href="product-listing">Breakfast Cereals</a>
+                <a><%= data.product_config["cat_filter"].cat %></a>
             </li>
         </ul>
     </div>
@@ -19,33 +16,39 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-                <li data-target="#myCarousel" data-slide-to="4"></li>
-            </ol>
-
+            <% 
+            let bannerList= banner.response.banner;
+            bannerList.sort(function(a, b){
+                return a.hb_order - b.hb_order;
+            });
+            var no=0;
+            if (bannerList) {
+                bannerList.forEach(function(slides){
+                    if(slides.hb_image)
+            %>
+            <li data-target="#myCarousel" data-slide-to="<%= no++%>" class="<%= (no==1)?'active':'';%>"></li>
+            <%
+                })
+            }
+           %>
+        </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <img src="img/sliderimg1.jpg" alt="Los Angeles" style="width: 100%;">
-                </div>
-
-                <div class="item">
-                    <img src="img/sliderimg1.jpg" alt="Chicago" style="width: 100%;">
-                </div>
-
-                <div class="item">
-                    <img src="img/sliderimg1.jpg" alt="New York" style="width: 100%;">
-                </div>
-                <div class="item">
-                    <img src="img/sliderimg1.jpg" alt="New York" style="width: 100%;">
-                </div>
-                <div class="item">
-                    <img src="img/sliderimg1.jpg" alt="New York" style="width: 100%;">
-                </div>
+                <% 
+                var no=0;
+                if (bannerList) {
+                    bannerList.forEach(function(slides){
+                        if(slides.hb_image)
+                %>
+                <div class="item <%= (no==0)?'active':'';%>">
+                    <img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"> </div>
+               <%
+                    no++;
+                    })
+                }
+               %>
             </div>
+
         </div>
 
     </div>
@@ -78,7 +81,7 @@
                                         <% if(data.product_config["cat_filter"].supcat!=""){
                                             data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
                                             %>
-                                            <li class="list-group-item">
+                                            <li class="list-group-item {{sub_cat_active==<%= subcat.subcat_id %>?'active':''}}">
                                             <a ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
                                                 <%= subcat.subcat_name %>
                                                     (
@@ -239,7 +242,7 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                     <li role="presentation" style="padding-left: 10px">Catagory</li>
                                     <li class="divider"></li>
-                                    <li role="presentation" style="padding-left: 10px">Breakfast Cereals (132)</li>
+                                    <li role="presentation" style="padding-left: 10px"><%= data.product_config["cat_filter"].cat %></li>
                                     <li class="divider"></li>
                                     <% if(data.product_config["cat_filter"].supcat!=""){
                                         data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
@@ -287,7 +290,7 @@
                                             %>
                                         <li class="list-group-item">
                                             <div class="checkbox checkbox-info">
-                                                <input id="price1__<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                 <label for="price1__<%= i %>">
                                                     <%=price.start==""?"Less then ":"" %>
                                                         <%=price.end==" "?"More then ":"" %>
@@ -308,7 +311,7 @@
                                                     %>
                                         <li class="list-group-item ">
                                             <div class="checkbox checkbox-info ">
-                                                <input id="discount1__<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
+                                                <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                 <label for="discount1__<%= j %>">
                                                     <%=discount.start==""?"Less then":"" %>
                                                         <%=discount.end==""?"More then":"" %>

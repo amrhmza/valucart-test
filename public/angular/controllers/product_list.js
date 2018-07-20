@@ -11,11 +11,13 @@ app.controller("product_listing", function(
 ) {
   $scope.productData = [];
   $scope.page = 0;
+  $scope.sub_cat_active = 0;
   $scope.nextcall = 1;
   $scope.queryparam = querydata.queryparam;
   $scope.filters_apply = function() {
     let filterdata = $location.search();
     if (filterdata.sub_cat) {
+      $scope.sub_cat_active = filterdata.sub_cat;
     }
     if (filterdata.price_start || filterdata.price_end) {
       let start = filterdata.price_start ? filterdata.price_start : "";

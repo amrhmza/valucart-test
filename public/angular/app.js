@@ -26,5 +26,13 @@ app.config(function(
   $locationProvider,
   $httpProvider,
 ) {
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
+});
+
+app.filter('spaceless',function() {
+  return function(input) {
+      if (input) {
+          return input.replace(/\s+/g, '-');    
+      }
+  }
 });

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const productListing = require("../controllers/product_list.js");
+const getHome = require("../controllers/home.js");
 
 /* GET product list page. */
 router.get("/:cat_id/:cat_name", async (req, res, next) => {
@@ -8,8 +9,10 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
     let querydata = req.query;
     let cat_id = req.param("cat_id");
     let data = await productListing.get_data(querydata, cat_id);
+    let banner = await getHome.get_data();
     res.render("productlisting", {
       data: data,
+      banner: banner,
       angular: true,
       customjs: true,
       jslist: [
