@@ -19,5 +19,6 @@ var app = angular
 var baseurl = "http://18.191.0.240:3000";
 app.constant("config", {
   baseURL: baseurl,
-  getproduct_list: baseurl + "/product/list/product/post"
+  getproduct_list: baseurl + "/product/list/product/post",
+  submitBundle_review: baseurl + "/product/review/post"
 });

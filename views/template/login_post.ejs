@@ -1,9 +1,7 @@
 <script type="text/javascript" src="js/jquery.cookie.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        
-        console.log("tokenId= "+$.cookie("tokenId")+", customer= " + $.cookie("userId"));
-
+        //console.log("tokenId= "+$.cookie("tokenId")+", customer= " + $.cookie("userId"));
         $('#login-form').submit(function(e) {
             e.preventDefault();
             var username = $(".login_username").val();
@@ -14,7 +12,6 @@
 
             if(password=="") $(".login_password").parent(".form-group").addClass("has-error");
             else $(".login_password").parent(".form-group").removeClass("has-error");
-
             
             var data = {username, password};
 
@@ -25,7 +22,6 @@
                 url: 'http://18.191.0.240:3000/auth/login'
             }).done(function(resp){
                 if(resp.status=="success"){
-                    //console.log("tokenId="+ resp.token+", customer=" + resp.user_id);
                     $.cookie('tokenId', resp.token, { expires: 7, path: '/' });
                     $.cookie('userId', resp.user_id, { expires: 7, path: '/' });
                     location. reload(true);

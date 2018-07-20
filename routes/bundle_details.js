@@ -10,8 +10,9 @@ router.get('/:pb_id', async(req, res, next)=>{
     //console.log(data);
     res.render("bundledetail", { 
       data: data,
-      angular: false,
-      customjs: false
+      angular: true,
+      customjs: true,
+      jslist: ["angular/app.js", "angular/controllers/bundle_details.js"]
     });
   } catch (error) {
     res.status(401).json({
