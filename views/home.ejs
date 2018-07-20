@@ -52,7 +52,7 @@
                         <img src="img/valucartbundle.png" class="img-responsive titleimg">Valuzone Bundles</h1>
                 </div>
                 <div class="col-xs-4 text-right p-t-30">
-                    <a href="bundle-list" class="viewall">
+                    <a  class="viewall">
                         <p class="text-info">View all</p>
                     </a>
                 </div>
@@ -79,7 +79,7 @@
                                         <h4 class="producttitle"><%= cat.c_name%></h4>
                                         <h6><%= cat.count;%> Bundles</h6>
 
-                                        <a href="bundle-detail/<%= cat.hbc_id+'/'+hbc_url%>">
+                                        <a href="bundle-list/<%= cat.hbc_id+'/'+hbc_url%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
@@ -129,7 +129,7 @@
                                     <div class="panel-body text-center">
                                         <img src="<%= cat.hc_image; %>" class="img-responsive productimg">
                                         <h4 class="producttitle"><%= cat.c_name;%></h4>
-                                        <a href="bundle-detail/<%= cat.hc_id+'/'+hc_url%>">
+                                        <a href="bundle-list/<%= cat.hc_id+'/'+hc_url%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
