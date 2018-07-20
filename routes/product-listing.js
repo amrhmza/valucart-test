@@ -6,6 +6,7 @@ const getHome = require("../controllers/home.js");
 /* GET product list page. */
 router.get("/:cat_id/:cat_name", async (req, res, next) => {
   try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let querydata = req.query;
     let cat_id = req.param("cat_id");
     let data = await productListing.get_data(querydata, cat_id);
@@ -13,6 +14,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
     res.render("productlisting", {
       data: data,
       banner: banner,
+      cookies: cookies,
       angular: true,
       customjs: true,
       jslist: [
