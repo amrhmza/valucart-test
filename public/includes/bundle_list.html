@@ -6,36 +6,37 @@
         <div class="row">
             <div class="col-xs-6">
                 <p class="discountprice" ng-if="product.pdt_percentage">{{product.pdt_percentage}}%</p>
+                <p class="packcount">Pack of 3</p>
                 <h4>
-                    <a ng-href="/product-detail/{{product.pd_id}}/{{product.pd_name | spaceless}}" ng-bind-html="product.pd_name"></a>
+                    <a ng-href="/product-detail/{{product.pb_id}}/{{product.pb_name | spaceless}}" ng-bind-html="product.pb_name"></a>
                 </h4>
                 <h5>
-                    <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
+                    <!-- <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}} -->
                 </h5>
-                <h5 class="offeredprice" ng-if="product.pdt_price"> {{product.p_price}} AED</h5>
+                <h5 class="offeredprice" ng-if="product.pdt_price"> {{product.pb_price}} AED</h5>
                 <h6>
                     <span ng-if="product.pdt_price">
                         {{product.pdt_price}}
                     </span>
                     <span ng-if="!product.pdt_price">
-                        {{product.p_price}}
+                        {{product.pb_price}}
                     </span>
                 </h6>
             </div>
             <div class="col-xs-6">
-                <img src="{{product.p_image}}" class="img-responsive productimg">
+                <img src="{{product.pb_image}}" class="img-responsive productimg">
             </div>
 
         </div>
         <div class="row">
             <div class="col-xs-6">
                 <div class="productcountdiv button-container">
-                    <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',product.pd_id)" value="-">
+                    <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',product.pb_id)" value="-">
                         <i class="fa fa-minus"></i>
                     </button>
                     <!--<p class="productcount">1</p>-->
-                    <input type="text" name="qty_{{product.pd_id}}" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
-                    <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',product.pd_id)" value="+">
+                    <input type="text" name="qty_{{product.pb_id}}" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
+                    <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',product.pb_id)" value="+">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
