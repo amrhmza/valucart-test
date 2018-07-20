@@ -174,284 +174,72 @@
                                             <div class="lnt-dropdown-mega-menu">
                                                 <!-- List of categories -->
                                                 <ul class="lnt-category list-unstyled">
-                                                    <li class="active">
-                                                        <a href="#subcategory-home">New & trending</a>
+                                                    <% 
+                                                    let menuList= (typeof menudata != 'undefined')?menudata.response:[];
+                                                    var no=0;
+                                                    if (menuList) {
+                                                        menuList.forEach(function(cat){
+                                                            no++;
+                                                            var cname= cat.c_name;
+                                                            var cat_url_name = cname.trim().replace(/\s+/g, '-').toUpperCase();
+                                                            var catUrl= process.env.BASEURL+'product-listing/'+cat.c_id+'/'+cat_url_name;
+                                                               
+                                                    %>
+                                                    <li class="<%= (no==1)?'active':''; %>">
+                                                        <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>"><%= cat.c_name;%></a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#subcategory-sports">Holiday shop</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-music">Chilled</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-books">Food cupboard</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-fashion">Drinks</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-movies">Health & beauty</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-movies">Baby & toddler</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-movies">Household</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-movies">Pet</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#subcategory-movies">Home & outdoor</a>
-                                                    </li>
+                                                    <%
+                                                        });
+                                                    }
+                                                    %>                                                    
                                                 </ul>
                                                 <!-- Subcategory and carousel wrap -->
                                                 <div class="lnt-subcategroy-carousel-wrap container-fluid">
-                                                    <div id="subcategory-home" class="active">
+                                                    <% 
+                                                    var no=0;
+                                                    if (menuList) {
+                                                        menuList.forEach(function(cat){
+                                                            no++;
+                                                    %>
+                                                    <div id="subcategory-<%= cat.c_id;%>" class="<%= (no==1)?'active':''; %>">
                                                         <!-- Sub categories list-->
                                                         <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Home, garden and tools</h3>-->
+                                                            <!--<h3 class="lnt-category-name">Home, garden and tools</h3>-->
+                                                            <%
+                                                            let subcatList = cat.sub_cat; 
+                                                            if (subcatList) {
+                                                            %>
                                                             <ul class="list-unstyled col-sm-12">
+                                                                <%
+                                                                subcatList.forEach(function(scat){
+                                                                    var scname= scat.c_name;
+                                                                    var scat_url_name = scname.trim().replace(/\s+/g, '-').toUpperCase();
+                                                                    var scatUrl= process.env.BASEURL+'product-listing/'+scat.c_parent_id+'/'+scat_url_name+'?sub_cat='+scat.c_id;
+                                                                %>
                                                                 <li>
-                                                                    <a href="#">Cooking oil</a>
+                                                                    <a href="<%= scatUrl%>"><%=scat.c_name%></a>
                                                                 </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
+                                                                <%
+                                                                });
+                                                                %>
                                                                 <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all New & trending</a>
                                                                 </li>
                                                             </ul>
-
+                                                            <%
+                                                            }
+                                                            %>
                                                         </div>
                                                         <!-- Carousel -->
                                                         <div class="col-sm-6 col-md-6">
                                                             <img src="img/ramadanoffer.png" class="img-responsive menuimg">
                                                         </div>
                                                     </div>
-                                                    <!-- /.subcategory-home -->
-                                                    <div id="subcategory-sports">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Sports and outdoors</h3>-->
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <li>
-                                                                    <a href="#">Cooking oil</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Holiday shop</a>
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <!-- Carousel -->
-                                                        <div class="col-sm-6 col-md-6">
-                                                            <img src="img/ramadanoffer.png" class="img-responsive menuimg">
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.subcategory-sports -->
-                                                    <div id="subcategory-music">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Digital music</h3>-->
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <li>
-                                                                    <a href="#">Cooking oil</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Chilled</a>
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <!-- Carousel -->
-                                                        <div class="col-sm-6 col-md-6">
-                                                            <img src="img/ramadanoffer.png" class="img-responsive menuimg">
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.subcategory-music -->
-                                                    <div id="subcategory-books">
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Books</h3>-->
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <li>
-                                                                    <a href="#">Cooking oil</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all food cupboard</a>
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <!-- Carousel -->
-                                                        <div class="col-sm-6 col-md-6">
-                                                            <img src="img/ramadanoffer.png" class="img-responsive menuimg">
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.subcategory-books -->
-                                                    <div id="subcategory-fashion">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Fashion and beauty</h3>-->
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <li>
-                                                                    <a href="#">Cooking oil</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Drinks</a>
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <!-- Carousel -->
-                                                        <div class="col-sm-6 col-md-6">
-                                                            <img src="img/ramadanoffer.png" class="img-responsive menuimg">
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.subcategory-fashion -->
-                                                    <div id="subcategory-movies">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--                                                            <h3 class="lnt-category-name">Movies and games</h3>-->
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <li>
-                                                                    <a href="#">Cooking oil</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Breakfast cereals</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Biscuits & crackers</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Crisps, nuts & spices</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Jams, honey & spreads</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Rice, pasta & noodles</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Cooking sauces</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Sugar & home baking</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all Health & beauty</a>
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <!-- Carousel -->
-                                                        <div class="col-sm-6 col-md-6">
-                                                            <img src="img/ramadanoffer.png" class="img-responsive menuimg">
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.category-movies -->
+                                                    <%
+                                                        });
+                                                    }
+                                                    %>
+                                                    <!-- /subcategory ends -->
                                                 </div>
                                                 <!-- /.lnt-subcategroy-carousel-wrap -->
                                             </div>
