@@ -1,8 +1,8 @@
 <script type="text/javascript" src="js/jquery.cookie.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        
-        console.log("tokenId= "+$.cookie("tokenId")+", customer= " + $.cookie("userId"));
+        //$.removeCookie('vcartAuth', { path: '/' });
+        //console.log($.cookie("vcartAuth"));
 
         $('#login-form').submit(function(e) {
             e.preventDefault();
@@ -15,28 +15,36 @@
             if(password=="") $(".login_password").parent(".form-group").addClass("has-error");
             else $(".login_password").parent(".form-group").removeClass("has-error");
 
-            
-            var data = {username, password};
+            if(username !="" && password!=""){
+                var data = {username, password};
 
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                url: 'http://18.191.0.240:3000/auth/login'
-            }).done(function(resp){
-                if(resp.status=="success"){
-                    //console.log("tokenId="+ resp.token+", customer=" + resp.user_id);
-                    $.cookie('tokenId', resp.token, { expires: 7, path: '/' });
-                    $.cookie('userId', resp.user_id, { expires: 7, path: '/' });
-                    location. reload(true);
-                }
-                else{
-                    console.log("Invalid Username/Password");
-                }
-            }).fail(function(r){
-                console.log("Login Failed"+ r.status);
-            });
-        
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: 'http://18.191.0.240:3000/auth/login'
+                }).done(function(resp){
+                    if(resp.status=="success"){
+                        //var response= {vcartAuth:true, vcartAuthData: resp};
+                        //console.log(JSON.stringify(response));
+
+                        $.cookie('vcartAuth', JSON.stringify(resp), { expires: 7, path: '/' });
+                        location. reload(true);
+                    }
+                    else{
+                        $(".login-action-msg").html(resp.status).addClass("has-error");
+                        console.log("Invalid Username/Password");
+                    }
+                }).fail(function(r){
+                    console.log(JSON.stringify(r));
+                    $(".login-action-msg").html(r.responseJSON.stack).addClass("has-error");
+                });
+            }
+        });
+
+        $(".vcartLogout").on("click",function(){
+            $.removeCookie('vcartAuth', { path: '/' });
+            location. reload(true);
         });
     });
 </script>

@@ -76,10 +76,52 @@
                         </p>
                     </a>
                 </li>
+                <% 
+                if(cookies){
+                var userData=JSON.parse(cookies);
+                if(userData.status=="success"){
+                %>
+                <li style="margin-bottom: 10px;">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img class="img-responsive topnavlocationimg" src="img/user.png">User Id: <%=userData.user_id;%>
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">My orders</a>
+                            </li>
+                            <li>
+                                <a href="#">Profile</a>
+                            </li>
+                            <li>
+                                <a href="#">Setting</a>
+                            </li>
+                            <li>
+                                <a href="#">Shopping list</a>
+                            </li>
+                            <li>
+                                <a href="#">My bundles</a>
+                            </li>
+                            <li>
+                                <a href="#" class="vcartLogout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+                <%
+                    }
+                }
+                else{
+                %>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal">
                         <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
-                </li>
+                </li>   
+                <%    
+                }
+                %>
             </ul>
         </div>
     </div>
