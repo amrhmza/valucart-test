@@ -69,15 +69,17 @@
                                 var no=0;
                                 if (bundleCategory) {
                                     bundleCategory.forEach(function(cat){
+                                    var catname= cat.c_name;
+                                    var hbc_url= catname.replace(/\s+/g, '-').toUpperCase();
                             %>
                             <div class="item">
                                 <div class="panel panel-default productpanel">
                                     <div class="panel-body text-center">
                                         <img src="<%= cat.hbc_image; %>" class="img-responsive productimg">
-                                        <h4 class="producttitle"><%= cat.c_name;%></h4>
+                                        <h4 class="producttitle"><%= cat.c_name%></h4>
                                         <h6><%= cat.count;%> Bundles</h6>
 
-                                        <a href="bundle-detail/<%= cat.hbc_id;%>">
+                                        <a href="bundle-detail/<%= cat.hbc_id+'/'+hbc_url%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
@@ -119,13 +121,15 @@
                                 var no=0;
                                 if (category) {
                                     category.forEach(function(cat){
+                                    var catname= cat.c_name;
+                                    var hc_url= catname.replace(/\s+/g, '-').toUpperCase();
                             %>    
                             <div class="item">
                                 <div class="panel panel-default productpanel">
                                     <div class="panel-body text-center">
                                         <img src="<%= cat.hc_image; %>" class="img-responsive productimg">
                                         <h4 class="producttitle"><%= cat.c_name;%></h4>
-                                        <a href="bundle-detail/<%= cat.hc_id;%>">
+                                        <a href="bundle-detail/<%= cat.hc_id+'/'+hc_url%>">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-arrow-right"></i>
                                             </button>
@@ -163,6 +167,8 @@
                                 var no=0;
                                 if (exclusiveCategory) {
                                     exclusiveCategory.forEach(function(cat){
+                                    var pd_name= cat.pd_name;
+                                    var pd_url= pd_name.replace(/\s+/g, '-').toUpperCase();
                             %>    
                             <div class="item">
                                 <div class="panel panel-default productpanel">
@@ -171,7 +177,7 @@
                                             <i class="fa fa-heart"></i>
                                         </button>
                                         <img src="<%= cat.p_image %>" class="img-responsive productimg">
-                                        <a href="product-detail/<%= cat.pd_id;%>">
+                                        <a href="product-detail/<%= cat.pd_id+'/'+pd_url%>">
                                             <h4><%= cat.pd_name;%></h4>
                                         </a>
                                         <h5>
