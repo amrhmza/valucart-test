@@ -70,22 +70,23 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form id="register-form" role="form" style="display: block;margin-top: 20px;">
+                                            <form id="register-form" name="register_form" role="form" method="post" style="display: block;margin-top: 20px;">
+                                                    <p id="reg_error" style="color: red;" class="fa-2x marg-btm text-center"></p>
                                                 <div class="form-group marg-btm">
-                                                    <input type="text" id="name" class="form-control form-control1">
-                                                    <label class="form-control-placeholder" for="name">name</label>
+                                                    <input type="text" name="uname" id="uname" class="form-control form-control1">
+                                                    <label class="form-control-placeholder uname" for="name">name</label>                                                    
                                                 </div>
                                                 <div class="form-group marg-btm">
-                                                    <input type="text" id="email" class="form-control form-control1">
-                                                    <label class="form-control-placeholder" for="name">E-mail id</label>
+                                                    <input type="text" name="email" id="email" class="form-control form-control1">
+                                                    <label class="form-control-placeholder email" for="email">E-mail id</label>                                                    
                                                 </div>
                                                 <div class="form-group marg-btm">
-                                                    <input type="text" id="phone" class="form-control form-control1">
-                                                    <label class="form-control-placeholder" for="name">phone number</label>
+                                                    <input type="text" name="phone" id="phone" class="form-control form-control1">
+                                                    <label class="form-control-placeholder phone" for="phone">phone number</label>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" id="pwd" class="form-control form-control1">
-                                                    <label class="form-control-placeholder" for="name">password</label>
+                                                    <input type="password" name="pwd" id="pwd" class="form-control form-control1">
+                                                    <label class="form-control-placeholder pwd" for="pwd">password</label>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
@@ -145,6 +146,15 @@
 
 <!--    Includes all functions-->
 <script src="js/main.js"></script>
+
+<!--    owlcarousel js-->
+<script src="js/owlcarousel.js"></script>
+<!--    nav js-->
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/line.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/register.js"></script>
+<script src="js/uisearch.js"></script>
 <script>
     new UISearch(document.getElementById('sb-search'));
 </script>
