@@ -37,7 +37,7 @@
                     }
                 }).fail(function(r){
                     console.log(JSON.stringify(r));
-                    $(".login-action-msg").html(r.responseJSON.stack).addClass("has-error");
+                    $(".login-action-msg").html(r.responseJSON.error).addClass("has-error");
                 });
             }
         });

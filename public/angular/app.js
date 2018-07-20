@@ -20,7 +20,8 @@ var baseurl = "http://18.191.0.240:3000";
 app.constant("config", {
   baseURL: baseurl,
   getproduct_list: baseurl + "/product/list/product/post",
-  getbundleList: baseurl + "/product/list/product_bundle/post"
+  getbundleList: baseurl + "/product/list/product_bundle/post",
+  submitBundle_review: baseurl + "/product/review/post",
 });
 app.config(function(
   $routeProvider,

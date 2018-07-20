@@ -170,24 +170,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="panel panel-default productpanel">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h4>Nutella hazelnut chocolate spread
-                                    </h4>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> 400g * 1</h5>
-                                    <h5 class="offeredprice">27.40 AED</h5>
-                                    <h6>45.00 AED</h6>
-                                </div>
-                                <div class="col-xs-6">
-                                    <img src="img/hazzlenut.png" class="img-responsive productimg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <% 
@@ -217,7 +199,7 @@
                                     <h6><%= alt.p_price;%> AED</h6>
                                 </div>
                                 <div class="col-xs-6">
-                                    <img src="<%= alt.pd_name;%>" class="img-responsive productimg">
+                                    <img src="<%= alt.p_image;%>" class="img-responsive productimg">
                                 </div>
                             </div>
                         </div>
@@ -234,8 +216,8 @@
             }
         });
         %>
-        <div class="container productdetail">
-            <div id="exTab1" class="container">
+        <div class="container productdetail" ng-app="myapp">
+            <div id="exTab1" class="container" ng-controller="bundle_details">
                 <div class="tabheader">
                     <ul class="nav nav-pills">
                         <li class="active">
@@ -305,43 +287,44 @@
                                 <h5> Lorem ipsum dolor sit amet</h5>
                                 <p>Ut malesuada dolor tellus, at venenatis mi iaculis eu. In laoreet aliquet consequat. Donec semper ut odio at sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper et nulla eget tempor. Maecenas viverra egestas dui ac ullamcorper. Integer tellus metus, dignissim vitae aliquam vitae, sagittis quis nibh. Ut semper elit et est convallis, et tincidunt nisl pretium.</p>
                                 <p> Suspendisse blandit, dolor cursus fermentum venenatis, metus massa hendrerit lacus, nec molestie velit turpis vel ante. In vulputate neque ut ultrices interdum. Phasellus gravida mauris metus, et maximus massa placerat non. Etiam molestie elit laoreet augue porttitor pulvinar. Donec rutrum diam eu mollis feugiat. Sed maximus gravida ligula eget porttitor. Suspendisse rhoncus, sem sed mollis egestas, ante lacus luctus ex, sed sollicitudin urna sem vitae est. Duis vitae elit in mi gravida hendrerit. Quisque congue at mauris in vestibulum. </p>
-                            </div>
+                            </div>r
                         </div>
                         <div class="writereview" style="float: none !important;">
                             <h4 class="writereviewtitle">Write a review</h4>
+                            <form class="reviewform" ng-controller="bundle_details" ng-submit="submitReviewbundle()">
                             <span class="closebtn" id="closebtn"><i class="fa fa-close"></i></span>
                             <div>
                                 <fieldset class="rating">
-                                    <input type="radio" id="stars5" name="ratingg" value="5" /><label class="full" for="stars5" title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="stars4half" name="ratingg" value="4 and a half" /><label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
-                                    <input type="radio" id="stars4" name="ratingg" value="4" /><label class="full" for="stars4" title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="stars3half" name="ratingg" value="3 and a half" /><label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
-                                    <input type="radio" id="stars3" name="ratingg" value="3" /><label class="full" for="stars3" title="Meh - 3 stars"></label>
-                                    <input type="radio" id="stars2half" name="ratingg" value="2 and a half" /><label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
-                                    <input type="radio" id="stars2" name="ratingg" value="2" /><label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="stars1half" name="ratingg" value="1 and a half" /><label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
-                                    <input type="radio" id="stars1" name="ratingg" value="1" /><label class="full" for="stars1" title="Sucks big time - 1 star"></label>
-                                    <input type="radio" id="starshalf" name="ratingg" value="half" /><label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
+                                    <input type="radio" id="stars5" ng-model="rating" value="5" /><label class="full" for="stars5" title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="stars4half" ng-model="rating" value="4.5" /><label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="stars4" ng-model="rating" value="4" /><label class="full" for="stars4" title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="stars3half" ng-model="rating" value="3.5" /><label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="stars3" ng-model="rating" value="3" /><label class="full" for="stars3" title="Meh - 3 stars"></label>
+                                    <input type="radio" id="stars2half" ng-model="rating" value="2.5" /><label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="stars2" ng-model="rating" value="2" /><label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="stars1half" ng-model="rating" value="1.5" /><label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="stars1" ng-model="rating" value="1" /><label class="full" for="stars1" title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starshalf" ng-model="rating" value="0.5" /><label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
                                 </fieldset>
                             </div>
                             <br>
                             <div class="clearfix"></div>
-                            <form class="reviewform">
                                 <div class="form-group">
                                     <label for="name">YOUR NAME</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <input type="text" ng-model="name" class="form-control" id="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="title">TITLE</label>
-                                    <input type="text" class="form-control" id="title">
+                                    <input type="text" ng-model="title" class="form-control" id="title">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">DESCRIPTION</label>
-                                    <textarea class="form-control" id="description"></textarea>
+                                    <textarea ng-model="review" class="form-control" id="description"></textarea>
                                 </div>
+                                <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" 
+                                value="1">
 
-
-                                <button type="submit" class="btn btn-info">Submit</button>
+                                <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
                             </form>
 
                         </div>
