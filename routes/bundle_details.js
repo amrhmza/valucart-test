@@ -11,7 +11,6 @@ router.get("/:pb_id", async (req, res, next) => {
     //console.log(data);
     res.render("bundledetail", {
       data: data,
-      banner: banner,
       cookies: cookies,
       angular: false,
       customjs: false,

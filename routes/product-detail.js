@@ -11,7 +11,6 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
     let data = await productDetail.get_data(pd_id);
     res.render("productdetail", {
       data: data,
-      banner: banner,
       cookies: cookies,
       angular: false,
       customjs: false
