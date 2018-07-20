@@ -80,11 +80,11 @@
         d = $(".lnt-category").find("li");
     c.mouseenter(function () {
         d.removeClass("active"), $(this).parent().addClass("active");
-        var a = $(this).attr("href");
+        var a = $(this).attr("data-root");
         $(".lnt-subcategroy-carousel-wrap").find("> div").removeClass("active"), $(a).addClass("active")
     }), c.on("touchstart, touchend", function (a) {
         a.preventDefault(), d.removeClass("active"), $(this).parent().addClass("active");
-        var t = $(this).attr("href");
+        var t = $(this).attr("data-root");
         $(".lnt-subcategroy-carousel-wrap").find("> div").removeClass("active"), $(t).addClass("active")
     }), 1 == e() && ($(window).swipe({
         swipeLeft: function () {
@@ -103,10 +103,10 @@
         })
     }, $(".lnt-category > li").each(function () {
         var a = $(this).find("a");
-        $(".lnl-nav").append("<li><a class='collapsed' data-toggle='collapse' href='#collapse" + a.text().capitalize().replace(/[, ]+/g, "") + "' aria-expanded='false' aria-controls='collapse" + a.text().capitalize().replace(/[, ]+/g, "") + "' data-subcategory=" + a.attr("href").replace("#", "") + "><span class='lnl-link-text'>" + $(this).text() + "</span><span class='fa fa-angle-up lnl-btn-sub-collapse'></span></a></li>")
+        $(".lnl-nav").append("<li><a class='collapsed' data-toggle='collapse' href='#collapse" + a.text().capitalize().replace(/[, ]+/g, "") + "' aria-expanded='false' aria-controls='collapse" + a.text().capitalize().replace(/[, ]+/g, "") + "' data-subcategory=" + a.attr("data-root").replace("#", "") + "><span class='lnl-link-text'>" + $(this).text() + "</span><span class='fa fa-angle-up lnl-btn-sub-collapse'></span></a></li>")
     }), $(".lnl-nav li").each(function () {
         var a = $(this).find("a");
-        $(this).append("<ul class='lnl-sub-one collapse' id='" + a.attr("href").replace("#", "") + "' data-subcategory='" + a.data("subcategory") + "'></ul>")
+        $(this).append("<ul class='lnl-sub-one collapse' id='" + a.attr("data-root").replace("#", "") + "' data-subcategory='" + a.data("subcategory") + "'></ul>")
     }), $(".lnt-subcategroy-carousel-wrap > div").each(function () {
         var a = $(this).attr("id"),
             t = $(this).find("ul").map(function () {

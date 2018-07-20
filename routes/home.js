@@ -1,17 +1,19 @@
 var express = require("express");
 var router = express.Router();
 const getHome = require("../controllers/home.js");
+const getMenu = require("../controllers/category_menu.js");
 
 /* GET home page. */
 router.get("/", async (req, res, next) => {
  // console.log("Cookies :  ", req.cookies);
   try {
     let data = await getHome.get_data();
+    let menudata = await getMenu.get_menulist();
     let cookies= (!req.cookies.vcartAuth)?false:req.cookies.vcartAuth;
-    //console.log(req.cookies.vcartAuth);
-    //console.log(data);
+    console.log(menudata);
     res.render("home", {
       data: data,
+      menudata: menudata,
       angular: false,
       customjs: false,
       cookies: cookies
