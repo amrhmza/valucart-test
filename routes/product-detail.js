@@ -12,8 +12,13 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
     res.render("productdetail", {
       data: data,
       cookies: cookies,
-      angular: false,
-      customjs: false
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/product_details.js",
+        "angular/controllers/product_details.js"
+      ]
     });
   } catch (error) {
     console.log(error);

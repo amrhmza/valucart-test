@@ -28,7 +28,7 @@
     <!--    Breadcrumb-->
 
     <!--    Product list starts here-->
-    <div class="container-fluid productlistpage">
+    <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="product_details">
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
@@ -38,70 +38,85 @@
 
                     <section class="gallery hidden-xs">
                         <div class="carousel">
+                            <% if (data) {
+                                let no=0;
+                                data.response[0].img.forEach(function(pd_image){
+                            %>
+                                <input type="radio" id="image<%= pd_image.pi_id %>" name="gallery-control" <%=( no==0)? "checked": "" %> >
+                                <% no++; })
+                        } 
+                       %>
 
-                            <input type="radio" id="image1" name="gallery-control" checked>
-                            <input type="radio" id="image2" name="gallery-control">
-                            <input type="radio" id="image3" name="gallery-control">
-                            <input type="radio" id="image4" name="gallery-control">
 
+                                    <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
+                                    <div class="thumbnails">
 
-                            <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
-                            <div class="thumbnails">
-                                <div class="slider">
-                                    <div class="indicator"></div>
-                                </div>
-                                <% if (data) {
+                                        <div class="slider">
+                                            <div class="indicator"></div>
+                                        </div>
+                                        <% if (data) {
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
-                                    <label for="image<%= pd_image.pi_id %>" class="thumb" style="background-image: url('<%= pd_image.pi_image %>');"></label>
-                                    <% })
+                                            <label for="image<%= pd_image.pi_id %>" class="thumb" style="background-image: url('<%= pd_image.pi_image %>');"></label>
+                                            <% })
                             } 
                            %>
-                            </div>
-                            <div class="wrap">
-                                <% if (data) {
-                                        data.response[0].img.forEach(function(pd_image){
-                                    %>
-                                    <figure>
-                                        <label for="fullscreen">
-                                            <img src="<%= data.response[0].img[0].pi_image %>" alt="image<%= pd_image.pi_id %>" />
-                                        </label>
-                                    </figure>
-                                    <% })
-                                } 
-                               %>
-                            </div>
+                                    </div>
+                                    <div class="wrap">
+                                        <% if (data) {
+                                    data.response[0].img.forEach(function(pd_image){
+                                %>
+                                            <figure>
+                                                <label for="fullscreen">
+                                                    <img src="<%= pd_image.pi_image %>" alt="image<%= pd_image.pi_id %>" />
+                                                </label>
+                                            </figure>
+                                            <% })
+                            } 
+                           %>
+
+                                    </div>
 
 
                         </div>
                     </section>
+
+
+
+
+
+
                     <!--product carousel for mobile view starts-->
                     <div id="productCarousel" class="carousel slide hidden-sm hidden-md hidden-lg" data-ride="carousel" style="margin-bottom: 30px;margin-top: 30px;">
                         <!-- Indicators -->
 
                         <ol class="carousel-indicators">
-                            <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#productCarousel" data-slide-to="1"></li>
-                            <li data-target="#productCarousel" data-slide-to="2"></li>
-                            <li data-target="#productCarousel" data-slide-to="3"></li>
+                            <% if (data) {
+                                    let no=0;
+                                    data.response[0].img.forEach(function(pd_image){
+                                %>
+                                <li data-target="#productCarousel" data-slide-to="<%= pd_image.pi_id %>" class="<%= (no==0)?'active':'' %>"></li>
+                                <% no++; })
+                        } 
+                       %>
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <% if (data) {
+                                let no=0;
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
-                                <div class="item active">
-                                    <img src="<%= data.response[0].img[0].pi_image %>" alt="Product" style="height: 250px;margin: auto;">
+                                <div class="item <%= (no==0)?'active':'' %>">
+                                    <img src="<%= pd_image.pi_image %>" alt="Los Angeles" style="height: 250px;margin: auto;">
                                 </div>
-                                <% })
-                            } 
-                           %>
+                                <% no++;})
+                        } 
+                       %>
                         </div>
 
 
                     </div>
-
 
                     <!--product carousel for mobile view ends-->
 
@@ -129,17 +144,18 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="productcountdiv button-container">
-                                        <button class="btn btn-default productminus cart-qty-minus" value="-">
+                                        <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
                                             <i class="fa fa-minus"></i>
                                         </button>
-                                        <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                        <button class="btn btn-default productplus cart-qty-plus" value="+">
+                                        <!--<p class="productcount">1</p>-->
+                                        <input type="text" name="qty_1" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
+                                        <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',1)" value="+">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="cart">
+                                    <a ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </a>
@@ -169,9 +185,9 @@
                 </div>
                 <div class="tab-content clearfix">
                     <div class="tab-pane active" id="1a">
-                            <% if(data.response[0].pd_description!=null) %>
+                        <% if(data.response[0].pd_description!=null) %>
                             <%= data.response[0].pd_description %>
-                        <!-- <ul>
+                                <!-- <ul>
                             <li> Vitamin D important for healthy bones*</li>
                             <li> *Contains ≥ 15% of the nutrient reference value of vitamin D. Vitamin D contributes to the maintenance
                                 of bones.</li>
