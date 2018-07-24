@@ -17,7 +17,12 @@ router.get('/:pb_id/:pb_name', async(req, res, next)=>{
       cookies: cookies,
       angular: true,
       customjs: true,
-      jslist: ["angular/app.js", "angular/controllers/bundle_details.js"]
+      jslist: [
+        "angular/app.js",
+        "angular/factory/bundle_review.js",
+        "angular/controllers/bundle_details.js"
+      ]
+      
     });
   } catch (error) {
     res.status(401).json({
