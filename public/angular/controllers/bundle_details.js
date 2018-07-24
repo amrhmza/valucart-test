@@ -18,8 +18,9 @@ app.controller("bundle_details", function(
         if(postResult.msg="success"){
           var reviewStatus= postResult.results.response.msg;
           $scope.postReviewstatus= reviewStatus;
-         var date=new Date();
-          var newRev= '<div class="review"><p class="userdate">'+postData.name+','+date+'</p><p class="star"><span class="stars"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span> '+postData.rating+' out of 5</p><h5>'+postData.title+'</h5><p>'+postData.review+'</p></div>';
+          var userName= JSON.parse($.cookie("vcartAuth")).username;
+          var date= $filter('date')(new Date(), "MMM dd, y hh:mm a");
+          var newRev= '<div class="review"><p class="userdate">'+userName+', '+date+'</p><p class="star"><span class="stars"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span> '+postData.rating+' out of 5</p><h5>'+postData.title+'</h5><p>'+postData.review+'</p></div>';
           $scope.newReview= postData;
           var el= angular.element( document.querySelector( '.review' ));
           el.prepend(newRev);
@@ -39,8 +40,9 @@ app.controller("bundle_details", function(
 
   $scope.submitReviewbundle = function() {
     var product_id = $("#product_id").val();
-    var usertoken = typeof $.cookie("tokenId") ? $.cookie("tokenId") : "";
-    
+    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    var usertoken= (userAuth!="")?userAuth.token: "";
+
     if($scope.rating!=undefined){
       $scope.ratingError = "";
       $scope.data = {
