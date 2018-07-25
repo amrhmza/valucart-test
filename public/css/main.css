@@ -1973,7 +1973,7 @@ ul.breadcrumb li a:hover {
     position: absolute;
     right: 40px;
     top: 20px;
-    font-size: 30px;
+    font-size: 30px !important;
     z-index: 2;
     cursor: pointer;
     color: #d3d3d3;

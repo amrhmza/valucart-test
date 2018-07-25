@@ -21,7 +21,8 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
         "angular/app.js",
         "angular/factory/bundle_review.js",
         "angular/factory/bundle_details.js",
-        "angular/controllers/bundle_details.js"
+        "angular/controllers/bundle_details.js",
+        "angular/factory/wishlist.js"
       ]
     });
   } catch (error) {

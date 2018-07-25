@@ -18,8 +18,7 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
         "angular/app.js",
         "angular/factory/product_details.js",
         "angular/controllers/product_details.js",
-        "angular/factory/wishlist.js",
-        "angular/controllers/wish_list.js"
+        "angular/factory/wishlist.js"
       ]
     });
   } catch (error) {

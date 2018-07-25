@@ -32,9 +32,7 @@
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
-                    <button type="button" class="wishheart">
-                        <i class="fa fa-heart"></i>
-                    </button>
+                    <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
 
                     <section class="gallery hidden-xs">
                         <div class="carousel">
