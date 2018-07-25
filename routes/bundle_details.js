@@ -4,7 +4,7 @@ const getBundle = require("../controllers/bundle_details.js");
 const getMenu = require("../controllers/category_menu.js");
 
 /* GET home page. */
-router.get('/:pb_id/:pb_name', async(req, res, next)=>{
+router.get("/:pb_id/:pb_name", async (req, res, next) => {
   try {
     var pb_id = req.param("pb_id");
     let data = await getBundle.get_data(pb_id);
@@ -20,9 +20,9 @@ router.get('/:pb_id/:pb_name', async(req, res, next)=>{
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_review.js",
+        "angular/factory/bundle_details.js",
         "angular/controllers/bundle_details.js"
       ]
-      
     });
   } catch (error) {
     res.status(401).json({
