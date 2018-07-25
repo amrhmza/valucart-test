@@ -22,7 +22,9 @@ app.constant("config", {
   getproduct_list: baseurl + "/product/list/product/post",
   getbundleList: baseurl + "/product/list/product_bundle/post",
   submitBundle_review: baseurl + "/product/review/post",
-  addToCart: baseurl + "/cart/add"
+  addToCart: baseurl + "/cart/add",
+  addWishList: baseurl+'/wishList/addproducttowishlist',
+  removeWishList: baseurl+'/wishList/removewishlist'
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
