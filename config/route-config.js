@@ -34,6 +34,7 @@
     const replacementsuccessRouter = require("../routes/replacement-success");
     const servicerequestRouter = require("../routes/service-request");
     const subscribeRouter = require("../routes/subscribe");
+    const wishlistRouter = require("../routes/mywishlist");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -71,5 +72,6 @@
     app.use("/replacement-success", replacementsuccessRouter);
     app.use("/service-request", servicerequestRouter);
     app.use("/subscribe", subscribeRouter);
+    app.use("/mywishlist", wishlistRouter);
   };
 })(module.exports);
