@@ -379,7 +379,7 @@ let products= productData.product;
                                     </span>
                                 </div>
                                 <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" 
-                                value="1">
+                                value="<%=productData.pb_id%>">
 
                                 <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
                             </form>
@@ -398,7 +398,6 @@ let products= productData.product;
     <script>
     $(function(){
         $(document).on("click",".reviewlink",function(){
-            console.log("1");
             $(".more_review").each(function(){
                 $(this).removeClass("hidden");
             });
