@@ -15,7 +15,7 @@ let products= productData.product;
     <!--    Breadcrumb-->
        
     <!--    Product list starts here-->
-    <div class="container-fluid productlistpage">
+    <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="bundle_details">
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
@@ -139,15 +139,19 @@ let products= productData.product;
                             </div>
                             <div class="row" style="padding-top: 20px">
                                 <div class="col-md-4 col-xs-6" style="padding:10px 0 0 ">
-                                    <div class="productcountdiv button-container">
-                                        <button class="btn btn-default productminus cart-qty-minus" value="-"> <i class="fa fa-minus"></i></button>
-                                        <!--<p class="productcount">1</p>-->
-                                        <input type="text" name="qty" class="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                        <button class="btn btn-default productplus cart-qty-plus" value="+"> <i class="fa fa-plus"></i></button>
-                                    </div>
+                                <div class="productcountdiv button-container">
+                                <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <!--<p class="productcount">1</p>-->
+                                <input type="text" name="qty_1" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
+                                <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',1)" value="+">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
                                 </div>
                                 <div class="col-md-4 col-xs-6">
-                                    <a href="#"><button class="btn btn-info"><img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button></a></div>
+                                    <a><button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info"><img src="img/addtocart.png"  class="img-responsive addtocart"> Add to cart</button></a></div>
                             </div>
 
 
@@ -169,7 +173,8 @@ let products= productData.product;
                     <div class="panel panel-default productpanel">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-6" ng-init="c[<%= pro.pbm_id %>]=<%= pro.pbm_id %>">
+                                <input type="radio" name="rGroup_<%= pro.pbm_id %>" class="hide"  ng-checked="c[<%= pro.pbm_id %>]" ng-model="c[<%= pro.pbm_id %>]"/>
                                     <h4><%=pro.pd_name%></h4>
                                     <h5><img src="<img/grammeter.png>" class="img-responsive gramimg"><%= pro.p_quantity%>* 1</h5>
                                     <h5 class="offeredprice"><%=pro.p_price;%> AED</h5>
@@ -195,11 +200,11 @@ let products= productData.product;
                 let alterpro= pro.alternatives;
                 var i = 0;
                     alterpro.forEach(function(alt){
-                        var select= (i==0)? "checked":"";
+                        var select= (alt.pba_is_default==1)? true:false;
                         i++;
                 %>
                 <div class="col-md-4 col-sm-6">
-                    <input type="radio" name="rGroup" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" <%= select; %> />
+                    <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>"  value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
                     <label class="radio" for="r<%= alt.pd_id;%>">
                         <div class="panel panel-default productpanel">
                         <div class="panel-body">
@@ -228,8 +233,8 @@ let products= productData.product;
             }
         });
         %>
-        <div class="container productdetail" ng-app="myapp">
-            <div id="exTab1" class="container" ng-controller="bundle_details">
+        <div class="container productdetail" >
+            <div id="exTab1" class="container" >
                 <div class="tabheader">
                     <ul class="nav nav-pills">
                         <li class="active">
@@ -374,7 +379,7 @@ let products= productData.product;
                                     </span>
                                 </div>
                                 <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" 
-                                value="1">
+                                value="<%=productData.pb_id%>">
 
                                 <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
                             </form>
@@ -393,7 +398,6 @@ let products= productData.product;
     <script>
     $(function(){
         $(document).on("click",".reviewlink",function(){
-            console.log("1");
             $(".more_review").each(function(){
                 $(this).removeClass("hidden");
             });

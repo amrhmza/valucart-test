@@ -1,8 +1,8 @@
 <script type="text/javascript" src="js/jquery.cookie.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        //$.removeCookie('vcartAuth', { path: '/' });
-        console.log($.cookie("vcartAuth"));
+        //console.log($.cookie("vcartAuth"));
+        //console.log($.cookie());
 
         $('#login-form').submit(function(e) {
             e.preventDefault();
@@ -44,6 +44,12 @@
 
         $(".vcartLogout").on("click",function(){
             $.removeCookie('vcartAuth', { path: '/' });
+            
+            /* var cookies = $.cookie();
+            for(var cookie in cookies) {
+                $.removeCookie(cookie);
+            } */
+
             location. reload(true);
         });
     });

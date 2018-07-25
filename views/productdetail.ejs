@@ -39,10 +39,10 @@
                     <section class="gallery hidden-xs">
                         <div class="carousel">
                             <% if (data) {
-                                let no=0;
+                                let no=1;
                                 data.response[0].img.forEach(function(pd_image){
                             %>
-                                <input type="radio" id="image<%= pd_image.pi_id %>" name="gallery-control" <%=( no==0)? "checked": "" %> >
+                                <input type="radio" id="image<%= no %>" name="gallery-control" <%=( no==1)? "checked": "" %> >
                                 <% no++; })
                         } 
                        %>
@@ -54,11 +54,13 @@
                                         <div class="slider">
                                             <div class="indicator"></div>
                                         </div>
-                                        <% if (data) {
+                                        <% 
+                                        var tno=1;
+                                        if (data) {
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
-                                            <label for="image<%= pd_image.pi_id %>" class="thumb" style="background-image: url('<%= pd_image.pi_image %>');"></label>
-                                            <% })
+                                            <label for="image<%=tno %>" class="thumb" style="background-image: url('<%= pd_image.pi_image %>');"></label>
+                                            <% tno++; })
                             } 
                            %>
                                     </div>
@@ -216,135 +218,128 @@
                         <p>Suitable for Vegetarians; Kosher; Halal</p>
                     </div>
                     <div class="tab-pane" id="3a">
-                        <div class="customerreviews">
-                            <fieldset class="rating">
-                                <input type="radio" id="star5" name="rating" value="5" />
-                                <label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                <input type="radio" id="star4" name="rating" value="4" />
-                                <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                <input type="radio" id="star3" name="rating" value="3" />
-                                <label class="full" for="star3" title="Meh - 3 stars"></label>
-                                <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                <input type="radio" id="star2" name="rating" value="2" />
-                                <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                <input type="radio" id="star1" name="rating" value="1" />
-                                <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                <input type="radio" id="starhalf" name="rating" value="half" />
-                                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                            </fieldset>
-                            <p class="starcount">3 out of 5</p>
-                            <br>
-                            <a href="#" class="reviewlink">See all 57 reviews</a>
-                            <p class="ortext">or</p>
-                            <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
+                            <%
+                            let reviewList= data.response[0].review;
+                            var rt=0;
+                            reviewList.forEach(function(rev){
+                                rt+= rev.prr_ratting;
+                            });
+                            var ravg= rt/ reviewList.length;
+                            %>
+                            <div class="customerreviews">
+                                <p class="starcount star">
+                                    <span class="stars">
+                                        <i class="fa fa-star <%= (ravg >= 1)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (ravg >= 1.5)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (ravg >= 2.5)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (ravg >= 3.5)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (ravg >= 4.5)?"filled":""; %>"></i>
+                                    </span>
+                                    <%= ravg.toFixed(1)%> out of 5
+                                </p>
+                                <br>
+                                <%
+                                    if(reviewList.length>3){
+                                %>
+                                <a class="btn btn-link reviewlink">See all <%=reviewList.length%> reviews</a>
+                                <p class="ortext">or</p>
+                                <%
+                                    }
+                                %>
+                                <% 
+                                if(cookies){
+                                    var userData=JSON.parse(cookies);
+                                    if(userData.status=="success"){
+                                %>
+                                <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
+                                <%
+                                    }
+                                }
+                                else{
+                                %>
+                                <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write a review</button> 
+                                <% 
+                                } 
+                                %>
+
                             <br>
                             <hr>
 
-                            <div class="review">
-                                <p class="userdate">ABC,20th May 2018</p>
+                            <%
+                            var rno=0;
+                            if(reviewList){
+                                reviewList.forEach(function(rev){
+                                    rno++
+                            %>
+                            <div class="review <%= (rno>3)?'more_review hidden':''%>">
+                                <p class="userdate"><%= rev.username%>,<%= rev.prr_added_dt%></p>
                                 <p class="star">
                                     <span class="stars">
-                                        <i class="fa fa-star filled"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span> 1 out of 5</p>
-                                <h5> Lorem ipsum dolor sit amet</h5>
-                                <p>Ut malesuada dolor tellus, at venenatis mi iaculis eu. In laoreet aliquet consequat. Donec
-                                    semper ut odio at sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Mauris ullamcorper et nulla eget tempor. Maecenas viverra egestas dui ac ullamcorper.
-                                    Integer tellus metus, dignissim vitae aliquam vitae, sagittis quis nibh. Ut semper elit
-                                    et est convallis, et tincidunt nisl pretium.</p>
-                                <p> Suspendisse blandit, dolor cursus fermentum venenatis, metus massa hendrerit lacus, nec molestie
-                                    velit turpis vel ante. In vulputate neque ut ultrices interdum. Phasellus gravida mauris
-                                    metus, et maximus massa placerat non. Etiam molestie elit laoreet augue porttitor pulvinar.
-                                    Donec rutrum diam eu mollis feugiat. Sed maximus gravida ligula eget porttitor. Suspendisse
-                                    rhoncus, sem sed mollis egestas, ante lacus luctus ex, sed sollicitudin urna sem vitae
-                                    est. Duis vitae elit in mi gravida hendrerit. Quisque congue at mauris in vestibulum.
+                                        <i class="fa fa-star <%= (rev.prr_ratting >= 1)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (rev.prr_ratting >= 2)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (rev.prr_ratting >= 3)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (rev.prr_ratting >= 4)?"filled":""; %>"></i>
+                                        <i class="fa fa-star <%= (rev.prr_ratting >= 4.5)?"filled":""; %>"></i>
+                                    </span> <%= rev.prr_ratting%> out of 5
                                 </p>
+                                <h5><%= rev.prr_title%></h5>
+                                <p><%= rev.prr_comment%></p>
                             </div>
-                            <div class="review">
-                                <p class="userdate">ABC,20th May 2018</p>
-                                <p class="star">
-                                    <span class="stars">
-                                        <i class="fa fa-star filled"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span> 1 out of 5</p>
-                                <h5> Lorem ipsum dolor sit amet</h5>
-                                <p>Ut malesuada dolor tellus, at venenatis mi iaculis eu. In laoreet aliquet consequat. Donec
-                                    semper ut odio at sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Mauris ullamcorper et nulla eget tempor. Maecenas viverra egestas dui ac ullamcorper.
-                                    Integer tellus metus, dignissim vitae aliquam vitae, sagittis quis nibh. Ut semper elit
-                                    et est convallis, et tincidunt nisl pretium.</p>
-                                <p> Suspendisse blandit, dolor cursus fermentum venenatis, metus massa hendrerit lacus, nec molestie
-                                    velit turpis vel ante. In vulputate neque ut ultrices interdum. Phasellus gravida mauris
-                                    metus, et maximus massa placerat non. Etiam molestie elit laoreet augue porttitor pulvinar.
-                                    Donec rutrum diam eu mollis feugiat. Sed maximus gravida ligula eget porttitor. Suspendisse
-                                    rhoncus, sem sed mollis egestas, ante lacus luctus ex, sed sollicitudin urna sem vitae
-                                    est. Duis vitae elit in mi gravida hendrerit. Quisque congue at mauris in vestibulum.
-                                </p>
-                            </div>
+                            <%       
+                                });
+                            }
+                            %>
                         </div>
                         <div class="writereview" style="float: none !important;">
-                            <h4 class="writereviewtitle">Write a review</h4>
-                            <span class="closebtn" id="closebtn">
-                                <i class="fa fa-close"></i>
-                            </span>
-                            <div>
-                                <fieldset class="rating">
-                                    <input type="radio" id="stars5" name="ratingg" value="5" />
-                                    <label class="full" for="stars5" title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="stars4half" name="ratingg" value="4 and a half" />
-                                    <label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
-                                    <input type="radio" id="stars4" name="ratingg" value="4" />
-                                    <label class="full" for="stars4" title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="stars3half" name="ratingg" value="3 and a half" />
-                                    <label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
-                                    <input type="radio" id="stars3" name="ratingg" value="3" />
-                                    <label class="full" for="stars3" title="Meh - 3 stars"></label>
-                                    <input type="radio" id="stars2half" name="ratingg" value="2 and a half" />
-                                    <label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
-                                    <input type="radio" id="stars2" name="ratingg" value="2" />
-                                    <label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="stars1half" name="ratingg" value="1 and a half" />
-                                    <label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
-                                    <input type="radio" id="stars1" name="ratingg" value="1" />
-                                    <label class="full" for="stars1" title="Sucks big time - 1 star"></label>
-                                    <input type="radio" id="starshalf" name="ratingg" value="half" />
-                                    <label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
-                                </fieldset>
+                                <h4 class="writereviewtitle">Write a review</h4>
+                                <span ng-bind-html="postReviewstatus" class="text-success" id="rstatus"></span>
+                                <form class="reviewform" name="reviewform" ng-submit="submitReviewbundle()">
+                                <span class="closebtn" id="closebtn"><i class="fa fa-close"></i></span>
+                                <div>
+                                    <div class="has-error">{{ratingError}}</div>
+                                    <fieldset class="rating">
+                                        <input type="radio" id="stars5" ng-model="rating" value="5" /><label class="full" for="stars5" title="Awesome - 5 stars"></label>
+                                        <input type="radio" id="stars4half" ng-model="rating" value="4.5"  /><label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
+                                        <input type="radio" id="stars4" ng-model="rating" value="4" /><label class="full" for="stars4" title="Pretty good - 4 stars"></label>
+                                        <input type="radio" id="stars3half" ng-model="rating" value="3.5"  /><label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
+                                        <input type="radio" id="stars3" ng-model="rating" value="3" /><label class="full" for="stars3" title="Meh - 3 stars"></label>
+                                        <input type="radio" id="stars2half" ng-model="rating" value="2.5" /><label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
+                                        <input type="radio" id="stars2" ng-model="rating" value="2" /><label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
+                                        <input type="radio" id="stars1half" ng-model="rating" value="1.5"  /><label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
+                                        <input type="radio" id="stars1" ng-model="rating" value="1" /><label class="full" for="stars1" title="Sucks big time - 1 star"></label>
+                                        <input type="radio" id="starshalf" ng-model="rating" value="0.5" /><label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+                                </div>
+                                <br>
+                                <div class="clearfix"></div>
+                                    <div class="form-group">
+                                        <label for="rname">YOUR NAME</label>
+                                        <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
+                                        <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
+                                            <span ng-show="reviewform.name.$error.required" class="has-error">Username is required.</span>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">TITLE</label>
+                                        <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
+                                        <span ng-show="reviewform.title.$dirty && reviewform.title.$invalid">
+                                            <span ng-show="reviewform.title.$error.required" class="has-error">Username is required.</span>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">DESCRIPTION</label>
+                                        <textarea ng-model="review" name="review" class="form-control" id="description" required></textarea>
+                                        <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
+                                            <span ng-show="reviewform.review.$error.required" class="has-error">Username is required.</span>
+                                        </span>
+                                    </div>
+                                    <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" 
+                                    value="<%=data.response[0].pd_id%>">
+    
+                                    <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
+                                </form>
+    
                             </div>
-                            <br>
-                            <form class="reviewform">
-                                <div class="form-group">
-                                    <label for="name">YOUR NAME</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="title">TITLE</label>
-                                    <input type="text" class="form-control" id="title">
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">DESCRIPTION</label>
-                                    <textarea class="form-control" id="description"></textarea>
-                                </div>
-
-
-                                <button type="submit" class="btn btn-info">Submit</button>
-                            </form>
-
-                        </div>
                     </div>
 
                 </div>
@@ -355,3 +350,12 @@
     </div>
     <!--     Product list ends here-->
     <% include template/footer %>
+    <script>
+            $(function(){
+                $(document).on("click",".reviewlink",function(){
+                    $(".more_review").each(function(){
+                        $(this).removeClass("hidden");
+                    });
+                });
+            });
+    </script>
