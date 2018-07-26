@@ -11,7 +11,11 @@ app.controller("select_area", function(
   var select_area = document.forms.selectArea;
   select_area.onsubmit = function() {
     console.log($scope.area);
-    localStorage.setItem("area", $scope.area);
-    window.location.href = "/";
+    if (typeof $scope.area == "undefined") {
+      toastr.warning("Please Select area!");
+    } else {
+      localStorage.setItem("area", $scope.area);
+      window.location.href = "/";
+    }
   };
 });

@@ -8,10 +8,11 @@
                 </div>
                 <h2 class="select-city">Which area do you live in?</h2>
                 <select ng-model="area">
-                    <option>Select your area</option>
-                    <option value="dubai">Dubai</option>
-                    <option value="sharjah">Sharjah</option>
-                    <option value="abu">Abu Dhabi</option>
+<% if (data){ 
+    data.forEach(function(area){    
+%>
+                    <option value="<%= area.area_id %>"><%= area.area_name %></option>
+<% })} %>
                 </select>
 
                 <a href="/">
