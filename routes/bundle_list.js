@@ -20,7 +20,8 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_list.js",
-        "angular/controllers/bundle_list.js"
+        "angular/controllers/bundle_list.js",
+        "angular/factory/wishlist.js"
       ]
     });
   } catch (error) {

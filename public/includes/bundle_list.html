@@ -1,8 +1,8 @@
 <div class="panel panel-default productpanel">
     <div class="panel-body">
-        <button type="button" class="wishheart">
-            <i class="fa fa-heart"></i>
-        </button>
+          
+        <i class="fa fa-heart wishheart" ng-if="loggedStatus" data-type="add" ng-click="addwish(product.pb_id, true, $event.target)"></i>
+
         <div class="row">
             <div class="col-xs-6">
                 <p class="discountprice" ng-if="product.pdt_percentage">{{product.pdt_percentage}}%</p>
@@ -42,10 +42,19 @@
                 </div>
             </div>
             <div class="col-xs-6">
-                <a ng-href="/bundle-detail/{{product.pb_id}}/{{product.pb_name | spaceless}}">
-                    <button class="btn btn-info">
-                        <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                </a>
+                <div ng-if="loggedStatus==true">
+                        <a ng-href="/bundle-detail/{{product.pb_id}}/{{product.pb_name | spaceless}}">
+                                <button class="btn btn-info">
+                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                            </a>
+                </div>
+                <div ng-if="loggedStatus != true">
+                        <a href="#" data-toggle="modal" data-target="#myModal">
+                                <button class="btn btn-info">
+                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                            </a>
+                </div>
+                
             </div>
         </div>
     </div>
