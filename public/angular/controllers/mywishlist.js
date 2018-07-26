@@ -1,4 +1,4 @@
-app.controller("product_details", function(
+app.controller("mywishlist", function(
   $scope,
   $rootScope,
   $location,
@@ -10,7 +10,7 @@ app.controller("product_details", function(
 ) {
 
   //Prdouct Review Controler
-  $scope.addwish = function(product_id, is_bundle, item) {
+  $scope.removeWish = function(product_id, is_bundle, item) {
     
     var elem= angular.element(item);
     var wtype= elem.attr('data-type');
@@ -29,21 +29,16 @@ app.controller("product_details", function(
         console.log(response);
         var res= response.data.msg;
         if(res=="success"){
-          var wishvalue= (wtype=="add")?"remove":"add";
-          elem.attr('data-type', wishvalue);
-          if(wishvalue=="remove"){
-            elem.addClass("wishheartt");
-            toastr.success(response.data.results);
+          elem.closest(".productpanel").remove();
+          var numItems = $('.productpanel').length;
+          if(numItems<=1){
+            $(".empty-panel").removeClass("hidden");
           }
-          else{
-            elem.removeClass("wishheartt");
-            toastr.warning(response.data.results);
-          }
+          toastr.success(response.data.results);
         }
       })
       .catch(function(response) {
         console.log(response);
       });
   };
-  
 });
