@@ -7,13 +7,17 @@ app.controller("product_listing", function(
   $filter,
   config,
   querydata,
-  getProductList
+  getProductList,
+  product_details
 ) {
   $scope.productData = [];
   $scope.page = 0;
   $scope.sub_cat_active = 0;
   $scope.nextcall = 1;
   $scope.queryparam = querydata.queryparam;
+  /**
+   * apply filter onload by taking URL parameters
+   */
   $scope.filters_apply = function() {
     let filterdata = $location.search();
     if (filterdata.sub_cat) {
@@ -40,6 +44,9 @@ app.controller("product_listing", function(
       }
     }
   };
+  /**
+   * get product list for onload and as well in scroll
+   */
   $scope.getlist = function() {
     let queryparams = $location.search();
     for (const key in queryparams) {
@@ -68,6 +75,9 @@ app.controller("product_listing", function(
   };
   $scope.filters_apply();
   $scope.getlist();
+  /**
+   * scroll listener
+   */
   $(window).scroll(function() {
     var bodypos = $("body")[0].scrollHeight;
     var windowh = $(window).height();
@@ -79,6 +89,11 @@ app.controller("product_listing", function(
       $scope.getlist();
     }
   });
+  /**
+   * Cart Qty Plus
+   * @param {Number} fieldName
+   * @param {Number} index
+   */
   $scope.qty_plus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
@@ -91,7 +106,11 @@ app.controller("product_listing", function(
       $("input[name=" + fieldName + index + "]").val(1);
     }
   };
-
+  /**
+   * Cart Qty minus
+   * @param {Number} fieldName
+   * @param {Number} index
+   */
   // This button will decrement the value till 0
   $scope.qty_minus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
@@ -105,6 +124,12 @@ app.controller("product_listing", function(
       $("input[name=" + fieldName + index + "]").val(1);
     }
   };
+  /**
+   * Apply Filter
+   * @param {string} type
+   * @param {Number} p1
+   * @param {Number} p2
+   */
   $scope.filters = function(type, p1, p2) {
     $scope.productData = [];
     $scope.page = 0;
@@ -159,5 +184,24 @@ app.controller("product_listing", function(
         break;
       default:
     }
+  };
+  /**
+   *
+   * @param {*} data
+   */
+  $scope.addtocart = function(data) {
+    var currentVal = parseInt($("input[name=qty_" + data + "]").val());
+    product_details
+      .addToCart(currentVal, data)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          toastr.success(response.data.results.msg);
+        }
+      })
+      .catch(function(response) {
+        toastr.warning(response.data.results.msg);
+      });
   };
 });
