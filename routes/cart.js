@@ -12,9 +12,9 @@ router.get("/", async (req, res, next) => {
       res.end();
     } else {
       let data = await cart.get_data(JSON.parse(cookies));
-      if (_.isEmpty(data) == true) {
-        throw data;
-      }
+      // if (_.isEmpty(data) == true) {
+      //   throw data;
+      // }
       res.render("mycart", {
         data: data,
         cookies: cookies,
