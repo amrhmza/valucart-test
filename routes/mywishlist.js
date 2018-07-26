@@ -14,6 +14,7 @@ router.get("/", async (req, res, next) => {
       res.end();
     } 
     else {
+      console.log(cookies);
       let data = await getMyWishlist.get_mywishlist(JSON.parse(cookies));
       let menudata = await getMenu.get_menulist();
       console.log(data);

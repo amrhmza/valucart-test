@@ -20,7 +20,17 @@ let products= productData.product;
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
                     <p class="discountprice">-10%</p>
-                    <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=productData.pb_id%>, false, $event.target)"></i>
+                    
+                    <% 
+                    if(cookies){
+                        var userData=JSON.parse(cookies);
+                         if(userData.status=="success"){
+                    %>
+                    <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=productData.pb_id%>, true, $event.target)"></i>
+                    <%
+                        }
+                    }
+                    %>
                     <section class="gallery hidden-xs">
                         <div class="carousel">
 

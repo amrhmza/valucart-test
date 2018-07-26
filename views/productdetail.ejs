@@ -32,8 +32,16 @@
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
-                    <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
-
+                    <% 
+                    if(cookies){
+                        var userData=JSON.parse(cookies);
+                         if(userData.status=="success"){
+                     %>
+                     <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
+                    <%
+                        }
+                    }
+                    %>
                     <section class="gallery hidden-xs">
                         <div class="carousel">
                             <% if (data) {
