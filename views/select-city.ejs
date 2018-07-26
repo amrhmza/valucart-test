@@ -7,13 +7,13 @@
                     <!-- <h4 class="logo-text">ValuCart</h4> -->
                 </div>
                 <h2 class="select-city">Which city are you from?</h2>
-                <div class="col-md-6 m30 pad0">
-                    <ul class="select-your-city">
+                <!-- <div> -->
+                    <ul class="select-your-city row">
                         <% if (data) {
                         data.forEach(function(city){
                             if(city.city_is_avavilable)
                     %>
-                            <li>
+                            <li class="col-md-6 m30 pad0">
                                 <input type="radio" ng-model="city_selected" id="city_<%= city.city_id %>" ng-value="<%= city.city_id %>" name="city">
                                 <label for="city_<%= city.city_id %>" class="radio-label">
                                     <%= city.city_name %>
@@ -24,8 +24,8 @@
                      } 
                     %>
                     </ul>
-                </div>
-                <div class="col-md-6 m30 pad0">
+                <!-- </div> -->
+                <!-- <div class="col-md-6 m30 pad0">
                     <ul class="select-your-city">
                         <li>
                             <input type="radio" id="abu-dhabi" name="selector">
@@ -49,7 +49,7 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="text-center">
                     <button class="btn next-btn" type="submit" ng-click="test()">Next</button>
                 </div>
