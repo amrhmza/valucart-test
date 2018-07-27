@@ -27,6 +27,7 @@ app.constant("config", {
   addWishList: baseurl+'/wishList/addproducttowishlist',
   removeWishList: baseurl+'/wishList/removewishlist',
   change_password: baseurl + "/auth/resetpassword",
+  user_profileUpdate: baseurl + "/userProfile/update",
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
