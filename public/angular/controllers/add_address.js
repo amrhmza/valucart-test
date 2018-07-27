@@ -53,20 +53,18 @@ app.controller("add_address", function(
         var userToken= (userAuth!="")?userAuth.token: "";
   
         let userData = {
+          a_id: elem.address_id.value,
           a_name: elem.address_name.value,
           a_phone: elem.phone_no.value,
-          a_building_number: elem.flat.value,
+          a_address_1: elem.flat.value,
           a_address_2: elem.street.value,
-          a_area: elem.street.value,
           a_city: elem.city.value,
           a_pincode: elem.postalcode.value,
         };
-        
-  
         addNewAddress
-        .add_address(userData, )
+        .add_address(userData, userToken)
         .then(function(response) {
-          //console.log(response);
+          console.log(response);
           var res= response.data.results;
           toastr.success(response.data.results);
         })

@@ -3,7 +3,9 @@ app.factory("addNewAddress", function($http, config, $q) {
       add_address: function(formData, userToken) {
         //console.log(formData);
         var q = $q.defer();
-        var suggestURL = config.addAddress;
+        var addURL = config.addAddress;
+        var updateURL = config.updateAddress;
+        let suggestURL=(formData.a_id!="")?updateURL:addURL;
         let data = formData;
         $http({
           method: "POST",

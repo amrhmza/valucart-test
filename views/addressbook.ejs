@@ -1,0 +1,88 @@
+<% include template/myaccount/header %>
+    <!--    Breadcrumb-->
+    <div class="container myorderdetail">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">My accounts</a>
+            </li>
+            <li class="lastcrumb">
+                <a href="#">Address Book</a>
+            </li>
+        </ul>
+    </div>
+    <!--    Breadcrumb-->
+
+    <!--<address container-->
+    <div class="container addressdiv">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <a href="new-address">
+                    <button class="btn add-btn">
+                        <i class="fa fa-plus" style="margin-right: 5px"></i>Add a new address</button>
+                </a>
+            </div>
+
+        </div>
+        <h4>Your Address</h4>
+        <div class="addressp">
+            <div class="row radios">
+                <% 
+                let addressList= data.response; 
+                var no=1;
+                if(addressList!=""){
+                    addressList.forEach(function(adr){
+                %>
+                <div class="col-md-4">
+                    <div class="panel panel-default productpanel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h6 class="add-title">Address - <%=no++%></h6>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <a href="new-address/<%=adr.a_id%>">
+                                        <img src="img/editimg.png" class="img-responsive addeditimg" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2" style="padding-left: 0px;">
+                                    <input type="radio" name="rGroup" value="1" id="r1" />
+                                    <label class="radio" for="r1"></label>
+                                </div>
+                                <div class="col-xs-10" style="padding-left: 0px;">
+                                    <h6 class="addname"><%=adr.name%></h6>
+                                    <h5 class="add-ress"><%=(adr.a_address_1)?adr.a_address_1:""%> <%=(adr.a_address_2)?adr.a_address_2:""%>
+                                        <br><%=(adr.a_city)?adr.a_city:""%> <%=(adr.a_pincode)? adr.a_pincode:""%>
+                                        <br><%=adr.a_phone%>
+                                    </h5>
+                                    <a class="text-info" href="#">Delete this address</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%
+                    });
+                }
+                %>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <a href="#">
+                    <button class="btn add-btn btn-info">Set as default address</button>
+                </a>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <a href="#">
+                    <button class="btn add-btn">Cancel</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <!--<address container-->
+    <% include template/footer %>

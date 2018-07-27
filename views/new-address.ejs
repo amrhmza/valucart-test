@@ -18,9 +18,11 @@
         <h4>Add new address</h4>
         <div class="panel1 panel-default">
             <div class="panel-body">
+                <% var oldAdr= (data!="")?data[0]:"";%>
                 <form style="margin-top: 20px" name="newAddress" id="newAddress">
                     <div class="form-group marg-btm1">
-                        <input type="text" id="address_name" name="address_name" class="form-control form-control1">
+                        <input type="hidden" name="address_id" value="<%=address_id;%>">
+                        <input type="text" value="<%=oldAdr.a_name%>" id="address_name" name="address_name" class="form-control form-control1">
                         <label class="form-control-placeholder" for="name">FULL NAME</label>
                     </div>
                     <div class="row form-align  marg-btm1">
@@ -31,25 +33,25 @@
                         </div>
                         <div class="col-sm-11 col-xs-10">
                             <div class="form-group" style="margin-top: 35px;">
-                                <input type="text" id="phno" name="phone_no" class="form-control form-control1">
+                                <input type="text" value="<%=oldAdr.a_phone%>" id="phno" name="phone_no" class="form-control form-control1">
                                 <label class="form-control-placeholder" for="phno">PHONE NUMBER</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group marg-btm1" style="margin-top: 35px;">
-                        <input type="text" id="flat" name="flat" class="form-control form-control1">
+                        <input type="text" id="flat" value="<%=oldAdr.a_address_1%>" name="flat" class="form-control form-control1">
                         <label class="form-control-placeholder" for="flat">FLAT/HOUSE/FLOOR/BUILDING</label>
                     </div>
                     <div class="form-group  marg-btm1" style="margin-top: 35px;">
-                        <input type="text" id="street" name="street" class="form-control form-control1">
+                        <input type="text" value="<%=oldAdr.a_address_2%>" id="street" name="street" class="form-control form-control1">
                         <label class="form-control-placeholder" for="street">STREET/LOCALITY</label>
                     </div>
                     <div class="form-group marg-btm1" style="margin-top: 35px;">
-                        <input type="text" id="city" name="city" class="form-control form-control1">
+                        <input type="text" value="<%=oldAdr.a_city%>" id="city" name="city" class="form-control form-control1">
                         <label class="form-control-placeholder" for="city">CITY</label>
                     </div>
                     <div class="form-group marg-btm1" style="margin-top: 35px;">
-                        <input type="text" id="postalcode" name="postalcode" class="form-control form-control1">
+                        <input type="text" value="<%=oldAdr.a_pincode%>" id="postalcode" name="postalcode" class="form-control form-control1">
                         <label class="form-control-placeholder" for="city">POSTAL CODE</label>
                     </div>
                     <div class="form-group btn-bottom text-right visible-lg visible-md hidden-sm hidden-xs">
