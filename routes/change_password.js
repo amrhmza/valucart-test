@@ -5,15 +5,17 @@ var router = express.Router();
 router.get("/", function(req, res, next) {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    res.render("change-password", {
-      cookies: cookies,
-      angular: true,
-      customjs: true,
-      jslist: [
-        "angular/app.js",
-        "angular/controllers/change_password.js"
-      ]
-    });
+    if (cookies == false) {
+      res.redirect("/");
+      res.end();
+    } else {
+      res.render("change-password", {
+        cookies: cookies,
+        angular: true,
+        customjs: true,
+        jslist: ["angular/app.js", "angular/controllers/change_password.js"]
+      });
+    }
   } catch (error) {
     res.status(401).json({
       error: err
