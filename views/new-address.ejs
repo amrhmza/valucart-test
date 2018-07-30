@@ -18,7 +18,9 @@
         <h4>Add new address</h4>
         <div class="panel1 panel-default">
             <div class="panel-body">
-                <% var oldAdr= (data!="")?data[0]:"";%>
+                <% 
+                var oldAdr= (data!="")?data.response[0]:"";
+                %>
                 <form style="margin-top: 20px" name="newAddress" id="newAddress">
                     <div class="form-group marg-btm1">
                         <input type="hidden" name="address_id" value="<%=address_id;%>">

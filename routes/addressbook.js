@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const getAddress = require("../controllers/addresslist.js");
 const getMenu = require("../controllers/category_menu.js");
@@ -11,9 +11,9 @@ router.get("/", async (req, res, next) => {
       res.end();
     } else {
       var udata = JSON.parse(cookies);
-      let data = await getAddress.get_address(udata,"");
+      let data = await getAddress.get_address(udata, "");
       let menudata = await getMenu.get_menulist();
-      
+
       res.render("addressbook", {
         data: data,
         menudata: menudata,
@@ -21,7 +21,9 @@ router.get("/", async (req, res, next) => {
         angular: true,
         customjs: true,
         jslist: [
-          "angular/app.js"
+          "angular/app.js",
+          "angular/factory/add_address.js",
+          "angular/controllers/change_default_address.js"
         ]
       });
     }

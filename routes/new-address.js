@@ -50,7 +50,7 @@ router.get("/:add_id", async (req, res, next) => {
       let address_id = req.param("add_id");
       let data = await getAddress.get_address(udata,address_id);
       let menudata = await getMenu.get_menulist();
-      
+      console.log(data);
       res.render("new-address", {
         address_id: address_id,
         data: data,
