@@ -38,7 +38,12 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4><a href=""><%= pro.pd_name%></a></h4>
+                                    <%
+                                    var proUrl= (pro.w_is_bundle)?"bundle-detail":"product-detail";
+                                    var pro_name= pro.pd_name.replace(/\s+/g, '-').toUpperCase();
+                                    var product_url=proUrl+"/"+pro.w_product_id+"/"+pro_name;
+                                    %>
+                                    <h4><a href="<%= product_url%>"><%= pro.pd_name%></a></h4>
                                     
                                     <div class="col-xs-12">
                                         <h6 class="rate">
