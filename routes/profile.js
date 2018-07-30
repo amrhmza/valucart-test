@@ -8,8 +8,7 @@ router.get('/', async(req, res, next)=> {
   try {
     var cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     var udata= JSON.parse(cookies);
-    let userId = udata.user_id;
-    let data = await getProfile.get_data(userId);
+    let data = await getProfile.get_data(udata);
     let menudata = await getMenu.get_menulist();
     
     res.render("profile", {

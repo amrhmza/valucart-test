@@ -1,6 +1,6 @@
 app.factory("updateProfile", function($http, config, $q) {
   return {
-    update_profile: function(formData) {
+    update_profile: function(formData, userData) {
       //console.log(formData);
       var q = $q.defer();
       var suggestURL = config.user_profileUpdate;
@@ -11,7 +11,8 @@ app.factory("updateProfile", function($http, config, $q) {
         type: "json",
         data: data,
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userData
         }
       })
         .then(function(success) {
