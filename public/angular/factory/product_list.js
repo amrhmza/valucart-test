@@ -28,14 +28,20 @@ app.factory("getProductList", function($http, config, $q) {
       if (queryParam.order_by) {
         data["order_by"] = queryParam.order_by;
       }
+
+      var headers={};
+      headers["Content-Type"]= "application/json";
+      var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+      if(userAuth.status=="success"){
+        headers["Authorization"]="Bearer " + userAuth.token;
+      }
+      
       $http({
         method: "POST",
         url: suggestURL,
         type: "json",
         data: data,
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: headers
       })
         .then(function(success) {
           q.resolve(success);

@@ -1,4 +1,4 @@
-<% include template/myaccount/header %>
+<% include template/header %>
     <!--    Breadcrumb-->
     <div class="container myorderdetail">
         <ul class="breadcrumb">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-xs-10">
                         <p class="profilelabel">NAME</p>
-                        <p class="profilename">Faheen Ahamed</p>
+                        <p class="profilename"><%=data.username%></p>
                     </div>
                 </div>
                 <div class="row profilerow">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-xs-10">
                         <p class="profilelabel">EMAIL</p>
-                        <p class="profilename">Faheenhamed@gmail.com</p>
+                        <p class="profilename"><%=data.user_email%></p>
                     </div>
                 </div>
                 <div class="row profilerow">
@@ -49,17 +49,7 @@
                     </div>
                     <div class="col-xs-10">
                         <p class="profilelabel">MOBILE</p>
-                        <p class="profilename">+971 50 1258745</p>
-                    </div>
-                </div>
-                <div class="row profilerow">
-                    <div class="col-xs-2 col-sm-1 text-center">
-                        <img src="img/email.png" class="img-responsive labelimg">
-                    </div>
-                    <div class="col-xs-10">
-                        <p class="profilelabel">ADDRESS</p>
-                        <p class="profilename">1st Floor, Mehta Al Owais,House # 105, Al Shuwaihean,
-                            <br>Sharjah Landmark: Building of UAE Exchange</p>
+                        <p class="profilename">+971 <%=data.user_phone_no%></p>
                     </div>
                 </div>
                 <div class="row profilerow">
@@ -68,7 +58,7 @@
                     </div>
                     <div class="col-xs-10">
                         <p class="profilelabel">POSTAL CODE</p>
-                        <p class="profilename">567</p>
+                        <p class="profilename"><%=data.user_postal_code%></p>
                     </div>
                 </div>
                 <div class="row profilerow">
@@ -77,7 +67,7 @@
                     </div>
                     <div class="col-xs-10">
                         <p class="profilelabel">CITY</p>
-                        <p class="profilename">Dubai</p>
+                        <p class="profilename"><%=data.user_city%></p>
                     </div>
                 </div>
             </div>

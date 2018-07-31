@@ -26,7 +26,7 @@ let products= productData.product;
                         var userData=JSON.parse(cookies);
                          if(userData.status=="success"){
                     %>
-                    <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=productData.pb_id%>, true, $event.target)"></i>
+                    <i class="fa fa-heart wishheart <%=(productData.wishlist)?'wishheartt':''%>" data-type="add" ng-click="addwish(<%=productData.pb_id%>, true, $event.target)"></i>
                     <%
                         }
                     }

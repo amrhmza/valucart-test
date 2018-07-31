@@ -37,7 +37,7 @@
                         var userData=JSON.parse(cookies);
                          if(userData.status=="success"){
                      %>
-                     <i class="fa fa-heart wishheart" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
+                     <i class="fa fa-heart wishheart <%=(data.response[0].wishlist)?'wishheartt':''%>" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
                     <%
                         }
                     }

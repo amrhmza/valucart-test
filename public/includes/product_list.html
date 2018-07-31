@@ -1,7 +1,7 @@
 <div class="panel panel-default productpanel">
     <div class="panel-body">
 
-        <i class="fa fa-heart wishheart" ng-if="loggedStatus" data-type="add" ng-click="addwish(product.pd_id, false, $event.target)"></i>
+        <i class="fa fa-heart wishheart {{product.wishlist?'wishheartt':''}}" ng-if="loggedStatus" data-type="add" ng-click="addwish(product.pd_id, false, $event.target)"></i>
 
         <div class="row">
             <div class="col-xs-6">

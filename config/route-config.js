@@ -35,6 +35,7 @@
     const servicerequestRouter = require("../routes/service-request");
     const subscribeRouter = require("../routes/subscribe");
     const wishlistRouter = require("../routes/mywishlist");
+    const addressbookRouter = require("../routes/addressbook");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -73,5 +74,6 @@
     app.use("/service-request", servicerequestRouter);
     app.use("/subscribe", subscribeRouter);
     app.use("/mywishlist", wishlistRouter);
+    app.use("/addressbook", addressbookRouter);
   };
 })(module.exports);
