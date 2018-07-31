@@ -111,10 +111,12 @@
                                     let no=0;
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
-                                <li data-target="#productCarousel" data-slide-to="<%= pd_image.pi_id %>" class="<%= (no==0)?'active':'' %>"></li>
-                                <% no++; })
-                        } 
-                       %>
+                                <li data-target="#productCarousel" data-slide-to="<%= no%>" class="<%= (no==0)?'active':'' %>"></li>
+                            <% 
+                                no++; 
+                                });
+                            } 
+                            %>
                         </ol>
 
                         <!-- Wrapper for slides -->
@@ -124,7 +126,7 @@
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
                                 <div class="item <%= (no==0)?'active':'' %>">
-                                    <img src="<%= pd_image.pi_image %>" alt="Los Angeles" style="height: 250px;margin: auto;">
+                                    <img src="<%= pd_image.pi_image %>" style="height: 250px;margin: auto;">
                                 </div>
                                 <% no++;})
                         } 
