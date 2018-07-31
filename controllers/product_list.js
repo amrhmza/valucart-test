@@ -11,7 +11,7 @@ let get_data = async (querydata, cat_id) => {
     getparam["params"] = { cat_id: cat_id };
     let product_filter = await axios.get("product/filter/get", getparam);
     if (_.isEmpty(product_filter.data.results.response)==true) {
-      throw product_filter;
+      // throw product_filter;
     }
     response["product_config"] = product_filter.data.results.response;
     response["querydata"] = querydata;

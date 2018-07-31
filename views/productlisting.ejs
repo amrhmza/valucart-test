@@ -6,17 +6,21 @@
                 <a href="home">Home</a>
             </li>
             <li class="lastcrumb">
-                <a><%= data.product_config["cat_filter"].cat %></a>
+                <a>
+                    <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
+                        <%= data.product_config["cat_filter"].cat %>
+                    <% } %>
+                </a>
             </li>
         </ul>
     </div>
     <!--    Breadcrumb-->
     <!--    Carousel strts here-->
-    <div class="container-fluid carouseldiv">
+    <div class="container carouseldiv hidden-xs">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-            <% 
+                <% 
             let bannerList= banner.response.banner;
             bannerList.sort(function(a, b){
                 return a.hb_order - b.hb_order;
@@ -26,12 +30,12 @@
                 bannerList.forEach(function(slides){
                     if(slides.hb_image)
             %>
-            <li data-target="#myCarousel" data-slide-to="<%= no++%>" class="<%= (no==1)?'active':'';%>"></li>
-            <%
+                    <li data-target="#myCarousel" data-slide-to="<%= no++%>" class="<%= (no==1)?'active':'';%>"></li>
+                    <%
                 })
             }
            %>
-        </ol>
+            </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <% 
@@ -40,9 +44,9 @@
                     bannerList.forEach(function(slides){
                         if(slides.hb_image)
                 %>
-                <div class="item <%= (no==0)?'active':'';%>">
-                    <img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"> </div>
-               <%
+                    <div class="item <%= (no==0)?'active':'';%>">
+                        <img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"> </div>
+                    <%
                     no++;
                     })
                 }
@@ -57,181 +61,172 @@
     <!--    Product list starts here-->
     <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="product_listing">
         <div class="container productlistpagec">
+        <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
             <div class="row">
                 <div class="col-md-3 col-sm-4 hidden-xs" style="padding-top: 30px;">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    Catagory
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <a data-toggle="collapse" href="#collapse1">
+                    <% if(typeof data.product_config["cat_filter"] != "undefined"){ %>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <%= data.product_config["cat_filter"].cat %>
+                                        Catagory
                                     </h4>
                                 </div>
-                            </a>
-                            <div id="collapse1" class="panel-collapse collapse in">
-                                <div class="panel-body" style="padding-left: 20px;">
-                                    <ul class="list-group">
-                                        <% if(data.product_config["cat_filter"].supcat!=""){
+                            </div>
+
+                            <div class="panel panel-default">
+                                <a data-toggle="collapse" href="#collapse1">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <%= data.product_config["cat_filter"].cat %>
+                                        </h4>
+                                    </div>
+                                </a>
+                                <div id="collapse1" class="panel-collapse collapse in">
+                                    <div class="panel-body" style="padding-left: 20px;">
+                                        <ul class="list-group">
+                                            <% if(data.product_config["cat_filter"].supcat!=""){
                                             data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
                                             %>
-                                            <li class="list-group-item {{sub_cat_active==<%= subcat.subcat_id %>?'active':''}}">
-                                            <a ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
-                                                <%= subcat.subcat_name %>
-                                                    (
-                                                    <%= subcat.c %>)
-                                            </a>
-                                            </li>
-                                            <% })
+                                                <li class="list-group-item {{sub_cat_active==<%= subcat.subcat_id %>?'active':''}}">
+                                                    <a ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
+                                                        <%= subcat.subcat_name %>
+                                                            (
+                                                            <%= subcat.c %>)
+                                                    </a>
+                                                </li>
+                                                <% })
                                         } %>
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <a data-toggle="collapse" href="#collapse2">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Brand
-                                    </h4>
-                                </div>
-                            </a>
-                            <div id="collapse2" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <!--                                    <p class="brandsearch">Search by brand</p>-->
-                                    <input class="brandsearch" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search by brand" title="Type in a name"
-                                        style="border: none;
+                            <div class="panel panel-default">
+                                <a data-toggle="collapse" href="#collapse2">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            Brand
+                                        </h4>
+                                    </div>
+                                </a>
+                                <div id="collapse2" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <!--                                    <p class="brandsearch">Search by brand</p>-->
+                                        <input class="brandsearch" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search by brand" title="Type in a name"
+                                            style="border: none;
         width: 100%;margin-bottom: 10px;outline: none;">
-                                    <ul class="list-group brandlist" id="brandlist">
-                                        <% if(data.product_config["brand_filter"]!=""){
+                                        <ul class="list-group brandlist" id="brandlist">
+                                            <% if(data.product_config["brand_filter"]!=""){
                                                 data.product_config["brand_filter"].forEach(function(brand){ 
                                                 %>
-                                            <li class="list-group-item">
-                                                <div class="checkbox checkbox-info">
-                                                    <input id="brand_<%= brand.b_id %>" type="checkbox" name="brand" ng-checked="c[<%= brand.b_id %>]" ng-model="c[<%= brand.b_id %>]" ng-false-value="" ng-true-value="<%= brand.b_id %>" ng-change="filters('brand')">
-                                                    <label for="brand_<%= brand.b_id %>">
-                                                        <%= brand.b_name %>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <% })
+                                                <li class="list-group-item">
+                                                    <div class="checkbox checkbox-info">
+                                                        <input id="brand_<%= brand.b_id %>" type="checkbox" name="brand" ng-checked="c[<%= brand.b_id %>]" ng-model="c[<%= brand.b_id %>]"
+                                                            ng-false-value="" ng-true-value="<%= brand.b_id %>" ng-change="filters('brand')">
+                                                        <label for="brand_<%= brand.b_id %>">
+                                                            <%= brand.b_name %>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                                <% })
                                         } %>
-                                                <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
-                                    </ul>
+                                                    <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <a data-toggle="collapse" href="#collapse3">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        Price
-                                    </h4>
-                                </div>
-                            </a>
-                            <div id="collapse3" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <ul class="list-group">
-                                        <% if(data.product_config["price_filter"]!=""){
+                            <div class="panel panel-default">
+                                <a data-toggle="collapse" href="#collapse3">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            Price
+                                        </h4>
+                                    </div>
+                                </a>
+                                <div id="collapse3" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            <% if(data.product_config["price_filter"]!=""){
                                             let i=0;
                                             data.product_config["price_filter"].forEach(function(price){ 
                                                 %>
-                                            <li class="list-group-item">
-                                                <div class="checkbox checkbox-info">
-                                                    <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
-                                                    <label for="price1_<%= i %>">
-                                                        <%=price.start==""?"Less then ":"" %>
-                                                            <%=price.end==" "?"More then ":"" %>
-                                                                <%= price.start %>
-                                                                    <%= (price.start == "" || price.end == "")?"":" - " %>
-                                                                        <%= price.end %> AMD
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <% i++;})
+                                                <li class="list-group-item">
+                                                    <div class="checkbox checkbox-info">
+                                                        <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                        <label for="price1_<%= i %>">
+                                                            <%=price.start==""?"Less then ":"" %>
+                                                                <%=price.end==" "?"More then ":"" %>
+                                                                    <%= price.start %>
+                                                                        <%= (price.start == "" || price.end == "")?"":" - " %>
+                                                                            <%= price.end %> AMD
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                                <% i++;})
                                          } %>
 
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default ">
-                            <a data-toggle="collapse " href="#collapse4 ">
-                                <div class="panel-heading ">
-                                    <h4 class="panel-title ">
-                                        Discounts
-                                    </h4>
-                                </div>
-                            </a>
-                            <div id="collapse4 " class="panel-collapse collapse in ">
-                                <div class="panel-body ">
-                                    <ul class="list-group ">
-                                        <% if(data.product_config["discount_filter"]!=""){
+                            <div class="panel panel-default ">
+                                <a data-toggle="collapse " href="#collapse4 ">
+                                    <div class="panel-heading ">
+                                        <h4 class="panel-title ">
+                                            Discounts
+                                        </h4>
+                                    </div>
+                                </a>
+                                <div id="collapse4 " class="panel-collapse collapse in ">
+                                    <div class="panel-body ">
+                                        <ul class="list-group ">
+                                            <% if(data.product_config["discount_filter"]!=""){
                                             let j=0;
                                                     data.product_config["discount_filter"].forEach(function(discount){ 
                                                         %>
-                                            <li class="list-group-item ">
-                                                <div class="checkbox checkbox-info ">
-                                                    <input id="discount1_<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
-                                                    <label for="discount1_<%= j %>">
-                                                        <%=discount.start==""?"Less then":"" %>
-                                                            <%=discount.end==""?"More then":"" %>
-                                                                <%= discount.start %>
-                                                                    <%= (discount.start == "" || discount.end == "")?"":" - " %>
-                                                                        <%= discount.end %> %
-                                                    </label>
-                                                </div>
-                                            </li>
-                                            <% j++; })
+                                                <li class="list-group-item ">
+                                                    <div class="checkbox checkbox-info ">
+                                                        <input id="discount1_<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
+                                                        <label for="discount1_<%= j %>">
+                                                            <%=discount.start==""?"Less then":"" %>
+                                                                <%=discount.end==""?"More then":"" %>
+                                                                    <%= discount.start %>
+                                                                        <%= (discount.start == "" || discount.end == "")?"":" - " %>
+                                                                            <%= discount.end %> %
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                                <% j++; })
                                         } %>
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <% } %>
                 </div>
-                <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="col-md-9 col-sm-8 col-xs-12 organicbundles">
                     <div class="row">
-                        <div class="col-md-9 col-sm-9 hidden-xs" style="padding-top: 15px;">
-                            <h4 class="productlisttitle"> <%= data.product_config["cat_filter"].cat %>
-                                <span class="titlecount">(<span ng-bind-html="productData.length"></span>)</span>
+                        <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 15px;">
+                            <h4 class="productlisttitle">
+                            <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
+                                <%= data.product_config["cat_filter"].cat %>
+                            <% }%>
+                                    <span class="titlecount">(
+                                        <span ng-bind-html="productData.length"></span>)</span>
                             </h4>
                         </div>
-                        <div class="col-md-3 col-sm-3  col-xs-6 " style="padding-top: 20px;padding-bottom:10px;padding-left: 0px;padding-right: 15px;">
-                            <div class="dropdown sortdropdown">
-                                <button class="btn btn-default sortbtn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                                    <img src="img/sort.png" class="img-responsive sortimg">SORT
-                                    <i class="fa fa-chevron-down sortdown hidden-xs"></i>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                    <li role="presentation" class="active">
-                                        <a role="menuitem">
-                                            <img src="img/popularity.png" class="img-responsive sortimg">Popularity</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" ng-click="filters('sort','date')">
-                                            <img src="img/latest.png" class="img-responsive sortimg">Latest</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" ng-click="filters('sort','discount')">
-                                            <img src="img/discount.png" class="img-responsive sortimg">Discount</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" ng-click="filters('sort','price_lh')">
-                                            <img src="img/plh.png" class="img-responsive sortimg">Price (Low to High)</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a role="menuitem" ng-click="filters('sort','price_hl')">
-                                            <img src="img/phl.png" class="img-responsive sortimg">Price (High to Low)</a>
-                                    </li>
-                                </ul>
-                            </div>
+
+                        <div class="col-md-4 col-sm-3  col-xs-6 " style="">
+                            <select class="sortselect" ng-change="filters('sort',sort)" ng-model="sort">
+                                <option value="">
+                                    <img src="img/sort.png" class="img-responsive sortimg"> SORT</option>
+                                <option value="Popularity" style="background-image:url(img/popularity.png);">Popularity</option>
+                                <option value="date">Latest</option>
+                                <option value="discount">Discount</option>
+                                <option value="price_lh">Price (Low to High)</option>
+                                <option value="price_hl">Price (High to Low)</option>
+                            </select>
                         </div>
                         <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-top: 20px;padding-bottom:10px;padding-left: 0px;padding-right: 15px;">
                             <div class="dropdown sortdropdown">
@@ -240,107 +235,123 @@
                                     <i class="fa fa-chevron-down sortdown"></i>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
                                     <li role="presentation" style="padding-left: 10px">Catagory</li>
                                     <li class="divider"></li>
-                                    <li role="presentation" style="padding-left: 10px"><%= data.product_config["cat_filter"].cat %></li>
+                                    <li role="presentation" style="padding-left: 10px">
+                                        <%= data.product_config["cat_filter"].cat %>
+                                    </li>
                                     <li class="divider"></li>
                                     <% if(data.product_config["cat_filter"].supcat!=""){
                                         data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
                                         %>
-                                    <li role="presentation">
-                                        <a role="menuitem" ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">  
-                                        <%= subcat.subcat_name %>
-                                        (
-                                        <%= subcat.c %>)
-                                        </a>
-                                    </li>
-                                    <%  })
+                                        <li role="presentation">
+                                            <a role="menuitem" ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
+                                                <%= subcat.subcat_name %>
+                                                    (
+                                                    <%= subcat.c %>)
+                                            </a>
+                                        </li>
+                                        <%  })
                                     } %>
-                                    <li class="divider"></li>
-                                    <li role="presentation" style="padding-left: 10px">Brand</li>
-                                    <li role="presentation" style="margin-top: 10px">
-                                    <input class="brandsearch" type="text" id="searchInputt" onkeyup="mobsearchFunction()" placeholder="Search by brand" title="Type in a name"
-                                            style="border: none;
+                                            <li class="divider"></li>
+                                            <li role="presentation" style="padding-left: 10px">Brand</li>
+                                            <li role="presentation" style="margin-top: 10px">
+                                                <input class="brandsearch" type="text" id="searchInputt" onkeyup="mobsearchFunction()" placeholder="Search by brand" title="Type in a name"
+                                                    style="border: none;
         width: 100%;margin-bottom: 10px;outline: none;">
-                                    </li>
-                                    <ul class="list-group brandlist" id="brandlistt">
-                                    <% if(data.product_config["brand_filter"]!="")
+                                            </li>
+                                            <ul class="list-group brandlist" id="brandlistt">
+                                                <% if(data.product_config["brand_filter"]!="")
                                     {
                                             data.product_config["brand_filter"].forEach(function(brand){ 
                                                 %>
-                                            <li class="list-group-item">
-                                                <div class="checkbox checkbox-info">
-                                                <input id="brand__<%= brand.b_id %>" type="checkbox" name="brand" ng-checked="c[<%= brand.b_id %>]" ng-model="c[<%= brand.b_id %>]" ng-false-value="" ng-true-value="<%= brand.b_id %>" ng-change="filters('brand')">
-                                                <label for="brand__<%= brand.b_id %>">
-                                                    <%= brand.b_name %>
-                                                </label>
-                                               </div>
-                                            </li>
-                                        <%  })
+                                                    <li class="list-group-item">
+                                                        <div class="checkbox checkbox-info">
+                                                            <input id="brand__<%= brand.b_id %>" type="checkbox" name="brand" ng-checked="c[<%= brand.b_id %>]" ng-model="c[<%= brand.b_id %>]"
+                                                                ng-false-value="" ng-true-value="<%= brand.b_id %>" ng-change="filters('brand')">
+                                                            <label for="brand__<%= brand.b_id %>">
+                                                                <%= brand.b_name %>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <%  })
                                     } %>
-                                    <p id="notfoundd" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
-                                    </ul>
+                                                        <p id="notfoundd" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
+                                            </ul>
 
-                                    <li role="presentation" style="padding-left: 10px">Price</li>
-                                    <ul class="list-group">
+                                            <li role="presentation" style="padding-left: 10px">Price</li>
+                                            <ul class="list-group">
 
-                                    <% if(data.product_config["price_filter"]!=""){
+                                                <% if(data.product_config["price_filter"]!=""){
                                         let i=0;
                                         data.product_config["price_filter"].forEach(function(price){ 
                                             %>
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-info">
-                                                <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
-                                                <label for="price1__<%= i %>">
-                                                    <%=price.start==""?"Less then ":"" %>
-                                                        <%=price.end==" "?"More then ":"" %>
-                                                            <%= price.start %>
-                                                                <%= (price.start == "" || price.end == "")?"":" - " %>
-                                                                    <%= price.end %> AMD
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <% i++;})
+                                                    <li class="list-group-item">
+                                                        <div class="checkbox checkbox-info">
+                                                            <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                            <label for="price1__<%= i %>">
+                                                                <%=price.start==""?"Less then ":"" %>
+                                                                    <%=price.end==" "?"More then ":"" %>
+                                                                        <%= price.start %>
+                                                                            <%= (price.start == "" || price.end == "")?"":" - " %>
+                                                                                <%= price.end %> AMD
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% i++;})
                                      } %>
-                                    </ul>
-                                    <li role="presentation" style="padding-left: 10px">Discounts</li>
-                                    <ul class="list-group">
-                                    <% if(data.product_config["discount_filter"]!=""){
+                                            </ul>
+                                            <li role="presentation" style="padding-left: 10px">Discounts</li>
+                                            <ul class="list-group">
+                                                <% if(data.product_config["discount_filter"]!=""){
                                         let j=0;
                                                 data.product_config["discount_filter"].forEach(function(discount){ 
                                                     %>
-                                        <li class="list-group-item ">
-                                            <div class="checkbox checkbox-info ">
-                                                <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
-                                                <label for="discount1__<%= j %>">
-                                                    <%=discount.start==""?"Less then":"" %>
-                                                        <%=discount.end==""?"More then":"" %>
-                                                            <%= discount.start %>
-                                                                <%= (discount.start == "" || discount.end == "")?"":" - " %>
-                                                                    <%= discount.end %> %
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <% j++; })
+                                                    <li class="list-group-item ">
+                                                        <div class="checkbox checkbox-info ">
+                                                            <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
+                                                            <label for="discount1__<%= j %>">
+                                                                <%=discount.start==""?"Less then":"" %>
+                                                                    <%=discount.end==""?"More then":"" %>
+                                                                        <%= discount.start %>
+                                                                            <%= (discount.start == "" || discount.end == "")?"":" - " %>
+                                                                                <%= discount.end %> %
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <% j++; })
                                     } %>
-                                    </ul>
+                                            </ul>
+                                 <% }%>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                    <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
-                        <div ng-include="'includes/product_list.html'"></div>
-                   </div>
+                        <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
+                            <div ng-include="'includes/product_list.html'"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+<% }else{ %>
+    <br>
+    <h1 class="text-center">Oops!No product found in this category!!</h1>
+    <br>
+<% } %>
     </div>
     <script>
         app.constant("querydata", {
             'queryparam': <%- JSON.stringify(data.querydata) %>
         });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('select').niceSelect();
+        });
+
     </script>
     <!--     Product list ends here-->
     <% include template/footer %>

@@ -40,6 +40,9 @@ app.controller("bundle_listing", function(
         }
       }
     }
+    if (filterdata.order_by) {
+      $scope.sort = filterdata.order_by;
+    }
   };
   $scope.getlist = function() {
     let queryparams = $location.search();
@@ -52,8 +55,10 @@ app.controller("bundle_listing", function(
     getbundleList
       .getlist(querydata.queryparam, $scope.page)
       .then(function(response) {
-        var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";      
-        $scope.loggedStatus= (userAuth.status=="success")?true:false;
+        var userAuth = $.cookie("vcartAuth")
+          ? JSON.parse($.cookie("vcartAuth"))
+          : "";
+        $scope.loggedStatus = userAuth.status == "success" ? true : false;
         let listdata = response.data.results.response;
         if (listdata != "") {
           angular.forEach(listdata, function(value, key) {
@@ -165,33 +170,26 @@ app.controller("bundle_listing", function(
   };
 
   // Wishlist Add and Remove
-  $scope.addwish = function(product_id, is_bundle, item) {
-    
-    var elem= angular.element(item);
-    var wtype= elem.attr('data-type');
-    //console.log(wtype);
+  $scope.addwish = function(product_id, item, index) {
     let productData = {
       product_id: product_id,
-      is_bundle: is_bundle,
-      wish_type: wtype
+      is_bundle: true,
+      wish_type: item ? "remove" : "add"
     };
-    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
-    var usertoken= (userAuth!="")?userAuth.token: "";
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
 
     getWishList
       .addWish(productData, usertoken)
       .then(function(response) {
-        console.log(response);
-        var res= response.data.msg;
-        if(res=="success"){
-          var wishvalue= (wtype=="add")?"remove":"add";
-          elem.attr('data-type', wishvalue);
-          if(wishvalue=="remove"){
-            elem.addClass("wishheartt");
+        var res = response.data.msg;
+        if (res == "success") {
+          $scope.productData[index].wishlist = item ? false : true;
+          if (item == false) {
             toastr.success(response.data.results);
-          }
-          else{
-            elem.removeClass("wishheartt");
+          } else {
             toastr.warning(response.data.results);
           }
         }
@@ -200,5 +198,4 @@ app.controller("bundle_listing", function(
         console.log(response);
       });
   };
-  
 });
