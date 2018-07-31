@@ -1,6 +1,6 @@
 <% include template/header %>
     <!--    Breadcrumb-->
-    <div class="container">
+    <div class="container" style="margin-bottom: 20px;">
         <ul class="breadcrumb">
             <li>
                 <a href="home">Home</a>
@@ -12,7 +12,7 @@
     </div>
     <!--    Breadcrumb-->
     <!--    Carousel strts here-->
-    <div class="container-fluid carouseldiv">
+    <div class="container carouseldiv hidden-xs">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -200,6 +200,16 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                        <div class="col-md-4 col-sm-3  col-xs-6 " style="">
+                            <select class="sortselect">
+                              <option><img src="img/sort.png" class="img-responsive sortimg"> SORT</option>
+                              <option value="Popularity" style="background-image:url(img/popularity.png);">Popularity</option>
+                              <option value="Latest">Latest</option>
+                              <option value="Discount">Discount</option>
+                              <option value="Pricelh">Price (Low to High)</option>
+                              <option value="Pricehl">Price (High to Low)</option>
+                            </select>
                         </div>
                         <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-top: 20px;padding-bottom:10px;padding-left: 0px;padding-right: 15px;">
                             <div class="dropdown sortdropdown">
