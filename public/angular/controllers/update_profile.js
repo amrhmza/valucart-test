@@ -23,17 +23,17 @@ app.controller("update_profile", function(
       elem.mobile.focus();
       a = 1;
     }
-    /*   
+      
     if (!elem.postalcode.value) {
-      toastr.error("");
+      toastr.error("Postal Address is Required");
       elem.postalcode.focus();
       a = 1;
     }
     if (!elem.city.value) {
-      toastr.error("");
+      toastr.error("City is Required");
       elem.city.focus();
       a = 1;
-    } */
+    }
 
     if (a == 1) {
       return false;

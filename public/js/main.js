@@ -89,7 +89,7 @@ var incrementMinus;
 var buttonPlus = $(".cart-qty-plus");
 var buttonMinus = $(".cart-qty-minus");
 
-var incrementPlus = buttonPlus.click(function () {
+/* var incrementPlus = buttonPlus.click(function () {
 	var $n = $(this)
 		.parent(".button-container")
 		//        .parent(".container")
@@ -106,7 +106,7 @@ var incrementMinus = buttonMinus.click(function () {
 	if (amount > 0) {
 		$n.val(amount - 1);
 	}
-});
+}); */
 
 //product search in list
 function searchFunction() {

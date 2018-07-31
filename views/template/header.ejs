@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li style="border-right: 1px solid #9b9b9b;">
-                    <a href="#">
+                    <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
                             <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> Al Karama, Dubai
                             <i class="fa fa-chevron-down"></i>
@@ -286,7 +286,7 @@
                     </div>
                 </div>
                 <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
-                    <a href="#">
+                    <a href="/city">
                         <p class="navlocation">
                             <img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
                     </a>
@@ -347,76 +347,27 @@
                 </div>
             </div>
             <div id="categories" class="tabcontent">
+                <% 
+                    var no=0;
+                    if (menuList) {
+                        menuList.forEach(function(cat){
+                            no++;
+                            var cname= cat.c_name;
+                            var cat_url_name = cname.trim().replace(/\s+/g, '-').toUpperCase();
+                            var catUrl= process.env.BASEURL+'product-listing/'+cat.c_id+'/'+cat_url_name;
+                               
+                %>     
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title panels"> News & Trending
+                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"> <%= cat.c_name;%>
                             <i class="fa fa-chevron-right" aria-hidden="true"></i>
                         </h4>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels">Holiday shop
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Chilled
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Food & Cupboard
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Drinks
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> health & Beauty
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Baby & toddler
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> household
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> pet
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Home & Outdoor
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
+                <%
+                        });
+                    }
+                 %> 
             </div>
             <div id="offers" class="tabcontent">
                 <div class="panel panel-default">
