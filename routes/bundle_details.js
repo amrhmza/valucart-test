@@ -7,9 +7,9 @@ const getMenu = require("../controllers/category_menu.js");
 router.get("/:pb_id/:pb_name", async (req, res, next) => {
   try {
     var pb_id = req.param("pb_id");
-    let data = await getBundle.get_data(pb_id);
-    let menudata = await getMenu.get_menulist();
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let data = await getBundle.get_data(pb_id, cookies);
+    let menudata = await getMenu.get_menulist();
     //console.log(data);
     res.render("bundledetail", {
       data: data,
