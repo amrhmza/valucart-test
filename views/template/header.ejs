@@ -81,7 +81,7 @@
                 var userData=JSON.parse(cookies);
                 if(userData.status=="success"){
                 %>
-                <li style="margin-bottom: 10px;">
+                <li style="margin-bottom: 0px;">
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img class="img-responsive topnavlocationimg" src="img/user.png"><%=(userData.username).toUpperCase();%>
@@ -149,12 +149,12 @@
                     <ul class="list-inline navlist">
                         <li class="hidden-xs">
                             <a href="mywishlist">
-                                <img src="img/wishlist.png" class="img-responsive navbar-brand" alt="valucart-logo" style="margin-right: 10px;">
+                                <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
                             </a>
                         </li>
                         <li>
                             <a href="/cart">
-                                <img src="img/cart.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                                <img src="img/cart.png" class="img-responsive navbar-brand1" alt="valucart-logo">
                             </a>
                         </li>
                     </ul>
@@ -176,9 +176,6 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                             Categories
-                                            <span class="caret">
-                                                <i class="fa fa-chevron-down"></i>
-                                            </span>
                                         </a>
                                         <div class="dropdown-menu" role="menu">
                                             <div class="lnt-dropdown-mega-menu">

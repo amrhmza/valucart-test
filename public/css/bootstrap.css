@@ -1080,6 +1080,7 @@ html {
   font-size: 10px;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	overflow-x: hidden !important;
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -2881,10 +2882,10 @@ select[multiple].input-lg {
 .has-error.checkbox label,
 .has-error.radio-inline label,
 .has-error.checkbox-inline label {
-  color: #ff0500 !important;
+  color: #a94442;
 }
 .has-error .form-control {
-  border-color: #ff0500 !important;
+  border-color: #a94442;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
@@ -2898,7 +2899,7 @@ select[multiple].input-lg {
   background-color: #f2dede;
   border-color: #a94442;
 }
-.has-error .form-control-feedback, .has-error .form-control-placeholder  {
+.has-error .form-control-feedback {
   color: #a94442;
 }
 .has-feedback label ~ .form-control-feedback {
@@ -3650,6 +3651,7 @@ tbody.collapse.in {
   position: relative;
   display: inline-block;
   vertical-align: middle;
+	width: 100%;
 }
 .btn-group > .btn,
 .btn-group-vertical > .btn {
@@ -4006,8 +4008,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eee;
-  border-color: #337ab7;
+  background-color: #f2f2f2;
+  border-color: #f2f2f2;
 }
 .nav .nav-divider {
   height: 1px;
@@ -4695,8 +4697,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
-	margin-top: 20px;
+  margin-bottom: 15px;
+	margin-top: 46px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;

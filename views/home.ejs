@@ -1,6 +1,6 @@
 <% include template/header %>
     <!--    Carousel strts here-->
-    <div class="container-fluid carouseldiv">
+    <div class="container-fluid carouseldiv" style="padding-top: 20px;">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -45,6 +45,7 @@
 
     <!--    owl carousel starts here-->
     <div class="container-fluid carousel-mob">
+            <hr class="invis hidden-xs hidden-sm">
         <div class="container">
             <div class="row">
                 <div class="col-xs-8">
@@ -53,7 +54,7 @@
                 </div>
                 <div class="col-xs-4 text-right p-t-30">
                     <a  class="viewall">
-                        <p class="text-info">View all</p>
+                        <p class="text-info f24">View all</p>
                     </a>
                 </div>
             </div>
@@ -97,6 +98,7 @@
                 </div>
             </section>
         </div>
+        <hr class="invis hidden-xs hidden-sm">
         <div class="container">
             <div class="row">
                 <div class="col-xs-9">
@@ -105,7 +107,7 @@
                 </div>
                 <div class="col-xs-3 text-right p-t-30">
                     <a href="#" class="viewall">
-                        <p class="text-info">View all</p>
+                        <p class="text-info f24">View all</p>
                     </a>
                 </div>
             </div>
@@ -146,6 +148,7 @@
                 </div>
             </section>
         </div>
+        <hr class="invis hidden-xs hidden-sm">
         <div class="container">
             <div class="row">
                 <div class="col-xs-8">
@@ -154,7 +157,7 @@
                 </div>
                 <div class="col-xs-4 text-right p-t-30">
                     <a href="product-listing" class="viewall">
-                        <p class="text-info">View all</p>
+                        <p class="text-info f24">View all</p>
                     </a>
                 </div>
             </div>
@@ -173,9 +176,17 @@
                             <div class="item">
                                 <div class="panel panel-default productpanel">
                                     <div class="panel-body text-center">
-                                        <button type="button" class="wishheart">
-                                            <i class="fa fa-heart"></i>
-                                        </button>
+                                            <div class="row mrw15 text-right">
+                                            <button class="wishlistbtn">
+                                                    <div class="wishlist-heart-group">
+                                                        <input name="<%= cat.pd_name;%>" id="product-<%= cat.pd_id;%>" data-product-id="<%= cat.pd_id;%>" type="checkbox" />
+                                                        <label for="product-<%= cat.pd_id;%>" data-hover-text="Wish List">
+                                                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                                        <g transform="translate(0,-952.36218)"><path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z" fill="transparent" id="heart-path" stroke="#494949" stroke-width="5" marker="none" visibility="visible" display="inline" overflow="visible"/></g>
+                                                    </svg>
+                                                </label>
+                                                    </div>
+                                                    </button></div>
                                         <img src="<%= cat.p_image %>" class="img-responsive productimg">
                                         <a href="product-detail/<%= cat.pd_id+'/'+pd_url%>">
                                             <h4><%= cat.pd_name;%></h4>
@@ -213,7 +224,7 @@
     <!--    owl carousel ends here-->
     <!--How it works -->
     <div class="container-fluid">
-        <div class="container">
+        <div class="container howitworkhd">
             <h2 class="howitworktitle">How it works</h2>
         </div>
     </div>
