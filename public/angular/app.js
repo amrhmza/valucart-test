@@ -24,6 +24,7 @@ app.constant("config", {
   submitBundle_review: baseurl + "/product/review/post",
   addToCart: baseurl + "/cart/add",
   cartupdate: baseurl + "/cart/quantity",
+  cartRemove: baseurl + "/cart/remove",
   addWishList: baseurl+'/wishList/addproducttowishlist',
   removeWishList: baseurl+'/wishList/removewishlist',
   change_password: baseurl + "/auth/resetpassword",
