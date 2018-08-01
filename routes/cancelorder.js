@@ -1,8 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const getMenu = require("../controllers/category_menu.js");
 
-/* GET cart page. */
-router.get('/', function(req, res, next) {
-  res.render('cancelorder', { title: '' });
+/* GET product list page. */
+router.get("/", async (req, res, next) => {
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let menudata = await getMenu.get_menulist();
+    res.render("cancelorder", {
+      menudata: menudata,
+      angular: false,
+      customjs: false,
+      cookies: cookies
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      error: error
+    });
+  }
 });
+
 module.exports = router;

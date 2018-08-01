@@ -1,183 +1,178 @@
-<% include template/myaccount/header %>
+<% include template/header %>
     <!--  bundle  Product  starts here-->
-    <div class="container-fluid create-bundle" style="margin-top: 20px;">
-        <div class="container">
-            <div class="row" id="cBundle-desktop">
-                <h4>
-                    <img src="img/choose-bundle.png" alt="choose-bundle" /> Build your bundle</h4>
-                <p>You can now build your own bundle and subscribe to it . Choose the products you would like to add to your
-                    bundle for automated delivery.</p>
-            </div>
-            <div class="row" id="cBundle-mobile">
-                <div class="col-xs-3">
-                    <img src="img/choose-bundle.png" alt="choose-bundle" />
-                </div>
-                <div class="col-xs-9">
-                    <h4>Build your bundle</h4>
+    <div class="bnd-products bnd-details">
+        <div class="container-fluid create-bundle" style="margin-top: 20px;">
+            <div class="container">
+                <div class="row" id="cBundle-desktop">
+                    <h4>
+                        <img src="img/choose-bundle.png" alt="choose-bundle" /> Build your bundle</h4>
                     <p>You can now build your own bundle and subscribe to it . Choose the products you would like to add to
                         your bundle for automated delivery.</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="edit-bundle">
-                    <h5 style="display: inline-block;">Bundle 01</h5>
-                    <img src="img/edit-bundle.png" alt="edit-bundle" />
+                <div class="row" id="cBundle-mobile">
+                    <div class="col-xs-3">
+                        <img src="img/choose-bundle.png" alt="choose-bundle" />
+                    </div>
+                    <div class="col-xs-9">
+                        <h4>Build your bundle</h4>
+                        <p>You can now build your own bundle and subscribe to it . Choose the products you would like to add
+                            to your bundle for automated delivery.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="edit-bundle">
+                        <h5 style="display: inline-block;">Bundle 01</h5>
+                        <img src="img/edit-bundle.png" alt="edit-bundle" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid bnd-products mycart">
-        <div class="container container1">
-            <div class="row">
-                <div class="col-md-8 no-pad">
-                    <div class="panel panel-default productpanel">
-                        <div class="panel-body">
-                            <div class="row" style="margin-bottom: 10px">
-                                <div class="col-xs-1">
-                                    <div class="checkbox checkbox-info check-align">
-                                        <input id="brand1" type="checkbox" checked>
-                                        <label for="brand1">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 mobright">
-                                    <p class="discountprice hidden-xs">-10%</p>
-                                    <img src="img/product2.png" class="img-responsive productimg">
-                                </div>
-                                <div class="col-xs-8 mobleft">
-                                    <p class="discountprice hidden-sm hidden-md hidden-lg">-10%</p>
-
-                                    <h4>Luxury breakfast bundle</h4>
-                                    <h6 class="detail-text">- Nutella hazelnut chocolate spread
-                                        <strong>X 1</strong>
-                                    </h6>
-                                    <h6 class="detail-text">- Kellogg’s frosties
-                                        <strong>X 1</strong>
-                                    </h6>
-                                    <h6 class="detail-text">- Hershey’s strawberry syrup
-                                        <strong>X 1</strong>
-                                    </h6>
-                                    <div class="col-xs-12 col-sm-6 mobile-pad">
-                                        <div class="productcountdiv button-container">
-                                            <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                            <input type="text" name="qty" class="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                            <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
+        <div class="container-fluid mycart">
+            <div class="container container1">
+                <div class="row">
+                    <div class="col-md-8 no-pad mybunedit">
+                        <div class="panel panel-default productpanel">
+                            <div class="panel-body">
+                                <div class="row" style="padding-top:40px;  padding-bottom: 48px">
+                                    <div class="col-xs-1">
+                                        <div class="checkbox checkbox-info check-align">
+                                            <input id="brand1" type="checkbox" checked>
+                                            <label for="brand1">
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <h6 class="rate">
-                                            <span>45.00 AED</span> 45.00 AED</h6>
+                                    <div class="col-md-3 col-xs-4 mobright">
+                                        <p class="discountprice hidden-xs">-10%</p>
+                                        <img src="img/product2.png" class="img-responsive productimg">
+                                    </div>
+                                    <div class="col-md-7 col-xs-6">
+                                        <p class="discountprice mob-dprice hidden-sm hidden-md hidden-lg">-10%</p>
+                                        <h4>Luxury breakfast bundle</h4>
+                                        <ul class="detaillist hidden-xs">
+                                            <li>
+                                                <h6 class="detail-text">- Nutella hazelnut chocolate spread
+                                                    <strong>X 1</strong>
+                                                </h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="detail-text">- Kellogg’s frosties
+                                                    <strong>X 1</strong>
+                                                </h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="detail-text">- Hershey’s strawberry syrup
+                                                    <strong>X 1</strong>
+                                                </h6>
+                                            </li>
+                                        </ul>
+                                        <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
+                                            <div class="productcountdiv button-container">
+                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
+                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-8">
+                                            <h6 class="rate">
+                                                <span>45.00 AED</span> 45.00 AED</h6>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default productpanel">
-                        <div class="panel-body">
-                            <div class="row" style="margin-bottom: 10px">
-                                <div class="col-xs-1">
-
-                                    <div class="checkbox checkbox-info check-align">
-                                        <input id="brand2" type="checkbox">
-                                        <label for="brand2">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 mobright">
-                                    <p class="discountprice hidden-xs">-10%</p>
-
-                                    <img src="img/product3.png" class="img-responsive productimg">
-                                </div>
-                                <div class="col-xs-8 mobleft">
-                                    <p class="discountprice hidden-sm hidden-md hidden-lg">-10%</p>
-                                    <h4>Kellogg's rice Krispses</h4>
-                                    <h5>
-                                        <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                                    <div class="col-xs-12 col-sm-6 mobile-pad">
-                                        <div class="productcountdiv button-container">
-                                            <button class="btn btn-default productminus cart-qty-minus" value="-">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                            <input type="text" name="qty" class="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                            <button class="btn btn-default productplus cart-qty-plus" value="+">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
+                        <div class="panel panel-default productpanel">
+                            <div class="panel-body">
+                                <div class="row" style="padding-top:40px;  padding-bottom: 48px;">
+                                    <div class="col-xs-1">
+                                        <div class="checkbox checkbox-info check-align">
+                                            <input id="brand2" type="checkbox" checked>
+                                            <label for="brand2">
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <h6 class="rate">17.00 AED</h6>
+                                    <div class="col-md-3 col-xs-4 mobright">
+                                        <img src="img/product3.png" class="img-responsive productimg">
+                                    </div>
+                                    <div class="col-md-7 col-xs-6">
+                                        <h4>Kellogg's rice Krispses
+                                            <br>multi-grain shapes</h4>
+                                        <h5>
+                                            <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
+                                        <div class="col-xs-12 col-sm-6 col-md-4 mobile-pad no-pad">
+                                            <div class="productcountdiv button-container">
+                                                <button class="btn btn-default productminus cart-qty-minus" value="-">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
+                                                <button class="btn btn-default productplus cart-qty-plus" value="+">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-8">
+                                            <h6 class="rate">17.00 AED</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="shop-desktop">
-                        <a href="#">
-                            <h5 class="continue-text">+ Add more products</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4" id="summary-desktop">
-                    <div class="summary">
-                        <h4 class="order">Order Summary</h4>
-                        <div id="subtotal">
-                            <h5 class="total">Subtotal</h5>
-                            <h5 class="total" style="float: right;">62.00 AED</h5>
-                            <hr>
-                        </div>
-                        <div id="delivery">
-                            <h5 class="total">Delivery Charges</h5>
-                            <h5 class="total" style="float: right;">15.00 AED</h5>
-                        </div>
-                        <div id="savings" style="margin-top: 20px">
-                            <h5 class="total">
-                                <strong>savings</strong>
-                            </h5>
-                            <h5 class="total" style="float: right;">
-                                <strong>7.50 AED</strong>
-                            </h5>
-                        </div>
-                        <div id="total" style="margin-top: 20px">
-                            <h5 class="total">
-                                <strong>Grand total</strong>
-                                <br>
-                                <span>(inclusive of 5%VAT)</span>
-                            </h5>
-                            <h5 class="total" style="float: right;">
-                                <strong>50.00 AED</strong>
-                            </h5>
+
+
+
+                        <div id="shop-desktop">
+                            <a href="#">
+                                <h5 class="continue-text">+ Add more products</h5>
+                            </a>
                         </div>
                     </div>
-                    <button class="btn-proceed">Create(1/2)</button>
-                    <button class="btn-cancel">Cancel</button>
-                </div>
-                <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
-                    <!--   <button class="btn coupon-btn" data-toggle="modal" data-target="#myModal"><img src="img/coupon.png" class="coupon-img" alt="coupon"/> Have a coupon code</button>
+                    <div class="col-md-4 mybundleit" style="margin-top: 10px;" id="summary-desktop">
+                        <div class="summary bnd-products">
+                            <h4 class="order">Order Summary</h4>
                             <div id="subtotal">
                                 <h5 class="total">Subtotal</h5>
                                 <h5 class="total" style="float: right;">62.00 AED</h5>
+                                <hr>
                             </div>
-                            <hr>
                             <div id="delivery">
                                 <h5 class="total">Delivery Charges</h5>
                                 <h5 class="total" style="float: right;">15.00 AED</h5>
                             </div>
                             <div id="savings" style="margin-top: 20px">
-                                <h5 class="total"><strong>savings</strong></h5>
-                                <h5 class="total" style="float: right;"><strong>7.50 AED</strong></h5>
+                                <h5 class="total">
+                                    <strong>savings</strong>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong>7.50 AED</strong>
+                                </h5>
                             </div>
                             <div id="total" style="margin-top: 20px">
-                                <h5 class="total"><strong>Grand total</strong> <span>(inclusive of 5%VAT)</span></h5>
-                                <h5 class="total" style="float: right;"><strong>50.00 AED</strong></h5>
+                                <h5 class="total">
+                                    <strong>Grand total</strong>
+                                    <br>
+                                    <span>(inclusive of 5%VAT)</span>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong>50.00 AED</strong>
+                                </h5>
                             </div>
-                            <a href="#"><h5 class="shop-text"><i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue Shopping</h5></a> -->
-                    <div class="btn-align">
+                        </div>
+
                         <button class="btn-proceed">Create(1/2)</button>
                         <button class="btn-cancel">Cancel</button>
+
+                    </div>
+                </div>
+                <div class="row" id="summary-mobile">
+                    <div class="col-md-4 no-pad summary summary1">
+                        <div class="btn-align">
+                            <button class="btn-cancel">Cancel</button>
+                            <button class="btn-proceed">Create(1/2)</button>
+                        </div>
                     </div>
                 </div>
             </div>
