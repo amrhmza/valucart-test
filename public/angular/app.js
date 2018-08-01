@@ -32,6 +32,7 @@ app.constant("config", {
   changeDefaultAddress: baseurl + "/userProfile/makedefaultaddress",
   removeAddress: baseurl + "/userProfile/deleteaddress",
   user_profileUpdate: baseurl + "/userProfile/update",
+  shippinglistRemove: baseurl + "/shopping_list",
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

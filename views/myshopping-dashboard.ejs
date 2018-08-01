@@ -1,50 +1,55 @@
 <% include template/header %>
-    <div class="container-fluid mybundles">
+    <div class="container-fluid mybundles" ng-app="myapp" ng-controller="myshippingList">
         <div class="container">
             <div class="row" id="mybnd-desktop">
                 <div class="row text-center">
                     <h4>
                         <img src="img/mybundles.png" alt="mybundles" /> My shopping list</h4>
                 </div>
-                <div class="col-md-9 bn-list">
-                    <h5>Shopping list 01 (10 items)</h5>
+                <div class="row <%= (data.length>0)?'hidden':''%> empty-panel">
+                    <div class="col-md-9 bn-list">
+                        <h5>It looks, You Don't have any shipping list</h5>
+                    </div>
                 </div>
-                <div class="col-md-3 bn-img">
-                    <button class="bundlebtn">
-                        <img src="img/bn-edit.png" alt="bn-edit" />
-                    </button>
-                    <button class="bundlebtn">
-                        <img src="img/bn-del.png" alt="bn-edit" />
-                    </button>
+                <%
+                if(data.length>0){
+                    data.forEach(function(list){
+                %>
+                <div class="row shiplist_block">
+                    <div class="col-md-9 bn-list">
+                        <h5><%=list.sl_name%> (10 items)</h5>
+                    </div>
+                    <div class="col-md-3 bn-img">
+                        <a href="/myshopping/<%=list.sl_id%>" class="bundlebtn">
+                            <img src="img/bn-edit.png" alt="bn-edit" />
+                        </a>
+                        <a ng-click="removeShippingList(<%=list.sl_id%>, $event.target)" class="bundlebtn">
+                            <img src="img/bn-del.png" alt="bn-edit" />
+                        </a>
+                    </div>
                 </div>
-
-                <div class="col-md-9 bn-list">
-                    <h5>Shopping list 01 (15 items)</h5>
-                </div>
-                <div class="col-md-3 bn-img">
-                    <button class="bundlebtn">
-                        <img src="img/bn-edit.png" alt="bn-edit" />
-                    </button>
-                    <button class="bundlebtn">
-                        <img src="img/bn-del.png" alt="bn-edit" />
-                    </button>
-                </div>
+                <%        
+                    });
+                }
+                %>
             </div>
             <div class="row" id="mybnd-mobile">
                 <h4 class="text-center">My shopping list</h4>
+                <%
+                if(data.length>0){
+                    data.forEach(function(list){
+                %>
                 <div class="col-xs-12 bn-list">
-                    <h5>Shopping list 01 (10 items)</h5>
-                    <a href="#">
+                    <h5><%=list.sl_name%> (10 items)</h5>
+                    <a href="/myshopping/<%=list.sl_id%>">
                         <img src="img/bnd-list.png" alt="bnd-list" />
                     </a>
                 </div>
-                <div class="col-xs-12 bn-list">
-                    <h5>Shopping list 02 (10 items)</h5>
-                    <a href="#">
-                        <img src="img/bnd-list.png" alt="bnd-list" />
-                    </a>
-                </div>
-                <a href="home.html">
+                <%        
+                    });
+                }
+                %>
+                <a href="/">
                     <p class="end-text">Back to home</p>
                 </a>
             </div>
