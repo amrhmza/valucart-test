@@ -78,7 +78,9 @@ li.active.list-group-item {
 	float: left;
 	font-size: 17px;
 }
-
+.mycart .productpanel .favourite.wishpage .trash::after {
+    display: none;
+}
 @media (max-width: 767px){
     .bundledetailpage .productviewpanel .btn-info{
         border: none;

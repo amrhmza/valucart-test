@@ -32,7 +32,13 @@
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
-                    <p class="discountprice">-10%</p>
+                    <%
+                    if(data.response[0].pdt_percentage>0){
+                    %>
+                    <p class="discountprice"><%=data.response[0].pdt_percentage%>%</p>
+                    <%    
+                    }
+                    %>
                     <% 
                     if(cookies){
                         var userData=JSON.parse(cookies);

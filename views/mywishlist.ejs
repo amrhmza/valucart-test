@@ -31,9 +31,9 @@
                         <div class="panel-body">
                             <div class="row" style="padding-top:40px; padding-bottom: 48px">
                                 <div class="col-xs-4">
-                                    <p class="discountprice">-10%</p>
+                                    <!-- <p class="discountprice">-10%</p> -->
                                     <img src="<%= pro.p_image %>" class="img-responsive productimg">
-                                    <div class="col-xs-6 favourite">
+                                    <div class="col-xs-6 favourite wishpage">
                                         <i class="fa fa-trash-o trash" data-type="remove" ng-click="removeWish(<%=pro.w_product_id%>, <%=pro.w_is_bundle%>, $event.target)"></i>
                                     </div>
                                 </div>
@@ -44,7 +44,6 @@
                                     var product_url=proUrl+"/"+pro.w_product_id+"/"+pro_name;
                                     %>
                                     <h4><a href="<%= product_url%>"><%= pro.pd_name%></a></h4>
-                                    
                                     <div class="col-xs-12">
                                         <h6 class="rate">
                                             <span><%= pro.p_price%> AED</span> <%= pro.p_price%> AED</h6>

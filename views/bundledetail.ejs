@@ -33,7 +33,13 @@ let products= productData.product;
             <div class="container productlistpagec">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 productviewpanel">
-                        <p class="discountprice">-10%</p>
+                            <%
+                            if(products.pdt_percentage>0){
+                            %>
+                            <p class="discountprice"><%=products.pdt_percentage%>%</p>
+                            <%    
+                            }
+                            %>
                         <% 
                         if(cookies){
                             var userData=JSON.parse(cookies);
