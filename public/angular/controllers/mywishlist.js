@@ -31,7 +31,7 @@ app.controller("mywishlist", function(
         if(res=="success"){
           elem.closest(".productpanel").remove();
           var numItems = $('.productpanel').length;
-          if(numItems<=1){
+          if(numItems<1){
             $(".empty-panel").removeClass("hidden");
           }
           toastr.success(response.data.results);

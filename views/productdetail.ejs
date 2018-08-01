@@ -28,16 +28,30 @@
     <!--    Breadcrumb-->
 
     <!--    Product list starts here-->
-    <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="product_details">
+    <div class="container-fluid productdetailpage" ng-app="myapp" ng-controller="product_details">
         <div class="container productlistpagec">
             <div class="row">
                 <div class="col-md-6 col-sm-6 productviewpanel">
+                    <%
+                    if(data.response[0].pdt_percentage>0){
+                    %>
+                    <p class="discountprice"><%=data.response[0].pdt_percentage%>%</p>
+                    <%    
+                    }
+                    %>
                     <% 
                     if(cookies){
                         var userData=JSON.parse(cookies);
-                         if(userData.status=="success"){
-                     %>
-                     <i class="fa fa-heart wishheart <%=(data.response[0].wishlist)?'wishheartt':''%>" data-type="add" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)"></i>
+                        if(userData.status=="success"){
+                    %>
+                        <div class="wishlist-heart-group">
+                            <input name="1" id="product-1" type="checkbox"  data-type="<%=(data.response[0].wishlist)?'remove':'add'%>" ng-click="addwish(<%=data.response[0].pd_id%>, false, $event.target)" <%=(data.response[0].wishlist)?'checked':''%> />
+                            <label for="product-1" data-hover-text="Wish List">
+                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                    <g transform="translate(0,-952.36218)"><path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z" fill="transparent" id="heart-path" stroke="#494949" stroke-width="5" marker="none" visibility="visible" display="inline" overflow="visible"/></g>
+                                </svg>
+                            </label>
+                        </div>
                     <%
                         }
                     }
@@ -103,10 +117,12 @@
                                     let no=0;
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
-                                <li data-target="#productCarousel" data-slide-to="<%= pd_image.pi_id %>" class="<%= (no==0)?'active':'' %>"></li>
-                                <% no++; })
-                        } 
-                       %>
+                                <li data-target="#productCarousel" data-slide-to="<%= no%>" class="<%= (no==0)?'active':'' %>"></li>
+                            <% 
+                                no++; 
+                                });
+                            } 
+                            %>
                         </ol>
 
                         <!-- Wrapper for slides -->
@@ -116,7 +132,7 @@
                                     data.response[0].img.forEach(function(pd_image){
                                 %>
                                 <div class="item <%= (no==0)?'active':'' %>">
-                                    <img src="<%= pd_image.pi_image %>" alt="Los Angeles" style="height: 250px;margin: auto;">
+                                    <img src="<%= pd_image.pi_image %>" style="height: 250px;margin: auto;">
                                 </div>
                                 <% no++;})
                         } 

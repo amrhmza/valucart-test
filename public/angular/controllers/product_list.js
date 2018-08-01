@@ -44,6 +44,9 @@ app.controller("product_listing", function(
         }
       }
     }
+    if (filterdata.order_by) {
+      $scope.sort = filterdata.order_by;
+    }
   };
   /**
    * get product list for onload and as well in scroll
@@ -211,14 +214,12 @@ app.controller("product_listing", function(
       });
   };
   // Wishlist Add and Remove
-  $scope.addwish = function(product_id, is_bundle, item) {
-    var elem = angular.element(item);
-    var wtype = elem.attr("data-type");
+  $scope.addwish = function(product_id, item, index) {
     //console.log(wtype);
     let productData = {
       product_id: product_id,
-      is_bundle: is_bundle,
-      wish_type: wtype
+      is_bundle: false,
+      wish_type: item ? "remove" : "add"
     };
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
@@ -228,16 +229,12 @@ app.controller("product_listing", function(
     getWishList
       .addWish(productData, usertoken)
       .then(function(response) {
-        console.log(response);
         var res = response.data.msg;
         if (res == "success") {
-          var wishvalue = wtype == "add" ? "remove" : "add";
-          elem.attr("data-type", wishvalue);
-          if (wishvalue == "remove") {
-            elem.addClass("wishheartt");
+          $scope.productData[index].wishlist = item ? false : true;
+          if (item == false) {
             toastr.success(response.data.results);
           } else {
-            elem.removeClass("wishheartt");
             toastr.warning(response.data.results);
           }
         }

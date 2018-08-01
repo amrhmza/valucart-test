@@ -68,3 +68,26 @@ li.active.list-group-item {
 .checkbox-success input[type="radio"]:checked + label::after {
     color: #fff;
 }
+
+.bundledetailpage .productviewpanel .btn-info{
+	border: none;
+	border-radius: 0px;
+	padding: 8px 30px;
+	width: auto;
+	height: 82px;
+	float: left;
+	font-size: 17px;
+}
+.mycart .productpanel .favourite.wishpage .trash::after {
+    display: none;
+}
+@media (max-width: 767px){
+    .bundledetailpage .productviewpanel .btn-info{
+        border: none;
+        border-radius: 0px;
+        padding: 8px 8px;
+        width: 70%;
+        height: 60px;
+        font-size: 10px;
+    }
+}
