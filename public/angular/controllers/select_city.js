@@ -13,8 +13,10 @@ app.controller("select_city", function(
     if (typeof $scope.city_selected == "undefined") {
       toastr.warning("Please Select area!");
     } else {
-      localStorage.setItem("city", $scope.city_selected);
-      window.location.href = "/area/" + $scope.city_selected;
+      var selected_city = $scope.city_selected.split("-");
+      localStorage.setItem("city", selected_city[0]);
+      localStorage.setItem("city_name", selected_city[1]);
+      window.location.href = "/area/" + selected_city[0];
     }
   };
 });

@@ -14,7 +14,7 @@
                             if(city.city_is_avavilable)
                     %>
                             <li class="col-md-6 m30 pad0">
-                                <input type="radio" ng-model="city_selected" id="city_<%= city.city_id %>" ng-value="<%= city.city_id %>" name="city">
+                                <input type="radio" ng-model="city_selected" id="city_<%= city.city_id %>" ng-value="'<%= city.city_id %>-<%= city.city_name %>'" name="city">
                                 <label for="city_<%= city.city_id %>" class="radio-label">
                                     <%= city.city_name %>
                                 </label>

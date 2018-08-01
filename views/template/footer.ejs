@@ -138,7 +138,12 @@
 
     </div>
 </div>
-
+<script>
+        var city_name = localStorage.getItem('city_name');
+        if(city_name!=''){
+            $(".current_city").html(city_name);
+        }
+    </script>
 <script>
     var city = localStorage.getItem('city');
     var area = localStorage.getItem('area');
