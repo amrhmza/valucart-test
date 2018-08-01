@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
-    res.render("myshopping", {
+    res.render("edit-bundle", {
       menudata: menudata,
       angular: false,
       customjs: false,

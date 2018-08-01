@@ -36,6 +36,7 @@
     const subscribeRouter = require("../routes/subscribe");
     const wishlistRouter = require("../routes/mywishlist");
     const addressbookRouter = require("../routes/addressbook");
+    const editbundleRouter = require("../routes/edit-bundle");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -50,6 +51,7 @@
     /*** Bundle and product routes ***/
     app.use("/bundle-list", bundlelistRouter);
     app.use("/bundle-detail", bundledetailRouter);
+    app.use("/edit-bundle", editbundleRouter);
     app.use("/product-listing", productlistingRouter);
     app.use("/product-detail", productdetailsRouter);
 
