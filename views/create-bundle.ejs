@@ -1,87 +1,82 @@
-<% include template/myaccount/header %>
-    <!--    Breadcrumb-->
-    <!-- <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">My Cart</a></li>
-            </ul>
-        </div> -->
-    <!--    Breadcrumb-->
-    <!-- main section -->
-    <div class="container-fluid create-bundle">
-        <div class="container">
-            <div class="row" id="cBundle-desktop">
-                <h4>
-                    <img src="img/choose-bundle.png" alt="choose-bundle" /> Build your bundle</h4>
-                <p>You can now build your own bundle and subscribe to it . Answer a few questions to help us serve you at the
-                    right time.</p>
-            </div>
-            <div class="row" id="cBundle-mobile">
-                <div class="col-xs-3">
-                    <img src="img/choose-bundle.png" alt="choose-bundle" />
-                </div>
-                <div class="col-xs-9">
-                    <h4>Build your bundle</h4>
-                    <p>You can now build your own bundle and subscribe to it . Answer a few questions to help us serve you at
-                        the right time.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="edit-bundle">
-                    <h5 style="display: inline-block;">Bundle 01</h5>
-                    <img src="img/edit-bundle.png" alt="edit-bundle" />
-                </div>
-            </div>
-            <form>
-                <h5>How often do you refill these products?</h5>
-                <div class="row" style="margin-bottom: 30px;">
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_everyday" name="bundles" value="Everyday" checked />
-                        <label for="radio_everyday" class="bundle-check">Everyday</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_1Weeks" name="bundles" value="1Weeks" />
-                        <label for="radio_1Weeks" class="bundle-check">1 Weeks</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_2Weeks" name="bundles" value="2Weeks" />
-                        <label for="radio_2Weeks" class="bundle-check">2 Weeks</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_days" name="bundles" value="days" />
-                        <label for="radio_days" class="bundle-check">15 days</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_1month" name="bundles" value="1month" />
-                        <label for="radio_1month" class="bundle-check">1 month</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_2month" name="bundles" value="2month" />
-                        <label for="radio_2month" class="bundle-check">3 months</label>
-                    </div>
-                </div>
-
-                <h5>How long do you want the recurring to happen?</h5>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_3month" name="bundles1" value="3months" checked />
-                        <label for="radio_3month" class="bundle-check">3 months</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_6month" name="bundles1" value="6month" />
-                        <label for="radio_6month" class="bundle-check">6 months</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_9month" name="bundles1" value="9month" />
-                        <label for="radio_9month" class="bundle-check">9 months</label>
-                    </div>
-                    <div class="col-sm-3 col-xs-4">
-                        <input type="radio" id="radio_year" name="bundles1" value="year" />
-                        <label for="radio_year" class="bundle-check">1 year</label>
-                    </div>
-                </div>
-                <button class="btn btn-info hidden-sm hidden-md hidden-lg crbnextbtn">Next</button>
-            </form>
+<% include template/header %>
+<hr class="invis1">
+<div class="container-fluid create-bundle">
+    <div class="container">
+        <div class="row" id="cBundle-desktop">
+            <h4><img src="img/choose-bundle.png" alt="choose-bundle" /> Build your bundle</h4>
+            <p>You can now build your own bundle and subscribe to it . Answer a few questions to help us serve you at the right time.</p>
         </div>
+        <div class="row" id="cBundle-mobile">
+            <div class="col-xs-3">
+                <img src="img/choose-bundle.png" alt="choose-bundle" />
+            </div>
+            <div class="col-xs-9">
+                <h4>Build your bundle</h4>
+                <p>You can now build your own bundle and subscribe to it . Answer a few questions to help us serve you at the right time.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="edit-bundle">
+                <h5 style="display: inline-block;">Bundle 01</h5>
+                <a href="#" data-toggle="modal" data-target="#myModal1"><img src="img/edit-bundle.png" alt="edit-bundle"/></a>
+            </div>
+        </div>
+        <form>
+            <h5>How often do you refill these products?</h5>
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_everyday" name="bundles" value="Everyday" checked />
+                    <label for="radio_everyday" class="bundle-check">Everyday</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_1Weeks" name="bundles" value="1Weeks" />
+                    <label for="radio_1Weeks" class="bundle-check">1 Weeks</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_2Weeks" name="bundles" value="2Weeks" />
+                    <label for="radio_2Weeks" class="bundle-check">2 Weeks</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_days" name="bundles" value="days" />
+                    <label for="radio_days" class="bundle-check">15 days</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_1month" name="bundles" value="1month" />
+                    <label for="radio_1month" class="bundle-check">1 month</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_2month" name="bundles" value="2month" />
+                    <label for="radio_2month" class="bundle-check">3 months</label>
+                </div>
+            </div>
+
+            <h5>How long do you want the recurring to happen?</h5>
+            <div class="row">
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_3month" name="bundles1" value="3months" checked />
+                    <label for="radio_3month" class="bundle-check">3 months</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_6month" name="bundles1" value="6month" />
+                    <label for="radio_6month" class="bundle-check">6 months</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_9month" name="bundles1" value="9month" />
+                    <label for="radio_9month" class="bundle-check">9 months</label>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <input type="radio" id="radio_year" name="bundles1" value="year" />
+                    <label for="radio_year" class="bundle-check">1 year</label>
+                </div>
+            </div>
+            <div class="mobile-block-btn"> 
+                
+                <button class="btn btn-info btn-block  crbnextbtn">Next</button>
+                
+                
+            </div>
+           
+        </form>
     </div>
+</div>
     <% include template/footer %>
