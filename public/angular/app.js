@@ -24,14 +24,15 @@ app.constant("config", {
   submitBundle_review: baseurl + "/product/review/post",
   addToCart: baseurl + "/cart/add",
   cartupdate: baseurl + "/cart/quantity",
-  addWishList: baseurl+'/wishList/addproducttowishlist',
-  removeWishList: baseurl+'/wishList/removewishlist',
+  addWishList: baseurl + "/wishList/addproducttowishlist",
+  removeWishList: baseurl + "/wishList/removewishlist",
   change_password: baseurl + "/auth/resetpassword",
   addAddress: baseurl + "/userProfile/addnewaddress",
   updateAddress: baseurl + "/userProfile/updateaddress",
   changeDefaultAddress: baseurl + "/userProfile/makedefaultaddress",
   removeAddress: baseurl + "/userProfile/deleteaddress",
   user_profileUpdate: baseurl + "/userProfile/update",
+  view_mybundle: baseurl + "/user_bundle/details/get"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
