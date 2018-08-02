@@ -32,7 +32,8 @@ app.constant("config", {
   changeDefaultAddress: baseurl + "/userProfile/makedefaultaddress",
   removeAddress: baseurl + "/userProfile/deleteaddress",
   user_profileUpdate: baseurl + "/userProfile/update",
-  view_mybundle: baseurl + "/user_bundle/details/get"
+  view_mybundle: baseurl + "/user_bundle/details/get",
+  edit_mybundle: baseurl + "/user_bundle/edit/put"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

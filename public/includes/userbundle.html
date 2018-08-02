@@ -20,12 +20,13 @@
                 </p>
                 <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
                     <div class="productcountdiv button-container">
-                        <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',bundle.ubp_pd_id)" value="-">
+                        <button type="button" class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',bundle.ubp_id)" value="-">
                             <i class="fa fa-minus"></i>
                         </button>
                         <!--<p class="productcount">1</p>-->
-                        <input type="text" name="qty_{{bundle.ubp_pd_id}}" maxlength="12" value="{{bundle.ubp_qty}}" class="input-text qty  productcount" disabled/>
-                        <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',bundle.ubp_pd_id)" value="+">
+                        <input type="text" name="qty_{{bundle.ubp_id}}" maxlength="12" value="{{bundle.ubp_qty}}" class="input-text qty  productcount"
+                            disabled/>
+                        <button type="button" class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',bundle.ubp_id)" value="+">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
