@@ -2,6 +2,7 @@ app.controller("userbundle", function(
   $scope,
   $rootScope,
   $location,
+  $window,
   $http,
   $timeout,
   $filter,
@@ -29,10 +30,14 @@ app.controller("userbundle", function(
     if (!isNaN(currentVal)) {
       // Increment
       $("input[name=" + fieldName + index + "]").val(currentVal + 1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",currentVal + 1);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",1);
     }
+
+    $scope.cartTotal();
   };
 
   // This button will decrement the value till 0
@@ -43,11 +48,30 @@ app.controller("userbundle", function(
     if (!isNaN(currentVal) && currentVal > 1) {
       // Increment
       $("input[name=" + fieldName + index + "]").val(currentVal - 1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",currentVal - 1);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
     }
+    $scope.cartTotal();
   };
+
+  $scope.cartTotal= function(){
+    var subtotal=0, savingstotal=0;
+      angular.forEach(angular.element(".productcount"), function(value, key){
+        var a = angular.element(value);
+        subtotal +=parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
+        savingstotal +=parseFloat(a.attr("data-savings")) * parseFloat(a.attr("data-qty"));
+      });
+      var delivery_price= parseInt(15);
+      var grandtotal= parseFloat(subtotal)+ parseFloat(delivery_price);
+      $(".subTotal").html(subtotal+" AED");
+      $(".savingsTotal").html(subtotal+" AED");
+      $(".grandTotal").html(grandtotal+" AED");
+      $scope.grandTotal= grandtotal;
+  };
+
   $scope.change_title = function() {
     if ($scope.edit_title == 0) {
       $scope.edit_title = 1;
@@ -62,7 +86,7 @@ app.controller("userbundle", function(
   cp.onsubmit = function() {
     let product_ids = [];
     $scope.mybundle.forEach(element => {
-      console.log(element.ubp_id);
+      //console.log(element.ubp_id);
       if ($("#brand_" + element.ubp_id).is(":checked") == true) {
         let bundle_data = [];
         if (element.ubp_p_is_bundle == 1) {
@@ -92,7 +116,11 @@ app.controller("userbundle", function(
     userbundle
       .editBundle(editdata)
       .then(function(response) {
-        console.log(response);
+        var res= response.data.results;
+        if(res.msg=="success"){
+          toastr.success("Update Successfully..!");
+          $window.location.href="/mybundles";
+        }
       })
       .catch(function(response) {
         console.log(response);

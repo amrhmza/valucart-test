@@ -80,6 +80,7 @@ app.controller("myshippingList", function(
       $(".subTotal").html(subtotal+" AED");
       $(".savingsTotal").html(subtotal+" AED");
       $(".grandTotal").html(grandtotal+" AED");
+      $scope.grandTotal= grandtotal;
   };
 
   $scope.updateShiplist=function(listData, listId) {

@@ -83,12 +83,15 @@ li.active.list-group-item {
 }
 .title-input{
     background: #fbfbfb;
-    border: none;
-    border-bottom: 2px solid;
+    border: 2px solid;
     color: black;
     font-weight: bold;
     padding: 0px 10px;
 }
+.bundlebtn:hover, .bundlebtn:focus{
+	text-decoration: none;
+}
+
 @media (max-width: 767px){
     .bundledetailpage .productviewpanel .btn-info{
         border: none;
