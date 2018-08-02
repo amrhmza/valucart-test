@@ -42,10 +42,13 @@ app.controller("myshippingList", function(
     if (!isNaN(currentVal)) {
       // Increment
       $("input[name=" + fieldName + index + "]").val(currentVal + 1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",currentVal + 1);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",1);
     }
+    $scope.cartTotal();
   };
 
   // This button will decrement the value till 0
@@ -56,16 +59,68 @@ app.controller("myshippingList", function(
     if (!isNaN(currentVal) && currentVal > 1) {
       // Increment
       $("input[name=" + fieldName + index + "]").val(currentVal - 1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",currentVal - 1);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
+      $("input[name=" + fieldName + index + "]").attr("data-qty",1);
     }
+    $scope.cartTotal();
   };
 
-  var shipplistform = document.forms.shipplistForm,
-    elem = shipplistform.elements;
-  shipplistform.onsubmit = function() {
-      //console.log(elem.cnew_password.proudct_id);
+  $scope.cartTotal= function(){
+    var subtotal=0, savingstotal=0;
+      angular.forEach(angular.element(".productcount"), function(value, key){
+        var a = angular.element(value);
+        subtotal +=parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
+        savingstotal +=parseFloat(a.attr("data-savings")) * parseFloat(a.attr("data-qty"));
+      });
+      var delivery_price= parseInt(15);
+      var grandtotal= parseFloat(subtotal)+ parseFloat(delivery_price);
+      $(".subTotal").html(subtotal+" AED");
+      $(".savingsTotal").html(subtotal+" AED");
+      $(".grandTotal").html(grandtotal+" AED");
+  };
+
+  $scope.updateShiplist=function(listData, listId) {
+    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    var usertoken= (userAuth!="")?userAuth.token: "";
+
+    myShipping
+      .updateShipping(listData, listId, usertoken)
+      .then(function(response) {
+        console.log(response);
+        var res= response.data.results;
+        if(res==true){
+          toastr.success(response.data.results);
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+
+  $scope.getshiplist= function(){
+    var sTitle=$(".shiplistTitle").val();
+    var sList=[];
+    angular.forEach(angular.element(".productcount"), function(value, key){
+        var a = angular.element(value);
+        var pdata={"slprod_id":a.data("id"), "qty":a.attr("data-qty")}
+        sList.push(pdata);
+    });
+    
+    var sData={"sl_name":sTitle, "item":sList};
+    var sId= $(".shiplistId").val();
+    //console.log(sList);
+    $scope.updateShiplist(sData,sId);
+  };
+
+  $scope.change_title = function() {
+    if ($scope.edit_title == 0) {
+      $scope.edit_title = 1;
+    } else {
+      $scope.edit_title = 0;
+    }
   };
 
 });

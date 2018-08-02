@@ -181,7 +181,7 @@ let products= productData.product;
                                         <h5 style="display: inline-block" class="offeredprice">
                                             <%= productData.pb_price;%> AED</h5>
                                         <h6 style="display: inline-block; margin-left: 10px">
-                                            <%= productData.pb_price;%> AED</h6>
+                                            <%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED</h6>
                                     </div>
 
 

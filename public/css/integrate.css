@@ -81,6 +81,14 @@ li.active.list-group-item {
 .mycart .productpanel .favourite.wishpage .trash::after {
     display: none;
 }
+.title-input{
+    background: #fbfbfb;
+    border: none;
+    border-bottom: 2px solid;
+    color: black;
+    font-weight: bold;
+    padding: 0px 10px;
+}
 @media (max-width: 767px){
     .bundledetailpage .productviewpanel .btn-info{
         border: none;
