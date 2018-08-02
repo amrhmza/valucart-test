@@ -1,5 +1,5 @@
 <% include template/header  %>
-    <div class="container-fluid mycart" style="margin-bottom: 40px">
+    <div class="container-fluid mycart" style="margin-bottom: 40px" ng-app="myapp" ng-controller="checkout">
         <div class="container payment">
             <div class="row">
                 <div class="col-md-6 col-sm-12 no-pad">
@@ -16,109 +16,7 @@
                         </div>
                         <div class="tab-content clearfix">
                             <div class="tab-pane active" id="a1">
-                                <div class="panel-group checkout_address">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#collapse1">Select address</a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse1" class="panel-collapse collapse in select_address">
-                                            <div class="panel-body">
-                                                <div class="row radios">
-
-                                                    <div class="col-sm-12 pannel_addressbook">
-                                                        <div class="panel1 panel-default1 productpanel1">
-                                                            <div class="panel-body1">
-                                                                <div class="row">
-                                                                    <div class="col-xs-12">
-                                                                        <h6 class="add-title">
-                                                                            Address - 1
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-xs-1" style="padding-left: 0px;">
-                                                                        <div class="radios pl-6">
-                                                                            <input type="radio" id="address1" name="radio-group">
-                                                                            <label for="address1" class="radio"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-xs-11" style="padding-left: 0px;">
-                                                                        <h6 class="addname">
-
-                                                                        </h6>
-                                                                        <h5 class="add-ress">
-                                                                            3/3/1/Zcodia Telephone colony, adambakkam
-                                                                            <br> chennai 600088
-                                                                            <br> 9751461443
-                                                                        </h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#collapse2">Add new address</a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse2" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <form style="padding: 1px;background:none">
-                                                    <div class="form-group marg-btm">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">NAME</label>
-                                                    </div>
-                                                    <div class="row form-align">
-                                                        <div class="col-sm-1 col-xs-2">
-                                                            <div class="form-group marg-btm">
-                                                                <label class="label-num" for="phone">+971</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-11 col-xs-10">
-                                                            <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                                <input type="text" id="name" class="form-control form-control1">
-                                                                <label class="form-control-placeholder" for="name">PHONE NUMBER</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">CITY</label>
-                                                    </div>
-                                                    <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">AREA</label>
-                                                    </div>
-                                                    <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">ROAD/STREET</label>
-                                                    </div>
-                                                    <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">BUILDING NAME</label>
-                                                    </div>
-                                                    <div class="form-group marg-btm" style="margin-top: 35px;">
-                                                        <input type="text" id="name" class="form-control form-control1">
-                                                        <label class="form-control-placeholder" for="name">FLOOR/FLAT NO</label>
-                                                    </div>
-                                                    <div class="slide-three margin-top">
-                                                        <input type="checkbox" id="slide-three" />
-                                                        <label for="slide-three" class="check-label">Set this as my default address</label>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div ng-include="'includes/checkoutAddress.html'"></div>
                             </div>
                             <div class="tab-pane" id="a2">
                                 <p class="paymentmobtitle hidden-md hidden-sm hidden-lg">Payment options</p>
@@ -126,7 +24,8 @@
                                 <form>
                                     <div class="card-mode">
                                         <div class="radio">
-                                            <input type="radio" id="test1" name="radio-group" checked>
+                                            <input type="radio" id="test1" ng-checked="disabled==1" ng-true-value="1" ng-false-value="2" ng-model="disabled" name="radio-group"
+                                                />
                                             <label for="test1">Credit/Debit card</label>
                                         </div>
                                     </div>
@@ -156,7 +55,7 @@
                                     </div>
                                     <div class="card-mode" style="margin-top: 30px;margin-bottom: 30px;">
                                         <div class="radio">
-                                            <input type="radio" id="test2" name="radio-group">
+                                            <input type="radio" ng-checked="disabled==2" ng-true-value="2" ng-false-value="1" ng-model="disabled" id="test2" name="radio-group">
                                             <label for="test2">Cash on Delivery</label>
                                         </div>
                                     </div>
@@ -212,9 +111,18 @@
                             </h5>
                         </div>
                     </div>
-                    <a href="payment">
-                        <button class="btn-proceed">Proceed to checkout</button>
-                    </a>
+                    <form action="/checkout/process" method="POST">
+
+                        <% if(typeof posted!="undefined"){
+                        posted.cart_id.forEach(function(cart){ 
+                                %>
+                            <input type="hidden" name="cart_id" value="<%= cart %>">
+                            <% })}%>
+                            <input type="hidden" name="address_id" value="{{address_id}}">
+                            <input type="hidden" name="paytype" value="{{disabled}}">
+                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+
+                    </form>
                 </div>
 
                 <div class="col-md-4 no-pad summary summary1" id="summary-mobile">

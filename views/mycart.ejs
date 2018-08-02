@@ -21,7 +21,7 @@
                             <h4>No Items In Cart</h4>
                         </div>
                     </div>
-                        <% if(data!="undefined"){
+                    <% if(data!="undefined"){
                             data.forEach(function(cart){ 
                             %>
                         <div class="panel panel-default productpanel">
@@ -47,8 +47,7 @@
                                                                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                                                                 version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
                                                                 <g transform="translate(0,-952.36218)">
-                                                                    <path style="color:#494949;enable-background:accumulate;"
-                                                                        d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                                    <path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
                                                                         fill="transparent" id="heart-path" stroke="#494949" stroke-width="5"
                                                                         marker="none" visibility="visible" display="inline" overflow="visible"
                                                                     />
@@ -74,8 +73,7 @@
                                                     </button>
                                                     <!--<p class="productcount">1</p>-->
                                                     <input type="text" name="qty_<%= cart.cart_id %>" maxlength="12" data-qty="<%= cart.quantity %>" data-price="<%= cart.price %>"
-                                                    value="<%= cart.quantity %>" class="input-text qty productcount"
-                                                        disabled/>
+                                                        value="<%= cart.quantity %>" class="input-text qty productcount" disabled/>
                                                     <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',<%= cart.cart_id %>)" value="+">
                                                         <i class="fa fa-plus"></i>
                                                     </button>
@@ -123,8 +121,10 @@
                                     cart_sum+=Number(cart_total.price)*Number(cart_total.quantity); 
                                 })%>
                                 <h5 class="total" style="float: right;">
-                                    <span class="c_subtotal"><%= cart_sum %></span> AED</h5>                                
-                                    <hr>
+                                    <span class="c_subtotal">
+                                        <%= cart_sum %>
+                                    </span> AED</h5>
+                                <hr>
                         </div>
                         <div id="delivery">
                             <h5 class="total">Delivery Charges</h5>
@@ -145,14 +145,22 @@
                                 <span>(inclusive of 5%VAT)</span>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong class="c_gtotal"><%=Number(cart_sum)+Number(15.00) %></strong><strong> AED</strong>
+                                <strong class="c_gtotal">
+                                    <%=Number(cart_sum)+Number(15.00) %>
+                                </strong>
+                                <strong> AED</strong>
                             </h5>
                         </div>
                         <%  } %>
                     </div>
-                    <a href="payment.html">
-                        <button class="btn-proceed">Proceed to checkout</button>
-                    </a>
+                    <form action="checkout" method="POST">
+                        <% if(data!="undefined"){
+                                    data.forEach(function(cart){ 
+                                    %>
+                            <input type="hidden" name="cart_id" value="<%=cart.cart_id%>"/>
+                            <% })}%>
+                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+                    </form>
                 </div>
 
                 <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
@@ -184,13 +192,20 @@
                             <strong>50.00 AED</strong>
                         </h5>
                     </div>
-                    <a href="#">
+                    <a href="">
                         <h5 class="shop-text">
                             <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue Shopping</h5>
                     </a>
-                    <a href="payment.html">
-                        <button class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
-                    </a>
+                    <form action="/checkout" method="POST"></form>
+                   
+                        <% if(data!="undefined"){
+                                    data.forEach(function(cart){ 
+                                    %>
+                            <input type="hidden" name="cart_id" value="<%=cart.cart_id%>">
+                            <% })}%>
+                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+                    
+                    </form>
                 </div>
             </div>
         </div>

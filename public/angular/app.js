@@ -25,8 +25,8 @@ app.constant("config", {
   addToCart: baseurl + "/cart/add",
   cartupdate: baseurl + "/cart/quantity",
   cartRemove: baseurl + "/cart/remove",
-  addWishList: baseurl+'/wishList/addproducttowishlist',
-  removeWishList: baseurl+'/wishList/removewishlist',
+  addWishList: baseurl + "/wishList/addproducttowishlist",
+  removeWishList: baseurl + "/wishList/removewishlist",
   change_password: baseurl + "/auth/resetpassword",
   addAddress: baseurl + "/userProfile/addnewaddress",
   updateAddress: baseurl + "/userProfile/updateaddress",
@@ -36,6 +36,7 @@ app.constant("config", {
   view_mybundle: baseurl + "/user_bundle/details/get",
   edit_mybundle: baseurl + "/user_bundle/edit/put",
   shppingListUrl: baseurl + "/shopping_list",
+  addressList: baseurl + "/userProfile/useraddresslist"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

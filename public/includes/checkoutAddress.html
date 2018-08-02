@@ -1,0 +1,98 @@
+<div class="panel-group checkout_address" data-ng-init="onloadFOrmElement()">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Select address</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in select_address">
+                <div class="panel-body">
+                    <div class="row radios">
+
+                        <div class="col-sm-12 pannel_addressbook" ng-repeat="address in addresslist">
+                            <div class="panel1 panel-default1 productpanel1">
+                                <div class="panel-body1">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h6 class="add-title">
+                                                Address - {{$index+1}}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-1" style="padding-left: 0px;">
+                                            <div class="radios pl-6">
+                                                <input type="radio" id="address{{$index}}" name="radio-group">
+                                                <label for="address{{$index}}" class="radio"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11" style="padding-left: 0px;">
+                                            <h6 class="addname">
+
+                                            </h6>
+                                            <h5 class="add-ress">
+                                                3/3/1/Zcodia Telephone colony, adambakkam
+                                                <br> chennai 600088
+                                                <br> 9751461443
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse2">Add new address</a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <form name="newAddress" method="post" style="padding: 1px;background:none">
+                        <div class="form-group marg-btm">
+                            <input type="text" id="name" name="address_name" class="form-control form-control1">
+                            <label class="form-control-placeholder" for="name">NAME</label>
+                        </div>
+                        <div class="row form-align">
+                            <div class="col-sm-1 col-xs-2">
+                                <div class="form-group marg-btm">
+                                    <label class="label-num" for="phone">+971</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-11 col-xs-10">
+                                <div class="form-group marg-btm" style="margin-top: 35px;">
+                                    <input type="text" id="phone" name="phone_no" class="form-control form-control1">
+                                    <label class="form-control-placeholder" for="name">PHONE NUMBER</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group marg-btm" style="margin-top: 35px;">
+                            <input type="text" id="city" name="city" class="form-control form-control1">
+                            <label class="form-control-placeholder" for="city">CITY</label>
+                        </div>
+                        <div class="form-group marg-btm" style="margin-top: 35px;">
+                            <input type="text" id="street" name="street" class="form-control form-control1">
+                            <label class="form-control-placeholder" for="street">ROAD/STREET</label>
+                        </div>
+                        <div class="form-group marg-btm" style="margin-top: 35px;">
+                            <input type="text" id="flat" name="flat" class="form-control form-control1">
+                            <label class="form-control-placeholder" for="flat">FLOOR/FLAT NO</label>
+                        </div>
+                        <div class="form-group marg-btm" style="margin-top: 35px;">
+                            <input type="text" id="postalcode" name="postalcode" class="form-control form-control1">
+                            <label class="form-control-placeholder" for="postalcode">ZIP Code</label>
+                        </div>
+                        <div class="slide-three margin-top">
+                            <input type="checkbox" name="is_default" id="slide-three" />
+                            <label for="slide-three" class="check-label">Set this as my default address</label>
+                        </div>
+                        <button type="submit" class="btn-proceed">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
