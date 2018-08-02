@@ -62,4 +62,32 @@ app.controller("cart", function(
         // toastr.warning(response.data.results.msg);
       });
   };
+
+  $scope.removeCart = function(cart_id, is_bundle, item) {
+    var elem= angular.element(item);
+    let productData = {
+      ct_id: cart_id
+    };
+    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    var usertoken= (userAuth!="")?userAuth.token: "";
+
+    cart
+      .removeCart(productData, usertoken)
+      .then(function(response) {
+        console.log(response);
+        var res= response.data.results;
+        if(res.response==1){
+          elem.closest(".productpanel").remove();
+          var numItems = $('.productpanel').length;
+          if(numItems<1){
+            $(".empty-panel").removeClass("hidden");
+          }
+          toastr.success(res.msg);
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+
 });

@@ -25,6 +25,28 @@ app.factory("cart", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    removeCart: function(productData, userData) {
+      var q = $q.defer();
+      var suggestURL = config.cartRemove;
+      var data = productData;
+      $http({
+        method: "DELETE",
+        url: suggestURL,
+        type: "json",
+        data: data,
+        headers: {
+          Authorization: "Bearer " + userData,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });
