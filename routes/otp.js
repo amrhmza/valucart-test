@@ -3,7 +3,24 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('otp', { title: '' });
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    res.render("otp", {
+      angular: true,
+      customjs: true,
+      cookies: cookies,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/verify_otp.js",
+        "angular/controllers/verify_otp.js"
+      ]
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      error: error
+    });
+  }
 });
 
 module.exports = router;

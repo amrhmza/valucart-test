@@ -36,6 +36,7 @@ app.constant("config", {
   view_mybundle: baseurl + "/user_bundle/details/get",
   edit_mybundle: baseurl + "/user_bundle/edit/put",
   shppingListUrl: baseurl + "/shopping_list",
+  emailVerify: baseurl + "/auth/otpverify",
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
