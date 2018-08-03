@@ -332,3 +332,8 @@ li.active.list-group-item {
 .mb-0 {
     margin-bottom: 0 !important;
 }
+.line-navbar-two .lnt-dropdown-mega-menu .lnt-subcategroy-carousel-wrap .lnt-subcategory ul li:last-child {
+    padding: 20px 20px;
+    background-image: url(../img/arrowbg.png);
+    background-position: 80% 50%;
+}

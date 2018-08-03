@@ -116,14 +116,8 @@
                         </h5>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
-                            <% if(typeof data!="undefined"){
-                                let cart_sum = 0;
-                                data.forEach(function(cart_total){
-                                    cart_sum+=Number(cart_total.price)*Number(cart_total.quantity); 
-                                })%>
                                 <h5 class="total" style="float: right;">
-                                    <span class="c_subtotal">
-                                        <%= cart_sum %>
+                                    <span class="c_subtotal" ng-bind-html="cartGrand">
                                     </span> AED</h5>
                                 <hr>
                         </div>
@@ -146,13 +140,12 @@
                                 <span>(inclusive of 5%VAT)</span>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong class="c_gtotal">
-                                    <%=Number(cart_sum)+Number(15.00) %>
+                                <strong class="c_gtotal" ng-bind-html="cartGrand + 15">
+                                    
                                 </strong>
                                 <strong> AED</strong>
                             </h5>
                         </div>
-                        <%  } %>
                     </div>
                     <form action="checkout" method="POST">
                         <% if(data!="undefined"){
@@ -170,14 +163,14 @@
                         <img src="img/coupon.png" class="coupon-img" alt="coupon" /> Have a coupon code</button>
                     <div id="subtotal">
                         <h5 class="total">Subtotal</h5>
-                        <h5 class="total" style="float: right;">62.00 AED</h5>
+                        <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand"></strong> AED</h5>
                     </div>
                     <hr>
                     <div id="delivery">
                         <h5 class="total">Delivery Charges</h5>
                         <h5 class="total" style="float: right;">15.00 AED</h5>
                     </div>
-                    <div id="savings" style="margin-top: 20px">
+                    <div id="savings" style="margin-top: 20px" class="hidden">
                         <h5 class="total">
                             <strong>savings</strong>
                         </h5>
@@ -191,7 +184,7 @@
                             <span>(inclusive of 5%VAT)</span>
                         </h5>
                         <h5 class="total" style="float: right;">
-                            <strong>50.00 AED</strong>
+                            <strong ng-bind-html="cartGrand + 15"></strong><strong> AED</strong>
                         </h5>
                     </div>
                     <a href="">
@@ -213,6 +206,10 @@
             </div>
         </div>
     </div>
-
+    <script>
+            app.constant("cartData", {
+                'cartSum': <%= cart_sum %> 
+            });
+    </script>
     <!--     Product list ends here-->
     <% include template/footer %>

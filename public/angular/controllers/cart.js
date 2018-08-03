@@ -6,10 +6,11 @@ app.controller("cart", function(
   $timeout,
   $filter,
   config,
-  cart
+  cart,
+  cartData
 ) {
   $scope.qty = 1;
-
+  $scope.cartGrand=cartData.cartSum
   $scope.addtocart = function(data) {
     product_details
       .addToCart($scope.qty, data)
@@ -111,7 +112,7 @@ app.controller("cart", function(
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
     });
     var grand_total = parseFloat(ctotal) + parseFloat(delivery_charge);
-    $(".c_subtotal").html(ctotal);
-    $(".c_gtotal").html(grand_total);
+    $scope.cartGrand=cartData.cartSum= grand_total;
+    console.log();
   };
 });

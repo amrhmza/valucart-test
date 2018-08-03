@@ -17,10 +17,17 @@ router.get("/", async (req, res, next) => {
       // if (_.isEmpty(data) == true) {
       //   throw data;
       // }
+      if(data!=""){
+        var cart_sum = 0;
+        data.forEach(function(cart_total){
+            cart_sum+=Number(cart_total.price)*Number(cart_total.quantity); 
+        });
+      }
       res.render("mycart", {
         data: data,
         cookies: cookies,
         menudata: menudata,
+        cart_sum:cart_sum,
         angular: true,
         customjs: true,
         jslist: [
