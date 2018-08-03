@@ -25,11 +25,16 @@
                     url: 'http://18.191.0.240:3000/auth/login'
                 }).done(function(resp){
                     if(resp.status=="success"){
-                        //var response= {vcartAuth:true, vcartAuthData: resp};
-                        //console.log(JSON.stringify(response));
+                        resp.useremail= username;
+                        console.log(JSON.stringify(resp));
 
                         $.cookie('vcartAuth', JSON.stringify(resp), { expires: 7, path: '/' });
-                        location. reload(true);
+                        if(!resp.is_email_verified){
+                            var base_url = window.location.origin;
+                            window.location.replace(base_url+"/otp");
+                        }
+                        else
+                            location. reload(true);
                     }
                     else{
                         $(".login-action-msg").html(resp.status).addClass("has-error");
@@ -52,5 +57,12 @@
 
             location. reload(true);
         });
+        
+        /* var vCook= $.cookie("vcartAuth");
+        if(vCook){
+            var emailVerify = JSON.parse(vCook).is_email_verified;
+            if(!emailVerify)
+                window.location.href="/otp";
+        } */
     });
 </script>
