@@ -9,8 +9,9 @@ router.post("/", async (req, res, next) => {
       res.redirect("/");
       res.end();
     } else {
-      console.log(req.body);
-      
+      if (typeof req.body.cart_id == "string") {
+        req.body.cart_id = [req.body.cart_id];
+      }
       res.render("payment", {
         cookies: cookies,
         data: req.body,

@@ -184,7 +184,7 @@
                             <span>(inclusive of 5%VAT)</span>
                         </h5>
                         <h5 class="total" style="float: right;">
-                            <strong ng-bind-html="cartGrand + 15"></strong><strong> AED</strong>
+                            <strong ng-bind-html="(cartGrand) + 15"></strong><strong> AED</strong>
                         </h5>
                     </div>
                     <a href="">
@@ -196,7 +196,7 @@
                         <% if(typeof data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
-                            <input type="hidden" name="cart_id" value="<%=cart.cart_id%>">
+                            <input type="hidden" name="cart_id[]" value="<%=cart.cart_id%>">
                             <% })}%>
                                 <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
                     

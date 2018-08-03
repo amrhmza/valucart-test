@@ -10,7 +10,7 @@ app.controller("cart", function(
   cartData
 ) {
   $scope.qty = 1;
-  $scope.cartGrand=cartData.cartSum
+  $scope.cartGrand = cartData.cartSum;
   $scope.addtocart = function(data) {
     product_details
       .addToCart($scope.qty, data)
@@ -77,22 +77,25 @@ app.controller("cart", function(
   };
 
   $scope.removeCart = function(cart_id, is_bundle, item) {
-    var elem= angular.element(item);
+    var elem = angular.element(item);
     let productData = {
       ct_id: cart_id
     };
-    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
-    var usertoken= (userAuth!="")?userAuth.token: "";
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
 
     cart
       .removeCart(productData, usertoken)
       .then(function(response) {
         console.log(response);
-        var res= response.data.results;
-        if(res.response==1){
+        var res = response.data.results;
+        if (res.response == 1) {
           elem.closest(".productpanel").remove();
-          var numItems = $('.productpanel').length;
-          if(numItems<1){
+          var numItems = $(".productpanel").length;
+          if (numItems < 1) {
+            $scope.cartTotal();
             $(".empty-panel").removeClass("hidden");
           }
           toastr.success(res.msg);
@@ -111,8 +114,7 @@ app.controller("cart", function(
       ctotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
     });
-    var grand_total = parseFloat(ctotal) + parseFloat(delivery_charge);
-    $scope.cartGrand=cartData.cartSum= grand_total;
-    console.log();
+    var grand_total = parseFloat(ctotal);
+    $scope.cartGrand = grand_total;
   };
 });
