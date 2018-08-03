@@ -8,11 +8,15 @@ app.controller("checkout", function(
   config,
   addNewAddress
 ) {
-  $scope.disabled = 1;
+  $scope.disabled = "";
+  $scope.address_id = "";
+  $scope.addresschange = function(data) {
+    $scope.address_id = data;
+  };
   addNewAddress
     .getlist()
     .then(function(response) {
-      $scope.addresslist = response.data.results;
+      $scope.addresslist = response.data.results.response;
     })
     .catch(function(response) {
       console.log(response);
@@ -66,20 +70,26 @@ app.controller("checkout", function(
         var userToken = userAuth != "" ? userAuth.token : "";
 
         let userData = {
-          a_id: elem.address_id.value,
+          a_id: "",
           a_name: elem.address_name.value,
           a_phone: elem.phone_no.value,
           a_address_1: elem.flat.value,
           a_address_2: elem.street.value,
           a_city: elem.city.value,
-          a_pincode: elem.postalcode.value
+          a_pincode: elem.postalcode.value,
+          a_is_default: elem.is_default.checked
         };
         addNewAddress
           .add_address(userData, userToken)
           .then(function(response) {
-            console.log(response);
             var res = response.data.results;
-            toastr.success(response.data.results);
+            userData["a_id"] = res;
+            $scope.addresslist.push(userData);
+            toastr.success("Address added successfully!");
+            $('form[name="newAddress"]').each(function() {
+              this.reset();
+            });
+            $("#add_address").trigger("click");
           })
           .catch(function(response) {
             console.log(response);

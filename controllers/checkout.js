@@ -2,19 +2,20 @@ const axios_config = require("../config/axios-config.js").instance;
 const axios = require("axios");
 // const Logger = require("../lib/logger").Logger;
 
-let get_data = async cookies => {
+let orderInit = async (cookies, data) => {
   try {
     let getparam = axios_config;
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token
     };
-    let cartdata = await axios.get("cart/list", getparam);
-    response = cartdata.data.results.response;
+    let order = await axios.post("order/init/post", data, getparam);
+    response = order.data.results.response;
     return response;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    return error;
   }
 };
 module.exports = {
-  get_data
+  orderInit
 };

@@ -7,6 +7,7 @@
   const path = require("path");
   const cookieParser = require("cookie-parser");
   const logger = require("morgan");
+  const bodyParser = require("body-parser");
 
   // *** load environment variables *** //
   require("dotenv").config();
@@ -23,6 +24,16 @@
         extended: false
       })
     );
+    app.use(
+      bodyParser.urlencoded({
+        extended: true
+      })
+    );
+
+    /**bodyParser.json(options)
+     * Parses the text as JSON and exposes the resulting object on req.body.
+     */
+    app.use(bodyParser.json());
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, "../public")));
   };

@@ -68,4 +68,11 @@
     <a href="home.html" class="backtohome hidden-sm hidden-md hidden-lg">
         <p>Back to home</p>
     </a>
+    <script type="text/javascript">
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+   </script>
+
     <% include template/footer %>

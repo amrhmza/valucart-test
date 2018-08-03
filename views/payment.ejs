@@ -9,7 +9,7 @@
                                 <li class="active shipping">
                                     <a href="#a1" data-toggle="tab" class="shipping ship">Shipping</a>
                                 </li>
-                                <li class="bill">
+                                <li class="bill" ng-if="address_id!=''">
                                     <a href="#a2" data-toggle="tab" class="bill pay">Payment</a>
                                 </li>
                             </ul>
@@ -24,7 +24,7 @@
                                 <form>
                                     <div class="card-mode">
                                         <div class="radio">
-                                            <input type="radio" id="test1" ng-checked="disabled==1" ng-true-value="1" ng-false-value="2" ng-model="disabled" name="radio-group"
+                                            <input type="radio" id="test1" value="1" ng-model="disabled"  name="radio-group"
                                                 />
                                             <label for="test1">Credit/Debit card</label>
                                         </div>
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="card-mode" style="margin-top: 30px;margin-bottom: 30px;">
                                         <div class="radio">
-                                            <input type="radio" ng-checked="disabled==2" ng-true-value="2" ng-false-value="1" ng-model="disabled" id="test2" name="radio-group">
+                                            <input type="radio" value="2" ng-model="disabled" id="test2" name="radio-group">
                                             <label for="test2">Cash on Delivery</label>
                                         </div>
                                     </div>
@@ -113,14 +113,14 @@
                     </div>
                     <form action="/checkout/process" method="POST">
 
-                        <% if(typeof posted!="undefined"){
-                        posted.cart_id.forEach(function(cart){ 
+                        <% if(typeof data!="undefined"){
+                        data.cart_id.forEach(function(cart){ 
                                 %>
-                            <input type="hidden" name="cart_id" value="<%= cart %>">
+                            <input type="hidden" name="cart_ids" value="<%= cart %>">
                             <% })}%>
-                            <input type="hidden" name="address_id" value="{{address_id}}">
-                            <input type="hidden" name="paytype" value="{{disabled}}">
-                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+                            <input type="hidden" name="shipping_address_id" value="{{address_id}}">
+                            <input type="hidden" name="order_type" value="{{disabled}}">
+                                <button ng-if="disabled!=''" type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
 
                     </form>
                 </div>

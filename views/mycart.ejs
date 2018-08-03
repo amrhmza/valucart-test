@@ -97,6 +97,7 @@
                                 </a>
                             </div>
                 </div>
+                <% if(data.length>0){ %>
                 <div class="col-md-4 col-md-offset-1" style="margin-top: 10px;" id="summary-desktop">
                     <div class="summary">
                         <h4 class="order">Order Summary</h4>
@@ -115,7 +116,7 @@
                         </h5>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
-                            <% if(data!="undefined"){
+                            <% if(typeof data!="undefined"){
                                 let cart_sum = 0;
                                 data.forEach(function(cart_total){
                                     cart_sum+=Number(cart_total.price)*Number(cart_total.quantity); 
@@ -162,7 +163,8 @@
                                 <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
                     </form>
                 </div>
-
+                <% }%>
+                <% if(data.length>0){ %>
                 <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
                     <button class="btn coupon-btn" data-toggle="modal" data-target="#couponModal">
                         <img src="img/coupon.png" class="coupon-img" alt="coupon" /> Have a coupon code</button>
@@ -198,7 +200,7 @@
                     </a>
                     <form action="/checkout" method="POST"></form>
                    
-                        <% if(data!="undefined"){
+                        <% if(typeof data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
                             <input type="hidden" name="cart_id" value="<%=cart.cart_id%>">
@@ -207,6 +209,7 @@
                     
                     </form>
                 </div>
+                <% } %>
             </div>
         </div>
     </div>

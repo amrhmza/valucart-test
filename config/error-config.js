@@ -1,20 +1,18 @@
-(function (errorConfig) {
-
-  'use strict';
+(function(errorConfig) {
+  "use strict";
 
   // *** error handling *** //
 
-  errorConfig.init = function (app) {
-
+  errorConfig.init = function(app) {
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
-      const err = new Error('Not Found');
+      const err = new Error("Not Found");
       err.status = 404;
       next(err);
     });
 
     // development error handler (will print stacktrace)
-    if (app.get('env') === 'development') {
+    if (app.get("env") === "development") {
       app.use(function(err, req, res, next) {
         res.status(err.status || 500).json({
           message: err.message,
@@ -30,7 +28,8 @@
         error: {}
       });
     });
-
+    app.post("/", function(req, res) {
+      console.log(req.body);
+    });
   };
-
 })(module.exports);
