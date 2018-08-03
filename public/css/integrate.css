@@ -259,3 +259,6 @@ li.active.list-group-item {
 	height: 44px;
 	margin-bottom: 30px;
 }
+.mb-0 {
+    margin-bottom: 0 !important;
+}

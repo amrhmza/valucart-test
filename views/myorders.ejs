@@ -16,167 +16,96 @@
     <!--    Breadcrumb-->
     <div class="container myorderdetail">
         <h4 class="cancelquestion">My Orders</h4>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col-sm-8 col-xs-12">
-                <span class="badge myorderbagde">
-                    Order ID
-                    <span class="orderid">AB-123456789-125845</span>
-                </span>
-                <p class="myorderitems">Total items :
-                    <span class="itemcount">2</span>
-                </p>
-            </div>
-            <div class="col-sm-4 text-right viewall hidden-xs">
-                <a href="#" class="text-info">View Details</a>
-            </div>
-        </div>
+        <% if(data==""){ %><h4>No orders placed yet</h4><% } %>
+        <% if(data!="undefined"){
+            data.forEach(function(myorder){
+                let total_item = myorder.product.length;
+            %>
 
-        <div class="panel panel-default myorderpanel">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <p class="discountprice hidden-xs">-10%</p>
-                        <img src="img/product7.png" class="img-responsive productimg">
+            <div class="row" style="margin-top:25px; margin-bottom: 15px;">
+                <div class="col-sm-8 col-xs-12">
+                    <span class="badge myorderbagde">
+                        Order ID
+                        <span class="orderid">
+                            <%= myorder.o_id %>
+                        </span>
+                    </span>
+                    <p class="myorderitems">Total items :
+                        <span class="itemcount">
+                            <%= total_item %>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-sm-4 text-right viewall hidden-xs">
+                    <a href="#" class="text-info">View Details</a>
+                </div>
+            </div>
+            <% if(myorder.product!="undefined"){
+                var productList= myorder.product;
+                myorder.product.forEach(function(products){
+                %>
+                <div class="panel panel-default myorderpanel mb-0">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <% if(products.ct_discount_percentage!=null){ %> <p class="discountprice hidden-xs">-10%</p><%} %>
+                                <img src="<%= products.p_image %>" class="img-responsive productimg">
+                            </div>
+                            <div class=" col-md-4 col-sm-3  text-left">
+                                <h4><%= products.p_name %></h4>
+                                <ul class="productdesclist  hidden-xs hide">
+                                    <li>- Nutella hazelnut chocolate spread
+                                        <span class="productgrade">X 1</span>
+                                    </li>
+                                    <li> - Kellogg’s frosties
+                                        <span class="productgrade">X 1</span>
+                                    </li>
+                                    <li>- Hershey’s strawberry syrup
+                                        <span class="productgrade">X 1</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3  hidden-xs">
+                                <div class="deliverystate">
+                                    <p class="progresstext">In progress</p>
+                                    <p class="packcount">Estimated Delivery:
+                                        <span class="deliverydate">03 Jun 2018</span>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                <% if(products.ct_discount_price!=null){ %><h5 class="offeredprice"><%= products.ct_discount_price %> AED</h5> <% } %>
+                                <h6 class="price"><%= products.ct_price %> AED</h6>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class=" col-md-4 col-sm-3  text-left">
-                        <h4>Luxury breakfast bundle</h4>
-                        <ul class="productdesclist  hidden-xs">
-                            <li>- Nutella hazelnut chocolate spread
-                                <span class="productgrade">X 1</span>
-                            </li>
-                            <li> - Kellogg’s frosties
-                                <span class="productgrade">X 1</span>
-                            </li>
-                            <li>- Hershey’s strawberry syrup
-                                <span class="productgrade">X 1</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3  hidden-xs">
-                        <div class="deliverystate">
+                    <hr>
+                    <div class="cancelorder">
+                        <div class="deliverystate-mob hidden-sm hidden-md hidden-lg">
                             <p class="progresstext">In progress</p>
                             <p class="packcount">Estimated Delivery:
                                 <span class="deliverydate">03 Jun 2018</span>
                             </p>
                         </div>
-
-                    </div>
-                    <div class="col-sm-3 text-center">
-                        <h5 class="offeredprice">27.40 AED</h5>
-                        <h6 class="price">45.00 AED</h6>
-                    </div>
-                </div>
-
-            </div>
-            <hr>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <img src="img/product7.png" class="img-responsive productimg">
-                    </div>
-                    <div class=" col-md-4 col-sm-3 text-left">
-                        <h4>Laundry bundle</h4>
-                        <h5 class=" hidden-xs">
-                            <img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                    </div>
-                    <div class="col-sm-3  hidden-xs">
-                        <div class="deliverystate">
-                            <p class="progresstext">In progress</p>
-                            <p class="packcount">Estimated Delivery:
-                                <span class="deliverydate">03 Jun 2018</span>
-                            </p>
+                        <hr class="hidden-sm hidden-md hidden-lg">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-offset-6 col-sm-6">
+                                <a href="#" class="">
+                                    <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
+                            </div>
+                            <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+                                <a href="#" class="trackinglink">
+                                    <img src="img/track.png" class="img-responsive cancelimg">Track Package</a>
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="col-sm-3 text-center">
-                        <h5 class="offeredprice">100.00 AED</h5>
-                        <h6 class="price">70.00 AED</h6>
                     </div>
                 </div>
-
-            </div>
-            <div class="cancelorder">
-                <div class="deliverystate-mob hidden-sm hidden-md hidden-lg">
-                    <p class="progresstext">In progress</p>
-                    <p class="packcount">Estimated Delivery:
-                        <span class="deliverydate">03 Jun 2018</span>
-                    </p>
-                </div>
-                <hr class="hidden-sm hidden-md hidden-lg">
-                <div class="row">
-                    <div class="col-xs-6 col-sm-offset-6 col-sm-6">
-                        <a href="#" class="">
-                            <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
-                    </div>
-                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
-                        <a href="#" class="trackinglink">
-                            <img src="img/track.png" class="img-responsive cancelimg">Track Package</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col-sm-8">
-                <span class="badge myorderbagde">
-                    Order ID :
-                    <span class="orderid">AB-123456789-125840</span>
-                </span>
-                <p class="myorderitems ">Total items :
-                    <span class="itemcount">1</span>
-                </p>
-            </div>
-            <div class="col-sm-4 text-right viewall hidden-xs">
-                <a href="#" class="text-info">View Details</a>
-            </div>
-        </div>
-        <div class="panel panel-default myorderpanel">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <p class="discountprice hidden-xs">-10%</p>
-                        <img src="img/nuetella.png" class="img-responsive productimg">
-                    </div>
-                    <div class=" col-md-4 col-sm-3 text-left">
-                        <h4>Luxury breakfast bundle</h4>
-                        <ul class="productdesclist hidden-xs">
-                            <li>- Nutella hazelnut chocolate spread
-                                <span class="productgrade">X 1</span>
-                            </li>
-                            <li> - Kellogg’s frosties
-                                <span class="productgrade">X 1</span>
-                            </li>
-                            <li>- Hershey’s strawberry syrup
-                                <span class="productgrade">X 1</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3 hidden-xs">
-                        <div class="deliverystate">
-                            <p class="progresstextc">Completed</p>
-                            <p class="packcount">Estimated Delivery:
-                                <span class="deliverydate">02 Jun 2018</span>
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="col-sm-3 text-center">
-                        <h5 class="offeredprice">27.40 AED</h5>
-                        <h6 class="price">45.00 AED</h6>
-                    </div>
-                </div>
-
-            </div>
-            <div class="cancelorder">
-                <div class="deliverystate-mob hidden-sm hidden-md hidden-lg">
-                    <p class="progresstextc">Completed</p>
-                    <p class="packcount">Estimated Delivery:
-                        <span class="deliverydate">02 Jun 2018</span>
-                    </p>
-                </div>
-                <hr class="hidden-sm hidden-md hidden-lg">
-                <a href="#" class="requestreturn">
-                    <img src="img/return.png" class="img-responsive cancelimg">Request return </a>
-            </div>
-        </div>
+                <% 
+        })
+    }
+        })
+            } %>
     </div>
     <% include template/footer %>
