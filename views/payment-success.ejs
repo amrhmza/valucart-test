@@ -41,7 +41,7 @@
                             <img src="img/bundle-2.png" alt="bundle-2" />
                             <h4>Save your list</h4>
                             <p style="padding-bottom: 20px">Save this shopping list for a one click checkout in future.</p>
-                            <button class="btn-bundle">Save</button>
+                            <a href="myshopping/create/<%= params.order_id %>" class="btn-bundle">Save</a>
                         </div>
                         <div id="bundle-mobile">
                             <div class="row">
@@ -49,13 +49,13 @@
                                     <img src="img/bundle-2.png" alt="bundle-2" />
                                 </div>
                                 <div class="col-xs-6">
-                                    <h4> Save your list</h4>
+                                    <h4> Save your list  </h4>
                                 </div>
 
                             </div>
 
                             <p>Save this shopping list for a one click checkout in future.</p>
-                            <button class="btn-bundle">Save</button>
+                            <a href="myshopping/create/<%= params.order_id %>" class="btn-bundle">Save</a>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <a href="home.html" class="backtohome hidden-sm hidden-md hidden-lg">
+    <a href="" class="backtohome hidden-sm hidden-md hidden-lg">
         <p>Back to home</p>
     </a>
     <script type="text/javascript">

@@ -7,7 +7,6 @@
     const areaRouter = require("../routes/select_area");
     const homeRouter = require("../routes/home");
     const usersRouter = require("../routes/users");
-    const detailsRouter = require("../routes/details");
     const cartRouter = require("../routes/cart");
     const checkoutRouter = require("../routes/checkout");
     const paymentRouter = require("../routes/success");
@@ -36,14 +35,12 @@
     const subscribeRouter = require("../routes/subscribe");
     const wishlistRouter = require("../routes/mywishlist");
     const addressbookRouter = require("../routes/addressbook");
-    const editbundleRouter = require("../routes/edit-bundle");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
     app.use("/area", areaRouter);
     app.use("/", homeRouter);
     app.use("/users", usersRouter);
-    app.use("/details", detailsRouter);
     app.use("/cart", cartRouter);
     app.use("/checkout", checkoutRouter);
     app.use("/payment", paymentRouter);
@@ -51,7 +48,6 @@
     /*** Bundle and product routes ***/
     app.use("/bundle-list", bundlelistRouter);
     app.use("/bundle-detail", bundledetailRouter);
-    app.use("/edit-bundle", editbundleRouter);
     app.use("/product-listing", productlistingRouter);
     app.use("/product-detail", productdetailsRouter);
 
@@ -63,7 +59,6 @@
     app.use("/profile", profileRouter);
     app.use("/edit-profile", editprofileRouter);
     app.use("/mybundles", mybundlesRouter);
-    app.use("/mybundle-edit", mybundleeditRouter);
     app.use("/myorders", myordersRouter);
     app.use("/myorder-details", myorderdetailsRouter);
     app.use("/myshopping", myshoppingRouter);

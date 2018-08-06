@@ -2,13 +2,17 @@ var express = require("express");
 var router = express.Router();
 const getshoppingList = require("../controllers/myshoppinglist.js");
 const getMenu = require("../controllers/category_menu.js");
+var auth = require("../lib/auth.js");
 
-/* GET product list page. */
-router.get("/:list_id", async (req, res, next) => {
+/* GET Shoping list page. */
+router.get("/:list_id", auth.ensureAuthenticated, async (req, res, next) => {
   try {
-    var list_id = req.param("list_id");
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    let shoppingList = await getshoppingList.getshoppinglist(JSON.parse(cookies), list_id);
+    var list_id = req.param("list_id");
+    let shoppingList = await getshoppingList.getshoppinglist(
+      JSON.parse(cookies),
+      list_id
+    );
     let menudata = await getMenu.get_menulist();
     console.log(shoppingList);
     res.render("myshopping", {
@@ -30,8 +34,29 @@ router.get("/:list_id", async (req, res, next) => {
     });
   }
 });
-
+/* Create Shoping list . */
+router.get(
+  "/create/:order_id",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      var list_id = req.param("order_id");
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      let shoppingList = await getshoppingList.createShoppingList(
+        JSON.parse(cookies),
+        list_id
+      );
+      if (shoppingList) {
+        req.flash("success", "Shopping List created successfully!!");
+      } else {
+        req.flash("warning", "Shopping List failed to create!!");
+      }
+      res.redirect("/myshopping-dashboard");
+    } catch (error) {
+      res.status(401).json({
+        error: error
+      });
+    }
+  }
+);
 module.exports = router;
-
-
-

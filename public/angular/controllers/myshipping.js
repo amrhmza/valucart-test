@@ -27,7 +27,7 @@ app.controller("myshippingList", function(
           if(numItems<1){
             $(".empty-panel").removeClass("hidden");
           }
-          toastr.success(response.data.results);
+          toastr.success("Deleted Successfully!!");
         }
       })
       .catch(function(response) {

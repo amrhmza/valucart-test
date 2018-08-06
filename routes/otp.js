@@ -1,8 +1,8 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+var auth = require("../lib/auth.js");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     res.render("otp", {

@@ -1,21 +1,16 @@
 var express = require("express");
 var router = express.Router();
-
-/* GET cart page. */
-router.get("/", function(req, res, next) {
+var auth = require("../lib/auth.js");
+/* change password. */
+router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    if (cookies == false) {
-      res.redirect("/");
-      res.end();
-    } else {
-      res.render("change-password", {
-        cookies: cookies,
-        angular: true,
-        customjs: true,
-        jslist: ["angular/app.js", "angular/controllers/change_password.js"]
-      });
-    }
+    res.render("change-password", {
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: ["angular/app.js", "angular/controllers/change_password.js"]
+    });
   } catch (error) {
     res.status(401).json({
       error: err

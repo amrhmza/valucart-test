@@ -8,6 +8,8 @@
   const cookieParser = require("cookie-parser");
   const logger = require("morgan");
   const bodyParser = require("body-parser");
+  var flash = require("connect-flash");
+  var session = require("express-session");
 
   // *** load environment variables *** //
   require("dotenv").config();
@@ -29,12 +31,24 @@
         extended: true
       })
     );
-
+    app.use(cookieParser("secret"));
+    app.use(
+      session({
+        secret: "valucart",
+        proxy: true,
+        resave: true,
+        saveUninitialized: true
+      })
+    );
+    app.use(flash());
     /**bodyParser.json(options)
      * Parses the text as JSON and exposes the resulting object on req.body.
      */
+    app.use(function(req, res, next) {
+      res.locals.flashdata = req.flash();
+      next();
+    });
     app.use(bodyParser.json());
-    app.use(cookieParser());
     app.use(express.static(path.join(__dirname, "../public")));
   };
 })(module.exports);

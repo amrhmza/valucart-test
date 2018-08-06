@@ -2,14 +2,17 @@ var express = require("express");
 var router = express.Router();
 const getshoppingList = require("../controllers/myshoppinglist.js");
 const getMenu = require("../controllers/category_menu.js");
+var auth = require("../lib/auth.js");
 
 /* GET product list page. */
-router.get("/", async (req, res, next) => {
+router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    let shopingList = await getshoppingList.getshoppinglist(JSON.parse(cookies), "");
+    let shopingList = await getshoppingList.getshoppinglist(
+      JSON.parse(cookies),
+      ""
+    );
     let menudata = await getMenu.get_menulist();
-    console.log(shopingList);
     res.render("myshopping-dashboard", {
       data: shopingList,
       menudata: menudata,

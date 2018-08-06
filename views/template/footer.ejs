@@ -173,6 +173,12 @@
         //alert(val);
         $(this).parent().find('input').val(val);
     });
+    if("<%= flashdata.success %>"){
+        toastr.success("<%= flashdata.success %>");
+    }
+    if("<%= flashdata.warning %>"){
+        toastr.info("<%= flashdata.warning %>");
+    }
 </script>
 <script>
     //Modal toggle 
