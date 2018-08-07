@@ -15,7 +15,7 @@
                             <img src="img/bundle-1.png" alt="bundle-1" />
                             <h4>Build your bundle</h4>
                             <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                            <button href="create-bundle" class="btn-bundle">Create</button>
+                            <a href="create-bundle/<%= params.order_id %>" class="btn-bundle">Create</a>
                         </div>
                         <div id="bundle-mobile">
                             <div class="row">
@@ -29,7 +29,7 @@
                             </div>
 
                             <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                            <button class="btn-bundle">Create</button>
+                            <a href="create-bundle/<%= params.order_id %>" class="btn-bundle">Create</a>
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,9 @@ app.constant("config", {
   edit_mybundle: baseurl + "/user_bundle/edit/put",
   shppingListUrl: baseurl + "/shopping_list",
   addressList: baseurl + "/userProfile/useraddresslist",
-  emailVerify: baseurl + "/auth/otpverify"
+  emailVerify: baseurl + "/auth/otpverify",
+  orderDetails: baseurl + "/order/details/get",
+  create_user_bundle: baseurl + "/user_bundle/create/post"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

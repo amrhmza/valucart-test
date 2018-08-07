@@ -1,4 +1,4 @@
-app.controller("userbundle", function(
+app.controller("createUserBundle", function(
   $scope,
   $rootScope,
   $location,
@@ -8,21 +8,22 @@ app.controller("userbundle", function(
   $filter,
   $routeParams,
   config,
-  dataset,
-  userbundle
+  createUserbundle
 ) {
   $scope.edit_title = 0;
-  userbundle
-    .getDetails(dataset.bundleId)
-    .then(function(response) {
-      $scope.mybundle = response.data.results.response.product;
-      $scope.mybundle_dates = response.data.results.response;
-      $scope.mybundle_name = response.data.results.response.ub_name;
-      $scope.ub_id = response.data.results.response.ub_id;
-    })
-    .catch(function(response) {
-      console.log(response);
-    });
+  $scope.init = function() {
+    let querydata = $location.search();
+    createUserbundle
+      .getDetails(querydata.order_id)
+      .then(function(response) {
+        $scope.mybundle = response.data.results.response.order_products;
+        $scope.mybundle_name = querydata.bundlename;
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+  $scope.init();
   $scope.qty_plus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
@@ -39,7 +40,6 @@ app.controller("userbundle", function(
       $("input[name=" + fieldName + index + "]").val(1);
       $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
     }
-
     $scope.cartTotal();
   };
 
@@ -90,47 +90,48 @@ app.controller("userbundle", function(
   };
 
   //user_bundle Update//
-  var cp = document.forms.user_bundle,
+  var cp = document.forms.createBundle,
     elem = cp.elements;
   cp.onsubmit = function() {
     let product_ids = [];
     let proceed = 0;
     $scope.mybundle.forEach(element => {
-      //console.log(element.ubp_id);
-      if ($("#brand_" + element.ubp_id).is(":checked") == true) {
-        let proceed = 1;
+      if ($("#brand_" + element.op_id).is(":checked") == true) {
+        proceed = 1;
         let bundle_data = [];
-        if (element.ubp_p_is_bundle == 1) {
+        if (element.ct_is_bundel == 1) {
           element.product.forEach(ele => {
             let bd = {
-              pd_id: ele.ubbp_pd_id,
-              is_alternative: ele.ubbp_is_alternative
+              pd_id: ele.ctb_pd_id,
+              is_alternative: ele.ctb_is_alternative == 1 ? 1 : 0
             };
             bundle_data.push(bd);
           });
         }
         let data = {
-          product_id: element.ubp_pd_id,
-          quantity: $("input[name=qty_" + element.ubp_id + "]").val(),
-          is_bundel: element.ubp_p_is_bundle,
+          product_id: element.ct_pd_id,
+          quantity: $("input[name=qty_" + element.op_id + "]").val(),
+          is_bundel: element.ct_is_bundel == true ? 1 : 0,
           bundel_items: bundle_data
         };
-        element.quantity = $("input[name=qty_" + element.ubp_id + "]").val();
+        element.quantity = $("input[name=qty_" + element.op_id + "]").val();
         product_ids.push(data);
       }
     });
-    let editdata = {
+    let querydata = $location.search();
+    let insertdata = {
       bundle_name: $scope.mybundle_name,
-      ub_id: $scope.ub_id,
+      no_days: querydata.end_period,
+      time_period: querydata.time_interval,
       product_ids: product_ids
     };
     if (proceed == 1) {
-      userbundle
-        .editBundle(editdata)
+      createUserbundle
+        .insertBundle(insertdata)
         .then(function(response) {
           var res = response.data.results;
           if (res.msg == "success") {
-            toastr.success("Update Successfully..!");
+            toastr.success("Created Successfully..!");
             $window.location.href = "/mybundles";
           }
         })
@@ -141,4 +142,7 @@ app.controller("userbundle", function(
       toastr.warning("Product should not be empty..!");
     }
   };
+});
+app.config(function($routeProvider, $locationProvider, $httpProvider) {
+  $locationProvider.html5Mode(true);
 });

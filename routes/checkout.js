@@ -31,6 +31,9 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let cookie = JSON.parse(cookies);
+    if (typeof req.body.cart_ids == "string") {
+      req.body.cart_ids = [req.body.cart_ids];
+    }
     let order = await checkout.orderInit(cookie, req.body);
     if (order) {
       res.redirect("/checkout/success/" + order[0]);

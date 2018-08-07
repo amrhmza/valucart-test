@@ -225,7 +225,7 @@
                                                                 subcatList.forEach(function(scat){
                                                                     var scname= scat.c_name;
                                                                     var scat_url_name = scname.trim().replace(/\s+/g, '-').toUpperCase();
-                                                                    var scatUrl= process.env.BASEURL+'product-listing/'+scat.c_parent_id+'/'+scat_url_name+'?sub_cat='+scat.c_id;
+                                                                    var scatUrl= process.env.BASEURL+'product-listing/'+scat.c_parent_id+'/'+scat_url_name+'#!?sub_cat='+scat.c_id;
                                                                 %>
                                                                 <li>
                                                                     <a href="<%= scatUrl%>"><%=scat.c_name%></a>

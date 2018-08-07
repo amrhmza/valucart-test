@@ -6,10 +6,8 @@
     const cityRouter = require("../routes/select_city");
     const areaRouter = require("../routes/select_area");
     const homeRouter = require("../routes/home");
-    const usersRouter = require("../routes/users");
     const cartRouter = require("../routes/cart");
     const checkoutRouter = require("../routes/checkout");
-    const paymentRouter = require("../routes/success");
     const bundlelistRouter = require("../routes/bundle_list");
     const bundledetailRouter = require("../routes/bundle_details");
     const changepasswordRouter = require("../routes/change_password");
@@ -21,7 +19,6 @@
     const profileRouter = require("../routes/profile");
     const editprofileRouter = require("../routes/edit-profile");
     const mybundlesRouter = require("../routes/mybundles");
-    const mybundleeditRouter = require("../routes/mybundle-edit");
     const myordersRouter = require("../routes/myorders");
     const myorderdetailsRouter = require("../routes/myorder-details");
     const myshoppingRouter = require("../routes/myshopping");
@@ -40,10 +37,8 @@
     app.use("/city", cityRouter);
     app.use("/area", areaRouter);
     app.use("/", homeRouter);
-    app.use("/users", usersRouter);
     app.use("/cart", cartRouter);
     app.use("/checkout", checkoutRouter);
-    app.use("/payment", paymentRouter);
 
     /*** Bundle and product routes ***/
     app.use("/bundle-list", bundlelistRouter);

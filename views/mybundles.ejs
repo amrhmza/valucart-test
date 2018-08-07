@@ -6,48 +6,53 @@
                     <img src="img/mybundles.png" class="hidden-xs" alt="mybundles" /> My bundles</h4>
             </div>
             <div class="row" id="mybnd-desktop">
-            <% if(data!=""){
+                <% if(data!=""){
                 data.forEach(function(mybundle){     
             %>
-                <div class="col-md-9 bn-list">
-                    <h5><%= mybundle.ub_name %> (<%= mybundle.product_count %> items)</h5>
-                </div>
-                <div class="col-md-3 bn-img">
-                    <a href="/mybundles/view/<%= mybundle.ub_id %>" class="bundlebtn">
-                        <img src="img/bn-edit.png" alt="bn-edit" />
-                    </a>
-                    <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="bundlebtn">
-                        <img src="img/bn-del.png" alt="bn-edit" />
-                    </a>
-                </div>
-                <% })
+                    <div class="col-md-9 bn-list">
+                        <h5>
+                            <%= mybundle.ub_name %> (
+                                <%= mybundle.product_count %> items)</h5>
+                    </div>
+                    <div class="col-md-3 bn-img">
+                        <a href="/mybundles/view/<%= mybundle.ub_id %>" class="bundlebtn">
+                            <img src="img/bn-edit.png" alt="bn-edit" />
+                        </a>
+                        <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="bundlebtn">
+                            <img src="img/bn-del.png" alt="bn-edit" />
+                        </a>
+                    </div>
+                    <% })
             } else{ %>
-            <br>
-            <h4 class="text-center">No Bundle List!!</h4>
-            <br>
-            <% } %>
+                        <br>
+                        <h4 class="text-center">No Bundle List!!</h4>
+                        <br>
+                        <% } %>
             </div>
             <div class="row" id="mybnd-mobile">
-            <% if(data.length>0){
+                <% if(data.length>0){
                 data.forEach(function(mybundle){     
             %>
-                <div class="col-xs-12 bn-list">
-                    <h5><%= mybundle.ub_name %> (<%= mybundle.product_count %> items)</h5>
-                    <a href="/mybundles/view/<%= mybundle.ub_id %>">
-                        <img src="img/bnd-list.png" alt="bnd-list" />
-                    </a>
-                </div>
-                </div>
-            <% })
+                    <div class="col-xs-12 bn-list">
+                        <h5>
+                            <%= mybundle.ub_name %> (
+                                <%= mybundle.product_count %> items)</h5>
+                        <a href="/mybundles/view/<%= mybundle.ub_id %>">
+                            <img src="img/bnd-list.png" alt="bnd-list" />
+                        </a>
+                    </div>
+
+                    <% })
             }else{ %>
-            <br>
-            <h4 class="text-center">No Bundle List!!</h4>
-            <br>
-            <% } %>
-                    <a href="">
-                    <p class="end-text">Back to home</p>
-                </a>
+                        <br>
+                        <h4 class="text-center">No Bundle List!!</h4>
+                        <br>
+                        <% } %>
             </div>
+            <a href="">
+                <p class="end-text">Back to home</p>
+            </a>
         </div>
+    </div>
     </div>
     <% include template/footer %>
