@@ -14,6 +14,7 @@ router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
       data: req.body,
       angular: true,
       customjs: true,
+      search: 0,
       jslist: [
         "angular/app.js",
         "angular/factory/add_address.js",

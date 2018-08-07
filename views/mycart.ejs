@@ -103,7 +103,7 @@
                         <h4 class="order">Order Summary</h4>
                         <h6>Have a coupon code? Enter below to redeem</h6>
                         <div class="input-group" style="margin-top: 20px;margin-bottom: 20px">
-                            <input type="text" class="form-control" placeholder="Enter Code">
+                            <input type="text" class="form-control" placeholder="Enter Code" ng-model="coupon">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-coupon">Apply</button>
                             </div>
@@ -153,7 +153,9 @@
                                     %>
                             <input type="hidden" name="cart_id" value="<%=cart.cart_id%>"/>
                             <% })}%>
-                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+                            <input type="hidden" name="total" value="{{cartGrand}}"/>
+                            <input type="hidden" name="coupon" value="{{coupon}}"/>
+                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
                     </form>
                 </div>
                 <% }%>
@@ -198,8 +200,9 @@
                                     %>
                             <input type="hidden" name="cart_id[]" value="<%=cart.cart_id%>">
                             <% })}%>
-                                <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
-                    
+                            <input type="hidden" name="total" value="{{cartGrand}}"/>
+                            <input type="hidden" name="coupon" value="{{coupon}}"/>
+                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
                     </form>
                 </div>
                 <% } %>

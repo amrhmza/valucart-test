@@ -168,6 +168,7 @@
             </div>
         </div>
     </div>
+    <% if(typeof search=="undefined"){%>
     <div class="container-fluid navtop2">
         <div class="container">
             <div class="row">
@@ -445,4 +446,12 @@
             </div>
         </div>
     </div>
+    <% } %>
     <!--    Navigation ends here-->
+    <div id="status"></div>
+
+<!-- Facebook login or logout button -->
+<a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a>
+
+<!-- Display user profile data -->
+<div id="userData"></div>

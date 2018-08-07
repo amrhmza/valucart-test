@@ -93,12 +93,14 @@ app.controller("userbundle", function(
   var cp = document.forms.user_bundle,
     elem = cp.elements;
   cp.onsubmit = function() {
+    console.log(elem);
+
     let product_ids = [];
     let proceed = 0;
     $scope.mybundle.forEach(element => {
       //console.log(element.ubp_id);
       if ($("#brand_" + element.ubp_id).is(":checked") == true) {
-        let proceed = 1;
+        proceed = 1;
         let bundle_data = [];
         if (element.ubp_p_is_bundle == 1) {
           element.product.forEach(ele => {

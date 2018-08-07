@@ -85,14 +85,14 @@
                         </h5>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
-                            <h5 class="total" style="float: right;">62.00 AED</h5>
+                            <h5 class="total" style="float: right;"><%= data.total %> AED</h5>
                             <hr>
                         </div>
                         <div id="delivery">
                             <h5 class="total">Delivery Charges</h5>
                             <h5 class="total" style="float: right;">15.00 AED</h5>
                         </div>
-                        <div id="savings" style="margin-top: 20px">
+                        <div id="savings" class="hide" style="margin-top: 20px">
                             <h5 class="total">
                                 <strong>savings</strong>
                             </h5>
@@ -107,7 +107,7 @@
                                 <span>(inclusive of 5%VAT)</span>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong>50.00 AED</strong>
+                                <strong><%= Number(data.total)+15 %> AED</strong>
                             </h5>
                         </div>
                     </div>

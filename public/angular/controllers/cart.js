@@ -58,12 +58,12 @@ app.controller("cart", function(
         "data-qty",
         currentVal - 1
       );
+      $scope.updateCart(qty, index);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
       $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
     }
-    $scope.updateCart(qty, index);
     $scope.cartTotal();
   };
 
@@ -95,9 +95,9 @@ app.controller("cart", function(
           elem.closest(".productpanel").remove();
           var numItems = $(".productpanel").length;
           if (numItems < 1) {
-            $scope.cartTotal();
             $(".empty-panel").removeClass("hidden");
           }
+          $scope.cartTotal();
           toastr.success(res.msg);
         }
       })
