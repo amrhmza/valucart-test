@@ -89,7 +89,7 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === "connected") {
       //display user data
-      getFbUserData();
+      // getFbUserData();
     } else {
       console.log(response);
     }
@@ -133,10 +133,36 @@ function getFbUserData() {
       fields: "id,first_name,last_name,email,link,gender,locale,picture"
     },
     function(response) {
-      // document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
-      // document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
-      // document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
-      // document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify({
+          username: response.first_name,
+          password: response.id,
+          user_phone_no: "",
+          user_email: response.email,
+          user_first_name:response.first_name,
+          user_last_name: response.last_name,
+          user_city: "",
+          user_area: ""
+        }),
+        contentType: "application/json",
+        url: "http://18.191.0.240:3000/auth/register",
+        success: function(response) {
+          if (response.status == "success") {
+            $("#register-form input").val("");
+            toastr.success("Registered Successfully");
+            $("#register-form-link").removeClass("active");
+            $("#login-form-link").addClass("active");
+            $("#login-form")
+              .delay(100)
+              .fadeIn(100);
+            $("#register-form").fadeOut(100);
+          }
+        },
+        error: function(error) {
+          toastr.error(error.responseJSON.error);
+        }
+      });
       console.log(response);
     }
   );
