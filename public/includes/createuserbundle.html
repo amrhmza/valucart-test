@@ -19,7 +19,7 @@
                                     <div class="col-md-7 col-xs-6">
                                         <p class="discountprice mob-dprice hidden-sm hidden-md hidden-lg" ng-if="bundle.pdt_percentage">{{bundle.pdt_percentage}}%</p>
                                         <h4 ng-if="bundle.ct_is_bundel=='true'"><a ng-href="/bundle-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
-                                        <h4 ng-if="bundle.ct_is_bundel=='false'"><a ng-href="/product-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
+                                        <h4 ng-if="bundle.ct_is_bundel!='true'"><a ng-href="/product-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
                                         <p>
                                             {{bundle.p_dec | limitTo:60 }}..
                                         </p>

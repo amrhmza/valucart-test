@@ -10,6 +10,7 @@
   const bodyParser = require("body-parser");
   var flash = require("connect-flash");
   var session = require("express-session");
+  var moment = require("moment");
 
   // *** load environment variables *** //
   require("dotenv").config();
@@ -46,6 +47,7 @@
      */
     app.use(function(req, res, next) {
       res.locals.flashdata = req.flash();
+      res.locals.moment = moment;
       next();
     });
     app.use(bodyParser.json());
