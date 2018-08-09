@@ -1,91 +1,185 @@
 <% include template/header %>
-    <!--    Breadcrumb-->
+
     <div class="container myorderdetail">
         <ul class="breadcrumb">
-            <li><a href="#">My accounts</a></li>
-            <li><a href="myorders">My orders</a></li>
-            <li class="lastcrumb"><a href="#">Order details</a></li>
+            <li>
+                <a href="#">My accounts</a>
+            </li>
+            <li>
+                <a href="#">My orders</a>
+            </li>
+            <li class="lastcrumb">
+                <a href="#">Order details</a>
+            </li>
         </ul>
     </div>
     <!--    Breadcrumb-->
     <div class="container myorderdetail">
         <h4 class="cancelquestion">Are you sure you want to cancel this order?</h4>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col-sm-8 hidden-xs">
-                <div class="badge">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="badge" style="margin-bottom: 15px;">
                     <ul class="list-inline orderlist">
-                        <li> Order ID : <span class="orderid">AB-123456789-125845</span>
+                        <li> Order ID :
+                            <span class="orderid">
+                                <%= data.order_data.o_id %>
+                            </span>
                         </li>
-                        <li> Order date : <span class="orderdate">29 May 2018</span>
+                        <li> Order date :
+                            <span class="orderdate">
+                                <%= moment(data.order_data.o_added_dt).format('MMM Do YYYY'); %>
+                            </span>
                         </li>
-                        <li> Total Amount : <span class="orderdate">300.00 AED</span></li>
+                        <li> Total Amount :
+                            <span class="orderdate">
+                                <%= data.order_data.o_total %> AED</span>
+                        </li>
+                        <li class="hidden-sm hidden-md hidden-lg"> Delivery Date :
+                            <span class="orderdate">
+                                <%= moment(data.order_data.o_added_dt).format('MMM Do YYYY'); %>
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-4 text-right">
-                <p class="hidden-sm hidden-md hidden-lg" style="float: left;font-size: 14px;font-weight: 600;margin-bottom: 0px;">No: AB-123456789-125845</p>
-                <p class="totalitems">Total items <span class="itemcount">2</span>
+                <h5 class="hidden-md hidden-sm hidden-lg" style="float: left;margin-top: 2px;font-weight: bold;">Product details</h5>
+                <p class="totalitems">Total items
+                    <span class="itemcount">
+                        <%= data.order_products.length %>
+                    </span>
                 </p>
             </div>
         </div>
         <div class="panel panel-default myorderpanel">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <p class="discountprice hidden-xs">-10%</p>
-                        <img src="img/product7.png" class="img-responsive productimg">
-                    </div>
-                    <div class=" col-md-4 col-sm-3 text-left">
-                        <h4>Luxury breakfast bundle</h4>
-                        <ul class="productdesclist hidden-xs">
-                            <li>- Nutella hazelnut chocolate spread <span class="productgrade">X 1</span></li>
-                            <li> - Kellogg’s frosties <span class="productgrade">X 1</span> </li>
-                            <li>- Hershey’s strawberry syrup <span class="productgrade">X 1</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-3 hidden-xs">
-                        <div class="deliverystate">
-                            <p class="progresstext">In progress</p>
-                            <p class="packcount">Estimated Delivery: <span class="deliverydate">03 Jun 2018</span></p>
+            <% if(typeof data.order_products!="undefined"){
+            data.order_products.forEach(function(pro){ 
+            %>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3 col-xs-4">
+                            <% if(pro.ct_discount_percentage!=null){%>
+                                <p class="discountprice hidden-xs">
+                                    <%= pro.ct_discount_percentage %>%</p>
+                                <% } %>
+                                    <img src="<%= pro.p_image %>" class="img-responsive productimg">
                         </div>
-
-                    </div>
-                    <div class="col-sm-3 text-center" style="padding-left: 0px">
-                        <h5 class="offeredprice hidden-xs">27.40 AED</h5>
-                        <h6 class="price">45.00 AED</h6>
-                    </div>
-                </div>
-
-            </div>
-            <hr>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-4">
-                        <img src="img/product7.png" class="img-responsive productimg">
-                    </div>
-                    <div class=" col-md-4 col-sm-3  text-left">
-                        <h4>Luxury breakfast bundle</h4>
-                        <h5 class="hidden-xs"><img src="img/grammeter.png" class="img-responsive gramimg"> 370g</h5>
-                    </div>
-                    <div class="col-sm-3 hidden-xs">
-                        <div class="deliverystate">
-                            <p class="progresstext">In progress</p>
-                            <p class="packcount">Estimated Delivery: <span class="deliverydate">03 Jun 2018</span></p>
+                        <div class=" col-md-4 col-sm-3 text-left">
+                            <h4>
+                                <%= pro.pd_name %>
+                            </h4>
+                            <% if(typeof pro.product!="undefined"){ %>
+                                <ul class="productdesclist hidden-xs">
+                                    <% pro.product.forEach(function(products){ %>
+                                        <li>-
+                                            <%=products.pd_name %>
+                                                <span class="productgrade">
+                                                    <%= products.p_quantity %>
+                                                </span>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <% } %>
                         </div>
+                        <div class="col-sm-3 hidden-xs">
+                            <div class="deliverystate">
+                                <p class="progresstext">In progress</p>
+                                <p class="packcount">Estimated Delivery:
+                                    <span class="deliverydate">
+                                        <%= moment(data.order_data.o_added_dt).add(5, 'days').format('MMM Do YYYY'); %>
+                                    </span>
+                                </p>
+                            </div>
 
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <% if(pro.pdt_price!=null){ %>
+                                <h5 class="offeredprice">
+                                    <%= pro.price %> AED</h5>
+                                <h6 class="price">
+                                    <%= pro.ct_quantity %> X
+                                        <%= pro.pdt_price %> AED</h6>
+                                <% }else{ %>
+                                    <h6 class="price">
+                                        <%= pro.ct_quantity %> X
+                                            <%= pro.price %> AED</h6>
+                                    <% } %>
+                        </div>
                     </div>
-                    <div class="col-sm-3 text-center" style="padding-left: 0px">
-                        <h6 class="price">45.00 AED</h6>
-                    </div>
+
                 </div>
+                <hr>
+                <% });
+        } %>
 
-            </div>
+
+                    <div class="panel-footer hidden-md hidden-sm hidden-lg">
+                        <p class="text-info" style="font-size: 14px;margin: 5px;text-align: center;">
+                            <i class="fa fa-plus-circle"></i> Show All (
+                            <%= data.order_products.length %> More product)</p>
+                    </div>
         </div>
-
-
-
         <!--        progress starts here-->
-        <div class="cancellation">
+        <div class="myorderprogress cancellation">
+            <ol class="progress hidden-xs" data-steps="4">
+                <li class="done">
+                    <span class="step">
+                        <span>&#10003;</span>
+                    </span>
+                    <span class="name">
+                        <%= moment(data.order_data.o_added_dt).format('MMM Do YYYY'); %>
+                    </span>
+                    <span class="subname">Your order successfully placed</span>
+                </li>
+                <% var status=data.order_status[data.order_status.length-1].olc_status_id %>
+                    <li class="<%= (status==9 || status==10 || status==11)?'done':'' %>">
+                        <span class="step">
+                            <span>&#10003;</span>
+                        </span>
+                        <%  var shipped=near=deliveried="";
+                        data.order_status.forEach(function(sta){
+                            if(sta.olc_status_id==9){
+                                shipped=moment(sta.olc_added_dt).format('MMM Do YYYY');
+                            }
+                            if(sta.olc_status_id==10){
+                                near=moment(sta.olc_added_dt).format('MMM Do YYYY');
+                            }
+                            if(sta.olc_status_id==11){
+                                deliveried=moment(sta.olc_added_dt).format('MMM Do YYYY');
+                            }
+                          })
+                         %>
+                            <span class="name">
+                                <%= shipped!=""?shipped:'Shipped Your order'%>
+                            </span>
+                            <span class="subname">
+                                <%= shipped!=""?'Shipped Your order':''%>
+                            </span>
+                    </li>
+                    <li class="<%= (status==10 || status==11)?'done':'' %>">
+                        <span class="step">
+                            <span>&#10003;</span>
+                        </span>
+
+                        <span class="name">
+                            <%= near!=""?near:'Near you'%>
+                        </span>
+                        <span class="subname">
+                            <%= near!=""?'Near you':''%>
+                        </span>
+                    </li>
+                    <li class="<%= (status==11)?'done':'' %>">
+                        <span class="step">
+                            <span>&#10003;</span>
+                        </span>
+                        <span class="last name">
+                            <%= deliveried!=""?deliveried:moment(data.order_data.o_added_dt).add(5, 'days').format('MMM Do YYYY');%>
+                        </span>
+                        <span class="subname">
+                            <%= near!=""?'Delivered':'Estimated delivery'%>
+                        </span>
+                    </li>
+            </ol>
 
             <!--            payment and shipping details-->
             <div class="row">
@@ -95,11 +189,11 @@
                         <form action="">
                             <div class="form-group">
                                 <select class="form-control" id="sel1">
-                                <option>Select reason</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                              </select>
+                                    <option>Select reason</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
                             </div>
                             <button class="btn btn-info cancelbtn">Request Cancel</button>
                         </form>
@@ -110,8 +204,17 @@
                 <div class="col-sm-6">
                     <div class="panel panel-default shippingdiv">
                         <h5 class="paytitle">Shipping address </h5>
-                        <p class="deliveryname">Faheen Ahmed</p>
-                        <p class="deliveryadd">1st Floor, Mehta Al Owais,<br> House # 105,<br> Al Shuwaihean, Sharjah, Dubai<br> Landmark: Building of UAE Exchange <br><br>+975 055 6060535 <br>faheen@gmail.com
+                        <p class="deliveryname">
+                            <%= data.order_shipping_address[0].a_name %>
+                        </p>
+                        <p class="deliveryadd">
+                            <%= data.order_shipping_address[0].a_address_1 %>,
+                                <br>
+                                <%= data.order_shipping_address[0].a_city %>
+                                    <br> Pincode:
+                                    <%= data.order_shipping_address[0].a_pincode %>
+                                        <br> Phone:
+                                        <%= data.order_shipping_address[0].a_phone %>
                         </p>
                     </div>
                 </div>
@@ -121,4 +224,6 @@
 
         </div>
     </div>
+
+
     <% include template/footer %>

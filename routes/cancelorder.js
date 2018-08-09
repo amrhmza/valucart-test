@@ -1,20 +1,20 @@
 var express = require("express");
 var router = express.Router();
-const getMenu = require("../controllers/category_menu.js");
+const orderDetail = require("../controllers/myorder_detail.js");
+var auth = require("../lib/auth.js");
 
-/* GET product list page. */
-router.get("/", async (req, res, next) => {
+router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    let menudata = await getMenu.get_menulist();
+    let data = await orderDetail.get_data(JSON.parse(cookies), req.params);
     res.render("cancelorder", {
-      menudata: menudata,
+      data: data,
       angular: false,
+      search: 0,
       customjs: false,
       cookies: cookies
     });
   } catch (error) {
-    console.log(error);
     res.status(401).json({
       error: error
     });
