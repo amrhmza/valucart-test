@@ -54,7 +54,7 @@ $(function() {
           user_area: ""
         }),
         contentType: "application/json",
-        url: "http://18.191.0.240:3000/auth/register",
+        url: "https://staging.valucart.com:3000/auth/register",
         success: function(response) {
           if (response.status == "success") {
             $("#register-form input").val("");
@@ -140,13 +140,13 @@ function getFbUserData() {
           password: response.id,
           user_phone_no: "",
           user_email: response.email,
-          user_first_name:response.first_name,
+          user_first_name: response.first_name,
           user_last_name: response.last_name,
           user_city: "",
           user_area: ""
         }),
         contentType: "application/json",
-        url: "http://18.191.0.240:3000/auth/register",
+        url: "https://staging.valucart.com:3000/auth/register",
         success: function(response) {
           if (response.status == "success") {
             $("#register-form input").val("");

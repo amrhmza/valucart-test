@@ -22,7 +22,7 @@
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
-                    url: 'http://18.191.0.240:3000/auth/login'
+                    url: 'https://staging.valucart.com:3000/auth/login'
                 }).done(function(resp){
                     if(resp.status=="success"){
                         resp.useremail= username;

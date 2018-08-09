@@ -1,5 +1,5 @@
 let instance = {
-  baseURL: "http://18.191.0.240:3000",
+  baseURL: "https://staging.valucart.com:3000",
   timeout: 200000,
   headers: { "Content-Type": "application/json" }
 };
