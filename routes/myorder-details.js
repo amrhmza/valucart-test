@@ -12,11 +12,12 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
       data: data,
       angular: false,
       search: 0,
-      moment: moment,
       customjs: false,
       cookies: cookies
     });
   } catch (error) {
+    console.log(error);
+
     res.status(401).json({
       error: error
     });

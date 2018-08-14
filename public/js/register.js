@@ -108,13 +108,48 @@ window.fbAsyncInit = function() {
 })(document, "script", "facebook-jssdk");
 
 // Facebook login with JavaScript SDK
-function fbLogin() {
+function fbLogin(type) {
+  console.log(type);
+
   FB.login(
     function(response) {
       if (response.authResponse) {
-        console.log(response.authResponse);
-        // Get and display the user profile data
-        getFbUserData();
+        if (type == 1) {
+          let data = {};
+          data["user_id"] = response.authResponse.userID;
+          data["token"] = response.authResponse.accessToken;
+          data["sso_type"] = 2;
+          $.ajax({
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            url: "https://staging.valucart.com:3000/auth/ssoLogin"
+          })
+            .done(function(resp) {
+              if (resp.status == "success") {
+                resp.useremail = resp.email;
+                console.log(JSON.stringify(resp));
+
+                $.cookie("vcartAuth", JSON.stringify(resp), {
+                  expires: 7,
+                  path: "/"
+                });
+                if (!resp.is_email_verified) {
+                  var base_url = window.location.origin;
+                  window.location.replace(base_url + "/otp");
+                } else location.reload(true);
+              } else {
+                console.log("Invalid Account");
+                toastr.error("Invalid Account");
+              }
+            })
+            .fail(function(r) {
+              console.log(JSON.stringify(r));
+              toastr.error("Invalid Account");
+            });
+        } else {
+          getFbUserData(response.authResponse.accessToken);
+        }
       } else {
         document.getElementById("status").innerHTML =
           "User cancelled login or did not fully authorize.";
@@ -125,7 +160,7 @@ function fbLogin() {
 }
 
 // Fetch the user profile data from facebook
-function getFbUserData() {
+function getFbUserData(accessToken) {
   FB.api(
     "/me",
     {
@@ -137,26 +172,33 @@ function getFbUserData() {
         type: "POST",
         data: JSON.stringify({
           username: response.first_name,
-          password: response.id,
+          user_id: response.id,
           user_phone_no: "",
           user_email: response.email,
           user_first_name: response.first_name,
           user_last_name: response.last_name,
           user_city: "",
-          user_area: ""
+          user_area: "",
+          token: accessToken,
+          sso_type: 2
         }),
         contentType: "application/json",
-        url: "https://staging.valucart.com:3000/auth/register",
-        success: function(response) {
-          if (response.status == "success") {
-            $("#register-form input").val("");
-            toastr.success("Registered Successfully");
-            $("#register-form-link").removeClass("active");
-            $("#login-form-link").addClass("active");
-            $("#login-form")
-              .delay(100)
-              .fadeIn(100);
-            $("#register-form").fadeOut(100);
+        url: "https://staging.valucart.com:3000/auth/ssoRegister",
+        success: function(resp) {
+          if (resp.status == "success") {
+            resp.useremail = resp.email;
+            console.log(JSON.stringify(resp));
+
+            $.cookie("vcartAuth", JSON.stringify(resp), {
+              expires: 7,
+              path: "/"
+            });
+            if (!resp.is_email_verified) {
+              var base_url = window.location.origin;
+              window.location.replace(base_url + "/otp");
+            } else {
+              location.reload(true);
+            }
           }
         },
         error: function(error) {
@@ -166,15 +208,4 @@ function getFbUserData() {
       console.log(response);
     }
   );
-}
-
-// Logout from facebook
-function fbLogout() {
-  FB.logout(function() {
-    document.getElementById("fbLink").setAttribute("onclick", "fbLogin()");
-    document.getElementById("fbLink").innerHTML = '<img src="fblogin.png"/>';
-    document.getElementById("userData").innerHTML = "";
-    document.getElementById("status").innerHTML =
-      "You have successfully logout from Facebook.";
-  });
 }
