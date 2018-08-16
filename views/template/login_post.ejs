@@ -9,11 +9,13 @@
             var username = $(".login_username").val();
             var password = $(".login_password").val();
 
-            if (username == "") $(".login_username").parent(".form-group").addClass("has-error");
-            else $(".login_username").parent(".form-group").removeClass("has-error");
+            if (username == "") {
+                toastr.error("Name Required!!");
+            }
 
-            if (password == "") $(".login_password").parent(".form-group").addClass("has-error");
-            else $(".login_password").parent(".form-group").removeClass("has-error");
+            if (password == "") {
+                toastr.error("Password Required!!");
+            }
 
             if (username != "" && password != "") {
                 var data = { username, password };

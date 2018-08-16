@@ -15,7 +15,7 @@
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    
+
     <% if(angular){ %>
         <!-- angular Libraries -->
         <script src="angular/lib/angular.min.js"></script>
@@ -23,19 +23,20 @@
         <script src="angular/lib/angular-aria.min.js"></script>
         <script src="angular/lib/angular-messages.min.js"></script>
         <script src="angular/lib/angular-sanitize.min.js"></script>
-    <%  } %>
-    <% if(customjs){ 
+        <%  } %>
+            <% if(customjs){ 
     jslist.forEach(function(js){ %>
                 <script src="<%- js %>"></script>
-    <% })
-    } %>   
+                <% })
+    } %>
 </head>
 
 <body class="otp" style="overflow-y: hidden !important;">
     <div class="container-fluid fullbg text-center" ng-app="myapp" ng-controller="otpVerify">
+        <p class="text-right text-info">don't have code? <a class="vcartLogout">logout</a></p>
         <h3>Verification Code</h3>
 
-        <p>Please type the verification code sent to 5453543 344534</p>
+        <p>Please type the verification code sent to <span ng-bind-html="email"></span></p>
         <form class="form-inline mob-inline" name="formOtp" style="margin-top: 40px;">
             <div class="form-group">
                 <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1" autofocus>
@@ -56,6 +57,7 @@
                 <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <button class="btn btn-info submitbtn" type="submit">Submit</button>
+            <button class="btn  resend-btn submitbtn" ng-click="resendotp()" type="button">Resend OTP</button>
         </form>
     </div>
     <footer>
@@ -67,9 +69,20 @@
 
 </html>
 <script>
-    $(document).ready(function(){
-        $(document).on("keypress", "input",function() {
+    $(document).ready(function () {
+        $(document).on("keypress", "input", function () {
             $(this).parent("div").next(".form-group").find("input").focus();
         });
+    });
+
+    $(".vcartLogout").on("click", function () {
+        $.removeCookie('vcartAuth', { path: '/' });
+
+        /* var cookies = $.cookie();
+        for(var cookie in cookies) {
+            $.removeCookie(cookie);
+        } */
+
+        location.reload(true);
     });
 </script>

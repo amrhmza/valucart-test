@@ -39,7 +39,8 @@ app.constant("config", {
   addressList: baseurl + "/userProfile/useraddresslist",
   emailVerify: baseurl + "/auth/otpverify",
   orderDetails: baseurl + "/order/details/get",
-  create_user_bundle: baseurl + "/user_bundle/create/post"
+  create_user_bundle: baseurl + "/user_bundle/create/post",
+  forgotpassword: baseurl + "/auth/forgetpassword"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
