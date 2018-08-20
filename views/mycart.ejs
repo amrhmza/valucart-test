@@ -105,15 +105,10 @@
                         <div class="input-group" style="margin-top: 20px;margin-bottom: 20px">
                             <input type="text" class="form-control" placeholder="Enter Code" ng-model="coupon">
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-coupon">Apply</button>
+                                <button type="button" ng-click="verifyToken(coupon)" class="btn btn-coupon">Apply</button>
                             </div>
                             <!-- /btn-group -->
                         </div>
-                        <h5 class="marg-btm">Or see
-                            <a href="#" data-toggle="modal" data-target="#couponModal">
-                                <span class="coupons">applicable coupons</span>
-                            </a>
-                        </h5>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
                                 <h5 class="total" style="float: right;">
@@ -161,8 +156,6 @@
                 <% }%>
                 <% if(data.length>0){ %>
                 <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
-                    <button class="btn coupon-btn" data-toggle="modal" data-target="#couponModal">
-                        <img src="img/coupon.png" class="coupon-img" alt="coupon" /> Have a coupon code</button>
                     <div id="subtotal">
                         <h5 class="total">Subtotal</h5>
                         <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand"></strong> AED</h5>

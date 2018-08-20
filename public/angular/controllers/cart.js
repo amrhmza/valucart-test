@@ -117,4 +117,27 @@ app.controller("cart", function(
     var grand_total = parseFloat(ctotal);
     $scope.cartGrand = grand_total;
   };
+  $scope.verifyToken = function(coupon) {
+    console.log(coupon);
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
+    cart
+      .verifyCoupon(coupon, usertoken)
+      .then(function(response) {
+        console.log(response);
+        if (response.status == 200) {
+          toastr.success("Coupon valid and applyed");
+          console.log(response.data.results);
+
+          // $scope.cartGrand=
+        } else {
+          toastr.info("Coupon not valid");
+        }
+      })
+      .catch(function(response) {
+        toastr.info("Coupon not valid");
+      });
+  };
 });
