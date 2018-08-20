@@ -28,8 +28,6 @@
                 }).done(function (resp) {
                     if (resp.status == "success") {
                         resp.useremail = username;
-                        console.log(JSON.stringify(resp));
-
                         $.cookie('vcartAuth', JSON.stringify(resp), { expires: 7, path: '/' });
                         if (!resp.is_email_verified) {
                             var base_url = window.location.origin;

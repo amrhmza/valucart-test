@@ -40,7 +40,8 @@ app.constant("config", {
   emailVerify: baseurl + "/auth/otpverify",
   orderDetails: baseurl + "/order/details/get",
   create_user_bundle: baseurl + "/user_bundle/create/post",
-  forgotpassword: baseurl + "/auth/forgetpassword"
+  forgotpassword: baseurl + "/auth/forgetpassword",
+  sentotptoemail: baseurl + "/auth/sentotptoemail"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

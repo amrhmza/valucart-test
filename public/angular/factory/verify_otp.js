@@ -26,15 +26,16 @@ app.factory("otpVerify", function($http, config, $q) {
     },
     resent_otp: function() {
       var q = $q.defer();
-      var suggestURL = config.forgotpassword;
+      var suggestURL = config.sentotptoemail;
       let token = JSON.parse($.cookie("vcartAuth"));
-      var verifyUrl = suggestURL + "?email=" + token.email;
+      var verifyUrl = suggestURL;
       $http({
-        method: "GET",
+        method: "POST",
         url: verifyUrl,
         type: "json",
+        data: { email: token.email },
         headers: {
-          "Content-Type": "application/json" 
+          "Content-Type": "application/json"
         }
       })
         .then(function(success) {

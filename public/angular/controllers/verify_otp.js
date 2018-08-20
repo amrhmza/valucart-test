@@ -35,10 +35,15 @@ app.controller("otpVerify", function(
       otpVerify
         .email_verify(userData, userToken)
         .then(function(response) {
-          console.log(response);
           if (response.data.error) {
             toastr.error(response.data.error);
           } else {
+            var loc = JSON.parse($.cookie("vcartAuth"));
+            loc.is_email_verified = true;
+            $.cookie("vcartAuth", JSON.stringify(loc), {
+              expires: 7,
+              path: "/"
+            });
             toastr.success(response.data.result);
             $window.location.href = "/";
           }
@@ -59,8 +64,8 @@ app.controller("otpVerify", function(
         if (response.data.error) {
           toastr.error(response.data.error);
         } else {
-          toastr.success(response.data.result);
-          // $window.location.href = "/";
+          toastr.success(response.data.results);
+          $window.location.href = "/";
         }
       })
       .catch(function(response) {
