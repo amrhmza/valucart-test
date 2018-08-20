@@ -80,23 +80,26 @@ app.controller("home", function (
             JSON.parse($.cookie("vcartAuth")) :
             "";
         var usertoken = userAuth != "" ? userAuth.token : "";
-
-        getWishList
-            .addWish(productData, usertoken)
-            .then(function (response) {
-                var res = response.data.msg;
-                if (res == "success") {
-                    $scope.productData[index].wishlist = item ? false : true;
-                    if (item == false) {
-                        toastr.success(response.data.results);
-                    } else {
-                        toastr.warning(response.data.results);
+        if (usertoken == "") {
+            getWishList
+                .addWish(productData, usertoken)
+                .then(function (response) {
+                    var res = response.data.msg;
+                    if (res == "success") {
+                        $scope.productData[index].wishlist = item ? false : true;
+                        if (item == false) {
+                            toastr.success(response.data.results);
+                        } else {
+                            toastr.warning(response.data.results);
+                        }
                     }
-                }
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+                })
+                .catch(function (response) {
+                    console.log(response);
+                });
+        }else{
+            toastr.error("Login first to use this option");
+        }
     };
 
 });
