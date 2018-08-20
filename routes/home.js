@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
     let data = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
     let cookies= (!req.cookies.vcartAuth)?false:req.cookies.vcartAuth;
-    console.log(menudata);
+    // console.log(data.response.exclusive);
     res.render("home", {
       data: data,
       menudata: menudata,
@@ -21,6 +21,8 @@ router.get("/", async (req, res, next) => {
         "angular/app.js",
         "angular/factory/product_details.js",
         "angular/controllers/home.js",
+        "angular/factory/wishlist.js",
+        
       ]
     });
   } catch (error) {
