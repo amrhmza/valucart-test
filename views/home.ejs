@@ -44,7 +44,7 @@
     <!--    Carousel ends here-->
 
     <!--    owl carousel starts here-->
-    <div class="container-fluid carousel-mob">
+    <div class="container-fluid carousel-mob" ng-app="myapp" ng-controller="home">
             <hr class="invis hidden-xs hidden-sm">
         <div class="container">
             <div class="row">
@@ -195,16 +195,16 @@
                                             <img src="img/grammeter.png" class="img-responsive gramimg"> <%= cat.p_quantity;%></h5>
                                         <h6><%= cat.p_price%> AED</h6>
                                         <div class="productcountdiv button-container">
-                                            <button class="btn btn-default productminus cart-qty-minus" value="-">
+                                            <button ng-click="qty_minus('qty_',<%= cat.p_id;%>)" class="btn btn-default productminus cart-qty-minus" value="-">
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                             <!--<p class="productcount">1</p>-->
-                                            <input type="text" name="qty" maxlength="12" value="0" class="input-text qty  productcount" disabled/>
-                                            <button class="btn btn-default productplus cart-qty-plus" value="+">
+                                            <input type="text" name="qty_<%= cat.p_id;%>" maxlength="12" value="1" class="input-text qty  productcount" disabled/>
+                                            <button ng-click="qty_plus('qty_',<%= cat.p_id;%>)" class="btn btn-default productplus cart-qty-plus" value="+">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
-                                        <a href="cart">
+                                        <a ng-click="addtocart(<%= cat.p_id;%>)">
                                             <button class="btn btn-info">
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                         </a>

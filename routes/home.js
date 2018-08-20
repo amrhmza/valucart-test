@@ -14,9 +14,14 @@ router.get("/", async (req, res, next) => {
     res.render("home", {
       data: data,
       menudata: menudata,
-      angular: false,
-      customjs: false,
-      cookies: cookies
+      angular: true,
+      customjs: true,
+      cookies: cookies,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/product_details.js",
+        "angular/controllers/home.js",
+      ]
     });
   } catch (error) {
     res.status(401).json({
