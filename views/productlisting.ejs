@@ -145,7 +145,7 @@
                                 </a>
                                 <div id="collapse3" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <ul class="list-group">
+                                        <ul class="list-group brandlist">
                                             <% if(data.product_config["price_filter"]!=""){
                                             let i=0;
                                             data.product_config["price_filter"].forEach(function(price){ 
@@ -179,7 +179,7 @@
                                 </a>
                                 <div id="collapse4 " class="panel-collapse collapse in ">
                                     <div class="panel-body ">
-                                        <ul class="list-group ">
+                                        <ul class="list-group brandlist">
                                             <% if(data.product_config["discount_filter"]!=""){
                                             let j=0;
                                                     data.product_config["discount_filter"].forEach(function(discount){ 
@@ -281,7 +281,7 @@
                                             </ul>
 
                                             <li role="presentation" style="padding-left: 10px">Price</li>
-                                            <ul class="list-group">
+                                            <ul class="list-group brandlist">
 
                                                 <% if(data.product_config["price_filter"]!=""){
                                         let i=0;
@@ -303,7 +303,7 @@
                                      } %>
                                             </ul>
                                             <li role="presentation" style="padding-left: 10px">Discounts</li>
-                                            <ul class="list-group">
+                                            <ul class="list-group brandlist">
                                                 <% if(data.product_config["discount_filter"]!=""){
                                         let j=0;
                                                 data.product_config["discount_filter"].forEach(function(discount){ 

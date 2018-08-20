@@ -146,7 +146,7 @@
 
 
                 </div>
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-6 col-sm-12 pl0">
                     <div class="panel panel-default productpanel productviewpanel">
                         <div class="panel-body">
                             <div class="row">
@@ -165,8 +165,8 @@
                                             <%= (data.response[0].pdt_price)?data.response[0].pdt_price:data.response[0].p_price %> AED</h6>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-6">
+                            <div class="row m-t-48">
+                                <div class="col-md-6 col-xs-6">
                                     <div class="productcountdiv button-container">
                                         <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
                                             <i class="fa fa-minus"></i>
