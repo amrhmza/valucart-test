@@ -7,10 +7,9 @@ const getMenu = require("../controllers/category_menu.js");
 router.get("/", async (req, res, next) => {
  // console.log("Cookies :  ", req.cookies);
   try {
-    let data = await getHome.get_data();
-    let menudata = await getMenu.get_menulist();
     let cookies= (!req.cookies.vcartAuth)?false:req.cookies.vcartAuth;
-    // console.log(data.response.exclusive);
+    let data = await getHome.get_data(JSON.parse(cookies));
+    let menudata = await getMenu.get_menulist();
     res.render("home", {
       data: data,
       menudata: menudata,
