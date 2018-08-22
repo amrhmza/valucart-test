@@ -64,6 +64,75 @@
             if(!emailVerify)
                 window.location.href="/otp";
         } */
+
+
+        /* forgot password scripts
+         */
+        $('#genarate_pin').on("click", function () {
+            var email = $('#f-email').val();
+            if (email == "") {
+                toastr.error("Email Required!!");
+            }
+            if (email != "" ) {
+            $.ajax({
+                    type: 'GET',
+                    url: 'https://staging.valucart.com:3000/auth/forgetpassword?email='+email
+                }).done(function (resp) {
+                    if (resp.result != "") {
+                        $("#forgotpwd_error").html(resp.result).addClass("has-error");
+                        console.log("success itseems");
+                    }
+                    else {
+                        $("#forgotpwd_error").html(resp.result).addClass("has-error");
+                        console.log("Result is not expected");
+                    }
+                }).fail(function (r) {
+                    console.log(JSON.stringify(r));
+                    $("#forgotpwd_error").html("Request failed").addClass("has-error");
+                });
+            }
+        });
+        
+        $('#forgotpwd_form').submit(function (e) {
+            e.preventDefault();
+            var email = $("#f-email").val();
+            var pin = $("#pin").val();
+            var password = $("#f-pwd").val();
+
+            if (email == "") {
+                toastr.error("Name Required!!");
+            }
+            if (pin == "") {
+                toastr.error("Pin Required!!");
+            }
+            if (password == "") {
+                toastr.error("Password Required!!");
+            }
+
+            if (email != "" && password != "" && pin != "") {
+                var data = { "email":email, "password":password, "pin":pin };
+
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: 'https://staging.valucart.com:3000/auth/forgetpassword'
+                }).done(function (resp) {
+                    if (resp.result != "") {
+                        console.log(resp.result);
+                        $("#forgotpwd_error").html(resp.result).addClass("has-error");    
+                        $('#forgotpwd_form').trigger("reset");
+                    }else {
+                        $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");    
+                        console.log("Unexpected Respose");
+                    }
+                }).fail(function (r) {
+                    console.log("Error");
+                    console.log(JSON.stringify(r));
+                    $("#forgotpwd_error").html(r.error).addClass("has-error");
+                });
+            }
+        });
     });
     function onLoadGoogleCallback() {
         gapi.load('auth2', function () {
