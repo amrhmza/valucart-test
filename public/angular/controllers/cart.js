@@ -9,6 +9,7 @@ app.controller("cart", function(
   cart,
   cartData
 ) {
+  $scope.applied = 1;
   $scope.qty = 1;
   $scope.cartGrand = cartData.cartSum;
   $scope.addtocart = function(data) {
@@ -126,11 +127,19 @@ app.controller("cart", function(
     cart
       .verifyCoupon(coupon, usertoken)
       .then(function(response) {
-        console.log(response);
         if (response.status == 200) {
           toastr.success("Coupon valid and applyed");
-          console.log(response.data.results);
-
+          let data = response.data.results;
+          $scope.applied = 0;
+          $scope.couponInfo = data.response.cp_coupon_code_description;
+          if (data.response.cp_offer_type == "flat") {
+            $scope.cartGrand =
+              parseFloat($scope.cartGrand) - parseFloat(data.response.cp_flat);
+            $scope.cartsaving = data.response.cp_flat;
+          } else {
+            let persent = data.response.cp_percentage;
+            perc = (($scope.cartGrand / persent) * 100).toFixed(2);
+          }
           // $scope.cartGrand=
         } else {
           toastr.info("Coupon not valid");
@@ -139,5 +148,12 @@ app.controller("cart", function(
       .catch(function(response) {
         toastr.info("Coupon not valid");
       });
+  };
+  $scope.removeCoupon = function() {
+    $scope.cartGrand =
+      parseFloat($scope.cartGrand) + parseFloat($scope.cartsaving);
+    delete $scope.cartsaving;
+    $scope.applied = 1;
+    $scope.coupon = "";
   };
 });
