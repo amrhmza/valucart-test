@@ -14,6 +14,7 @@ let get_data = async cookies => {
     console.log(error);
   }
 };
+
 module.exports = {
   get_data
 };

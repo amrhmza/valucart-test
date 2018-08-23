@@ -38,6 +38,7 @@ app.constant("config", {
   shppingListUrl: baseurl + "/shopping_list",
   addressList: baseurl + "/userProfile/useraddresslist",
   emailVerify: baseurl + "/auth/otpverify",
+  orderList: baseurl + "/order/list/get",
   orderDetails: baseurl + "/order/details/get",
   create_user_bundle: baseurl + "/user_bundle/create/post",
   forgotpassword: baseurl + "/auth/forgetpassword",

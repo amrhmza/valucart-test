@@ -14,9 +14,17 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       menudata: menudata,
       data: data,
       search: 0,
-      angular: false,
-      customjs: false,
-      cookies: cookies
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/myorders.js",
+        "angular/controllers/myorders.js",
+        "js/jquery.nice-select.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js"
+      ]
     });
   } catch (error) {
     console.log(error);
