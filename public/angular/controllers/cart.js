@@ -11,7 +11,7 @@ app.controller("cart", function(
 ) {
   $scope.applied = 1;
   $scope.qty = 1;
-  $scope.cartGrand = cartData.cartSum;
+  $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
   $scope.addtocart = function(data) {
     product_details
       .addToCart($scope.qty, data)
@@ -119,39 +119,31 @@ app.controller("cart", function(
     $scope.cartGrand = grand_total;
   };
   $scope.verifyToken = function(coupon) {
-    console.log(coupon);
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
-      .verifyCoupon(coupon, usertoken)
+      .verifyCoupon(coupon, $scope.cartGrand, usertoken)
       .then(function(response) {
         if (response.status == 200) {
           toastr.success("Coupon valid and applyed");
           let data = response.data.results;
           $scope.applied = 0;
-          $scope.couponInfo = data.response.cp_coupon_code_description;
-          if (data.response.cp_offer_type == "flat") {
-            $scope.cartGrand =
-              parseFloat($scope.cartGrand) - parseFloat(data.response.cp_flat);
-            $scope.cartsaving = data.response.cp_flat;
-          } else {
-            let persent = data.response.cp_percentage;
-            perc = (($scope.cartGrand / persent) * 100).toFixed(2);
-          }
-          // $scope.cartGrand=
+          $scope.couponInfo = data.msg;
+          $scope.cartGrand = parseFloat(data.response.discounted_price);
+          $scope.cartsaving = parseFloat(data.response.discount);
         } else {
           toastr.info("Coupon not valid");
         }
       })
       .catch(function(response) {
-        toastr.info("Coupon not valid");
+        let data = response.data.error;
+        toastr.info(data.msg);
       });
   };
   $scope.removeCoupon = function() {
-    $scope.cartGrand =
-      parseFloat($scope.cartGrand) + parseFloat($scope.cartsaving);
+    $scope.cartGrand += $scope.cartsaving;
     delete $scope.cartsaving;
     $scope.applied = 1;
     $scope.coupon = "";

@@ -105,24 +105,11 @@
                     <div class="col-md-4 col-md-offset-1" style="margin-top: 10px;" id="summary-desktop">
                         <div class="summary">
                             <h4 class="order">Order Summary</h4>
-                            <h6>Have a coupon code? Enter below to redeem</h6>
-                            <div class="input-group" style="margin-top: 20px;margin-bottom: 20px" ng-show="applied">
-                                <input type="text" class="form-control" placeholder="Enter Code" ng-model="coupon">
-                                <div class="input-group-btn">
-                                    <button type="button" ng-click="verifyToken(coupon)" class="btn btn-coupon">Apply</button>
-                                </div>
-                                <!-- /btn-group -->
-                            </div>
-                            <div class="col-12" ng-hide="applied">
-                                <h3 class=""><span ng-bind-html="coupon"></span>
-                                    <i class="fa fa-trash-o trash text-danger" aria-hidden="true" ng-click="removeCoupon()"></i>
-                                </h3>
-                                <article class="brandsearch" ng-bind-html="couponInfo"></article>
-                            </div>
+                            
                             <div id="subtotal">
                                 <h5 class="total">Subtotal</h5>
                                 <h5 class="total" style="float: right;">
-                                    <span class="c_subtotal" ng-bind-html="cartGrand">
+                                    <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
                                     </span> AED</h5>
                                 <hr>
                             </div>
@@ -145,7 +132,7 @@
                                     <span>(inclusive of 5%VAT)</span>
                                 </h5>
                                 <h5 class="total" style="float: right;">
-                                    <strong class="c_gtotal" ng-bind-html="cartGrand + 15">
+                                    <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
 
                                     </strong>
                                     <strong> AED</strong>
@@ -169,7 +156,7 @@
                             <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
                                 <div id="subtotal">
                                     <h5 class="total">Subtotal</h5>
-                                    <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand"></strong> AED</h5>
+                                    <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand |number : 2"></strong> AED</h5>
                                 </div>
                                 <hr>
                                 <div id="delivery">
@@ -190,7 +177,7 @@
                                         <span>(inclusive of 5%VAT)</span>
                                     </h5>
                                     <h5 class="total" style="float: right;">
-                                        <strong ng-bind-html="(cartGrand) + 15"></strong><strong> AED</strong>
+                                        <strong ng-bind-html="((cartGrand) + 15)|number : 2"></strong><strong> AED</strong>
                                     </h5>
                                 </div>
                                 <a href="">
@@ -199,7 +186,7 @@
                                         Shopping
                                     </h5>
                                 </a>
-                                <form action="/checkout" method="POST"></form>
+                                <form action="/checkout" method="POST">
 
                                 <% if(typeof data!="undefined"){
                                     data.forEach(function(cart){ 

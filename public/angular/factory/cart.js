@@ -48,9 +48,10 @@ app.factory("cart", function($http, config, $q) {
         });
       return q.promise;
     },
-    verifyCoupon: function(coupon, userData) {
+    verifyCoupon: function(coupon, total, userData) {
       var q = $q.defer();
-      var suggestURL = config.checkCoupon + "?coupon_code=" + coupon;
+      var suggestURL =
+        config.checkCoupon + "?coupon_code=" + coupon + "&grand_total=" + total;
       $http({
         method: "GET",
         url: suggestURL,

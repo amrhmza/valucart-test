@@ -24,8 +24,7 @@
                                 <form>
                                     <div class="card-mode">
                                         <div class="radio">
-                                            <input type="radio" id="test1" value="1" ng-model="disabled"  name="radio-group"
-                                                />
+                                            <input type="radio" id="test1" value="1" ng-model="disabled" name="radio-group" />
                                             <label for="test1">Credit/Debit card</label>
                                         </div>
                                     </div>
@@ -67,37 +66,41 @@
                     </div>
 
                 </div>
-                <div class="col-md-offset-1 col-md-4 col-sm-6" style="margin-top: 70px" id="summary-desktop">
+                <div class="col-md-offset-1 col-md-4 col-sm-6" style="margin-top: 70px" id="summary-desktop1">
                     <div class="summary">
                         <h4 class="order">Order Summary</h4>
                         <h6>Have a coupon code? Enter below to redeem</h6>
-                        <div class="input-group" style="margin-top: 20px;margin-bottom: 20px">
-                            <input type="text" class="form-control" placeholder="Enter Code">
+                        <div class="input-group" style="margin-top: 20px;margin-bottom: 20px" ng-show="applied">
+                            <input type="text" class="form-control" placeholder="Enter Code" ng-model="coupon">
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-coupon">Apply</button>
+                                <button type="button" ng-click="verifyToken(coupon)" class="btn btn-coupon">Apply</button>
                             </div>
                             <!-- /btn-group -->
                         </div>
-                        <h5 class="marg-btm">Or see
-                            <a href="#" data-toggle="modal" data-target="#couponModal">
-                                <span class="coupons">applicable coupons</span>
-                            </a>
-                        </h5>
+                        <div class="col-12" ng-hide="applied">
+                            <h3 class=""><span ng-bind-html="coupon"></span>
+                                <i class="fa fa-trash-o trash text-danger" aria-hidden="true" ng-click="removeCoupon()"></i>
+                            </h3>
+                            <article class="alert-danger" ng-bind-html="couponInfo"></article>
+                        </div>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
-                            <h5 class="total" style="float: right;"><%= data.total %> AED</h5>
+                            <h5 class="total" style="float: right;">
+                                <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
+                                </span> AED</h5>
+                            </h5>
                             <hr>
                         </div>
                         <div id="delivery">
                             <h5 class="total">Delivery Charges</h5>
                             <h5 class="total" style="float: right;">15.00 AED</h5>
                         </div>
-                        <div id="savings" class="hide" style="margin-top: 20px">
+                        <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
                             <h5 class="total">
                                 <strong>savings</strong>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong>7.50 AED</strong>
+                                <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
                             </h5>
                         </div>
                         <div id="total" style="margin-top: 20px">
@@ -107,7 +110,7 @@
                                 <span>(inclusive of 5%VAT)</span>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong><%= Number(data.total)+15 %> AED</strong>
+                                <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2"></strong>
                             </h5>
                         </div>
                     </div>
@@ -118,9 +121,11 @@
                                 %>
                             <input type="hidden" name="cart_ids" value="<%= cart %>">
                             <% })}%>
-                            <input type="hidden" name="shipping_address_id" value="{{address_id}}">
-                            <input type="hidden" name="order_type" value="{{disabled}}">
-                                <button ng-if="disabled!=''" type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
+                                <input type="hidden" name="shipping_address_id" value="{{address_id}}">
+                                <input type="hidden" name="order_type" value="{{disabled}}">
+                                <input type="hidden" name="coupon" value="{{coupon}}">
+                                <button ng-if="disabled!=''" type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                    to checkout</button>
 
                     </form>
                 </div>
@@ -131,4 +136,9 @@
             </div>
         </div>
     </div>
+    <script>
+        app.constant("cartData", {
+            'cartSum': <%= data.total %> 
+            });
+    </script>
     <% include template/footer %>
