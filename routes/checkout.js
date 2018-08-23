@@ -18,7 +18,8 @@ router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
       jslist: [
         "angular/app.js",
         "angular/factory/add_address.js",
-        "angular/controllers/checkout.js"
+        "angular/controllers/checkout.js",
+        "angular/factory/cart.js"
       ]
     });
   } catch (error) {

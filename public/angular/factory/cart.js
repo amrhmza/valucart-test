@@ -47,6 +47,27 @@ app.factory("cart", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    verifyCoupon: function(coupon, total, userData) {
+      var q = $q.defer();
+      var suggestURL =
+        config.checkCoupon + "?coupon_code=" + coupon + "&grand_total=" + total;
+      $http({
+        method: "GET",
+        url: suggestURL,
+        type: "json",
+        headers: {
+          Authorization: "Bearer " + userData,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

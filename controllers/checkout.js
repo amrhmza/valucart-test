@@ -4,8 +4,6 @@ const axios = require("axios");
 
 let orderInit = async (cookies, data) => {
   try {
-    console.log(data);
-
     let getparam = axios_config;
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token

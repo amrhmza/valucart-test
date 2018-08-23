@@ -6,10 +6,15 @@ app.controller("checkout", function(
   $timeout,
   $filter,
   config,
-  addNewAddress
+  addNewAddress,
+  cart,
+  cartData
 ) {
+  $scope.applied = 1;
+  $scope.qty = 1;
   $scope.disabled = "";
   $scope.address_id = "";
+  $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
   $scope.addresschange = function(data) {
     $scope.address_id = data;
   };
@@ -96,5 +101,35 @@ app.controller("checkout", function(
           });
       }
     };
+  };
+  $scope.verifyToken = function(coupon) {
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
+    cart
+      .verifyCoupon(coupon, $scope.cartGrand, usertoken)
+      .then(function(response) {
+        if (response.status == 200) {
+          toastr.success("Coupon valid and applyed");
+          let data = response.data.results;
+          $scope.applied = 0;
+          $scope.couponInfo = data.msg;
+          $scope.cartGrand = parseFloat(data.response.discounted_price);
+          $scope.cartsaving = parseFloat(data.response.discount);
+        } else {
+          toastr.info("Coupon not valid");
+        }
+      })
+      .catch(function(response) {
+        let data = response.data.error;
+        toastr.info(data.msg);
+      });
+  };
+  $scope.removeCoupon = function() {
+    $scope.cartGrand += $scope.cartsaving;
+    delete $scope.cartsaving;
+    $scope.applied = 1;
+    $scope.coupon = "";
   };
 });

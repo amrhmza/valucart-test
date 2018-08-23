@@ -30,7 +30,8 @@
                                     <div class="col-xs-4">
                                         <% if(cart.discount!=null){  %>
                                             <p class="discountprice">
-                                                <%= cart.discount %>%</p>
+                                                <%= cart.discount %>%
+                                            </p>
                                             <% } %>
                                                 <img src="<%= cart.product_image %>" class="img-responsive productimg">
                                                 <div class="col-xs-12 favourite">
@@ -81,7 +82,8 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-8">
                                                 <h6 class="rate">
-                                                    <%= cart.price %> AED</h6>
+                                                    <%= cart.price %> AED
+                                                </h6>
                                             </div>
 
                                     </div>
@@ -93,125 +95,117 @@
                             <div id="shop-desktop">
                                 <a href="#">
                                     <h5 class="continue-text">
-                                        <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue Shopping</h5>
+                                        <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue
+                                        Shopping
+                                    </h5>
                                 </a>
                             </div>
                 </div>
                 <% if(data.length>0){ %>
-                <div class="col-md-4 col-md-offset-1" style="margin-top: 10px;" id="summary-desktop">
-                    <div class="summary">
-                        <h4 class="order">Order Summary</h4>
-                        <h6>Have a coupon code? Enter below to redeem</h6>
-                        <div class="input-group" style="margin-top: 20px;margin-bottom: 20px">
-                            <input type="text" class="form-control" placeholder="Enter Code" ng-model="coupon">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-coupon">Apply</button>
-                            </div>
-                            <!-- /btn-group -->
-                        </div>
-                        <h5 class="marg-btm">Or see
-                            <a href="#" data-toggle="modal" data-target="#couponModal">
-                                <span class="coupons">applicable coupons</span>
-                            </a>
-                        </h5>
-                        <div id="subtotal">
-                            <h5 class="total">Subtotal</h5>
+                    <div class="col-md-4 col-md-offset-1" style="margin-top: 10px;" id="summary-desktop">
+                        <div class="summary">
+                            <h4 class="order">Order Summary</h4>
+                            
+                            <div id="subtotal">
+                                <h5 class="total">Subtotal</h5>
                                 <h5 class="total" style="float: right;">
-                                    <span class="c_subtotal" ng-bind-html="cartGrand">
+                                    <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
                                     </span> AED</h5>
                                 <hr>
+                            </div>
+                            <div id="delivery">
+                                <h5 class="total">Delivery Charges</h5>
+                                <h5 class="total" style="float: right;">15.00 AED</h5>
+                            </div>
+                            <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
+                                <h5 class="total">
+                                    <strong>savings</strong>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
+                                </h5>
+                            </div>
+                            <div id="total" style="margin-top: 20px">
+                                <h5 class="total">
+                                    <strong>Grand total</strong>
+                                    <br>
+                                    <span>(inclusive of 5%VAT)</span>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
+
+                                    </strong>
+                                    <strong> AED</strong>
+                                </h5>
+                            </div>
                         </div>
-                        <div id="delivery">
-                            <h5 class="total">Delivery Charges</h5>
-                            <h5 class="total" style="float: right;">15.00 AED</h5>
-                        </div>
-                        <div id="savings" style="margin-top: 20px" class="hide">
-                            <h5 class="total">
-                                <strong>savings</strong>
-                            </h5>
-                            <h5 class="total" style="float: right;">
-                                <strong>7.50 AED</strong>
-                            </h5>
-                        </div>
-                        <div id="total" style="margin-top: 20px">
-                            <h5 class="total">
-                                <strong>Grand total</strong>
-                                <br>
-                                <span>(inclusive of 5%VAT)</span>
-                            </h5>
-                            <h5 class="total" style="float: right;">
-                                <strong class="c_gtotal" ng-bind-html="cartGrand + 15">
-                                    
-                                </strong>
-                                <strong> AED</strong>
-                            </h5>
-                        </div>
-                    </div>
-                    <form action="checkout" method="POST">
-                        <% if(data!="undefined"){
+                        <form action="checkout" method="POST">
+                            <% if(data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
-                            <input type="hidden" name="cart_id" value="<%=cart.cart_id%>"/>
-                            <% })}%>
-                            <input type="hidden" name="total" value="{{cartGrand}}"/>
-                            <input type="hidden" name="coupon" value="{{coupon}}"/>
-                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
-                    </form>
-                </div>
-                <% }%>
-                <% if(data.length>0){ %>
-                <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
-                    <button class="btn coupon-btn" data-toggle="modal" data-target="#couponModal">
-                        <img src="img/coupon.png" class="coupon-img" alt="coupon" /> Have a coupon code</button>
-                    <div id="subtotal">
-                        <h5 class="total">Subtotal</h5>
-                        <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand"></strong> AED</h5>
+                                <input type="hidden" name="cart_id" value="<%=cart.cart_id%>" />
+                                <% })}%>
+                                    <input type="hidden" name="total" value="{{cartGrand}}" />
+                                    <input type="hidden" name="coupon" value="{{coupon}}" />
+                                    <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                        to checkout</button>
+                        </form>
                     </div>
-                    <hr>
-                    <div id="delivery">
-                        <h5 class="total">Delivery Charges</h5>
-                        <h5 class="total" style="float: right;">15.00 AED</h5>
-                    </div>
-                    <div id="savings" style="margin-top: 20px" class="hidden">
-                        <h5 class="total">
-                            <strong>savings</strong>
-                        </h5>
-                        <h5 class="total" style="float: right;">
-                            <strong>7.50 AED</strong>
-                        </h5>
-                    </div>
-                    <div id="total" style="margin-top: 20px">
-                        <h5 class="total">
-                            <strong>Grand total</strong>
-                            <span>(inclusive of 5%VAT)</span>
-                        </h5>
-                        <h5 class="total" style="float: right;">
-                            <strong ng-bind-html="(cartGrand) + 15"></strong><strong> AED</strong>
-                        </h5>
-                    </div>
-                    <a href="">
-                        <h5 class="shop-text">
-                            <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue Shopping</h5>
-                    </a>
-                    <form action="/checkout" method="POST"></form>
-                   
-                        <% if(typeof data!="undefined"){
+                    <% }%>
+                        <% if(data.length>0){ %>
+                            <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
+                                <div id="subtotal">
+                                    <h5 class="total">Subtotal</h5>
+                                    <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand |number : 2"></strong> AED</h5>
+                                </div>
+                                <hr>
+                                <div id="delivery">
+                                    <h5 class="total">Delivery Charges</h5>
+                                    <h5 class="total" style="float: right;">15.00 AED</h5>
+                                </div>
+                                <div id="savings" style="margin-top: 20px" class="hidden">
+                                    <h5 class="total">
+                                        <strong>savings</strong>
+                                    </h5>
+                                    <h5 class="total" style="float: right;">
+                                        <strong>7.50 AED</strong>
+                                    </h5>
+                                </div>
+                                <div id="total" style="margin-top: 20px">
+                                    <h5 class="total">
+                                        <strong>Grand total</strong>
+                                        <span>(inclusive of 5%VAT)</span>
+                                    </h5>
+                                    <h5 class="total" style="float: right;">
+                                        <strong ng-bind-html="((cartGrand) + 15)|number : 2"></strong><strong> AED</strong>
+                                    </h5>
+                                </div>
+                                <a href="">
+                                    <h5 class="shop-text">
+                                        <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> continue
+                                        Shopping
+                                    </h5>
+                                </a>
+                                <form action="/checkout" method="POST">
+
+                                <% if(typeof data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
-                            <input type="hidden" name="cart_id[]" value="<%=cart.cart_id%>">
-                            <% })}%>
-                            <input type="hidden" name="total" value="{{cartGrand}}"/>
-                            <input type="hidden" name="coupon" value="{{coupon}}"/>
-                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed to checkout</button>
-                    </form>
-                </div>
-                <% } %>
+                                    <input type="hidden" name="cart_id[]" value="<%=cart.cart_id%>">
+                                    <% })}%>
+                                        <input type="hidden" name="total" value="{{cartGrand}}" />
+                                        <input type="hidden" name="coupon" value="{{coupon}}" />
+                                        <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                            to checkout</button>
+                                        </form>
+                            </div>
+                            <% } %>
             </div>
         </div>
     </div>
     <script>
-            app.constant("cartData", {
-                'cartSum': <%= cart_sum %> 
+        app.constant("cartData", {
+            'cartSum': <%= cart_sum %> 
             });
     </script>
     <!--     Product list ends here-->
