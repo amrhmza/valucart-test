@@ -73,10 +73,10 @@
             if (email == "") {
                 toastr.error("Email Required!!");
             }
-            if (email != "" ) {
-            $.ajax({
+            if (email != "") {
+                $.ajax({
                     type: 'GET',
-                    url: '<%= process.env.APIURL %>/auth/forgetpassword?email='+email
+                    url: '<%= process.env.APIURL %>/auth/forgetpassword?email=' + email
                 }).done(function (resp) {
                     if (resp.result != "") {
                         $("#forgotpwd_error").html(resp.result).addClass("has-error");
@@ -94,7 +94,7 @@
                 });
             }
         });
-        
+
         $('#forgotpwd_form').submit(function (e) {
             e.preventDefault();
             var email = $("#f-email").val();
@@ -112,7 +112,7 @@
             }
 
             if (email != "" && password != "" && pin != "") {
-                var data = { "email":email, "password":password, "pin":pin };
+                var data = { "email": email, "password": password, "pin": pin };
 
                 $.ajax({
                     type: 'POST',
@@ -121,12 +121,12 @@
                     url: '<%= process.env.APIURL %>/auth/forgetpassword'
                 }).done(function (resp) {
                     if (resp.result != "") {
-                        $("#forgotpwd_error").html(resp.result).addClass("has-error");    
+                        $("#forgotpwd_error").html(resp.result).addClass("has-error");
                         $('#forgotpwd_form').trigger("reset");
                         $('#myModal').modal('show');
                         $('#forgot_password').modal('hide');
-                    }else {
-                        $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");    
+                    } else {
+                        $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");
                     }
                 }).fail(function (r) {
                     $("#forgotpwd_error").html(r.error).addClass("has-error");
@@ -144,86 +144,55 @@
 
             auth2.attachClickHandler(element1, {},
                 function (googleUser) {
-                    let gdata = googleUser.getBasicProfile();
-                    let gtoken = googleUser.getAuthResponse().id_token;
-
-                    let data = {};
-                    data["user_id"] = gdata.Eea;
-                    data["token"] = gtoken;
-                    data["sso_type"] = 1;
-                    $.ajax({
-                        type: "POST",
-                        data: JSON.stringify(data),
-                        contentType: "application/json",
-                        url: "<%= process.env.APIURL %>/auth/ssoLogin"
-                    })
-                        .done(function (resp) {
-                            if (resp.status == "success") {
-                                resp.useremail = resp.email;
-                                console.log(JSON.stringify(resp));
-
-                                $.cookie("vcartAuth", JSON.stringify(resp), {
-                                    expires: 7,
-                                    path: "/"
-                                });
-                                if (!resp.is_email_verified) {
-                                    var base_url = window.location.origin;
-                                    window.location.replace(base_url + "/otp");
-                                } else location.reload(true);
-                            } else {
-                                console.log("Invalid Account");
-                                toastr.error("Invalid Account");
-                            }
-                        })
-                        .fail(function (r) {
-                            console.log(JSON.stringify(r));
-                            toastr.error("Invalid Account");
-                        });
+                    ssoprocess(googleUser)
                 });
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
-                    let gdata = googleUser.getBasicProfile();
-                    let gtoken = googleUser.getAuthResponse().id_token;
-                    $.ajax({
-                        type: "POST",
-                        data: JSON.stringify({
-                            username: gdata.ig,
-                            user_id: gdata.Eea,
-                            user_phone_no: "",
-                            user_email: gdata.U3,
-                            user_first_name: gdata.ofa,
-                            user_last_name: gdata.wea,
-                            user_city: "",
-                            user_area: "",
-                            token: gtoken,
-                            sso_type: 1
-                        }),
-                        contentType: "application/json",
-                        url: "<%= process.env.APIURL %>/auth/ssoRegister",
-                        success: function (resp) {
-                            if (resp.status == "success") {
-                                resp.useremail = resp.email;
-                                console.log(JSON.stringify(resp));
-
-                                $.cookie("vcartAuth", JSON.stringify(resp), {
-                                    expires: 7,
-                                    path: "/"
-                                });
-                                if (!resp.is_email_verified) {
-                                    var base_url = window.location.origin;
-                                    window.location.replace(base_url + "/otp");
-                                } else location.reload(true);
-                            } else {
-                                console.log("Invalid Account");
-                                toastr.error("Invalid Account");
-                            }
-                        },
-                        error: function (error) {
-                            toastr.error(error.responseJSON.error);
-                        }
-                    })
+                    ssoprocess(googleUser)
                 });
         });
+        function ssoprocess(googleUser) {
+            let gdata = googleUser.getBasicProfile();
+            let gtoken = googleUser.getAuthResponse().id_token;
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify({
+                    username: gdata.ig,
+                    user_id: gdata.Eea,
+                    user_phone_no: "",
+                    user_email: gdata.U3,
+                    user_first_name: gdata.ofa,
+                    user_last_name: gdata.wea,
+                    user_city: "",
+                    user_area: "",
+                    token: gtoken,
+                    sso_type: 1
+                }),
+                contentType: "application/json",
+                url: "<%= process.env.APIURL %>/auth/sso",
+                success: function (resp) {
+                    if (resp.status == "success") {
+                        resp.useremail = resp.email;
+                        console.log(JSON.stringify(resp));
+
+                        $.cookie("vcartAuth", JSON.stringify(resp), {
+                            expires: 7,
+                            path: "/"
+                        });
+                        if (!resp.is_email_verified) {
+                            var base_url = window.location.origin;
+                            window.location.replace(base_url + "/otp");
+                        } else location.reload(true);
+                    } else {
+                        console.log("Invalid Account");
+                        toastr.error("Invalid Account");
+                    }
+                },
+                error: function (error) {
+                    toastr.error(error.responseJSON.error);
+                }
+            })
+        }
         element = document.getElementById('googleSignIn');
         element1 = document.getElementById('googleSignup');
     }
