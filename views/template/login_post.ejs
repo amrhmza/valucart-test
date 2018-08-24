@@ -80,6 +80,7 @@
                 }).done(function (resp) {
                     if (resp.result != "") {
                         $("#forgotpwd_error").html(resp.result).addClass("has-error");
+                        $("#pinin").removeClass("avoid-clicks");
                         console.log("success itseems");
                     }
                     else {

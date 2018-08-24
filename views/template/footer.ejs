@@ -130,7 +130,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <a  id="forgot_pass" ><span>forgot password?</span></a>
+                                                    <a id="forgot_pass"><span>forgot password?</span></a>
                                                     <h5 style="display: inline-block;">or signin with</h5>
                                                     <div style="float:right">
                                                         <img src="img/fb.png" alt="google-plus" style="margin-right: 10px;" onclick="fbLogin(1)" id="fbLink" />
@@ -181,28 +181,39 @@
                                         <div class="col-lg-12">
                                             <form id="forgotpwd_form" name="forgotpwd_form" role="form" method="post" style="display: block;margin-top: 20px;">
                                                 <p id="forgotpwd_error" style="color: red;" class="fa-1x marg-btm text-center"></p>
-                                                <div class="form-group marg-btm">
-                                                    <input type="text" name="f-email" id="f-email" class="form-control form-control1">
-                                                    <label class="form-control-placeholder email" for="email">E-mail id</label>
-                                                    <span id="genarate_pin"> Genarate Pin </span>
+                                                <div class="form-group marg-btm row">
+                                                    <div class="col-md-8">
+                                                        <input type="email" name="f-email" id="f-email" autocomplete="off" class="form-control form-control1">
+                                                        <label class="form-control-placeholder email" for="email">
+                                                            E-mail id</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-info" id="genarate_pin"> Genarate
+                                                            Pin </button>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group marg-btm">
-                                                    <input type="text" name="pin" id="pin" class="form-control form-control1">
-                                                    <label class="form-control-placeholder phone" for="phone">pin from email</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" name="f-pwd" id="f-pwd" class="form-control form-control1">
-                                                    <label class="form-control-placeholder pwd" for="pwd">password</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12" style="margin-top: 20px;">
-                                                            <button type="submit" name="forgotpwd-submit" id="forgotpwd-submit" tabindex="4" class="form-control btn btn-register">Submit</button>
+                                                <div class="avoid-clicks" id="pinin">
+                                                    <div class="form-group marg-btm">
+                                                        <input type="text" name="pin" id="pin" autocomplete="off" class="form-control form-control1">
+                                                        <label class="form-control-placeholder phone" for="phone">pin from
+                                                            email
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" name="f-pwd" id="f-pwd" autocomplete="off" class="form-control form-control1">
+                                                        <label class="form-control-placeholder pwd" for="pwd">password</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-12" style="margin-top: 20px;">
+                                                                <button type="submit" name="forgotpwd-submit" id="forgotpwd-submit" tabindex="4" class="form-control btn btn-register">Submit</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <a id="signin_again"><h5 style="display: inline-block;">or signin</h5></a>
+                                                    <a id="signin_again"><h5 style="display: inline-block;">or signin
+                                                        </h5></a>
                                                 </div>
                                             </form>
                                         </div>
@@ -230,11 +241,11 @@
     if (city == null || area == null) {
         window.location.replace("<%= process.env.BASEURL %>city");
     }
-    $('#forgot_pass').click(function(){
+    $('#forgot_pass').click(function () {
         $('#myModal').modal('hide');
         $('#forgot_password').modal('show');
     })
-    $('#signin_again').click(function(){
+    $('#signin_again').click(function () {
         $('#forgot_password').modal('hide');
         $('#myModal').modal('show');
     })
@@ -369,7 +380,8 @@
                             <div class="col-md-4">
                                 <div class="form-group marg-btm">
                                     <input type="text" id="pdel_date" class="form-control form-control1" value="5 jun 2018">
-                                    <label class="form-control-placeholder" for="pdel_date">Previous delivery date</label>
+                                    <label class="form-control-placeholder" for="pdel_date">Previous delivery date
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -426,7 +438,8 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <a class="removebundle" href="#" style="text-decoration: none;">
-                                        <p style="color: #d80000;text-align: center; padding-top: 15px; ">Remove Bundle</p>
+                                        <p style="color: #d80000;text-align: center; padding-top: 15px; ">Remove Bundle
+                                        </p>
                                     </a>
                                 </div>
                             </div>

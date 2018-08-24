@@ -355,3 +355,7 @@ a.btn-bundle {
   padding-top: 15px !important;
   text-decoration: none;
 }
+.avoid-clicks {
+  pointer-events: none;
+  opacity: 0.5;
+}
