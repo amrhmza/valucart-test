@@ -24,7 +24,7 @@
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
-                    url: 'https://staging.valucart.com:3000/auth/login'
+                    url: '<%= process.env.APIURL %>/auth/login'
                 }).done(function (resp) {
                     if (resp.status == "success") {
                         resp.useremail = username;
@@ -76,12 +76,13 @@
             if (email != "" ) {
             $.ajax({
                     type: 'GET',
-                    url: 'https://staging.valucart.com:3000/auth/forgetpassword?email='+email
+                    url: '<%= process.env.APIURL %>/auth/forgetpassword?email='+email
                 }).done(function (resp) {
                     if (resp.result != "") {
                         $("#forgotpwd_error").html(resp.result).addClass("has-error");
                         $("#pinin").removeClass("avoid-clicks");
                         console.log("success itseems");
+                        $("")
                     }
                     else {
                         $("#forgotpwd_error").html(resp.result).addClass("has-error");
@@ -117,19 +118,17 @@
                     type: 'POST',
                     data: JSON.stringify(data),
                     contentType: 'application/json',
-                    url: 'https://staging.valucart.com:3000/auth/forgetpassword'
+                    url: '<%= process.env.APIURL %>/auth/forgetpassword'
                 }).done(function (resp) {
                     if (resp.result != "") {
-                        console.log(resp.result);
                         $("#forgotpwd_error").html(resp.result).addClass("has-error");    
                         $('#forgotpwd_form').trigger("reset");
+                        $('#myModal').modal('show');
+                        $('#forgot_password').modal('hide');
                     }else {
                         $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");    
-                        console.log("Unexpected Respose");
                     }
                 }).fail(function (r) {
-                    console.log("Error");
-                    console.log(JSON.stringify(r));
                     $("#forgotpwd_error").html(r.error).addClass("has-error");
                 });
             }
@@ -156,7 +155,7 @@
                         type: "POST",
                         data: JSON.stringify(data),
                         contentType: "application/json",
-                        url: "https://staging.valucart.com:3000/auth/ssoLogin"
+                        url: "<%= process.env.APIURL %>/auth/ssoLogin"
                     })
                         .done(function (resp) {
                             if (resp.status == "success") {
@@ -200,7 +199,7 @@
                             sso_type: 1
                         }),
                         contentType: "application/json",
-                        url: "https://staging.valucart.com:3000/auth/ssoRegister",
+                        url: "<%= process.env.APIURL %>/auth/ssoRegister",
                         success: function (resp) {
                             if (resp.status == "success") {
                                 resp.useremail = resp.email;

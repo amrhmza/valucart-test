@@ -16,7 +16,7 @@ var app = angular
       }
     };
   });
-var baseurl = "https://staging.valucart.com:3000";
+var baseurl = APIURL;
 app.constant("config", {
   baseURL: baseurl,
   getproduct_list: baseurl + "/product/list/product/post",

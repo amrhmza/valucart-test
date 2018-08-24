@@ -54,7 +54,7 @@ $(function() {
           user_area: ""
         }),
         contentType: "application/json",
-        url: "https://staging.valucart.com:3000/auth/register",
+        url: APIURL + "/auth/register",
         success: function(response) {
           if (response.status == "success") {
             $("#register-form input").val("");
@@ -123,7 +123,7 @@ function fbLogin(type) {
             type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json",
-            url: "https://staging.valucart.com:3000/auth/ssoLogin"
+            url: APIURL + "/auth/ssoLogin"
           })
             .done(function(resp) {
               if (resp.status == "success") {
@@ -183,7 +183,7 @@ function getFbUserData(accessToken) {
           sso_type: 2
         }),
         contentType: "application/json",
-        url: "https://staging.valucart.com:3000/auth/ssoRegister",
+        url: APIURL + "/auth/ssoRegister",
         success: function(resp) {
           if (resp.status == "success") {
             resp.useremail = resp.email;
