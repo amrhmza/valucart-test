@@ -359,3 +359,18 @@ a.btn-bundle {
   pointer-events: none;
   opacity: 0.5;
 }
+.addtobundleTitle {
+  color: rgba(133, 6, 255, 1) !important;
+  font-weight: 600 !important;
+  display: block;
+  padding: 10px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.addtocartddp li a {
+  text-transform: capitalize;
+  cursor: pointer;
+}

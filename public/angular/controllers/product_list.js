@@ -9,13 +9,16 @@ app.controller("product_listing", function(
   querydata,
   getProductList,
   product_details,
-  getWishList
+  getWishList,
+  userbundle
 ) {
   $scope.productData = [];
+  $scope.mybundles = [];
   $scope.page = 0;
   $scope.sub_cat_active = 0;
   $scope.nextcall = 1;
   $scope.queryparam = querydata.queryparam;
+
   /**
    * apply filter onload by taking URL parameters
    */
@@ -82,7 +85,26 @@ app.controller("product_listing", function(
         console.log(response.status);
       });
   };
+
+  $scope.userBundlelist = function() {
+    userbundle
+      .getList()
+      .then(function(response) {
+        console.log(response);
+        let listdata = response.data.results.response;
+        if (listdata != "") {
+          angular.forEach(listdata, function(value, key) {
+            $scope.mybundles.push(value);
+          });
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+
   $scope.filters_apply();
+  $scope.userBundlelist();
   $scope.getlist();
   /**
    * scroll listener
@@ -241,6 +263,35 @@ app.controller("product_listing", function(
       })
       .catch(function(response) {
         console.log(response);
+      });
+  };
+
+  $scope.addToBundle = function($event, bundleId, productId, bundleQty) {
+    var productQty = parseInt($("input[name=qty_" + productId + "]").val());
+    let productData = {
+      user_bundle: bundleId,
+      product_id: productId,
+      product_qty: productQty,
+      is_bundle: false
+    };
+
+    userbundle
+      .updateBundle(productData)
+      .then(function(response) {
+        var res = response.data;
+        if (response.status == "200") {
+          toastr.success(res.results.msg);
+          angular
+            .element($event.currentTarget)
+            .find("span")
+            .html(parseInt(bundleQty) + 1);
+        } else {
+          toastr.warning(res.error.msg);
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+        toastr.warning(response.data.error.msg);
       });
   };
 });

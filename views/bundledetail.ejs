@@ -33,135 +33,183 @@ let products= productData.product;
             <div class="container productlistpagec">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 productviewpanel">
-                            <%
+                        <%
                             if(products.pdt_percentage>0){
                             %>
-                            <p class="discountprice"><%=products.pdt_percentage%>%</p>
+                            <p class="discountprice">
+                                <%=products.pdt_percentage%>%
+                            </p>
                             <%    
                             }
                             %>
-                        <% 
+                                <% 
                         if(cookies){
                             var userData=JSON.parse(cookies);
                             if(userData.status=="success"){
                         %>
-                        <div class="wishlist-heart-group">
-                            <input name="1" id="product-1" type="checkbox"  data-type="<%=(productData.wishlist)?'remove':'add'%>" ng-click="addwish(<%=productData.pb_id%>, true, $event.target)" <%=(productData.wishlist)?'checked':''%> />
-                            <label for="product-1" data-hover-text="Wish List">
-                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                    <g transform="translate(0,-952.36218)"><path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z" fill="transparent" id="heart-path" stroke="#494949" stroke-width="5" marker="none" visibility="visible" display="inline" overflow="visible"/></g>
-                                </svg>
-                            </label>
-                        </div>
-                        <%
+                                    <div class="wishlist-heart-group">
+                                        <input name="1" id="product-1" type="checkbox" data-type="<%=(productData.wishlist)?'remove':'add'%>" ng-click="addwish(<%=productData.pb_id%>, true, $event.target)"
+                                            <%=(productData.wishlist)? 'checked': ''%>                                        />
+                                        <label for="product-1" data-hover-text="Wish List">
+                                            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px"
+                                                y="0px" viewBox="0 0 100 100">
+                                                <g transform="translate(0,-952.36218)">
+                                                    <path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                        fill="transparent" id="heart-path" stroke="#494949" stroke-width="5"
+                                                        marker="none" visibility="visible" display="inline" overflow="visible"
+                                                    />
+                                                </g>
+                                            </svg>
+                                        </label>
+                                    </div>
+                                    <%
                             }
                         }
                         %>
-                                <section class="gallery hidden-xs">
-                                    <div class="carousel">
-
-                                        <input type="radio" id="image1" name="gallery-control" checked>
-                                        <% 
-                                var no=1;
+                                        <section class="gallery hidden-xs">
+                                            <div class="carousel">
+                                                <% 
+                                var no=0;
                                 products.forEach(function(pro){     
                                     if(pro){
+                                        if(pro.pbm_is_alternative==0)
+                                        {
                                         no++;
                              %>
-                                            <input type="radio" id="image<%=no%>" name="gallery-control">
-                                            <%
+                                                    <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked': ''%>>
+                                                    <%
+                                        }
+                                        else{
+                                            var proAlters= pro.alternatives;
+                                            proAlters.forEach(function (alt){
+                                                if(no<4){
+                                                no++;
+                                            %>
+                                                        <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked': ''%>>
+                                                        <%
+                                                }
+                                        });    
+                                        }
                                     }
                                 }); 
                             %>
 
-                                                <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
+                                                            <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
 
-                                                <div class="thumbnails">
-                                                    <div class="slider">
-                                                        <div class="indicator"></div>
-                                                    </div>
+                                                            <div class="thumbnails">
+                                                                <div class="slider">
+                                                                    <div class="indicator"></div>
+                                                                </div>
 
-                                                    <label for="image1" class="thumb" style="background-image: url('<%= productData.pb_image;%>');"></label>
-                                                    <% 
-                                var no=1;
-                                products.forEach(function(pro){     
-                                    if(pro){
-                                        no++;
-                                %>
-                                                        <label for="image<%=no%>" class="thumb" style="background-image: url('<%= pro.p_image%>');"></label>
-                                                        <%
-                                    }
-                                }); 
-                                %>
-                                                </div>
-                                                <div class="wrap">
+                                                                <% 
+                                                                var no=0;
+                                                                products.forEach(function(pro){     
+                                                                    if(pro){
+                                                                        if(pro.pbm_is_alternative==0)
+                                                                        {
+                                                                        no++;
+                                                                %>
+                                                                    <label for="image<%=no%>" class="thumb" style="background-image: url('<%= pro.p_image%>');"></label>
+                                                                    <%
+                                                                }
+                                                                else{
+                                                                    var proAlters= pro.alternatives;
+                                                                    proAlters.forEach(function (alt){
+                                                                        if(no<4){
+                                                                        no++;
+                                                                    %>
+                                                                        <label for="image<%=no%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
+                                                                        <%
+                                                                        }
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                }); 
+                                                                %>
+                                                            </div>
+                                                            <div class="wrap">
+                                                                <% 
+                                                                var no=0;
+                                                                products.forEach(function(pro){     
+                                                                    if(pro){
+                                                                        if(pro.pbm_is_alternative==0)
+                                                                        {
+                                                                        no++;
+                                                                %>
+                                                                    <figure>
+                                                                        <label for="fullscreen">
+                                                                            <img src="<%= pro.p_image%>" alt="image<%= pro.pd_name%>" />
+                                                                        </label>
+                                                                    </figure>
+                                                                    <%
+                                                                }
+                                                                else{
+                                                                    var proAlters= pro.alternatives;
+                                                                    proAlters.forEach(function (alt){
+                                                                        if(no<4){
+                                                                        no++;
+                                                                    %>
+                                                                        <figure>
+                                                                            <label for="fullscreen">
+                                                                                <img src="<%= alt.p_image%>" alt="image<%= alt.pd_name%>" />
+                                                                            </label>
+                                                                        </figure>
+                                                                        <%
+                                                                    }
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                }); 
+                                                                %>
 
-                                                    <figure>
-                                                        <label for="fullscreen">
-                                                            <img src="<%= productData.pb_image;%>" alt="image1" />
-                                                        </label>
-                                                    </figure>
-                                                    <% 
-                                var no=1;
-                                products.forEach(function(pro){     
-                                    if(pro){
-                                        no++;
-                                %>
-                                                        <figure>
-                                                            <label for="fullscreen">
-                                                                <img src="<%= pro.p_image%>" alt="image<%= pro.pd_name%>" />
-                                                            </label>
-                                                        </figure>
-                                                        <%
-                                    }
-                                }); 
-                                %>
-
-                                                </div>
+                                                            </div>
 
 
-                                    </div>
-                                </section>
-                                <!--product carousel for mobile view starts-->
-                                <div id="productCarousel" class="carousel slide hidden-sm hidden-md hidden-lg" data-ride="carousel" style="margin-bottom: 30px;margin-top: 30px;">
-                                    <!-- Indicators -->
+                                            </div>
+                                        </section>
+                                        <!--product carousel for mobile view starts-->
+                                        <div id="productCarousel" class="carousel slide hidden-sm hidden-md hidden-lg" data-ride="carousel" style="margin-bottom: 30px;margin-top: 30px;">
+                                            <!-- Indicators -->
 
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#productCarousel" class="active" data-slide-to="0"></li>
-                                        <% 
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#productCarousel" class="active" data-slide-to="0"></li>
+                                                <% 
                                             var no=1;
                                             products.forEach(function(pro){     
-                                                if(pro){
+                                                if(pro.p_image){
                                         %>
-                                        <li data-target="#productCarousel" class="" data-slide-to="<%=no++;%>"></li>
-                                        <%
+                                                    <li data-target="#productCarousel" class="" data-slide-to="<%=no++;%>"></li>
+                                                    <%
                                                 }
                                             }); 
                                         %>
-                                    </ol>
+                                            </ol>
 
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <img src="<%=productData.pb_image%>" alt="" style="height: 250px;margin: auto;">
-                                        </div>
-                                        <% 
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    <img src="<%=productData.pb_image%>" alt="" style="height: 250px;margin: auto;">
+                                                </div>
+                                                <% 
                                             var no=1;
                                             products.forEach(function(pro){     
-                                                if(pro){
+                                                if(pro.p_image){
                                         %>
-                                        <div class="item <%= (no==0)?'active':'';%>">
-                                            <img src="<%= pro.p_image%>" alt="" style="height: 250px;margin: auto;">
-                                        </div>
-                                        <%
+                                                    <div class="item <%= (no==0)?'active':'';%>">
+                                                        <img src="<%= pro.p_image%>" alt="" style="height: 250px;margin: auto;">
+                                                    </div>
+                                                    <%
                                                 no++; 
                                                 }
                                             }); 
                                         %>
-                                    </div>
-                                </div>
+                                            </div>
+                                        </div>
 
 
-                                <!--product carousel for mobile view starts-->
+                                        <!--product carousel for mobile view starts-->
 
 
                     </div>
@@ -179,9 +227,11 @@ let products= productData.product;
                                             <%= (productData.pb_dec)?(productData.pb_dec).substring(0, 150)+"...":"";%>
                                         </h5>
                                         <h5 style="display: inline-block" class="offeredprice">
-                                            <%= productData.pb_price;%> AED</h5>
+                                            <%= productData.pb_price;%> AED
+                                        </h5>
                                         <h6 style="display: inline-block; margin-left: 10px">
-                                            <%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED</h6>
+                                            <%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED
+                                        </h6>
                                     </div>
 
 
@@ -200,26 +250,28 @@ let products= productData.product;
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-6">
-                                        
+
                                         <div class="btn-group hidden-xs hidden-sm">
-                                                <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" 
-                                                    class="btn btn-info">
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                               
-                                                <button type="button" class="btn btn-primary ebtn" data-toggle="dropdown"><span class="fa fa-ellipsis-v"></span></button>
-                                                <ul class="dropdown-menu addtocartddp" role="menu">
-                                                  <li class="addtobundle" onClick="alertShow()"><a href="javascript:void(0);">+ Add to bundle</a></li>
-                                                  <li><a href="#">Bundle 01 (2)</a></li>
-                                                  <li><a href="#">Bundle 02 (15)</a></li>
-                                                  <li><a href="#">Bundle 03 (9)</a></li>
-                                                </ul>
-                                              </div>
-                                              <div class="btn-group hidden-md hidden-lg">
-                                                  <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" 
-                                                    class="btn btn-info"> 
-                                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                                  <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup">&#8942;</button>
-                                              </div>
+                                            <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info">
+                                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+
+                                            <button type="button" class="btn btn-primary ebtn" data-toggle="dropdown"><span
+                                                    class="fa fa-ellipsis-v"></span></button>
+
+                                            <ul class="dropdown-menu addtocartddp" role="menu">
+                                                <li class="addtobundle a-deactive addtobundleTitle">
+                                                    + Add to bundle
+                                                </li>
+                                                <li ng-repeat="bundle in mybundles"> <a ng-click="addToBundle($event, bundle.ub_id, bundle.product_count, <%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">{{bundle.ub_name}}
+                                                        ( <span>{{bundle.product_count}}</span> )</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group hidden-md hidden-lg">
+                                            <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info">
+                                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                                            <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup">&#8942;</button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -250,11 +302,14 @@ let products= productData.product;
                                             </h4>
                                             <h5>
                                                 <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                <%= pro.p_quantity%>* 1</h5>
+                                                <%= pro.p_quantity%>* 1
+                                            </h5>
                                             <h5 class="offeredprice">
-                                                <%=pro.p_price;%> AED</h5>
+                                                <%=pro.p_price;%> AED
+                                            </h5>
                                             <h6>
-                                                <%=pro.p_price;%> AED</h6>
+                                                <%=pro.p_price;%> AED
+                                            </h6>
                                         </div>
                                         <div class="col-xs-6">
                                             <img src="<%=pro.p_image%>" class="img-responsive productimg">
@@ -292,11 +347,14 @@ let products= productData.product;
                                                         </h4>
                                                         <h5>
                                                             <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                            <%= alt.p_quantity;%> * 1</h5>
+                                                            <%= alt.p_quantity;%> * 1
+                                                        </h5>
                                                         <h5 class="offeredprice">
-                                                            <%= alt.p_price;%> AED</h5>
+                                                            <%= alt.p_price;%> AED
+                                                        </h5>
                                                         <h6>
-                                                            <%= alt.p_price;%> AED</h6>
+                                                            <%= alt.p_price;%> AED
+                                                        </h6>
                                                     </div>
                                                     <div class="col-xs-6">
                                                         <img src="<%= alt.p_image;%>" class="img-responsive productimg">
@@ -388,7 +446,8 @@ let products= productData.product;
                             }
                             else{
                             %>
-                                                                <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write a review</button>
+                                                                <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write
+                                                                    a review</button>
                                                                 <% 
                             } 
                             %>
@@ -465,21 +524,24 @@ let products= productData.product;
                                                         <label for="rname">YOUR NAME</label>
                                                         <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
                                                         <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
-                                                            <span ng-show="reviewform.name.$error.required" class="has-error">Username is required.</span>
+                                                            <span ng-show="reviewform.name.$error.required" class="has-error">Username
+                                                                is required.</span>
                                                         </span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="title">TITLE</label>
                                                         <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
                                                         <span ng-show="reviewform.title.$dirty && reviewform.title.$invalid">
-                                                            <span ng-show="reviewform.title.$error.required" class="has-error">Username is required.</span>
+                                                            <span ng-show="reviewform.title.$error.required" class="has-error">Username
+                                                                is required.</span>
                                                         </span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="description">DESCRIPTION</label>
                                                         <textarea ng-model="review" name="review" class="form-control" id="description" required></textarea>
                                                         <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
-                                                            <span ng-show="reviewform.review.$error.required" class="has-error">Username is required.</span>
+                                                            <span ng-show="reviewform.review.$error.required" class="has-error">Username
+                                                                is required.</span>
                                                         </span>
                                                     </div>
                                                     <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" value="<%=productData.pb_id%>">
@@ -507,16 +569,17 @@ let products= productData.product;
                     });
                 });
             </script>
-<!-- MODAL CONTENT SAMPLE STARTS HERE -->
-<div class="modal fade" id="lab-slide-bottom-popup" data-keyboard="false" data-backdrop="false" style="background-color: #0000006b;">
-        <div class="lab-modal-body">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h5>+ Add to bundle</h5>
-          <ul style="list-style-type: none;padding-left: 0px">
-            <li onclick="showAlert()">Bundle 1(2)</li>
-            <li>Bundle 2(2)</li>
-            <li>Bundle 3(2)</li>
-          </ul>
-        </div>
-        <!-- /.modal-body --> 
-</div>
+            <!-- MODAL CONTENT SAMPLE STARTS HERE -->
+            <div class="modal fade" id="lab-slide-bottom-popup" data-keyboard="false" data-backdrop="false" style="background-color: #0000006b;">
+                <div class="lab-modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h5>+ Add to bundle</h5>
+                    <ul style="list-style-type: none;padding-left: 0px">
+                        <li onclick="showAlert()">Bundle 1(2)</li>
+                        <li>Bundle 2(2)</li>
+                        <li>Bundle 3(2)</li>
+                    </ul>
+                </div>
+                <!-- /.modal-body -->
+            </div>

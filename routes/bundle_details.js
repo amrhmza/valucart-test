@@ -22,7 +22,8 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
         "angular/factory/bundle_review.js",
         "angular/factory/bundle_details.js",
         "angular/controllers/bundle_details.js",
-        "angular/factory/wishlist.js"
+        "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js"
       ]
     });
   } catch (error) {

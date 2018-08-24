@@ -40,6 +40,45 @@ app.factory("userbundle", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    getList: function() {
+      var q = $q.defer();
+      let token = JSON.parse($.cookie("vcartAuth"));
+      $http({
+        method: "GET",
+        url: config.mybundel_list,
+        type: "json",
+        headers: {
+          Authorization: "Bearer " + token.token
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
+    },
+    updateBundle: function(data) {
+      var q = $q.defer();
+      let token = JSON.parse($.cookie("vcartAuth"));
+      $http({
+        method: "POST",
+        url: config.update_mybundle_single,
+        type: "json",
+        data: data,
+        headers: {
+          Authorization: "Bearer " + token.token
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });
