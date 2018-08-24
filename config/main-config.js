@@ -48,6 +48,7 @@
     app.use(function(req, res, next) {
       res.locals.flashdata = req.flash();
       res.locals.moment = moment;
+      res.locals.baseURL = req.headers.host;
       next();
     });
     app.use(bodyParser.json());
