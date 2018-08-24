@@ -77,7 +77,7 @@ let products= productData.product;
                                         if(pro.pbm_is_alternative==0)
                                         {
                                         no++;
-                             %>
+                                     %>
                                                     <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked': ''%>>
                                                     <%
                                         }
@@ -92,9 +92,9 @@ let products= productData.product;
                                                 }
                                         });    
                                         }
-                                    }
-                                }); 
-                            %>
+                                      }
+                                     }); 
+                                    %>
 
                                                             <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control" />
 
@@ -174,13 +174,12 @@ let products= productData.product;
                                             <!-- Indicators -->
 
                                             <ol class="carousel-indicators">
-                                                <li data-target="#productCarousel" class="active" data-slide-to="0"></li>
                                                 <% 
-                                                 var no=1;
+                                                 var no=0;
                                                  products.forEach(function(pro){     
                                                  if(pro.p_image){
                                                 %>
-                                                <li data-target="#productCarousel" class="" data-slide-to="<%=no++;%>"></li>
+                                                <li data-target="#productCarousel" class="<%=(no==0?'active':'');%>" data-slide-to="<%=no++;%>"></li>
                                                 <%
                                                 }
                                                 }); 
@@ -189,11 +188,8 @@ let products= productData.product;
 
                                             <!-- Wrapper for slides -->
                                             <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <img src="<%=productData.pb_image%>" alt="" style="height: 250px;margin: auto;">
-                                                </div>
                                                 <% 
-                                            var no=1;
+                                            var no=0;
                                             products.forEach(function(pro){     
                                                 if(pro.p_image){
                                        %>
@@ -281,14 +277,13 @@ let products= productData.product;
                     </div>
                 </div>
             </div>
-
             <% 
         products.forEach(function(pro){     
             if(pro){
                 if(pro.pbm_is_alternative!=1){
         %>
                 <div class="container bundledetailview">
-                    <h4>In your bundle..</h4>
+                   
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="panel panel-default productpanel">

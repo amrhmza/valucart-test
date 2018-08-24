@@ -374,3 +374,6 @@ a.btn-bundle {
   text-transform: capitalize;
   cursor: pointer;
 }
+.gallery .thumbnails {
+  height: 360px !important;
+}
