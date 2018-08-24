@@ -176,15 +176,15 @@ let products= productData.product;
                                             <ol class="carousel-indicators">
                                                 <li data-target="#productCarousel" class="active" data-slide-to="0"></li>
                                                 <% 
-                                            var no=1;
-                                            products.forEach(function(pro){     
-                                                if(pro.p_image){
-                                        %>
-                                                    <li data-target="#productCarousel" class="" data-slide-to="<%=no++;%>"></li>
-                                                    <%
+                                                 var no=1;
+                                                 products.forEach(function(pro){     
+                                                 if(pro.p_image){
+                                                %>
+                                                <li data-target="#productCarousel" class="" data-slide-to="<%=no++;%>"></li>
+                                                <%
                                                 }
-                                            }); 
-                                        %>
+                                                }); 
+                                               %>
                                             </ol>
 
                                             <!-- Wrapper for slides -->
@@ -196,7 +196,7 @@ let products= productData.product;
                                             var no=1;
                                             products.forEach(function(pro){     
                                                 if(pro.p_image){
-                                        %>
+                                       %>
                                                     <div class="item <%= (no==0)?'active':'';%>">
                                                         <img src="<%= pro.p_image%>" alt="" style="height: 250px;margin: auto;">
                                                     </div>

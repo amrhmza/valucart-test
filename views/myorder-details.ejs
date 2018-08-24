@@ -41,7 +41,9 @@
                 </div>
             </div>
             <div class="col-sm-4 text-right">
-                <h5 class="hidden-md hidden-sm hidden-lg" style="float: left;margin-top: 2px;font-weight: bold;">Product details</h5>
+                <h5 class="hidden-md hidden-sm hidden-lg" style="float: left;margin-top: 2px;font-weight: bold;">Product
+                    details
+                </h5>
                 <p class="totalitems">Total items
                     <span class="itemcount">
                         <%= data.order_products.length %>
@@ -56,9 +58,10 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-3 col-xs-4">
-                            <% if(pro.ct_discount_percentage!=null){%>
+                            <% if(pro.ct_discount_percentage>0){%>
                                 <p class="discountprice hidden-xs">
-                                    <%= pro.ct_discount_percentage %>%</p>
+                                    <%= pro.ct_discount_percentage %>%
+                                </p>
                                 <% } %>
                                     <img src="<%= pro.p_image %>" class="img-responsive productimg">
                         </div>
@@ -93,12 +96,17 @@
                         <div class="col-sm-3 text-center">
                             <% if(pro.pdt_price!=null){ %>
                                 <h5 class="offeredprice">
-                                    <%= pro.price %> AED</h5>
+                                    <%= pro.price %> AED
+                                </h5>
                                 <h6 class="price">
-                                        <%= pro.ct_quantity %> X  <%= pro.pdt_price %> AED</h6>
+                                    <%= pro.ct_quantity %> X
+                                        <%= pro.pdt_price %> AED
+                                </h6>
                                 <% }else{ %>
-                                  <h6 class="price">
-                                        <%= pro.ct_quantity %> X  <%= pro.price %> AED</h6>
+                                    <h6 class="price">
+                                        <%= pro.ct_quantity %> X
+                                            <%= pro.price %> AED
+                                    </h6>
                                     <% } %>
                         </div>
                     </div>
@@ -107,11 +115,12 @@
                 <hr>
                 <% });
         } %>
-                   
+
 
                     <div class="panel-footer hidden-md hidden-sm hidden-lg">
                         <p class="text-info" style="font-size: 14px;margin: 5px;text-align: center;">
-                            <i class="fa fa-plus-circle"></i> Show All (<%= data.order_products.length %> More product)</p>
+                            <i class="fa fa-plus-circle"></i> Show All (<%= data.order_products.length %> More product)
+                        </p>
                     </div>
         </div>
         <!--        progress starts here-->
@@ -200,14 +209,17 @@
                                 <p class="paylabel">Orders items</p>
                             </div>
                             <div class="col-xs-6 text-right">
-                                <p class="payvalue"><%= data.order_products.length %></p>
+                                <p class="payvalue">
+                                    <%= data.order_products.length %>
+                                </p>
                             </div>
                             <div class="col-xs-6 text-left">
                                 <p class="paylabel">Sub total</p>
                             </div>
                             <div class="col-xs-6 text-right">
                                 <p class="payvalue">
-                                    <%= data.order_data.o_total %> AED</p>
+                                    <%= data.order_data.o_total %> AED
+                                </p>
                             </div>
                             <div class="col-xs-6 text-left">
                                 <p class="paylabel">Delivery charge</p>
@@ -228,7 +240,8 @@
                             </div>
                             <div class="col-xs-6 text-right">
                                 <p class="total">
-                                    <%= Number(data.order_data.o_total)-15 %>.00 AED</p>
+                                    <%= Number(data.order_data.o_total)-15 %>.00 AED
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -241,13 +254,13 @@
                             <%= data.order_shipping_address[0].a_name %>
                         </p>
                         <p class="deliveryadd">
-                                <%= data.order_shipping_address[0].a_address_1 %>,
-                                    <br>
-                                    <%= data.order_shipping_address[0].a_city %>
-                                        <br> Pincode:
-                                        <%= data.order_shipping_address[0].a_pincode %>
-                                            <br> Phone:
-                                            <%= data.order_shipping_address[0].a_phone %>
+                            <%= data.order_shipping_address[0].a_address_1 %>,
+                                <br>
+                                <%= data.order_shipping_address[0].a_city %>
+                                    <br> Pincode:
+                                    <%= data.order_shipping_address[0].a_pincode %>
+                                        <br> Phone:
+                                        <%= data.order_shipping_address[0].a_phone %>
                         </p>
                     </div>
                 </div>
