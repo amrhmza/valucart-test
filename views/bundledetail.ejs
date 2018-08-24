@@ -7,7 +7,7 @@ let products= productData.product;
         <div class="container">
             <ul class="breadcrumb">
                 <li>
-                    <a href="home.html">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
                     <a href="#<%=productData.c_id; %></">
@@ -179,8 +179,8 @@ let products= productData.product;
                                                  products.forEach(function(pro){     
                                                  if(pro.p_image){
                                                 %>
-                                                <li data-target="#productCarousel" class="<%=(no==0?'active':'');%>" data-slide-to="<%=no++;%>"></li>
-                                                <%
+                                                    <li data-target="#productCarousel" class="<%=(no==0?'active':'');%>" data-slide-to="<%=no++;%>"></li>
+                                                    <%
                                                 }
                                                 }); 
                                                %>
@@ -283,7 +283,7 @@ let products= productData.product;
                 if(pro.pbm_is_alternative!=1){
         %>
                 <div class="container bundledetailview">
-                   
+
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="panel panel-default productpanel">

@@ -3,7 +3,7 @@
     <div class="container" style="margin-bottom: 20px;">
         <ul class="breadcrumb">
             <li>
-                <a href="home">Home</a>
+                <a href="/">Home</a>
             </li>
             <li class="lastcrumb">
                 <a>
@@ -282,7 +282,7 @@
     </div>
     <script>
         app.constant("querydata", {
-            'queryparam': <%- JSON.stringify(data.querydata) %>
+            'queryparam': "<%= JSON.stringify(data.querydata) %>"
         });
     </script>
     <script>
