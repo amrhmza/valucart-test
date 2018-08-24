@@ -26,6 +26,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
         "angular/factory/product_details.js",
         "angular/controllers/product_list.js",
         "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js",
         "js/jquery.nice-select.min.js"
       ]
     });

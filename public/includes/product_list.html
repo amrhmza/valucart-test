@@ -72,17 +72,12 @@
                             <span class="fa fa-ellipsis-v"></span>
                         </button>
                         <ul class="dropdown-menu addtocartddp" role="menu">
-                            <li class="addtobundle" onClick="alertShow()">
-                                <a href="javascript:void(0);">+ Add to bundle</a>
+                            <li class="addtobundle a-deactive addtobundleTitle">
+                                + Add to bundle
                             </li>
-                            <li>
-                                <a href="#">Bundle 01 (2)</a>
-                            </li>
-                            <li>
-                                <a href="#">Bundle 02 (15)</a>
-                            </li>
-                            <li>
-                                <a href="#">Bundle 03 (9)</a>
+                            <li ng-repeat="bundle in mybundles">
+                                <a ng-click="addToBundle($event, bundle.ub_id, product.pd_id, bundle.product_count)">{{bundle.ub_name}}
+                                    ( <span>{{bundle.product_count}}</span> )</a>
                             </li>
                         </ul>
                     </div>
