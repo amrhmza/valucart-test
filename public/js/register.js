@@ -109,50 +109,12 @@ window.fbAsyncInit = function() {
 
 // Facebook login with JavaScript SDK
 function fbLogin(type) {
-  console.log(type);
-
   FB.login(
     function(response) {
       if (response.authResponse) {
-        if (type == 1) {
-          let data = {};
-          data["user_id"] = response.authResponse.userID;
-          data["token"] = response.authResponse.accessToken;
-          data["sso_type"] = 2;
-          $.ajax({
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            url: APIURL + "/auth/ssoLogin"
-          })
-            .done(function(resp) {
-              if (resp.status == "success") {
-                resp.useremail = resp.email;
-                console.log(JSON.stringify(resp));
-
-                $.cookie("vcartAuth", JSON.stringify(resp), {
-                  expires: 7,
-                  path: "/"
-                });
-                if (!resp.is_email_verified) {
-                  var base_url = window.location.origin;
-                  window.location.replace(base_url + "/otp");
-                } else location.reload(true);
-              } else {
-                console.log("Invalid Account");
-                toastr.error("Invalid Account");
-              }
-            })
-            .fail(function(r) {
-              console.log(JSON.stringify(r));
-              toastr.error("Invalid Account");
-            });
-        } else {
-          getFbUserData(response.authResponse.accessToken);
-        }
+        getFbUserData(response.authResponse.accessToken);
       } else {
-        document.getElementById("status").innerHTML =
-          "User cancelled login or did not fully authorize.";
+        toastr.error("User cancelled login or did not fully authorize.");
       }
     },
     { scope: "email" }
@@ -183,12 +145,10 @@ function getFbUserData(accessToken) {
           sso_type: 2
         }),
         contentType: "application/json",
-        url: APIURL + "/auth/ssoRegister",
+        url: APIURL + "/auth/sso",
         success: function(resp) {
           if (resp.status == "success") {
             resp.useremail = resp.email;
-            console.log(JSON.stringify(resp));
-
             $.cookie("vcartAuth", JSON.stringify(resp), {
               expires: 7,
               path: "/"
@@ -205,7 +165,6 @@ function getFbUserData(accessToken) {
           toastr.error(error.responseJSON.error);
         }
       });
-      console.log(response);
     }
   );
 }
