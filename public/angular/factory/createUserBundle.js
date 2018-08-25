@@ -21,7 +21,9 @@ app.factory("createUserbundle", function($http, config, $q) {
     },
     insertBundle: function(data) {
       var q = $q.defer();
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "POST",
         url: config.create_user_bundle,

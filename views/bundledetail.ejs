@@ -209,13 +209,15 @@ let products= productData.product;
 
 
                     </div>
-                    <div class="col-md-6 col-sm-6 organicbundles">
-                        <div class="panel panel-default productviewpanel">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel panel-default productviewpanel white-bg">
                             <div class="panel-body">
                                 <!-- <i class="fa fa-heart wishheart"></i> -->
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <p>Pack of 2</p>
+                                        <p>Pack of
+                                            <%= productData.product.length %>
+                                        </p>
                                         <h4>
                                             <%= productData.pb_name;%>
                                         </h4>
@@ -251,8 +253,10 @@ let products= productData.product;
                                             <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info">
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
 
-                                            <button type="button" class="btn btn-primary ebtn" data-toggle="dropdown"><span
+                                            <button type="button" class="btn btn-primary ebtn bdtd" data-toggle="dropdown"><span
                                                     class="fa fa-ellipsis-v"></span></button>
+
+
 
                                             <ul class="dropdown-menu addtocartddp" role="menu">
                                                 <li class="addtobundle a-deactive addtobundleTitle">
@@ -277,14 +281,14 @@ let products= productData.product;
                     </div>
                 </div>
             </div>
-            <% 
+            <div class="container bundledetailview">
+                <div class="row">
+                    <% 
         products.forEach(function(pro){     
             if(pro){
                 if(pro.pbm_is_alternative!=1){
         %>
-                <div class="container bundledetailview">
 
-                    <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="panel panel-default productpanel">
                                 <div class="panel-body">
@@ -313,83 +317,90 @@ let products= productData.product;
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <% 
+
+                        <% 
                 }
-            else{
-        %>
-                    <div class="container bundledetailvieww">
-                        <h4>Choose from one of the below</h4>
-                        <div class="row radios">
-                            <% 
+              }
+            })
+            %>
+                </div>
+            </div>
+            <%
+                products.forEach(function(pro){     
+                    if(pro){
+                        if(pro.pbm_is_alternative==1){
+            %>
+                <div class="container bundledetailvieww">
+                    <h4>Choose from one of the below</h4>
+                    <div class="row radios">
+                        <% 
                 let alterpro= pro.alternatives;
                 var i = 0;
                     alterpro.forEach(function(alt){
                         var select= (alt.pba_is_default==1)? true:false;
                         i++;
                 %>
-                                <div class="col-md-4 col-sm-6">
-                                    <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
-                                    />
-                                    <label class="radio" for="r<%= alt.pd_id;%>">
-                                        <div class="panel panel-default productpanel">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-                                                        <h4>
-                                                            <%= alt.pd_name;%>
-                                                        </h4>
-                                                        <h5>
-                                                            <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                            <%= alt.p_quantity;%> * 1
-                                                        </h5>
-                                                        <h5 class="offeredprice">
-                                                            <%= alt.p_price;%> AED
-                                                        </h5>
-                                                        <h6>
-                                                            <%= alt.p_price;%> AED
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <img src="<%= alt.p_image;%>" class="img-responsive productimg">
-                                                    </div>
+                            <div class="col-md-4 col-sm-6">
+                                <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
+                                />
+                                <label class="radio" for="r<%= alt.pd_id;%>">
+                                    <div class="panel panel-default productpanel">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <h4>
+                                                        <%= alt.pd_name;%>
+                                                    </h4>
+                                                    <h5>
+                                                        <img src="img/grammeter.png" class="img-responsive gramimg">
+                                                        <%= alt.p_quantity;%> * 1
+                                                    </h5>
+                                                    <h5 class="offeredprice">
+                                                        <%= alt.p_price;%> AED
+                                                    </h5>
+                                                    <h6>
+                                                        <%= alt.p_price;%> AED
+                                                    </h6>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <img src="<%= alt.p_image;%>" class="img-responsive productimg">
                                                 </div>
                                             </div>
                                         </div>
-                                    </label>
-                                </div>
-                                <%
+                                    </div>
+                                </label>
+                            </div>
+                            <%
                     });
                 %>
-                        </div>
                     </div>
-                    <%
+                </div>
+                <%
                 }
             }
         });
         %>
-                        <div class="container productdetail">
-                            <div id="exTab1" class="container">
-                                <div class="tabheader">
-                                    <ul class="nav nav-pills">
-                                        <li class="active">
-                                            <a href="#1a" data-toggle="tab">Product details</a>
-                                        </li>
-                                        <!-- <li>
+                    <div class="container productdetail">
+                        <div id="exTab1" class="container">
+                            <div class="tabheader">
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a href="#1a" data-toggle="tab">Product details</a>
+                                    </li>
+                                    <!-- <li>
                             <a href="#2a" data-toggle="tab">Nutrition values</a>
                         </li> -->
-                                        <li>
-                                            <a href="#3a" data-toggle="tab">Customer review</a>
-                                        </li>
-                                    </ul>
+                                    <li>
+                                        <a href="#3a" data-toggle="tab">Customer review</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content clearfix">
+                                <div class="tab-pane active" id="1a">
+                                    <%= productData.pb_dec;%>
                                 </div>
-                                <div class="tab-content clearfix">
-                                    <div class="tab-pane active" id="1a">
-                                        <%= productData.pb_dec;%>
-                                    </div>
 
-                                    <!-- <div class="tab-pane" id="2a">
+                                <!-- <div class="tab-pane" id="2a">
                         <h5>Allergen Information</h5>
                         <p>Allergens can be found in the ingredients list<br> Contains Barley, May Contain Gluten, Contains Oats</p>
 
@@ -400,8 +411,8 @@ let products= productData.product;
                         <p>Suitable for Vegetarians; Kosher; Halal</p>
                     </div> -->
 
-                                    <div class="tab-pane" id="3a">
-                                        <%
+                                <div class="tab-pane" id="3a">
+                                    <%
                         let reviewList= productData.review;
                         var rt=0;
                         reviewList.forEach(function(rev){
@@ -409,149 +420,149 @@ let products= productData.product;
                         });
                         var ravg= rt/ reviewList.length;
                         %>
-                                            <div class="customerreviews">
-                                                <p class="starcount star">
-                                                    <span class="stars">
-                                                        <i class="fa fa-star <%= (ravg >= 1)?" filled ":" "; %>"></i>
-                                                        <i class="fa fa-star <%= (ravg >= 1.5)?" filled ":" "; %>"></i>
-                                                        <i class="fa fa-star <%= (ravg >= 2.5)?" filled ":" "; %>"></i>
-                                                        <i class="fa fa-star <%= (ravg >= 3.5)?" filled ":" "; %>"></i>
-                                                        <i class="fa fa-star <%= (ravg >= 4.5)?" filled ":" "; %>"></i>
-                                                    </span>
-                                                    <%= ravg.toFixed(1)%> out of 5
-                                                </p>
-                                                <br>
-                                                <%
+                                        <div class="customerreviews">
+                                            <p class="starcount star">
+                                                <span class="stars">
+                                                    <i class="fa fa-star <%= (ravg >= 1)?" filled ":" "; %>"></i>
+                                                    <i class="fa fa-star <%= (ravg >= 1.5)?" filled ":" "; %>"></i>
+                                                    <i class="fa fa-star <%= (ravg >= 2.5)?" filled ":" "; %>"></i>
+                                                    <i class="fa fa-star <%= (ravg >= 3.5)?" filled ":" "; %>"></i>
+                                                    <i class="fa fa-star <%= (ravg >= 4.5)?" filled ":" "; %>"></i>
+                                                </span>
+                                                <%= ravg.toFixed(1)%> out of 5
+                                            </p>
+                                            <br>
+                                            <%
                                 if(reviewList.length>3){
                             %>
-                                                    <a class="btn btn-link reviewlink">See all
-                                                        <%=reviewList.length%> reviews</a>
-                                                    <p class="ortext">or</p>
-                                                    <%
+                                                <a class="btn btn-link reviewlink">See all
+                                                    <%=reviewList.length%> reviews</a>
+                                                <p class="ortext">or</p>
+                                                <%
                                 }
                             %>
-                                                        <% 
+                                                    <% 
                             if(cookies){
                                 var userData=JSON.parse(cookies);
                                 if(userData.status=="success"){
                             %>
-                                                            <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
-                                                            <%
+                                                        <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
+                                                        <%
                                 }
                             }
                             else{
                             %>
-                                                                <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write
-                                                                    a review</button>
-                                                                <% 
+                                                            <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write
+                                                                a review</button>
+                                                            <% 
                             } 
                             %>
-                                                                    <br>
-                                                                    <hr>
-                                                                    <%
+                                                                <br>
+                                                                <hr>
+                                                                <%
                             var rno=0;
                             if(reviewList){
                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
-                                                                        <div class="review <%= (rno>3)?'more_review hidden':''%>">
-                                                                            <p class="userdate">
-                                                                                <%= rev.username%>,
-                                                                                    <%= rev.prr_added_dt%>
-                                                                            </p>
-                                                                            <p class="star">
-                                                                                <span class="stars">
-                                                                                    <i class="fa fa-star <%= (rev.prr_ratting >= 1)?" filled ":" "; %>"></i>
-                                                                                    <i class="fa fa-star <%= (rev.prr_ratting >= 2)?" filled ":" "; %>"></i>
-                                                                                    <i class="fa fa-star <%= (rev.prr_ratting >= 3)?" filled ":" "; %>"></i>
-                                                                                    <i class="fa fa-star <%= (rev.prr_ratting >= 4)?" filled ":" "; %>"></i>
-                                                                                    <i class="fa fa-star <%= (rev.prr_ratting >= 4.5)?" filled ":" "; %>"></i>
-                                                                                </span>
-                                                                                <%= rev.prr_ratting%> out of 5
-                                                                            </p>
-                                                                            <h5>
-                                                                                <%= rev.prr_title%>
-                                                                            </h5>
-                                                                            <p>
-                                                                                <%= rev.prr_comment%>
-                                                                            </p>
-                                                                        </div>
-                                                                        <%       
+                                                                    <div class="review <%= (rno>3)?'more_review hidden':''%>">
+                                                                        <p class="userdate">
+                                                                            <%= rev.username%>,
+                                                                                <%= rev.prr_added_dt%>
+                                                                        </p>
+                                                                        <p class="star">
+                                                                            <span class="stars">
+                                                                                <i class="fa fa-star <%= (rev.prr_ratting >= 1)?" filled ":" "; %>"></i>
+                                                                                <i class="fa fa-star <%= (rev.prr_ratting >= 2)?" filled ":" "; %>"></i>
+                                                                                <i class="fa fa-star <%= (rev.prr_ratting >= 3)?" filled ":" "; %>"></i>
+                                                                                <i class="fa fa-star <%= (rev.prr_ratting >= 4)?" filled ":" "; %>"></i>
+                                                                                <i class="fa fa-star <%= (rev.prr_ratting >= 4.5)?" filled ":" "; %>"></i>
+                                                                            </span>
+                                                                            <%= rev.prr_ratting%> out of 5
+                                                                        </p>
+                                                                        <h5>
+                                                                            <%= rev.prr_title%>
+                                                                        </h5>
+                                                                        <p>
+                                                                            <%= rev.prr_comment%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <%       
                                 });
                             }
                             %>
-                                            </div>
-                                            <div class="writereview" style="float: none !important;">
-                                                <h4 class="writereviewtitle">Write a review</h4>
-                                                <span ng-bind-html="postReviewstatus" class="text-success" id="rstatus"></span>
-                                                <form class="reviewform" name="reviewform" ng-submit="submitReviewbundle()">
-                                                    <span class="closebtn" id="closebtn">
-                                                        <i class="fa fa-close"></i>
+                                        </div>
+                                        <div class="writereview" style="float: none !important;">
+                                            <h4 class="writereviewtitle">Write a review</h4>
+                                            <span ng-bind-html="postReviewstatus" class="text-success" id="rstatus"></span>
+                                            <form class="reviewform" name="reviewform" ng-submit="submitReviewbundle()">
+                                                <span class="closebtn" id="closebtn">
+                                                    <i class="fa fa-close"></i>
+                                                </span>
+                                                <div>
+                                                    <div class="has-error">{{ratingError}}</div>
+                                                    <fieldset class="rating">
+                                                        <input type="radio" id="stars5" ng-model="rating" value="5" />
+                                                        <label class="full" for="stars5" title="Awesome - 5 stars"></label>
+                                                        <input type="radio" id="stars4half" ng-model="rating" value="4.5" />
+                                                        <label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
+                                                        <input type="radio" id="stars4" ng-model="rating" value="4" />
+                                                        <label class="full" for="stars4" title="Pretty good - 4 stars"></label>
+                                                        <input type="radio" id="stars3half" ng-model="rating" value="3.5" />
+                                                        <label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
+                                                        <input type="radio" id="stars3" ng-model="rating" value="3" />
+                                                        <label class="full" for="stars3" title="Meh - 3 stars"></label>
+                                                        <input type="radio" id="stars2half" ng-model="rating" value="2.5" />
+                                                        <label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
+                                                        <input type="radio" id="stars2" ng-model="rating" value="2" />
+                                                        <label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
+                                                        <input type="radio" id="stars1half" ng-model="rating" value="1.5" />
+                                                        <label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
+                                                        <input type="radio" id="stars1" ng-model="rating" value="1" />
+                                                        <label class="full" for="stars1" title="Sucks big time - 1 star"></label>
+                                                        <input type="radio" id="starshalf" ng-model="rating" value="0.5" />
+                                                        <label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
+                                                    </fieldset>
+                                                </div>
+                                                <br>
+                                                <div class="clearfix"></div>
+                                                <div class="form-group">
+                                                    <label for="rname">YOUR NAME</label>
+                                                    <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
+                                                    <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
+                                                        <span ng-show="reviewform.name.$error.required" class="has-error">Username
+                                                            is required.</span>
                                                     </span>
-                                                    <div>
-                                                        <div class="has-error">{{ratingError}}</div>
-                                                        <fieldset class="rating">
-                                                            <input type="radio" id="stars5" ng-model="rating" value="5" />
-                                                            <label class="full" for="stars5" title="Awesome - 5 stars"></label>
-                                                            <input type="radio" id="stars4half" ng-model="rating" value="4.5" />
-                                                            <label class="half" for="stars4half" title="Pretty good - 4.5 stars"></label>
-                                                            <input type="radio" id="stars4" ng-model="rating" value="4" />
-                                                            <label class="full" for="stars4" title="Pretty good - 4 stars"></label>
-                                                            <input type="radio" id="stars3half" ng-model="rating" value="3.5" />
-                                                            <label class="half" for="stars3half" title="Meh - 3.5 stars"></label>
-                                                            <input type="radio" id="stars3" ng-model="rating" value="3" />
-                                                            <label class="full" for="stars3" title="Meh - 3 stars"></label>
-                                                            <input type="radio" id="stars2half" ng-model="rating" value="2.5" />
-                                                            <label class="half" for="stars2half" title="Kinda bad - 2.5 stars"></label>
-                                                            <input type="radio" id="stars2" ng-model="rating" value="2" />
-                                                            <label class="full" for="stars2" title="Kinda bad - 2 stars"></label>
-                                                            <input type="radio" id="stars1half" ng-model="rating" value="1.5" />
-                                                            <label class="half" for="stars1half" title="Meh - 1.5 stars"></label>
-                                                            <input type="radio" id="stars1" ng-model="rating" value="1" />
-                                                            <label class="full" for="stars1" title="Sucks big time - 1 star"></label>
-                                                            <input type="radio" id="starshalf" ng-model="rating" value="0.5" />
-                                                            <label class="half" for="starshalf" title="Sucks big time - 0.5 stars"></label>
-                                                        </fieldset>
-                                                    </div>
-                                                    <br>
-                                                    <div class="clearfix"></div>
-                                                    <div class="form-group">
-                                                        <label for="rname">YOUR NAME</label>
-                                                        <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
-                                                        <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
-                                                            <span ng-show="reviewform.name.$error.required" class="has-error">Username
-                                                                is required.</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="title">TITLE</label>
-                                                        <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
-                                                        <span ng-show="reviewform.title.$dirty && reviewform.title.$invalid">
-                                                            <span ng-show="reviewform.title.$error.required" class="has-error">Username
-                                                                is required.</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="description">DESCRIPTION</label>
-                                                        <textarea ng-model="review" name="review" class="form-control" id="description" required></textarea>
-                                                        <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
-                                                            <span ng-show="reviewform.review.$error.required" class="has-error">Username
-                                                                is required.</span>
-                                                        </span>
-                                                    </div>
-                                                    <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" value="<%=productData.pb_id%>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="title">TITLE</label>
+                                                    <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
+                                                    <span ng-show="reviewform.title.$dirty && reviewform.title.$invalid">
+                                                        <span ng-show="reviewform.title.$error.required" class="has-error">Username
+                                                            is required.</span>
+                                                    </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">DESCRIPTION</label>
+                                                    <textarea ng-model="review" name="review" class="form-control" id="description" required></textarea>
+                                                    <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
+                                                        <span ng-show="reviewform.review.$error.required" class="has-error">Username
+                                                            is required.</span>
+                                                    </span>
+                                                </div>
+                                                <input type="hidden" ng-model="product_id" name="produt_id" id="product_id" value="<%=productData.pb_id%>">
 
-                                                    <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
-                                                </form>
+                                                <button type="submit" ngClick="Submit" class="btn btn-info">Submit</button>
+                                            </form>
 
-                                            </div>
-                                    </div>
-
+                                        </div>
                                 </div>
+
                             </div>
-
-
                         </div>
+
+
+                    </div>
         </div>
         <!--     Product list ends here-->
         <% include template/footer %>
@@ -571,9 +582,12 @@ let products= productData.product;
                             class="sr-only">Close</span></button>
                     <h5>+ Add to bundle</h5>
                     <ul style="list-style-type: none;padding-left: 0px">
-                        <li onclick="showAlert()">Bundle 1(2)</li>
-                        <li>Bundle 2(2)</li>
-                        <li>Bundle 3(2)</li>
+                        <li class="addtobundle a-deactive addtobundleTitle">
+                            + Add to bundle
+                        </li>
+                        <li ng-repeat="bundle in mybundles"> <a ng-click="addToBundle($event, bundle.ub_id, bundle.product_count, <%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">{{bundle.ub_name}}
+                                ( <span>{{bundle.product_count}}</span> )</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.modal-body -->

@@ -83,12 +83,28 @@
                         {{product.ct_quantity}} X {{product.ct_price}} AED</h5>
 
                     <h6 class="price">
-                        {{product.ct_quantity}} X {{product.ct_discount_rice}} AED</h6>
+                        {{product.ct_quantity}} X {{product.ct_discount_price}} AED</h6>
                 </div>
             </div>
 
         </div>
-        <hr class="hidden-sm">
+        <hr ng-if="!$last" class="hidden-sm">
+        <div ng-if="$last" class="row">
+            <div class="cancelorder">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-offset-6 col-sm-6">
+                        <a href="/cancel-order/{{order.o_id}}" class="">
+                            <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
+                    </div>
+                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+                        <a href="#{{order.o_id}}" class="trackinglink">
+                            <img src="img/track.png" class="img-responsive cancelimg">Track Package</a>
+                    </div>
+                </div>
+
+                <hr class="hidden-sm hidden-md hidden-lg">
+            </div>
+        </div>
         <div class="cancelorder">
             <div class="deliverystate-mob hidden-sm hidden-md hidden-lg" ng-switch="{{order.o_order_status_id}}">
                 <div ng-switch-when="11">
@@ -125,23 +141,6 @@
                 </div>
             </div>
         </div>
-        <hr class="hidden-sm hidden-md hidden-lg">
-    </div>
-</div>
-
-<div class="row">
-    <div class="cancelorder">
-        <div class="row">
-            <div class="col-xs-6 col-sm-offset-6 col-sm-6">
-                <a href="/cancel-order/{{order.o_id}}" class="">
-                    <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
-            </div>
-            <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
-                <a href="#{{order.o_id}}" class="trackinglink">
-                    <img src="img/track.png" class="img-responsive cancelimg">Track Package</a>
-            </div>
-        </div>
-
         <hr class="hidden-sm hidden-md hidden-lg">
     </div>
 </div>

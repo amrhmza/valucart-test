@@ -27,7 +27,9 @@ app.factory("otpVerify", function($http, config, $q) {
     resent_otp: function() {
       var q = $q.defer();
       var suggestURL = config.sentotptoemail;
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       var verifyUrl = suggestURL;
       $http({
         method: "POST",

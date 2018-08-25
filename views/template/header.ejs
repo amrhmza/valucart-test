@@ -69,13 +69,13 @@
     <div class="container-fluid headertop">
         <div class="container">
             <ul class="list-inline headerlist">
-                <li style="border-right: 1px solid #9b9b9b;">
+                <li>
                     <a href="#">
                         <p style="margin: 0px;padding-right: 5px;">
                             <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
                     </a>
                 </li>
-                <li style="border-right: 1px solid #9b9b9b;">
+                <li>
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
                             <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> <span class="current_city">Al Karama, Dubai</span>
@@ -88,7 +88,7 @@
                 var userData=JSON.parse(cookies);
                 if(userData.status=="success"){
                 %>
-                <li style="margin-bottom: 0px;">
+                <li>
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img class="img-responsive topnavlocationimg" src="img/user.png"><%=(userData.username).toUpperCase();%>
@@ -106,9 +106,6 @@
                             </li>
                             <li>
                                 <a href="change-password">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="#">Setting</a>
                             </li>
                             <li>
                                 <a href="myshopping-dashboard">Shopping list</a>
@@ -273,11 +270,11 @@
                     </nav>
                     <!--nav navbar-nav-->
                 </div>
-                <div class="col-md-5 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
+                <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
                     <a href="#">
                         <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> Valucart Exclusives</a>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-6" style="z-index: 1000;">
+                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
                     <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
                         <form class="mobsearchform">
                             <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
@@ -368,7 +365,7 @@
                 %>     
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"> <%= cat.c_name;%>
+                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"><a href="<%= catUrl;%>"><%= cat.c_name;%></a>
                             <i class="fa fa-chevron-right" aria-hidden="true"></i>
                         </h4>
                     </div>

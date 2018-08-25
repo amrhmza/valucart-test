@@ -1,6 +1,6 @@
 <% include template/header %>
     <!--    Breadcrumb-->
-    <div class="container" style="margin-bottom: 20px;">
+    <div class="container">
         <ul class="breadcrumb">
             <li>
                 <a href="/">Home</a>
@@ -110,13 +110,13 @@
                                 </a>
                                 <div id="collapse3" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <ul class="list-group">
+                                        <ul class="list-group brandlist">
                                             <% if(data.product_config["price_filter"]!=""){
                                             let i=0;
                                             data.product_config["price_filter"].forEach(function(price){ 
                                                 %>
                                                 <li class="list-group-item">
-                                                    <div class="checkbox checkbox-info">
+                                                    <div class="checkbox checkbox-info radio">
                                                         <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                         <label for="price1_<%= i %>">
                                                             <%=price.start==""?"Less then ":"" %>
@@ -144,13 +144,13 @@
                                 </a>
                                 <div id="collapse4 " class="panel-collapse collapse in ">
                                     <div class="panel-body ">
-                                        <ul class="list-group ">
+                                        <ul class="list-group brandlist">
                                             <% if(data.product_config["discount_filter"]!=""){
                                             let j=0;
                                                     data.product_config["discount_filter"].forEach(function(discount){ 
                                                         %>
                                                 <li class="list-group-item ">
-                                                    <div class="checkbox checkbox-info ">
+                                                    <div class="checkbox checkbox-info radio">
                                                         <input id="discount1_<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                         <label for="discount1_<%= j %>">
                                                             <%=discount.start==""?"Less then":"" %>
@@ -171,7 +171,7 @@
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-12 organicbundles">
                         <div class="row">
-                            <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 15px;">
+                            <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 26px;">
                                 <h4 class="productlisttitle">
                                     <%= data.product_config["cat_filter"].cat %>
                                         <span class="titlecount">(
@@ -220,14 +220,14 @@
 
 
                                                 <li role="presentation" style="padding-left: 10px">Price</li>
-                                                <ul class="list-group">
+                                                <ul class="list-group brandlist">
 
                                                     <% if(data.product_config["price_filter"]!=""){
                                         let i=0;
                                         data.product_config["price_filter"].forEach(function(price){ 
                                             %>
                                                         <li class="list-group-item">
-                                                            <div class="checkbox checkbox-info">
+                                                            <div class="checkbox checkbox-info radio">
                                                                 <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                                 <label for="price1__<%= i %>">
                                                                     <%=price.start==""?"Less then ":"" %>
@@ -242,13 +242,13 @@
                                      } %>
                                                 </ul>
                                                 <li role="presentation" style="padding-left: 10px">Discounts</li>
-                                                <ul class="list-group">
+                                                <ul class="list-group brandlist">
                                                     <% if(data.product_config["discount_filter"]!=""){
                                         let j=0;
                                                 data.product_config["discount_filter"].forEach(function(discount){ 
                                                     %>
                                                         <li class="list-group-item ">
-                                                            <div class="checkbox checkbox-info ">
+                                                            <div class="checkbox checkbox-info radio">
                                                                 <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                                 <label for="discount1__<%= j %>">
                                                                     <%=discount.start==""?"Less then":"" %>

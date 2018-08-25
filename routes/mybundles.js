@@ -15,6 +15,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       data: data,
       angular: false,
       customjs: false,
+      search: 0,
       cookies: cookies
     });
   } catch (error) {

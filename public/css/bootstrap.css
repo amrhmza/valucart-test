@@ -1601,8 +1601,9 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1200px;
   }
+	
 }
 .container-fluid {
   padding-right: 15px;
@@ -2092,7 +2093,7 @@ pre code {
     margin-left: 0;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left;
   }
@@ -4698,7 +4699,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 15px;
-	margin-top: 46px;
+	margin-top: 30px;
   list-style: none;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -4920,7 +4921,7 @@ a.label:focus {
   min-width: 10px;
   padding: 3px 7px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 300;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -4928,6 +4929,10 @@ a.label:focus {
   vertical-align: middle;
   background-color: #000;
   border-radius: 10px;
+}
+.orderid
+{
+	font-weight: 600;
 }
 .badge:empty {
   display: none;
@@ -5457,7 +5462,7 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0;
 /*
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -5938,7 +5943,7 @@ button.close {
 }
 .modal-backdrop.in {
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: .9;
 }
 .modal-header {
   padding: 15px;

@@ -8,7 +8,9 @@ app.factory("product_details", function($http, config, $q) {
         quantity: qty,
         is_bundel: false
       };
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "POST",
         url: suggestURL,

@@ -2,7 +2,9 @@ app.factory("userbundle", function($http, config, $q) {
   return {
     getDetails: function(bundleId) {
       var q = $q.defer();
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "GET",
         url: config.view_mybundle,
@@ -22,7 +24,9 @@ app.factory("userbundle", function($http, config, $q) {
     },
     editBundle: function(data) {
       var q = $q.defer();
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "PUT",
         url: config.edit_mybundle,
@@ -43,7 +47,9 @@ app.factory("userbundle", function($http, config, $q) {
     },
     getList: function() {
       var q = $q.defer();
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "GET",
         url: config.mybundel_list,
@@ -62,7 +68,9 @@ app.factory("userbundle", function($http, config, $q) {
     },
     updateBundle: function(data) {
       var q = $q.defer();
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "POST",
         url: config.update_mybundle_single,

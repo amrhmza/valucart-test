@@ -21,6 +21,7 @@ router.get("/:list_id", auth.ensureAuthenticated, async (req, res, next) => {
       angular: true,
       customjs: true,
       cookies: cookies,
+      seach: 0,
       jslist: [
         "angular/app.js",
         "angular/factory/myshipping.js",

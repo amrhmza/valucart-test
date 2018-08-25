@@ -59,7 +59,7 @@
     <!--    Carousel ends here-->
 
     <!--    Product list starts here-->
-    <div class="container-fluid productlistpage" ng-app="myapp" ng-controller="product_listing">
+    <div class="container-fluid productlistpage product-listing-page" ng-app="myapp" ng-controller="product_listing">
         <div class="container productlistpagec">
             <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
                 <div class="row">
@@ -111,7 +111,6 @@
                                     </a>
                                     <div id="collapse2" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            <!--                                    <p class="brandsearch">Search by brand</p>-->
                                             <input class="brandsearch" type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search by brand" title="Type in a name"
                                                 style="border: none;
         width: 100%;margin-bottom: 10px;outline: none;">
@@ -146,24 +145,25 @@
                                     </a>
                                     <div id="collapse3" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            <ul class="list-group">
+                                            <ul class="list-group brandlist">
                                                 <% if(data.product_config["price_filter"]!=""){
-                                            let i=0;
+                                            var i=0;
                                             data.product_config["price_filter"].forEach(function(price){ 
+                                                if(price.end!==0 && i!==0){
                                                 %>
                                                     <li class="list-group-item">
-                                                        <div class="checkbox checkbox-info">
+                                                        <div class="checkbox checkbox-info radio">
                                                             <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                             <label for="price1_<%= i %>">
                                                                 <%=price.start==""?"Less then ":"" %>
-                                                                    <%=price.end==" "?"More then ":"" %>
+                                                                    <%=price.end==""?"More then ":"" %>
                                                                         <%= price.start %>
                                                                             <%= (price.start == "" || price.end == "")?"":" - " %>
                                                                                 <%= price.end %> AMD
                                                             </label>
                                                         </div>
                                                     </li>
-                                                    <% i++;})
+                                                    <% }i++;})
                                          } %>
 
                                             </ul>
@@ -180,13 +180,13 @@
                                     </a>
                                     <div id="collapse4 " class="panel-collapse collapse in ">
                                         <div class="panel-body ">
-                                            <ul class="list-group ">
+                                            <ul class="list-group brandlist">
                                                 <% if(data.product_config["discount_filter"]!=""){
                                             let j=0;
                                                     data.product_config["discount_filter"].forEach(function(discount){ 
                                                         %>
                                                     <li class="list-group-item ">
-                                                        <div class="checkbox checkbox-info ">
+                                                        <div class="checkbox checkbox-info radio">
                                                             <input id="discount1_<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                             <label for="discount1_<%= j %>">
                                                                 <%=discount.start==""?"Less then":"" %>
@@ -206,9 +206,9 @@
                             </div>
                             <% } %>
                     </div>
-                    <div class="col-md-9 col-sm-8 col-xs-12 organicbundles">
+                    <div class="col-md-9 col-sm-8 col-xs-12">
                         <div class="row">
-                            <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 15px;">
+                            <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 26px;">
                                 <h4 class="productlisttitle">
                                     <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
                                         <%= data.product_config["cat_filter"].cat %>
@@ -229,11 +229,11 @@
                                     <option value="price_hl">Price (High to Low)</option>
                                 </select>
                             </div>
-                            <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-top: 20px;padding-bottom:10px;padding-left: 0px;padding-right: 15px;">
+                            <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="">
                                 <div class="dropdown sortdropdown">
                                     <button class="btn btn-default sortbtn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
                                         <img src="img/filter.png" class="img-responsive filterimg">FILTER
-                                        <i class="fa fa-chevron-down sortdown"></i>
+                                        
                                     </button>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                         <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
@@ -283,35 +283,36 @@
                                                     </ul>
 
                                                     <li role="presentation" style="padding-left: 10px">Price</li>
-                                                    <ul class="list-group">
+                                                    <ul class="list-group brandlist">
 
                                                         <% if(data.product_config["price_filter"]!=""){
                                         let i=0;
                                         data.product_config["price_filter"].forEach(function(price){ 
+                                            if(price.end!==0 && i!==0){
                                             %>
                                                             <li class="list-group-item">
-                                                                <div class="checkbox checkbox-info">
+                                                                <div class="checkbox checkbox-info radio">
                                                                     <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                                     <label for="price1__<%= i %>">
                                                                         <%=price.start==""?"Less then ":"" %>
-                                                                            <%=price.end==" "?"More then ":"" %>
+                                                                            <%=price.end==""?"More then ":"" %>
                                                                                 <%= price.start %>
                                                                                     <%= (price.start == "" || price.end == "")?"":" - " %>
                                                                                         <%= price.end %> AMD
                                                                     </label>
                                                                 </div>
                                                             </li>
-                                                            <% i++;})
+                                                            <% }i++;})
                                      } %>
                                                     </ul>
                                                     <li role="presentation" style="padding-left: 10px">Discounts</li>
-                                                    <ul class="list-group">
+                                                    <ul class="list-group brandlist">
                                                         <% if(data.product_config["discount_filter"]!=""){
                                         let j=0;
                                                 data.product_config["discount_filter"].forEach(function(discount){ 
                                                     %>
                                                             <li class="list-group-item ">
-                                                                <div class="checkbox checkbox-info ">
+                                                                <div class="checkbox checkbox-info radio">
                                                                     <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                                     <label for="discount1__<%= j %>">
                                                                         <%=discount.start==""?"Less then":"" %>
@@ -331,7 +332,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
+                            <div class="col-md-6  col-sm-12 pl0" ng-repeat="product in productData">
                                 <div ng-include="'includes/product_list.html'"></div>
                             </div>
                         </div>
@@ -346,7 +347,7 @@
     </div>
     <script>
         app.constant("querydata", {
-            'queryparam': "<%= JSON.stringify(data.querydata) %>"
+            'queryparam': <%- JSON.stringify(data.querydata) %>
         });
     </script>
     <script>

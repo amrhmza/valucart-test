@@ -64,6 +64,7 @@ router.get(
         params: req.params,
         angular: true,
         customjs: true,
+        search: 0,
         jslist: [
           "angular/app.js",
           "angular/factory/add_address.js",

@@ -21,7 +21,9 @@ app.factory("bundle_details", function($http, config, $q) {
         }
       }
       data.bundel_items = alter;
-      let token = JSON.parse($.cookie("vcartAuth"));
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
       $http({
         method: "POST",
         url: suggestURL,

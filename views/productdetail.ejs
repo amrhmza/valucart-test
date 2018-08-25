@@ -160,7 +160,7 @@
                     <div class="panel panel-default productpanel productviewpanel">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-xs-8">
+                                <div class="col-xs-12">
                                     <h4>
                                         <% if (data) %>
                                             <%= data.response[0].pd_name %>
@@ -170,7 +170,7 @@
                                         <% if (data) %>
                                             <%= data.response[0].p_quantity %>
                                     </h5>
-                                    <h5 style="display: inline-block" class="offeredprice">
+                                    <h5 style="display: inline-block" class="offeredprice m-0">
                                         <%= data.response[0].p_price;%> AED
                                     </h5>
                                     <h6 style="margin-bottom: 40px;">
@@ -180,7 +180,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-md-6">
                                     <div class="productcountdiv button-container">
                                         <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
                                             <i class="fa fa-minus"></i>
@@ -192,7 +192,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-md-6">
                                     <a ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -206,7 +206,7 @@
                 </div>
             </div>
         </div>
-        <div class="container productdetail">
+        <div class="container productdetail" style="padding-left: 0px;">
             <div id="exTab1" class="container">
                 <div class="tabheader">
                     <ul class="nav nav-pills">

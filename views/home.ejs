@@ -1,6 +1,6 @@
 <% include template/header %>
     <!--    Carousel strts here-->
-    <div class="container-fluid carouseldiv" style="padding-top: 20px;">
+    <div class="container-fluid carouseldiv1" style="padding-top: 20px;">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -82,7 +82,7 @@
 
                                         <a href="bundle-list/<%= cat.hbc_id+'/'+hbc_url%>">
                                             <button class="btn btn-info">
-                                                <i class="fa fa-arrow-right"></i>
+                                            <img src="img/arrow-home.png" alt=""/>
                                             </button>
                                         </a>
 
@@ -133,7 +133,7 @@
                                         <h4 class="producttitle"><%= cat.c_name;%></h4>
                                         <a href="bundle-list/<%= cat.hc_id+'/'+hc_url%>">
                                             <button class="btn btn-info">
-                                                <i class="fa fa-arrow-right"></i>
+                                            <img src="img/arrow-home.png" alt=""/>
                                             </button>
                                         </a>
                                     </div>
@@ -193,8 +193,8 @@
                                         </a>
                                         <h5>
                                             <img src="img/grammeter.png" class="img-responsive gramimg"> <%= cat.p_quantity;%></h5>
-                                        <h6><%= cat.p_price%> AED</h6>
-                                        <div class="productcountdiv button-container">
+                                        <h6 class="m-t-40 m-b-40"><%= cat.p_price%> AED</h6>
+                                        <div class="productcountdiv button-container m-b-40">
                                             <button ng-click="qty_minus('qty_',<%= cat.pd_id;%>)" class="btn btn-default productminus cart-qty-minus" value="-">
                                                 <i class="fa fa-minus"></i>
                                             </button>
