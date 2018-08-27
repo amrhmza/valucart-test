@@ -414,3 +414,31 @@ button.btn.btn-info.logot {
 .btn-bundle:focus {
   padding-top: 27px !important;
 }
+.ui-autocomplete {
+  max-height: 50vh;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+.ui-widget.ui-widget-content {
+  border: 1px solid #c5c5c5;
+  padding: 0px 0px !important;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: none !important;
+  background: #901dfe !important;
+}
+.cusui {
+  padding: 13px 20px !important;
+}
+.ui-widget.ui-widget-content::-webkit-scrollbar {
+  display: none;
+}
