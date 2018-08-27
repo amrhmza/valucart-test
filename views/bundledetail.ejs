@@ -10,19 +10,20 @@ let products= productData.product;
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="#<%=productData.c_id; %></">
-                        <%=productData.c_name; %>
+                    <a href="/bundle-list/<%= productData.c_id +'/'+ productData.c_name.replace(' ','-') %>">
+                        <% if (productData) %>
+                            <%=productData.c_name; %>
                     </a>
                 </li>
                 <li>
-                    <a href="#<%=productData.pdt_subcat_id; %></">
-                        <%=productData.sub_category; %>
+                    <a href="/bundle-list/<%= productData.c_id +'/'+ productData.c_name.replace(' ','-') + '?sub_cat=' + productData.pb_subcat_id;%>">
+                        <% if (productData) %>
+                            <%=productData.sub_category; %>
                     </a>
                 </li>
                 <li class="lastcrumb">
-                    <a href="#">
+                    <% if (productData) %>
                         <%= productData.pb_name;%>
-                    </a>
                 </li>
             </ul>
         </div>

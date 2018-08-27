@@ -5,7 +5,7 @@
             <li>
                 <a href="/">Home</a>
             </li>
-            <li>
+            <li class="lastcrumb">
                 <a>My Cart</a>
             </li>
         </ul>
@@ -67,7 +67,8 @@
                                                     <%= cart.product_name %>
                                                 </a>
                                             </h4>
-                                            <h6 class="detail-text">- Nutella hazelnut chocolate spread <strong>X  1</strong> </h6>
+                                            <h6 class="detail-text">- Nutella hazelnut chocolate spread <strong>X 1</strong>
+                                            </h6>
                                             <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
                                                 <div class="productcountdiv button-container">
                                                     <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',<%= cart.cart_id %>)" value="-">
@@ -106,39 +107,39 @@
                     <div class="col-lg-4 col-md-4 col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;" id="summary-desktop">
                         <div class="summary">
                             <h4 class="order">Order Summary</h4>
-                                <div id="subtotal">
-                                    <h5 class="total">Subtotal</h5>
-                                    <h5 class="total" style="float: right;">
-                                        <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
-                                        </span> AED</h5>
-                                    <hr>
-                                </div>
-                                <div id="delivery">
-                                    <h5 class="total">Delivery Charges</h5>
-                                    <h5 class="total" style="float: right;">15.00 AED</h5>
-                                </div>
-                                <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
-                                    
-                                        <h5 class="total">
-                                            <strong>savings</strong>
-                                        </h5>
-                                        <h5 class="total" style="float: right;">
-                                           <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
-                                        </h5>
-                                    </div>
-                                    <div id="total" style="margin-top: 20px">
-                                        <h5 class="total">
-                                            <strong>Grand total</strong>
-                                            <br>
-                                            <span>(inclusive of 5%VAT)</span>
-                                        </h5>
-                                        <h5 class="total" style="float: right;">
-                                            <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
+                            <div id="subtotal">
+                                <h5 class="total">Subtotal</h5>
+                                <h5 class="total" style="float: right;">
+                                    <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
+                                    </span> AED</h5>
+                                <hr>
+                            </div>
+                            <div id="delivery">
+                                <h5 class="total">Delivery Charges</h5>
+                                <h5 class="total" style="float: right;">15.00 AED</h5>
+                            </div>
+                            <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
 
-                                            </strong>
-                                            <strong> AED</strong>
-                                        </h5>
-                                    </div>
+                                <h5 class="total">
+                                    <strong>savings</strong>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
+                                </h5>
+                            </div>
+                            <div id="total" style="margin-top: 20px">
+                                <h5 class="total">
+                                    <strong>Grand total</strong>
+                                    <br>
+                                    <span>(inclusive of 5%VAT)</span>
+                                </h5>
+                                <h5 class="total" style="float: right;">
+                                    <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
+
+                                    </strong>
+                                    <strong> AED</strong>
+                                </h5>
+                            </div>
                         </div>
                         <form action="checkout" method="POST">
                             <% if(data!="undefined"){

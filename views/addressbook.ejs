@@ -3,10 +3,10 @@
     <div class="container myorderdetail">
         <ul class="breadcrumb">
             <li>
-                <a href="#">My accounts</a>
+                <a href="/">Home</a>
             </li>
             <li class="lastcrumb">
-                <a href="#">Address Book</a>
+                Address Book
             </li>
         </ul>
     </div>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-2" style="padding-left: 0px;">
-                                            <input type="radio" name="address_id" value="<%=adr.a_id%>" id="r<%=adr.a_id%>" <%= (adr.a_is_default)?"checked":""; %> />
+                                            <input type="radio" name="address_id" value="<%=adr.a_id%>" id="r<%=adr.a_id%>" <%=( adr.a_is_default)? "checked": ""; %>                                            />
                                             <label class="radio" for="r<%=adr.a_id%>"></label>
                                         </div>
                                         <div class="col-xs-10" style="padding-left: 0px;">
@@ -66,7 +66,8 @@
                                                                 <br>
                                                                 <%=adr.a_phone%>
                                             </h5>
-                                            <a class="text-info" ng-click="removeAddress(<%=adr.a_id%>, $event.target)">Delete this address</a>
+                                            <a class="text-info" ng-click="removeAddress(<%=adr.a_id%>, $event.target)">Delete
+                                                this address</a>
                                         </div>
                                     </div>
                                 </div>
