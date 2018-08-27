@@ -414,3 +414,13 @@ button.btn.btn-info.logot {
 .btn-bundle:focus {
   padding-top: 27px !important;
 }
+.carousel3 .productpanel h4 {
+  min-height: 78px;
+  max-height: 78px;
+  overflow: hidden;
+}
+.carousel1 .producttitle {
+  min-height: 72px;
+  max-height: 72px;
+  overflow: hidden;
+}

@@ -466,10 +466,10 @@ let products= productData.product;
                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
-                                                                    <div class="review <%= (rno>3)?'more_review hidden':''%>">
+                                                                    <div class="review <%= (rno>3)?'more_review hidden':''%> review_<%= rev.prr_user_id%>">
                                                                         <p class="userdate">
                                                                             <%= rev.username%>,
-                                                                                <%= rev.prr_added_dt%>
+                                                                                <%= moment(rev.prr_added_dt).format('Do MMM YYYY'); %>
                                                                         </p>
                                                                         <p class="star">
                                                                             <span class="stars">

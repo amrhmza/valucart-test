@@ -57,24 +57,41 @@ app.controller("product_details", function(
     product_details
       .postReview(postData, userAuth)
       .then(function(response) {
-        console.log(response.data);
-        var postResult= response.data;
-        if(postResult.msg="success"){
-          var reviewStatus= postResult.results.response.msg;
-          $scope.postReviewstatus= reviewStatus;
-          var userName= JSON.parse($.cookie("vcartAuth")).username;
-          var date= $filter('date')(new Date(), "MMM dd, y hh:mm a");
-          var newRev= '<div class="review"><p class="userdate">'+userName+', '+date+'</p><p class="star"><span class="stars"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span> '+postData.rating+' out of 5</p><h5>'+postData.title+'</h5><p>'+postData.review+'</p></div>';
-          $scope.newReview= postData;
-          var el= angular.element( document.querySelector( '.review' ));
+        var postResult = response.data;
+        if (postResult.results.status == 200) {
+          var reviewStatus = postResult.results.response.msg;
+          $scope.postReviewstatus = reviewStatus;
+          var userName = JSON.parse($.cookie("vcartAuth")).username;
+          var userId = JSON.parse($.cookie("vcartAuth")).user_id;
+          var date = moment().format("MMM Do YYYY");
+          var newRev =
+            '<div class="review"><p class="userdate">' +
+            userName +
+            ", " +
+            date +
+            '</p><p class="star"><span class="stars"><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i><i class="fa fa-star filled"></i></span> ' +
+            postData.rating +
+            " out of 5</p><h5>" +
+            postData.title +
+            "</h5><p>" +
+            postData.review +
+            "</p></div>";
+          $scope.newReview = postData;
+          var el = angular.element(document.querySelector(".review"));
+          if (postResult.results.msg == "updated") {
+            console.log(".review_" + userId);
+            var dEl = angular.element(
+              document.querySelector(".review_" + userId)
+            );
+            dEl.html("");
+          }
           el.prepend(newRev);
-          angular.element('#closebtn').triggerHandler('click');
-        }
-        else{
-          var reviewStatus= postResult.results.response.msg;
-          var myEl = angular.element( document.querySelector( '#rstatus' ) );
-          myEl.addClass('has-error');
-          $scope.postReviewstatus= reviewStatus;
+          angular.element("#closebtn").triggerHandler("click");
+        } else {
+          var reviewStatus = postResult.results.response.msg;
+          var myEl = angular.element(document.querySelector("#rstatus"));
+          myEl.addClass("has-error");
+          $scope.postReviewstatus = reviewStatus;
         }
       })
       .catch(function(response) {
@@ -84,10 +101,12 @@ app.controller("product_details", function(
 
   $scope.submitReviewbundle = function() {
     var product_id = $("#product_id").val();
-    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
-    var usertoken= (userAuth!="")?userAuth.token: "";
-    
-    if($scope.rating!=undefined){
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
+
+    if ($scope.rating != undefined) {
       $scope.ratingError = "";
       $scope.data = {
         rating: $scope.rating,
@@ -96,40 +115,39 @@ app.controller("product_details", function(
         is_product_bundle: 0,
         product_id: product_id
       };
-      var postStatus= postReview($scope.data, usertoken);
-    }
-    else{
+      var postStatus = postReview($scope.data, usertoken);
+    } else {
       $scope.ratingError = "It is required";
     }
   };
 
   //Prdouct Review Controler
   $scope.addwish = function(product_id, is_bundle, item) {
-    
-    var elem= angular.element(item);
-    var wtype= elem.attr('data-type');
+    var elem = angular.element(item);
+    var wtype = elem.attr("data-type");
     //console.log(wtype);
     let productData = {
       product_id: product_id,
       is_bundle: is_bundle,
       wish_type: wtype
     };
-    var userAuth = typeof $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
-    var usertoken= (userAuth!="")?userAuth.token: "";
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
 
     getWishList
       .addWish(productData, usertoken)
       .then(function(response) {
         console.log(response);
-        var res= response.data.msg;
-        if(res=="success"){
-          var wishvalue= (wtype=="add")?"remove":"add";
-          elem.attr('data-type', wishvalue);
-          if(wishvalue=="remove"){
+        var res = response.data.msg;
+        if (res == "success") {
+          var wishvalue = wtype == "add" ? "remove" : "add";
+          elem.attr("data-type", wishvalue);
+          if (wishvalue == "remove") {
             elem.addClass("wishheartt");
             toastr.success(response.data.results);
-          }
-          else{
+          } else {
             elem.removeClass("wishheartt");
             toastr.warning(response.data.results);
           }
@@ -139,5 +157,4 @@ app.controller("product_details", function(
         console.log(response);
       });
   };
-  
 });
