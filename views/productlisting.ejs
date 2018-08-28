@@ -60,8 +60,8 @@
 
     <!--    Product list starts here-->
     <div class="container-fluid productlistpage product-listing-page" ng-app="myapp" ng-controller="product_listing">
-        <div class="container productlistpagec">
-            <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
+        <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
+            <div class="container productlistpagec">
                 <div class="row">
                     <div class="col-md-3 col-sm-4 hidden-xs" style="padding-top: 30px;">
                         <% if(typeof data.product_config["cat_filter"] != "undefined"){ %>
@@ -147,8 +147,8 @@
                                         <div class="panel-body">
                                             <ul class="list-group brandlist">
                                                 <% if(data.product_config["price_filter"]!=""){
-                                            var i=0;
-                                            data.product_config["price_filter"].forEach(function(price){ 
+                                                var i=0;
+                                                data.product_config["price_filter"].forEach(function(price){ 
                                                 if(price.end!==0 && i!==0){
                                                 %>
                                                     <li class="list-group-item">
@@ -163,8 +163,10 @@
                                                             </label>
                                                         </div>
                                                     </li>
-                                                    <% }i++;})
-                                         } %>
+                                                    <% }
+                                                    i++;
+                                                    })
+                                                } %>
 
                                             </ul>
                                         </div>
@@ -182,7 +184,7 @@
                                         <div class="panel-body ">
                                             <ul class="list-group brandlist">
                                                 <% if(data.product_config["discount_filter"]!=""){
-                                            let j=0;
+                                                    let j=0;
                                                     data.product_config["discount_filter"].forEach(function(discount){ 
                                                         %>
                                                     <li class="list-group-item ">
@@ -233,7 +235,7 @@
                                 <div class="dropdown sortdropdown">
                                     <button class="btn btn-default sortbtn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
                                         <img src="img/filter.png" class="img-responsive filterimg">FILTER
-                                        
+
                                     </button>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                         <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
@@ -338,16 +340,16 @@
                         </div>
                     </div>
                 </div>
-        </div>
-        <% }else{ %>
-            <br>
-            <h1 class="text-center">Oops!No product found in this category!!</h1>
-            <br>
-            <% } %>
+            </div>
+            <% }else{ %>
+                <div class="container productlistpagec m-t-50">
+                    <h1 class="text-center">Oops!No product found in this category!!</h1>
+                </div>
+                <% } %>
     </div>
     <script>
         app.constant("querydata", {
-            'queryparam': <%- JSON.stringify(data.querydata) %>
+            'queryparam': "<%= JSON.stringify(data.querydata) %>"
         });
     </script>
     <script>

@@ -30,7 +30,8 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       jslist: [
         "angular/app.js",
         "angular/factory/cart.js",
-        "angular/controllers/cart.js"
+        "angular/controllers/cart.js",
+        "angular/factory/wishlist.js"
       ]
     });
   } catch (error) {
