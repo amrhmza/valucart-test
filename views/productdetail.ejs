@@ -190,8 +190,14 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-xs-12 col-md-6"  ng-if="loggedStatus == true">
                                     <a ng-click="addtocart(<%= data.response[0].pd_id %>)">
+                                        <button class="btn btn-info">
+                                            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-md-6"  ng-if="loggedStatus != true">
+                                    <a ng-click="addtocartOffline(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </a>

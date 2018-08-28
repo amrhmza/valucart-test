@@ -10,7 +10,9 @@ app.controller("product_details", function(
   getWishList
 ) {
   $scope.qty = 1;
-
+  var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+  $scope.loggedStatus = userAuth.status == "success" ? true : false;
+  
   $scope.addtocart = function(data) {
     product_details
       .addToCart($scope.qty, data)
@@ -24,6 +26,32 @@ app.controller("product_details", function(
       .catch(function(response) {
         toastr.warning(response.data.results.msg);
       });
+  };
+
+  //Offline Addtocart functionality
+  $scope.cartList = [];
+  $scope.addtocartOffline = function(data) {
+    var getList = JSON.parse(localStorage.getItem("cartList"));
+    $scope.cartList = getList;
+    var currentVal = $scope.qty;
+    var cartData = { product_id: data, qty: currentVal, is_bundle: false };
+
+    if (getList) {
+      var uniquePro = true;
+      angular.forEach(getList, function(value, key) {
+        if (value.product_id == data) {
+          uniquePro = false;
+          return;
+        }
+      });
+      if (uniquePro) $scope.cartList.push(cartData);
+    } else {
+      $scope.cartList.push(cartData);
+    }
+
+    localStorage.setItem("cartList", JSON.stringify($scope.cartList));
+    var getList = localStorage.getItem("cartList");
+    console.log(getList);
   };
 
   $scope.qty_plus = function(fieldName, index) {

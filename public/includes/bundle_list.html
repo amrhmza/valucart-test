@@ -59,19 +59,18 @@
                 </div>
             </div>
             <div class="col-xs-7">
-                <div ng-if="loggedStatus==true">
+                <div>
                     <a ng-href="/bundle-detail/{{product.pb_id}}/{{product.pb_name | spaceless}}" class="pull-right">
                         <button class="btn btn-info">
                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                     </a>
                 </div>
-                <div ng-if="loggedStatus != true">
+                <!-- <div ng-if="loggedStatus != true">
                     <a href="#" data-toggle="modal" data-target="#myModal">
                         <button class="btn btn-info">
                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                     </a>
-                </div>
-
+                </div> -->
             </div>
         </div>
     </div>

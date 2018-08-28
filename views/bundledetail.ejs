@@ -248,16 +248,13 @@ let products= productData.product;
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-xs-6">
-
+                                    <div class="col-md-6 col-xs-6" ng-if="loggedStatus == true">
                                         <div class="btn-group hidden-xs hidden-sm">
                                             <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info">
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
 
                                             <button type="button" class="btn btn-primary ebtn bdtd" data-toggle="dropdown"><span
                                                     class="fa fa-ellipsis-v"></span></button>
-
-
 
                                             <ul class="dropdown-menu addtocartddp" role="menu">
                                                 <li class="addtobundle a-deactive addtobundleTitle">
@@ -273,6 +270,17 @@ let products= productData.product;
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                             <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup">&#8942;</button>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6" ng-if="loggedStatus != true">
+                                        <div class="btn-group hidden-xs hidden-sm">
+                                            <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info  pull-right">
+                                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                                        </div>
+                                        <div class="btn-group hidden-md hidden-lg">
+                                            <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info">
+                                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                                        </div>
+
                                     </div>
                                 </div>
 

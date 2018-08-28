@@ -80,16 +80,15 @@
                         </ul>
                     </div>
                     <div class="btn-group hidden-md hidden-lg">
-                        <button type="button" class="btn btn-info">
+                        <button type="button" class="btn btn-info" ng-click="addtocart(product.pd_id)">
                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                         <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup">&#8942;</button>
                     </div>
                 </div>
                 <div ng-if="loggedStatus != true">
-                    <a href="#" data-toggle="modal" data-target="#myModal">
-                        <button class="btn btn-info logot">
-                            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                    </a>
+                    <button class="btn btn-info logot" ng-click="addtocartOffline(product.pd_id)">
+                        <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart
+                    </button>
                 </div>
             </div>
 
