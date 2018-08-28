@@ -442,3 +442,13 @@ a.ui-button:active,
 .ui-widget.ui-widget-content::-webkit-scrollbar {
   display: none;
 }
+.carousel3 .productpanel h4 {
+  min-height: 78px;
+  max-height: 78px;
+  overflow: hidden;
+}
+.carousel1 .producttitle {
+  min-height: 72px;
+  max-height: 72px;
+  overflow: hidden;
+}

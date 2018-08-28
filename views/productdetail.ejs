@@ -6,22 +6,20 @@
                 <a href="/">Home</a>
             </li>
             <li>
-                <a href="#">
+                <a href="/product-listing/<%= data.response[0].c_id +'/'+ data.response[0].c_name.replace(' ','-') %>">
                     <% if (data) %>
                         <%= data.response[0].c_name %>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/product-listing/<%= data.response[0].c_id +'/'+ data.response[0].c_name.replace(' ','-') + '?sub_cat=' + data.response[0].mptc_sc_id %>">
                     <% if (data) %>
                         <%= data.response[0].sub_category %>
                 </a>
             </li>
             <li class="lastcrumb">
-                <a href="product-listing">
-                    <% if (data) %>
-                        <%= data.response[0].pd_name %>
-                </a>
+                <% if (data) %>
+                    <%= data.response[0].pd_name %>
             </li>
         </ul>
     </div>
@@ -308,10 +306,11 @@
                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
-                                                        <div class="review <%= (rno>3)?'more_review hidden':''%>">
+                                                        <div class="review <%= (rno>3)?'more_review hidden':''%> review_<%= rev.prr_user_id%>">
                                                             <p class="userdate">
                                                                 <%= rev.username%>,
-                                                                    <%= rev.prr_added_dt%>
+                                                                    <%= moment(rev.prr_added_dt).format('Do MMM YYYY'); %>
+
                                                             </p>
                                                             <p class="star">
                                                                 <span class="stars">

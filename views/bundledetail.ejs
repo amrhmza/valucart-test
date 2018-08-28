@@ -10,19 +10,20 @@ let products= productData.product;
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="#<%=productData.c_id; %></">
-                        <%=productData.c_name; %>
+                    <a href="/bundle-list/<%= productData.c_id +'/'+ productData.c_name.replace(' ','-') %>">
+                        <% if (productData) %>
+                            <%=productData.c_name; %>
                     </a>
                 </li>
                 <li>
-                    <a href="#<%=productData.pdt_subcat_id; %></">
-                        <%=productData.sub_category; %>
+                    <a href="/bundle-list/<%= productData.c_id +'/'+ productData.c_name.replace(' ','-') + '?sub_cat=' + productData.pb_subcat_id;%>">
+                        <% if (productData) %>
+                            <%=productData.sub_category; %>
                     </a>
                 </li>
                 <li class="lastcrumb">
-                    <a href="#">
+                    <% if (productData) %>
                         <%= productData.pb_name;%>
-                    </a>
                 </li>
             </ul>
         </div>
@@ -465,10 +466,10 @@ let products= productData.product;
                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
-                                                                    <div class="review <%= (rno>3)?'more_review hidden':''%>">
+                                                                    <div class="review <%= (rno>3)?'more_review hidden':''%> review_<%= rev.prr_user_id%>">
                                                                         <p class="userdate">
                                                                             <%= rev.username%>,
-                                                                                <%= rev.prr_added_dt%>
+                                                                                <%= moment(rev.prr_added_dt).format('Do MMM YYYY'); %>
                                                                         </p>
                                                                         <p class="star">
                                                                             <span class="stars">

@@ -21,7 +21,8 @@ app.controller("bundle_details", function(
           var reviewStatus = postResult.results.response.msg;
           $scope.postReviewstatus = reviewStatus;
           var userName = JSON.parse($.cookie("vcartAuth")).username;
-          var date = $filter("date")(new Date(), "MMM dd, y hh:mm a");
+          var userId = JSON.parse($.cookie("vcartAuth")).user_id;
+          var date = moment().format("MMM Do YYYY");
           var newRev =
             '<div class="review"><p class="userdate">' +
             userName +
@@ -36,6 +37,12 @@ app.controller("bundle_details", function(
             "</p></div>";
           $scope.newReview = postData;
           var el = angular.element(document.querySelector(".review"));
+          if (postResult.results.msg == "updated") {
+            var dEl = angular.element(
+              document.querySelector(".review_" + userId)
+            );
+            dEl.html("");
+          }
           el.prepend(newRev);
           angular.element("#closebtn").triggerHandler("click");
         } else {
