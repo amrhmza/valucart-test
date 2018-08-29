@@ -163,6 +163,7 @@
                                         <% if (data) %>
                                             <%= data.response[0].pd_name %>
                                     </h4>
+                                    <span class="color-red"><%= data.response[0].stock_status_value %></span>
                                     <h5 style="margin-bottom: 40px;">
                                         <img src="img/grammeter.png" class="img-responsive gramimg">
                                         <% if (data) %>
@@ -177,7 +178,7 @@
                                     </h6>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row <%= data.response[0].stock_status?'':'avoid-clicks' %>">
                                 <div class="col-xs-12 col-md-6">
                                     <div class="productcountdiv button-container">
                                         <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
@@ -190,21 +191,22 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-md-6"  ng-if="loggedStatus == true">
+                                <div class="col-xs-12 col-md-6" ng-if="loggedStatus == true">
                                     <a ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </a>
                                 </div>
-                                <div class="col-xs-12 col-md-6"  ng-if="loggedStatus != true">
+                                <div class="col-xs-12 col-md-6" ng-if="loggedStatus != true">
                                     <a ng-click="addtocartOffline(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </a>
                                 </div>
                             </div>
-
-
+                            <% if(!data.response[0].stock_status){ %>
+                                <span class="outofstock">Out of Stock</span>
+                                <% } %>
                         </div>
                     </div>
                 </div>

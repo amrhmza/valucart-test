@@ -235,7 +235,7 @@ let products= productData.product;
 
 
                                 </div>
-                                <div class="row" style="padding-top: 20px">
+                                <div class="row <%= productData.stock_status?'':'avoid-clicks' %>" style="padding-top: 20px">
                                     <div class="col-md-6 col-xs-6" style="padding:10px 0 0 ">
                                         <div class="productcountdiv button-container">
                                             <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
@@ -282,9 +282,12 @@ let products= productData.product;
                                         </div>
 
                                     </div>
+
                                 </div>
 
-
+                                <% if(!productData.stock_status){ %>
+                                    <span class="outofstock">Out of Stock</span>
+                                    <% } %>
                             </div>
                         </div>
                     </div>

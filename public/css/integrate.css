@@ -452,3 +452,12 @@ a.ui-button:active,
   max-height: 72px;
   overflow: hidden;
 }
+.outofstock {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  color: red;
+}
+.color-red {
+  color: red;
+}
