@@ -2,7 +2,7 @@ const axios_config = require("../config/axios-config.js").instance;
 const axios = require("axios");
 // const Logger = require("../lib/logger").Logger;
 
-let get_data = async (cookies) => {
+let get_data = async cookies => {
   try {
     let getparam = axios_config;
     if (cookies) {
@@ -13,7 +13,7 @@ let get_data = async (cookies) => {
     let response = await axios.get("/dashboard/get", getparam);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

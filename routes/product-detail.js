@@ -28,9 +28,7 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 module.exports = router;

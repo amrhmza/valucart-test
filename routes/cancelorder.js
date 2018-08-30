@@ -15,9 +15,7 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
       cookies: cookies
     });
   } catch (error) {
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 

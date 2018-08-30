@@ -8,7 +8,7 @@
     app.use(function(req, res, next) {
       const err = new Error("Not Found");
       err.status = 404;
-      next(err);
+      res.render("404");
     });
 
     // development error handler (will print stacktrace)
@@ -33,3 +33,6 @@
     });
   };
 })(module.exports);
+error_404 = function(res) {
+  res.render("404");
+};

@@ -7,11 +7,18 @@ let get_data = async (cookies, order_id) => {
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token
     };
-    let data = await axios.get("/order/details/get?order_id="+order_id.order_id, getparam);
+    let data = await axios.get(
+      "/order/details/get?order_id=" + order_id.order_id,
+      getparam
+    );
     response = data.data.results.response;
-    return response;
+    if (response) {
+      return response;
+    } else {
+      throw "error";
+    }
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

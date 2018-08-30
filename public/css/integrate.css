@@ -100,10 +100,21 @@ li.active.list-group-item {
     padding: 8px 8px;
     width: 70%;
     height: 60px;
-    font-size: 10px;
+    font-size: 20px;
+  }
+  .pay-success .panel-body .btn-bundle,
+  .btn-bundle:hover,
+  .btn-bundle:focus {
+    padding-top: 15px !important;
   }
 }
-
+@media (min-width: 767px) {
+  .pay-success .panel-body .btn-bundle,
+  .btn-bundle:hover,
+  .btn-bundle:focus {
+    padding-top: 27px !important;
+  }
+}
 #bundleedit .modal-header {
   padding: 15px;
   border: 0;
@@ -409,11 +420,7 @@ button.btn.btn-info.logot {
     padding: 9px !important;
   }
 }
-.pay-success .panel-body .btn-bundle,
-.btn-bundle:hover,
-.btn-bundle:focus {
-  padding-top: 27px !important;
-}
+
 .ui-autocomplete {
   max-height: 50vh;
   overflow-y: auto;

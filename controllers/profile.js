@@ -12,7 +12,7 @@ let get_data = async cookies => {
     //console.log(response.data.results);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

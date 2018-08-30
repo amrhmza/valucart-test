@@ -47,9 +47,7 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 /* GET cart page. */
@@ -72,10 +70,7 @@ router.get(
         ]
       });
     } catch (error) {
-      console.log(error);
-      res.status(401).json({
-        error: error
-      });
+      error_404(res);
     }
   }
 );

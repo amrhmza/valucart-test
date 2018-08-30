@@ -14,7 +14,6 @@ router.get("/:list_id", auth.ensureAuthenticated, async (req, res, next) => {
       list_id
     );
     let menudata = await getMenu.get_menulist();
-    console.log(shoppingList);
     res.render("myshopping", {
       data: shoppingList,
       menudata: menudata,
@@ -30,9 +29,7 @@ router.get("/:list_id", auth.ensureAuthenticated, async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 /* Create Shoping list . */
@@ -54,9 +51,7 @@ router.get(
       }
       res.redirect("/myshopping-dashboard");
     } catch (error) {
-      res.status(401).json({
-        error: error
-      });
+      error_404(res);
     }
   }
 );

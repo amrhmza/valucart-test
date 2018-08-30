@@ -20,9 +20,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 /**
@@ -42,9 +40,7 @@ router.get(
       res.end();
     } catch (error) {
       console.log(error);
-      res.status(401).json({
-        error: error
-      });
+      error_404(res);
     }
   }
 );
@@ -71,9 +67,7 @@ router.get(
         ]
       });
     } catch (error) {
-      res.status(401).json({
-        error: error
-      });
+      error_404(res);
     }
   }
 );

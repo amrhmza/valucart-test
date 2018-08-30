@@ -13,9 +13,7 @@ let get_mybundle = async cookies => {
     let response = await axios.get("user_bundle/list/get", getparam);
     return response.data.results.response;
   } catch (error) {
-    res.status(401).json({
-      error: error
-    });
+    throw error;
   }
 };
 /**
@@ -38,7 +36,7 @@ let deleteBundle = async (cookies, bundleId) => {
     );
     return response.data.results.status;
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 /**
@@ -55,13 +53,10 @@ let get_mybundle_details = async (cookies, bundleId) => {
     getparam["params"] = {
       ub_id: bundleId
     };
-    let response = await axios.get(
-      "user_bundle/details/get",
-      getparam
-    );
+    let response = await axios.get("user_bundle/details/get", getparam);
     return response.data.results.status;
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 module.exports = {

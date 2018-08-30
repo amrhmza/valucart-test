@@ -11,8 +11,7 @@ app.controller("bundle_details", function(
   getWishList,
   userbundle
 ) {
-
-  var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")): "";
+  var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;
 
   var postReview = function(postData, userAuth) {
@@ -127,55 +126,56 @@ app.controller("bundle_details", function(
   $scope.cartList = [];
   $scope.addtocartOffline = function(data, pb_id) {
     let allok = 1;
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const element = data[key];
-        if (element.alternatives != "") {
-          let alters = element.alternatives;
-          for (const key in alters) {
-            if (alters.hasOwnProperty(key)) {
-              const element_alter = alters[key];
-              var selValue = $(
-                "input[name=rGroup_" + element_alter.pba_pbm_id + "]:checked"
-              ).val();
-              if (typeof selValue == "undefined") {
-                allok = 0;
-              }
-            }
-          }
-        }
-      }
-    }
-    if (allok == 1) {
-      var getList = JSON.parse(localStorage.getItem("cartList"));
-      $scope.cartList = getList;
-      var currentVal = $scope.qty;
-      var cartData = {
-        product_id: pb_id,
-        qty: currentVal,
-        is_bundle: true,
-        alternatives: $scope.c
-      };
+    $("#myModal").modal("show");
+    // for (const key in data) {
+    //   if (data.hasOwnProperty(key)) {
+    //     const element = data[key];
+    //     if (element.alternatives != "") {
+    //       let alters = element.alternatives;
+    //       for (const key in alters) {
+    //         if (alters.hasOwnProperty(key)) {
+    //           const element_alter = alters[key];
+    //           var selValue = $(
+    //             "input[name=rGroup_" + element_alter.pba_pbm_id + "]:checked"
+    //           ).val();
+    //           if (typeof selValue == "undefined") {
+    //             allok = 0;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    // if (allok == 1) {
+    //   var getList = JSON.parse(localStorage.getItem("cartList"));
+    //   $scope.cartList = getList;
+    //   var currentVal = $scope.qty;
+    //   var cartData = {
+    //     product_id: pb_id,
+    //     qty: currentVal,
+    //     is_bundle: true,
+    //     alternatives: $scope.c
+    //   };
 
-      if (getList) {
-        var uniquePro = true;
-        angular.forEach(getList, function(value, key) {
-          if (value.product_id == pb_id) {
-            uniquePro = false;
-            return;
-          }
-        });
-        if (uniquePro) $scope.cartList.push(cartData);
-      } else {
-        $scope.cartList.push(cartData);
-      }
+    //   if (getList) {
+    //     var uniquePro = true;
+    //     angular.forEach(getList, function(value, key) {
+    //       if (value.product_id == pb_id) {
+    //         uniquePro = false;
+    //         return;
+    //       }
+    //     });
+    //     if (uniquePro) $scope.cartList.push(cartData);
+    //   } else {
+    //     $scope.cartList.push(cartData);
+    //   }
 
-      localStorage.setItem("cartList", JSON.stringify($scope.cartList));
-      var getList = localStorage.getItem("cartList");
-      console.log(getList);
-    } else {
-      toastr.warning("Please Select Alternative Products!!");
-    }
+    //   localStorage.setItem("cartList", JSON.stringify($scope.cartList));
+    //   var getList = localStorage.getItem("cartList");
+    //   console.log(getList);
+    // } else {
+    //   toastr.warning("Please Select Alternative Products!!");
+    // }
   };
 
   $scope.qty_plus = function(fieldName, index) {

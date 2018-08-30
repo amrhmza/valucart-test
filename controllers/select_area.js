@@ -8,7 +8,7 @@ let get_data = async city_id => {
     let response = await axios.get("/userProfile/getarealist", axios_config);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

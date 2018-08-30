@@ -11,9 +11,14 @@ let getshoppinglist = async (cookies, list_id) => {
     var lid = list_id != "" ? list_id : "";
 
     let response = await axios.get("/shopping_list/" + lid, getparam);
-    return response.data.results.response;
+    response = response.data.results.response;
+    if (response) {
+      return response;
+    } else {
+      throw "error";
+    }
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 /**
@@ -32,10 +37,14 @@ let createShoppingList = async (cookies, list_id) => {
       { order_id: list_id },
       getparam
     );
-    return response.data.results.response;
+    response = response.data.results.response;
+    if (response) {
+      return response;
+    } else {
+      throw "error";
+    }
   } catch (error) {
-    console.log(error);
-    return false;
+    throw error;
   }
 };
 module.exports = {

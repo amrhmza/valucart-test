@@ -19,9 +19,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       customjs: false
     });
   } catch (error) {
-    res.status(401).json({
-      error: err
-    });
+    error_404(res);
   }
 });
 

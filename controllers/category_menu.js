@@ -6,10 +6,9 @@ let get_menulist = async () => {
     let response = await axios.get("/category/main_sub/get", axios_config);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {
-    get_menulist
+  get_menulist
 };
- 

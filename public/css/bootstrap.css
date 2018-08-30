@@ -6424,11 +6424,30 @@ button.close {
   border: 1px solid #860cf5;
   border-radius: 10px;
 }
+.carouseldiv1 .carousel-indicators li {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #fff \9;
+  background-color: rgba(255, 255, 255, 1);
+  border:none;
+  border-radius: 10px;
+}
 .carousel-indicators .active {
   width: 12px;
   height: 12px;
   margin: 0;
   background-color: #860cf5;
+}
+.carouseldiv1 .carousel-indicators .active {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  background-color:transparent;
+	border: 2px solid #fff;
 }
 .carousel-caption {
   position: absolute;

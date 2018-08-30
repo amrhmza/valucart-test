@@ -29,9 +29,7 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
       ]
     });
   } catch (error) {
-    res.status(401).json({
-      error: err
-    });
+    error_404(res);
   }
 });
 

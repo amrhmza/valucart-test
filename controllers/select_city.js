@@ -7,7 +7,7 @@ let get_data = async () => {
     let response = await axios.get("/userProfile/getcitylist", axios_config);
     return response.data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

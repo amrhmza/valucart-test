@@ -4,17 +4,21 @@ const axios = require("axios");
 
 let get_data = async (pb_id, cookies) => {
   try {
-    axios_config['params']= {product_id: pb_id};
-    if(cookies){
-      var userData= JSON.parse(cookies);
+    axios_config["params"] = { product_id: pb_id };
+    if (cookies) {
+      var userData = JSON.parse(cookies);
       axios_config["headers"] = {
         Authorization: "Bearer " + userData.token
       };
     }
     let response = await axios.get(`/product/details_pb/get`, axios_config);
-    return response.data.results;
+    if (response.data.results.status != "404") {
+      return response.data.results;
+    } else {
+      throw "error";
+    }
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

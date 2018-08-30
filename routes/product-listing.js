@@ -31,9 +31,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       ]
     });
   } catch (error) {
-    res.status(401).json({
-      error: "404 PAGE NOT FOUND"
-    });
+    error_404(res);
   }
 });
 

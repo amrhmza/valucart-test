@@ -12,9 +12,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       jslist: ["angular/app.js", "angular/controllers/change_password.js"]
     });
   } catch (error) {
-    res.status(401).json({
-      error: err
-    });
+    error_404(res);
   }
 });
 module.exports = router;

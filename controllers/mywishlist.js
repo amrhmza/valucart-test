@@ -1,7 +1,7 @@
 const axios_config = require("../config/axios-config.js").instance;
 const axios = require("axios");
 
-let get_mywishlist = async (cookies) => {
+let get_mywishlist = async cookies => {
   try {
     let getparam = axios_config;
     getparam["headers"] = {
@@ -10,10 +10,9 @@ let get_mywishlist = async (cookies) => {
     let response = await axios.get("/wishList/getwishlist", getparam);
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {
   get_mywishlist
 };
- 

@@ -28,9 +28,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       ]
     });
   } catch (error) {
-    res.status(401).json({
-      error: err
-    });
+    error_404(res);
   }
 });
 
@@ -56,9 +54,7 @@ router.get("/:add_id", auth.ensureAuthenticated, async (req, res, next) => {
       ]
     });
   } catch (error) {
-    res.status(401).json({
-      error: err
-    });
+    error_404(res);
   }
 });
 

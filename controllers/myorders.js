@@ -11,7 +11,7 @@ let get_data = async cookies => {
     response = myorders.data.results.response;
     return response;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 

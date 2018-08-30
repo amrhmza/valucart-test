@@ -13,7 +13,7 @@ let get_data = async (querydata, cat_id) => {
     response["querydata"] = querydata;
     return response;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 module.exports = {

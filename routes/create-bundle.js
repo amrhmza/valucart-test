@@ -15,10 +15,7 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
       order_id: req.params
     });
   } catch (error) {
-    console.log(error);
-    res.status(401).json({
-      error: error
-    });
+    error_404(res);
   }
 });
 router.get(
@@ -40,10 +37,7 @@ router.get(
         ]
       });
     } catch (error) {
-      console.log(error);
-      res.status(401).json({
-        error: error
-      });
+      error_404(res);
     }
   }
 );
