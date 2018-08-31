@@ -38,11 +38,12 @@
                     }
                     else {
                         $(".login-action-msg").html(resp.status).addClass("has-error");
-                        console.log("Invalid Username/Password");
+                        toastr.error("Invalid Username/Password");
                     }
                 }).fail(function (r) {
                     console.log(JSON.stringify(r));
-                    $(".login-action-msg").html(r.responseJSON.error).addClass("has-error");
+                    // $(".login-action-msg").html(r.responseJSON.error).addClass("has-error");
+                    toastr.error(r.responseJSON.error);
                 });
             }
         });
