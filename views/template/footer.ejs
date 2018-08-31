@@ -231,7 +231,7 @@
     var city = localStorage.getItem('city');
     var area = localStorage.getItem('area');
     if (city == null || area == null) {
-        window.location.replace("<%= process.env.PROTOCOL+baseURL %>city");
+        window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
     }
     $('#forgot_pass').click(function () {
         $('#myModal').modal('hide');
