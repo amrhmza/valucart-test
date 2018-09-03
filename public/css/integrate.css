@@ -468,3 +468,21 @@ a.ui-button:active,
 .color-red {
   color: red;
 }
+.loader {
+  position: fixed;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(56, 54, 54, 0.9);
+}
+.center {
+  z-index: 1000;
+  margin: 15% auto;
+  width: 130px;
+  border-radius: 10px;
+}
+.center img {
+  width: 128px;
+}

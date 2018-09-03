@@ -218,7 +218,7 @@
                             </div>
                             <div class="col-xs-6 text-right">
                                 <p class="payvalue">
-                                    <%= data.order_data.o_total %> AED
+                                     <%= Number(data.order_data.o_total)-15 %>.00 AED
                                 </p>
                             </div>
                             <div class="col-xs-6 text-left">
@@ -240,7 +240,7 @@
                             </div>
                             <div class="col-xs-6 text-right">
                                 <p class="total">
-                                    <%= Number(data.order_data.o_total)-15 %>.00 AED
+                                 <%= data.order_data.o_total %> AED
                                 </p>
                             </div>
                         </div>

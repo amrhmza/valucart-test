@@ -31,6 +31,7 @@ app.controller("checkout", function(
     var elem = cp.elements;
 
     cp.onsubmit = function() {
+      $(".loader").removeClass("hidden");
       console.log(elem.is_default.checked);
 
       var a = 0;
@@ -67,6 +68,7 @@ app.controller("checkout", function(
       }
 
       if (a == 1) {
+        $(".loader").addClass("hidden");
         return false;
       } else {
         var userAuth = typeof $.cookie("vcartAuth")
@@ -95,14 +97,17 @@ app.controller("checkout", function(
               this.reset();
             });
             $("#add_address").trigger("click");
+            $(".loader").addClass("hidden");
           })
           .catch(function(response) {
+            $(".loader").addClass("hidden");
             console.log(response);
           });
       }
     };
   };
   $scope.verifyToken = function(coupon) {
+    $(".loader").removeClass("hidden");
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
@@ -110,6 +115,7 @@ app.controller("checkout", function(
     cart
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
       .then(function(response) {
+        $(".loader").addClass("hidden");
         if (response.status == 200) {
           toastr.success("Coupon valid and applyed");
           let data = response.data.results;
@@ -122,6 +128,7 @@ app.controller("checkout", function(
         }
       })
       .catch(function(response) {
+        $(".loader").addClass("hidden");
         let data = response.data.error;
         toastr.info(data.msg);
       });
@@ -131,5 +138,12 @@ app.controller("checkout", function(
     delete $scope.cartsaving;
     $scope.applied = 1;
     $scope.coupon = "";
+  };
+  $scope.ctnpay = function() {
+    if ($scope.address_id != "") {
+      $(".bill.pay").trigger("click");
+    } else {
+      toastr.danger("Please Select the address");
+    }
   };
 });

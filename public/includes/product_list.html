@@ -33,7 +33,7 @@
                 <h5>
                     <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
                 </h5>
-                <h5 class="offeredprice"> {{product.p_price}} AED</h5>
+                <h5 ng-if="product.pdt_percentage" class="offeredprice"> {{product.p_price}} AED</h5>
                 <h6>
                     <span ng-if="product.pdt_price">
                         {{product.pdt_price}} AED

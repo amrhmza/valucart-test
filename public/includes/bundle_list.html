@@ -32,7 +32,7 @@
                 </h4>
             </div>
             <div class="col-xs-6">
-                <h5 class="offeredprice"> {{product.pb_price}} AED</h5>
+                <h5 class="offeredprice" ng-if="product.pdt_percentage"> {{product.pb_price}} AED</h5>
                 <h6>
                     <span ng-if="product.pdt_price">
                         {{product.pdt_price}} AED
