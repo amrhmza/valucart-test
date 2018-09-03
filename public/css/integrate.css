@@ -486,3 +486,6 @@ a.ui-button:active,
 .center img {
   width: 128px;
 }
+.has-error {
+  color: red;
+}

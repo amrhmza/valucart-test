@@ -225,9 +225,13 @@ let products= productData.product;
                                         <h5>
                                             <%= (productData.pb_dec)?(productData.pb_dec).substring(0, 150)+"...":"";%>
                                         </h5>
+                                        <%
+                                         if(products.pdt_percentage>0){
+                                        %>
                                         <h5 style="display: inline-block" class="offeredprice">
                                             <%= productData.pb_price;%> AED
                                         </h5>
+                                        <% } %>
                                         <h6 style="display: inline-block; margin-left: 10px">
                                             <%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED
                                         </h6>
@@ -300,14 +304,8 @@ let products= productData.product;
                                             </h4>
                                             <h5>
                                                 <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                <%= pro.p_quantity%>* 1
+                                                <%= pro.p_quantity%> <strong>X <%= pro.pbm_qty;%></strong>
                                             </h5>
-                                            <h5 class="offeredprice">
-                                                <%=pro.p_price;%> AED
-                                            </h5>
-                                            <h6>
-                                                <%=pro.p_price;%> AED
-                                            </h6>
                                         </div>
                                         <div class="col-xs-6">
                                             <img src="<%=pro.p_image%>" class="img-responsive productimg">
@@ -352,14 +350,8 @@ let products= productData.product;
                                                     </h4>
                                                     <h5>
                                                         <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                        <%= alt.p_quantity;%> * 1
+                                                        <%= alt.p_quantity;%> <strong>X <%= pro.pbm_qty;%></strong>
                                                     </h5>
-                                                    <h5 class="offeredprice">
-                                                        <%= alt.p_price;%> AED
-                                                    </h5>
-                                                    <h6>
-                                                        <%= alt.p_price;%> AED
-                                                    </h6>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <img src="<%= alt.p_image;%>" class="img-responsive productimg">
@@ -410,14 +402,18 @@ let products= productData.product;
                         <p>Suitable for Vegetarians; Kosher; Halal</p>
                     </div> -->
 
-                                <div class="tab-pane" id="3a">
-                                    <%
+                        <div class="tab-pane" id="3a">
+                        <%
                         let reviewList= productData.review;
+                        if(reviewList.length!=0){
                         var rt=0;
                         reviewList.forEach(function(rev){
                             rt+= rev.prr_ratting;
                         });
                         var ravg= rt/ reviewList.length;
+                    }else{
+                        var ravg= 0
+                    }
                         %>
                                         <div class="customerreviews">
                                             <p class="starcount star">
@@ -444,12 +440,20 @@ let products= productData.product;
                             if(cookies){
                                 var userData=JSON.parse(cookies);
                                 if(userData.status=="success"){
+                                    var myrev=  _.findLastIndex(reviewList, function(o) { return o.prr_user_id == userData.user_id; });
+                                    var myrew=reviewList[myrev];
+                                    if(_.isEmpty(myrew)){
+                                       var myrew=[];
+                                    }
                             %>
                                                         <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
                                                         <%
+                                }else{
+                                    var myrew=[];
                                 }
                             }
                             else{
+                                var myrew=[];
                             %>
                                                             <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write
                                                                 a review</button>
@@ -460,7 +464,7 @@ let products= productData.product;
                                                                 <hr>
                                                                 <%
                             var rno=0;
-                            if(reviewList){
+                            if(reviewList.length>0){
                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
@@ -488,6 +492,11 @@ let products= productData.product;
                                                                     </div>
                                                                     <%       
                                 });
+                            }else{
+                                %>
+                                <div class="review">
+                                </div>
+                            <%
                             }
                             %>
                                         </div>
@@ -525,14 +534,7 @@ let products= productData.product;
                                                 </div>
                                                 <br>
                                                 <div class="clearfix"></div>
-                                                <div class="form-group">
-                                                    <label for="rname">YOUR NAME</label>
-                                                    <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
-                                                    <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
-                                                        <span ng-show="reviewform.name.$error.required" class="has-error">Username
-                                                            is required.</span>
-                                                    </span>
-                                                </div>
+                                               
                                                 <div class="form-group">
                                                     <label for="title">TITLE</label>
                                                     <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
@@ -591,3 +593,8 @@ let products= productData.product;
                 </div>
                 <!-- /.modal-body -->
             </div>
+    <script>
+        app.constant("myrev", {
+            'data': <%- JSON.stringify(myrew) %> 
+            });
+    </script>

@@ -7,8 +7,12 @@ app.controller("product_details", function(
   $filter,
   config,
   product_details,
-  getWishList
+  getWishList,
+  myrev
 ) {
+  $scope.rating = myrev.data.prr_ratting;
+  $scope.title = myrev.data.prr_title;
+  $scope.review = myrev.data.prr_comment;
   $scope.qty = 1;
   var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;

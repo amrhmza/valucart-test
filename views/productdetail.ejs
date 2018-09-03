@@ -180,9 +180,13 @@
                                             <% if (data) %>
                                                 <%= data.response[0].p_quantity %>
                                         </h5>
+                                        <%
+                                        if(data.response[0].pdt_percentage>0){
+                                        %>
                                         <h5 style="display: inline-block" class="offeredprice m-0">
                                             <%= data.response[0].p_price;%> AED
                                         </h5>
+                                        <% } %>
                                         <h6 style="margin-bottom: 40px;">
                                             <% if (data) %>
                                                 <%= (data.response[0].pdt_price)?data.response[0].pdt_price:data.response[0].p_price %> AED
@@ -275,11 +279,15 @@
                         <div class="tab-pane" id="3a">
                             <%
                             let reviewList= data.response[0].review;
+                            if(reviewList.length!=0){
                             var rt=0;
                             reviewList.forEach(function(rev){
                                 rt+= rev.prr_ratting;
                             });
                             var ravg= rt/ reviewList.length;
+                            }else{
+                              var ravg= 0
+                            }
                             %>
                                 <div class="customerreviews">
                                     <p class="starcount star">
@@ -305,13 +313,18 @@
                                 if(cookies){
                                     var userData=JSON.parse(cookies);
                                     if(userData.status=="success"){
-                                %>
+                                        var myrev=  _.findLastIndex(reviewList, function(o) { return o.prr_user_id == userData.user_id; });
+                                        var myrew=reviewList[myrev];
+                                        %>
                                                 <button class="btn reviewbtn" id="reviewbtn">Write a review</button>
                                                 <%
+                                    }else{
+                                        var myrew=[];
                                     }
                                 }
                                 else{
-                                %>
+                                        var myrew=[];
+                                    %>
                                                     <button class="btn reviewbtn" data-toggle="modal" data-target="#myModal">Write
                                                         a review</button>
                                                     <% 
@@ -323,8 +336,8 @@
 
                                                         <%
                             var rno=0;
-                            if(reviewList){
-                                reviewList.forEach(function(rev){
+                            if(reviewList.length>0){
+                                 reviewList.forEach(function(rev){
                                     rno++
                             %>
                                                             <div class="review <%= (rno>3)?'more_review hidden':''%> review_<%= rev.prr_user_id%>">
@@ -351,6 +364,11 @@
                                                             </div>
                                                             <%       
                                 });
+                            }else{
+                                %>
+                                <div class="review">
+                                </div>
+                            <%
                             }
                             %>
                                 </div>
@@ -386,15 +404,7 @@
                                         </div>
                                         <br>
                                         <div class="clearfix"></div>
-                                        <div class="form-group">
-                                            <label for="rname">YOUR NAME</label>
-                                            <input type="text" ng-model="name" name="name" class="form-control" id="rname" required>
-                                            <span ng-show="reviewform.name.$dirty && reviewform.name.$invalid">
-                                                <span ng-show="reviewform.name.$error.required" class="has-error">Username
-                                                    is required.
-                                                </span>
-                                            </span>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="title">TITLE</label>
                                             <input type="text" ng-model="title" name="title" class="form-control" id="title" required>
@@ -406,7 +416,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">DESCRIPTION</label>
-                                            <textarea ng-model="review" name="review" class="form-control" id="description" required></textarea>
+                                            <textarea ng-model="review" name="review" value="" class="form-control" id="description" required></textarea>
                                             <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
                                                 <span ng-show="reviewform.review.$error.required" class="has-error">Username
                                                     is required.</span>
@@ -445,3 +455,8 @@
                         });
                     });
                 </script>
+    <script>
+        app.constant("myrev", {
+            'data': <%- JSON.stringify(myrew) %> 
+            });
+    </script>

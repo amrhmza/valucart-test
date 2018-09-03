@@ -11,6 +11,7 @@
   var flash = require("connect-flash");
   var session = require("express-session");
   var moment = require("moment");
+  var _ = require("lodash");
 
   // *** load environment variables *** //
   require("dotenv").config();
@@ -48,6 +49,7 @@
     app.use(function(req, res, next) {
       res.locals.flashdata = req.flash();
       res.locals.moment = moment;
+      res.locals._ = _;
       res.locals.baseURL = req.headers.host;
       next();
     });

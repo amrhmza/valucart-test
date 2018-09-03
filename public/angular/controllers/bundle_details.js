@@ -9,8 +9,12 @@ app.controller("bundle_details", function(
   postBundleReview,
   bundle_details,
   getWishList,
-  userbundle
+  userbundle,
+  myrev
 ) {
+  $scope.rating = myrev.data.prr_ratting;
+  $scope.title = myrev.data.prr_title;
+  $scope.review = myrev.data.prr_comment;
   var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;
 
@@ -70,7 +74,6 @@ app.controller("bundle_details", function(
     if ($scope.rating != undefined) {
       $scope.ratingError = "";
       $scope.data = {
-        name: $scope.name,
         rating: $scope.rating,
         title: $scope.title,
         review: $scope.review,
