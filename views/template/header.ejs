@@ -35,7 +35,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-    APIURL="<%= process.env.APIURL %>"
+        APIURL = "<%= process.env.APIURL %>"
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.js"></script>
@@ -53,22 +53,22 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <% if(angular){ %>
-        <!-- angular Libraries -->
-        <script src="angular/lib/angular.min.js"></script>
-        <script src="angular/lib/angular-route.min.js"></script>
-        <script src="angular/lib/angular-aria.min.js"></script>
-        <script src="angular/lib/angular-messages.min.js"></script>
-        <script src="angular/lib/angular-sanitize.min.js"></script>
-        <%  } %>
-            <% if(customjs){ 
+    <!-- angular Libraries -->
+    <script src="angular/lib/angular.min.js"></script>
+    <script src="angular/lib/angular-route.min.js"></script>
+    <script src="angular/lib/angular-aria.min.js"></script>
+    <script src="angular/lib/angular-messages.min.js"></script>
+    <script src="angular/lib/angular-sanitize.min.js"></script>
+    <%  } %>
+    <% if(customjs){ 
     jslist.forEach(function(js){ %>
-                <script src="<%- js %>"></script>
-                <% })
-    } %> 
+    <script src="<%- js %>"></script>
+    <% })
+    } %>
 </head>
 
 <body>
-<div class="loader hidden">
+    <div class="loader hidden">
         <div class="center">
             <img alt="" src="img/loader.gif">
         </div>
@@ -86,7 +86,8 @@
                 <li>
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
-                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> <span class="current_city">Al Karama, Dubai</span>
+                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> <span class="current_city">Al
+                                Karama, Dubai</span>
                             <i class="fa fa-chevron-down"></i>
                         </p>
                     </a>
@@ -99,7 +100,8 @@
                 <li>
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-responsive topnavlocationimg" src="img/user.png"><%=(userData.username).toUpperCase();%>
+                            <img class="img-responsive topnavlocationimg" src="img/user.png">
+                            <%=(userData.username).toUpperCase();%>
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -136,7 +138,7 @@
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal">
                         <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
-                </li>   
+                </li>
                 <%    
                 }
                 %>
@@ -153,24 +155,38 @@
                         <i class="fa fa-ellipsis-v"></i>
                     </span>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                   <a href=""><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a></div>
-                   <% 
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <a href=""><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a></div>
+                <% 
                    if(cookies){
                     var userData=JSON.parse(cookies);
                    if(userData.status=="success"){
                    %>
-                    <div class="col-md-6 col-sm-6 col-xs-3">
+                <div class="col-md-8 col-sm-8 col-xs-3">
                     <ul class="list-inline navlist">
+                        <li class="searchnav hidden-xs">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" class="form-control desktopsearch" placeholder="What are you looking for?">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"> <img src="img/searchiconnav.png"
+                                                class="img-responsive searchicon" /> </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
                         <li class="hidden-xs">
                             <a href="mywishlist">
-                                <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo"
+                                    style="margin-right: 10px;">
                             </a>
                         </li>
                         <li>
                             <a href="/cart">
                                 <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+
                             </a>
+                            <span class="cart-label">5</span>
                         </li>
                     </ul>
                 </div>
@@ -190,7 +206,8 @@
                             <div class="collapse navbar-collapse" id="line-navbar-collapse-2">
                                 <ul class="nav navbar-nav lnt-nav-mega">
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                            aria-expanded="false">
                                             Categories
                                         </a>
                                         <div class="dropdown-menu" role="menu">
@@ -209,12 +226,13 @@
                                                                
                                                     %>
                                                     <li class="<%= (no==1)?'active':''; %>">
-                                                        <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>"><%= cat.c_name;%></a>
+                                                        <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
+                                                            <%= cat.c_name;%></a>
                                                     </li>
                                                     <%
                                                         });
                                                     }
-                                                    %>                                                    
+                                                    %>
                                                 </ul>
                                                 <!-- Subcategory and carousel wrap -->
                                                 <div class="lnt-subcategroy-carousel-wrap container-fluid">
@@ -240,7 +258,8 @@
                                                                     var scatUrl='product-listing/'+scat.c_parent_id+'/'+scat_url_name+'#!?sub_cat='+scat.c_id;
                                                                 %>
                                                                 <li>
-                                                                    <a href="<%= scatUrl%>"><%=scat.c_name%></a>
+                                                                    <a href="<%= scatUrl%>">
+                                                                        <%=scat.c_name%></a>
                                                                 </li>
                                                                 <%
                                                                 });
@@ -280,23 +299,17 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
                     <a href="#">
-                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> Valucart Exclusives</a>
+                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives">
+                        Valucart Exclusives</a>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
                     <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
                         <form class="mobsearchform">
-                            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                            <input class="sb-search-input desktopsearch" placeholder="What are you looking for?" type="text"
+                                value="" name="search" id="search">
                             <input class="sb-search-submit" type="submit" value="">
                             <span class="sb-icon-search"></span>
                         </form>
-                    </div>
-
-                    <div class="input-group hidden-xs">
-                        <input type="text" class="form-control desktopsearch" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <img src="img/searchicon.png" class="img-responsive searchicon" /> </button>
-                        </span>
                     </div>
                 </div>
                 <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
@@ -308,6 +321,8 @@
             </div>
         </div>
     </div>
+
+    <% } %>
     <!-- mobile menu -->
     <div id="mobileview" class="mobileview1" style="display: none">
         <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
@@ -327,6 +342,86 @@
                     <br>ValuCart Exclusives</button>
             </div>
             <div id="account" class="tabcontent">
+                <% 
+                    if(cookies){
+                    var userData=JSON.parse(cookies);
+                    if(userData.status=="success"){
+               %>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title panels">
+                            <%=(userData.username).toUpperCase();%>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="myorders">
+                            <h4 class="panel-title panels">My Orders
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="profile">
+                            <h4 class="panel-title panels">Profile
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="addressbook">
+                            <h4 class="panel-title panels">Address Book
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="change-password">
+                            <h4 class="panel-title panels">Change Password
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="myshopping-dashboard">
+                            <h4 class="panel-title panels">Shopping list
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="mybundles">
+                            <h4 class="panel-title panels">My bundles
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="vcartLogout">
+                            <h4 class="panel-title panels">Logout
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+                <%
+                    }
+                }
+                else{
+                %>
                 <a href="#">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -338,31 +433,26 @@
                         </div>
                     </div>
                 </a>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Sign up
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
+                <a href="#">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                <h4 class="panel-title panels">Signup
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> My cart
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Wishlist
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
+                </a>
+                <%    
+                }
+                %>
             </div>
             <div id="categories" class="tabcontent">
                 <% 
-                    var no=0;
+                   
+                let menuList= (typeof menudata != 'undefined')?menudata.response:[];
+                var no=0;
                     if (menuList) {
                         menuList.forEach(function(cat){
                             no++;
@@ -370,10 +460,11 @@
                             var cat_url_name = cname.trim().replace(/\s+/g, '-').toUpperCase();
                             var catUrl= 'product-listing/'+cat.c_id+'/'+cat_url_name;
                                
-                %>     
+                %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"><a href="<%= catUrl;%>"><%= cat.c_name;%></a>
+                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"><a href="<%= catUrl;%>">
+                                <%= cat.c_name;%></a>
                             <i class="fa fa-chevron-right" aria-hidden="true"></i>
                         </h4>
                     </div>
@@ -381,7 +472,7 @@
                 <%
                         });
                     }
-                 %> 
+                 %>
             </div>
             <div id="offers" class="tabcontent">
                 <div class="panel panel-default">
@@ -457,12 +548,11 @@
             </div>
         </div>
     </div>
-    <% } %>
     <!--    Navigation ends here-->
     <!-- <div id="status"></div> -->
-<!-- 
+    <!-- 
 <!-- Facebook login or logout button -->
-<!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
+    <!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
 
-<!-- Display user profile data -->
-<!-- <div id="userData"></div> --> 
+    <!-- Display user profile data -->
+    <!-- <div id="userData"></div> -->

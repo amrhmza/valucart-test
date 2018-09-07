@@ -11,7 +11,7 @@ app.controller("select_area", function(
   var select_area = document.forms.selectArea;
   select_area.onsubmit = function() {
     console.log($scope.area);
-    if (typeof $scope.area == "undefined") {
+    if (typeof $scope.area == "undefined" || $scope.area == "") {
       toastr.warning("Please Select area!");
     } else {
       localStorage.setItem("area", $scope.area);

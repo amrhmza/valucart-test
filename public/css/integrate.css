@@ -489,3 +489,13 @@ a.ui-button:active,
 .has-error {
   color: red;
 }
+.cart-label {
+  position: absolute;
+  background: #ff0405;
+  padding: 3px 8px;
+  border-radius: 50%;
+  top: -8px;
+  font-size: 12px;
+  right: 7px;
+  font-weight: 500;
+}
