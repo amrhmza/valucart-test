@@ -8833,20 +8833,20 @@ label.bundle-check {
 .searchnav .input-group input::placeholder {
  color: #fff;
  opacity: 0.8; /* Firefox */
-	font-weight: 300;
-	font-size: 13px;
+ font-weight: 300;
+ font-size: 13px;
 }
  .searchnav .input-group input:-ms-input-placeholder { /* Internet Explorer 10-11 */
  color: #fff;
-	  opacity: 0.8; 
-	font-weight: 300;
-	font-size: 13px;
+ opacity: 0.8;
+ font-weight: 300;
+ font-size: 13px;
 }
  .searchnav .input-group input::-ms-input-placeholder { /* Microsoft Edge */
  color: #fff;
-	  opacity: 0.8; 
-	font-weight: 300;
-	font-size: 13px;
+ opacity: 0.8;
+ font-weight: 300;
+ font-size: 13px;
 }
 .searchnav .input-group .btn-default {
 	border: none;
@@ -8859,4 +8859,143 @@ label.bundle-check {
 }
 .searchnav .input-group .btn-default img {
 	height: 32px;
+}
+.recurring .successdiv {
+	background-color: #eaf5ec;
+	text-align: center;
+}
+.recurringimg {
+	height: 83px;
+	margin: auto;
+	margin-top: 62px;
+	margin-bottom: 23px;
+}
+.recurringimgcal {
+	height: 366px;
+	margin: auto;
+}
+.recurringtitle {
+	font-size: 34px;
+	font-weight: bold;
+	text-align: center;
+	padding: 0 168px;
+	margin-bottom: 40px;
+}
+.recurringpara {
+	font-size: 24px;
+	font-weight: normal;
+	text-align: center;
+	padding: 0 235px;
+	margin-bottom: 54px;
+	line-height: 1.2;
+}
+.recurringtitle2 {
+	font-family: Poppins;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
+	padding-right: 80px;
+	margin-bottom: 24px;
+}
+.recuurdiv {
+	margin-top: 57px;
+}
+.recurringexample {
+	font-family: Poppins;
+	font-size: 20px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	margin-bottom: 34px;
+}
+.recurringexample span {
+	color: #bfbfbf;
+}
+.btn-recurring, .btn-recurring:hover, .btn-recurring:active, .btn-recurring:active:hover{
+	width: 239px;
+  height: 73px;
+  background-color: #14bdcd;
+  border: solid 3px #14bdcd;
+	font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.79;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+	box-shadow: none;
+	outline: none;
+}
+.backtohomelink, .backtohomelink:hover, .backtohomelink:active, .backtohomelink:active:hover{
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.79;
+  letter-spacing: normal;
+  text-align: center;
+  color: #14bdcd;
+  text-decoration: none;
+}
+.recurrinlink{
+	margin-top: 54px;
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+/*bundlesuccess*/
+.bundlesuccesstitle{
+	font-family: Poppins;
+  font-size: 34px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: center;
+  color: #323232;
+		margin-bottom: 60px;
+
+}
+.bundlesuccessimg{
+	height: 83px;
+  object-fit: contain;
+	margin: auto;
+	margin-top: 48px;
+	margin-bottom: 17px;
+}
+.panelsuccess{
+	border-radius: 4px;
+  background-color: #fff;
+  border: solid 1px #bababa;
+}
+.borderirght{
+	border-right: 1px solid #bababa;
+}
+.bundlenameimg{
+	margin-top: 55px;
+	margin-bottom: 45px;
+}
+.Bundle-name {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.61;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
 }
