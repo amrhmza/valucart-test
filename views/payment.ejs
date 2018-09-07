@@ -120,7 +120,11 @@
                         data.cart_id.forEach(function(cart){ 
                                 %>
                             <input type="hidden" name="cart_ids" value="<%= cart %>">
-                            <% })}%>
+                            <% }) 
+                            if(typeof data.ub_id!=undefined &&  data.ub_id!=""){
+                            %>
+                            <input type="hidden" name="pendingBundle_id" value="<%= data.ub_id%>">
+                             <% }} %>
                                 <input type="hidden" name="shipping_address_id" value="{{address_id}}">
                                 <input type="hidden" name="order_type" value="{{disabled}}">
                                 <input type="hidden" name="coupon" value="{{coupon}}">

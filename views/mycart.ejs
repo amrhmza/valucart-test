@@ -14,205 +14,228 @@
     <!--    Breadcrumb-->
     <div class="container-fluid mycart" ng-app="myapp" ng-controller="cart">
         <div class="container productlistpagec">
-            <div class="row">
-                <div class="col-lg-7 col-md-7 no-pad">
-                    <div class="panel panel-default <%=(data!='undefined' && data.length>0)?'hidden':'';%> empty-panel">
-                        <div class="panel-body">
-                            <h4>No Items In Cart</h4>
-                        </div>
+            <% if(pendingBundle.length>0){ %>
+                <div class="row" id="mybnd-desktop" style="padding: 15px 0;border: 2px #333333 solid;">
+                    <div class="col-md-9 bn-list">
+                        <h5>
+                            <%= pendingBundle[0].ub_name %>
+                        </h5>
                     </div>
-                    <% if(data!="undefined"){
+                    <div class="col-md-3 bn-img text-right">
+                        <a ng-click="deleteBundle(<%= pendingBundle[0].ub_id %>,this)" class="bundlebtn">
+                            <img src="img/bn-del.png" alt="bn-edit">
+                        </a>
+                    </div>
+                </div>
+                <% } %>
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7 no-pad">
+                            <div class="panel panel-default <%=(data!='undefined' && data.length>0)?'hidden':'';%> empty-panel">
+                                <div class="panel-body">
+                                    <h4>No Items In Cart</h4>
+                                </div>
+                            </div>
+                            <% if(data!="undefined"){
                             data.forEach(function(cart){ 
                             %>
-                        <div class="panel panel-default productpanel">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <% if(cart.discount>0){  %>
-                                            <p class="discountprice">
-                                                <%= cart.discount %>%
-                                            </p>
-                                            <% } %>
-                                                <img src="<%= cart.product_image %>" class="img-responsive productimg">
-                                                <div class="col-xs-12 favourite">
-                                                    <button class="btn btn-favourite">
-                                                        <i class="fa fa-trash-o trash" aria-hidden="true" ng-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)"></i>
-                                                    </button>
-                                                    <div class="wishlist-heart-group">
-                                                        <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"
-                                                            type="checkbox" data-type="<%=(cart.wishlist)?'remove':'add'%>" ng-click="addwish(<%=cart.product_id%>, <%=cart.is_bundle%>, $event.target)"
-                                                            <%=(cart.wishlist)? 'checked': ''%>/>
-                                                        <label for="product-<%= cart.product_id %>" data-hover-text="Wish List">
-                                                            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                                                xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-                                                                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                                                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                                                version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                                <g transform="translate(0,-952.36218)">
-                                                                    <path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
-                                                                        fill="transparent" id="heart-path" stroke="#494949" stroke-width="5"
-                                                                        marker="none" visibility="visible" display="inline" overflow="visible"
-                                                                    />
-                                                                </g>
-                                                            </svg>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                    </div>
-                                    <div class="col-xs-8 m-t-50">
-                                        <% let href=(cart.is_bundle==true)?"bundle-detail/":"product-detail/";
+                                <div class="panel panel-default productpanel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <% if(cart.discount>0){  %>
+                                                    <p class="discountprice">
+                                                        <%= cart.discount %>%
+                                                    </p>
+                                                    <% } %>
+                                                        <img src="<%= cart.product_image %>" class="img-responsive productimg">
+                                                        <div class="col-xs-12 favourite">
+                                                            <button class="btn btn-favourite">
+                                                                <i class="fa fa-trash-o trash" aria-hidden="true" ng-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)"></i>
+                                                            </button>
+                                                            <div class="wishlist-heart-group">
+                                                                <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"
+                                                                    type="checkbox" data-type="<%=(cart.wishlist)?'remove':'add'%>"
+                                                                    ng-click="addwish(<%=cart.product_id%>, <%=cart.is_bundle%>, $event.target)"
+                                                                    <%=(cart.wishlist)? 'checked': ''%>/>
+                                                                <label for="product-<%= cart.product_id %>" data-hover-text="Wish List">
+                                                                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                                        xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                                                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                                                        version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                                                        <g transform="translate(0,-952.36218)">
+                                                                            <path style="color:#494949;enable-background:accumulate;" d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                                                fill="transparent" id="heart-path" stroke="#494949"
+                                                                                stroke-width="5" marker="none" visibility="visible"
+                                                                                display="inline" overflow="visible" />
+                                                                        </g>
+                                                                    </svg>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                            </div>
+                                            <div class="col-xs-8 m-t-50">
+                                                <% let href=(cart.is_bundle==true)?"bundle-detail/":"product-detail/";
                                         let hbc_name= cart.product_name.replace(/\s+/g, '-');                            
                                        %>
-                                            <h4>
-                                                <a href="/<%= href+cart.product_id %>/<%= hbc_name %>">
-                                                    <%= cart.product_name %>
-                                                </a>
-                                            </h4>
-                                            <% if(cart.is_bundle==true){
+                                                    <h4>
+                                                        <a href="/<%= href+cart.product_id %>/<%= hbc_name %>">
+                                                            <%= cart.product_name %>
+                                                        </a>
+                                                    </h4>
+                                                    <% if(cart.is_bundle==true){
                                                 cart.bundleData.forEach(function(mybundleD){   
                                                     if(mybundleD.pd_name){      
                                             %>
-                                            <h6 class="detail-text">- <%= mybundleD.pd_name%> <strong>X  <%= mybundleD.ctb_qty%></strong>
-                                            </h6>
-                                            <%}
+                                                        <h6 class="detail-text">-
+                                                            <%= mybundleD.pd_name%> <strong>X <%= mybundleD.ctb_qty%></strong>
+                                                        </h6>
+                                                        <%}
                                            })
                                           }
                                          %>
-                                            <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
-                                                <div class="productcountdiv button-container">
-                                                    <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',<%= cart.cart_id %>)" value="-">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                    <!--<p class="productcount">1</p>-->
-                                                    <input type="text" name="qty_<%= cart.cart_id %>" maxlength="12" data-qty="<%= cart.quantity %>" data-price="<%= cart.price %>"
-                                                        value="<%= cart.quantity %>" class="input-text qty productcount" disabled/>
-                                                    <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',<%= cart.cart_id %>)" value="+">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6 col-md-8">
-                                                <h6 class="rate">
-                                                    <%= cart.price %> AED
-                                                </h6>
-                                            </div>
+                                                            <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
+                                                                <div class="productcountdiv button-container">
+                                                                    <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',<%= cart.cart_id %>)" value="-">
+                                                                        <i class="fa fa-minus"></i>
+                                                                    </button>
+                                                                    <!--<p class="productcount">1</p>-->
+                                                                    <input type="text" name="qty_<%= cart.cart_id %>" maxlength="12" data-qty="<%= cart.quantity %>" data-price="<%= cart.price %>"
+                                                                        value="<%= cart.quantity %>" class="input-text qty productcount"
+                                                                        disabled/>
+                                                                    <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',<%= cart.cart_id %>)" value="+">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-6 col-md-8">
+                                                                <h6 class="rate">
+                                                                    <%= cart.price %> AED
+                                                                </h6>
+                                                            </div>
 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <% })
+                                <% })
                 } %>
-                            <div id="shop-desktop">
-                                <a href="#">
-                                    <h5 class="continue-text">
-                                        <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> Continue
-                                        Shopping
-                                    </h5>
-                                </a>
-                            </div>
-                </div>
-                <% if(data.length>0){ %>
-                    <div class="col-lg-4 col-md-4 col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;" id="summary-desktop">
-                        <div class="summary">
-                            <h4 class="order">Order Summary</h4>
-                            <div id="subtotal">
-                                <h5 class="total">Subtotal</h5>
-                                <h5 class="total" style="float: right;">
-                                    <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
-                                    </span> AED</h5>
-                                <hr>
-                            </div>
-                            <div id="delivery">
-                                <h5 class="total">Delivery Charges</h5>
-                                <h5 class="total" style="float: right;">15.00 AED</h5>
-                            </div>
-                            <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
-
-                                <h5 class="total">
-                                    <strong>savings</strong>
-                                </h5>
-                                <h5 class="total" style="float: right;">
-                                    <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
-                                </h5>
-                            </div>
-                            <div id="total" style="margin-top: 20px">
-                                <h5 class="total">
-                                    <strong>Grand total</strong>
-                                    <br>
-                                    <span>(inclusive of 5%VAT)</span>
-                                </h5>
-                                <h5 class="total" style="float: right;">
-                                    <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
-
-                                    </strong>
-                                    <strong> AED</strong>
-                                </h5>
-                            </div>
+                                    <div id="shop-desktop">
+                                        <a href="#">
+                                            <h5 class="continue-text">
+                                                <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i>
+                                                Continue Shopping
+                                            </h5>
+                                        </a>
+                                    </div>
                         </div>
-                        <form action="checkout" method="POST">
-                            <% if(data!="undefined"){
-                                    data.forEach(function(cart){ 
-                                    %>
-                                <input type="hidden" name="cart_id" value="<%=cart.cart_id%>" />
-                                <% })}%>
-                                    <input type="hidden" name="total" value="{{cartGrand}}" />
-                                    <input type="hidden" name="coupon" value="{{coupon}}" />
-                                    <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
-                                        to checkout</button>
-                        </form>
-                    </div>
-                    <% }%>
                         <% if(data.length>0){ %>
-                            <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
-                                <div id="subtotal">
-                                    <h5 class="total">Subtotal</h5>
-                                    <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand |number : 2"></strong>
-                                        AED</h5>
-                                </div>
-                                <hr>
-                                <div id="delivery">
-                                    <h5 class="total">Delivery Charges</h5>
-                                    <h5 class="total" style="float: right;">15.00 AED</h5>
-                                </div>
-                                <div id="savings" style="margin-top: 20px" class="hidden">
-                                    <h5 class="total">
-                                        <strong>savings</strong>
-                                    </h5>
-                                    <h5 class="total" style="float: right;">
-                                        <strong>7.50 AED</strong>
-                                    </h5>
-                                </div>
-                                <div id="total" style="margin-top: 20px">
-                                    <h5 class="total">
-                                        <strong>Grand total</strong>
-                                        <span>(inclusive of 5%VAT)</span>
-                                    </h5>
-                                    <h5 class="total" style="float: right;">
-                                        <strong ng-bind-html="((cartGrand) + 15)|number : 2"></strong><strong> AED</strong>
-                                    </h5>
-                                </div>
-                                <a href="">
-                                    <h5 class="shop-text">
-                                        <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i> Continue
-                                        Shopping
-                                    </h5>
-                                </a>
-                                <form action="/checkout" method="POST">
+                            <div class="col-lg-4 col-md-4 col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;" id="summary-desktop">
+                                <div class="summary">
+                                    <h4 class="order">Order Summary</h4>
+                                    <div id="subtotal">
+                                        <h5 class="total">Subtotal</h5>
+                                        <h5 class="total" style="float: right;">
+                                            <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
+                                            </span> AED</h5>
+                                        <hr>
+                                    </div>
+                                    <div id="delivery">
+                                        <h5 class="total">Delivery Charges</h5>
+                                        <h5 class="total" style="float: right;">15.00 AED</h5>
+                                    </div>
+                                    <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
 
-                                    <% if(typeof data!="undefined"){
+                                        <h5 class="total">
+                                            <strong>savings</strong>
+                                        </h5>
+                                        <h5 class="total" style="float: right;">
+                                            <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>
+                                        </h5>
+                                    </div>
+                                    <div id="total" style="margin-top: 20px">
+                                        <h5 class="total">
+                                            <strong>Grand total</strong>
+                                            <br>
+                                            <span>(inclusive of 5%VAT)</span>
+                                        </h5>
+                                        <h5 class="total" style="float: right;">
+                                            <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2">
+
+                                            </strong>
+                                            <strong> AED</strong>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <form action="checkout" method="POST">
+                                    <% if(data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
-                                        <input type="hidden" name="cart_id[]" value="<%=cart.cart_id%>">
+                                        <input type="hidden" name="cart_id" value="<%=cart.cart_id%>" />
                                         <% })}%>
-                                            <input type="hidden" name="total" value="{{cartGrand}}" />
-                                            <input type="hidden" name="coupon" value="{{coupon}}" />
-                                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
-                                                to checkout</button>
+                                            <% if(pendingBundle.length>0){ %>
+                                                <input type="hidden" name="ub_id" class="ub_idd" value="<%= pendingBundle[0].ub_id %>" />
+                                                <% }%>
+                                                    <input type="hidden" name="total" value="{{cartGrand}}" />
+                                                    <input type="hidden" name="coupon" value="{{coupon}}" />
+                                                    <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                                        to checkout</button>
                                 </form>
                             </div>
-                            <% } %>
-            </div>
+                            <% }%>
+                                <% if(data.length>0){ %>
+                                    <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
+                                        <div id="subtotal">
+                                            <h5 class="total">Subtotal</h5>
+                                            <h5 class="total" style="float: right;"><strong ng-bind-html="cartGrand |number : 2"></strong>
+                                                AED</h5>
+                                        </div>
+                                        <hr>
+                                        <div id="delivery">
+                                            <h5 class="total">Delivery Charges</h5>
+                                            <h5 class="total" style="float: right;">15.00 AED</h5>
+                                        </div>
+                                        <div id="savings" style="margin-top: 20px" class="hidden">
+                                            <h5 class="total">
+                                                <strong>savings</strong>
+                                            </h5>
+                                            <h5 class="total" style="float: right;">
+                                                <strong>7.50 AED</strong>
+                                            </h5>
+                                        </div>
+                                        <div id="total" style="margin-top: 20px">
+                                            <h5 class="total">
+                                                <strong>Grand total</strong>
+                                                <span>(inclusive of 5%VAT)</span>
+                                            </h5>
+                                            <h5 class="total" style="float: right;">
+                                                <strong ng-bind-html="((cartGrand) + 15)|number : 2"></strong><strong> AED</strong>
+                                            </h5>
+                                        </div>
+                                        <a href="">
+                                            <h5 class="shop-text">
+                                                <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px"></i>
+                                                Continue Shopping
+                                            </h5>
+                                        </a>
+                                        <form action="/checkout" method="POST">
+
+                                            <% if(typeof data!="undefined"){
+                                    data.forEach(function(cart){ 
+                                    %>
+                                                <input type="hidden" name="cart_id" value="<%=cart.cart_id%>">
+                                                <% })}%>
+                                                    <% if(pendingBundle.length>0){ %>
+                                                        <input type="hidden" name="ub_id" id="ub_idd" value="<%= pendingBundle[0].ub_id %>" />
+                                                        <% }%>
+                                                            <input type="hidden" name="total" value="{{cartGrand}}" />
+                                                            <input type="hidden" name="coupon" value="{{coupon}}" />
+                                                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                                                to checkout</button>
+                                        </form>
+                                    </div>
+                                    <% } %>
+                    </div>
         </div>
     </div>
     <script>

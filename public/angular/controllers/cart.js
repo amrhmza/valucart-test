@@ -107,7 +107,25 @@ app.controller("cart", function(
         console.log(response);
       });
   };
-
+  $scope.deleteBundle = function(ub_id, e) {
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
+    var usertoken = userAuth != "" ? userAuth.token : "";
+    cart
+      .removeUserbundle(ub_id, usertoken)
+      .then(function(response) {
+        console.log(response);
+        var res = response.data.results;
+        if (res.status == "200") {
+          $("#mybnd-desktop,.ub_idd").remove();
+          toastr.success("User Bundle Deleted Successfully!!");
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
   $scope.cartTotal = function() {
     var ctotal = 0;
     var delivery_charge = 15.0;

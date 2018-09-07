@@ -38,7 +38,13 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
     }
     let order = await checkout.orderInit(cookie, req.body);
     if (order) {
-      res.redirect("/checkout/success/" + order[0]);
+      console.log(order);
+      res.redirect(
+        "/checkout/success/" +
+          order.order_id[0] +
+          "/" +
+          (order.bundle_id == 0 ? "" : order.bundle_id)
+      );
       res.end();
     } else {
       res.status(401).json({
@@ -53,6 +59,32 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
 /* GET cart page. */
 router.get(
   "/success/:order_id",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      res.render("payment-success", {
+        cookies: cookies,
+        params: req.params,
+        angular: true,
+        customjs: true,
+        search: 0,
+        jslist: [
+          "angular/app.js",
+          "angular/factory/add_address.js",
+          "angular/controllers/checkout.js"
+        ]
+      });
+    } catch (error) {
+      console.log(error);
+
+      error_404(res);
+    }
+  }
+);
+/* GET cart page. */
+router.get(
+  "/success/:order_id/:bundle_id",
   auth.ensureAuthenticated,
   async (req, res, next) => {
     try {

@@ -13,7 +13,6 @@
     const changepasswordRouter = require("../routes/change_password");
     const cancelorderRouter = require("../routes/cancelorder");
     const createbundleRouter = require("../routes/create-bundle");
-    const createbundlecpRouter = require("../routes/create-bundle-cp");
     const productlistingRouter = require("../routes/product-listing");
     const productdetailsRouter = require("../routes/product-detail");
     const profileRouter = require("../routes/profile");
@@ -32,6 +31,8 @@
     const subscribeRouter = require("../routes/subscribe");
     const wishlistRouter = require("../routes/mywishlist");
     const addressbookRouter = require("../routes/addressbook");
+    const category = require("../routes/category.js");
+    const schedule = require("../routes/schedule.js");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -45,12 +46,13 @@
     app.use("/bundle-detail", bundledetailRouter);
     app.use("/product-listing", productlistingRouter);
     app.use("/product-detail", productdetailsRouter);
+    app.use("/category", category);
+    app.use("/schedule-bundle", schedule);
 
     /*** Myaccount routes ***/
     app.use("/change-password", changepasswordRouter);
     app.use("/cancel-order", cancelorderRouter);
     app.use("/create-bundle", createbundleRouter);
-    app.use("/create-bundle-cp", createbundlecpRouter);
     app.use("/profile", profileRouter);
     app.use("/edit-profile", editprofileRouter);
     app.use("/mybundles", mybundlesRouter);

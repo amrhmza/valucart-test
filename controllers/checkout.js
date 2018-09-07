@@ -8,7 +8,7 @@ let orderInit = async (cookies, data) => {
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token
     };
-    let order = await axios.post("order/init/post", data, getparam);
+    let order = await axios.post("order/initV2/post", data, getparam);
     response = order.data.results.response;
     return response;
   } catch (error) {

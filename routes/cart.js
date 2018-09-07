@@ -10,10 +10,12 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
-    let data = await cart.get_data(JSON.parse(cookies));
+    let datas = await cart.get_data(JSON.parse(cookies));
     // if (_.isEmpty(data) == true) {
     //   throw data;
     // }
+    data = datas.cartItems;
+    var pendingBundle = datas.pendingBundle;
     if (data != "") {
       var cart_sum = 0;
       data.forEach(function(cart_total) {
@@ -22,6 +24,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     }
     res.render("mycart", {
       data: data,
+      pendingBundle: pendingBundle,
       cookies: cookies,
       menudata: menudata,
       cart_sum: cart_sum,

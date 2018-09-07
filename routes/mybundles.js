@@ -71,4 +71,25 @@ router.get(
     }
   }
 );
+router.post(
+  "/createbundle",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      let createBundle = await getList.create_bundle_withname(
+        JSON.parse(cookies),
+        req.body.bundlename
+      );
+      if (createBundle) {
+        res.writeHead(302, {
+          Location: "/category/bundle"
+        });
+        res.end();
+      }
+    } catch (error) {
+      error_404(res);
+    }
+  }
+);
 module.exports = router;

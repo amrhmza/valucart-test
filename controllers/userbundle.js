@@ -59,8 +59,53 @@ let get_mybundle_details = async (cookies, bundleId) => {
     throw error;
   }
 };
+/**
+ *
+ * @param {*} cookies
+ * @param {*} bundleId
+ */
+let create_bundle_withname = async (cookies, bundlename) => {
+  try {
+    console.log(bundlename);
+
+    let getparam = axios_config;
+    getparam["headers"] = {
+      Authorization: "Bearer " + cookies.token
+    };
+    let response = await axios.post(
+      "user_bundle/createWithName/post",
+      { bundle_name: bundlename },
+      getparam
+    );
+    return response.data.results.status;
+  } catch (error) {
+    throw error;
+  }
+};
+/**
+ *
+ * @param {*} cookies
+ * @param {*} bundleId
+ */
+let checkpendingBundle = async (cookies, bundlename) => {
+  try {
+    let getparam = axios_config;
+    getparam["headers"] = {
+      Authorization: "Bearer " + cookies.token
+    };
+    let response = await axios.get(
+      "user_bundle/checkPendingBundles/get",
+      getparam
+    );
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
 module.exports = {
   get_mybundle,
   deleteBundle,
-  get_mybundle_details
+  get_mybundle_details,
+  create_bundle_withname,
+  checkpendingBundle
 };

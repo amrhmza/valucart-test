@@ -24,6 +24,8 @@ router.get("/", async (req, res, next) => {
       ]
     });
   } catch (error) {
+    console.log(error);
+
     error_404(res);
   }
 });

@@ -8,7 +8,7 @@ let get_data = async cookies => {
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token
     };
-    let cartdata = await axios.get("cart/list", getparam);
+    let cartdata = await axios.get("cart/listV2", getparam);
     response = cartdata.data.results.response;
     return response;
   } catch (error) {

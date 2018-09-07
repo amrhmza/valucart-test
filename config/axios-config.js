@@ -1,5 +1,5 @@
 let instance = {
-  baseURL: "https://staging.valucart.com:3000",
+  baseURL: process.env.APIURL,
   timeout: 200000,
   headers: { "Content-Type": "application/json" }
 };

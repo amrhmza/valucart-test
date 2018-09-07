@@ -1,0 +1,40 @@
+<% include template/header %>
+    <hr class="invis1">
+    <div class="container-fluid create-bundle">
+        <div class="container">
+                <div class="row" id="cBundle-desktop">
+                    <h4> Choose You Category</h4>
+                    <p>You can now build your own bundle and subscribe to it . Answer a few questions to help us serve you at
+                        the right time.</p>
+                </div>
+                <div class="row" style="margin-bottom: 30px;">
+                <% if(!(_.isEmpty(menudata))){ 
+                    menudata.forEach(function(cat){  
+                    var cname= cat.c_name;
+                    var cat_url_name = cname.trim().replace(/\s+/g, '-').toUpperCase();
+                    var catUrl= '/'+pageto+'/'+cat.c_id+'/'+cat_url_name;  
+                %>
+                    <div class="col-sm-3 col-xs-4">
+                        <input type="radio" id="cat_<%= cat.c_id %>" name="cat_sel" cat_url="<%= catUrl %>" value="<%= cat.c_id %>" />
+                        <label for="cat_<%= cat.c_id %>" class="bundle-check"><%= cname %></label>
+                    </div>
+                <%  }) 
+                } %>
+                </div>
+                <div class="mobile-block-btn">
+                    <button type="button" onclick=gotolist() class="btn btn-info btn-block  crbnextbtn">Next</button>
+                </div>
+                <script>
+                function gotolist(){
+                   var cat_id= $("input[name='cat_sel']:checked").val();
+                   if(cat_id){
+                   var url = $("#cat_"+cat_id).attr('cat_url');
+                   window.location.href=url;
+                }else{
+                    toastr.error("Select Category!!");
+                }
+                }
+                </script>
+        </div>
+    </div>
+    <% include template/footer %>
