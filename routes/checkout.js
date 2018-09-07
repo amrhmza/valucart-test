@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var checkout = require("../controllers/checkout.js");
 var auth = require("../lib/auth.js");
+const schedule = require("../controllers/schedule.js");
 /* GET cart page. */
 router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
@@ -23,7 +24,6 @@ router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
       ]
     });
   } catch (error) {
-    console.log(error);
     res.status(401).json({
       error: error
     });
@@ -52,7 +52,6 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
     error_404(res);
   }
 });
@@ -66,6 +65,7 @@ router.get(
       res.render("payment-success", {
         cookies: cookies,
         params: req.params,
+        data: 0,
         angular: true,
         customjs: true,
         search: 0,
@@ -76,8 +76,6 @@ router.get(
         ]
       });
     } catch (error) {
-      console.log(error);
-
       error_404(res);
     }
   }
@@ -89,9 +87,19 @@ router.get(
   async (req, res, next) => {
     try {
       let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      let valid = await schedule.get_data(
+        JSON.parse(cookies),
+        req.params.bundle_id
+      );
+      if (valid.status == 200) {
+        var d = valid.response;
+      } else {
+        var d = 0;
+      }
       res.render("payment-success", {
         cookies: cookies,
         params: req.params,
+        data: d,
         angular: true,
         customjs: true,
         search: 0,

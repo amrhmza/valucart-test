@@ -8860,6 +8860,17 @@ label.bundle-check {
 .searchnav .input-group .btn-default img {
 	height: 32px;
 }
+@media only screen and (max-width: 1000px) {
+.searchnav {
+	width: 270px;
+	margin-right: 25px!important;
+}
+}
+@media only screen and (max-width: 767px) {
+ .searchnav {
+ display: none !important;
+}
+}
 .recurring .successdiv {
 	background-color: #eaf5ec;
 	text-align: center;
@@ -8891,14 +8902,14 @@ label.bundle-check {
 }
 .recurringtitle2 {
 	font-family: Poppins;
-  font-size: 28px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.29;
-  letter-spacing: normal;
-  text-align: left;
-  color: #323232;
+	font-size: 28px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
 	padding-right: 80px;
 	margin-bottom: 24px;
 }
@@ -8920,43 +8931,187 @@ label.bundle-check {
 .recurringexample span {
 	color: #bfbfbf;
 }
-.btn-recurring, .btn-recurring:hover, .btn-recurring:active, .btn-recurring:active:hover{
+.btn-recurring, .btn-recurring:hover, .btn-recurring:active, .btn-recurring:active:hover {
 	width: 239px;
-  height: 73px;
-  background-color: #14bdcd;
-  border: solid 3px #14bdcd;
+	height: 73px;
+	background-color: #14bdcd;
+	border: solid 3px #14bdcd;
 	font-family: Poppins;
-  font-size: 24px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.79;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.79;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
 	box-shadow: none;
 	outline: none;
+	padding: 10px 0px;
 }
-.backtohomelink, .backtohomelink:hover, .backtohomelink:active, .backtohomelink:active:hover{
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.79;
-  letter-spacing: normal;
-  text-align: center;
-  color: #14bdcd;
-  text-decoration: none;
+.backtohomelink, .backtohomelink:hover, .backtohomelink:active, .backtohomelink:active:hover {
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.79;
+	letter-spacing: normal;
+	text-align: center;
+	color: #14bdcd;
+	text-decoration: none;
 }
-.recurrinlink{
+.recurrinlink {
 	margin-top: 54px;
 	text-align: center;
 	margin-bottom: 24px;
 }
-
 /*bundlesuccess*/
-.bundlesuccesstitle{
+.bundlesuccesstitle {
+	font-family: Poppins;
+	font-size: 34px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.38;
+	letter-spacing: normal;
+	text-align: center;
+	color: #323232;
+	margin-bottom: 60px;
+}
+.bundlesuccessimg {
+	height: 83px;
+	object-fit: contain;
+	margin: auto;
+	margin-top: 48px;
+	margin-bottom: 17px;
+}
+.panelsuccess {
+	border-radius: 4px;
+	background-color: #fff;
+	border: solid 1px #00000022;
+}
+.borderirght {
+	border-right: 1px solid #00000022;
+}
+.bundlenameimg {
+	margin-top: 55px;
+	margin-bottom: 45px;
+	height: 55px;
+}
+.Bundle-name {
+	font-family: Poppins;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	margin-top: 51px;
+	margin-bottom: 12px;
+}
+.Bundle-count {
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	margin-top: 0;
+	margin-bottom: 55px;
+}
+.Bundle-count span {
+	font-family: Poppins;
+	font-weight: normal;
+}
+@media (max-width: 1200px) and (min-width: 992px) {
+ .Bundle-count {
+ font-size: 20px;
+}
+ .bundsucc-value {
+ font-size: 20px !important;
+}
+}
+@media only screen and (max-width: 1000px) {
+ .borderbtm {
+ border-bottom: 1px solid #00000022;
+}
+}
+@media only screen and (max-width: 767px) {
+ .borderirght {
+ border-bottom: 1px solid #00000022;
+}
+ .bundlenameimg {
+ margin-top: 23px;
+ margin-bottom: 17px;
+ height: 40px;
+}
+	.Bundle-name {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #323232;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+}
+.frequencyimg {
+	margin-top: 23px;
+	margin-bottom: 17px;
+	height: 40px;
+}
+.paddleft20 {
+	padding-left: 40px;
+}
+.bundsucc-label {
+	font-family: Poppins;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	margin-top: 0;
+	margin-bottom: 17px;
+}
+.bundsucc-value {
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	margin-top: 0;
+	margin-bottom: 21px;
+}
+.bundlesuc-infotext {
+	font-family: Poppins;
+	font-size: 19px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #323232;
+	margin-top: 39px;
+	margin-bottom: 0;
+}
+.bundlesuc-infotext img {
+	margin-right: 17px;
+}
+.edit-schedule-title{
+	margin-top: 56px;
+	margin-bottom: 36px;
 	font-family: Poppins;
   font-size: 34px;
   font-weight: bold;
@@ -8964,38 +9119,45 @@ label.bundle-check {
   font-stretch: normal;
   line-height: 1.38;
   letter-spacing: normal;
-  text-align: center;
+  text-align: left;
   color: #323232;
-		margin-bottom: 60px;
 
 }
-.bundlesuccessimg{
-	height: 83px;
-  object-fit: contain;
-	margin: auto;
-	margin-top: 48px;
-	margin-bottom: 17px;
-}
-.panelsuccess{
+.edit-schedule-panel{
 	border-radius: 4px;
-  background-color: #fff;
+  background-color: #ffffff;
+  background-color: var(--white);
   border: solid 1px #bababa;
 }
-.borderirght{
-	border-right: 1px solid #bababa;
+
+.edit-imgs{
+	margin: 30px auto;
+	height: 52px;
 }
-.bundlenameimg{
-	margin-top: 55px;
-	margin-bottom: 45px;
-}
-.Bundle-name {
-  font-family: Poppins;
+.edit-schedule-label{
+	font-family: Poppins;
   font-size: 18px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
-  line-height: 2.61;
   letter-spacing: normal;
   text-align: left;
   color: #323232;
+	margin-top: 29px;
+	margin-bottom: 14px;
+}
+.edit-schedule-value{
+	font-family: Poppins;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
+	margin-top: 0px;
+	margin-bottom: 25px;
+}
+.edit-schedule-ques{
+margin-top: 100px;
 }

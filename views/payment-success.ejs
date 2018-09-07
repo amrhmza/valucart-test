@@ -1,101 +1,66 @@
 <% include template/header %>
-    <!-- main section  -->
-    <div class="container-fluid pay-success">
-        <div class="row success-msg">
-            <h4>
-                <img src="img/success.png" alt="successful">Order Placed Successfully</h4>
-            <p>You can now track your order(s) and you will also get a confirmation message on your mobile number.</p>
-        </div>
-
-        <div class="container container1">
-            <% if(params.bundle_id == undefined){ %>
-                <div class="col-md-12 col-sm-12">
-                    <div class="">
-                        <div class="panel-body text-center">
-                            <div id="bundle-desktop">
-                                <img src="img/bundle-1.png" alt="bundle-1" />
-                                <h4>Build your bundle</h4>
-                                <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                                <a href="create-bundle/<%= params.order_id %>" class="btn-bundle">Create</a>
-                            </div>
-                            <div id="bundle-mobile">
-                                <div class="row">
-                                    <div class="col-xs-4 col-xs-offset-1">
-                                        <img src="img/bundle-1.png" alt="bundle-2" />
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <h4> Build your bundle</h4>
-                                    </div>
-
-                                </div>
-
-                                <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                                <a href="create-bundle/<%= params.order_id %>" class="btn-bundle">Create</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% }else{ %>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="">
-                            <div class="panel-body text-center">
-                                <div id="bundle-desktop">
-                                    <img src="img/bundle-1.png" alt="bundle-1" />
-                                    <h4>Schedule your bundle</h4>
-                                    <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                                    <a href="schedule-bundle/<%= params.bundle_id %>" class="btn-bundle">Schedule</a>
-                                </div>
-                                <div id="bundle-mobile">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-xs-offset-1">
-                                            <img src="img/bundle-1.png" alt="bundle-2" />
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <h4>Schedule your bundle</h4>
-                                        </div>
-
-                                    </div>
-                                    <p>Do you have recurring purchases in this list? Customize your bag to automate delivery.</p>
-                                    <a href="schedule-bundle/<%= params.bundle_id %>" class="btn-bundle">Schedule</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
-                        <!-- <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body text-center">
-                        <div id="bundle-desktop">
-                            <img src="img/bundle-2.png" alt="bundle-2" />
-                            <h4>Save your list</h4>
-                            <p style="padding-bottom: 20px">Save this shopping list for a one click checkout in future.</p>
-                            <a href="myshopping/create/<%= params.order_id %>" class="btn-bundle">Save</a>
-                        </div>
-                        <div id="bundle-mobile">
-                            <div class="row">
-                                <div class="col-xs-4 col-xs-offset-1">
-                                    <img src="img/bundle-2.png" alt="bundle-2" />
-                                </div>
-                                <div class="col-xs-6">
-                                    <h4> Save your list  </h4>
-                                </div>
-
-                            </div>
-
-                            <p>Save this shopping list for a one click checkout in future.</p>
-                            <a href="myshopping/create/<%= params.order_id %>" class="btn-bundle">Save</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div> -->
-
+<% if(data==0){%>
+    <div class="container-fluid recurring">
+    <div class="container-fluid successdiv"> 
+        <div class="container">
+        <img src="img/success.png" class="img-responsive recurringimg" alt="success" />
+      <h4 class="recurringtitle">Your order has been<br>successfully placed</h4>
+      <h5 class="recurringpara">You can now track your orders in the ‘MyOrders’ section.
+  You would have also received an email notification to your registered email ID.</h5>
         </div>
     </div>
-
-    <a href="" class="backtohome hidden-sm hidden-md hidden-lg">
-        <p>Back to home</p>
-    </a>
+    <div class="container recuurdiv">
+      <div class="row">
+        <div class="col-md-6 text-center"> 
+            <img src="img/orderplaced.png"
+       srcset="img/orderplaced@2x.png 2x,
+               img/orderplaced@3x.png 3x"
+       class="Group-39 recurringimgcal"> 
+          </div>
+        <div class="col-md-6">
+          <h3 class="recurringtitle2">Would you like to make this as
+  your bundle?</h3>
+          <h5 class="recurringexample">Choose products from the list you just shopped
+  and make this your bundle for a easy checkout
+  next time.</h5>
+          <a class="btn btn-recurring" href="create-bundle/<%= params.order_id %>">Create a bundle</a>
+        </div>
+      </div>
+        <div class="row recurrinlink">
+            <a href="/" class="backtohomelink">Back to home</a>
+        </div>
+     </div>
+  </div>
+  <% }else{ %>
+  <div class="container-fluid recurring">
+  <div class="container-fluid successdiv"> 
+	  <div class="container">
+	  <img src="img/success.png" class="img-responsive recurringimg" alt="success" />
+    <h4 class="recurringtitle">Your order “<%= data.ub_name %>” has been successfully placed</h4>
+    <h5 class="recurringpara">You can now track your orders in the ‘MyOrders’ section.
+      You would have also received an email notification to your registered email ID.</h5>
+	  </div>
+  </div>
+  <div class="container recuurdiv">
+    <div class="row">
+      <div class="col-md-6 text-center"> 
+		  <img src="img/group-calender.png"
+     class="Group-39 recurringimgcal"> 
+		</div>
+      <div class="col-md-6">
+        <h3 class="recurringtitle2">Would you need these regularly?
+          You can schedule your bundle "<%= data.ub_name %>"?</h3>
+        <h5 class="recurringexample">Set your own delivery schedule.<br>
+          <span>Eg,. Every week, Every month etc,..</span></h5>
+        <a class="btn btn-recurring" href="schedule-bundle/create/<%= params.bundle_id %>" >Schedule Now</a>
+      </div>
+    </div>
+	  <div class="row recurrinlink">
+	      <a href="" class="backtohomelink">Back to home</a>
+	  </div>
+   </div>
+</div>
+  <% }%>
     <script type="text/javascript">
         history.pushState(null, null, location.href);
         window.onpopstate = function () {
