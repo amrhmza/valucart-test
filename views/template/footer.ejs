@@ -283,7 +283,7 @@
             url: '<%= process.env.APIURL %>/product/list/product/post'
         }).done(function (resp) {
             if (resp.results.status == "200") {
-                var cartCount = 1;
+                var cartCount = 0;
                 localStorage.cartCount=cartCount;
                 $(".cart-label").text(cartCount);
             }

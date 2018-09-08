@@ -17,10 +17,10 @@
                         <tr>
                             <th>No</th>
                             <th>Bundle Name</th>
-                            <th>No. of Items</th>
-                            <th>Subscriptions</th>
-                            <th>Next Date</th>
-                            <th>Action</th>
+                            <th style="text-align:center;">No. of Items</th>
+                            <th style="text-align:center;">Subscriptions</th>
+                            <th style="text-align:center;">Next Date</th>
+                            <th style="text-align:center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,18 +31,18 @@
                         <tr>
                             <td><%=no++ %></td>
                             <td><%= mybundle.ub_name %></td>
-                            <td><%= mybundle.product_count %></td>
-                            <td>
+                            <td style="text-align:center;"><%= mybundle.product_count %></td>
+                            <td style="text-align:center;">
                                 <% if(mybundle.ub_is_subscribed == 0){ btntype= "success"; %>
                                 <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Subscribe</a>
-                                <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" ng-clicl="bundle_addtocart(/<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
+                                <a href="/#" ng-click="bundle_addtocart(/<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
                                 <% } else { btntype= "danger"; %>
                                 <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
                                 <a href="/mybundles/view/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
                                 <% } %>
                             </td>
-                            <td><%=(mybundle.ub_end_date!=null)? moment(mybundle.ub_end_date).format('DD.MM.YYYY'):"N-A"; %></td>
-                            <td><a href="/mybundles/view/<%= mybundle.ub_id %>" class="text-anchor">View Details</a></td>
+                            <td style="text-align:center;"><%=(mybundle.ub_end_date!=null)? moment(mybundle.ub_end_date).format('DD.MM.YYYY'):"N-A"; %></td>
+                            <td style="text-align:center;"><a href="/mybundles/view/<%= mybundle.ub_id %>" class="text-anchor">View Details</a></td>
                         </tr> 
                          <% })
                         } else{ %> 
