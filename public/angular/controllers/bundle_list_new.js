@@ -124,6 +124,7 @@ app.controller("bundle_listing", function(
     $scope.productData = [];
     $scope.page = 0;
     $scope.nextcall = 1;
+
     switch (type) {
       case "cat":
         $location.search("cat", p1);
@@ -139,6 +140,9 @@ app.controller("bundle_listing", function(
         if (p1) {
           $location.search("price_start", p1);
         } else {
+          if (p2) {
+            $location.search("price_start", 0);
+          }
           $location.search("price_start", null);
         }
         if (p2) {
