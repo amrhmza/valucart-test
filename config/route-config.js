@@ -5,6 +5,7 @@
     // *** routes *** //
     const cityRouter = require("../routes/select_city");
     const areaRouter = require("../routes/select_area");
+    const landingpageRouter = require("../routes/intro");
     const homeRouter = require("../routes/home");
     const cartRouter = require("../routes/cart");
     const checkoutRouter = require("../routes/checkout");
@@ -37,6 +38,7 @@
     // *** register routes *** //
     app.use("/city", cityRouter);
     app.use("/area", areaRouter);
+    app.use("/intro", landingpageRouter);
     app.use("/", homeRouter);
     app.use("/cart", cartRouter);
     app.use("/checkout", checkoutRouter);

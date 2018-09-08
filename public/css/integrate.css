@@ -499,3 +499,15 @@ a.ui-button:active,
   right: 20px;
   font-weight: 500;
 }
+.searchnav .input-group {
+  width: 100%;
+}
+.searchnav .input-group.head-new-search input {
+  color: #000;
+}
+.searchnav .input-group.head-new-search input::placeholder {
+  color: #292929;
+}
+.searchnav .input-group .input-group-btn {
+  width: 30px;
+}
