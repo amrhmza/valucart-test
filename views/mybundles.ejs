@@ -1,5 +1,66 @@
 <% include template/header %>
-    <div class="container-fluid mybundles">
+    <!--  bundle  Product  starts here-->
+    <div class="container-fluid create-bundle" style="margin-top: 20px;">
+        <div class="container">
+            <div class="row" id="cBundle-desktop">
+                <h4><img src="img/choose-bundle.png" alt="choose-bundle" /> My bundles</h4>
+            </div>
+           
+            
+        </div>
+    </div>
+    <div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Bundle Name</th>
+                            <th>No. of Items</th>
+                            <th>Subscriptions</th>
+                            <th>Next Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(data!=""){
+                            var no=1; var btntype= "";
+                            data.forEach(function(mybundle){    
+                        %>
+                        <tr>
+                            <td><%=no++ %></td>
+                            <td><%= mybundle.ub_name %></td>
+                            <td><%= mybundle.product_count %></td>
+                            <td>
+                                <% if(mybundle.ub_is_subscribed == 0){ btntype= "success"; %>
+                                <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Subscribe</a>
+                                <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" ng-clicl="bundle_addtocart(/<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
+                                <% } else { btntype= "danger"; %>
+                                <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
+                                <a href="/mybundles/view/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
+                                <% } %>
+                            </td>
+                            <td><%=(mybundle.ub_end_date!=null)? moment(mybundle.ub_end_date).format('DD.MM.YYYY'):"N-A"; %></td>
+                            <td><a href="/mybundles/view/<%= mybundle.ub_id %>" class="text-anchor">View Details</a></td>
+                        </tr> 
+                         <% })
+                        } else{ %> 
+                        <tr>
+                            <td class="text-center" colspan="6">
+                                <br> <h4 class="text-center">No Bundle List!!</h4> <br>
+                            </td>
+                        </tr>   
+                        <% } %>                 
+                    </tbody>
+                </table>
+			</div>
+		</div>
+	
+	</div>
+    <!--     Product list ends here-->
+
+    <!--<div class="container-fluid mybundles">
         <div class="container">
             <div class="row text-center">
                 <h4>
@@ -54,5 +115,5 @@
             </a>
         </div>
     </div>
-    </div>
+    </div>-->
     <% include template/footer %>

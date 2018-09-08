@@ -517,3 +517,69 @@ h6#mybnd-desktop-text {
 a {
   cursor: pointer !important;
 }
+
+/***** Home Page Card ****/
+.home-cards {
+  padding: 50px 80px;
+  margin-top: 40px;
+}
+.home-cards h1 {
+  font-size: 48px !important;
+  font-weight: 700 !important;
+}
+.home-cards .cardimage img {
+  text-align: right;
+  margin: auto;
+  margin-right: 0;
+}
+.home-cards.valuezonecard {
+  background-image: url(../img/left-side-home.png);
+  background-color: rgba(120, 28, 218, 1);
+  background-color: -moz-linear-gradient(
+    -45deg,
+    rgba(120, 28, 218, 1) 0%,
+    rgba(82, 65, 213, 1) 100%
+  );
+  background-color: -webkit-gradient(
+    left top,
+    right bottom,
+    color-stop(0%, rgba(120, 28, 218, 1)),
+    color-stop(100%, rgba(82, 65, 213, 1))
+  );
+  background-color: -webkit-linear-gradient(
+    -45deg,
+    rgba(120, 28, 218, 1) 0%,
+    rgba(82, 65, 213, 1) 100%
+  );
+  background-color: -o-linear-gradient(
+    -45deg,
+    rgba(120, 28, 218, 1) 0%,
+    rgba(82, 65, 213, 1) 100%
+  );
+  background-color: -ms-linear-gradient(
+    -45deg,
+    rgba(120, 28, 218, 1) 0%,
+    rgba(82, 65, 213, 1) 100%
+  );
+  background-color: linear-gradient(
+    135deg,
+    rgba(120, 28, 218, 1) 0%,
+    rgba(82, 65, 213, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#781cda', endColorstr='#5241d5', GradientType=1 );
+}
+.home-cards.bundlecard {
+  color: #000;
+  background-image: url(../img/right-side-home.png);
+  background-color: #ebfc9c;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom right;
+}
+.home-cards p {
+  font-weight: 400;
+}
+.home-cards.bundlecard h1,
+.home-cards.bundlecard p {
+  color: #000 !important;
+}

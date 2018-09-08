@@ -42,7 +42,54 @@
     </div>
 </div>
 <!--    Carousel ends here-->
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 home-cards valuezonecard">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="ValuZone-BUNDLES">ValuZone<br> BUNDLES</h1>
+                    <p class="Choose-from-a-range-of-pre-configured-bundles-and-save-huge">
+                        Choose from a range of pre-configured bundles and save huge
+                    </p>
+                    <a class="btn btn-black" href="category/bundle">
+                        Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x, img/vector-smart-object@3x.png 3x" class="Vector-Smart-Object">
+                    </a>
+                </div>
+                <div class="col-md-6 cardimage">
+                    <img src="img/home-product-1.png" class="img-responsive" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 home-cards bundlecard">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="ValuZone-BUNDLES">Build your own <br>Bundles</h1>
+                    <p class="Choose-from-a-range-of-pre-configured-bundles-and-save-huge">
+                        Create your own bundle from over 300 products and save big upto 25% 
+                    </p>
+                    <% 
+                    if(cookies){
+                        var userData=JSON.parse(cookies);
+                        if(userData.status=="success"){
+                    %>        
+                        <a class="btn btn-black" href="/create-bundle">
+                            Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
+                            img/vector-smart-object@3x.png 3x" class="Vector-Smart-Object">
+                        </a>
+                    <% } } else{ %>
+                        <a class="btn btn-black" data-toggle="modal" data-target="#myModal">
+                            Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
+                            img/vector-smart-object@3x.png 3x" class="Vector-Smart-Object">
+                        </a>
+                    <% } %>
+                </div>
+                <div class="col-md-6 cardimage">
+                    <img src="img/home-product-2.png" class="img-responsive" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--    owl carousel starts here-->
 <div class="container-fluid carousel-mob" ng-app="myapp" ng-controller="home">
     <!-- <hr class="invis hidden-xs hidden-sm">

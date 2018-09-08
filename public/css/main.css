@@ -29,28 +29,28 @@ h6, .h6 {
 	padding: 0;
 }
 .ValuZone-BUNDLES {
-  font-family: Poppins;
-  font-size: 42px;
-  font-weight: 800;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.16;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
+	font-family: Poppins;
+	font-size: 42px;
+	font-weight: 800;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.16;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
 	margin-top: 50px;
 }
 .Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-    margin-top: 30px;
+	font-family: Poppins;
+	font-size: 18px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.38;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
+	margin-top: 30px;
 }
 /*
 .productlistpage, .productdetailpage, .bundledetailpage, .pay-success, .create-bundle, .mybundles {
@@ -343,10 +343,9 @@ a {
 	height: 100px;
 	z-index: 9999;
 }
-.home-full-width img.img-responsive
-	{
-		max-width: 58%;
-	}
+.home-full-width img.img-responsive {
+	max-width: 58%;
+}
 /*====================================================*/
 html {
 	height: 100%;
@@ -8652,36 +8651,33 @@ body {
 	width: 430px;
 	height: auto;
 }
-	.ValuZone-BUNDLES {
-  font-family: Poppins;
-  font-size: 58px;
-  font-weight: 800;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.16;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
+.ValuZone-BUNDLES {
+	font-family: Poppins;
+	font-size: 58px;
+	font-weight: 800;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.16;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
 	margin-top: 50px;
 }
-	.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
- 
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
+.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.38;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
 	margin-top: 30px;
-  
 }
-	.home-full-width img.img-responsive
-	{
-		max-width: 100%;
-	}
+.home-full-width img.img-responsive {
+	max-width: 100%;
+}
 /*======================================================================*/
 	
 }
@@ -9534,34 +9530,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#781cda', end
 	background-image: url(../img/right-side-home.png);
 	background-color: #ebfc9c;
 }
-
-
-
 .btn-black, .btn-balck:hover, .btn-black:active, .btn-black:active:hover {
 	width: 240px;
-    height: 73px;
-    background-color: #171717 !important;
-    margin-top: 30px;
-    border: solid 3px #171717;
-    font-family: Poppins;
-    font-size: 24px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    letter-spacing: normal;
-    text-align: left;
-    line-height: 1.42857143;
-    color: #ffffff !important;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-top: 15px;
-    box-shadow: none;
+	height: 73px;
+	background-color: #171717 !important;
+	margin-top: 30px;
+	border: solid 3px #171717;
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	line-height: 1.42857143;
+	color: #ffffff !important;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 15px;
+	box-shadow: none;
 }
 .btn-blue, .btn-blue:hover, .btn-blue:active, .btn-blue:active:hover {
 	width: 240px;
-  height: 73px;
-  background-color: #14bdcd !important;
-	
+	height: 73px;
+	background-color: #14bdcd !important;
 	border: solid 3px #14bdcd;
 	font-family: Poppins;
 	font-size: 24px;
@@ -9576,59 +9568,78 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#781cda', end
 	padding-right: 35px;
 	box-shadow: none;
 }
-.home-orange-bg
-{
+.home-orange-bg {
 	background-image: url(../img/home-pattern.png);
 	background-repeat: repeat;
 	background-color: #fb902e;
 	height: 375px;
 	padding: 25px
 }
-.home-orange-bg1
-{
-	
+.home-orange-bg1 {
 	background-color: #fff;
 	height: 375px;
 	padding: 25px
 }
 .Explore-our-Selectives-section {
-  
-  font-family: Poppins;
-  font-size: 43px;
-  font-weight: 800;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.19;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-  
+	font-family: Poppins;
+	font-size: 43px;
+	font-weight: 800;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.19;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
 }
 .Valucart-brings {
- 
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
 	margin-bottom: 30px;
- 
 }
 a.Shop-now {
-  
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.79;
-  letter-spacing: -0.5px;
-  text-align: left;
-  color: #ffffff;
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.79;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #ffffff;
 	margin-top: 30px;
-  
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	font-family: Poppins;
+	font-size: 16px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #323232;
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: middle;
+	border-top: none;
+	height: 80px;
+}
+.table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid rgb(0, 0, 0);
+	font-weight: bold;
+}
+.text-anchor, .text-anchor:hover {
+	text-decoration: underline;
+	color: #14bdcd;
+	font-weight: normal;
+}
+.btn-fixed {
+	width: 120px !important;
 }
