@@ -10,6 +10,7 @@ app.controller("bundle_listing", function(
   getbundleList,
   getWishList
 ) {
+  $scope.loadon = false;
   $scope.productData = [];
   $scope.page = 0;
   $scope.sub_cat_active = 0;
@@ -45,6 +46,7 @@ app.controller("bundle_listing", function(
     }
   };
   $scope.getlist = function() {
+    $scope.loadon = true;
     let queryparams = $location.search();
     for (const key in queryparams) {
       if (queryparams.hasOwnProperty(key)) {
@@ -69,6 +71,7 @@ app.controller("bundle_listing", function(
         } else {
           $scope.nextcall = 0;
         }
+        $scope.loadon = false;
       })
       .catch(function(response) {
         console.log(response.status);

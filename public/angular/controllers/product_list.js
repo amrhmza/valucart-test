@@ -12,6 +12,7 @@ app.controller("product_listing", function(
   getWishList,
   userbundle
 ) {
+  $scope.loadon = false;
   $scope.productData = [];
   $scope.mybundles = [];
   $scope.page = 0;
@@ -55,6 +56,7 @@ app.controller("product_listing", function(
    * get product list for onload and as well in scroll
    */
   $scope.getlist = function() {
+    $scope.loadon = true;
     let queryparams = $location.search();
     for (const key in queryparams) {
       if (queryparams.hasOwnProperty(key)) {
@@ -80,6 +82,7 @@ app.controller("product_listing", function(
         } else {
           $scope.nextcall = 0;
         }
+        $scope.loadon = false;
       })
       .catch(function(response) {
         console.log(response.status);

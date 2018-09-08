@@ -83,7 +83,7 @@ router.post(
       );
       if (createBundle) {
         res.writeHead(302, {
-          Location: "/category/bundle"
+          Location: "/category/product"
         });
         res.end();
       }
