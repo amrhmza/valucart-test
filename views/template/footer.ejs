@@ -276,7 +276,21 @@
 <script>
     //Modal toggle 
     $(function () {
-
+        $.ajax({
+            type: 'POST',
+            //data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '<%= process.env.APIURL %>/product/list/product/post'
+        }).done(function (resp) {
+            if (resp.results.status == "200") {
+                var cartCount = 1;
+                localStorage.cartCount=cartCount;
+                $(".cart-label").text(cartCount);
+            }
+        }).fail(function (r) {
+            console.log(JSON.stringify(r));
+            toastr.error(r.responseJSON.error);
+        });
         $('#register-form-link').click(function (e) {
             $("#register-form").delay(100).fadeIn(100);
             $("#login-form").fadeOut(100);

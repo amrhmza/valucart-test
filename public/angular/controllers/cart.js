@@ -93,7 +93,8 @@ app.controller("cart", function(
       .then(function(response) {
         console.log(response);
         var res = response.data.results;
-        if (res.response == 1) {
+        if (res.status == 200) {
+          console.log(1);
           elem.closest(".productpanel").remove();
           var numItems = $(".productpanel").length;
           if (numItems < 1) {

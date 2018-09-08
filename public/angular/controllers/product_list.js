@@ -18,7 +18,6 @@ app.controller("product_listing", function(
   $scope.sub_cat_active = 0;
   $scope.nextcall = 1;
   $scope.queryparam = querydata.queryparam;
-
   /**
    * apply filter onload by taking URL parameters
    */
@@ -229,6 +228,10 @@ app.controller("product_listing", function(
           toastr.warning(response.data.results.msg);
         } else {
           toastr.success(response.data.results.msg);
+          var cartOldQty = localStorage.getItem("cartCount");
+          var newCartQty = parseInt(cartOldQty) + parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
         }
       })
       .catch(function(response) {
