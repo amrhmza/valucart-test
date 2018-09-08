@@ -28,6 +28,30 @@ h6, .h6 {
 	margin: 0;
 	padding: 0;
 }
+.ValuZone-BUNDLES {
+  font-family: Poppins;
+  font-size: 42px;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+	margin-top: 50px;
+}
+.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    margin-top: 30px;
+}
 /*
 .productlistpage, .productdetailpage, .bundledetailpage, .pay-success, .create-bundle, .mybundles {
 	margin-bottom: 80px;
@@ -319,6 +343,10 @@ a {
 	height: 100px;
 	z-index: 9999;
 }
+.home-full-width img.img-responsive
+	{
+		max-width: 58%;
+	}
 /*====================================================*/
 html {
 	height: 100%;
@@ -8624,6 +8652,36 @@ body {
 	width: 430px;
 	height: auto;
 }
+	.ValuZone-BUNDLES {
+  font-family: Poppins;
+  font-size: 58px;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+	margin-top: 50px;
+}
+	.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
+ 
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+	margin-top: 30px;
+  
+}
+	.home-full-width img.img-responsive
+	{
+		max-width: 100%;
+	}
 /*======================================================================*/
 	
 }
@@ -9476,50 +9534,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#781cda', end
 	background-image: url(../img/right-side-home.png);
 	background-color: #ebfc9c;
 }
-.ValuZone-BUNDLES {
-  font-family: Poppins;
-  font-size: 58px;
-  font-weight: 800;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.16;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-	margin-top: 50px;
-}
-.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
- 
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-	margin-top: 30px;
-  
-}
+
+
+
 .btn-black, .btn-balck:hover, .btn-black:active, .btn-black:active:hover {
 	width: 240px;
-  height: 73px;
-  background-color: #171717 !important;
-	margin-top: 30px;
-	border: solid 3px #171717;
-	font-family: Poppins;
-	font-size: 24px;
-	font-weight: 500;
-	font-style: normal;
-	font-stretch: normal;
-	line-height: 1.79;
-	letter-spacing: normal;
-	text-align: left;
-	color: #ffffff !important;
-	padding-left: 35px;
-	padding-right: 35px;
-	box-shadow: none;
+    height: 73px;
+    background-color: #171717 !important;
+    margin-top: 30px;
+    border: solid 3px #171717;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    line-height: 1.42857143;
+    color: #ffffff !important;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 15px;
+    box-shadow: none;
 }
 .btn-blue, .btn-blue:hover, .btn-blue:active, .btn-blue:active:hover {
 	width: 240px;
