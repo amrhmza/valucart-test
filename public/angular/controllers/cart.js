@@ -93,7 +93,7 @@ app.controller("cart", function(
       .then(function(response) {
         console.log(response);
         var res = response.data.results;
-        if (res.response == 1) {
+        if (res.status == 200) {
           elem.closest(".productpanel").remove();
           var numItems = $(".productpanel").length;
           if (numItems < 1) {
@@ -115,7 +115,6 @@ app.controller("cart", function(
     cart
       .removeUserbundle(ub_id, usertoken)
       .then(function(response) {
-        console.log(response);
         var res = response.data.results;
         if (res.status == "200") {
           $("#mybnd-desktop,.ub_idd,#mybnd-desktop-text").remove();

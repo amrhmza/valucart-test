@@ -14,13 +14,18 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     // if (_.isEmpty(data) == true) {
     //   throw data;
     // }
-    data = datas.cartItems;
-    var pendingBundle = datas.pendingBundle;
-    if (data != "") {
-      var cart_sum = 0;
+    console.log(data);
+
+    var data = datas.cartItems;
+    var pendingBundle =
+      datas.pendingBundle == undefined ? [] : datas.pendingBundle;
+    var cart_sum = 0;
+    if (!_.isEmpty(data)) {
       data.forEach(function(cart_total) {
         cart_sum += Number(cart_total.price) * Number(cart_total.quantity);
       });
+    } else {
+      data = [];
     }
     res.render("mycart", {
       data: data,
@@ -38,6 +43,8 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       ]
     });
   } catch (error) {
+    console.log(error);
+
     error_404(res);
   }
 });
