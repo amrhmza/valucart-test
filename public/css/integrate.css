@@ -511,3 +511,9 @@ a.ui-button:active,
 .searchnav .input-group .input-group-btn {
   width: 30px;
 }
+h6#mybnd-desktop-text {
+  font-size: medium;
+}
+a {
+  cursor: pointer !important;
+}

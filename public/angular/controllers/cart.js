@@ -118,7 +118,7 @@ app.controller("cart", function(
         console.log(response);
         var res = response.data.results;
         if (res.status == "200") {
-          $("#mybnd-desktop,.ub_idd").remove();
+          $("#mybnd-desktop,.ub_idd,#mybnd-desktop-text").remove();
           toastr.success("User Bundle Deleted Successfully!!");
         }
       })

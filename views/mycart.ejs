@@ -15,7 +15,10 @@
     <div class="container-fluid mycart" ng-app="myapp" ng-controller="cart">
         <div class="container productlistpagec">
             <% if(pendingBundle.length>0){ %>
-                <div class="row" id="mybnd-desktop" style="padding: 15px 0;border: 2px #333333 solid;">
+            <h6 class="Give-a-name-for-your-bundle" id="mybnd-desktop-text">
+                    This is your bundle name 
+                </h6>
+                <div class="row" id="mybnd-desktop" style="padding: 15px 0;border: 1px #333333 solid;margin:0">
                     <div class="col-md-9 bn-list">
                         <h5>
                             <%= pendingBundle[0].ub_name %>
