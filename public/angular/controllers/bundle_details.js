@@ -115,6 +115,10 @@ app.controller("bundle_details", function(
             toastr.warning(response.data.results.msg);
           } else {
             window.location = "/cart";
+            var cartOldQty = localStorage.getItem("cartCount");
+            var newCartQty = parseInt(cartOldQty) + parseInt(1);
+            localStorage.setItem("cartCount", newCartQty);
+            $(".cart-label").text(newCartQty);
           }
         })
         .catch(function(response) {

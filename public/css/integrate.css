@@ -492,11 +492,13 @@ a.ui-button:active,
 .cart-label {
   position: absolute;
   background: #ff0405;
-  padding: 3px 8px;
+  padding: 3px 5px;
   border-radius: 50%;
   top: 15px;
   font-size: 12px;
+  width: 25px;
   right: 20px;
+  text-align: center;
   font-weight: 500;
 }
 .searchnav .input-group {
