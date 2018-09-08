@@ -41,6 +41,29 @@ app.factory("createUserbundle", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    insertBundleWithProduct: function(data) {
+      var q = $q.defer();
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      $http({
+        method: "POST",
+        url: config.createWithproduct,
+        type: "json",
+        data: data,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token.token
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

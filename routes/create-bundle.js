@@ -3,6 +3,7 @@ var router = express.Router();
 const getMenu = require("../controllers/category_menu.js");
 var auth = require("../lib/auth.js");
 const userbundle = require("../controllers/userbundle.js");
+const schedule = require("../controllers/schedule.js");
 
 /* Create bundle. */
 router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
@@ -47,6 +48,36 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
   }
 });
 router.get(
+  "/success/:bundle_id",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      let valid = await schedule.get_data(
+        JSON.parse(cookies),
+        req.params.bundle_id
+      );
+      if (valid.status == 200) {
+        var d = valid.response;
+      } else {
+        var d = 0;
+      }
+      res.render("bundle-success", {
+        // menudata: menudata,
+        angular: false,
+        data: d,
+        params: req.params,
+        search: 0,
+        customjs: false,
+        cookies: cookies,
+        order_id: req.params
+      });
+    } catch (error) {
+      error_404(res);
+    }
+  }
+);
+router.get(
   "/next/product",
   auth.ensureAuthenticated,
   async (req, res, next) => {
@@ -65,6 +96,34 @@ router.get(
         ]
       });
     } catch (error) {
+      error_404(res);
+    }
+  }
+);
+router.get(
+  "/process/:order_id",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      console.log(req.params);
+
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      let menudata = await getMenu.get_menulist();
+      res.render("create-bundle_new", {
+        menudata: menudata,
+        angular: true,
+        customjs: true,
+        order_id: req.params.order_id,
+        cookies: cookies,
+        jslist: [
+          "angular/app.js",
+          "angular/factory/createUserBundle.js",
+          "angular/controllers/createUserBundle.js"
+        ]
+      });
+    } catch (error) {
+      console.log(error);
+
       error_404(res);
     }
   }

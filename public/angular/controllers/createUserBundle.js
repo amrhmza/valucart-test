@@ -8,18 +8,22 @@ app.controller("createUserBundle", function(
   $filter,
   $routeParams,
   config,
+  order_id,
   createUserbundle
 ) {
+  $scope.mybundle_name = "";
   $scope.edit_title = 0;
   $scope.init = function() {
-    let querydata = $location.search();
+    $(".loader").removeClass("hidden");
     createUserbundle
-      .getDetails(querydata.order_id)
+      .getDetails(order_id.order_id)
       .then(function(response) {
+        $(".loader").addClass("hidden");
         $scope.mybundle = response.data.results.response.order_products;
         $scope.mybundle_name = querydata.bundlename;
       })
       .catch(function(response) {
+        $(".loader").addClass("hidden");
         console.log(response);
       });
   };
@@ -89,12 +93,73 @@ app.controller("createUserBundle", function(
     }
   };
 
+  //   //user_bundle Update//
+  //   var cp = document.forms.createBundle,
+  //     elem = cp.elements;
+  //   cp.onsubmit = function() {
+  //     let product_ids = [];
+  //     let proceed = 0;
+  //     $scope.mybundle.forEach(element => {
+  //       if ($("#brand_" + element.op_id).is(":checked") == true) {
+  //         proceed = 1;
+  //         let bundle_data = [];
+  //         if (element.ct_is_bundel == 1) {
+  //           element.product.forEach(ele => {
+  //             let bd = {
+  //               pd_id: ele.ctb_pd_id,
+  //               is_alternative: ele.ctb_is_alternative == 1 ? 1 : 0
+  //             };
+  //             bundle_data.push(bd);
+  //           });
+  //         }
+  //         let data = {
+  //           product_id: element.ct_pd_id,
+  //           quantity: $("input[name=qty_" + element.op_id + "]").val(),
+  //           is_bundel: element.ct_is_bundel == true ? 1 : 0,
+  //           bundel_items: bundle_data
+  //         };
+  //         element.quantity = $("input[name=qty_" + element.op_id + "]").val();
+  //         product_ids.push(data);
+  //       }
+  //     });
+  //     let querydata = $location.search();
+  //     let insertdata = {
+  //       bundle_name: $scope.mybundle_name,
+  //       no_days: querydata.end_period,
+  //       time_period: querydata.time_interval,
+  //       product_ids: product_ids
+  //     };
+  //     if (proceed == 1) {
+  //       createUserbundle
+  //         .insertBundle(insertdata)
+  //         .then(function(response) {
+  //           var res = response.data.results;
+  //           if (res.msg == "success") {
+  //             toastr.success("Created Successfully..!");
+  //             $window.location.href = "/mybundles";
+  //           }
+  //         })
+  //         .catch(function(response) {
+  //           console.log(response);
+  //         });
+  //     } else {
+  //       toastr.warning("Product should not be empty..!");
+  //     }
+  //   };
+  // });
+
   //user_bundle Update//
   var cp = document.forms.createBundle,
     elem = cp.elements;
   cp.onsubmit = function() {
+    $(".loader").removeClass("hidden");
     let product_ids = [];
     let proceed = 0;
+    if ($scope.mybundle_name == "") {
+      $(".loader").addClass("hidden");
+      toastr.warning("Bundle Name Must be there..!");
+      return false;
+    }
     $scope.mybundle.forEach(element => {
       if ($("#brand_" + element.op_id).is(":checked") == true) {
         proceed = 1;
@@ -118,27 +183,27 @@ app.controller("createUserBundle", function(
         product_ids.push(data);
       }
     });
-    let querydata = $location.search();
     let insertdata = {
       bundle_name: $scope.mybundle_name,
-      no_days: querydata.end_period,
-      time_period: querydata.time_interval,
       product_ids: product_ids
     };
     if (proceed == 1) {
       createUserbundle
-        .insertBundle(insertdata)
+        .insertBundleWithProduct(insertdata)
         .then(function(response) {
           var res = response.data.results;
           if (res.msg == "success") {
+            $(".loader").addClass("hidden");
             toastr.success("Created Successfully..!");
-            $window.location.href = "/mybundles";
+            $window.location.href = "/create-bundle/success/" + res.response[0];
           }
         })
         .catch(function(response) {
+          $(".loader").addClass("hidden");
           console.log(response);
         });
     } else {
+      $(".loader").addClass("hidden");
       toastr.warning("Product should not be empty..!");
     }
   };

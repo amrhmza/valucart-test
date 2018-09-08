@@ -46,7 +46,8 @@ app.constant("config", {
   forgotpassword: baseurl + "/auth/forgetpassword",
   sentotptoemail: baseurl + "/auth/sentotptoemail",
   checkCoupon: baseurl + "/coupon/applyCoupon",
-  deleteUserBundle: baseurl + "/user_bundle/bundleDelete/delete"
+  deleteUserBundle: baseurl + "/user_bundle/bundleDelete/delete",
+  createWithproduct: baseurl + "/user_bundle/createWithproduct/post"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
