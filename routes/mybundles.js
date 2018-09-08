@@ -10,13 +10,21 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
     let data = await getList.get_mybundle(JSON.parse(cookies));
+    console.log(data);
     res.render("mybundles", {
       menudata: menudata,
       data: data,
-      angular: false,
-      customjs: false,
       search: 0,
-      cookies: cookies
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/controllers/mybundles.js",
+        "js/jquery.nice-select.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js"
+      ]
     });
   } catch (error) {
     console.log(error);
