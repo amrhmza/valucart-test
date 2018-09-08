@@ -65,6 +65,25 @@
     <script src="<%- js %>"></script>
     <% })
     } %>
+    <% if(typeof home_new != "undefined"){ %>
+    <style>
+        .col-md-offset-4 {
+            margin-left: 10%;
+        }
+        .navtop {
+            background-color: #fff;
+        }
+        @media only screen and (min-width: 1400px) {
+            .navtop {
+                background-color: #fff;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 0px;
+                height: 96px;
+            }
+        }
+    </style>
+    <% } %>
 </head>
 
 <body>
@@ -156,46 +175,63 @@
                     </span>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-6">
-                    <a href=""><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a></div>
-                <% 
-                   if(cookies){
-                    var userData=JSON.parse(cookies);
-                   if(userData.status=="success"){
-                   %>
+                    <% if(typeof home_new != "undefined"){ %>
+                    <a href=""><img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <% } else { %>
+                    <a href=""><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <% } %>
+                </div>
                 <div class="col-md-8 col-sm-8 col-xs-3">
                     <ul class="list-inline navlist">
                         <li class="searchnav hidden-xs">
                             <form>
-                                <div class="input-group">
+                                <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
                                     <input type="text" class="form-control desktopsearch" placeholder="What are you looking for?">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"> <img src="img/searchiconnav.png"
-                                                class="img-responsive searchicon" /> </button>
+                                        <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/search-1.png" class="img-responsive searchicon" />
+                                        <% } else { %>
+                                        <img src="img/searchiconnav.png" class="img-responsive searchicon" />
+                                        <% } %>
                                     </div>
                                 </div>
                             </form>
                         </li>
+                        <% 
+                        if(cookies){
+                            var userData=JSON.parse(cookies);
+                        if(userData.status=="success"){
+                        %>
                         <li class="hidden-xs">
                             <a href="mywishlist">
+                                <% if(typeof home_new != "undefined"){ %>
+                                <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                <% } else { %>
                                 <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo"
                                     style="margin-right: 10px;">
+                                <% } %>
+
                             </a>
                         </li>
                         <li>
                             <a href="/cart">
+                                <% if(typeof home_new != "undefined"){ %>
+                                <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                <% } else { %>
                                 <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-
+                                <% } %>
                             </a>
                             <span class="cart-label">5</span>
                         </li>
+                        <% }
+                        } %>
                     </ul>
                 </div>
-                <% }
-            } %>
+
             </div>
         </div>
     </div>
-    <% if(typeof search=="undefined"){%>
+    <% if(typeof search=="undefined"){ %>
     <div class="container-fluid navtop2">
         <div class="container">
             <div class="row">
