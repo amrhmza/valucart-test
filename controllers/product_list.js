@@ -20,6 +20,41 @@ let get_data = async (querydata, cat_id) => {
     throw error;
   }
 };
+let get_datav2 = async querydata => {
+  try {
+    let response = {};
+    let getparam = axios_config;
+    let product_filter = await axios.get("product/filter/get/v2", getparam);
+    if (_.isEmpty(product_filter.data.results.response) == true) {
+      // throw product_filter;
+    }
+    response["product_config"] = product_filter.data.results.response;
+    response["querydata"] = querydata;
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+let get_datave = async querydata => {
+  try {
+    let response = {};
+    let getparam = axios_config;
+    let product_filter = await axios.get(
+      "product/filter/valuecartexclusive/get",
+      getparam
+    );
+    if (_.isEmpty(product_filter.data.results.response) == true) {
+      // throw product_filter;
+    }
+    response["product_config"] = product_filter.data.results.response;
+    response["querydata"] = querydata;
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
-  get_data
+  get_data,
+  get_datav2,
+  get_datave
 };

@@ -34,5 +34,68 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
     error_404(res);
   }
 });
+/* GET product list page. */
+router.get("/", async (req, res, next) => {
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let querydata = req.query;
+    let cat_id = req.param("cat_id");
+    let data = await productListing.get_datav2(querydata);
+    let banner = await getHome.get_data();
+    let menudata = await getMenu.get_menulist();
+    res.render("productlisting_new", {
+      data: data,
+      menudata: menudata,
+      banner: banner,
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/product_list_new.js",
+        "angular/factory/product_details.js",
+        "angular/controllers/product_list_new.js",
+        "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js",
+        "js/jquery.nice-select.min.js"
+      ]
+    });
+  } catch (error) {
+    error_404(res);
+  }
+});
+/* GET product list page. */
+router.get("/valucartexclusives", async (req, res, next) => {
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let querydata = req.query;
+    let data = await productListing.get_datave(querydata);
+    console.log(data);
+
+    let banner = await getHome.get_data();
+    let menudata = await getMenu.get_menulist();
+    res.render("productlisting_new_ve", {
+      data: data,
+      menudata: menudata,
+      banner: banner,
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/product_list_new.js",
+        "angular/factory/product_details.js",
+        "angular/controllers/product_list_new.js",
+        "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js",
+        "js/jquery.nice-select.min.js"
+      ]
+    });
+  } catch (error) {
+    console.log(error);
+
+    error_404(res);
+  }
+});
 
 module.exports = router;
