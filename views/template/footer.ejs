@@ -276,21 +276,31 @@
 <script>
     //Modal toggle 
     $(function () {
-        $.ajax({
-            type: 'POST',
-            //data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: '<%= process.env.APIURL %>/product/list/product/post'
-        }).done(function (resp) {
-            if (resp.results.status == "200") {
-                var cartCount = 0;
-                localStorage.cartCount=cartCount;
-                $(".cart-label").text(cartCount);
+        if ($.cookie("vcartAuth")) {
+            let token = JSON.parse($.cookie("vcartAuth"));
+            if (token.is_email_verified == false) {
+                location.href = "/otp"
             }
-        }).fail(function (r) {
-            console.log(JSON.stringify(r));
-            toastr.error(r.responseJSON.error);
-        });
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json',
+                url: '<%= process.env.APIURL %>/cart/listV2',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token.token );
+                }
+            }).done(function (resp) {
+                console.log(resp);
+                if (resp.results.status == "200") {
+                    var cartList= resp.results.response.cartItems;
+                    var cartCount = cartList.length;
+                    localStorage.cartCount=cartCount;
+                    $(".cart-label").text(cartCount);
+                }
+            }).fail(function (r) {
+                console.log(JSON.stringify(r));
+                toastr.error(r.responseJSON.error);
+            });
+        }
         $('#register-form-link').click(function (e) {
             $("#register-form").delay(100).fadeIn(100);
             $("#login-form").fadeOut(100);
@@ -306,13 +316,6 @@
             $(this).addClass('active');
             e.preventDefault();
         });
-        if ($.cookie("vcartAuth")) {
-            let token = JSON.parse($.cookie("vcartAuth"));
-            if (token.is_email_verified == false) {
-                location.href = "/otp"
-            }
-        }
-
     });
 </script>
 <% include login_post %>

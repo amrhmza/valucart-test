@@ -100,6 +100,10 @@ app.controller("cart", function(
             $(".empty-panel").removeClass("hidden");
           }
           $scope.cartTotal();
+          var cartOldQty = localStorage.getItem("cartCount");
+          var newCartQty = parseInt(cartOldQty) - parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
           toastr.success(res.msg);
         }
       })
