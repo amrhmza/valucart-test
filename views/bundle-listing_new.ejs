@@ -65,6 +65,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-4 hidden-xs" style="padding-top: 30px;">
                 <div class="panel-group" id="accordion">
+                    
                     <div class="panel">
                         <div class="panel-heading" >
                             <h4 class="panel-title">
@@ -72,47 +73,52 @@
                             </h4>
                         </div>
                     </div>
-                    <div class="panel panel-default list-group brandlist">
-                        <% if(data.product_config.cat_filter.length>0){
-                            data.product_config.cat_filter.forEach(function(cat){ 
-                                        %>
-                      <a data-toggle="collapse" ng-click="filters('cat',<%= cat.main_cat_id %>)" href="#collapsea<%= cat.main_cat_id %>">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <%= cat.main_cat_name %>
-                            </h4>
-                        </div>
-                        </a>
-                        <div id="collapsea<%= cat.main_cat_id %>" class="panel-collapse">
-                            <div class="panel-body" style="padding-left: 20px;">
-                                <ul class="list-group">
-                                    <% if(cat.subcat.length>0){
-                                        cat.subcat.forEach(function(subcat){ 
-                                            %>
-                                    <li class="list-group-item {{sub_cat_active==<%= subcat.subcat_id %>?'active':''}}">
-                                        <a ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
-                                            <%= subcat.subcat_name %>
-                                            (
-                                            <%= subcat.c %>)
-                                        </a>
-                                    </li>
-                                    <% })
-                                        } %>
-                                </ul>
+                    <div class="panel panel-default list-group">
+                        <div class="panel-body pl0">
+                            <div class="brandlist">
+                            <% if(data.product_config.cat_filter.length>0){
+                                data.product_config.cat_filter.forEach(function(cat){ 
+                                %>
+                            <a data-toggle="collapse" ng-click="filters('cat',<%= cat.main_cat_id %>)" href="#collapsea<%= cat.main_cat_id %>">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <%= cat.main_cat_name %>
+                                    </h4>
+                                </div>
+                                </a>
+                                <div id="collapsea<%= cat.main_cat_id %>" class="panel-collapse">
+                                    <div class="panel-body" style="padding-left: 20px;">
+                                        <ul class="list-group">
+                                            <% if(cat.subcat.length>0){
+                                                cat.subcat.forEach(function(subcat){ 
+                                                    %>
+                                            <li class="list-group-item {{sub_cat_active==<%= subcat.subcat_id %>?'active':''}}">
+                                                <a ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
+                                                    <%= subcat.subcat_name %>
+                                                    (
+                                                    <%= subcat.c %>)
+                                                </a>
+                                            </li>
+                                            <% })
+                                                } %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <% })
+                            } %>
                             </div>
                         </div>
-                        <% })
-                    } %>
                     </div>
 
                     <div class="panel panel-default">
                         <a data-toggle="collapse" href="#collapse3">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    Price
+                                    Price 
                                 </h4>
                             </div>
                         </a>
+                        <span class="clearfilter" ng-click="clearFilter('price')">clear all</span>
                         <div id="collapse3" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <ul class="list-group brandlist">
@@ -148,6 +154,7 @@
                                 </h4>
                             </div>
                         </a>
+                        <span class="clearfilter" ng-click="clearFilter('discount')">clear all</span>
                         <div id="collapse4 " class="panel-collapse collapse in ">
                             <div class="panel-body ">
                                 <ul class="list-group brandlist">
@@ -302,7 +309,9 @@
     $(document).ready(function () {
         $('select').niceSelect();
     });
-
+    $("input:radio").on("click", function(){
+        $(this).closest(".panel").find(".clearfilter").show(200);
+    });
 </script>
 <!--     Product list ends here-->
 <% include template/footer %>

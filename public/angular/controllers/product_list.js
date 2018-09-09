@@ -163,6 +163,37 @@ app.controller("product_listing", function(
    * @param {Number} p1
    * @param {Number} p2
    */
+  $scope.clearFilter = function(type) {
+    switch (type) {
+      case "sub_cat":
+        $location.search("sub_cat", p1);
+        $scope.getlist();
+        break;
+      case "price":
+        $location.search("price_start", null);
+        $location.search("price_end", null);
+        $scope.getlist();
+        break;
+      case "discount":
+        $location.search("discount_start", null);
+        $location.search("discount_end", null);
+        $scope.getlist();
+        break;
+      case "brand":
+        $location.search("brand", null);
+        $scope.getlist();
+        break;
+      case "sort":
+        $location.search("order_by", null);
+        $scope.getlist();
+        break;
+      default:
+    }
+    $("input:radio[name='" + type + "']").each(function(i) {
+      this.checked = false;
+    });
+  };
+
   $scope.filters = function(type, p1, p2) {
     $scope.productData = [];
     $scope.page = 0;

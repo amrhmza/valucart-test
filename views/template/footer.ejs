@@ -125,7 +125,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12 p0">
                                                     <a id="forgot_pass"><span>forgot password?</span></a>
                                                     <h5 style="display: inline-block;">or signin with</h5>
                                                     <div style="float:right">
@@ -195,7 +195,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="password" name="f-pwd" id="f-pwd" autocomplete="off" class="form-control form-control1">
-                                                        <label class="form-control-placeholder pwd" for="pwd">password</label>
+                                                        <label class="form-control-placeholder pwd" for="pwd">new password</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="row">
@@ -292,7 +292,7 @@
             }).done(function (resp) {
                 if (resp.results.status == "200") {
                     var cartList= resp.results.response.cartItems;
-                    var cartCount = cartList.length;
+                    var cartCount = (typeof cartList != "undefined")?cartList.length:0;
                     localStorage.cartCount=(cartCount>0)?cartCount:0;
                     $(".cart-label").text(cartCount);
                 }
@@ -301,7 +301,7 @@
                 toastr.error(r.responseJSON.error);
             });
         }
-
+       
         $(".refererLogin").on("click",function(){
             var referrer_uri= $(this).data("referrer");
             $(".referrerInput").val(referrer_uri);

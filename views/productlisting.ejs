@@ -141,6 +141,7 @@
                                             </h4>
                                         </div>
                                     </a>
+                                    <span class="clearfilter" ng-click="clearFilter('price')">clear all</span>
                                     <div id="collapse3" class="panel-collapse collapse in">
                                         <div class="panel-body">
                                             <ul class="list-group brandlist">
@@ -178,6 +179,7 @@
                                             </h4>
                                         </div>
                                     </a>
+                                    <span class="clearfilter" ng-click="clearFilter('discount')">clear all</span>
                                     <div id="collapse4 " class="panel-collapse collapse in ">
                                         <div class="panel-body ">
                                             <ul class="list-group brandlist">
@@ -359,7 +361,9 @@
         $(document).ready(function () {
             $('select').niceSelect();
         });
-
+        $("input:radio").on("click", function(){
+            $(this).closest(".panel").find(".clearfilter").show(200);
+        });
     </script>
     <!--     Product list ends here-->
     <% include template/footer %>
