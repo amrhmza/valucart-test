@@ -71,7 +71,8 @@ router.get(
         jslist: [
           "angular/app.js",
           "angular/controllers/userbundle.js",
-          "angular/factory/userbundle.js"
+          "angular/factory/userbundle.js",
+          "angular/factory/mybundles.js"
         ]
       });
     } catch (error) {

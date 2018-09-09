@@ -20,12 +20,12 @@
                 </h6>
                 <div class="row" id="mybnd-desktop" style="padding: 15px 0;border: 1px #333333 solid;margin:0">
                     <div class="col-md-9 bn-list">
-                        <h5>
-                            <%= pendingBundle[0].ub_name %>
-                        </h5>
+                        <h5><%= pendingBundle[0].ub_name %></h5>
                     </div>
+                    
+                           
                     <div class="col-md-3 bn-img text-right">
-                        <a ng-click="deleteBundle(<%= pendingBundle[0].ub_id %>,this)" class="bundlebtn">
+                        <a confirmed-click="deleteBundle(<%= pendingBundle[0].ub_id %>,this)" ng-confirm-click="Do you want to remove this bundle.?" class="bundlebtn">
                             <img src="img/bn-del.png" alt="bn-edit">
                         </a>
                     </div>
@@ -41,7 +41,7 @@
                             <% if(data!="undefined"){
                             data.forEach(function(cart){ 
                             %>
-                                <div class="panel panel-default productpanel">
+                                <div class="panel panel-default productpanel cart_panel_<%=cart.cart_id%>">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-xs-4">
@@ -53,7 +53,7 @@
                                                         <img src="<%= cart.product_image %>" class="img-responsive productimg">
                                                         <div class="col-xs-12 favourite">
                                                             <button class="btn btn-favourite">
-                                                                <i class="fa fa-trash-o trash" aria-hidden="true" ng-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)"></i>
+                                                                <i class="fa fa-trash-o trash" aria-hidden="true" confirmed-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)" ng-confirm-click="Do you want to remove this from cart?"></i>
                                                             </button>
                                                             <div class="wishlist-heart-group">
                                                                 <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"

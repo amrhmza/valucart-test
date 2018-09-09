@@ -617,3 +617,10 @@ a {
   text-transform: capitalize;
   text-decoration: none;
 }
+.mycart a.btn {
+  padding: 20px 22px;
+  height: auto;
+}
+.carousel-inner > .item.left {
+  width: 100% !important;
+}

@@ -1,5 +1,4 @@
 <div class="container container1">
-
     <div class="row">
         <div class="col-md-8 no-pad mybunedit" ng-init="stotal=0">
             <div class="panel panel-default productpanel" ng-repeat="bundle in mybundle">
@@ -96,8 +95,15 @@
             </div>
 
             <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button>
-            <button class="btn-cancel">Cancel</button>
-
+            <button class="btn-cancel">Cancel{{ub_is_deleted}}</button>
+            <div ng-if="mybundle_detail.ub_is_subscribed == '0'">
+                <a href="/schedule-bundle/create/{{ub_id}}" class="btn btn-block btn-lg btn-success">Subscribe</a>
+                <a ng-click="bundle_addtocart(ub_id)" class="btn btn-block btn-lg btn-success">Add To Cart</a>
+            </div>
+            <div ng-if="mybundle_detail.ub_is_subscribed == '1'">
+                <a href="/mybundles/delete/{{ub_id}}" class="btn btn-block btn-lg btn-danger">Un Subscribe</a>
+                <a href="/schedule-bundle/create/{{ub_id}}" class="btn btn-block btn-lg btn-danger">Reshedule</a>
+            </div>
         </div>
     </div>
     <div class="row" id="summary-mobile">

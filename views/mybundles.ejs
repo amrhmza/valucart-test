@@ -5,8 +5,6 @@
             <div class="row" id="cBundle-desktop">
                 <h4><img src="img/choose-bundle.png" alt="choose-bundle" /> My bundles</h4>
             </div>
-           
-            
         </div>
     </div>
     <div class="container" ng-app="myapp" ng-controller="myBundles">
@@ -38,7 +36,7 @@
                                 <a ng-click="bundle_addtocart(<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
                                 <% } else { btntype= "danger"; %>
                                 <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
-                                <a href="/mybundles/view/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
+                                <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
                                 <% } %>
                             </td>
                             <td style="text-align:center;"><%=(mybundle.ub_end_date!=null)? moment(mybundle.ub_end_date).format('DD.MM.YYYY'):"N-A"; %></td>

@@ -94,7 +94,7 @@ app.controller("cart", function(
         console.log(response);
         var res = response.data.results;
         if (res.status == 200) {
-          elem.closest(".productpanel").remove();
+          $(".cart_panel_" + cart_id).remove();
           var numItems = $(".productpanel").length;
           if (numItems < 1) {
             $(".empty-panel").removeClass("hidden");
@@ -205,5 +205,14 @@ app.controller("cart", function(
       .catch(function(response) {
         console.log(response);
       });
+  };
+
+  $scope.edit_title = 0;
+  $scope.change_title = function() {
+    if ($scope.edit_title == 0) {
+      $scope.edit_title = 1;
+    } else {
+      $scope.edit_title = 0;
+    }
   };
 });
