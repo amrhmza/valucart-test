@@ -63,4 +63,19 @@ app.controller("myBundles", function(
         //toastr.warning(response.data.results.msg);
       });
   };
+  $scope.bundle_unsbuscribe = function(data) {
+    mybundle_addtocart
+      .unSubscribe(data)
+      .then(function(response) {
+        console.log(response);
+        if (response.data.results.status != "200") {
+          toastr.warning("Somthing Went Wrong..!");
+        } else {
+          location.reload();
+        }
+      })
+      .catch(function(response) {
+        toastr.warning(response);
+      });
+  };
 });

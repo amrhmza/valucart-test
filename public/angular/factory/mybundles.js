@@ -45,6 +45,27 @@ app.factory("mybundle_addtocart", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    unSubscribe: function(bundleId) {
+      var q = $q.defer();
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      $http({
+        method: "PATCH",
+        url: config.unsubscribeBundle + "?ub_id=" + bundleId,
+        type: "json",
+        headers: {
+          Authorization: "Bearer " + token.token
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

@@ -35,7 +35,7 @@
                                 <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Subscribe</a>
                                 <a ng-click="bundle_addtocart(<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
                                 <% } else { btntype= "danger"; %>
-                                <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
+                                <a confirmed-click="bundle_unsbuscribe(<%= mybundle.ub_id %>)" ng-confirm-click="Do you want to unsubscribe this Bundle?" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
                                 <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
                                 <% } %>
                             </td>

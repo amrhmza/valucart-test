@@ -20,11 +20,19 @@
                 </h6>
                 <div class="row" id="mybnd-desktop" style="padding: 15px 0;border: 1px #333333 solid;margin:0">
                     <div class="col-md-9 bn-list">
-                        <h5><%= pendingBundle[0].ub_name %></h5>
+                    <form name="updateBundleName" method="POST">
+                            <h5 style="display: inline-block;" class="newBundleName"ng-hide="edit_title"><%= pendingBundle[0].ub_name %></h5>
+                            <input type="text" name="bundlename" class="form-control-static title-input" value="<%= pendingBundle[0].ub_name %>" ng-show="edit_title">
+                            <input type="hidden" name="bundleid" value="<%= pendingBundle[0].ub_id %>">
+                            <input type="submit" style="display:none">
+                    </form>
                     </div>
                     
                            
                     <div class="col-md-3 bn-img text-right">
+                        <a ng-click="change_title()" style="margin-right:20px">
+                            <img src="img/edit-bundle.png" alt="edit-bundle" />
+                        </a>
                         <a confirmed-click="deleteBundle(<%= pendingBundle[0].ub_id %>,this)" ng-confirm-click="Do you want to remove this bundle.?" class="bundlebtn">
                             <img src="img/bn-del.png" alt="bn-edit">
                         </a>

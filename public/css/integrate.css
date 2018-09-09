@@ -653,3 +653,6 @@ a {
   background: #ddd;
   padding: 33px 12px;
 }
+.btn-recurring {
+  line-height: 55px;
+}
