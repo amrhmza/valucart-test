@@ -624,3 +624,32 @@ a {
 .carousel-inner > .item.left {
   width: 100% !important;
 }
+.addtocart-float-btn {
+  width: 80%;
+  text-align: center;
+  margin: 0 10%;
+  position: absolute;
+  bottom: -25px;
+}
+.addtocart-float-btn button {
+  border: 0px;
+}
+.addtocart-float-btn .addtocart {
+  background: #14bdcd;
+  color: #fff;
+  padding: 30px 0px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 80%;
+}
+.addtocart-float-btn .addtocart img {
+  width: 24px !important;
+  display: inline-block !important;
+  padding: 0;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+.addtocart-float-btn .addtobundle {
+  background: #ddd;
+  padding: 33px 12px;
+}
