@@ -107,6 +107,7 @@
                                             <form id="login-form" class="loginform" role="form">
                                                 <div class="login-action-msg">
                                                 </div>
+                                                <input type="hidden" class="referrerInput" name="referrer" value="">
                                                 <div class="form-group  marg-btm">
                                                     <input type="text" id="usr" class="form-control form-control1 login_username">
                                                     <label class="form-control-placeholder" for="usr">username</label>
@@ -289,11 +290,10 @@
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token.token );
                 }
             }).done(function (resp) {
-                console.log(resp);
                 if (resp.results.status == "200") {
                     var cartList= resp.results.response.cartItems;
                     var cartCount = cartList.length;
-                    localStorage.cartCount=cartCount;
+                    localStorage.cartCount=(cartCount>0)?cartCount:0;
                     $(".cart-label").text(cartCount);
                 }
             }).fail(function (r) {
@@ -301,6 +301,12 @@
                 toastr.error(r.responseJSON.error);
             });
         }
+
+        $(".refererLogin").on("click",function(){
+            var referrer_uri= $(this).data("referrer");
+            $(".referrerInput").val(referrer_uri);
+        });
+
         $('#register-form-link').click(function (e) {
             $("#register-form").delay(100).fadeIn(100);
             $("#login-form").fadeOut(100);

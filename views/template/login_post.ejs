@@ -10,7 +10,7 @@
             var password = $(".login_password").val();
 
             if (username == "") {
-                toastr.error("Name Required!!");
+                toastr.error("Username Required!!");
             }
 
             if (password == "") {
@@ -19,7 +19,7 @@
 
             if (username != "" && password != "") {
                 var data = { username, password };
-
+                var refferrerUrl= $(".referrerInput").val();
                 $.ajax({
                     type: 'POST',
                     data: JSON.stringify(data),
@@ -33,8 +33,15 @@
                             var base_url = window.location.origin;
                             window.location.replace(base_url + "/otp");
                         }
-                        else
-                            location.reload(true);
+                        else{
+                            if(refferrerUrl !=""){
+                                window.location.replace(refferrerUrl);
+                            }
+                            else{
+                                location.reload(true); 
+                            }   
+                        }
+                            
                     }
                     else {
                         $(".login-action-msg").html(resp.status).addClass("has-error");
