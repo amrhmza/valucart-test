@@ -146,6 +146,7 @@ app.controller("bundle_listing", function(
         $scope.getlist();
         break;
       default:
+        $scope.getlist();
     }
     $("input:radio[name='" + type + "']").each(function(i) {
       this.checked = false;
