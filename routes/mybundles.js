@@ -20,6 +20,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       customjs: true,
       jslist: [
         "angular/app.js",
+        "angular/factory/mybundles.js",
         "angular/controllers/mybundles.js",
         "js/jquery.nice-select.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js",
@@ -31,9 +32,8 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     error_404(res);
   }
 });
-/**
- * Delete userbundle
- */
+
+/* Delete userbundle */
 router.get(
   "/delete/:bundleId",
   auth.ensureAuthenticated,

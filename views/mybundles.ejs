@@ -9,7 +9,7 @@
             
         </div>
     </div>
-    <div class="container">
+    <div class="container" ng-app="myapp" ng-controller="myBundles">
 		<div class="row">
 			<div class="col-md-12">
 			    <table class="table table-striped">
@@ -35,7 +35,7 @@
                             <td style="text-align:center;">
                                 <% if(mybundle.ub_is_subscribed == 0){ btntype= "success"; %>
                                 <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Subscribe</a>
-                                <a href="/#" ng-click="bundle_addtocart(/<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
+                                <a ng-click="bundle_addtocart(<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add To Cart</a>
                                 <% } else { btntype= "danger"; %>
                                 <a href="/mybundles/delete/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Un Subscribe</a>
                                 <a href="/mybundles/view/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Re Shedule</a>
