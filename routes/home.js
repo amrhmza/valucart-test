@@ -20,7 +20,8 @@ router.get("/", async (req, res, next) => {
         "angular/app.js",
         "angular/factory/product_details.js",
         "angular/controllers/home.js",
-        "angular/factory/wishlist.js"
+        "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js"
       ]
     });
   } catch (error) {

@@ -656,3 +656,6 @@ a {
 .btn-recurring {
   line-height: 55px;
 }
+.exclusivs-carousel .owl-carousel .owl-stage-outer {
+  overflow-y: -webkit-paged-x;
+}

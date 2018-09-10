@@ -210,18 +210,18 @@
                 </a>
             </div>
         </div>
-        <section class="carousel3">
+        <section class="carousel3 exclusivs-carousel">
             <div class="row">
                 <div class="large-12 columns">
                     <div class="owl-carousel owl-theme">
                         <% 
-                                let exclusiveCategory= data.response.exclusive;
-                                var no=0;
-                                if (exclusiveCategory) {
-                                    exclusiveCategory.forEach(function(cat){
-                                    var pd_name= cat.pd_name;
-                                    var pd_url= pd_name.replace(/\s+/g, '-').toUpperCase();
-                            %>
+                            let exclusiveCategory= data.response.exclusive;
+                            var no=0;
+                            if (exclusiveCategory) {
+                                exclusiveCategory.forEach(function(cat){
+                                var pd_name= cat.pd_name;
+                                var pd_url= pd_name.replace(/\s+/g, '-').toUpperCase();
+                        %>
                         <div class="item">
                             <div class="panel panel-default productpanel">
                                 <div class="panel-body text-center">
@@ -280,7 +280,7 @@
                                     </a>-->
                                 </div>
                                 <div class="addtocart-float-btn">
-                                        <button class="addtocart col-md-10">
+                                        <button class="addtocart col-md-10" ng-click="addtocart(<%= cat.pd_id;%>)">
                                             <img src="img/addtocart.png" class="img-responsive"> Add To Cart
                                         </button>
                                         <button class="addtobundle col-md-2" data-toggle="dropdown">

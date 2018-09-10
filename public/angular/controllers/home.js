@@ -6,7 +6,8 @@ app.controller("home", function(
   $timeout,
   $filter,
   product_details,
-  getWishList
+  getWishList,
+  userbundle
 ) {
   /**
    *
@@ -111,4 +112,24 @@ app.controller("home", function(
       toastr.error("Login first to use this option");
     }
   };
+
+  $scope.userBundlelist = function() {
+    userbundle
+      .getList()
+      .then(function(response) {
+        console.log(response);
+        let listdata = response.data.results.response;
+        if (listdata != "") {
+          angular.forEach(listdata, function(value, key) {
+            $scope.mybundles.push(value);
+          });
+        }
+        console.log($scope.mybundles);
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+
+  $scope.userBundlelist();
 });
