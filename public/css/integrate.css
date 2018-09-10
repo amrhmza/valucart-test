@@ -666,3 +666,23 @@ a {
   height: auto;
   padding: 15px 35px;
 }
+.landing-offer {
+  max-width: 600px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .left-home,
+  .right-home {
+    width: 100%;
+    height: auto !important;
+    float: unset;
+  }
+  .landing-offer {
+    padding: 25px;
+    padding-bottom: 75px;
+  }
+  .home-orange-bg,
+  .home-orange-bg1 {
+    height: auto;
+  }
+}
