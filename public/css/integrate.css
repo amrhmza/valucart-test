@@ -747,3 +747,6 @@ li.logout-btn:hover a {
 .cushr {
   border-top: 4px solid #323232;
 }
+.vcartLogout {
+  cursor: pointer;
+}

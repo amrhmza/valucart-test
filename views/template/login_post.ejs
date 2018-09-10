@@ -139,7 +139,8 @@
                         // $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");
                     }
                 }).fail(function (r) {
-                    toastr.error(r.error);
+                    console.log(r.responseJSON.error)
+                    toastr.error(r.responseJSON.error);
                     // $("#forgotpwd_error").html(r.error).addClass("has-error");
                 });
             }
