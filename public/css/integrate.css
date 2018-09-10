@@ -659,3 +659,50 @@ a {
 .exclusivs-carousel .owl-carousel .owl-stage-outer {
   overflow-y: -webkit-paged-x;
 }
+.height60 {
+  height: 60px;
+}
+.new_bu.panel-body {
+  padding: 15px !important;
+}
+.newproductpanel {
+  min-height: 100% !important;
+  padding-bottom: 0 !important;
+}
+.newproductpanel .panel-body {
+  padding: 15px !important;
+}
+.labadject::after {
+  top: 40% !important;
+}
+.labadject::before {
+  top: 43.5% !important;
+}
+.altr .labadject::before {
+  top: 44.5% !important;
+}
+.m-0 {
+  margin-top: 0 !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.colorbl {
+  color: #14bdcd;
+}
+.leftnum {
+  width: 2% !important;
+  float: left;
+  top: 35% !important;
+  position: absolute;
+}
+.rightcon {
+  width: 98% !important;
+  float: right;
+}
+.cushr {
+  border-top: 4px solid #323232;
+}
