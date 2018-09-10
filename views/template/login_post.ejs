@@ -27,7 +27,7 @@
                     url: '<%= process.env.APIURL %>/auth/login'
                 }).done(function (resp) {
                     if (resp.status == "success") {
-                        resp.useremail = username;
+                        resp.useremail = resp.email;
                         $.cookie('vcartAuth', JSON.stringify(resp), { expires: 7, path: '/' });
                         if (!resp.is_email_verified) {
                             var base_url = window.location.origin;
@@ -41,7 +41,6 @@
                                 location.reload(true); 
                             }   
                         }
-                            
                     }
                     else {
                         $(".login-action-msg").html(resp.status).addClass("has-error");
