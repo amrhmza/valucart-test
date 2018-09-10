@@ -686,3 +686,10 @@ a {
     height: auto;
   }
 }
+li.logout-btn,
+li.logout-btn:hover a {
+  background-image: none !important;
+}
+.text-green {
+  color: #28a745 !important;
+}
