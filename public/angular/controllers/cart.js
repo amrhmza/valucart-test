@@ -216,44 +216,45 @@ app.controller("cart", function(
       $scope.edit_title = 0;
     }
   };
+  if (angular.element("#mybnd-desktop").length) {
+    var cp = document.forms.updateBundleName,
+      elem = cp.elements;
+    cp.onsubmit = function() {
+      var a = 0;
+      if (!elem.bundlename.value) {
+        toastr.error("Bundle name is must.");
+        a = 1;
+      }
 
-  var cp = document.forms.updateBundleName,
-    elem = cp.elements;
-  cp.onsubmit = function() {
-    var a = 0;
-    if (!elem.bundlename.value) {
-      toastr.error("Bundle name is must.");
-      a = 1;
-    }
+      if (a == 1) {
+        return false;
+      } else {
+        var userAuth = typeof $.cookie("vcartAuth")
+          ? JSON.parse($.cookie("vcartAuth"))
+          : "";
+        var userToken = userAuth != "" ? userAuth.token : "";
 
-    if (a == 1) {
-      return false;
-    } else {
-      var userAuth = typeof $.cookie("vcartAuth")
-        ? JSON.parse($.cookie("vcartAuth"))
-        : "";
-      var userToken = userAuth != "" ? userAuth.token : "";
+        let userData = {
+          ub_id: elem.bundleid.value,
+          ub_name: elem.bundlename.value
+        };
 
-      let userData = {
-        ub_id: elem.bundleid.value,
-        ub_name: elem.bundlename.value
-      };
-
-      cart
-        .updateBundleName(userData, userToken)
-        .then(function(response) {
-          console.log(response);
-          if (response.data.results.status == 200) {
-            toastr.success("Bundle Name Updated Successfully");
-            $(".newBundleName").text(elem.bundlename.value);
-            $scope.edit_title = 0;
-          } else {
-            toastr.warning("Somthing Went Wrong");
-          }
-        })
-        .catch(function(response) {
-          console.log(response);
-        });
-    }
-  };
+        cart
+          .updateBundleName(userData, userToken)
+          .then(function(response) {
+            console.log(response);
+            if (response.data.results.status == 200) {
+              toastr.success("Bundle Name Updated Successfully");
+              $(".newBundleName").text(elem.bundlename.value);
+              $scope.edit_title = 0;
+            } else {
+              toastr.warning("Somthing Went Wrong");
+            }
+          })
+          .catch(function(response) {
+            console.log(response);
+          });
+      }
+    };
+  }
 });
