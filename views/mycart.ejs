@@ -67,7 +67,7 @@
                                                                 <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"
                                                                     type="checkbox" data-type="<%=(cart.wishlist)?'remove':'add'%>"
                                                                     ng-click="addwish(<%=cart.product_id%>, <%=cart.is_bundle%>, $event.target)"
-                                                                    <%=(cart.wishlist)? 'checked': ''%>/>
+                                                                    <%=(cart.wishlist)? 'checked': ''%> />
                                                                 <label for="product-<%= cart.product_id %>" data-hover-text="Wish List">
                                                                     <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                                                         xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@
                                     <% if(data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
-                                        <input type="hidden" name="cart_id" value="<%=cart.cart_id%>" />
+                                        <input type="hidden" name="cart_id" value="<%=cart.cart_id%>" class="cart_panel_<%=cart.cart_id%>"/>
                                         <% })}%>
                                             <% if(pendingBundle.length>0){ %>
                                                 <input type="hidden" name="ub_id" class="ub_idd" value="<%= pendingBundle[0].ub_id %>" />
