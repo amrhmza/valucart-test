@@ -150,7 +150,7 @@ app.controller("cart", function(
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
       .then(function(response) {
         if (response.status == 200) {
-          toastr.success("Coupon valid and applyed");
+          toastr.success("Coupon valid and applied");
           let data = response.data.results;
           $scope.applied = 0;
           $scope.couponInfo = data.msg;
@@ -211,8 +211,14 @@ app.controller("cart", function(
   $scope.edit_title = 0;
   $scope.change_title = function() {
     if ($scope.edit_title == 0) {
+      $(this)
+        .find("img")
+        .attr("src", "img/cancelimg.png");
       $scope.edit_title = 1;
     } else {
+      $(this)
+        .find("img")
+        .attr("src", "img/cancelimg.png");
       $scope.edit_title = 0;
     }
   };

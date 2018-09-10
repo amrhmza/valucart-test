@@ -9,6 +9,9 @@ app.controller("home", function(
   getWishList,
   userbundle
 ) {
+  var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+  $scope.loggedStatus = userAuth.status == "success" ? true : false;
+
   /**
    *
    * @param {*} data

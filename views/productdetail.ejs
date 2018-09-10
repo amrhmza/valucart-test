@@ -207,13 +207,23 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-6" ng-if="loggedStatus == true">
-                                        <a class="hidden-xs" ng-click="addtocart(<%= data.response[0].pd_id %>)">
-                                            <button class="btn btn-info">
+                                        <button class="btn btn-info" ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                        </a>
+                                        
+                                        <button type="button" class="hidden-xs hidden-sm btn btn-primary ebtn bdtd bdtd-toogle" data-toggle="dropdown"><img
+                                                src="img/menu.png" alt=""></button>
+
+                                            <ul class="dropdown-menu addtocartddp" role="menu">
+                                                <li class="addtobundle a-deactive addtobundleTitle">
+                                                    + Add to bundle
+                                                </li>
+                                                <li ng-repeat="bundle in mybundles"> <a ng-click="addToBundle($event, bundle.ub_id, bundle.product_count, <%= data.response[0].pd_id %>)">{{bundle.ub_name}}
+                                                        ( <span>{{bundle.product_count}}</span> )</a>
+                                                </li>
+                                            </ul>
 
                                     </div>
-                                    <div class="hidden-xs" class="col-xs-12 col-md-6" ng-if="loggedStatus != true">
+                                    <div class="col-xs-12 col-md-6" ng-if="loggedStatus != true">
                                         <a ng-click="addtocartOffline(<%= data.response[0].pd_id %>)">
                                             <button class="btn btn-info">
                                                 <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>

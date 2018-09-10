@@ -57,6 +57,7 @@ app.controller("otpVerify", function(
     }
   };
   $scope.resendotp = function() {
+    $(".resend-btn").text("Sending...");
     otpVerify
       .resent_otp()
       .then(function(response) {
@@ -65,7 +66,9 @@ app.controller("otpVerify", function(
           toastr.error(response.data.error);
         } else {
           toastr.success(response.data.results);
-          $window.location.href = "/";
+          $(".resend-btn").text("Resend OTP");
+          $(".otpvalue").val("");
+          //$window.location.href = "/";
         }
       })
       .catch(function(response) {

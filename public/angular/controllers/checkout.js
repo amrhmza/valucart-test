@@ -126,7 +126,7 @@ app.controller("checkout", function(
       .then(function(response) {
         $(".loader").addClass("hidden");
         if (response.status == 200) {
-          toastr.success("Coupon valid and applyed");
+          toastr.success("Coupon valid and applied");
           let data = response.data.results;
           $scope.applied = 0;
           $scope.couponInfo = data.msg;
