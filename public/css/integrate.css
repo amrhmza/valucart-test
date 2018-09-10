@@ -649,7 +649,7 @@ a {
   margin-bottom: 10px;
   margin-right: 5px;
 }
-.addtocart-float-btn .addtobundle {
+.addtocart-float-btn .addtobundle-dots {
   background: #ddd;
   padding: 33px 12px;
 }
@@ -658,4 +658,11 @@ a {
 }
 .exclusivs-carousel .owl-carousel .owl-stage-outer {
   overflow-y: -webkit-paged-x;
+}
+.btn-blue,
+.btn-blue:hover,
+.btn-black,
+.btn-blue:hover {
+  height: auto;
+  padding: 15px 35px;
 }

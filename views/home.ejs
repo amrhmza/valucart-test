@@ -283,7 +283,7 @@
                                         <button class="addtocart col-md-10" ng-click="addtocart(<%= cat.pd_id;%>)">
                                             <img src="img/addtocart.png" class="img-responsive"> Add To Cart
                                         </button>
-                                        <button class="addtobundle col-md-2" data-toggle="dropdown">
+                                        <button class="addtobundle-dots col-md-2" data-toggle="dropdown">
                                             <img src="img/menu.png" alt="">
                                         </button>
                                         <ul class="dropdown-menu addtocartddp" role="menu">
@@ -291,7 +291,7 @@
                                                 + Add to bundle
                                             </li>
                                             <li ng-repeat="bundle in mybundles">
-                                                <a ng-click="addToBundle($event, bundle.ub_id, product.pd_id, bundle.product_count)">{{bundle.ub_name}}
+                                                <a ng-click="addToBundle($event, bundle.ub_id, <%= cat.pd_id;%>, bundle.product_count)">{{bundle.ub_name}}
                                                     ( <span>{{bundle.product_count}}</span> )</a>
                                             </li>
                                         </ul>
