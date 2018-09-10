@@ -288,28 +288,40 @@ let products= productData.product;
             <div class="container bundledetailview">
                 <div class="row">
                     <% 
+                    j=0;
         products.forEach(function(pro){     
             if(pro){
                 if(pro.pbm_is_alternative!=1){
-        %>
+                    j++;    
+                    %>
 
-                        <div class="col-md-4 col-sm-6">
-                            <div class="panel panel-default productpanel">
+                        <div class="col-md-12">
+                            <div class="panel leftnum">
+                                <%=j%>.
+                            </div>
+                            <div class="panel rightcon panel-default productpanel newproductpanel">
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-xs-6" ng-init="c[<%= pro.pd_id %>]=<%= pro.pd_id %>">
+                                        <div class="col-md-1 col-xs-6">
+                                            <img src="<%=pro.p_image%>" class="height60 img-responsive productimg">
+                                        </div>
+                                        <div class="col-md-5 col-xs-6" ng-init="c[<%= pro.pd_id %>]=<%= pro.pd_id %>">
                                             <input type="radio" name="rGroup_<%= pro.pbm_id %>" class="hide" ng-checked="c[<%= pro.pd_id %>]" ng-model="c[<%= pro.pd_id %>]"
                                             />
-                                            <h4>
+                                            <h4 class="newproductpanel">
                                                 <%=pro.pd_name%>
                                             </h4>
+                                        </div>
+                                        <div class="col-md-3">
                                             <h5>
                                                 <img src="img/grammeter.png" class="img-responsive gramimg">
                                                 <%= pro.p_quantity%> <strong>X <%= pro.pbm_qty;%></strong>
                                             </h5>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <img src="<%=pro.p_image%>" class="img-responsive productimg">
+                                        <div class="col-md-3">
+                                            <h6>
+                                                <%=pro.p_price;%> AED
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -327,9 +339,10 @@ let products= productData.product;
                 products.forEach(function(pro){     
                     if(pro){
                         if(pro.pbm_is_alternative==1){
+                            j++;
             %>
-                <div class="container bundledetailvieww">
-                    <h4>Choose from one of the below</h4>
+                <div class="container bundledetailvieww m-0">
+                    <h4 class="mt-0 mb-0 colorbl">Choose from one of the below</h4>
                     <div class="row radios">
                         <% 
                 let alterpro= pro.alternatives;
@@ -338,29 +351,42 @@ let products= productData.product;
                         var select= (alt.pba_is_default==1)? true:false;
                         i++;
                 %>
-                            <div class="col-md-4 col-sm-6">
-                                <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
-                                />
-                                <label class="radio" for="r<%= alt.pd_id;%>">
-                                    <div class="panel panel-default productpanel">
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-xs-6">
-                                                    <h4>
-                                                        <%= alt.pd_name;%>
-                                                    </h4>
-                                                    <h5>
-                                                        <img src="img/grammeter.png" class="img-responsive gramimg">
-                                                        <%= alt.p_quantity;%> <strong>X <%= pro.pbm_qty;%></strong>
-                                                    </h5>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <img src="<%= alt.p_image;%>" class="img-responsive productimg">
+                            <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>">
+                                <% if(i==1){ %>
+                                    <div class="panel leftnum">
+                                        <%=j%>.
+                                    </div>
+                                    <%}%>
+                                        <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
+                                        />
+
+                                        <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id;%>">
+                                            <div class="panel  panel-default productpanel newproductpanel">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-2 col-xs-6 text-center">
+                                                            <img src="<%= alt.p_image;%>" class="height60 productimg">
+                                                        </div>
+                                                        <div class="col-md-4 col-xs-6 ">
+                                                            <h4 class="newproductpanel">
+                                                                <%= alt.pd_name;%>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-md-3 col-xs-6">
+                                                            <h5>
+                                                                <img src="img/grammeter.png" class=" img-responsive gramimg">
+                                                                <%= alt.p_quantity;%> <strong>X <%= pro.pbm_qty;%></strong>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-md-3 col-xs-6">
+                                                            <h6>
+                                                                <%=alt.p_price;%> AED
+                                                            </h6>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </label>
+                                        </label>
                             </div>
                             <%
                     });
@@ -372,6 +398,7 @@ let products= productData.product;
             }
         });
         %>
+
                     <div class="container productdetail">
                         <div id="exTab1" class="container">
                             <div class="tabheader">
@@ -596,6 +623,6 @@ let products= productData.product;
             </div>
             <script>
                 app.constant("myrev", {
-                    'data': <%- JSON.stringify(myrew == "" ?  : myrew) %> 
-            });
+                    'data': <%- JSON.stringify(myrew == "" ? [] : myrew) %> 
+        });
             </script>
