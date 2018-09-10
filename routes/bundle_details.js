@@ -11,7 +11,7 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
     let data = await getBundle.get_data(pb_id, cookies);
     let menudata = await getMenu.get_menulist();
     //console.log(data);
-    res.render("bundledetail", {
+    res.render("bundledetail_new", {
       data: data,
       menudata: menudata,
       cookies: cookies,
