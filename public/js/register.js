@@ -29,13 +29,32 @@ $(function() {
     var pwd = $("#pwd").val();
     var phone = $("#phone").val();
     var valid_email = validate_email(email);
-    if (pwd == "") toastr.error("Password is required"), $("#pwd").focus();
-    if (phone == "")
-      toastr.error("Phone number is required"), $("#phone").focus();
-    if (email == "") toastr.error("Email is required"), $("#email").focus();
-    if (username == "")
-      toastr.error("Username is required"), $("#uname").focus();
+    if (pwd == "") {
+      $("#r_pwd").addClass("required");
+      $("#pwd").focus();
+    } else {
+      $("#r_pwd").removeClass("required");
+    }
+    if (phone == "") {
+      $("#r_phone").addClass("required");
+      $("#phone").focus();
+    } else {
+      $("#r_phone").removeClass("required");
+    }
+    if (email == "") {
+      $("#r_email").addClass("required");
+      $("#email").focus();
+    } else {
+      $("#r_email").removeClass("required");
+    }
+    if (username == "") {
+      $("#r_uname").addClass("required");
+      $("#uname").focus();
+    } else {
+      $("#r_uname").removeClass("required");
+    }
     if (email != "" && valid_email == false) {
+      $("#r_email").addClass("required");
       toastr.error("Invalid email");
       $("#email").focus();
       return false;
