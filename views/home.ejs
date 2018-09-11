@@ -276,7 +276,7 @@
                                                 </button>
                                             </div>
 
-                                            <a ng-click="addtocart(<%= cat.pd_id;%>)" ng-if="loggedStatus != true">
+                                            <a  data-toggle="modal" data-target="#myModal" ng-if="loggedStatus != true">
                                                 <button class="btn btn-info">
                                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                             </a>
