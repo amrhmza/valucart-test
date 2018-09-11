@@ -809,3 +809,14 @@ li.logout-btn:hover a {
 a.highlight {
   font-weight: 600 !important;
 }
+.text-white {
+  color: #fff !important;
+}
+.otp-bottom a {
+  display: inline-block !important;
+}
+.coupon-success {
+  color: #ffffff;
+  background-color: #3c763d;
+  padding: 5px;
+}

@@ -4,6 +4,7 @@ const getMenu = require("../controllers/category_menu.js");
 var auth = require("../lib/auth.js");
 const userbundle = require("../controllers/userbundle.js");
 const schedule = require("../controllers/schedule.js");
+const getMenu = require("../controllers/category_menu.js");
 
 /* Create bundle. */
 router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
@@ -23,6 +24,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       angular: false,
       customjs: false,
       search: 0,
+      menudata: menudata,
       cookies: cookies,
       name: name,
       check: checkmsg
