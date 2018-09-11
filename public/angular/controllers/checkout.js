@@ -21,7 +21,16 @@ app.controller("checkout", function(
   addNewAddress
     .getlist()
     .then(function(response) {
-      $scope.addresslist = response.data.results.response;
+      var addArr = response.data.results.response;
+      var addlist = [];
+      var no = 0;
+      angular.forEach(addArr, function(value, key) {
+        if (value.a_name && value.a_phone && value.a_address_1) {
+          addlist.push(value);
+        }
+      });
+      $scope.addresslist = addlist;
+      console.log($scope.addresslist);
     })
     .catch(function(response) {
       console.log(response);
@@ -117,7 +126,7 @@ app.controller("checkout", function(
       .then(function(response) {
         $(".loader").addClass("hidden");
         if (response.status == 200) {
-          toastr.success("Coupon valid and applyed");
+          toastr.success("Coupon valid and applied");
           let data = response.data.results;
           $scope.applied = 0;
           $scope.couponInfo = data.msg;

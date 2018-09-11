@@ -68,21 +68,23 @@
     <% if(typeof home_new != "undefined"){ %>
     <style>
         .col-md-offset-4 {
-            margin-left: 10%;
-        }
-        .navtop {
-            background-color: #fff;
-        }
-        @media only screen and (min-width: 1400px) {
-            .navtop {
-                background-color: #fff;
-                color: white;
-                padding-top: 10px;
-                padding-bottom: 0px;
-                height: 96px;
-            }
-        }
-    </style>
+                                margin-left: 10%;
+                            }
+
+                            .navtop {
+                                background-color: #fff;
+                            }
+
+                            @media only screen and (min-width: 1400px) {
+                                .navtop {
+                                    background-color: #fff;
+                                    color: white;
+                                    padding-top: 10px;
+                                    padding-bottom: 0px;
+                                    height: 96px;
+                                }
+                            }
+                        </style>
     <% } %>
 </head>
 
@@ -105,8 +107,8 @@
                 <li>
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
-                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png"> <span class="current_city">Al
-                                Karama, Dubai</span>
+                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png">
+                            <span class="current_city">Al Karama, Dubai</span>
                             <i class="fa fa-chevron-down"></i>
                         </p>
                     </a>
@@ -142,7 +144,7 @@
                             <li>
                                 <a href="mybundles">My Bundles</a>
                             </li>
-                            <li>
+                            <li class="logout-btn">
                                 <a href="#" class="vcartLogout">Logout</a>
                             </li>
                         </ul>
@@ -176,9 +178,13 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-6">
                     <% if(typeof home_new != "undefined"){ %>
-                    <a href=""><img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <a href="">
+                        <img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                    </a>
                     <% } else { %>
-                    <a href=""><img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo"></a>
+                    <a href="">
+                        <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                    </a>
                     <% } %>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-3">
@@ -263,7 +269,8 @@
                                                     %>
                                                     <li class="<%= (no==1)?'active':''; %>">
                                                         <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
-                                                            <%= cat.c_name;%></a>
+                                                            <%= cat.c_name;%>
+                                                        </a>
                                                     </li>
                                                     <%
                                                         });
@@ -295,7 +302,8 @@
                                                                 %>
                                                                 <li>
                                                                     <a href="<%= scatUrl%>">
-                                                                        <%=scat.c_name%></a>
+                                                                        <%=scat.c_name%>
+                                                                    </a>
                                                                 </li>
                                                                 <%
                                                                 });
@@ -335,8 +343,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
                     <a href="/product-listing/valucartexclusives">
-                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="ValuCart Exclusives">
-                        ValuCart Exclusives</a>
+                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives">
+                        Valucart Exclusives</a>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
                     <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
@@ -499,8 +507,10 @@
                 %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title panels" data-href="<%= catUrl;%>"><a href="<%= catUrl;%>">
-                                <%= cat.c_name;%></a>
+                        <h4 class="panel-title panels" data-href="<%= catUrl;%>">
+                            <a href="<%= catUrl;%>">
+                                <%= cat.c_name;%>
+                            </a>
                             <i class="fa fa-chevron-right" aria-hidden="true"></i>
                         </h4>
                     </div>

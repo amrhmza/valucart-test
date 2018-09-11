@@ -47,12 +47,14 @@
         <div class="col-md-12 home-cards valuezonecard">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="ValuZone-BUNDLES">ValuZone<br> BUNDLES</h1>
+                    <h1 class="ValuZone-BUNDLES">ValuZone
+                        <br> BUNDLES</h1>
                     <p class="Choose-from-a-range-of-pre-configured-bundles-and-save-huge">
                         Choose from a range of pre-configured bundles and save huge
                     </p>
                     <a class="btn btn-black" href="/bundle-list">
-                        Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x, img/vector-smart-object@3x.png 3x"
+                        Shop now
+                        <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x, img/vector-smart-object@3x.png 3x"
                             class="Vector-Smart-Object">
                     </a>
                 </div>
@@ -64,7 +66,8 @@
         <div class="col-md-12 home-cards bundlecard">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="ValuZone-BUNDLES">Build your own <br>Bundles</h1>
+                    <h1 class="ValuZone-BUNDLES">Build your own
+                        <br>Bundles</h1>
                     <p class="Choose-from-a-range-of-pre-configured-bundles-and-save-huge">
                         Create your own bundle from over 300 products and save big upto 25%
                     </p>
@@ -74,13 +77,15 @@
                         if(userData.status=="success"){
                     %>
                     <a class="btn btn-black" href="/create-bundle">
-                        Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
+                        Shop now
+                        <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
                             img/vector-smart-object@3x.png 3x"
                             class="Vector-Smart-Object">
                     </a>
                     <% } } else{ %>
                     <a class="btn btn-black refererLogin" data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
-                        Shop now <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
+                        Shop now
+                        <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
                             img/vector-smart-object@3x.png 3x"
                             class="Vector-Smart-Object">
                     </a>
@@ -204,11 +209,11 @@
             <div class="col-xs-8">
                 <h1>
                     <!-- <img src="img/valucart-exclusive.svg" class="img-responsive titleimg"> -->
-                    ValuCart Exclusives
+                    Valucart Exclusives
                 </h1>
             </div>
             <div class="col-xs-4 text-right p-t-30">
-                <a href="#" class="viewall">
+                <a href="/product-listing/valucartexclusives" class="viewall">
                     <p class="text-info f24">View all</p>
                 </a>
             </div>
@@ -250,7 +255,8 @@
                                                     </svg>
                                                 </label>
                                             </div>
-                                        </button></div>
+                                        </button>
+                                    </div>
                                     <img src="<%= cat.p_image %>" class="img-responsive productimg">
                                     <a href="product-detail/<%= cat.pd_id+'/'+pd_url%>">
                                         <h4>
@@ -277,12 +283,12 @@
                                         </button>
                                     </div>
 
-                                    <!--<a ng-click="addtocart(<%= cat.pd_id;%>)">
+                                    <a ng-click="addtocart(<%= cat.pd_id;%>)" ng-if="loggedStatus != true">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                                    </a>-->
+                                    </a>
                                 </div>
-                                <div class="addtocart-float-btn">
+                                <div class="addtocart-float-btn" ng-if="loggedStatus == true">
                                     <button class="addtocart col-md-10" ng-click="addtocart(<%= cat.pd_id;%>)">
                                         <img src="img/addtocart.png" class="img-responsive"> Add To Cart
                                     </button>
@@ -295,7 +301,8 @@
                                         </li>
                                         <li ng-repeat="bundle in mybundles">
                                             <a ng-click="addToBundle($event, bundle.ub_id, <%= cat.pd_id;%>, bundle.product_count)">{{bundle.ub_name}}
-                                                ( <span>{{bundle.product_count}}</span> )</a>
+                                                (
+                                                <span>{{bundle.product_count}}</span> )</a>
                                         </li>
                                     </ul>
                                 </div>

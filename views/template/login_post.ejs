@@ -19,7 +19,7 @@
 
             if (username != "" && password != "") {
                 var data = { username, password };
-                var refferrerUrl= $(".referrerInput").val();
+                var refferrerUrl = $(".referrerInput").val();
                 $.ajax({
                     type: 'POST',
                     data: JSON.stringify(data),
@@ -27,21 +27,20 @@
                     url: '<%= process.env.APIURL %>/auth/login'
                 }).done(function (resp) {
                     if (resp.status == "success") {
-                        resp.useremail = username;
+                        resp.useremail = resp.email;
                         $.cookie('vcartAuth', JSON.stringify(resp), { expires: 7, path: '/' });
                         if (!resp.is_email_verified) {
                             var base_url = window.location.origin;
                             window.location.replace(base_url + "/otp");
                         }
-                        else{
-                            if(refferrerUrl !=""){
+                        else {
+                            if (refferrerUrl != "") {
                                 window.location.replace(refferrerUrl);
                             }
-                            else{
-                                location.reload(true); 
-                            }   
+                            else {
+                                location.reload(true);
+                            }
                         }
-                            
                     }
                     else {
                         $(".login-action-msg").html(resp.status).addClass("has-error");
@@ -87,7 +86,7 @@
                     url: '<%= process.env.APIURL %>/auth/forgetpassword?email=' + email
                 }).done(function (resp) {
                     if (resp.result != "") {
-                        $("#forgotpwd_error").html(resp.result).addClass("has-error");
+                        $("#forgotpwd_error").html(resp.result).addClass("text-green");
                         $("#pinin").removeClass("avoid-clicks");
                         console.log("success itseems");
                         $("")
@@ -129,15 +128,19 @@
                     url: '<%= process.env.APIURL %>/auth/forgetpassword'
                 }).done(function (resp) {
                     if (resp.result != "") {
-                        $("#forgotpwd_error").html(resp.result).addClass("has-error");
+                        toastr.success("Your password has been changed. Please log in, to continue shopping.");
+                        // $("#forgotpwd_error").html(resp.result).addClass("has-error");
                         $('#forgotpwd_form').trigger("reset");
                         $('#myModal').modal('show');
                         $('#forgot_password').modal('hide');
                     } else {
-                        $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");
+                        toastr.error("Something went wrong. Please try later");
+                        // $("#forgotpwd_error").html("Itseems workes fine").addClass("has-error");
                     }
                 }).fail(function (r) {
-                    $("#forgotpwd_error").html(r.error).addClass("has-error");
+                    console.log(r.responseJSON.error)
+                    toastr.error(r.responseJSON.error);
+                    // $("#forgotpwd_error").html(r.error).addClass("has-error");
                 });
             }
         });

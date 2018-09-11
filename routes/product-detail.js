@@ -22,6 +22,7 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
         "angular/factory/product_details.js",
         "angular/controllers/product_details.js",
         "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js",
         "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js"
       ]

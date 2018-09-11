@@ -55,8 +55,9 @@ $(function() {
         }),
         contentType: "application/json",
         url: APIURL + "/auth/register",
-        success: function(response) {
-          if (response.status == "success") {
+        success: function(resp) {
+          //console.log(resp);
+          /* if (resp.status == "success") {
             $("#register-form input").val("");
             toastr.success("Registered Successfully");
             $("#register-form-link").removeClass("active");
@@ -65,6 +66,29 @@ $(function() {
               .delay(100)
               .fadeIn(100);
             $("#register-form").fadeOut(100);
+          } */
+          if (resp.status == "success") {
+            $("#register-form input").val("");
+            resp.useremail = resp.email;
+            $.cookie("vcartAuth", JSON.stringify(resp), {
+              expires: 7,
+              path: "/"
+            });
+            if (!resp.is_email_verified) {
+              var base_url = window.location.origin;
+              window.location.replace(base_url + "/otp");
+            } else {
+              if (refferrerUrl != "") {
+                window.location.replace(refferrerUrl);
+              } else {
+                location.reload(true);
+              }
+            }
+          } else {
+            $(".login-action-msg")
+              .html(resp.status)
+              .addClass("has-error");
+            toastr.error("Invalid Username/Password");
           }
         },
         error: function(error) {
