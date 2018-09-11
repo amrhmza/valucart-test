@@ -13,7 +13,7 @@ app.controller("select_area", function(
     var selectedArea = $("#selectedarea").val();
     if (typeof selectedArea == "undefined" || selectedArea == "") {
       // if (typeof $scope.area == "undefined" || $scope.area == "") {
-      toastr.warning("Please Select area!");
+      toastr.warning("Please select area!");
     } else {
       localStorage.setItem("area", $scope.area);
       window.location.href = "/intro";

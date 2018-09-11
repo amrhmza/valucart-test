@@ -10,11 +10,17 @@
             var password = $(".login_password").val();
 
             if (username == "") {
-                toastr.error("Username Required!!");
+                $("#l_uname").addClass("required");
+                $(".login_username").focus();
+            } else {
+                $("#l_uname").removeClass("required");
             }
 
             if (password == "") {
-                toastr.error("Password Required!!");
+                $("#l_pwd").addClass("required");
+                $(".login_password").focus();
+            } else {
+                $("#l_pwd").removeClass("required");
             }
 
             if (username != "" && password != "") {
@@ -43,13 +49,14 @@
                         }
                     }
                     else {
-                        $(".login-action-msg").html(resp.status).addClass("has-error");
-                        toastr.error("Invalid Username/Password");
+                        $(".login-action-msg").html(resp.responseJSON.error).addClass("has-error");
+                        // toastr.error("Invalid Username/Password");
                     }
                 }).fail(function (r) {
                     console.log(JSON.stringify(r));
-                    // $(".login-action-msg").html(r.responseJSON.error).addClass("has-error");
-                    toastr.error(r.responseJSON.error);
+                    $(".login-action-msg").addClass("form-group pb-5 text-center");
+                    $(".login-action-msg").html(r.responseJSON.error).addClass("has-error");
+                    // toastr.error(r.responseJSON.error);
                 });
             }
         });
