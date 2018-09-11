@@ -293,3 +293,23 @@ function alertShow() {
     }
   );
 }
+/**
+ * Add hover effect to the main category when hovering on the subcategory
+ */
+$(document).ready(function () {
+  var maincat_id, scat_block_id, $c;
+  $(".lnt-category a").on("mouseover", function () {
+    maincat_id = $(this).attr("data-root");
+    $(".lnt-category a").removeClass("highlight");
+  });
+  $(".lnt-subcategory a").on("mouseover", function () {
+    scat_block_id = $(".lnt-subcategory").parent().hasClass("active");
+    if (scat_block_id == true) {
+      $c = $(".lnt-category a[data-root='" + maincat_id + "']").addClass("highlight");
+    }
+    $('.lnt-category a.highlight').not($c).removeClass('highlight');
+  });
+  $(".lnt-subcategory a").on("mouseout", function () {
+    $(".lnt-category a").removeClass("highlight");
+  });
+});
