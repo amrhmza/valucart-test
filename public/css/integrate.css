@@ -806,3 +806,6 @@ li.logout-btn:hover a {
 .pb-20 {
   padding-bottom: 20px;
 }
+a.highlight {
+  font-weight: 600 !important;
+}
