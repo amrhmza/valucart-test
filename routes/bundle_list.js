@@ -24,6 +24,8 @@ router.get("/", async (req, res, next) => {
         "angular/app.js",
         "angular/factory/bundle_list_new.js",
         "angular/controllers/bundle_list_new.js",
+        "angular/factory/bundle_details.js",
+        "angular/factory/userbundle.js",
         "angular/factory/wishlist.js",
         "js/jquery.nice-select.min.js"
       ]

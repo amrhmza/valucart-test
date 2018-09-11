@@ -1226,7 +1226,7 @@ a:hover {
 	color: red !important;
 }
 .carousel3 .productpanel h4 {
-	width: 200px;
+	width: 100%;
 	margin: 15px auto 18px;
 	font-size: 24px;
 	color: #222222;
@@ -9609,7 +9609,7 @@ a.Shop-now {
 	font-weight: 500;
 	font-style: normal;
 	font-stretch: normal;
-	line-height: 1.79;
+	line-height: 5;
 	letter-spacing: -0.5px;
 	text-align: left;
 	color: #ffffff;

@@ -68,7 +68,7 @@
                         <h1 class="ValuZone-BUNDLES">Build your own
                             <br>Bundles</h1>
                         <p class="Choose-from-a-range-of-pre-configured-bundles-and-save-huge">
-                            Create your own bundle from over 300 products and save big upto 25%
+                            Create your own bundle from over 10000+ products and save big upto 25%
                         </p>
                         <% 
                     if(cookies){
@@ -201,7 +201,7 @@
             </section>
         </div> -->
         <hr class="invis hidden-xs hidden-sm">
-        <div class="container vc-exclusives">
+        <div class="container">
             <div class="row">
                 <div class="col-xs-8">
                     <h1>
@@ -276,7 +276,7 @@
                                                 </button>
                                             </div>
 
-                                            <a ng-click="addtocart(<%= cat.pd_id;%>)" ng-if="loggedStatus != true">
+                                            <a  data-toggle="modal" data-target="#myModal" ng-if="loggedStatus != true">
                                                 <button class="btn btn-info">
                                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                             </a>

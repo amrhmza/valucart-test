@@ -36,6 +36,7 @@ app.constant("config", {
   baseURL: baseurl,
   getproduct_list: baseurl + "/product/list/product/post",
   getbundleList: baseurl + "/product/list/product_bundle/post",
+  getbundleDetail: baseurl + "/product/details_pb/get",
   submitBundle_review: baseurl + "/product/review/post",
   unsubscribeBundle: baseurl + "/user_bundle/unSubscribeUserBundle",
   updateBundleName: baseurl + "/user_bundle/reNameUserBundle",
