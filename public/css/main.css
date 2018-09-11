@@ -1226,7 +1226,7 @@ a:hover {
 	color: red !important;
 }
 .carousel3 .productpanel h4 {
-	width: 200px;
+	width: 100%;
 	margin: 15px auto 18px;
 	font-size: 24px;
 	color: #222222;
