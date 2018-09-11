@@ -7,7 +7,9 @@ app.controller("bundle_listing", function(
   $filter,
   config,
   getbundleList,
-  getWishList
+  getWishList,
+  bundle_details,
+  userbundle
 ) {
   $scope.loadon = false;
   $scope.productData = [];
@@ -253,6 +255,150 @@ app.controller("bundle_listing", function(
       })
       .catch(function(response) {
         console.log(response);
+      });
+  };
+
+  $scope.addtocart = function(pb_id) {
+    var qty = parseInt($("input[name=qty_" + pb_id + "]").val());
+
+    bundle_details
+      .getBundleDetail(pb_id)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          let data = {
+            product_id: pb_id,
+            quantity: qty,
+            is_bundel: true
+          };
+          let alter = [];
+          const proList = response.data.results.response.product;
+          if (proList) {
+            angular.forEach(proList, function(value, key) {
+              let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
+              if (is_alternaitve) {
+                angular.forEach(proList, function(val, i) {
+                  if (val.pba_is_default == 1) {
+                    var pd_id = val.pba_pd_id;
+                  }
+                });
+              } else {
+                var pd_id = value.pd_id;
+              }
+              let alter_data = {
+                pd_id: parseInt(element),
+                is_alternaitve: is_alternaitve
+              };
+              alter.push(alter_data);
+            });
+          }
+          bundle_details
+            .listAddToCart(qty, alter, pb_id)
+            .then(function(response) {
+              if (response.data.results.status != "200") {
+                toastr.warning(response.data.results.msg);
+              } else {
+                toastr.success(response.data.results.msg);
+                var cartOldQty = localStorage.getItem("cartCount");
+                var newCartQty = parseInt(cartOldQty) + parseInt(1);
+                localStorage.setItem("cartCount", newCartQty);
+                $(".cart-label").text(newCartQty);
+              }
+            })
+            .catch(function(response) {
+              toastr.warning(response.data.results.msg);
+            });
+        }
+      })
+      .catch(function(response) {
+        toastr.warning(response.data.results.msg);
+      });
+  };
+
+  $scope.mybundles = [];
+
+  $scope.userBundlelist = function() {
+    userbundle
+      .getList()
+      .then(function(response) {
+        console.log(response);
+        let listdata = response.data.results.response;
+        if (listdata != "") {
+          angular.forEach(listdata, function(value, key) {
+            $scope.mybundles.push(value);
+          });
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+      });
+  };
+  $scope.userBundlelist();
+
+  $scope.addToBundle = function($event, bundleId, pb_id, bundleQty) {
+    //console.log(pb_id);
+    bundle_details
+      .getBundleDetail(pb_id)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          let alter = [];
+          const proList = response.data.results.response.product;
+          if (proList) {
+            angular.forEach(proList, function(value, key) {
+              let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
+              if (is_alternaitve) {
+                angular.forEach(proList, function(val, i) {
+                  if (val.pba_is_default == 1) {
+                    var pd_id = val.pba_pd_id;
+                  }
+                });
+              } else {
+                var pd_id = value.pd_id;
+              }
+              let alter_data = {
+                pd_id: parseInt(element),
+                is_alternaitve: is_alternaitve
+              };
+              alter.push(alter_data);
+            });
+          }
+
+          let productData = {
+            user_bundle: bundleId,
+            product_id: pb_id,
+            product_qty: bundleQty,
+            is_bundle: true,
+            bundel_items: alter
+          };
+
+          console.log(productData);
+
+          userbundle
+            .updateBundle(productData)
+            .then(function(response) {
+              console.log(response);
+              var res = response.data;
+              if (response.status == "200") {
+                toastr.success(res.results.msg);
+                angular
+                  .element($event.currentTarget)
+                  .find("span")
+                  .html(parseInt(bundleQty) + 1);
+              } else {
+                toastr.warning(res.error.msg);
+              }
+            })
+            .catch(function(response) {
+              console.log(response);
+              toastr.warning(response.data.error.msg);
+            });
+        }
+      })
+      .catch(function(response) {
+        toastr.warning(response.data.results.msg);
       });
   };
 });
