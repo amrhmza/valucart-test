@@ -7,6 +7,9 @@ router.get("/:city_id", async (req, res, next) => {
   try {
     let city_id = req.param("city_id");
     let data = await selectArea.get_data(city_id);
+    // let dloocal = localStorage.getItem();
+    // console.log("TCL: dloocal", dloocal);
+
     res.render("select-area", {
       data: data,
       angular: true,

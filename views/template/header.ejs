@@ -52,6 +52,19 @@
     <script src="js/uisearch.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
+    <script>
+    var city_name = localStorage.getItem('city_name');
+    if (city_name != '') {
+        $(".current_city").html(city_name);
+    }
+</script>
+<script>
+    var city = localStorage.getItem('city');
+    var area = localStorage.getItem('area');
+    if (city == null || area == null) {
+        window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
+    }
+    </script>
     <% if(angular){ %>
         <!-- angular Libraries -->
         <script src="angular/lib/angular.min.js"></script>
