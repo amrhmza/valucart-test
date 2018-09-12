@@ -31,11 +31,13 @@ app.controller("product_listing", function (
       let start = filterdata.price_start ? filterdata.price_start : "";
       let end = filterdata.price_end ? filterdata.price_end : "";
       $(".pri_" + start + "_" + end).prop("checked", true);
+      $(".pri_" + start + "_" + end).closest(".panel").find(".clearfilter").show(200);
     }
     if (filterdata.discount_start || filterdata.discount_end) {
       let start = filterdata.discount_start ? filterdata.discount_start : "";
       let end = filterdata.discount_end ? filterdata.discount_end : "";
       $(".dis_" + start + "_" + end).prop("checked", true);
+      $(".dis_" + start + "_" + end).closest(".panel").find(".clearfilter").show(200);
     }
     if (filterdata.brand) {
       let object = filterdata.brand.split(",");
@@ -164,7 +166,6 @@ app.controller("product_listing", function (
    * @param {Number} p2
    */
   $scope.clearFilter = function (type) {
-    console.log(type);
     switch (type) {
       case "price":
         $location.search("price_start", null);

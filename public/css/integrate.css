@@ -830,3 +830,6 @@ a.highlight {
 .productlistpage.product-listing-page .discountprice {
   top: -19px;
 }
+.btn:hover, .btn:focus, .btn.focus {
+  color: #fff;
+}
