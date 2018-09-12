@@ -820,3 +820,13 @@ a.highlight {
   background-color: #3c763d;
   padding: 5px;
 }
+
+.offeredprice {
+  text-decoration: line-through;
+  margin-bottom: -39px !important;
+  margin-top: 24px;
+}
+
+.productlistpage.product-listing-page .discountprice {
+  top: -19px;
+}
