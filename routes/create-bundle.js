@@ -4,12 +4,14 @@ const getMenu = require("../controllers/category_menu.js");
 var auth = require("../lib/auth.js");
 const userbundle = require("../controllers/userbundle.js");
 const schedule = require("../controllers/schedule.js");
+const getHome = require("../controllers/home.js");
 
 /* Create bundle. */
 router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let check = await userbundle.checkpendingBundle(JSON.parse(cookies));
+    let menudata = await getMenu.get_menulist();
     console.log(check);
     if (check.results.status == 200 && check.results.response.length > 0) {
       var checkmsg =
@@ -20,9 +22,9 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       var name = "";
     }
     res.render("newbundle", {
+      menudata: menudata,
       angular: false,
       customjs: false,
-      search: 0,
       cookies: cookies,
       name: name,
       check: checkmsg

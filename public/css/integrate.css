@@ -796,3 +796,27 @@ li.logout-btn:hover a {
 .vcartLogout {
   cursor: pointer;
 }
+.required label,
+.required .form-control1 {
+  color: #f00 !important;
+}
+.required .form-control1 {
+  border-bottom: 1px solid red !important;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+a.highlight {
+  font-weight: 600 !important;
+}
+.text-white {
+  color: #fff !important;
+}
+.otp-bottom a {
+  display: inline-block !important;
+}
+.coupon-success {
+  color: #ffffff;
+  background-color: #3c763d;
+  padding: 5px;
+}

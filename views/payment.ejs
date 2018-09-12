@@ -81,7 +81,7 @@
                             <h3 class=""><span ng-bind-html="coupon"></span>
                                 <i class="fa fa-trash-o trash text-danger" aria-hidden="true" ng-click="removeCoupon()"></i>
                             </h3>
-                            <article class="alert-danger" ng-bind-html="couponInfo"></article>
+                            <article class="coupon-success" ng-bind-html="couponInfo"></article>
                         </div>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
@@ -97,7 +97,7 @@
                         </div>
                         <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
                             <h5 class="total">
-                                <strong>savings</strong>
+                                <strong>Savings</strong>
                             </h5>
                             <h5 class="total" style="float: right;">
                                 <strong ng-bind-html="cartsaving+' AED'">7.50 AED</strong>

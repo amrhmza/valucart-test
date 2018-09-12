@@ -8,7 +8,7 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="937569373900-g6jtmi0c9e4jjvh9shnclpfehiqkcpn2.apps.googleusercontent.com">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Valucart</title>
+    <title>ValuCart</title>
     <base href="<%= process.env.PROTOCOL+baseURL %>/">
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
 
@@ -53,21 +53,21 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <% if(angular){ %>
-    <!-- angular Libraries -->
-    <script src="angular/lib/angular.min.js"></script>
-    <script src="angular/lib/angular-route.min.js"></script>
-    <script src="angular/lib/angular-aria.min.js"></script>
-    <script src="angular/lib/angular-messages.min.js"></script>
-    <script src="angular/lib/angular-sanitize.min.js"></script>
-    <%  } %>
-    <% if(customjs){ 
+        <!-- angular Libraries -->
+        <script src="angular/lib/angular.min.js"></script>
+        <script src="angular/lib/angular-route.min.js"></script>
+        <script src="angular/lib/angular-aria.min.js"></script>
+        <script src="angular/lib/angular-messages.min.js"></script>
+        <script src="angular/lib/angular-sanitize.min.js"></script>
+        <%  } %>
+            <% if(customjs){ 
     jslist.forEach(function(js){ %>
-    <script src="<%- js %>"></script>
-    <% })
+                <script src="<%- js %>"></script>
+                <% })
     } %>
-    <% if(typeof home_new != "undefined"){ %>
-    <style>
-        .col-md-offset-4 {
+                    <% if(typeof home_new != "undefined"){ %>
+                        <style>
+                            .col-md-offset-4 {
                                 margin-left: 10%;
                             }
 
@@ -85,7 +85,7 @@
                                 }
                             }
                         </style>
-    <% } %>
+                        <% } %>
 </head>
 
 <body>
@@ -118,49 +118,49 @@
                 var userData=JSON.parse(cookies);
                 if(userData.status=="success"){
                 %>
-                <li>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-responsive topnavlocationimg" src="img/user.png">
-                            <%=(userData.username).toUpperCase();%>
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="myorders">My Orders</a>
-                            </li>
-                            <li>
-                                <a href="profile">Profile</a>
-                            </li>
-                            <li>
-                                <a href="addressbook">Address Book</a>
-                            </li>
-                            <li>
-                                <a href="change-password">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="mywishlist">My Wish List</a>
-                            </li>
-                            <li>
-                                <a href="mybundles">My Bundles</a>
-                            </li>
-                            <li class="logout-btn">
-                                <a href="#" class="vcartLogout">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="img-responsive topnavlocationimg" src="img/user.png">
+                                <%=(userData.username).toUpperCase();%>
+                                    <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="myorders">My Orders</a>
+                                </li>
+                                <li>
+                                    <a href="profile">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="addressbook">Address Book</a>
+                                </li>
+                                <li>
+                                    <a href="change-password">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="mywishlist">My Wish List</a>
+                                </li>
+                                <li>
+                                    <a href="mybundles">My Bundles</a>
+                                </li>
+                                <li class="logout-btn">
+                                    <a href="#" class="vcartLogout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                </li>
-                <%
+                    </li>
+                    <%
                     }
                 }
                 else{
                 %>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal">
-                        <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
-                </li>
-                <%    
+                        <li>
+                            <a href="#" class="refererLogin" data-referrer="intro" data-toggle="modal" data-target="#myModal">
+                                <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
+                        </li>
+                        <%    
                 }
                 %>
             </ul>
@@ -178,14 +178,14 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-6">
                     <% if(typeof home_new != "undefined"){ %>
-                    <a href="">
-                        <img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo">
-                    </a>
-                    <% } else { %>
-                    <a href="">
-                        <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
-                    </a>
-                    <% } %>
+                        <a href="">
+                            <img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                        </a>
+                        <% } else { %>
+                            <a href="">
+                                <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                            </a>
+                            <% } %>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-3">
                     <ul class="list-inline navlist">
@@ -195,10 +195,10 @@
                                     <input type="text" class="form-control desktopsearch" placeholder="What are you looking for?">
                                     <div class="input-group-btn">
                                         <% if(typeof home_new != "undefined"){ %>
-                                        <img src="img/search-1.png" class="img-responsive searchicon" />
-                                        <% } else { %>
-                                        <img src="img/searchiconnav.png" class="img-responsive searchicon" />
-                                        <% } %>
+                                            <img src="img/search-1.png" class="img-responsive searchicon" />
+                                            <% } else { %>
+                                                <img src="img/searchiconnav.png" class="img-responsive searchicon" />
+                                                <% } %>
                                     </div>
                                 </div>
                             </form>
@@ -208,28 +208,27 @@
                             var userData=JSON.parse(cookies);
                         if(userData.status=="success"){
                         %>
-                        <li class="hidden-xs">
-                            <a href="mywishlist">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
-                                <% } else { %>
-                                <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo"
-                                    style="margin-right: 10px;">
-                                <% } %>
+                            <li class="hidden-xs">
+                                <a href="mywishlist">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                        <% } else { %>
+                                            <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                            <% } %>
 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cart">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } else { %>
-                                <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } %>
-                            </a>
-                            <span class="cart-label">0</span>
-                        </li>
-                        <% }
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cart">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                        <% } else { %>
+                                            <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                            <% } %>
+                                </a>
+                                <span class="cart-label">0</span>
+                            </li>
+                            <% }
                         } %>
                     </ul>
                 </div>
@@ -238,25 +237,24 @@
         </div>
     </div>
     <% if(typeof search=="undefined"){ %>
-    <div class="container-fluid navtop2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 hidden-xs">
-                    <nav class="navbar navbar-static-top line-navbar-two">
-                        <div class="container" style="padding-left: 0px;">
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="line-navbar-collapse-2">
-                                <ul class="nav navbar-nav lnt-nav-mega">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-expanded="false">
-                                            Categories
-                                        </a>
-                                        <div class="dropdown-menu" role="menu">
-                                            <div class="lnt-dropdown-mega-menu">
-                                                <!-- List of categories -->
-                                                <ul class="lnt-category list-unstyled">
-                                                    <% 
+        <div class="container-fluid navtop2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <nav class="navbar navbar-static-top line-navbar-two">
+                            <div class="container" style="padding-left: 0px;">
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="line-navbar-collapse-2">
+                                    <ul class="nav navbar-nav lnt-nav-mega">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                Categories
+                                            </a>
+                                            <div class="dropdown-menu" role="menu">
+                                                <div class="lnt-dropdown-mega-menu">
+                                                    <!-- List of categories -->
+                                                    <ul class="lnt-category list-unstyled">
+                                                        <% 
                                                     let menuList= (typeof menudata != 'undefined')?menudata.response:[];
                                                     var no=0;
                                                     if (menuList) {
@@ -267,174 +265,172 @@
                                                             var catUrl= 'product-listing/'+cat.c_id+'/'+cat_url_name;
                                                                
                                                     %>
-                                                    <li class="<%= (no==1)?'active':''; %>">
-                                                        <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
-                                                            <%= cat.c_name;%>
-                                                        </a>
-                                                    </li>
-                                                    <%
+                                                            <li class="<%= (no==1)?'active':''; %>">
+                                                                <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
+                                                                    <%= cat.c_name;%>
+                                                                </a>
+                                                            </li>
+                                                            <%
                                                         });
                                                     }
                                                     %>
-                                                </ul>
-                                                <!-- Subcategory and carousel wrap -->
-                                                <div class="lnt-subcategroy-carousel-wrap container-fluid">
-                                                    <% 
+                                                    </ul>
+                                                    <!-- Subcategory and carousel wrap -->
+                                                    <div class="lnt-subcategroy-carousel-wrap container-fluid">
+                                                        <% 
                                                     var no=0;
                                                     if (menuList) {
                                                         menuList.forEach(function(cat){
                                                             no++;
                                                     %>
-                                                    <div id="subcategory-<%= cat.c_id;%>" class="<%= (no==1)?'active':''; %>">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--<h3 class="lnt-category-name">Home, garden and tools</h3>-->
-                                                            <%
+                                                            <div id="subcategory-<%= cat.c_id;%>" class="<%= (no==1)?'active':''; %>">
+                                                                <!-- Sub categories list-->
+                                                                <div class="lnt-subcategory col-sm-6 col-md-6">
+                                                                    <!--<h3 class="lnt-category-name">Home, garden and tools</h3>-->
+                                                                    <%
                                                             let subcatList = cat.sub_cat; 
                                                             if (subcatList) {
                                                             %>
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <%
+                                                                        <ul class="list-unstyled col-sm-12">
+                                                                            <%
                                                                 subcatList.forEach(function(scat){
                                                                     var scname= scat.c_name;
                                                                     var scat_url_name = scname.trim().replace(/\s+/g, '-').toUpperCase();
                                                                     var scatUrl='product-listing/'+scat.c_parent_id+'/'+scat_url_name+'#!?sub_cat='+scat.c_id;
                                                                 %>
-                                                                <li>
-                                                                    <a href="<%= scatUrl%>">
-                                                                        <%=scat.c_name%>
-                                                                    </a>
-                                                                </li>
-                                                                <%
+                                                                                <li>
+                                                                                    <a href="<%= scatUrl%>">
+                                                                                        <%=scat.c_name%>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <%
                                                                 });
                                                                 %>
-                                                                <!-- <li>
+                                                                                    <!-- <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all New & trending</a>
                                                                 </li> -->
-                                                            </ul>
-                                                            <%
+                                                                        </ul>
+                                                                        <%
                                                             }
                                                             %>
-                                                        </div>
-                                                    </div>
-                                                    <%
+                                                                </div>
+                                                            </div>
+                                                            <%
                                                         });
                                                     }
                                                     %>
-                                                    <!-- /subcategory ends -->
+                                                                <!-- /subcategory ends -->
+                                                    </div>
+                                                    <!-- /.lnt-subcategroy-carousel-wrap -->
                                                 </div>
-                                                <!-- /.lnt-subcategroy-carousel-wrap -->
+                                                <!-- /.lnt-dropdown-mega-menu -->
                                             </div>
-                                            <!-- /.lnt-dropdown-mega-menu -->
-                                        </div>
-                                        <!-- /.dropdown-menu -->
-                                    </li>
-                                    <!-- /.dropdown -->
-                                </ul>
-                                <!-- /.lnt-nav-mega -->
-                                <!-- /.lnt-search-form -->
-                                <!-- /.lnt-shopping-cart -->
+                                            <!-- /.dropdown-menu -->
+                                        </li>
+                                        <!-- /.dropdown -->
+                                    </ul>
+                                    <!-- /.lnt-nav-mega -->
+                                    <!-- /.lnt-search-form -->
+                                    <!-- /.lnt-shopping-cart -->
+                                </div>
+                                <!-- /.navbar-collapse -->
                             </div>
-                            <!-- /.navbar-collapse -->
-                        </div>
-                        <!-- /.container -->
-                    </nav>
-                    <!--nav navbar-nav-->
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
-                    <a href="/product-listing/valucartexclusives">
-                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives">
-                        Valucart Exclusives</a>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
-                    <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
-                        <form class="mobsearchform">
-                            <input class="sb-search-input desktopsearch" placeholder="What are you looking for?" type="text"
-                                value="" name="search" id="search">
-                            <input class="sb-search-submit" type="submit" value="">
-                            <span class="sb-icon-search"></span>
-                        </form>
+                            <!-- /.container -->
+                        </nav>
+                        <!--nav navbar-nav-->
                     </div>
-                </div>
-                <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
-                    <a href="/city">
-                        <p class="navlocation">
-                            <img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
-                    </a>
+                    <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
+                        <a href="/product-listing/valucartexclusives">
+                            <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> ValuCart Exclusives</a>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
+                        <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
+                            <form class="mobsearchform">
+                                <input class="sb-search-input desktopsearch" placeholder="What are you looking for?" type="text" value="" name="search" id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="hidden-md hidden-sm hidden-lg vivible-xs col-xs-6">
+                        <a href="/city">
+                            <p class="navlocation">
+                                <img class="img-responsive navlocationimg" src="img/location.png"> Al Karama, Dubai</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <% } %>
-    <!-- mobile menu -->
-    <div id="mobileview" class="mobileview1" style="display: none">
-        <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
-            <div class="sideheader">
-                <img src="img/blacklogo.png" class="img-responsive navbar-brand-mob" alt="valucart-logo">
-                <a href="javascript:void(0)" style="display: inline-block;" class="closebtn" onclick="closeNav()">&times;</a>
-            </div>
-            <div class="tab">
-                <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
-                    <img class="svg" src="img/user.svg" alt="" />
-                    <br>My Account</button>
-                <button class="tablinks button1" onclick="openCity(event, 'categories')">
-                    <img class="svg" src="img/shop.svg" alt="" />
-                    <br>Categories</button>
-                <button class="tablinks button1" onclick="openCity(event, 'offers')">
-                    <img class="svg" src="img/valucart.svg" alt="" />
-                    <br>ValuCart Exclusives</button>
-            </div>
-            <div id="account" class="tabcontent">
-                <% 
+        <% } %>
+            <!-- mobile menu -->
+            <div id="mobileview" class="mobileview1" style="display: none">
+                <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
+                    <div class="sideheader">
+                        <img src="img/blacklogo.png" class="img-responsive navbar-brand-mob" alt="valucart-logo">
+                        <a href="javascript:void(0)" style="display: inline-block;" class="closebtn" onclick="closeNav()">&times;</a>
+                    </div>
+                    <div class="tab">
+                        <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
+                            <img class="svg" src="img/user.svg" alt="" />
+                            <br>My Account</button>
+                        <button class="tablinks button1" onclick="openCity(event, 'categories')">
+                            <img class="svg" src="img/shop.svg" alt="" />
+                            <br>Categories</button>
+                        <button class="tablinks button1" onclick="openCity(event, 'offers')">
+                            <img class="svg" src="img/valucart.svg" alt="" />
+                            <br>ValuCart Exclusives</button>
+                    </div>
+                    <div id="account" class="tabcontent">
+                        <% 
                     if(cookies){
                     var userData=JSON.parse(cookies);
                     if(userData.status=="success"){
                %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels">
-                            <%=(userData.username).toUpperCase();%>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="myorders">
-                            <h4 class="panel-title panels">My Orders
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="profile">
-                            <h4 class="panel-title panels">Profile
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="addressbook">
-                            <h4 class="panel-title panels">Address Book
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="change-password">
-                            <h4 class="panel-title panels">Change Password
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <!--<div class="panel panel-default">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title panels">
+                                        <%=(userData.username).toUpperCase();%>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="myorders">
+                                        <h4 class="panel-title panels">My Orders
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="profile">
+                                        <h4 class="panel-title panels">Profile
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="addressbook">
+                                        <h4 class="panel-title panels">Address Book
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="change-password">
+                                        <h4 class="panel-title panels">Change Password
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--<div class="panel panel-default">
                     <div class="panel-heading">
                         <a href="myshopping-dashboard">
                             <h4 class="panel-title panels">Shopping list
@@ -443,57 +439,57 @@
                         </a>
                     </div>
                 </div>-->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="mybundles">
-                            <h4 class="panel-title panels">My bundles
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="vcartLogout">
-                            <h4 class="panel-title panels">Logout
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <%
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="mybundles">
+                                        <h4 class="panel-title panels">My bundles
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a class="vcartLogout">
+                                        <h4 class="panel-title panels">Logout
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <%
                     }
                 }
                 else{
                 %>
-                <a href="#">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="#" data-toggle="modal" data-target="#myModal">
-                                <h4 class="panel-title panels">Login
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </h4>
-                            </a>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="#" data-toggle="modal" data-target="#myModal">
-                                <h4 class="panel-title panels">Signup
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </h4>
-                            </a>
-                        </div>
-                    </div>
-                </a>
-                <%    
+                                <a href="#">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                                <h4 class="panel-title panels">Login
+                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                                <h4 class="panel-title panels">Signup
+                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <%    
                 }
                 %>
-            </div>
-            <div id="categories" class="tabcontent">
-                <% 
+                    </div>
+                    <div id="categories" class="tabcontent">
+                        <% 
                    
                 let menuList= (typeof menudata != 'undefined')?menudata.response:[];
                 var no=0;
@@ -505,100 +501,100 @@
                             var catUrl= 'product-listing/'+cat.c_id+'/'+cat_url_name;
                                
                 %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels" data-href="<%= catUrl;%>">
-                            <a href="<%= catUrl;%>">
-                                <%= cat.c_name;%>
-                            </a>
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <%
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title panels" data-href="<%= catUrl;%>">
+                                        <a href="<%= catUrl;%>">
+                                            <%= cat.c_name;%>
+                                        </a>
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    </h4>
+                                </div>
+                            </div>
+                            <%
                         });
                     }
                  %>
+                    </div>
+                    <div id="offers" class="tabcontent">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> News & Trending
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels">Holiday shop
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Chilled
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Food & Cupboard
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Drinks
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> health & Beauty
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Baby & toddler
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> household
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> pet
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Home & Outdoor
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="offers" class="tabcontent">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> News & Trending
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels">Holiday shop
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Chilled
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Food & Cupboard
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Drinks
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> health & Beauty
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Baby & toddler
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> household
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> pet
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Home & Outdoor
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--    Navigation ends here-->
-    <!-- <div id="status"></div> -->
-    <!-- 
+            <!--    Navigation ends here-->
+            <!-- <div id="status"></div> -->
+            <!-- 
 <!-- Facebook login or logout button -->
-    <!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
+            <!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
 
-    <!-- Display user profile data -->
-    <!-- <div id="userData"></div> -->
+            <!-- Display user profile data -->
+            <!-- <div id="userData"></div> -->

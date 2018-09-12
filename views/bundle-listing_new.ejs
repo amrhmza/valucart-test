@@ -133,8 +133,8 @@
                                                     <div class="checkbox checkbox-info radio">
                                                         <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                         <label for="price1_<%= i %>">
-                                                            <%=price.start==""?"Less then ":"" %>
-                                                                <%=price.end==" "?"More then ":"" %>
+                                                            <%=price.start==""?"Less than ":"" %>
+                                                                <%=price.end==" "?"More than ":"" %>
                                                                     <%= price.start %>
                                                                         <%= (price.start == "" || price.end == "")?"":" - " %>
                                                                             <%= price.end %> AED
@@ -168,8 +168,8 @@
                                                     <div class="checkbox checkbox-info radio">
                                                         <input id="discount1_<%= j %>" type="radio" name="discount" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                         <label for="discount1_<%= j %>">
-                                                            <%=discount.start==""?"Less then":"" %>
-                                                                <%=discount.end==""?"More then":"" %>
+                                                            <%=discount.start==""?"Less than":"" %>
+                                                                <%=discount.end==""?"More than":"" %>
                                                                     <%= discount.start %>
                                                                         <%= (discount.start == "" || discount.end == "")?"":" - " %>
                                                                             <%= discount.end %> %
@@ -250,8 +250,8 @@
                                                                     <div class="checkbox checkbox-info radio">
                                                                         <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                                         <label for="price1__<%= i %>">
-                                                                            <%=price.start==""?"Less then ":"" %>
-                                                                                <%=price.end==" "?"More then ":"" %>
+                                                                            <%=price.start==""?"Less than ":"" %>
+                                                                                <%=price.end==" "?"More than ":"" %>
                                                                                     <%= price.start %>
                                                                                         <%= (price.start == "" || price.end == "")?"":" - " %>
                                                                                             <%= price.end %> AED
@@ -271,8 +271,8 @@
                                                                     <div class="checkbox checkbox-info radio">
                                                                         <input id="discount1__<%= j %>" type="radio" name="discount1" class="dis_<%= discount.start %>_<%= discount.end %>" ng-click="filters('discount',<%= discount.start!=''?discount.start:0 %>,<%= discount.end!=''?discount.end:0 %>)">
                                                                         <label for="discount1__<%= j %>">
-                                                                            <%=discount.start==""?"Less then":"" %>
-                                                                                <%=discount.end==""?"More then":"" %>
+                                                                            <%=discount.start==""?"Less than":"" %>
+                                                                                <%=discount.end==""?"More than":"" %>
                                                                                     <%= discount.start %>
                                                                                         <%= (discount.start == "" || discount.end == "")?"":" - " %>
                                                                                             <%= discount.end %> %

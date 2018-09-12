@@ -25,21 +25,21 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-$(".panel-collapse").on("hide.bs.collapse", function() {
+$(".panel-collapse").on("hide.bs.collapse", function () {
   $(".panel-collapse-clickable")
     .find("i")
     .removeClass("glyphicon-chevron-up")
     .addClass("glyphicon-chevron-down");
 });
 
-$(".panel-collapse").on("show.bs.collapse", function() {
+$(".panel-collapse").on("show.bs.collapse", function () {
   $(".panel-collapse-clickable")
     .find("i")
     .removeClass("glyphicon-chevron-down")
     .addClass("glyphicon-chevron-up");
 });
 
-$(document).on("click", ".panel-heading", function(e) {
+$(document).on("click", ".panel-heading", function (e) {
   var $this = $(this);
   console.log($this);
   if (!$this.hasClass("collapsed")) {
@@ -56,8 +56,8 @@ $(document).on("click", ".panel-heading", function(e) {
 });
 
 //dropdown menu script
-$(document).ready(function() {
-  $(".dropdown-submenu a.test").on("click", function(e) {
+$(document).ready(function () {
+  $(".dropdown-submenu a.test").on("click", function (e) {
     $(this)
       .next("ul")
       .toggle();
@@ -67,7 +67,7 @@ $(document).ready(function() {
 });
 
 //Owl carousel script
-$(document).ready(function() {
+$(document).ready(function () {
   $(".owl-carousel").owlCarousel({
     loop: true,
     margin: 10,
@@ -157,14 +157,14 @@ function mobsearchFunction() {
 //Wishlist heart button
 var heart = $(".wishheart");
 
-var addwishlist = heart.click(function() {
+var addwishlist = heart.click(function () {
   var $n = $(this)
     .parent(".panel-body")
     //        .parent(".container")
     .find(".wishheart");
   $n.toggleClass("wishheartt");
 });
-var addwishlistt = heart.click(function() {
+var addwishlistt = heart.click(function () {
   var $n = $(this)
     .parent(".productviewpanel")
     //        .parent(".container")
@@ -176,9 +176,9 @@ var addwishlistt = heart.click(function() {
 $("#productCarousel").carousel({
   interval: false
 });
-$("#productCarousel").on("touchstart", function(event) {
+$("#productCarousel").on("touchstart", function (event) {
   var xClick = event.originalEvent.touches[0].pageX;
-  $(this).one("touchmove", function(event) {
+  $(this).one("touchmove", function (event) {
     var xMove = event.originalEvent.touches[0].pageX;
     if (Math.floor(xClick - xMove) > 5) {
       $(this).carousel("next");
@@ -186,17 +186,17 @@ $("#productCarousel").on("touchstart", function(event) {
       $(this).carousel("prev");
     }
   });
-  $("#productCarousel").on("touchend", function() {
+  $("#productCarousel").on("touchend", function () {
     $(this).off("touchmove");
   });
 });
 
 //product detail page reviewpanel
-$("#reviewbtn").click(function() {
+$("#reviewbtn").click(function () {
   $(".customerreviews").hide();
   $(".writereview").show();
 });
-$("#closebtn").click(function() {
+$("#closebtn").click(function () {
   $(".customerreviews").show();
   $(".writereview").hide();
 });
@@ -204,7 +204,7 @@ $("#closebtn").click(function() {
 //Wishlist heart button for mycart
 var heart = $(".wishheart");
 
-var addwishlist = heart.click(function() {
+var addwishlist = heart.click(function () {
   var $n = $(this)
     .parent(".favourite")
     //        .parent(".container")
@@ -213,8 +213,8 @@ var addwishlist = heart.click(function() {
 });
 
 // Svg Background color change
-$(function() {
-  jQuery("img.svg").each(function() {
+$(function () {
+  jQuery("img.svg").each(function () {
     var $img = jQuery(this);
     var imgID = $img.attr("id");
     var imgClass = $img.attr("class");
@@ -222,7 +222,7 @@ $(function() {
 
     jQuery.get(
       imgURL,
-      function(data) {
+      function (data) {
         // Get the SVG tag, ignore the rest
         var $svg = jQuery(data).find("svg");
 
@@ -259,7 +259,7 @@ $(function() {
 });
 
 //bundle modal script
-$(document).ready(function() {
+$(document).ready(function () {
   $(".lab-slide-up")
     .find("a")
     .attr("data-toggle", "modal");
@@ -293,3 +293,23 @@ function alertShow() {
     }
   );
 }
+/**
+ * Add hover effect to the main category when hovering on the subcategory
+ */
+$(document).ready(function () {
+  var maincat_id, scat_block_id, $c;
+  $(".lnt-category a").on("mouseover", function () {
+    maincat_id = $(this).attr("data-root");
+    $(".lnt-category a").removeClass("highlight");
+  });
+  $(".lnt-subcategory a").on("mouseover", function () {
+    scat_block_id = $(".lnt-subcategory").parent().hasClass("active");
+    if (scat_block_id == true) {
+      $c = $(".lnt-category a[data-root='" + maincat_id + "']").addClass("highlight");
+    }
+    $('.lnt-category a.highlight').not($c).removeClass('highlight');
+  });
+  $(".lnt-subcategory a").on("mouseout", function () {
+    $(".lnt-category a").removeClass("highlight");
+  });
+});
