@@ -878,3 +878,21 @@ i.fa.fa-minus {
   width: 45px;
   border-radius: 50%;
 }
+.left-home,
+.right-home {
+  padding-bottom: 35px;
+  padding-left: 20px;
+}
+.Choose-from-a-range-of-pre-configured-bundles-and-save-huge {
+  margin-bottom: 0;
+}
+.right-home {
+  background-position: bottom;
+}
+.home-orange-bg1,
+.home-orange-bg {
+  padding-left: 35px;
+}
+.home-orange-bg {
+  margin-top: 2px;
+}
