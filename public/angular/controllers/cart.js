@@ -130,17 +130,19 @@ app.controller("cart", function (
         console.log(response);
       });
   };
+
   $scope.cartTotal = function () {
-    var ctotal = 0;
-    var delivery_charge = 15.0;
+    var ctotal = 0.00;
+    var delivery_charge = 15.00;
     angular.forEach(angular.element(".productcount"), function (value, key) {
       var a = angular.element(value);
       ctotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
     });
-    var grand_total = parseFloat(ctotal).toFixed(2);
-    $scope.cartGrand = grand_total;
+    $scope.subGrand = (parseFloat(ctotal)).toFixed(2);
+    $scope.cartGrand = (parseFloat(ctotal) + parseFloat(delivery_charge)).toFixed(2);
   };
+  $scope.cartTotal()
   $scope.verifyToken = function (coupon) {
     var userAuth = typeof $.cookie("vcartAuth") ?
       JSON.parse($.cookie("vcartAuth")) :
