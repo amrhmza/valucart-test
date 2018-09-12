@@ -11,8 +11,9 @@ router.get("/product", async (req, res, next) => {
     let menudata = await getMenu.get_menulist();
     res.render("category", {
       cookies: cookies,
-      menudata: menudata.response,
-      search: 0,
+      menudata: menudata,
+      menudataa: menudata.response,
+      // search: 0,
       angular: false,
       customjs: false,
       pageto: "product-listing"
