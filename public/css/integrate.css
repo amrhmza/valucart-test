@@ -870,7 +870,8 @@ i.fa.fa-minus {
 }
 
 .productlistpage .productpanel .productcountdiv .productminus,
-.productdetailpage .productpanel .productcountdiv .productminus {
+.productdetailpage .productpanel .productcountdiv .productminus,
+.mycart .productpanel .productcountdiv .productminus {
   padding: 0px;
   background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);
   height: 45px;
