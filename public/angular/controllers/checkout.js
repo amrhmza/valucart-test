@@ -105,8 +105,13 @@ app.controller("checkout", function (
             $('form[name="newAddress"]').each(function () {
               this.reset();
             });
-            $("#add_address").trigger("click");
+            $("#collapse2").removeClass("in");
+            if ($scope.address_id != "") {
+              $(".bill.pay").trigger("click");
+            }
+            // $("#add_address").trigger("click");
             $(".loader").addClass("hidden");
+            $scope.continuebtn();
           })
           .catch(function (response) {
             $(".loader").addClass("hidden");
@@ -154,14 +159,23 @@ app.controller("checkout", function (
     if ($scope.address_id != "") {
       $(".bill.pay").trigger("click");
     } else {
-      //check address form filled
-      if ($('#address_name').val() != '') {
-        $("#newAddress_submit").trigger("click")
-        // addnewaddress()
-      } else {
-        toastr.error("Please Select the address");
-      }
+      toastr.error("Please Select the address");
+    }
+  };
 
+  $scope.savecontinue = function () {
+    $("#collapse2").removeClass("in");
+    $(".btncontinue").removeClass("hide");
+    $(".btnsc").addClass("hide");
+    var d = $("#collapse1").hasClass("in");
+  };
+  $scope.continuebtn = function () {
+    $("#collapse1").removeClass("in");
+    $(".btncontinue").addClass("hide");
+    $(".btnsc").removeClass("hide");
+    var c = $("#collapse2").hasClass("in");
+    if (c == true) {
+      $(".btncontinue").removeClass("hide");
     }
   };
 });
