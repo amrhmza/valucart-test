@@ -242,7 +242,31 @@
                                 <span class="cart-label">0</span>
                             </li>
                             <% }
-                        } %>
+                        } else{
+                        %>
+                            <li class="hidden-xs">    
+                                <a data-toggle="modal" data-target="#myModal">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                        <% } else { %>
+                                            <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                            <% } %>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#myModal">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                        <% } else { %>
+                                            <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                            <% } %>
+                                </a>
+                                <span class="cart-label">0</span>
+                            </li>
+                        <%
+                        } 
+                        %>
                     </ul>
                 </div>
 
