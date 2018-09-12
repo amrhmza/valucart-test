@@ -54,17 +54,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <script>
-    var city_name = localStorage.getItem('city_name');
-    if (city_name != '') {
-        $(".current_city").html(city_name);
-    }
-</script>
-<script>
-    var city = localStorage.getItem('city');
-    var area = localStorage.getItem('area');
-    if (city == null || area == null) {
-        window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
-    }
+        var city_name = localStorage.getItem('city_name');
+        if (city_name != '') {
+            $(".current_city").html(city_name);
+        }
+    </script>
+    <script>
+        var city = localStorage.getItem('city');
+        var area = localStorage.getItem('area');
+        if (city == null || area == null) {
+            window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
+        }
     </script>
     <% if(angular){ %>
         <!-- angular Libraries -->
@@ -115,7 +115,7 @@
                 <li>
                     <a href="#">
                         <p style="margin: 0px;padding-right: 5px;">
-                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+91-9876543210</p>
+                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+971 4 2231188</p>
                     </a>
                 </li>
                 <li>
@@ -245,27 +245,27 @@
                             <% }
                         } else{
                         %>
-                            <li class="hidden-xs">    
-                                <a data-toggle="modal" data-target="#myModal">
-                                    <% if(typeof home_new != "undefined"){ %>
-                                        <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
-                                        <% } else { %>
-                                            <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
-                                            <% } %>
+                                <li class="hidden-xs">
+                                    <a data-toggle="modal" data-target="#myModal">
+                                        <% if(typeof home_new != "undefined"){ %>
+                                            <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                            <% } else { %>
+                                                <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                                <% } %>
 
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="modal" data-target="#myModal">
-                                    <% if(typeof home_new != "undefined"){ %>
-                                        <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                        <% } else { %>
-                                            <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                            <% } %>
-                                </a>
-                                <span class="cart-label">0</span>
-                            </li>
-                        <%
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#myModal">
+                                        <% if(typeof home_new != "undefined"){ %>
+                                            <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                            <% } else { %>
+                                                <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                                <% } %>
+                                    </a>
+                                    <span class="cart-label">0</span>
+                                </li>
+                                <%
                         } 
                         %>
                     </ul>
