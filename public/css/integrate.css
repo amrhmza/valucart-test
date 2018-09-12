@@ -853,7 +853,8 @@ i.fa.fa-plus {
 
 .productlistpage .productpanel .productcountdiv .productplus,
 .carousel3 .productpanel .productcountdiv .productplus,
-.productdetailpage .productpanel .productcountdiv .productplus {
+.productdetailpage .productpanel .productcountdiv .productplus,
+.mycart .productpanel .productcountdiv .productplus {
   padding: 0px;
   background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png);
   height: 45px;
