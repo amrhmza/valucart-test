@@ -1,0 +1,5 @@
+/* Line navbar two (lnt)
+/ -------------------------------------------------- */
+.thumbnails::-webkit-scrollbar {
+    width: 5px;
+}

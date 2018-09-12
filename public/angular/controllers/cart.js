@@ -73,7 +73,7 @@ app.controller("cart", function (
   $scope.updateCart = function (qty, index) {
     cart
       .quantityUpdate(qty, index)
-      .then(function (response) { })
+      .then(function (response) {})
       .catch(function (response) {
         // toastr.warning(response.data.results.msg);
       });
@@ -84,9 +84,9 @@ app.controller("cart", function (
     let productData = {
       ct_id: cart_id
     };
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
 
     cart
@@ -113,9 +113,9 @@ app.controller("cart", function (
       });
   };
   $scope.deleteBundle = function (ub_id, e) {
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
       .removeUserbundle(ub_id, usertoken)
@@ -142,9 +142,9 @@ app.controller("cart", function (
     $scope.cartGrand = grand_total;
   };
   $scope.verifyToken = function (coupon) {
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
@@ -173,6 +173,13 @@ app.controller("cart", function (
   };
 
   $scope.addwish = function (product_id, is_bundle, item) {
+    var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    if (userAuth.status != "success") {
+      $('#myModal').modal("show")
+      console.log("Not logged in")
+      return false;
+    }
+
     var elem = angular.element(item);
     var wtype = elem.attr("data-type");
     //console.log(wtype);
@@ -181,9 +188,9 @@ app.controller("cart", function (
       is_bundle: is_bundle,
       wish_type: wtype
     };
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
 
     getWishList
@@ -235,9 +242,9 @@ app.controller("cart", function (
       if (a == 1) {
         return false;
       } else {
-        var userAuth = typeof $.cookie("vcartAuth")
-          ? JSON.parse($.cookie("vcartAuth"))
-          : "";
+        var userAuth = typeof $.cookie("vcartAuth") ?
+          JSON.parse($.cookie("vcartAuth")) :
+          "";
         var userToken = userAuth != "" ? userAuth.token : "";
 
         let userData = {

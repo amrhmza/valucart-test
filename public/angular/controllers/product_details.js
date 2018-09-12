@@ -1,4 +1,4 @@
-app.controller("product_details", function(
+app.controller("product_details", function (
   $scope,
   $rootScope,
   $location,
@@ -18,10 +18,10 @@ app.controller("product_details", function(
   var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;
 
-  $scope.addtocart = function(data) {
+  $scope.addtocart = function (data) {
     product_details
       .addToCart($scope.qty, data)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
@@ -32,14 +32,14 @@ app.controller("product_details", function(
           $(".cart-label").text(newCartQty);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response.data.results.msg);
       });
   };
 
   //Offline Addtocart functionality
   $scope.cartList = [];
-  $scope.addtocartOffline = function(data) {
+  $scope.addtocartOffline = function (data) {
     var getList = JSON.parse(localStorage.getItem("cartList"));
     $("#myModal").modal("show");
     // $scope.cartList = getList;
@@ -64,7 +64,7 @@ app.controller("product_details", function(
     // console.log(getList);
   };
 
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
     // If is not undefined
@@ -78,7 +78,7 @@ app.controller("product_details", function(
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -91,10 +91,10 @@ app.controller("product_details", function(
     }
   };
 
-  var postReview = function(postData, userAuth) {
+  var postReview = function (postData, userAuth) {
     product_details
       .postReview(postData, userAuth)
-      .then(function(response) {
+      .then(function (response) {
         var postResult = response.data;
         if (postResult.results.status == 200) {
           var reviewStatus = postResult.results.response.msg;
@@ -132,16 +132,16 @@ app.controller("product_details", function(
           $scope.postReviewstatus = reviewStatus;
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
-  $scope.submitReviewbundle = function() {
+  $scope.submitReviewbundle = function () {
     var product_id = $("#product_id").val();
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
 
     if ($scope.rating != undefined) {
@@ -160,7 +160,14 @@ app.controller("product_details", function(
   };
 
   //Prdouct Review Controler
-  $scope.addwish = function(product_id, is_bundle, item) {
+  $scope.addwish = function (product_id, is_bundle, item) {
+    var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    if (userAuth.status != "success") {
+      $('#myModal').modal("show")
+      console.log("Not logged in")
+      return false;
+    }
+
     var elem = angular.element(item);
     var wtype = elem.attr("data-type");
     //console.log(wtype);
@@ -169,14 +176,14 @@ app.controller("product_details", function(
       is_bundle: is_bundle,
       wish_type: wtype
     };
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
 
     getWishList
       .addWish(productData, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         var res = response.data.msg;
         if (res == "success") {
@@ -191,33 +198,33 @@ app.controller("product_details", function(
           }
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
   $scope.mybundles = [];
 
-  $scope.userBundlelist = function() {
+  $scope.userBundlelist = function () {
     userbundle
       .getList()
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         let listdata = response.data.results.response;
         if (listdata != "") {
-          angular.forEach(listdata, function(value, key) {
+          angular.forEach(listdata, function (value, key) {
             $scope.mybundles.push(value);
           });
           //console.log($scope.mybundles);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
   $scope.userBundlelist();
 
-  $scope.addToBundle = function($event, bundleId, productId, bundleQty) {
+  $scope.addToBundle = function ($event, bundleId, productId, bundleQty) {
     var productQty = parseInt($("input[name=qty_" + productId + "]").val());
     let productData = {
       user_bundle: bundleId,
@@ -228,7 +235,7 @@ app.controller("product_details", function(
 
     userbundle
       .updateBundle(productData)
-      .then(function(response) {
+      .then(function (response) {
         var res = response.data;
         if (response.status == "200") {
           toastr.success(res.results.msg);
@@ -240,7 +247,7 @@ app.controller("product_details", function(
           toastr.warning(res.error.msg);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
         toastr.warning(response.data.error.msg);
       });

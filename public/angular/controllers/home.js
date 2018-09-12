@@ -1,4 +1,4 @@
-app.controller("home", function(
+app.controller("home", function (
   $scope,
   $rootScope,
   $location,
@@ -16,12 +16,12 @@ app.controller("home", function(
    *
    * @param {*} data
    */
-  $scope.addtocart = function(data) {
+  $scope.addtocart = function (data) {
     var currentVal = parseInt($("input[name=qty_" + data + "]").val());
     if (currentVal > 0) {
       product_details
         .addToCart(currentVal, data)
-        .then(function(response) {
+        .then(function (response) {
           if (response.data.results.status != "200") {
             toastr.warning(response.data.results.msg);
           } else {
@@ -32,7 +32,7 @@ app.controller("home", function(
             $(".cart-label").text(newCartQty);
           }
         })
-        .catch(function(response) {
+        .catch(function (response) {
           toastr.warning(response.data.results.msg);
         });
     } else {
@@ -45,7 +45,7 @@ app.controller("home", function(
    * @param {Number} fieldName
    * @param {Number} index
    */
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
     // If is not undefined
@@ -63,7 +63,7 @@ app.controller("home", function(
    * @param {Number} index
    */
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -77,7 +77,14 @@ app.controller("home", function(
   };
 
   // Wishlist Add and Remove
-  $scope.addwish = function(product_id, item, index) {
+  $scope.addwish = function (product_id, item, index) {
+    var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+    if (userAuth.status != "success") {
+      $('#myModal').modal("show")
+      console.log("Not logged in")
+      return false;
+    }
+
     var elem = angular.element(item);
     var wtype = elem.attr("data-type");
     //console.log(wtype);
@@ -86,14 +93,14 @@ app.controller("home", function(
       is_bundle: false,
       wish_type: wtype
     };
-    var userAuth = typeof $.cookie("vcartAuth")
-      ? JSON.parse($.cookie("vcartAuth"))
-      : "";
+    var userAuth = typeof $.cookie("vcartAuth") ?
+      JSON.parse($.cookie("vcartAuth")) :
+      "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     if (usertoken != "") {
       getWishList
         .addWish(productData, usertoken)
-        .then(function(response) {
+        .then(function (response) {
           console.log(response);
           var res = response.data.msg;
           if (res == "success") {
@@ -108,7 +115,7 @@ app.controller("home", function(
             }
           }
         })
-        .catch(function(response) {
+        .catch(function (response) {
           console.log(response);
         });
     } else {
@@ -116,27 +123,27 @@ app.controller("home", function(
     }
   };
   $scope.mybundles = [];
-  $scope.userBundlelist = function() {
+  $scope.userBundlelist = function () {
     userbundle
       .getList()
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         let listdata = response.data.results.response;
         if (listdata != "") {
-          angular.forEach(listdata, function(value, key) {
+          angular.forEach(listdata, function (value, key) {
             $scope.mybundles.push(value);
           });
         }
         console.log($scope.mybundles);
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
   $scope.userBundlelist();
 
-  $scope.addToBundle = function($event, bundleId, productId, bundleQty) {
+  $scope.addToBundle = function ($event, bundleId, productId, bundleQty) {
     var productQty = parseInt($("input[name=qty_" + productId + "]").val());
     let productData = {
       user_bundle: bundleId,
@@ -147,7 +154,7 @@ app.controller("home", function(
 
     userbundle
       .updateBundle(productData)
-      .then(function(response) {
+      .then(function (response) {
         var res = response.data;
         if (response.status == "200") {
           toastr.success(res.results.msg);
@@ -159,7 +166,7 @@ app.controller("home", function(
           toastr.warning(res.error.msg);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
         toastr.warning(response.data.error.msg);
       });
