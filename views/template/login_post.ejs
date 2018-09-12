@@ -5,6 +5,7 @@
         //console.log($.cookie());
 
         $('#login-form').submit(function (e) {
+            $(".login-action-msg").html("").addClass("has-error");
             e.preventDefault();
             var username = $(".login_username").val();
             var password = $(".login_password").val();
@@ -26,6 +27,7 @@
             if (username != "" && password != "") {
                 var data = { username, password };
                 var refferrerUrl = $(".referrerInput").val();
+
                 $.ajax({
                     type: 'POST',
                     data: JSON.stringify(data),
