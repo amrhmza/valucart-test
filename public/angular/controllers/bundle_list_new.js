@@ -132,7 +132,13 @@ app.controller("bundle_listing", function(
         $location.search("price_start", null);
         $location.search("price_end", null);
         delete querydata.queryparam.price_start;
+        console.log(
+          "TCL: $scope.clearFilter -> uerydata.queryparam.price_start",
+          querydata.queryparam.price_start
+        );
         delete querydata.queryparam.price_end;
+        console.log("TCL: $scope.clearFilter -> querydata", querydata);
+
         $scope.getlist();
         break;
       case "discount":

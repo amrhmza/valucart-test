@@ -168,7 +168,10 @@ app.controller("product_listing", function(
    * @param {Number} p1
    * @param {Number} p2
    */
+  console.log("Out in the prod ctrl");
+
   $scope.clearFilter = function(type) {
+    console.log("TCL: $scope.clearFilter -> type", type);
     switch (type) {
       case "cat":
         $location.search("cat", p1);
@@ -183,10 +186,21 @@ app.controller("product_listing", function(
         $scope.getlist();
         break;
       case "price":
+        console.log("TCL: $scope.clearFilter -> price", "price");
+
         $location.search("price_start", null);
         $location.search("price_end", null);
         delete querydata.queryparam.price_start;
+        console.log(
+          "TCL: $scope.clearFilter -> querydata.queryparam.price_start",
+          querydata.queryparam.price_start
+        );
         delete querydata.queryparam.price_end;
+        console.log(
+          "TCL: $scope.clearFilter -> querydata.queryparam.price_end",
+          querydata.queryparam.price_end
+        );
+        console.log("TCL: $scope.clearFilter -> querydata", querydata);
         $scope.getlist();
         break;
       case "discount":
