@@ -138,8 +138,7 @@
                                                     </li>
                                                     <% })
                                         } %>
-                                                        <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No
-                                                            other items found</p>
+                                                        <p id="notfound" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
                                             </ul>
                                         </div>
                                     </div>
@@ -222,13 +221,14 @@
                     <div class="col-md-9 col-sm-8 col-xs-12">
                         <div class="row">
                             <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 26px;">
-                                <!-- <h4 class="productlisttitle">
+							<h4 class="productlisttitle">ValuCart Products</h4>
+                                <!--<h4 class="productlisttitle">
                                     <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
                                         <%= data.product_config["cat_filter"].cat %>
                                             <% }%>
                                                 <span class="titlecount">(
                                                     <span ng-bind-html="productData.length"></span>)</span>
-                                </h4> -->
+                                </h4>-->
                             </div>
 
                             <div class="col-md-4 col-sm-3  col-xs-6 " style="">
@@ -297,8 +297,7 @@
                                                                     </li>
                                                                     <%  })
                                     } %>
-                                                                        <p id="notfoundd" style="display: none;padding: 10px 20px;color: #dddddd;">No
-                                                                            other items found</p>
+                                                                        <p id="notfoundd" style="display: none;padding: 10px 20px;color: #dddddd;">No other items found</p>
                                                             </ul>
 
                                                             <li role="presentation" style="padding-left: 10px">Price</li>
@@ -354,7 +353,7 @@
                             <div class="col-md-6  col-sm-12 pl0" ng-repeat="product in productData">
                                 <div ng-include="'includes/product_list.html'"></div>
                             </div>
-                            <div class="row text-center" ng-show="loadon">
+                            <div class="row text-center loadon-wrapper" ng-show="loadon">
                                 <img src="/img/25.gif" />
                             </div>
                         </div>

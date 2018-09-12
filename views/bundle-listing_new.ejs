@@ -184,11 +184,12 @@
                     <div class="col-md-9 col-sm-8 col-xs-12 organicbundles">
                         <div class="row">
                             <div class="col-md-8 col-sm-9 hidden-xs" style="padding-top: 26px;">
-                                <!-- <h4 class="productlisttitle">
-                            <%= data.product_config["cat_filter"].cat %>
-                            <span class="titlecount">(
-                                <span ng-bind-html="productData.length"></span>)</span>
-                        </h4> -->
+<h4 class="productlisttitle"> ValuZone Bundles</h4>							
+                                <!--<h4 class="productlisttitle"> Organic bundles
+                                    <%= data.product_config["cat_filter"].cat %>
+                                        <span class="titlecount">(
+                                            <span ng-bind-html="productData.length"></span>)</span>
+                                </h4>-->
                             </div>
 
                             <div class="col-md-4 col-sm-3  col-xs-6 " style="">
@@ -287,7 +288,7 @@
                             <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
                                 <div ng-include="'includes/bundle_list.html'"></div>
                             </div>
-                            <div class="row text-center" ng-show="loadon">
+                            <div class="row text-center loadon-wrapper" ng-show="loadon">
                                 <img src="/img/25.gif" />
                             </div>
                         </div>

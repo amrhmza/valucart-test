@@ -1,4 +1,4 @@
-app.controller("bundle_listing", function(
+app.controller("bundle_listing", function (
   $scope,
   $rootScope,
   $location,
@@ -19,7 +19,7 @@ app.controller("bundle_listing", function(
   querydata = {};
   querydata.queryparam = [];
   $scope.queryparam = querydata.queryparam;
-  $scope.filters_apply = function() {
+  $scope.filters_apply = function () {
     let filterdata = $location.search();
     if (filterdata.cat) {
       $scope.cat_active = filterdata.cat;
@@ -31,11 +31,13 @@ app.controller("bundle_listing", function(
       let start = filterdata.price_start ? filterdata.price_start : "";
       let end = filterdata.price_end ? filterdata.price_end : "";
       $(".pri_" + start + "_" + end).prop("checked", true);
+      $(".pri_" + start + "_" + end).closest(".panel").find(".clearfilter").show(200);
     }
     if (filterdata.discount_start || filterdata.discount_end) {
       let start = filterdata.discount_start ? filterdata.discount_start : "";
       let end = filterdata.discount_end ? filterdata.discount_end : "";
       $(".dis_" + start + "_" + end).prop("checked", true);
+      $(".dis_" + start + "_" + end).closest(".panel").find(".clearfilter").show(200);
     }
     if (filterdata.brand) {
       let object = filterdata.brand.split(",");
@@ -51,7 +53,7 @@ app.controller("bundle_listing", function(
       $scope.sort = filterdata.order_by;
     }
   };
-  $scope.getlist = function() {
+  $scope.getlist = function () {
     $scope.loadon = true;
     let queryparams = $location.search();
     for (const key in queryparams) {
@@ -62,14 +64,14 @@ app.controller("bundle_listing", function(
     }
     getbundleList
       .getlist(querydata.queryparam, $scope.page)
-      .then(function(response) {
+      .then(function (response) {
         var userAuth = $.cookie("vcartAuth")
           ? JSON.parse($.cookie("vcartAuth"))
           : "";
         $scope.loggedStatus = userAuth.status == "success" ? true : false;
         let listdata = response.data.results.response;
         if (listdata != "") {
-          angular.forEach(listdata, function(value, key) {
+          angular.forEach(listdata, function (value, key) {
             $scope.productData.push(value);
           });
           $scope.nextcall = 1;
@@ -79,13 +81,13 @@ app.controller("bundle_listing", function(
         }
         $scope.loadon = false;
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response.status);
       });
   };
   $scope.filters_apply();
   $scope.getlist();
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     var bodypos = $("body")[0].scrollHeight;
     var windowh = $(window).height();
     bodypos = bodypos - windowh;
@@ -96,7 +98,7 @@ app.controller("bundle_listing", function(
       $scope.getlist();
     }
   });
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
     // If is not undefined
@@ -110,7 +112,7 @@ app.controller("bundle_listing", function(
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -123,7 +125,7 @@ app.controller("bundle_listing", function(
     }
   };
 
-  $scope.clearFilter = function(type) {
+  $scope.clearFilter = function (type) {
     switch (type) {
       case "sub_cat":
         $location.search("sub_cat", p1);
@@ -157,12 +159,12 @@ app.controller("bundle_listing", function(
       default:
         $scope.getlist();
     }
-    $("input:radio[name='" + type + "']").each(function(i) {
+    $("input:radio[name='" + type + "']").each(function (i) {
       this.checked = false;
     });
   };
 
-  $scope.filters = function(type, p1, p2) {
+  $scope.filters = function (type, p1, p2) {
     $scope.productData = [];
     $scope.page = 0;
     $scope.nextcall = 1;
@@ -229,7 +231,7 @@ app.controller("bundle_listing", function(
   };
 
   // Wishlist Add and Remove
-  $scope.addwish = function(product_id, item, index) {
+  $scope.addwish = function (product_id, item, index) {
     let productData = {
       product_id: product_id,
       is_bundle: true,
@@ -242,7 +244,7 @@ app.controller("bundle_listing", function(
 
     getWishList
       .addWish(productData, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         var res = response.data.msg;
         if (res == "success") {
           $scope.productData[index].wishlist = item ? false : true;
@@ -253,17 +255,17 @@ app.controller("bundle_listing", function(
           }
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
-  $scope.addtocart = function(pb_id) {
+  $scope.addtocart = function (pb_id) {
     var qty = parseInt($("input[name=qty_" + pb_id + "]").val());
 
     bundle_details
       .getBundleDetail(pb_id)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
@@ -275,10 +277,10 @@ app.controller("bundle_listing", function(
           let alter = [];
           const proList = response.data.results.response.product;
           if (proList) {
-            angular.forEach(proList, function(value, key) {
+            angular.forEach(proList, function (value, key) {
               let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
               if (is_alternaitve) {
-                angular.forEach(proList, function(val, i) {
+                angular.forEach(proList, function (val, i) {
                   if (val.pba_is_default == 1) {
                     var pd_id = val.pba_pd_id;
                   }
@@ -295,7 +297,7 @@ app.controller("bundle_listing", function(
           }
           bundle_details
             .listAddToCart(qty, alter, pb_id)
-            .then(function(response) {
+            .then(function (response) {
               if (response.data.results.status != "200") {
                 toastr.warning(response.data.results.msg);
               } else {
@@ -306,51 +308,51 @@ app.controller("bundle_listing", function(
                 $(".cart-label").text(newCartQty);
               }
             })
-            .catch(function(response) {
+            .catch(function (response) {
               toastr.warning(response.data.results.msg);
             });
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response.data.results.msg);
       });
   };
 
   $scope.mybundles = [];
 
-  $scope.userBundlelist = function() {
+  $scope.userBundlelist = function () {
     userbundle
       .getList()
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         let listdata = response.data.results.response;
         if (listdata != "") {
-          angular.forEach(listdata, function(value, key) {
+          angular.forEach(listdata, function (value, key) {
             $scope.mybundles.push(value);
           });
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
   $scope.userBundlelist();
 
-  $scope.addToBundle = function($event, bundleId, pb_id, bundleQty) {
+  $scope.addToBundle = function ($event, bundleId, pb_id, bundleQty) {
     //console.log(pb_id);
     bundle_details
       .getBundleDetail(pb_id)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
           let alter = [];
           const proList = response.data.results.response.product;
           if (proList) {
-            angular.forEach(proList, function(value, key) {
+            angular.forEach(proList, function (value, key) {
               let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
               if (is_alternaitve) {
-                angular.forEach(proList, function(val, i) {
+                angular.forEach(proList, function (val, i) {
                   if (val.pba_is_default == 1) {
                     var pd_id = val.pba_pd_id;
                   }
@@ -378,7 +380,7 @@ app.controller("bundle_listing", function(
 
           userbundle
             .updateBundle(productData)
-            .then(function(response) {
+            .then(function (response) {
               console.log(response);
               var res = response.data;
               if (response.status == "200") {
@@ -391,13 +393,13 @@ app.controller("bundle_listing", function(
                 toastr.warning(res.error.msg);
               }
             })
-            .catch(function(response) {
+            .catch(function (response) {
               console.log(response);
               toastr.warning(response.data.error.msg);
             });
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response.data.results.msg);
       });
   };
