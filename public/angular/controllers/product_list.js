@@ -164,27 +164,30 @@ app.controller("product_listing", function(
    * @param {Number} p2
    */
   $scope.clearFilter = function(type) {
+    console.log(type);
     switch (type) {
-      case "sub_cat":
-        $location.search("sub_cat", p1);
-        $scope.getlist();
-        break;
       case "price":
         $location.search("price_start", null);
         $location.search("price_end", null);
+        delete querydata.queryparam.price_start;
+        delete querydata.queryparam.price_end;
         $scope.getlist();
         break;
       case "discount":
         $location.search("discount_start", null);
         $location.search("discount_end", null);
+        delete querydata.queryparam.discount_start;
+        delete querydata.queryparam.discount_end;
         $scope.getlist();
         break;
       case "brand":
         $location.search("brand", null);
+        delete querydata.queryparam.brand;
         $scope.getlist();
         break;
       case "sort":
         $location.search("order_by", null);
+        delete querydata.queryparam.order_by;
         $scope.getlist();
         break;
       default:

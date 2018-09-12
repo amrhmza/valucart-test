@@ -41,6 +41,60 @@ app.factory("bundle_details", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    listAddToCart: function(qty, alter, pd_id) {
+      var q = $q.defer();
+      var suggestURL = config.addToCart;
+      let data = {
+        product_id: pd_id,
+        quantity: qty,
+        is_bundel: true,
+        bundel_items: alter
+      };
+
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      $http({
+        method: "POST",
+        url: suggestURL,
+        type: "json",
+        data: data,
+        headers: {
+          Authorization: "Bearer " + token.token,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
+    },
+    getBundleDetail: function(pd_id) {
+      var q = $q.defer();
+      var suggestURL = config.getbundleDetail + "?product_id=" + pd_id;
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      $http({
+        method: "GET",
+        url: suggestURL,
+        type: "json",
+        headers: {
+          Authorization: "Bearer " + token.token,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

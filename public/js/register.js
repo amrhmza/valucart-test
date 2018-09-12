@@ -60,6 +60,7 @@ $(function() {
       return false;
     }
     if (username != "" && email != "" && pwd != "" && phone != "") {
+      var refferrerUrl = $(".referrerInput").val();
       $.ajax({
         type: "POST",
         data: JSON.stringify({

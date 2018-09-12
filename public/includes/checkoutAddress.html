@@ -24,8 +24,8 @@
                                 <div class="row">
                                     <div class="col-xs-1" style="padding-left: 0px;">
                                         <div class="radios pl-6">
-                                            <input type="radio" id="address{{$index}}" ng-checked="address.a_is_default"
-                                                name="radio-group" ng-model="address_id" ng-change="addresschange(address.a_id)" />
+                                            <input type="radio" id="address{{$index}}" ng-checked="address.a_is_default" name="radio-group" ng-model="address_id" ng-change="addresschange(address.a_id)"
+                                            />
                                             <label for="address{{$index}}" class="radio"></label>
                                         </div>
                                     </div>
@@ -34,12 +34,11 @@
 
                                         </h6>
                                         <h5 class="add-ress">
-                                            {{address.a_name}}
-                                            {{address.a_address_1 != null ? ', ' + address.a_address_1 : ''}}
-                                            {{address.a_address_2 != null ? ', ' + address.a_address_2 : ''}}
-                                            <br>{{address.a_city != null ? address.a_city : ''}}
-                                            {{address.a_pincode != null ? ' - ' + address.a_pincode : ''}}
-                                            {{(address.a_phone != null) ? ', Ph:' + address.a_phone : ''}}
+                                            {{address.a_name}} {{address.a_address_1 != null ? ', ' + address.a_address_1 : ''}} {{address.a_address_2 != null ? ', '
+                                            + address.a_address_2 : ''}}
+                                            <br>{{address.a_city != null ? address.a_city : ''}} {{address.a_pincode != null
+                                            ? ' - ' + address.a_pincode : ''}} {{(address.a_phone != null) ? ', Ph:' + address.a_phone
+                                            : ''}}
                                         </h5>
                                     </div>
                                 </div>
@@ -58,7 +57,7 @@
         </div>
         <div id="collapse2" class="panel-collapse collapse {{(addresslist).length == 0 ? 'in' : ''}} ">
             <div class="panel-body">
-                <form name="newAddress" method="post" style="padding: 1px;background:none">
+                <form id="newAddress" name="newAddress" method="post" style="padding: 1px;background:none">
                     <div class="form-group marg-btm">
                         <input type="text" id="address_name" name="address_name" class="form-control form-control1">
                         <label class="form-control-placeholder" for="name">NAME</label>
@@ -96,7 +95,7 @@
                         <input type="checkbox" name="is_default" id="slide-three" />
                         <label for="slide-three" class="check-label">Set this as my default address</label>
                     </div>
-                    <button type="submit" class="btn-proceed">Save</button>
+                    <button id="newAddress_submit" type="submit" class="btn-proceed">Save</button>
                 </form>
             </div>
         </div>

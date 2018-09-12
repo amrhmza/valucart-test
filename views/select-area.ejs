@@ -1,4 +1,11 @@
 <% include template/header1.ejs %>
+<style>
+
+.nice-select .option.disabled {
+  display: none !important;
+}
+
+</style>
 <div class="container container1" ng-app="myapp" ng-controller="select_area">
     <div class="row text-center">
         <form name="selectArea" method="POST">
@@ -8,7 +15,7 @@
             </div>
             <h2 class="select-city">Which area do you live in?</h2>
             <select id="selectedarea" ng-model="area">
-                <option value="">Select your area</option>
+                <option disabled  value="">Select your area</option>
                 <% if (data){ 
                     data.forEach(function(area){    
                 %>
@@ -18,7 +25,7 @@
                 <% }) } %>
             </select>
 
-            <a href="/">
+            <a href="/city">
                 <h5>Change your city?</h5>
             </a>
             <div class="text-center">
