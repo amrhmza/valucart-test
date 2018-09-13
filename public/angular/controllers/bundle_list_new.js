@@ -68,6 +68,7 @@ app.controller("bundle_listing", function(
         $scope.queryparam[key] = element;
       }
     }
+    querydata.queryparam = queryparams;
     getbundleList
       .getlist(querydata.queryparam, $scope.page)
       .then(function(response) {
@@ -193,20 +194,31 @@ app.controller("bundle_listing", function(
         $scope.getlist();
         break;
       case "price":
-        if (p1) {
-          $location.search("price_start", p1);
-        } else {
-          if (p2) {
-            $location.search("price_start", 0);
+        var dataChecked = $(
+          ".pri_" + (p1 == 0 ? "" : p1) + "_" + (p2 == 0 ? "" : p2)
+        ).prop("checked");
+        $('input[name="price"]').prop("checked", false);
+        if (dataChecked) {
+          $(".pri_" + (p1 == 0 ? "" : p1) + "_" + (p2 == 0 ? "" : p2)).prop(
+            "checked",
+            true
+          );
+          if (p1) {
+            $location.search("price_start", p1);
+          } else {
+            $location.search("price_start", null);
           }
-          $location.search("price_start", null);
-        }
-        if (p2) {
-          $location.search("price_end", p2);
+          if (p2) {
+            $location.search("price_end", p2);
+          } else {
+            $location.search("price_end", null);
+          }
+          $scope.getlist();
         } else {
           $location.search("price_end", null);
+          $location.search("price_start", null);
+          $scope.getlist();
         }
-        $scope.getlist();
         break;
       case "discount":
         if (p1) {
@@ -287,8 +299,7 @@ app.controller("bundle_listing", function(
     bundle_details
       .getBundleDetail(pb_id)
       .then(function(response) {
-        console.log(response);
-        if (response.data.results.status != 200) {
+        if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
           let data = {
