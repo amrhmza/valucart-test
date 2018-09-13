@@ -1026,3 +1026,7 @@ a.highlight {
   padding-top: 10px;
   padding-bottom: 21px;
 }
+.confirm-product .productpanel {
+  height: auto;
+  min-height: 195px;
+}
