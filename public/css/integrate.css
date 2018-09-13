@@ -926,7 +926,16 @@ i.fa.fa-minus {
   .ebtn, .ebtn:hover, .ebtn:active, .ebtn:focus, .ebtn:active:focus {
       height: 77px !important;
   }
+  .mycart .productpanel::before{
+    min-height: 335px;
+    height: auto !important;
   }
-  .btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
+}
+.btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
     line-height: 55px !important;
+  
+}
+.mycart .productpanel, .mycart .productpanel::before {
+  min-height: 335px;
+  height: auto !important;
 }
