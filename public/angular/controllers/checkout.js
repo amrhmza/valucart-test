@@ -138,6 +138,8 @@ app.controller("checkout", function (
           $scope.applied = 0;
           $scope.couponInfo = data.msg;
           $scope.cartGrand = Number(parseFloat(data.response.discounted_price).toFixed(2));
+          console.log("veryfiy token: Grand", $scope.cartGrand);
+
           $scope.cartsaving = parseFloat(data.response.discount).toFixed(2);
         } else {
           toastr.info("Coupon not valid");
@@ -151,8 +153,10 @@ app.controller("checkout", function (
   };
   $scope.removeCoupon = function () {
     $("#couponapplied").addClass("hide");
+    // delete $scope.cartsaving;
+    console.log($scope.cartGrand);
     $scope.cartGrand =
-      parseFloat(Number($scope.cartGrand) + Number($scope.cartsaving) + Number(15)).toFixed(2);
+      parseFloat(Number($scope.cartGrand) + Number($scope.cartsaving));
     console.log($scope.cartGrand);
     delete $scope.cartsaving;
     $scope.applied = 1;

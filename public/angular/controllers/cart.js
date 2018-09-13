@@ -99,6 +99,7 @@ app.controller("cart", function (
           var numItems = $(".productpanel").length;
           if (numItems < 1) {
             $(".empty-panel").removeClass("hidden");
+            $("#summary-desktop").empty();
           }
           $scope.cartTotal();
           var cartOldQty = localStorage.getItem("cartCount");
