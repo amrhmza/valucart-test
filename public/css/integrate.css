@@ -849,35 +849,48 @@ i.fa.fa-plus {
   width: 45px;
   height: 45px;
   display: inline-block;
+  font-size: 11px;
 }
 
 .productlistpage .productpanel .productcountdiv .productplus,
 .carousel3 .productpanel .productcountdiv .productplus,
 .productdetailpage .productpanel .productcountdiv .productplus,
-.mycart .productpanel .productcountdiv .productplus {
+.mycart .productpanel .productcountdiv .productplus,
+.carousel3 .productpanel .productcountdiv .productplus,
+.confirm-product .productpanel .productcountdiv .productplus,
+.editbundlelist .productpanel .productcountdiv .productplus {
   padding: 0px;
-  background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png);
+  /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png);*/
   height: 45px;
   width: 45px;
   display: inline-block;
   border-radius: 50%;
+  margin: auto;
+  border: 0;
 }
 
 i.fa.fa-minus {
   content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png");
   width: 45px;
   height: 45px;
+  /* font-size: 11px; */
 }
 
 .productlistpage .productpanel .productcountdiv .productminus,
 .productdetailpage .productpanel .productcountdiv .productminus,
-.mycart .productpanel .productcountdiv .productminus {
+.mycart .productpanel .productcountdiv .productminus,
+.carousel3 .productpanel .productcountdiv .productminus,
+.confirm-product .productpanel .productcountdiv .productminus,
+.editbundlelist .productpanel .productcountdiv .productminus {
   padding: 0px;
-  background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);
+  /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);*/
   height: 45px;
   width: 45px;
   border-radius: 50%;
+  margin: auto;
+  border: 0;
 }
+
 .left-home,
 .right-home {
   padding-bottom: 35px;
@@ -895,4 +908,8 @@ i.fa.fa-minus {
 }
 .home-orange-bg {
   margin-top: 2px;
+}
+
+.gallery .thumbnails {
+  min-width: 115px;
 }
