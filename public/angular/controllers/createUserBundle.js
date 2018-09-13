@@ -1,4 +1,4 @@
-app.controller("createUserBundle", function (
+app.controller("createUserBundle", function(
   $scope,
   $rootScope,
   $location,
@@ -13,22 +13,22 @@ app.controller("createUserBundle", function (
 ) {
   $scope.mybundle_name = "";
   $scope.edit_title = 0;
-  $scope.init = function () {
+  $scope.init = function() {
     // $(".loader").removeClass("hidden");
     createUserbundle
       .getDetails(order_id.order_id)
-      .then(function (response) {
+      .then(function(response) {
         // $(".loader").addClass("hidden");
         $scope.mybundle = response.data.results.response.order_products;
         $scope.mybundle_name = querydata.bundlename;
       })
-      .catch(function (response) {
+      .catch(function(response) {
         // $(".loader").addClass("hidden");
         console.log(response);
       });
   };
   $scope.init();
-  $scope.qty_plus = function (fieldName, index) {
+  $scope.qty_plus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
     // If is not undefined
@@ -48,7 +48,7 @@ app.controller("createUserBundle", function (
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function (fieldName, index) {
+  $scope.qty_minus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -67,10 +67,10 @@ app.controller("createUserBundle", function (
     $scope.cartTotal();
   };
 
-  $scope.cartTotal = function () {
+  $scope.cartTotal = function() {
     var subtotal = 0,
       savingstotal = 0;
-    angular.forEach(angular.element(".productcount"), function (value, key) {
+    angular.forEach(angular.element(".productcount"), function(value, key) {
       var a = angular.element(value);
       subtotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
@@ -85,7 +85,7 @@ app.controller("createUserBundle", function (
     $scope.grandTotal = grandtotal;
   };
 
-  $scope.change_title = function () {
+  $scope.change_title = function() {
     if ($scope.edit_title == 0) {
       $scope.edit_title = 1;
     } else {
@@ -151,7 +151,7 @@ app.controller("createUserBundle", function (
   //user_bundle Update//
   var cp = document.forms.createBundle,
     elem = cp.elements;
-  cp.onsubmit = function () {
+  cp.onsubmit = function() {
     // $(".loader").removeClass("hidden");
     let product_ids = [];
     let proceed = 0;
@@ -160,6 +160,9 @@ app.controller("createUserBundle", function (
       toastr.warning("Bundle Name is required");
       return false;
     }
+    var typeSubmit = $(".typeSubmit").val();
+    //console.log(typeSubmit);
+
     $scope.mybundle.forEach(element => {
       if ($("#brand_" + element.op_id).is(":checked") == true) {
         proceed = 1;
@@ -190,15 +193,20 @@ app.controller("createUserBundle", function (
     if (proceed == 1) {
       createUserbundle
         .insertBundleWithProduct(insertdata)
-        .then(function (response) {
+        .then(function(response) {
           var res = response.data.results;
           if (res.msg == "success") {
             // $(".loader").addClass("hidden");
             toastr.success("Created Successfully..!");
-            $window.location.href = "/create-bundle/success/" + res.response[0];
+            if (typeSubmit == "continue") {
+              $window.location.href = "/";
+            } else {
+              $window.location.href =
+                "/create-bundle/success/" + res.response[0];
+            }
           }
         })
-        .catch(function (response) {
+        .catch(function(response) {
           // $(".loader").addClass("hidden");
           console.log(response);
         });
@@ -208,6 +216,6 @@ app.controller("createUserBundle", function (
     }
   };
 });
-app.config(function ($routeProvider, $locationProvider, $httpProvider) {
+app.config(function($routeProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
 });

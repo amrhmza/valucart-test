@@ -88,14 +88,15 @@
                     </h5>
                 </div>
             </div>
-            <button type="submit" id="submitBundle" class="btn-proceed">Save</button>
+            <input type="hidden" class="typeSubmit" value="save">
+            <button type="submit" id="submitBundle" class="btn-proceed submitBundle">Save</button>
             <button class="btn-cancel">Cancel</button>
         </div>
         <div class="row" id="summary-mobile">
             <div class="col-md-4 no-pad summary summary1">
                 <div class="btn-align">
-                    <button type="button" id="submitBundle" class="btn-cancel">Cancel</button>
-                    <button type="submit" class="btn-proceed">Save</button>
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" id="submitBundle" class="btn-proceed">Save</button>
                 </div>
             </div>
         </div>
@@ -103,6 +104,8 @@
     <script>
         $(document).ready(function () {
             $(document).on('click', '.saveBundle', function () {
+                console.log(1);
+                $(".typeSubmit").val("continue");
                 $("#submitBundle").click();
             });
         });
