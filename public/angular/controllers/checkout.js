@@ -123,7 +123,7 @@ app.controller("checkout", function (
     };
   };
   $scope.verifyToken = function (coupon) {
-    $(".loader").removeClass("hidden");
+    // $(".loader").removeClass("hidden");
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
@@ -145,7 +145,7 @@ app.controller("checkout", function (
         }
       })
       .catch(function (response) {
-        $(".loader").addClass("hidden");
+        // $(".loader").addClass("hidden");
         let data = response.data.error;
         toastr.info(data.msg);
       });
