@@ -8,7 +8,6 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let data = await orderDetail.get_data(JSON.parse(cookies), req.params);
-    console.log(data);
     res.render("myorder-details", {
       data: data,
       angular: false,

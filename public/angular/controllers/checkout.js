@@ -42,7 +42,7 @@ app.controller("checkout", function (
     var elem = cp.elements;
 
     cp.onsubmit = function () {
-      $(".loader").removeClass("hidden");
+      // $(".loader").removeClass("hidden");
       console.log(elem.is_default.checked);
 
       var a = 0;
@@ -79,7 +79,7 @@ app.controller("checkout", function (
       }
 
       if (a == 1) {
-        $(".loader").addClass("hidden");
+        // $(".loader").addClass("hidden");
         return false;
       } else {
         var userAuth = typeof $.cookie("vcartAuth")
@@ -112,11 +112,11 @@ app.controller("checkout", function (
               $(".bill.pay").trigger("click");
             }
             // $("#add_address").trigger("click");
-            $(".loader").addClass("hidden");
+            // $(".loader").addClass("hidden");
             $scope.continuebtn();
           })
           .catch(function (response) {
-            $(".loader").addClass("hidden");
+            // $(".loader").addClass("hidden");
             console.log(response);
           });
       }
@@ -131,14 +131,13 @@ app.controller("checkout", function (
     cart
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
       .then(function (response) {
-        $(".loader").addClass("hidden");
+        $("#couponapplied").removeClass("hide");
         if (response.status == 200) {
           toastr.success("Coupon valid and applied");
           let data = response.data.results;
           $scope.applied = 0;
           $scope.couponInfo = data.msg;
           $scope.cartGrand = Number(parseFloat(data.response.discounted_price).toFixed(2));
-          console.log($scope.cartGrand)
           $scope.cartsaving = parseFloat(data.response.discount).toFixed(2);
         } else {
           toastr.info("Coupon not valid");
@@ -151,6 +150,7 @@ app.controller("checkout", function (
       });
   };
   $scope.removeCoupon = function () {
+    $("#couponapplied").addClass("hide");
     $scope.cartGrand =
       parseFloat(Number($scope.cartGrand) + Number($scope.cartsaving) + Number(15)).toFixed(2);
     console.log($scope.cartGrand);
