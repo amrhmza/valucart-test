@@ -65,7 +65,6 @@ app.controller("product_listing", function(
   $scope.getlist = function() {
     $scope.loadon = true;
     let queryparams = $location.search();
-    console.log(queryparams);
     for (const key in queryparams) {
       if (queryparams.hasOwnProperty(key)) {
         const element = queryparams[key];
