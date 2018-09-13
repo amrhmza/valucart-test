@@ -8,6 +8,7 @@ app.factory("bundle_details", function($http, config, $q) {
         quantity: qty,
         is_bundel: true
       };
+      console.log(alternative);
       let alter = [];
       for (const key in alternative) {
         if (alternative.hasOwnProperty(key)) {

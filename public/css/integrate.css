@@ -944,8 +944,6 @@ a.highlight {
   .productpanel .ebtn, .productpanel .ebtn:hover, .productpanel .ebtn:active, .productpanel .ebtn:focus, .productpanel .ebtn:active:focus {
       height: 77px !important;
   }
-}
-@media only screen and (min-width: 1400px) {
   .ebtn,
   .ebtn:hover,
   .ebtn:active,
@@ -953,7 +951,20 @@ a.highlight {
   .ebtn:active:focus {
     height: 77px !important;
   }
+  .mycart .productpanel::before{
+    min-height: 335px;
+    height: auto !important;
+  }
 }
+.btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
+    line-height: 55px !important;
+  
+}
+.mycart .productpanel, .mycart .productpanel::before {
+  min-height: 335px;
+  height: auto !important;
+}
+
 .btn-recurring:hover,
 .btn-recurring:focus,
 .btn-recurring:active {

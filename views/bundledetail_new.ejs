@@ -1,5 +1,5 @@
 <%include template/header %>
-    <% 
+<% 
 let productData= data.response[0]; 
 let products= productData.product;
 %>
@@ -351,13 +351,13 @@ let products= productData.product;
                         var select= (alt.pba_is_default==1)? true:false;
                         i++;
                 %>
-                            <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>">
+                            <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>" <% if(alt.pba_is_default == 1){ %> ng-init=" c[<%= alt.pba_pbm_id %>]=<%= alt.pd_id %>"  <% } %> >
                                 <% if(i==1){ %>
                                     <div class="panel leftnum">
                                         <%=j%>.
                                     </div>
                                     <%}%>
-                                        <input type="radio" name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
+                                        <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>"  name="rGroup_<%= alt.pba_pbm_id %>" value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]"
                                         />
 
                                         <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id;%>">
