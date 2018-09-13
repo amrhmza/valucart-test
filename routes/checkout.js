@@ -5,6 +5,7 @@ var auth = require("../lib/auth.js");
 const schedule = require("../controllers/schedule.js");
 /* GET cart page. */
 router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
+  console.log(req.body)
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     if (typeof req.body.cart_id == "string") {
@@ -41,9 +42,9 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
       console.log(order);
       res.redirect(
         "/checkout/success/" +
-          order.order_id[0] +
-          "/" +
-          (order.bundle_id == 0 ? "" : order.bundle_id)
+        order.order_id[0] +
+        "/" +
+        (order.bundle_id == 0 ? "" : order.bundle_id)
       );
       res.end();
     } else {

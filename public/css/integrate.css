@@ -923,10 +923,13 @@ i.fa.fa-minus {
   height: auto !important;
 }
 @media only screen and (min-width: 1400px){
-  .ebtn, .ebtn:hover, .ebtn:active, .ebtn:focus, .ebtn:active:focus {
+  .productpanel .ebtn, .productpanel .ebtn:hover, .productpanel .ebtn:active, .productpanel .ebtn:focus, .productpanel .ebtn:active:focus {
       height: 77px !important;
   }
   }
   .btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
     line-height: 55px !important;
+}
+.reviewbtn:hover, .reviewbtn:active {
+  color: #14bdcd;
 }
