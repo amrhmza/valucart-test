@@ -1,4 +1,4 @@
-app.controller("bundle_listing", function (
+app.controller("bundle_listing", function(
   $scope,
   $rootScope,
   $location,
@@ -16,7 +16,7 @@ app.controller("bundle_listing", function (
   $scope.sub_cat_active = 0;
   $scope.nextcall = 1;
   $scope.queryparam = querydata.queryparam;
-  $scope.filters_apply = function () {
+  $scope.filters_apply = function() {
     let filterdata = $location.search();
     if (filterdata.sub_cat) {
       $scope.sub_cat_active = filterdata.sub_cat;
@@ -45,7 +45,7 @@ app.controller("bundle_listing", function (
       $scope.sort = filterdata.order_by;
     }
   };
-  $scope.getlist = function () {
+  $scope.getlist = function() {
     $scope.loadon = true;
     let queryparams = $location.search();
     for (const key in queryparams) {
@@ -54,16 +54,18 @@ app.controller("bundle_listing", function (
         $scope.queryparam[key] = element;
       }
     }
+    var apidata = queryparams;
+    apidata.cat_id = querydata.queryparam.cat_id;
     getbundleList
-      .getlist(querydata.queryparam, $scope.page)
-      .then(function (response) {
-        var userAuth = $.cookie("vcartAuth") ?
-          JSON.parse($.cookie("vcartAuth")) :
-          "";
+      .getlist(apidata, $scope.page)
+      .then(function(response) {
+        var userAuth = $.cookie("vcartAuth")
+          ? JSON.parse($.cookie("vcartAuth"))
+          : "";
         $scope.loggedStatus = userAuth.status == "success" ? true : false;
         let listdata = response.data.results.response;
         if (listdata != "") {
-          angular.forEach(listdata, function (value, key) {
+          angular.forEach(listdata, function(value, key) {
             $scope.productData.push(value);
           });
           $scope.nextcall = 1;
@@ -73,13 +75,13 @@ app.controller("bundle_listing", function (
         }
         $scope.loadon = false;
       })
-      .catch(function (response) {
+      .catch(function(response) {
         console.log(response.status);
       });
   };
   $scope.filters_apply();
   $scope.getlist();
-  $(window).scroll(function () {
+  $(window).scroll(function() {
     var bodypos = $("body")[0].scrollHeight;
     var windowh = $(window).height();
     bodypos = bodypos - windowh;
@@ -90,7 +92,7 @@ app.controller("bundle_listing", function (
       $scope.getlist();
     }
   });
-  $scope.qty_plus = function (fieldName, index) {
+  $scope.qty_plus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
     // If is not undefined
@@ -104,7 +106,7 @@ app.controller("bundle_listing", function (
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function (fieldName, index) {
+  $scope.qty_minus = function(fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -116,7 +118,7 @@ app.controller("bundle_listing", function (
       $("input[name=" + fieldName + index + "]").val(1);
     }
   };
-  $scope.filters = function (type, p1, p2) {
+  $scope.filters = function(type, p1, p2) {
     $scope.productData = [];
     $scope.page = 0;
     $scope.nextcall = 1;
@@ -126,17 +128,31 @@ app.controller("bundle_listing", function (
         $scope.getlist();
         break;
       case "price":
-        if (p1) {
-          $location.search("price_start", p1);
-        } else {
-          $location.search("price_start", null);
-        }
-        if (p2) {
-          $location.search("price_end", p2);
+        var dataChecked = $(
+          ".pri_" + (p1 == 0 ? "" : p1) + "_" + (p2 == 0 ? "" : p2)
+        ).prop("checked");
+        $('input[name="price"]').prop("checked", false);
+        if (dataChecked) {
+          $(".pri_" + (p1 == 0 ? "" : p1) + "_" + (p2 == 0 ? "" : p2)).prop(
+            "checked",
+            true
+          );
+          if (p1) {
+            $location.search("price_start", p1);
+          } else {
+            $location.search("price_start", null);
+          }
+          if (p2) {
+            $location.search("price_end", p2);
+          } else {
+            $location.search("price_end", null);
+          }
+          $scope.getlist();
         } else {
           $location.search("price_end", null);
+          $location.search("price_start", null);
+          $scope.getlist();
         }
-        $scope.getlist();
         break;
       case "discount":
         if (p1) {
@@ -173,11 +189,13 @@ app.controller("bundle_listing", function (
   };
 
   // Wishlist Add and Remove
-  $scope.addwish = function (product_id, item, index) {
-    var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
+  $scope.addwish = function(product_id, item, index) {
+    var userAuth = $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
     if (userAuth.status != "success") {
-      $('#myModal').modal("show")
-      console.log("Not logged in")
+      $("#myModal").modal("show");
+      console.log("Not logged in");
       return false;
     }
 
@@ -186,14 +204,14 @@ app.controller("bundle_listing", function (
       is_bundle: true,
       wish_type: item ? "remove" : "add"
     };
-    var userAuth = typeof $.cookie("vcartAuth") ?
-      JSON.parse($.cookie("vcartAuth")) :
-      "";
+    var userAuth = typeof $.cookie("vcartAuth")
+      ? JSON.parse($.cookie("vcartAuth"))
+      : "";
     var usertoken = userAuth != "" ? userAuth.token : "";
 
     getWishList
       .addWish(productData, usertoken)
-      .then(function (response) {
+      .then(function(response) {
         var res = response.data.msg;
         if (res == "success") {
           $scope.productData[index].wishlist = item ? false : true;
@@ -204,7 +222,7 @@ app.controller("bundle_listing", function (
           }
         }
       })
-      .catch(function (response) {
+      .catch(function(response) {
         console.log(response);
       });
   };

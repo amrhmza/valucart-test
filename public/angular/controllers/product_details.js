@@ -95,6 +95,7 @@ app.controller("product_details", function (
     product_details
       .postReview(postData, userAuth)
       .then(function (response) {
+        console.log(postData);
         var postResult = response.data;
         if (postResult.results.status == 200) {
           var reviewStatus = postResult.results.response.msg;

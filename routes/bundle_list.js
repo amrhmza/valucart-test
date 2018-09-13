@@ -45,7 +45,6 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
     let querydata = req.query;
     let cat_id = req.param("cat_id");
     let data = await bundle_listing.get_data(querydata, cat_id);
-    console.log("TCL: data", dataproduct_config.cat_filter);
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
     console.log("TCL: menudata", menudata);

@@ -246,10 +246,11 @@
                                                             <% if(data.product_config["price_filter"]!=""){
                                         let i=0;
                                         data.product_config["price_filter"].forEach(function(price){ 
+                                            if(price.end!==0){
                                             %>
                                                                 <li class="list-group-item">
                                                                     <div class="checkbox checkbox-info radio">
-                                                                        <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                                        <input id="price1__<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                                         <label for="price1__<%= i %>">
                                                                             <%=price.start==""?"Less than ":"" %>
                                                                                 <%=price.end==" "?"More than ":"" %>
@@ -259,7 +260,8 @@
                                                                         </label>
                                                                     </div>
                                                                 </li>
-                                                                <% i++;})
+                                                                <% }
+                                                                 i++;})
                                      } %>
                                                         </ul>
                                                         <li role="presentation" style="padding-left: 10px">Discounts</li>

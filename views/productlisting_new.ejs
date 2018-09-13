@@ -6,10 +6,10 @@
                 <a href="/">Home</a>
             </li>
             <li class="lastcrumb">
-                <a>
-                    <% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
+                <a>ValuCart Products
+                    <!--<% if(typeof data.product_config["cat_filter"]!="undefined"){ %>
                         <%= data.product_config["cat_filter"].cat %>
-                            <% } %>
+                            <% } %>-->
                 </a>
             </li>
         </ul>
@@ -162,7 +162,7 @@
                                                 %>
                                                     <li class="list-group-item">
                                                         <div class="checkbox checkbox-info radio">
-                                                            <input id="price1_<%= i %>" type="radio" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                            <input id="price1_<%= i %>" type="checkbox" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                             <label for="price1_<%= i %>">
                                                                 <%=price.start==""?"Less than ":"" %>
                                                                     <%=price.end==""?"More than ":"" %>
@@ -306,11 +306,11 @@
                                                                 <% if(data.product_config.price_filter!=""){
                                         let i=0;
                                         data.product_config.price_filter.forEach(function(price){ 
-                                            if(price.end!==0 && i!==0){
+                                            if(price.end!==0){
                                             %>
                                                                     <li class="list-group-item">
                                                                         <div class="checkbox checkbox-info radio">
-                                                                            <input id="price1__<%= i %>" type="radio" name="price1" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
+                                                                            <input id="price1__<%= i %>" type="checkbox" name="price" class="pri_<%= price.start %>_<%= price.end %>" ng-click="filters('price',<%= price.start!=''?price.start:0 %>,<%= price.end!=''?price.end:0 %>)">
                                                                             <label for="price1__<%= i %>">
                                                                                 <%=price.start==""?"Less than ":"" %>
                                                                                     <%=price.end==""?"More than ":"" %>
