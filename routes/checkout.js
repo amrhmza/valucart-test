@@ -52,6 +52,8 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     error_404(res);
   }
 });

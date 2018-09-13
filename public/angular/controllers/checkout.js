@@ -1,4 +1,4 @@
-app.controller("checkout", function (
+app.controller("checkout", function(
   $scope,
   $rootScope,
   $location,
@@ -15,16 +15,16 @@ app.controller("checkout", function (
   $scope.disabled = "";
   $scope.address_id = "";
   $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
-  $scope.addresschange = function (data) {
+  $scope.addresschange = function(data) {
     $scope.address_id = data;
   };
   addNewAddress
     .getlist()
-    .then(function (response) {
+    .then(function(response) {
       var addArr = response.data.results.response;
       var addlist = [];
       var no = 0;
-      angular.forEach(addArr, function (value, key) {
+      angular.forEach(addArr, function(value, key) {
         if (value.a_name && value.a_phone && value.a_address_1) {
           addlist.push(value);
         }
@@ -32,14 +32,14 @@ app.controller("checkout", function (
       $scope.addresslist = addlist;
       console.log($scope.addresslist);
     })
-    .catch(function (response) {
+    .catch(function(response) {
       console.log(response);
     });
-  $scope.onloadFOrmElement = function () {
+  $scope.onloadFOrmElement = function() {
     var cp = document.forms.newAddress;
     var elem = cp.elements;
 
-    cp.onsubmit = function () {
+    cp.onsubmit = function() {
       $(".loader").removeClass("hidden");
       console.log(elem.is_default.checked);
 
@@ -97,25 +97,25 @@ app.controller("checkout", function (
         };
         addNewAddress
           .add_address(userData, userToken)
-          .then(function (response) {
-            var res = response.data.results;
+          .then(function(response) {
+            var res = response.data.id;
             userData["a_id"] = res;
             $scope.addresslist.push(userData);
             toastr.success("Address added successfully!");
-            $('form[name="newAddress"]').each(function () {
+            $('form[name="newAddress"]').each(function() {
               this.reset();
             });
             $("#add_address").trigger("click");
             $(".loader").addClass("hidden");
           })
-          .catch(function (response) {
+          .catch(function(response) {
             $(".loader").addClass("hidden");
             console.log(response);
           });
       }
     };
   };
-  $scope.verifyToken = function (coupon) {
+  $scope.verifyToken = function(coupon) {
     $(".loader").removeClass("hidden");
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
@@ -123,45 +123,46 @@ app.controller("checkout", function (
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
-      .then(function (response) {
+      .then(function(response) {
         $(".loader").addClass("hidden");
         if (response.status == 200) {
           toastr.success("Coupon valid and applied");
           let data = response.data.results;
           $scope.applied = 0;
           $scope.couponInfo = data.msg;
-          $scope.cartGrand = parseFloat(data.response.discounted_price).toFixed(2);
+          $scope.cartGrand = parseFloat(data.response.discounted_price).toFixed(
+            2
+          );
           $scope.cartsaving = parseFloat(data.response.discount).toFixed(2);
         } else {
           toastr.info("Coupon not valid");
         }
       })
-      .catch(function (response) {
+      .catch(function(response) {
         $(".loader").addClass("hidden");
         let data = response.data.error;
         toastr.info(data.msg);
       });
   };
-  $scope.removeCoupon = function () {
-    $scope.cartGrand = parseFloat($scope.cartGrand) + parseFloat($scope.cartsaving);
+  $scope.removeCoupon = function() {
+    $scope.cartGrand =
+      parseFloat($scope.cartGrand) + parseFloat($scope.cartsaving);
     console.log($scope.cartGrand);
     delete $scope.cartsaving;
     $scope.applied = 1;
     $scope.coupon = "";
   };
-  $scope.ctnpay = function () {
-
+  $scope.ctnpay = function() {
     if ($scope.address_id != "") {
       $(".bill.pay").trigger("click");
     } else {
       //check address form filled
-      if ($('#address_name').val() != '') {
-        $("#newAddress_submit").trigger("click")
+      if ($("#address_name").val() != "") {
+        $("#newAddress_submit").trigger("click");
         // addnewaddress()
       } else {
         toastr.error("Please Select the address");
       }
-
     }
   };
 });
