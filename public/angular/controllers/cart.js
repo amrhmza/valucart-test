@@ -73,7 +73,7 @@ app.controller("cart", function (
   $scope.updateCart = function (qty, index) {
     cart
       .quantityUpdate(qty, index)
-      .then(function (response) {})
+      .then(function (response) { })
       .catch(function (response) {
         // toastr.warning(response.data.results.msg);
       });

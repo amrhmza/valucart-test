@@ -843,8 +843,13 @@ a.highlight {
   height: 45px !important;
   display: inline-block !important;
 } */
-
-i.fa.fa-plus {
+.productlistpage .productpanel .productcountdiv .productplus,
+.carousel3 .productpanel .productcountdiv .productplus,
+.productdetailpage .productpanel .productcountdiv .productplus,
+.mycart .productpanel .productcountdiv .productplus,
+.carousel3 .productpanel .productcountdiv .productplus,
+.confirm-product .productpanel .productcountdiv .productplus,
+.editbundlelist .productpanel .productcountdiv .productplus .i.fa.fa-plus {
   content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png");
   width: 45px;
   height: 45px;
@@ -869,7 +874,12 @@ i.fa.fa-plus {
   border: 0;
 }
 
-i.fa.fa-minus {
+.productlistpage .productpanel .productcountdiv .productminus,
+.productdetailpage .productpanel .productcountdiv .productminus,
+.mycart .productpanel .productcountdiv .productminus,
+.carousel3 .productpanel .productcountdiv .productminus,
+.confirm-product .productpanel .productcountdiv .productminus,
+.editbundlelist .productpanel .productcountdiv .productminus .i.fa.fa-minus {
   content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png");
   width: 45px;
   height: 45px;
@@ -913,18 +923,33 @@ i.fa.fa-minus {
 .gallery .thumbnails {
   min-width: 115px;
 }
+.addressdiv .add-btn:hover,
+.addressdiv .add-btn:active {
+  color: #17becd;
+}
 .right-home {
   background-repeat: no-repeat;
 }
-.btn-black, .btn-balck:hover, .btn-black:active, .btn-black:active:hover {
+.btn-black,
+.btn-balck:hover,
+.btn-black:active,
+.btn-black:active:hover {
   height: auto;
 }
-.btn-blue:active, .btn-blue:hover {
+.btn-blue:active,
+.btn-blue:hover {
   height: auto !important;
 }
 @media only screen and (min-width: 1400px){
-  .ebtn, .ebtn:hover, .ebtn:active, .ebtn:focus, .ebtn:active:focus {
+  .productpanel .ebtn, .productpanel .ebtn:hover, .productpanel .ebtn:active, .productpanel .ebtn:focus, .productpanel .ebtn:active:focus {
       height: 77px !important;
+  }
+  .ebtn,
+  .ebtn:hover,
+  .ebtn:active,
+  .ebtn:focus,
+  .ebtn:active:focus {
+    height: 77px !important;
   }
   .mycart .productpanel::before{
     min-height: 335px;
@@ -938,4 +963,13 @@ i.fa.fa-minus {
 .mycart .productpanel, .mycart .productpanel::before {
   min-height: 335px;
   height: auto !important;
+}
+
+.btn-recurring:hover,
+.btn-recurring:focus,
+.btn-recurring:active {
+  line-height: 55px !important;
+}
+.reviewbtn:hover, .reviewbtn:active {
+  color: #14bdcd;
 }

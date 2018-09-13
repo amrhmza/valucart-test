@@ -86,7 +86,7 @@
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
                             <h5 class="total" style="float: right;">
-                                <span class="c_subtotal" ng-bind-html="cartGrand|number : 2">
+                                <span class="c_subtotal" ng-bind-html="subTotal|number : 2">
                                 </span> AED</h5>
                             </h5>
                             <hr>
@@ -143,7 +143,7 @@
     </div>
     <script>
         app.constant("cartData", {
-            'cartSum': <%= data.total %> 
+            'cartSum': <%= data.subtotal %> 
             });
     </script>
     <% include template/footer %>
