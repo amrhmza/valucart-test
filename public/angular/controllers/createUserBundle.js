@@ -152,12 +152,12 @@ app.controller("createUserBundle", function (
   var cp = document.forms.createBundle,
     elem = cp.elements;
   cp.onsubmit = function () {
-    $(".loader").removeClass("hidden");
+    // $(".loader").removeClass("hidden");
     let product_ids = [];
     let proceed = 0;
     if ($scope.mybundle_name == "") {
       $(".loader").addClass("hidden");
-      toastr.warning("Bundle Name Must be there..!");
+      toastr.warning("Bundle Name is required");
       return false;
     }
     $scope.mybundle.forEach(element => {
@@ -193,17 +193,17 @@ app.controller("createUserBundle", function (
         .then(function (response) {
           var res = response.data.results;
           if (res.msg == "success") {
-            $(".loader").addClass("hidden");
+            // $(".loader").addClass("hidden");
             toastr.success("Created Successfully..!");
             $window.location.href = "/create-bundle/success/" + res.response[0];
           }
         })
         .catch(function (response) {
-          $(".loader").addClass("hidden");
+          // $(".loader").addClass("hidden");
           console.log(response);
         });
     } else {
-      $(".loader").addClass("hidden");
+      // $(".loader").addClass("hidden");
       toastr.warning("Product should not be empty..!");
     }
   };
