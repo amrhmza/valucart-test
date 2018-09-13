@@ -896,3 +896,20 @@ i.fa.fa-minus {
 .home-orange-bg {
   margin-top: 2px;
 }
+.right-home {
+  background-repeat: no-repeat;
+}
+.btn-black, .btn-balck:hover, .btn-black:active, .btn-black:active:hover {
+  height: auto;
+}
+.btn-blue:active, .btn-blue:hover {
+  height: auto !important;
+}
+@media only screen and (min-width: 1400px){
+  .ebtn, .ebtn:hover, .ebtn:active, .ebtn:focus, .ebtn:active:focus {
+      height: 77px !important;
+  }
+  }
+  .btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
+    line-height: 55px !important;
+}
