@@ -637,6 +637,6 @@ let products= productData.product;
 </div>
 <script>
     app.constant("myrev", {
-        'data': <% - JSON.stringify(myrew == "" ? [] : myrew) %> 
+        'data': "<%= JSON.stringify(myrew == "" ? [] : myrew) %>" 
         });
 </script>
