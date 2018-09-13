@@ -158,12 +158,16 @@ app.controller("checkout", function(
     $scope.coupon = "";
   };
   $scope.ctnpay = function() {
+    // var c = $("#collapse2").hasClass("in");
+    // if (c == true) {
+    // } else {
     if ($scope.address_id != "") {
       $(".bill.pay").trigger("click");
     } else {
       toastr.error("Please Select the address");
     }
   };
+  // };
 
   $scope.savecontinue = function() {
     $("#collapse2").removeClass("in");

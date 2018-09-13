@@ -72,9 +72,10 @@ app.controller("product_listing", function(
         $scope.queryparam[key] = element;
       }
     }
-    querydata.queryparam = queryparams;
+    var apidata = queryparams;
+    apidata.cat_id = querydata.queryparam.cat_id;
     getProductList
-      .getlist(querydata.queryparam, $scope.page)
+      .getlist(apidata, $scope.page)
       .then(function(response) {
         var userAuth = $.cookie("vcartAuth")
           ? JSON.parse($.cookie("vcartAuth"))
