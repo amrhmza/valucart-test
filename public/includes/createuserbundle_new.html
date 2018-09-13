@@ -58,7 +58,7 @@
             </div>
 
             <div id="shop-desktop">
-                <a href="/">
+                <a class="saveBundle">
                     <h5 class="continue-text"><i class="fa fa-plus-circle"></i> Add more products</h5>
                 </a>
             </div>
@@ -88,15 +88,22 @@
                     </h5>
                 </div>
             </div>
-            <button type="submit" class="btn-proceed">Save</button>
+            <button type="submit" id="submitBundle" class="btn-proceed">Save</button>
             <button class="btn-cancel">Cancel</button>
         </div>
         <div class="row" id="summary-mobile">
             <div class="col-md-4 no-pad summary summary1">
                 <div class="btn-align">
-                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="button" id="submitBundle" class="btn-cancel">Cancel</button>
                     <button type="submit" class="btn-proceed">Save</button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.saveBundle', function () {
+                $("#submitBundle").click();
+            });
+        });
+    </script>

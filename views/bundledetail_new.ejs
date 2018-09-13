@@ -215,6 +215,13 @@ let products= productData.product;
             <div class="col-md-6 col-sm-6">
                 <div class="panel panel-default productviewpanel white-bg">
                     <div class="panel-body">
+                        <div class="bundle-title-label">
+                            <ul>
+                                <li><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                                <li class="title-text">ValuZone Bundle</li>
+                                <li><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                            </ul>
+                        </div>
                         <!-- <i class="fa fa-heart wishheart"></i> -->
                         <div class="row">
                             <div class="col-xs-12">
@@ -294,6 +301,12 @@ let products= productData.product;
     </div>
     <div class="container bundledetailview">
         <div class="row">
+            <div class="col-md-12 bundle-option-header">
+                <h3 class="bunlde-detail-title">Bundle details <span>(<%= productData.product.length;%> Items)</span></h3>
+                <p>This is a bundle created by ValuCart to give huge value for consumers. Few items in this bundle has alrternate options for you to choose. Please pick your option and proceed.</p>
+            </div>
+        </div>
+        <div class="row">
             <% 
                     j=0;
         products.forEach(function(pro){     
@@ -350,7 +363,7 @@ let products= productData.product;
                             j++;
             %>
     <div class="container bundledetailvieww m-0">
-        <h4 class="mt-0 mb-0 colorbl">Choose from one of the below</h4>
+        <h4 class="mt-0 mb-0 colorbl">We have alternate options for you. Make your choice</h4>
         <div class="row radios">
             <% 
                 let alterpro= pro.alternatives;
@@ -411,6 +424,8 @@ let products= productData.product;
             }
         });
         %>
+
+    
 
     <div class="container productdetail">
         <div id="exTab1" class="container">
@@ -522,7 +537,7 @@ let products= productData.product;
                                     <i class="fa fa-star <%= (rev.prr_ratting >= 4)?" filled ":" "; %>"></i>
                                     <i class="fa fa-star <%= (rev.prr_ratting >= 4.5)?" filled ":" "; %>"></i>
                                 </span>
-                                <%= rev.prr_ratting%> out of 5
+                                <%= parseInt(rev.prr_ratting)%> out of 5
                             </p>
                             <h5>
                                 <%= rev.prr_title%>
@@ -581,7 +596,7 @@ let products= productData.product;
                                 <input type="text" ng-model="title" name="title" class="form-control" id="title"
                                     required>
                                 <span ng-show="reviewform.title.$dirty && reviewform.title.$invalid">
-                                    <span ng-show="reviewform.title.$error.required" class="has-error">Username
+                                    <span ng-show="reviewform.title.$error.required" class="has-error">It
                                         is required.</span>
                                 </span>
                             </div>
@@ -590,7 +605,7 @@ let products= productData.product;
                                 <textarea ng-model="review" name="review" class="form-control" id="description"
                                     required></textarea>
                                 <span ng-show="reviewform.review.$dirty && reviewform.review.$invalid">
-                                    <span ng-show="reviewform.review.$error.required" class="has-error">Username
+                                    <span ng-show="reviewform.review.$error.required" class="has-error">It
                                         is required.</span>
                                 </span>
                             </div>
@@ -637,6 +652,6 @@ let products= productData.product;
 </div>
 <script>
     app.constant("myrev", {
-        'data': <% - JSON.stringify(myrew == "" ? [] : myrew) %> 
+        'data': "<%= JSON.stringify(myrew == "" ? [] : myrew) %>" 
         });
 </script>
