@@ -165,6 +165,7 @@ app.controller("checkout", function (
       toastr.error("Please Select the address");
     }
   };
+  // };
 
   $scope.savecontinue = function () {
     $("#collapse2").removeClass("in");

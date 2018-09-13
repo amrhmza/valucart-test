@@ -2,8 +2,11 @@ app.factory("getProductList", function($http, config, $q) {
   return {
     getlist: function(queryParam, page) {
       var q = $q.defer();
+      var data = {};
+      console.log(queryParam);
+
       var suggestURL = config.getproduct_list;
-      let data = {
+      data = {
         cat_id: queryParam.cat_id,
         page_no: page
       };
@@ -29,13 +32,15 @@ app.factory("getProductList", function($http, config, $q) {
         data["order_by"] = queryParam.order_by;
       }
 
-      var headers={};
-      headers["Content-Type"]= "application/json";
-      var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
-      if(userAuth.status=="success"){
-        headers["Authorization"]="Bearer " + userAuth.token;
+      var headers = {};
+      headers["Content-Type"] = "application/json";
+      var userAuth = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      if (userAuth.status == "success") {
+        headers["Authorization"] = "Bearer " + userAuth.token;
       }
-      
+
       $http({
         method: "POST",
         url: suggestURL,
