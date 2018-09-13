@@ -786,6 +786,8 @@ li.logout-btn:hover a {
   float: left;
   top: 35% !important;
   position: absolute;
+  font-size: 18px;
+  font-weight: 600;
 }
 .rightcon {
   width: 98% !important;
@@ -944,6 +946,13 @@ a.highlight {
   .product-listing-page .ebtn, .product-listing-page .ebtn:hover, .product-listing-page .ebtn:active, .product-listing-page .ebtn:focus, .product-listing-page .ebtn:active:focus {
       height: 77px !important;
   }
+  .productpanel .ebtn,
+  .productpanel .ebtn:hover,
+  .productpanel .ebtn:active,
+  .productpanel .ebtn:focus,
+  .productpanel .ebtn:active:focus {
+    height: 77px !important;
+  }
   /* .ebtn,
   .ebtn:hover,
   .ebtn:active,
@@ -951,16 +960,18 @@ a.highlight {
   .ebtn:active:focus {
     height: 77px !important;
   } */
-  .mycart .productpanel::before{
+  .mycart .productpanel::before {
     min-height: 335px;
     height: auto !important;
   }
 }
-.btn-recurring:hover, .btn-recurring:focus, .btn-recurring:active {
-    line-height: 55px !important;
-  
+.btn-recurring:hover,
+.btn-recurring:focus,
+.btn-recurring:active {
+  line-height: 55px !important;
 }
-.mycart .productpanel, .mycart .productpanel::before {
+.mycart .productpanel,
+.mycart .productpanel::before {
   min-height: 335px;
   height: auto !important;
 }
@@ -970,11 +981,48 @@ a.highlight {
 .btn-recurring:active {
   line-height: 55px !important;
 }
-.reviewbtn:hover, .reviewbtn:active {
+.reviewbtn:hover,
+.reviewbtn:active {
   color: #14bdcd;
 }
-/* @media only screen and (min-width: 1400px) {
-  .ebtn, .ebtn:hover, .ebtn:active, .ebtn:focus, .ebtn:active:focus {
-      height: 77px !important;
-  }
-  } */
+.bundle-title-label {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+}
+.bundle-title-label ul {
+  display: inline;
+  width: auto;
+  padding: 10px 25px;
+  background: #6e30e0;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.bundle-title-label ul li {
+  list-style: none;
+  display: inline-block;
+  color: #fff;
+}
+.bundle-title-label ul li.title-text {
+  padding: 0px 5px;
+}
+.bundle-title-label ul li i {
+  color: #ffea1b;
+  margin-right: 3px;
+  font-size: 14px;
+}
+.bundle-option-header h3 {
+  font-weight: 700;
+  text-transform: capitalize;
+  border-bottom: 2px solid;
+  padding-bottom: 2px;
+}
+.bundle-option-header span {
+  font-weight: 400;
+}
+.bundle-option-header p{
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 21px;
+}
