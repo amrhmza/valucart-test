@@ -308,26 +308,30 @@ app.controller("bundle_listing", function(
             is_bundel: true
           };
           let alter = [];
-          const proList = response.data.results.response.product;
+          const proList = response.data.results.response[0].product;
+
           if (proList) {
             angular.forEach(proList, function(value, key) {
               let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
               if (is_alternaitve) {
-                angular.forEach(proList, function(val, i) {
+                var pd_id = "";
+                var alternatives = value.alternatives;
+                angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    var pd_id = val.pba_pd_id;
+                    pd_id = val.pba_pd_id;
                   }
                 });
               } else {
                 var pd_id = value.pd_id;
               }
               let alter_data = {
-                pd_id: parseInt(element),
+                pd_id: pd_id,
                 is_alternaitve: is_alternaitve
               };
               alter.push(alter_data);
             });
           }
+          console.log(alter);
           bundle_details
             .listAddToCart(qty, alter, pb_id)
             .then(function(response) {
@@ -384,17 +388,19 @@ app.controller("bundle_listing", function(
           if (proList) {
             angular.forEach(proList, function(value, key) {
               let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
+              var pd_id = "";
+              var alternatives = value.alternatives;
               if (is_alternaitve) {
-                angular.forEach(proList, function(val, i) {
+                angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    var pd_id = val.pba_pd_id;
+                    pd_id = val.pba_pd_id;
                   }
                 });
               } else {
                 var pd_id = value.pd_id;
               }
               let alter_data = {
-                pd_id: parseInt(element),
+                pd_id: pd_id,
                 is_alternaitve: is_alternaitve
               };
               alter.push(alter_data);
@@ -409,7 +415,7 @@ app.controller("bundle_listing", function(
             bundel_items: alter
           };
 
-          console.log(productData);
+          //console.log(productData);
 
           userbundle
             .updateBundle(productData)

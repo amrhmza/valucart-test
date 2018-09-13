@@ -41,8 +41,7 @@
                 </div>
             </div>
             <div class="col-sm-4 text-right">
-                <h5 class="hidden-md hidden-sm hidden-lg" style="float: left;margin-top: 2px;font-weight: bold;">Product
-                    details
+                <h5 class="hidden-md hidden-sm hidden-lg" style="float: left;margin-top: 2px;font-weight: bold;">Product details
                 </h5>
                 <p class="totalitems">Total items
                     <span class="itemcount">
@@ -75,15 +74,19 @@
                                         <li>-
                                             <%=products.pd_name %>
                                                 <span class="productgrade">
-                                                X <%= products.ctb_qty %>
+                                                    X
+                                                    <%= products.ctb_qty %>
                                                 </span>
                                         </li>
                                         <% }) %>
                                 </ul>
                                 <% }else{
                                     %>
-                                    <h5><img src="img/grammeter.png" class="img-responsive gramimg"> <%= pro.p_quantity %></h5>
-                                    <%}%> 
+                                    <h5>
+                                        <img src="img/grammeter.png" class="img-responsive gramimg">
+                                        <%= pro.p_quantity %>
+                                    </h5>
+                                    <%}%>
                         </div>
                         <div class="col-sm-3 hidden-xs">
                             <div class="deliverystate">
@@ -98,9 +101,9 @@
                         </div>
                         <div class="col-sm-3 text-center">
                             <% if(pro.pdt_price!=null){ %>
-                                <h5 class="offeredprice">
+                                <!-- <h5 class="offeredprice">
                                     <%= pro.price %> AED
-                                </h5>
+                                </h5> -->
                                 <h6 class="price">
                                     <%= pro.ct_quantity %> X
                                         <%= pro.pdt_price %> AED
@@ -122,7 +125,8 @@
 
                     <div class="panel-footer hidden-md hidden-sm hidden-lg">
                         <p class="text-info" style="font-size: 14px;margin: 5px;text-align: center;">
-                            <i class="fa fa-plus-circle"></i> Show All (<%= data.order_products.length %> More product)
+                            <i class="fa fa-plus-circle"></i> Show All (
+                            <%= data.order_products.length %> More product)
                         </p>
                     </div>
         </div>
@@ -220,32 +224,46 @@
                                 <p class="paylabel">Sub total</p>
                             </div>
                             <div class="col-xs-6 text-right">
+                                <!-- <p>
+                                    <%= data.order_data.o_savings_via_coupon %>
+                                </p> -->
                                 <p class="payvalue">
-                                     <%= Number(data.order_data.o_total)-15 %>.00 AED
+                                    <%= Number( parseFloat(data.order_data.o_total).toFixed(2) - parseFloat(15).toFixed(2)) + Number(parseFloat(data.order_data.o_savings_via_coupon).toFixed(2)) %> AED
                                 </p>
                             </div>
-                            <div class="col-xs-6 text-left">
-                                <p class="paylabel">Delivery charge</p>
-                            </div>
-                            <div class="col-xs-6 text-right">
-                                <p class="payvalue">15.00 AED</p>
-                            </div>
-                            <div class="row savingdiv hide">
-                                <div class="col-xs-6 text-left savinglabel">
-                                    <p class="">Savings</p>
+                            <% if(data.order_data.o_savings_via_coupon!="0.00") { %>
+                                <div class="col-xs-6 text-left">
+                                    <p class="paylabel">Savings</p>
                                 </div>
-                                <div class="col-xs-6 text-right savinglabel">
-                                    <p>20.00 AED</p>
+                                <div class="col-xs-6 text-right">
+                                    <p class="payvalue">
+                                        -
+                                        <%= parseFloat(data.order_data.o_savings_via_coupon).toFixed(2) %> AED
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="col-xs-6 text-left">
-                                <p class="total">Grand total (inclusive of VAT)</p>
-                            </div>
-                            <div class="col-xs-6 text-right">
-                                <p class="total">
-                                 <%= data.order_data.o_total %> AED
-                                </p>
-                            </div>
+                                <%}%>
+                                    <div class="col-xs-6 text-left">
+                                        <p class="paylabel">Delivery charge</p>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <p class="payvalue">15.00 AED</p>
+                                    </div>
+                                    <div class="row savingdiv hide">
+                                        <div class="col-xs-6 text-left savinglabel">
+                                            <p class="">Savings</p>
+                                        </div>
+                                        <div class="col-xs-6 text-right savinglabel">
+                                            <p>20.00 AED</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 text-left">
+                                        <p class="total">Grand total (inclusive of VAT)</p>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <p class="total">
+                                            <%= data.order_data.o_total %> AED
+                                        </p>
+                                    </div>
                         </div>
                     </div>
 

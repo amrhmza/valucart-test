@@ -190,6 +190,7 @@
                                             <% if(pendingBundle.length>0){ %>
                                                 <input type="hidden" name="ub_id" class="ub_idd" value="<%= pendingBundle[0].ub_id %>" />
                                                 <% }%>
+												 <input type="hidden" name="subtotal" value="{{subGrand}}" />
                                                     <input type="hidden" name="total" value="{{cartGrand}}" />
                                                     <input type="hidden" name="coupon" value="{{coupon}}" />
                                                     <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
@@ -242,6 +243,7 @@
                                                     <% if(pendingBundle.length>0){ %>
                                                         <input type="hidden" name="ub_id" id="ub_idd" value="<%= pendingBundle[0].ub_id %>" />
                                                         <% }%>
+														 <input type="hidden" name="subtotal" value="{{subGrand}}" />
                                                             <input type="hidden" name="total" value="{{cartGrand}}" />
                                                             <input type="hidden" name="coupon" value="{{coupon}}" />
                                                             <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
