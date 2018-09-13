@@ -155,10 +155,10 @@
                                     <div id="collapse3" class="panel-collapse collapse in">
                                         <div class="panel-body">
                                             <ul class="list-group brandlist">
-                                                <% if(data.product_config.price_filter==""){
+                                                <% if(data.product_config.price_filter!=""){
                                                 var i=0;
                                                 data.product_config.price_filter.forEach(function(price){ 
-                                                if(price.end!==0 && i!==0){
+                                                if(price.end!==0){
                                                 %>
                                                     <li class="list-group-item">
                                                         <div class="checkbox checkbox-info radio">
