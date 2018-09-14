@@ -11,11 +11,8 @@ router.get("/", async (req, res, next) => {
     let querydata = req.query;
     // let cat_id = req.param("cat_id");
     let data = await bundle_listing.get_datav2(querydata);
-    console.log("TCL: querydata", querydata);
-    console.log("TCL: data", data.product_config.cat_filter);
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
-    console.dir("TCL: menudata", menudata);
     res.render("bundle-listing_new", {
       data: data,
       banner: banner,
@@ -33,7 +30,7 @@ router.get("/", async (req, res, next) => {
         "js/jquery.nice-select.min.js"
       ]
     });
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     console.log(error);
     error_404(res);
