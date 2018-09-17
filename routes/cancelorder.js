@@ -9,10 +9,11 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
     let data = await orderDetail.get_data(JSON.parse(cookies), req.params);
     res.render("cancelorder", {
       data: data,
-      angular: false,
+      cookies: cookies,
       search: 0,
-      customjs: false,
-      cookies: cookies
+      angular: true,
+      customjs: true,
+      jslist: ["angular/app.js", "angular/controllers/cancelorder.js"]
     });
   } catch (error) {
     error_404(res);
