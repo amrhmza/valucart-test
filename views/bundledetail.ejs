@@ -85,12 +85,10 @@ let products= productData.product;
                                         else{
                                             var proAlters= pro.alternatives;
                                             proAlters.forEach(function (alt){
-                                                if(no<4){
                                                 no++;
                                             %>
                                                         <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked': ''%>>
                                                         <%
-                                                }
                                         });    
                                         }
                                       }
@@ -118,12 +116,10 @@ let products= productData.product;
                                                                 else{
                                                                     var proAlters= pro.alternatives;
                                                                     proAlters.forEach(function (alt){
-                                                                        if(no<4){
                                                                         no++;
                                                                     %>
                                                                         <label for="image<%=no%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
                                                                         <%
-                                                                        }
                                                                             });
                                                                         }
                                                                     }
@@ -149,7 +145,6 @@ let products= productData.product;
                                                                 else{
                                                                     var proAlters= pro.alternatives;
                                                                     proAlters.forEach(function (alt){
-                                                                        if(no<4){
                                                                         no++;
                                                                     %>
                                                                         <figure>
@@ -158,7 +153,6 @@ let products= productData.product;
                                                                             </label>
                                                                         </figure>
                                                                         <%
-                                                                    }
                                                                             });
                                                                         }
                                                                     }
