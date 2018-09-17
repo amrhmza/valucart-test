@@ -651,7 +651,7 @@ a {
   padding: 15px 35px;
 }
 .landing-offer {
-  max-width: 600px !important;
+  max-width: 600px;
   z-index: 2;
 }
 .left-home,
@@ -730,6 +730,38 @@ a {
   .home-orange-bg1 {
     height: auto;
   }
+  .pl0 {
+    padding-left: 0px !important;
+    padding-right: 0px;
+  }
+  .home-cards {
+    padding: 50px 28px;
+    margin-top: 40px;
+}
+}
+@media only screen and (max-width: 320px){
+.productlistpage .productpanel .productcountdiv .productplus, .carousel3 .productpanel .productcountdiv .productplus, .productdetailpage .productpanel .productcountdiv .productplus, .mycart .productpanel .productcountdiv .productplus, .carousel3 .productpanel .productcountdiv .productplus, .confirm-product .productpanel .productcountdiv .productplus, .editbundlelist .productpanel .productcountdiv .productplus {
+    padding: 9px;
+    /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png); */
+    height: 25px !important;
+    width: 25px !important;
+    display: inline-block;
+    border-radius: 50%;
+    margin: auto;
+    border: 0;
+    padding: 3px !important;
+}
+.productlistpage .productpanel .productcountdiv .productminus, .productdetailpage .productpanel .productcountdiv .productminus, .mycart .productpanel .productcountdiv .productminus, .carousel3 .productpanel .productcountdiv .productminus, .confirm-product .productpanel .productcountdiv .productminus, .editbundlelist .productpanel .productcountdiv .productminus .i.fa.fa-minus {
+  content: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);
+  width: 25px !important;
+  height: 25px !important;
+  /* font-size: 11px; */
+  padding: 3px;
+}
+.mycart .summary h5 {
+  color: #848484;
+  font-size: 10px;
+}
 }
 li.logout-btn,
 li.logout-btn:hover a {
@@ -907,6 +939,53 @@ a.highlight {
   border: 0;
 }
 
+@media only screen and (max-width: 600px) {
+  .productlistpage .productpanel .productcountdiv .productminus,
+.productdetailpage .productpanel .productcountdiv .productminus,
+.mycart .productpanel .productcountdiv .productminus,
+.carousel3 .productpanel .productcountdiv .productminus,
+.confirm-product .productpanel .productcountdiv .productminus,
+.editbundlelist .productpanel .productcountdiv .productminus .i.fa.fa-minus {
+  content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png");
+  width: 30px;
+  height: 30px;
+  /* font-size: 11px; */
+  padding: 6px;
+}
+
+.productlistpage .productpanel .productcountdiv .productplus,
+.carousel3 .productpanel .productcountdiv .productplus,
+.productdetailpage .productpanel .productcountdiv .productplus,
+.mycart .productpanel .productcountdiv .productplus,
+.carousel3 .productpanel .productcountdiv .productplus,
+.confirm-product .productpanel .productcountdiv .productplus,
+.editbundlelist .productpanel .productcountdiv .productplus {
+  padding: 9px;
+  /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png);*/
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: auto;
+  border: 0;
+}
+.button-container input {
+  width: 30px !important;
+  height: 30px !important;
+}
+.myorderdetail .myorderpanel .order-m40{
+  margin-top: 0px !important;
+}
+.myorderdetail .myorderpanel .ordertitle{
+  margin-top: 0px !important;
+}
+.myorderdetail .myorderpanel .order-price{
+  margin-top: 0px !important;
+  margin-left: -15px;
+}
+
+}
+
 .left-home,
 .right-home {
   padding-bottom: 35px;
@@ -1037,4 +1116,28 @@ a.highlight {
 .confirm-product .productpanel {
   height: auto;
   min-height: 195px;
+}
+.rowpadd0{
+  padding: 0;
+  margin: 0;
+}
+.myorderdetail .myorderpanel .dis_price {
+  background-color: #cb78ff;
+    color: #fff;
+    width: fit-content;
+    width: max-content;
+    max-width: 80px;
+    margin-bottom: 18px;
+    padding: 11px;
+    margin-top: -15px;
+}
+
+.myorderdetail .myorderpanel .order-m40{
+  margin-top: 40px;
+}
+.myorderdetail .myorderpanel .ordertitle{
+  margin-top: 50px;
+}
+.myorderdetail .myorderpanel .order-price{
+  margin-top: 30px;
 }
