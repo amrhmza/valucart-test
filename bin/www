@@ -6,7 +6,7 @@
 
 var app = require("../app");
 var debug = require("debug")("valuecart-web:server");
-var https = require("https");
+var http = require("http");
 const fs = require("fs");
 
 /**
@@ -17,7 +17,7 @@ var port = normalizePort(process.env.PORT || "5555");
 app.set("port", port);
 
 /**
- * Create https server.
+ * Create http server.
  */
 
 const sslCreds = {
@@ -26,8 +26,8 @@ const sslCreds = {
   ca: fs.readFileSync("sslforfree/ca_bundle.crt")
 };
 
-var server = https.createServer(sslCreds, app);
-// var server = https.createServer(app);
+var server = http.createServer(app);
+// var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -58,7 +58,7 @@ function normalizePort(val) {
 }
 
 /**
- * Event listener for https server "error" event.
+ * Event listener for http server "error" event.
  */
 
 function onError(error) {
@@ -84,11 +84,11 @@ function onError(error) {
 }
 
 /**
- * Event listener for https server "listening" event.
+ * Event listener for http server "listening" event.
  */
 
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  debug("Listening on " + bind);
+  console.log("Listening on " + bind);
 }
