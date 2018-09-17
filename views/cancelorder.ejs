@@ -14,7 +14,7 @@
         </ul>
     </div>
     <!--    Breadcrumb-->
-    <div class="container myorderdetail">
+    <div class="container myorderdetail" ng-app="myapp" ng-controller="cancelorder">
         <h4 class="cancelquestion">Are you sure you want to cancel this order?</h4>
         <div class="row">
             <div class="col-sm-8">
@@ -32,7 +32,7 @@
                         </li>
                         <li> Total Amount :
                             <span class="orderdate">
-                                <%= data.order_data.o_total %> AED</span>
+                                <%= parseFloat(data.order_data.o_total).toFixed(2); %> AED</span>
                         </li>
                         <li class="hidden-sm hidden-md hidden-lg"> Delivery Date :
                             <span class="orderdate">
@@ -58,7 +58,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-3 col-xs-4">
-                            <% if(pro.ct_discount_percentage!=null){%>
+                            <% if(pro.ct_discount_percentage!=null && pro.ct_discount_percentage!=0){%>
                                 <p class="discountprice hidden-xs">
                                     <%= pro.ct_discount_percentage %>%</p>
                                 <% } %>
@@ -94,8 +94,8 @@
                         </div>
                         <div class="col-sm-3 text-center">
                             <% if(pro.pdt_price!=null){ %>
-                                <h5 class="offeredprice">
-                                    <%= pro.price %> AED</h5>
+                                <!--<h5 class="offeredprice">
+                                    <%= pro.price %> AED</h5>-->
                                 <h6 class="price">
                                     <%= pro.ct_quantity %> X
                                         <%= pro.pdt_price %> AED</h6>
@@ -186,16 +186,21 @@
                 <div class="col-sm-6">
                     <div class="panel panel-default paymentdiv">
                         <h5 class="paytitle">Reason for Cancellation</h5>
-                        <form action="">
+                        <form name="cancel_order" id="cancel_order">
                             <div class="form-group">
-                                <select class="form-control" id="sel1">
-                                    <option>Select reason</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                            <input type="hidden" name="order_id" id="order_id" value="<%= data.order_data.o_id %>">
+                                <select class="form-control" id="sel1" name="cancelmsg">
+                                    <option value="">Select reason</option>
+                                    <option value="Ordered by mistake">Ordered by mistake</option>
+                                    <option value="Order got delayed">Order got delayed</option>
+                                    <option value="Already purchased">Already purchased</option>
+                                    <option value="Others">Others</option>
                                 </select>
                             </div>
-                            <button class="btn btn-info cancelbtn">Request Cancel</button>
+                            <div class="form-group hide" id="custom_reason">
+                            <textarea name="other_reason" id="other_reason" class="form-control" placeholder="Your reason for cancellation" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info cancelbtn">Request Cancel</button>
                         </form>
 
                     </div>
