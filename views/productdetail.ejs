@@ -262,6 +262,20 @@
                         <div class="tab-pane active" id="1a">
                             <% if(data.response[0].pd_description!=null) %>
                                 <%= data.response[0].pd_description %>
+                                <ul class="product-features m-t-30">
+                                <% 
+                                        if (data) {
+                                    data.response[0].pd_description_bullets.forEach(function(feature){
+                                        if(feature.value!=''){
+                                            let title = (feature.key).slice(4) // remove VAL_ from key.
+                                %>
+                                                                <li><strong><%= title%></strong> : <%= feature.value%></li>
+                                                                <% 
+                                        }
+                                                                 })
+                            } 
+                           %>
+                           </ul>
                                     <!-- <ul>
                             <li> Vitamin D important for healthy bones*</li>
                             <li> *Contains ≥ 15% of the nutrient reference value of vitamin D. Vitamin D contributes to the maintenance
