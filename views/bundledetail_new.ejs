@@ -72,7 +72,7 @@ let products= productData.product;
                         %>
                 <section class="gallery hidden-xs">
                     <div class="carousel">
-                    <input type="radio" id="image1" name="gallery-control" checked>
+                        <input type="radio" id="image1" name="gallery-control" checked>
                         <% 
                                 var no=0;
                                 products.forEach(function(pro){     
@@ -81,7 +81,7 @@ let products= productData.product;
                                         {
                                         no++;
                                      %>
-                        <input type="radio" id="image<%=no+1%>" name="gallery-control" >
+                        <input type="radio" id="image<%=no+1%>" name="gallery-control">
                         <%
                                         }
                                         else{
@@ -120,7 +120,7 @@ let products= productData.product;
                                                                     proAlters.forEach(function (alt){
                                                                         no++;
                                                                     %>
-                            <label  onclick="changeslide(<%=no+1%>)" for="image<%=no+1%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
+                            <label onclick="changeslide(<%=no+1%>)" for="image<%=no+1%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
                             <%
                                                                             });
                                                                         }
@@ -129,11 +129,11 @@ let products= productData.product;
                                                                 %>
                         </div>
                         <div class="wrap">
-                        <figure>
-                        <label for="fullscreen">
-                            <img src="<%= productData.pb_image%>" alt="image<%= productData.pb_name%>" />
-                        </label>
-                    </figure>
+                            <figure>
+                                <label for="fullscreen">
+                                    <img src="<%= productData.pb_image%>" alt="image<%= productData.pb_name%>" />
+                                </label>
+                            </figure>
                             <% 
                                                                 var no=0;
                                                                 products.forEach(function(pro){     
@@ -249,7 +249,7 @@ let products= productData.product;
 
                         </div>
                         <div class="row <%= productData.stock_status?'':'avoid-clicks' %>" style="padding-top: 20px">
-                            <div class="col-md-6 col-xs-12" style="padding:10px 0 0 ">
+                            <div class=" col-lg-6 col-md-4 col-sm-6 col-xs-12" style="padding:10px 0 0 ">
                                 <div class="productcountdiv button-container">
                                     <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)"
                                         value="-">
@@ -264,7 +264,7 @@ let products= productData.product;
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-xs-12" ng-if="loggedStatus == true">
+                            <div class=" col-lg-6 col-md-8 col-sm-6 col-xs-12" ng-if="loggedStatus == true">
 
                                 <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info btn-add-to-cart">
@@ -283,7 +283,7 @@ let products= productData.product;
                                 </ul>
 
                             </div>
-                            <div class="col-md-6 col-xs-12" ng-if="loggedStatus != true">
+                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12" ng-if="loggedStatus != true">
                                 <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info  btn-add-to-cart">
                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -302,11 +302,13 @@ let products= productData.product;
     <div class="container bundledetailview">
         <div class="row">
             <div class="col-md-12 bundle-option-header">
-                <h3 class="bunlde-detail-title">Bundle details <span>(<%= productData.product.length;%> Items)</span></h3>
-                <p>This is a bundle created by ValuCart to give huge value for consumers. Few items in this bundle has alrternate options for you to choose. Please pick your option and proceed.</p>
+                <h3 class="bunlde-detail-title">Bundle details <span>(
+                        <%= productData.product.length;%> Items)</span></h3>
+                <p>This is a bundle created by ValuCart to give huge value for consumers. Few items in this bundle has
+                    alrternate options for you to choose. Please pick your option and proceed.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row hidden-xs hidden-sm">
             <% 
                     j=0;
         products.forEach(function(pro){     
@@ -323,24 +325,24 @@ let products= productData.product;
                 <div class="panel rightcon panel-default productpanel newproductpanel">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-1 col-xs-6">
+                            <div class="col-md-1 col-sm-1 col-xs-6">
                                 <img src="<%=pro.p_image%>" class="height60 img-responsive productimg">
                             </div>
-                            <div class="col-md-5 col-xs-6" ng-init="c[<%= pro.pd_id %>]=<%= pro.pd_id %>">
+                            <div class="col-md-5 col-sm-5 col-xs-6" ng-init="c[<%= pro.pd_id %>]=<%= pro.pd_id %>">
                                 <input type="radio" name="rGroup_<%= pro.pbm_id %>" class="hide" ng-checked="c[<%= pro.pd_id %>]"
                                     ng-model="c[<%= pro.pd_id %>]" />
                                 <h4 class="newproductpanel">
                                     <%=pro.pd_name%>
                                 </h4>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3">
                                 <h5>
                                     <img src="img/grammeter.png" class="img-responsive gramimg">
                                     <%= pro.p_quantity%> <strong>X
                                         <%= pro.pbm_qty;%></strong>
                                 </h5>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3">
                                 <h6>
                                     <%=pro.p_price;%> AED
                                 </h6>
@@ -354,61 +356,61 @@ let products= productData.product;
                 }else{
             %>
             <div class="container bundledetailvieww m-0">
-            <h4 class="mtb10 colorbl">We have alternate options for you. Make your choice</h4>
-            <div class="row radios m-b-20">
-                <% 
+                <h4 class="mtb10 colorbl">We have alternate options for you. Make your choice</h4>
+                <div class="row radios m-b-20">
+                    <% 
                     let alterpro= pro.alternatives;
                     var i = 0;
                         alterpro.forEach(function(alt){
                             var select= (alt.pba_is_default==1)? true:false;
                             i++;
                     %>
-                <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>" <%
-                    if(alt.pba_is_default==1){ %> ng-init=" c[
-                    <%= alt.pba_pbm_id %>]=
-                    <%= alt.pd_id %>"
-                    <% } %> >
-                    <% if(i==1){ %>
-                    <div class="panel leftnum">
-                        <%=j%>.
-                    </div>
-                    <%}%>
-                    <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rGroup_<%= alt.pba_pbm_id %>"
-                        value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
-    
-                    <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id;%>">
-                        <div class="panel  panel-default productpanel newproductpanel custm-sty">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2 col-xs-6 text-center">
-                                        <img src="<%= alt.p_image;%>" class="height60 productimg">
-                                    </div>
-                                    <div class="col-md-4 col-xs-6 ">
-                                        <h4 class="newproductpanel">
-                                            <%= alt.pd_name;%>
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6">
-                                        <h5>
-                                            <img src="img/grammeter.png" class=" img-responsive gramimg">
-                                            <%= alt.p_quantity;%> <strong>X
-                                                <%= pro.pbm_qty;%></strong>
-                                        </h5>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6">
-                                        <h6>
-                                            <%=alt.p_price;%> AED
-                                        </h6>
+                    <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>" <%
+                        if(alt.pba_is_default==1){ %> ng-init="c[
+                        <%= alt.pba_pbm_id %>]=
+                        <%= alt.pd_id %>"
+                        <% } %> >
+                        <% if(i==1){ %>
+                        <div class="panel leftnum">
+                            <%=j%>.
+                        </div>
+                        <%}%>
+                        <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rGroup_<%= alt.pba_pbm_id %>"
+                            value="<%= alt.pd_id;%>" id="r<%= alt.pd_id+'_'+i+'_'+j;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
+
+                        <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id+'_'+i+'_'+j;%>">
+                            <div class="panel  panel-default productpanel newproductpanel custm-sty">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-2 col-xs-6 text-center">
+                                            <img src="<%= alt.p_image;%>" class="height60 productimg">
+                                        </div>
+                                        <div class="col-md-4 col-xs-6 ">
+                                            <h4 class="newproductpanel">
+                                                <%= alt.pd_name;%>
+                                            </h4>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <h5>
+                                                <img src="img/grammeter.png" class=" img-responsive gramimg">
+                                                <%= alt.p_quantity;%> <strong>X
+                                                    <%= pro.pbm_qty;%></strong>
+                                            </h5>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <h6>
+                                                <%=alt.p_price;%> AED
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </label>
-                </div>
-                <%
+                        </label>
+                    </div>
+                    <%
                     });
                 %>
-            </div>
+                </div>
             </div>
             <%
               }
@@ -417,123 +419,128 @@ let products= productData.product;
         %>
         </div>
     </div>
-<div class="container mobil-bundledetailview hidden">
-    <div class="row">
-        <div class="col-xs-12">
-                <div class="panel panel-default productpanel newproductpanel">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <input type="radio" name="name" class="hide" checked
-                                     />
-                                <h4 class="newproductpanel">
-                                   1.LAVENDER REFILL RA191
-                                </h4>
-                                 <h5>
+    <!-- mobile view bundle list -->
+    <div class="container mobil-bundledetailview hidden-lg hidden-md">
+        <div class="row radios">
+        <% 
+                    j=0;
+        products.forEach(function(pro){     
+            if(pro){
+                j++;  
+                if(pro.pbm_is_alternative!=1){
+                     
+                    %>
+            <div class="col-md-4 col-sm-6">
+                <input type="radio" name="rGroup_<%= pro.pbm_id %>" class="hide" ng-checked="c[<%= pro.pd_id %>]"
+                ng-model="c[<%= pro.pd_id %>]" />
+                    <div class="panel panel-default productpanel newproductpanel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <h4 class="newproductpanel">
+                                    <%=j%>. <%=pro.pd_name%>
+                                    </h4>
+                                    <h5>
                                     <img src="img/grammeter.png" class="img-responsive gramimg">
-                                    350g <strong>X
-                                        2</strong>
-                                </h5>
-                                <h6 class="dis-price">
-                                    225.00 AED
-                                </h6>
-                                 <h6>
-                                    225.00 AED
-                                </h6>
-                            </div>
-                             <div class="col-xs-4">
-                                <img src="img/product1.png" class="img-responsive productimg">
+                                    <%= pro.p_quantity%> <strong>X
+                                        <%= pro.pbm_qty;%></strong>
+                                   </h5>
+                                    <h6 class="dis-price hidden">
+                                        225.00 AED
+                                    </h6>
+                                    <h6>
+                                    <%=pro.p_price;%> AED
+                                    </h6>
+                                </div>
+                                <div class="col-xs-4">
+                                    <img src="<%=pro.p_image%>" class="img-responsive productimg">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default productpanel newproductpanel">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <input type="radio" name="name" class="hide" checked
-                                     />
-                                <h4 class="newproductpanel">
-                                   1.LAVENDER REFILL RA191
-                                </h4>
-                                 <h5>
-                                    <img src="img/grammeter.png" class="img-responsive gramimg">
-                                    350g <strong>X
-                                        2</strong>
-                                </h5>
-                                <h6 class="dis-price">
-                                    225.00 AED
-                                </h6>
-                                 <h6>
-                                    225.00 AED
-                                </h6>
-                            </div>
-                             <div class="col-xs-4">
-                                <img src="img/product1.png" class="img-responsive productimg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default productpanel newproductpanel">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <input type="radio" name="name" class="hide" checked
-                                     />
-                                <h4 class="newproductpanel">
-                                   1.LAVENDER REFILL RA191
-                                </h4>
-                                 <h5>
-                                    <img src="img/grammeter.png" class="img-responsive gramimg">
-                                    350g <strong>X
-                                        2</strong>
-                                </h5>
-                                <h6 class="dis-price">
-                                    225.00 AED
-                                </h6>
-                                 <h6>
-                                    225.00 AED
-                                </h6>
-                            </div>
-                             <div class="col-xs-4">
-                                <img src="img/product1.png" class="img-responsive productimg">
+            </div>
+            <% 
+        }else{
+            %>
+            <h4 class="blue-text text-info">We have alternate options for you. Make your choice</h4>
+            <% 
+            let alterpro= pro.alternatives;
+            var i = 0;
+                alterpro.forEach(function(alt){
+                    var select= (alt.pba_is_default==1)? true:false;
+                    i++;
+            %>
+            <div class="col-md-4 col-sm-6">
+                <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rrGroup_<%= alt.pba_pbm_id %>"
+                value="<%= alt.pd_id;%>" id="rr<%= alt.pd_id+'_'+i+'_'+j;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
+                <label class="radio" for="rr<%= alt.pd_id+'_'+i+'_'+j;%>">
+                    <div class="panel panel-default productpanel newproductpanel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <h4 class="newproductpanel">
+                                    <%=j%>. <%= alt.pd_name;%>
+                                    </h4>
+                                    <h5>
+                                    <img src="img/grammeter.png" class=" img-responsive gramimg">
+                                    <%= alt.p_quantity;%> <strong>X
+                                        <%= pro.pbm_qty;%></strong>
+                                   </h5>
+                                    <h6 class="dis-price hide">
+                                        225.00 AED
+                                    </h6>
+                                    <h6>
+                                    <%=alt.p_price;%> AED
+                                    </h6>
+                                </div>
+                                <div class="col-xs-4">
+                                    <img src="img/product1.png" class="img-responsive productimg">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-         </div>
+                </label>
+            </div>
+            <%
+        });
+    %>
+    <%
+    }
+    }
+    })
+    %>   
     </div>
 </div>
+    <!-- mobile view bundle list -->
+    <div class="container bundlecountview">
+        <h4 class="priceamount">
+            <%
+                if(products.pdt_percentage>0){
+            %>
+            <span class="dis-price">
+                <%= productData.pb_price;%> AED
+            </span>
+            <% } %>
+            <%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED
+        </h4>
+        <div class="productcountdiv button-container">
+            <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)" value="-">
+                <i class="fa fa-minus"></i>
+            </button>
+            <!--<p class="productcount">1</p>-->
+            <input type="text" name="qty_1" maxlength="12" value="1" class="input-text qty  productcount" disabled />
+            <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',1)" value="+">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
 
-<div class="container bundlecountview">
-<h4 class="priceamount"> <%
-if(products.pdt_percentage>0){
-%>
-<span class="dis-price">
-<%= productData.pb_price;%> AED
-</span>
-<% } %>
-<%= (productData.pdt_price)?productData.pdt_price:productData.pb_price;%> AED
-</h4>
-<div class="productcountdiv button-container">
-        <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',1)"
-                                        value="-">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <!--<p class="productcount">1</p>-->
-                                    <input type="text" name="qty_1" maxlength="12" value="1" class="input-text qty  productcount"
-                                        disabled />
-                                    <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',1)"
-                                        value="+">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-        <button  ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart" ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
-        <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-        <button  ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart" ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
-        <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-</div>
-    
+        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart" ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+        <button ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart" ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+
+    </div>
+
 
     <div class="container productdetail">
         <div id="exTab1" class="container">

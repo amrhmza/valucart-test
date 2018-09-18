@@ -440,6 +440,9 @@ body {
 	overflow-x: hidden !important;
 	min-height: 100%;
 }
+.btn{
+	transition: 0.5s;
+}
 
 footer {
 	width: 100%;
@@ -1697,7 +1700,7 @@ ul.breadcrumb li a:hover {
 	min-height: 80px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	display: -webkit-box;
+	/* display: -webkit-box; */
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	padding-right: 20px;
@@ -6879,6 +6882,7 @@ select:valid+.form-control-placeholder {
 		border-radius: 0px !important;
 		text-align: left;
 		background-color: #fff;
+		left: -44px;
 	}
 
 	.productlistpage .sortdropdown .btn-default:active,
@@ -6976,7 +6980,7 @@ select:valid+.form-control-placeholder {
 	.ebtn:active:focus {
 		background-color: #ddd;
 		color: black;
-		padding: 0 25px;
+		padding: 0 12px;
 		outline: none;
 		border: none;
 		height: 60px;
@@ -7237,7 +7241,8 @@ select:valid+.form-control-placeholder {
 
 	.mycart .productpanel {
 		padding: 0 10px;
-		height: auto
+		height: auto;
+		min-height: auto !important
 	}
 
 	.mycart .productpanel .mobleft .productcountdiv {
@@ -8617,9 +8622,17 @@ select:valid+.form-control-placeholder {
 	.ebtn:active,
 	.ebtn:focus,
 	.ebtn:active:focus {
-		padding: 0 20px;
+		padding: 0 10px;
 	}
-
+	.ebtn img {
+		height: 25px;
+	}
+	.productlistpage .productpanel .panel-body {
+		padding-right: 0px;
+		padding-bottom: 0px;
+		padding-left: 15px;
+		padding-top: 10px;
+	}
 	.organicbundles .productpanel .btn-info {
 		font-size: 10px;
 	}
@@ -8767,12 +8780,17 @@ select:valid+.form-control-placeholder {
 		border: none;
 		border-radius: 0px;
 		padding: 8px 20px;
-		width: 163px;
+		width: 162px;
 		height: 77px;
 		float: left;
 		font-size: 17px;
 	}
-
+	.productlistpage .productpanel .btn-info.product_add{
+		width: 171px !important;
+	}
+	.productlistpage.product-listing-page .discountprice {
+		top: -9px !important;
+	}
 	.organicbundles .productpanel .btn-info {
 		border: none;
 		border-radius: 0px;
@@ -9229,7 +9247,10 @@ select:valid+.form-control-placeholder {
 		margin-bottom: 40px;
 		color: #2e2e2e;
 	}
-
+	
+	.btn-block{
+		width: 430px;
+	}
 	.confirm-product .order {
 		font-size: 26.5px;
 		text-decoration: underline;
@@ -9474,6 +9495,9 @@ select:valid+.form-control-placeholder {
 		height: 82px;
 		float: left;
 		font-size: 17px;
+	}
+	.productlistpage .productpanel .btn-info.product_add{
+		width: 170px !important;
 	}
 }
 
