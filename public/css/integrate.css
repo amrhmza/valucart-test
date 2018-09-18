@@ -906,6 +906,7 @@ li.logout-btn:hover a {
 .newproductpanel {
   min-height: 100% !important;
   padding-bottom: 0 !important;
+  margin-bottom: 0px !important;
 }
 
 .newproductpanel .panel-body {
@@ -999,9 +1000,7 @@ a.highlight {
   margin-top: 24px;
 }
 
-.productlistpage.product-listing-page .discountprice {
-  /* top: -19px; */
-}
+
 .productlistpage .productimg {
   /* height: unset; */
   margin-bottom: unset;
@@ -1185,7 +1184,7 @@ a.highlight {
   .productpanel .ebtn:active,
   .productpanel .ebtn:focus,
   .productpanel .ebtn:active:focus {
-    height: 77px !important;
+    height: 82px !important;
   }
 
   /* .ebtn,
@@ -1209,7 +1208,7 @@ a.highlight {
 
 .mycart .productpanel,
 .mycart .productpanel::before {
-  min-height: 335px;
+  min-height: auto;
   height: auto !important;
 }
 
@@ -1284,7 +1283,7 @@ a.highlight {
 
 h4.newproductpanel {
   margin-bottom: 5px !important;
-  margin-top: 15px !important;
+  margin-top: 20px !important;
   font-family: Poppins;
   font-size: 22px !important;
   font-weight: bold;
@@ -1460,4 +1459,82 @@ h4.newproductpanel {
 }
 .myorderdetail .myorderpanel .order-price {
   margin-top: 30px;
+}
+
+
+.mobil-bundledetailview {
+  padding: 0;
+    margin: 0 -15px;
+}
+
+.mobil-bundledetailview .radios input[type=radio] {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 30px;
+  visibility: hidden;
+}
+/*mobil-bundledetailview- radio*/
+
+.mobil-bundledetailview .radios .radio {
+  display: inline-block;
+  z-index: 1;
+  border: 2px solid #f8f8f8;
+}
+
+.mobil-bundledetailview .radios input[type=radio] {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 30px;
+  visibility: hidden;
+}
+
+.mobil-bundledetailview .radios .radio::before {
+  display: block;
+  position: absolute;
+  content: '';
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  top: 13px;
+  left: 17px;
+  margin: auto;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  /*    border: 1px solid #17becd;*/
+}
+
+.mobil-bundledetailview .radios .radio::after {
+  display: block;
+  position: absolute;
+  content: '';
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  top: 8px;
+  left: 12px;
+  margin: auto;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
+  border: 2px solid #17becd;
+}
+
+.mobil-bundledetailview .radios input[type=radio]:checked + .radio {
+  /*        background-color: #241009;*/
+  border: 2px solid #17becd;
+  border-radius: 0px;
+}
+
+.mobil-bundledetailview .radios input[type=radio]:checked + .radio::before {
+  background: #17becd;
+}
+
+.mobil-bundledetailview .radios input[type=radio]:checked + .radio::after {
+  /*    background: #17becd;*/
+  border: 2px solid #17becd;
+}
+
+.mobil-bundledetailview .blue-text{
+  padding: 0 30px;
 }
