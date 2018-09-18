@@ -72,6 +72,7 @@ let products= productData.product;
                         %>
                 <section class="gallery hidden-xs">
                     <div class="carousel">
+                    <input type="radio" id="image1" name="gallery-control" checked>
                         <% 
                                 var no=0;
                                 products.forEach(function(pro){     
@@ -80,7 +81,7 @@ let products= productData.product;
                                         {
                                         no++;
                                      %>
-                        <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked' : '' %>>
+                        <input type="radio" id="image<%=no+1%>" name="gallery-control" >
                         <%
                                         }
                                         else{
@@ -88,7 +89,7 @@ let products= productData.product;
                                             proAlters.forEach(function (alt){
                                                 no++;
                                             %>
-                        <input type="radio" id="image<%=no%>" name="gallery-control" <%=(no==1)? 'checked' : '' %>>
+                        <input type="radio" id="image<%=no+1%>" name="gallery-control">
                         <%
                                         });    
                                         }
@@ -102,7 +103,7 @@ let products= productData.product;
                             <div class="slider">
                                 <div class="indicator"></div>
                             </div>
-
+                            <label onclick="changeslide(1)" for="image1" class="thumb" style="background-image: url('<%= productData.pb_image%>');"></label>
                             <% 
                                                                 var no=0;
                                                                 products.forEach(function(pro){     
@@ -111,7 +112,7 @@ let products= productData.product;
                                                                         {
                                                                         no++;
                                                                 %>
-                            <label onclick="changeslide(<%=no%>)" for="image<%=no%>" class="thumb" style="background-image: url('<%= pro.p_image%>');"></label>
+                            <label onclick="changeslide(<%=no+1%>)" for="image<%=no+1%>" class="thumb" style="background-image: url('<%= pro.p_image%>');"></label>
                             <%
                                                                 }
                                                                 else{
@@ -119,7 +120,7 @@ let products= productData.product;
                                                                     proAlters.forEach(function (alt){
                                                                         no++;
                                                                     %>
-                            <label  onclick="changeslide(<%=no%>)" for="image<%=no%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
+                            <label  onclick="changeslide(<%=no+1%>)" for="image<%=no+1%>" class="thumb" style="background-image: url('<%= alt.p_image%>');"></label>
                             <%
                                                                             });
                                                                         }
@@ -128,6 +129,11 @@ let products= productData.product;
                                                                 %>
                         </div>
                         <div class="wrap">
+                        <figure>
+                        <label for="fullscreen">
+                            <img src="<%= productData.pb_image%>" alt="image<%= productData.pb_name%>" />
+                        </label>
+                    </figure>
                             <% 
                                                                 var no=0;
                                                                 products.forEach(function(pro){     
@@ -305,8 +311,9 @@ let products= productData.product;
                     j=0;
         products.forEach(function(pro){     
             if(pro){
+                j++;  
                 if(pro.pbm_is_alternative!=1){
-                    j++;    
+                     
                     %>
 
             <div class="col-md-12">
@@ -344,80 +351,72 @@ let products= productData.product;
             </div>
 
             <% 
-                }
-              }
-            })
+                }else{
             %>
-        </div>
-    </div>
-    <%
-                products.forEach(function(pro){     
-                    if(pro){
-                        if(pro.pbm_is_alternative==1){
-                            j++;
-            %>
-    <div class="container bundledetailvieww m-0">
-        <h4 class="mtb10 colorbl">We have alternate options for you. Make your choice</h4>
-        <div class="row radios">
-            <% 
-                let alterpro= pro.alternatives;
-                var i = 0;
-                    alterpro.forEach(function(alt){
-                        var select= (alt.pba_is_default==1)? true:false;
-                        i++;
-                %>
-            <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>" <%
-                if(alt.pba_is_default==1){ %> ng-init=" c[
-                <%= alt.pba_pbm_id %>]=
-                <%= alt.pd_id %>"
-                <% } %> >
-                <% if(i==1){ %>
-                <div class="panel leftnum">
-                    <%=j%>.
-                </div>
-                <%}%>
-                <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rGroup_<%= alt.pba_pbm_id %>"
-                    value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
-
-                <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id;%>">
-                    <div class="panel  panel-default productpanel newproductpanel">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-2 col-xs-6 text-center">
-                                    <img src="<%= alt.p_image;%>" class="height60 productimg">
-                                </div>
-                                <div class="col-md-4 col-xs-6 ">
-                                    <h4 class="newproductpanel">
-                                        <%= alt.pd_name;%>
-                                    </h4>
-                                </div>
-                                <div class="col-md-3 col-xs-6">
-                                    <h5>
-                                        <img src="img/grammeter.png" class=" img-responsive gramimg">
-                                        <%= alt.p_quantity;%> <strong>X
-                                            <%= pro.pbm_qty;%></strong>
-                                    </h5>
-                                </div>
-                                <div class="col-md-3 col-xs-6">
-                                    <h6>
-                                        <%=alt.p_price;%> AED
-                                    </h6>
+            <div class="container bundledetailvieww m-0">
+            <h4 class="mtb10 colorbl">We have alternate options for you. Make your choice</h4>
+            <div class="row radios m-b-20">
+                <% 
+                    let alterpro= pro.alternatives;
+                    var i = 0;
+                        alterpro.forEach(function(alt){
+                            var select= (alt.pba_is_default==1)? true:false;
+                            i++;
+                    %>
+                <div class="<%= i!=1?'col-md-11 col-sm-11 col-md-offset-1  altr':'col-md-12 col-sm-12' %>" <%
+                    if(alt.pba_is_default==1){ %> ng-init=" c[
+                    <%= alt.pba_pbm_id %>]=
+                    <%= alt.pd_id %>"
+                    <% } %> >
+                    <% if(i==1){ %>
+                    <div class="panel leftnum">
+                        <%=j%>.
+                    </div>
+                    <%}%>
+                    <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rGroup_<%= alt.pba_pbm_id %>"
+                        value="<%= alt.pd_id;%>" id="r<%= alt.pd_id;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
+    
+                    <label class="radio <%=i==1?'rightcon':''%> col-md-12 p0 labadject mb-0" for="r<%= alt.pd_id;%>">
+                        <div class="panel  panel-default productpanel newproductpanel custm-sty">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-xs-6 text-center">
+                                        <img src="<%= alt.p_image;%>" class="height60 productimg">
+                                    </div>
+                                    <div class="col-md-4 col-xs-6 ">
+                                        <h4 class="newproductpanel">
+                                            <%= alt.pd_name;%>
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <h5>
+                                            <img src="img/grammeter.png" class=" img-responsive gramimg">
+                                            <%= alt.p_quantity;%> <strong>X
+                                                <%= pro.pbm_qty;%></strong>
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                        <h6>
+                                            <%=alt.p_price;%> AED
+                                        </h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </label>
-            </div>
-            <%
+                    </label>
+                </div>
+                <%
                     });
                 %>
+            </div>
+            </div>
+            <%
+              }
+            }
+          })
+        %>
         </div>
     </div>
-    <%
-                }
-            }
-        });
-        %>
 <div class="container mobil-bundledetailview hidden">
     <div class="row">
         <div class="col-xs-12">

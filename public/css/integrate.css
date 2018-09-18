@@ -917,11 +917,11 @@ li.logout-btn:hover a {
 }
 
 .labadject::before {
-  top: 43.5% !important;
+  top: 44.5% !important;
 }
 
 .altr .labadject::before {
-  top: 44.5% !important;
+  top: 43.5% !important;
 }
 
 .m-0 {
@@ -1460,4 +1460,10 @@ h4.newproductpanel {
 }
 .myorderdetail .myorderpanel .order-price {
   margin-top: 30px;
+}
+.panel.panel-default.productpanel.newproductpanel.custm-sty {
+  margin-bottom: auto;
+}
+.m-b-20 {
+  margin-bottom: 20px;
 }
