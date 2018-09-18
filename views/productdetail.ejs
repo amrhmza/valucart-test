@@ -267,7 +267,7 @@
                                         if (data) {
                                     data.response[0].pd_description_bullets.forEach(function(feature){
                                         if(feature.value!=''){
-                                            let title = (feature.key).slice(4) // remove VAL_ from key.
+                                            let title =  (feature.key).replace('VAL_','');// remove VAL_ from key.
                                 %>
                                                                 <li><strong><%= title%></strong> : <%= feature.value%></li>
                                                                 <% 

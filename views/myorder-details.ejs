@@ -90,6 +90,7 @@
                     <%}%>
                 </div>
                 <div class="col-sm-3 hidden-xs">
+                <% if(data.order_data.o_order_status_id!=8 && data.order_data.o_order_status_id!=12){ %>
                     <div class="deliverystate">
                         <p class="progresstext">In progress</p>
                         <p class="packcount">Estimated Delivery:
@@ -98,6 +99,20 @@
                             </span>
                         </p>
                     </div>
+                <% }else{
+                    date= moment(data.order_status[data.order_status.length-1].olc_added_dt ).format('MMM Do YYYY');    
+                %>
+                
+                <div class="deliverystate">
+                        <p class="progresstext"> <%= data.order_data.o_order_status_id==8?"Cancel requested":"Cancelled" %></p>
+                        <p class="packcount">on :
+                            <span class="deliverydate">
+                                <%= date %>
+                            </span>
+                        </p>
+                    </div>
+
+                <% } %>
 
                 </div>
                 <div class="col-sm-3 text-center">
@@ -133,9 +148,14 @@
     </div>
     <!--        progress starts here-->
     <div class="myorderprogress ">
-        <% if(data.order_data.o_order_status_id==8){ %>
-        <p class="color-red text-center"> Order cancelled<p>
+        <% 
+        date= moment(data.order_status[data.order_status.length-1].olc_added_dt ).format('MMM Do YYYY');
+        if(data.order_data.o_order_status_id==8){ %>
+        <p class="color-red text-center"> Order cancel requested on <%=date%><p>
                 <% } %>
+                <% if(data.order_data.o_order_status_id==12){ %>
+                <p class="color-red text-center"> Order cancelled on <%=date%><p>
+                        <% } %>
                 <ol class="progress hidden-xs" data-steps="4">
                     <li class="done">
                         <span class="step">
@@ -187,19 +207,26 @@
                         <span class="step">
                             <span>&#10003;</span>
                         </span>
-                        <% if(data.order_data.o_order_status_id!=8){ %>
+                        <% if(data.order_data.o_order_status_id!=8 && data.order_data.o_order_status_id!=12){ %>
                         <span class="last name">
                             <%= deliveried!=""?deliveried:moment(data.order_data.o_added_dt).add(5, 'days').format('MMM Do YYYY');%>
                         </span>
                         <span class="subname">
-                            <%= near!=""?'Delivered':'Estimated delivery'%>
+                            <%= deliveried!=""?'Delivered':'Estimated delivery'%>
                         </span>
-                        <% }else{ %>
+                        <% }else if(data.order_data.o_order_status_id==12){ %>
                         <span class="last name">
-
+                        <%=date%>
                         </span>
                         <span class="subname color-red">
                             Cancelled
+                        </span>
+                        <% }else{ %>
+                        <span class="last name">
+                        <%=date%>
+                        </span>
+                        <span class="subname color-red">
+                            Cancel requested
                         </span>
                         <% } %>
                     </li>

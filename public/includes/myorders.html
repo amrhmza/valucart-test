@@ -69,6 +69,11 @@
                         </div>
                         <div ng-switch-when="8">
                             <p class="progresstext order-m40">
+                                Cancel request sent
+                            </p>
+                        </div>
+                        <div ng-switch-when="12">
+                            <p class="progresstext order-m40">
                                 Cancelled
                             </p>
                         </div>
@@ -141,7 +146,7 @@
         <div ng-if="$last" class="row">
             <div class="cancelorder">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-offset-6 col-sm-6" ng-if="order.o_order_status_id!=8">
+                    <div class="col-xs-6 col-sm-offset-6 col-sm-6" ng-if="(order.o_order_status_id !== 8) && (order.o_order_status_id !== 12)">
                         <a href="/cancel-order/{{order.o_id}}" class="">
                             <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
                     </div>
