@@ -167,7 +167,7 @@ app.controller("createUserBundle", function(
       if ($("#brand_" + element.op_id).is(":checked") == true) {
         proceed = 1;
         let bundle_data = [];
-        if (element.ct_is_bundel == 1) {
+        if (element.ct_is_bundel == true) {
           element.product.forEach(ele => {
             let bd = {
               pd_id: ele.ctb_pd_id,
