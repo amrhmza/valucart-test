@@ -299,7 +299,7 @@
 
     .nice-select {
         width: 90%;
-		font-size: 28px;
+		font-size: 12px;
     }
     .sortselect {
         width: 100% !important;
@@ -322,5 +322,30 @@
     .sortselect .list {
         font-size: 10px !important;
     }
+.fullwidth .nice-select .list{
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.fullwidth .nice-select .list li{
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+}
 
+@media only screen and (max-width: 768px) {
+    .fullwidth .nice-select .list{
+        height: 300px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 15px;
+    }
+    .fullwidth .nice-select .list li{
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .fullwidth .nice-select{
+       font-size: 22px;
+    }
+   
 }
