@@ -11,15 +11,15 @@ $(".desktopsearch")
         success: function(data) {
           response(
             $.map(data.results.response, function(item) {
-              if (item.type != "brand") {
-                return {
-                  label: item.name,
-                  value: item.name,
-                  desc: item.type,
-                  id: item.id,
-                  main_id: item.main_cat_id
-                };
-              }
+              // if (item.type != "brand") {
+              return {
+                label: item.name,
+                value: item.name,
+                desc: item.type,
+                id: item.id,
+                main_id: item.main_cat_id
+              };
+              // }
             })
           );
         },
@@ -39,6 +39,11 @@ $(".desktopsearch")
               d.id +
               "/" +
               d.value.replace(/\s+/g, "-")
+          );
+          break;
+        case "brand":
+          window.location.replace(
+            base_url + "/product-listing/" + "#!?brand=" + d.id
           );
           break;
         case "bundle":
