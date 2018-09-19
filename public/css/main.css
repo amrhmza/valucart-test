@@ -440,6 +440,9 @@ body {
 	overflow-x: hidden !important;
 	min-height: 100%;
 }
+.btn{
+	transition: 0.5s;
+}
 
 footer {
 	width: 100%;
@@ -1069,7 +1072,10 @@ a:hover {
 	letter-spacing: -0.3px;
 	color: rgba(46, 46, 46, 0.5);
 }
-
+input.form-control.desktopsearch.ui-autocomplete-input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+}
 .navtop2 .mobsearch {
 	width: 10%;
 	box-sizing: border-box;
@@ -1300,7 +1306,7 @@ a:hover {
 }
 
 .carousel3 .productpanel .panel-body {
-	padding: 0 0 15px 15px;
+	padding: 0 0 15px 0;
 }
 
 .carousel3 .productpanel .mrw15 {
@@ -1697,7 +1703,7 @@ ul.breadcrumb li a:hover {
 	min-height: 80px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	display: -webkit-box;
+	/* display: -webkit-box; */
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	padding-right: 20px;
@@ -1973,7 +1979,7 @@ ul.breadcrumb li a:hover {
 }
 
 .button-container input {
-	background-color: #f6f6f6 !important;
+	background-color: transparent !important;
 	border: none !important;
 	font-size: 22px;
 	display: inline-block !important;
@@ -6566,6 +6572,33 @@ select:valid+.form-control-placeholder {
 		padding-bottom: 10px;
 		padding-right: 20px;
 	}
+	.addtocartddp {
+		top: 100%;
+		left: 0;
+		z-index: 1000;
+		float: left;
+		border: 2px solid rgba(133, 6, 255, 1.00);
+		background-color: #fff;
+	}
+	.productlistpage .productpanel .productcountdiv .productplus, .carousel3 .productpanel .productcountdiv .productplus, .productdetailpage .productpanel .productcountdiv .productplus, .mycart .productpanel .productcountdiv .productplus, .carousel3 .productpanel .productcountdiv .productplus, .confirm-product .productpanel .productcountdiv .productplus, .editbundlelist .productpanel .productcountdiv .productplus {
+		padding: 0px;
+		/* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png); */
+		height: 35px !important;
+		width: 35px !important;
+		display: inline-block;
+		border-radius: 50%;
+		margin: auto;
+		border: 0;
+	}
+	.productlistpage .productpanel .productcountdiv .productminus, .productdetailpage .productpanel .productcountdiv .productminus, .mycart .productpanel .productcountdiv .productminus, .carousel3 .productpanel .productcountdiv .productminus, .confirm-product .productpanel .productcountdiv .productminus, .editbundlelist .productpanel .productcountdiv .productminus {
+		padding: 0px;
+		/* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png); */
+		height: 35px !important;
+		width: 35px !important;
+		border-radius: 50%;
+		margin: auto;
+		border: 0;
+	}
 }
 
 @media (max-width: 1000px) and (min-width: 768px) {
@@ -6836,6 +6869,11 @@ select:valid+.form-control-placeholder {
 	.sortdropdown li {
 		font-size: 12px;
 		padding: 10px;
+    border-radius: 0 !important;
+    border: none;
+	}
+	ul.brandlist .list-group-item {
+		padding: 5px 10px !important;
 	}
 
 	.productlistpage .sortdropdown .dropdown-menu {
@@ -6847,6 +6885,7 @@ select:valid+.form-control-placeholder {
 		border-radius: 0px !important;
 		text-align: left;
 		background-color: #fff;
+		left: -44px;
 	}
 
 	.productlistpage .sortdropdown .btn-default:active,
@@ -6944,7 +6983,7 @@ select:valid+.form-control-placeholder {
 	.ebtn:active:focus {
 		background-color: #ddd;
 		color: black;
-		padding: 0 25px;
+		padding: 0 12px;
 		outline: none;
 		border: none;
 		height: 60px;
@@ -7205,7 +7244,8 @@ select:valid+.form-control-placeholder {
 
 	.mycart .productpanel {
 		padding: 0 10px;
-		height: auto
+		height: auto;
+		min-height: auto !important
 	}
 
 	.mycart .productpanel .mobleft .productcountdiv {
@@ -8190,7 +8230,7 @@ select:valid+.form-control-placeholder {
 		border: none;
 		border-radius: 0px;
 		position: absolute;
-		left: 18%;
+		left: 23%;
 		padding: 8px 28px;
 		height: auto;
 		width: auto;
@@ -8585,9 +8625,17 @@ select:valid+.form-control-placeholder {
 	.ebtn:active,
 	.ebtn:focus,
 	.ebtn:active:focus {
-		padding: 0 20px;
+		padding: 0 10px;
 	}
-
+	.ebtn img {
+		height: 25px;
+	}
+	.productlistpage .productpanel .panel-body {
+		padding-right: 0px;
+		padding-bottom: 0px;
+		padding-left: 15px;
+		padding-top: 10px;
+	}
 	.organicbundles .productpanel .btn-info {
 		font-size: 10px;
 	}
@@ -8735,12 +8783,18 @@ select:valid+.form-control-placeholder {
 		border: none;
 		border-radius: 0px;
 		padding: 8px 20px;
-		width: 161px;
+		width: 162px;
 		height: 77px;
 		float: left;
 		font-size: 17px;
 	}
-
+	.productlistpage .productpanel .btn-info.product_add{
+		width: 163px !important;
+		height: 82px;
+	}
+	.productlistpage.product-listing-page .discountprice {
+		top: -9px !important;
+	}
 	.organicbundles .productpanel .btn-info {
 		border: none;
 		border-radius: 0px;
@@ -9197,7 +9251,10 @@ select:valid+.form-control-placeholder {
 		margin-bottom: 40px;
 		color: #2e2e2e;
 	}
-
+	
+	.btn-block{
+		width: 430px;
+	}
 	.confirm-product .order {
 		font-size: 26.5px;
 		text-decoration: underline;
@@ -9442,6 +9499,9 @@ select:valid+.form-control-placeholder {
 		height: 82px;
 		float: left;
 		font-size: 17px;
+	}
+	.productlistpage .productpanel .btn-info.product_add{
+		width: 160px !important;
 	}
 }
 
@@ -11091,6 +11151,19 @@ label.bundle-check {
 	width: 50%;
 	box-sizing: border-box;
 }
+@media (max-width: 1000px) and (min-width: 600px) { 
+	.left,
+.right {
+	float: none;
+	width: 100%;
+	box-sizing: border-box;
+}
+.landing-offer {
+    max-width: 100% !important;
+    z-index: 2;
+}
+  }
+  
 
 .left-home {
 	background-image: url(../img/left-side-home.png);
@@ -11246,3 +11319,16 @@ a.Shop-now {
 .btn-fixed {
 	width: 120px !important;
 }
+
+@media only screen and (min-width: 1600px){
+.productlistpage .productpanel .btn-info.product_add {
+	width: 163px !important;
+	height: 82px;
+}
+}
+@media (max-width: 1199px) and (min-width: 1000px){
+	.productlistpage .productpanel .btn-info.product_add {
+		/* width: 100px !important; */
+		/* height: auto; */
+	}
+	}

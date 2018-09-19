@@ -376,6 +376,7 @@ app.controller("bundle_listing", function(
   $scope.userBundlelist();
 
   $scope.addToBundle = function($event, bundleId, pb_id, bundleQty) {
+    var qty = parseInt($("input[name=qty_" + pb_id + "]").val());
     //console.log(pb_id);
     bundle_details
       .getBundleDetail(pb_id)
@@ -384,7 +385,7 @@ app.controller("bundle_listing", function(
           toastr.warning(response.data.results.msg);
         } else {
           let alter = [];
-          const proList = response.data.results.response.product;
+          var proList = response.data.results.response[0].product;
           if (proList) {
             angular.forEach(proList, function(value, key) {
               let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
@@ -406,16 +407,13 @@ app.controller("bundle_listing", function(
               alter.push(alter_data);
             });
           }
-
           let productData = {
             user_bundle: bundleId,
             product_id: pb_id,
-            product_qty: bundleQty,
+            product_qty: qty,
             is_bundle: true,
             bundel_items: alter
           };
-
-          //console.log(productData);
 
           userbundle
             .updateBundle(productData)

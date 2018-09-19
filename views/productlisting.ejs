@@ -82,7 +82,7 @@
                                     </div>
                                     <div id="collapse1" class="panel-collapse">
                                         <div class="panel-body" style="padding-left: 20px;">
-                                            <ul class="list-group">
+                                            <ul class="list-group brandlist">
                                                 <% if(data.product_config["cat_filter"].supcat!=""){
                                             data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
                                             %>
@@ -334,7 +334,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6  col-sm-12 pl0" ng-repeat="product in productData">
+                            <div class="col-md-6  col-sm-12" ng-repeat="product in productData">
                                 <div ng-include="'includes/product_list.html'"></div>
                             </div>
                             <div class="row text-center" ng-show="loadon">
