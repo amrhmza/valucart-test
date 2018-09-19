@@ -897,6 +897,7 @@ li.logout-btn:hover a {
 
 .height60 {
   height: 60px;
+  max-width: 70px;
 }
 
 .new_bu.panel-body {
@@ -1299,12 +1300,14 @@ h4.newproductpanel {
   -webkit-box-orient: vertical;
 }
 
-.newproductpanel h5,
+.newproductpanel h5 {
+  margin-top: 22px !important;
+  text-align: left !important;
+}
 .newproductpanel h6 {
   margin-top: 22px !important;
   text-align: center !important;
 }
-
 .newproductpanel .height60 {
   margin-top: 6px;
   margin-bottom: 10px;
@@ -1386,13 +1389,18 @@ h4.newproductpanel {
 .mobil-bundledetailview {
   display: none;
 }
-
+.mobil-bundledetailview .newproductpanel{
+  width: 99vw;
+}
 .mobil-bundledetailview .productimg {
   height: auto;
-  width: 100%;
+  /* width: 100%; */
   margin-top: 50px;
+  max-height: 80px;
 }
-
+.mobil-bundledetailview .productpanel  h4 {
+  width: 100%;
+}
 .mobil-bundledetailview h6.dis-price {
   font-size: 18px;
   text-decoration: line-through;

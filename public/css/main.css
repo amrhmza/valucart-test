@@ -11421,3 +11421,50 @@ a.Shop-now {
   line-height: 22px;
   font-weight: 400;
 }
+
+.pleft150{
+	padding-left: 73px;
+}
+
+.rightcon h4 {
+	padding-left: 25px;
+}
+ 
+.rightcon h5{
+	padding-left: 18px;
+}
+.mb-4{
+	margin-bottom: 4px;
+	margin-top: 0;
+}
+.mb-30{
+	margin-bottom: 30px;
+}
+.bundledetailview h4 {
+    margin-top: 0px !important;
+}
+.mb-70{
+	margin-bottom: 40px;
+}
+.mb-9{
+	margin-bottom: 0px;
+	margin-top: 0;
+}
+.m-o{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.btndropdown{
+	display: inline-block;
+	
+	margin: 0;
+}
+.btndropdown .btn{
+	border: none;
+	margin-left: -3px;
+	margin-top: -1px;
+	width: auto !important;
+}
+.btndropdown .addtocartddp{
+	left: auto;
+}

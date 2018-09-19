@@ -28,14 +28,14 @@
             <div class="col-xs-12">
                 <h4>
                     <a ng-href="/product-detail/{{product.pd_id}}/{{product.pd_name | spaceless}}" ng-bind-html="product.pd_name"></a>
-                    <br />
-                    <img src="img/grammeter.png" class="img-responsive gramimg"><span class="gramquantity">{{product.p_quantity}}</span>
+                    <!-- <br /> -->
+                    <!-- <img src="img/grammeter.png" class="img-responsive gramimg"><span class="gramquantity">{{product.p_quantity}}</span> -->
                 </h4>
             </div>
             <div class="col-xs-5">
-                <!-- <h5>
+                <h5 class="gramquantity">
                     <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
-                </h5> -->
+                </h5>
                 <h5 ng-if="product.pdt_percentage" class="offeredprice"> {{product.p_price}} AED</h5>
                 <h6>
                     <span ng-if="product.pdt_price">
