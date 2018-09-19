@@ -101,7 +101,7 @@
                 <a ng-click="bundle_addtocart(ub_id)" class="btn btn-block btn-lg btn-success">Add To Cart</a>
             </div>
             <div ng-if="mybundle_detail.ub_is_subscribed == '1'">
-                <a confirmed-click="bundle_unsbuscribe(ub_id)" ng-confirm-click="Do you want to unsubscribe this bundle?"
+                <a confirmed-click="bundle_unsbuscribe(ub_id)" ng-confirm-click="Do you want to unschedule this bundle?"
                     class="btn btn-block btn-lg btn-danger">Un Schedule</a>
                 <a href="/schedule-bundle/create/{{ub_id}}" class="btn btn-block btn-lg btn-danger">Reshedule</a>
             </div>
