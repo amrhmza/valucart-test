@@ -1072,7 +1072,10 @@ a:hover {
 	letter-spacing: -0.3px;
 	color: rgba(46, 46, 46, 0.5);
 }
-
+input.form-control.desktopsearch.ui-autocomplete-input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+}
 .navtop2 .mobsearch {
 	width: 10%;
 	box-sizing: border-box;
@@ -8786,7 +8789,8 @@ select:valid+.form-control-placeholder {
 		font-size: 17px;
 	}
 	.productlistpage .productpanel .btn-info.product_add{
-		width: 171px !important;
+		width: 163px !important;
+		height: 82px;
 	}
 	.productlistpage.product-listing-page .discountprice {
 		top: -9px !important;
@@ -9497,7 +9501,7 @@ select:valid+.form-control-placeholder {
 		font-size: 17px;
 	}
 	.productlistpage .productpanel .btn-info.product_add{
-		width: 170px !important;
+		width: 160px !important;
 	}
 }
 
@@ -11315,3 +11319,16 @@ a.Shop-now {
 .btn-fixed {
 	width: 120px !important;
 }
+
+@media only screen and (min-width: 1600px){
+.productlistpage .productpanel .btn-info.product_add {
+	width: 163px !important;
+	height: 82px;
+}
+}
+@media (max-width: 1199px) and (min-width: 1000px){
+	.productlistpage .productpanel .btn-info.product_add {
+		/* width: 100px !important; */
+		/* height: auto; */
+	}
+	}
