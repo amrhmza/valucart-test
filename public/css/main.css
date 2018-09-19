@@ -1746,9 +1746,10 @@ ul.breadcrumb li a:hover {
 
 .productlistpage .productpanel .gramimg {
 	display: inline-block;
-	margin-right: 5px;
-	height: 15px;
-	width: 15px;
+		margin-right: 10px;
+		height: 22px;
+		width: 22px;
+		vertical-align: sub;
 }
 
 .productlistpage .productpanel .productcountdiv {
@@ -8781,7 +8782,7 @@ select:valid+.form-control-placeholder {
 		border-radius: 0px;
 		padding: 8px 20px;
 		width: 162px;
-		height: 77px;
+		/* height: 77px; */
 		float: left;
 		font-size: 17px;
 	}
@@ -11315,3 +11316,24 @@ a.Shop-now {
 .btn-fixed {
 	width: 120px !important;
 }
+@media only screen and (min-width: 1600px){
+	.productlistpage .productpanel .btn-info.product_add {
+		width: 163px !important;
+		height: 82px;
+	}
+	}
+	@media (max-width: 1199px) and (min-width: 1025px){
+		.productlistpage .productpanel .btn-info.product_add {
+			width: 100px !important;
+			height: auto;
+		}
+	}
+
+	.productlistpage .productpanel .gramquantity{
+		color: #5b5b5b;
+		margin-bottom: 15px;
+		font-size: 18px;
+		line-height: 22px;
+		font-weight: 400;
+	}
+	
