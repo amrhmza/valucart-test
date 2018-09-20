@@ -593,30 +593,28 @@ h2 {
 
 .fullwidth .select-your-city li .check {
   display: block;
-  position: absolute;
-  border-bottom: 2px solid #aaaaaa;
-  /* border-radius: 100%; */
-  height: 25px;
-  width: 55px;
-  top: 12px;
-  left: 20px;
-  z-index: 5;
-  transition: border 0.25s linear;
-  -webkit-transition: border 0.25s linear;
+    position: absolute;
+    border: 2px solid #aaaaaa;
+    /* border-radius: 100%; */
+    height: 35px;
+    width: 35px;
+    top: 20px;
+    left: 80px;
+    z-index: 5;
+    transition: border 0.25s linear;
+    -webkit-transition: border 0.25s linear;
 }
 
 .fullwidth input[type="radio"]:checked ~ .radio-label:before {
   content: "";
-  background-image: url(../img/tick.svg);
-  height: 35px;
-  /*height of image*/
-  width: 35px;
-  /*width of image*/
-  position: absolute;
-  background-size: 35px 35px;
-  background-repeat: no-repeat;
-  top: 0;
-  left: 81px;
+    background-image: url(../img/tick.svg);
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    top: 5px;
+    left: 70px;
 }
 
 /*
@@ -635,7 +633,7 @@ left:-50px;
 */
 
 .fullwidth .select-your-city li:hover .check {
-  border-bottom: 2px solid #aaaaaa;
+  border: 2px solid #aaaaaa;
 }
 
 .fullwidth .select-your-city li .check::before {
@@ -665,7 +663,7 @@ left:-50px;
 }
 
 .fullwidth input[type="radio"]:checked ~ .check {
-  border-bottom: 2px solid #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .fullwidth .radio-label span {
@@ -2269,7 +2267,7 @@ ul.brandlist .list-group-item {
 }
 
 .productdetailpage .productpanel {
-  background-color: #f6f6f6;
+  background-color: #fff;
   border: none;
   text-align: left;
 }
@@ -2335,21 +2333,25 @@ ul.brandlist .list-group-item {
 .productdetailpage .productpanel h5 {
   /*    display: inline-block;*/
   color: #5b5b5b;
-  margin-bottom: 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
 }
 
 .productdetailpage .productpanel h6 {
   /*    display: inline-block;*/
   color: #292929;
-  font-size: 20px;
+  font-size: 23px;
   margin-bottom: 15px;
 }
 
 .productdetailpage .productpanel .gramimg {
   display: inline-block;
-  margin-right: 5px;
-  height: 15px;
-  width: 15px;
+    margin-right: 10px;
+    height: 22px;
+    width: 22px;
+    vertical-align: sub;
 }
 
 .productdetailpage .productpanel .productcountdiv {
@@ -7528,17 +7530,29 @@ select:valid + .form-control-placeholder {
   .payment .nav-pills > li.active::after {
     width: 100%;
   }
-
+  .fullwidth .select-your-city li .check {
+    display: block;
+    position: absolute;
+    border: 2px solid #aaaaaa;
+    /* border-radius: 100%; */
+    height: 35px;
+    width: 35px;
+    top: 20px;
+    left: 60px;
+    z-index: 5;
+    transition: border 0.25s linear;
+    -webkit-transition: border 0.25s linear;
+}
   .fullwidth input[type="radio"]:checked ~ .radio-label:before {
     content: "";
     background-image: url(../img/tick.svg);
-    height: 35px;
-    width: 35px;
+    height: 28px !important;
+    width: 28px !important;
     position: absolute;
-    background-size: 35px 35px;
+    background-size: 28px 28px !important;
     background-repeat: no-repeat;
-    top: 15px;
-    left: 88px;
+    top: 25px !important;
+    left: 65px !important;
   }
 
   .payment .nav-pills > li .pay,
@@ -8247,6 +8261,17 @@ select:valid + .form-control-placeholder {
     margin: 0;
     padding: 0;
   }
+  .fullwidth input[type="radio"]:checked ~ .radio-label:before {
+    content: "";
+    background-image: url(../img/tick.svg);
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    top: 22px !important;
+    left: 70px;
+}
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -8446,15 +8471,23 @@ select:valid + .form-control-placeholder {
   .fullwidth input[type="radio"]:checked ~ .radio-label:before {
     content: "";
     background-image: url(../img/tick.svg);
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    top: 0px;
+    left: 70px;
+  }
+  .fullwidth .select-your-city li .check {
+    display: block;
+    position: absolute;
+    border: 2px solid #aaaaaa;
+    /* border-radius: 100%; */
     height: 35px;
     width: 35px;
-    position: absolute;
-    background-size: 35px 35px;
-    background-repeat: no-repeat;
-    top: 15px;
-    left: 81px;
+    top: 14px;
   }
-
   .navtop {
     background-color: #860cf5;
     color: white;
@@ -8506,13 +8539,13 @@ select:valid + .form-control-placeholder {
   .fullwidth input[type="radio"]:checked ~ .radio-label:before {
     content: "";
     background-image: url(../img/tick.svg);
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     position: absolute;
-    background-size: 35px 35px;
+    background-size: 25px 25px;
     background-repeat: no-repeat;
     top: 0px;
-    left: 81px;
+    left: 70px;
   }
 
   .mycart .rate {
@@ -10174,10 +10207,10 @@ body {
     position: absolute;
     border-bottom: 2px solid #aaaaaa;
     /* border-radius: 100%; */
-    height: 25px;
-    width: 55px;
-    top: 27px;
-    left: 20px;
+    height: 45px;
+    width: 45px;
+    top: 20px;
+    left: 70px;
     z-index: 5;
     transition: border 0.25s linear;
     -webkit-transition: border 0.25s linear;
@@ -10196,8 +10229,8 @@ body {
     position: absolute;
     background-size: 35px 35px;
     background-repeat: no-repeat;
-    top: 10px;
-    left: 81px;
+    top: 6px;
+    left: 60px;
   }
 
   .confirm-product .summary.bnd-products {
