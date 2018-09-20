@@ -2,7 +2,8 @@
     <div class="panel panel-default" ng-if="(addresslist).length>0">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1" id="select_address" ng-click="savecontinue()">Select address </a>
+                <a data-toggle="collapse" href="#collapse1" id="select_address" ng-click="savecontinue()">Select
+                    address </a>
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse {{(addresslist).length>0 ? 'in' : ''}} select_address">
@@ -22,22 +23,25 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-1" style="padding-left: 0px;">
+                                    <div class="col-sm-1 col-xs-2" style="padding-left: 0px;">
                                         <div class="radios pl-6">
-                                            <input type="radio" id="address{{$index}}" ng-checked="address.a_is_default" name="radio-group" ng-model="address_id" ng-change="addresschange(address.a_id)"
-                                            />
+                                            <input type="radio" id="address{{$index}}" ng-checked="address.a_is_default"
+                                                name="radio-group" ng-model="address_id" ng-change="addresschange(address.a_id)" />
                                             <label for="address{{$index}}" class="radio"></label>
                                         </div>
                                     </div>
-                                    <div class="col-xs-11" style="padding-left: 0px;">
+                                    <div class="col-sm-11 col-xs-10" style="padding-left: 0px;">
                                         <h6 class="addname">
 
                                         </h6>
                                         <h5 class="add-ress">
-                                            {{address.a_name}} {{address.a_address_1 != null ? ', ' + address.a_address_1 : ''}} {{address.a_address_2 != null ? ', '
+                                            {{address.a_name}} {{address.a_address_1 != null ? ', ' +
+                                            address.a_address_1 : ''}} {{address.a_address_2 != null ? ', '
                                             + address.a_address_2 : ''}}
-                                            <br>{{address.a_city != null ? address.a_city : ''}} {{address.a_pincode != null
-                                            ? ' - ' + address.a_pincode : ''}} {{(address.a_phone != null) ? ', Ph:' + address.a_phone
+                                            <br>{{address.a_city != null ? address.a_city : ''}} {{address.a_pincode !=
+                                            null
+                                            ? ' - ' + address.a_pincode : ''}} {{(address.a_phone != null) ? ', Ph:' +
+                                            address.a_phone
                                             : ''}}
                                         </h5>
                                     </div>
@@ -104,7 +108,7 @@
     </div>
 </div>
 <div class="row text-center">
-    <button type="button" class="btn-proceed btn-checkout btncontinue {{(addresslist).length==0 ? 'hide' : ''}}" ng-click="ctnpay()"
-        style="margin-bottom: 10px">Continue
+    <button type="button" class="btn-proceed btn-checkout btncontinue {{(addresslist).length==0 ? 'hide' : ''}}"
+        ng-click="ctnpay()" style="margin-bottom: 10px">Continue
     </button>
 </div>
