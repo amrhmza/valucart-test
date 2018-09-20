@@ -252,6 +252,7 @@
                                         <% if(typeof data.product_config.cat_filter!="undefined"){ %>
                                             <li role="presentation" style="padding-left: 10px">Catagory</li>
                                             <li class="divider"></li>
+                                            <div class="brandlist">
                                             <% if(data.product_config.cat_filter.length>0){
                                                 data.product_config.cat_filter.forEach(function(cat){ 
                                             %>
@@ -273,6 +274,7 @@
                                                             } %>
                                                         <%  })
                                             } %>
+                                            </div>
                                                             <li class="divider"></li>
                                                             <li role="presentation" style="padding-left: 10px">Brand</li>
                                                             <li role="presentation" style="margin-top: 10px">

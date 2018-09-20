@@ -212,11 +212,12 @@
                                 <div class="dropdown sortdropdown">
                                     <button class="btn btn-default sortbtn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
                                         <img src="img/filter.png" class="img-responsive filterimg">FILTER
-                                        <i class="fa fa-chevron-down sortdown"></i>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                    
                                         <li role="presentation" style="padding-left: 10px">Category</li>
                                         <li class="divider"></li>
+                                        <div class="brandlist">
                                         <% if(data.product_config.cat_filter.length>0){
                                     data.product_config.cat_filter.forEach(function(cat){ 
                                 %>
@@ -238,6 +239,7 @@
                                                 } %>
                                                     <%  })
                                 } %>
+                                </div>
                                                         <li class="divider"></li>
 
 
