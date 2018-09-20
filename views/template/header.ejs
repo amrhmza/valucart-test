@@ -232,7 +232,8 @@
                                             <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
                                             <% } %>
 
-                                </a>
+                                            <span class="cart-label">0</span>
+                                            </a>
                             </li>
                             <li>
                                 <a href="/cart">
@@ -241,8 +242,9 @@
                                         <% } else { %>
                                             <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
                                             <% } %>
-                                </a>
-                                <span class="cart-label">0</span>
+                                            <span class="cart-label">0</span>
+                                            </a>
+                            
                             </li>
                             <% }
                         } else{
@@ -470,15 +472,15 @@
                                     </a>
                                 </div>
                             </div>
-                            <!--<div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="myshopping-dashboard">
-                            <h4 class="panel-title panels">Shopping list
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>-->
+                           <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="mywishlist">
+                                        <h4 class="panel-title panels">My Wish List
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <a href="mybundles">
@@ -545,7 +547,9 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title panels" data-href="<%= catUrl;%>">
                                         <a href="<%= catUrl;%>">
+                                        <h4 class="panel-title panels">
                                             <%= cat.c_name;%>
+                                        </h4>
                                         </a>
                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                     </h4>

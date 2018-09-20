@@ -216,6 +216,6 @@ app.controller("createUserBundle", function(
     }
   };
 });
-app.config(function($routeProvider, $locationProvider, $httpProvider) {
-  $locationProvider.html5Mode(true);
-});
+// app.config(function($routeProvider, $locationProvider, $httpProvider) {
+//   $locationProvider.html5Mode(true);
+// });

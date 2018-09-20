@@ -20,11 +20,11 @@
                         </div>
                         <div class="col-md-7 col-xs-6">
                             <p class="discountprice mob-dprice hidden-sm hidden-md hidden-lg" ng-if="bundle.pdt_percentage">{{bundle.pdt_percentage}}%</p>
-                            <h4 ng-if="bundle.ct_is_bundel=='true'"><a ng-href="/bundle-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
-                            <h4 ng-if="bundle.ct_is_bundel!='true'"><a ng-href="/product-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
-                            <h5 ng-if="bundle.ct_is_bundel!='true'"><img src="img/grammeter.png" class="img-responsive gramimg">{{bundle.p_quantity}}</h5>
+                            <h4 ng-if="bundle.ct_is_bundel==true"><a ng-href="/bundle-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
+                            <h4 ng-if="bundle.ct_is_bundel!=true"><a ng-href="/product-detail/{{bundle.ct_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
+                            <h5 ng-if="bundle.ct_is_bundel!=true"><img src="img/grammeter.png" class="img-responsive gramimg">{{bundle.p_quantity}}</h5>
 
-                            <div ng-if="bundle.ct_is_bundel=='true'">
+                            <div ng-if="bundle.ct_is_bundel==true">
                                 <h6 class="detail-text" ng-repeat="bp in bundle.product">-
                                     {{bp.pd_name}}<strong>X {{bp.ctb_qty}}</strong>
                                 </h6>

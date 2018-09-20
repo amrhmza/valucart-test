@@ -7210,7 +7210,7 @@ select:valid + .form-control-placeholder {
   }
 
   #cBundle-desktop {
-    display: none !important;
+    /* display: none !important; */
   }
 
   #cBundle-mobile {
