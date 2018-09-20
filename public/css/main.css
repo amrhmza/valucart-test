@@ -11433,6 +11433,7 @@ a.Shop-now {
 
 .btn-fixed {
   width: 120px !important;
+  margin-bottom: 10px;
 }
 @media only screen and (min-width: 1600px) {
   .productlistpage .productpanel .btn-info.product_add {

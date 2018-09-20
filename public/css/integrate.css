@@ -1633,3 +1633,56 @@ h4.newproductpanel {
 #gotoTop:hover {
   background-color: #6f07d1;
 }
+
+.mob-mybundle .panel{
+    background-color: #f8f8f8;
+    padding: 18px;
+}
+.mob-mybundle h4{
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
+  /* margin-bottom: 15px; */
+}
+.mob-mybundle h6{
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.63;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
+  margin-bottom: 0px;
+}
+.mob-mybundle h5{
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #323232;
+  margin-top: 0;
+}
+.mob-mybundle .btn{
+  width: 100%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.mob-mybundle img{
+  height: 20px;
+  margin-top: 20px;
+}
+.mob-mybundle{
+  padding: 0;
+}
