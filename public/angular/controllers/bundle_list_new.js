@@ -400,11 +400,7 @@ app.controller("bundle_listing", function(
               } else {
                 var pd_id = value.pd_id;
               }
-              let alter_data = {
-                pd_id: pd_id,
-                is_alternaitve: is_alternaitve
-              };
-              alter.push(alter_data);
+              alter.push(pd_id);
             });
           }
           let productData = {

@@ -294,19 +294,20 @@ app.controller("bundle_details", function(
               ).val();
               if (typeof selValue == "undefined") {
                 allok = 0;
-              } else {
-                selValue = parseInt(selValue);
-                if (alternativeArray.includes(selValue) == false)
-                  alternativeArray.push(selValue);
               }
             }
           }
         }
       }
     }
-
     if (allok == 1) {
-      //If Customer Selected alternatives
+      for (const key in $scope.c) {
+        if ($scope.c.hasOwnProperty(key)) {
+          const element = $scope.c[key];
+          alternativeArray.push(parseInt(element));
+        }
+      }
+      // If Customer Selected alternatives
       var productId = pb_id;
       var productQty = parseInt($(".productcount").val());
       let productData = {
@@ -316,7 +317,6 @@ app.controller("bundle_details", function(
         is_bundle: true,
         bundel_items: alternativeArray
       };
-      console.log(productData);
 
       userbundle
         .updateBundle(productData)
