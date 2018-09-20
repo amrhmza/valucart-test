@@ -131,6 +131,11 @@
     </div>-->
 
     <div class="container mob-mybundle visible-xs hidden-sm hidden-md hidden-lg">
+    <div class="container">
+    
+    <h4>
+        <img src="img/mybundles.png" class="headerimg" alt="mybundles" /> My bundles</h4>
+        </div>
         <% if(data!=""){
         var no=1; var btntype= "";
         data.forEach(function(mybundle){    
@@ -151,14 +156,14 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-7">
                     <h4>Subscriptions</h4>
                     <h6>Next Date </h6>
                     <h5>
                         <%=(mybundle.ub_end_date!=null)? moment(mybundle.ub_end_date).format('DD.MM.YYYY'):"N-A"; %>
                     </h5>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-5">
                     <% if(mybundle.ub_is_subscribed == 0){ btntype= "success"; %>
                     <a href="/schedule-bundle/create/<%= mybundle.ub_id %>" class="btn btn-<%=btntype%> btn-fixed">Schedule</a>
                     <a ng-click="bundle_addtocart(<%= mybundle.ub_id %>)" class="btn btn-<%=btntype%> btn-fixed">Add

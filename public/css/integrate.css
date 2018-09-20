@@ -1411,7 +1411,9 @@ h4.newproductpanel {
 .mobil-bundledetailview .productpanel h6 {
   text-align: left !important;
 }
-
+.btncenter{
+  text-align: left;
+}
 @media only screen and (max-width: 767px) {
   /* For mobile phones: */
   .bundlecountview {
@@ -1504,6 +1506,9 @@ h4.newproductpanel {
   padding-left: 0;
   text-decoration: none;
   margin-top: 20px;
+}
+.btncenter{
+  text-align: center;
 }
 }
 .rowpadd0 {
@@ -1685,4 +1690,18 @@ h4.newproductpanel {
 }
 .mob-mybundle{
   padding: 0;
+}
+.mob-mybundle .headerimg{
+  margin-top: 0;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.sb-search-open .sb-icon-search:before {
+  content: "\00d7";
+    font-size: 40px;
+    margin-top: -19px;
+    top: 15px;
+    position: absolute;
+    left: 15px;
 }
