@@ -30,5 +30,24 @@ router.get("/", async (req, res, next) => {
     error_404(res);
   }
 });
+/* GET home page. */
+router.get("/home-kutung", async (req, res, next) => {
+  //console.log("Cookies :  ", req.cookies);
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let data = await getHome.get_data(JSON.parse(cookies));
+    let menudata = await getMenu.get_menulist();
+    res.render("home-new-kutung", {
+      data: data,
+      menudata: menudata,
+      angular: false,
+      customjs: false,
+      cookies: cookies,
+    });
+  } catch (error) {
+    console.log(error);
 
+    error_404(res);
+  }
+});
 module.exports = router;

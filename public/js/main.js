@@ -270,28 +270,21 @@ $(document).ready(function () {
 
 function showAlert() {
   $("#lab-slide-bottom-popup").modal("hide");
-  $.notify(
-    {
-      title: "<strong>Heads up!</strong>",
-      message:
-        "You can use any of bootstraps other alert styles as well by default."
-    },
-    {
-      type: "success"
-    }
-  );
+  $.notify({
+    title: "<strong>Heads up!</strong>",
+    message: "You can use any of bootstraps other alert styles as well by default."
+  }, {
+    type: "success"
+  });
 }
+
 function alertShow() {
-  $.notify(
-    {
-      title: "<strong>Heads up!</strong>",
-      message:
-        "You can use any of bootstraps other alert styles as well by default."
-    },
-    {
-      type: "success"
-    }
-  );
+  $.notify({
+    title: "<strong>Heads up!</strong>",
+    message: "You can use any of bootstraps other alert styles as well by default."
+  }, {
+    type: "success"
+  });
 }
 /**
  * Add hover effect to the main category when hovering on the subcategory
@@ -317,7 +310,9 @@ $(document).ready(function () {
 // pagetotop
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
+window.onscroll = function () {
+  scrollFunction()
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -329,5 +324,88 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  $('html, body').animate({ scrollTop: 0 }, 'slow');
+  $('html, body').animate({
+    scrollTop: 0
+  }, 'slow');
 }
+
+$('.vc-bn-carousel').owlCarousel({
+  loop: false,
+  nav: true,
+  items: 1
+});
+
+$('.pro-cr-1').owlCarousel({
+  loop: false,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1,
+      nav: true
+    },
+    600: {
+      items: 3,
+      nav: false
+    },
+    1000: {
+      items: 4,
+      nav: true,
+    },
+    1248: {
+      items: 5,
+    }
+  }
+});
+
+$('.pro-cr-2').owlCarousel({
+  loop: false,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1,
+      nav: true,
+    },
+    600: {
+      items: 2,
+      nav: true,
+    },
+    1000: {
+      items: 3,
+      nav: true,
+    },
+    1248: {
+      items: 4,
+    },
+    1366: {
+      items: 4,
+    },
+    1440: {
+      items: 4,
+    },
+    1920: {
+      items: 6
+    }
+  }
+});
+
+$('.pro-cr-3').owlCarousel({
+  loop: false,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1,
+      nav: true
+    },
+    600: {
+      items: 2,
+      nav: false
+    },
+    1000: {
+      items: 4,
+      nav: true,
+    },
+    1248: {
+      items: 6,
+    }
+  }
+});
