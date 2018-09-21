@@ -21,9 +21,9 @@
                             <h4 ng-if="bundle.ubp_p_is_bundle==0"><a ng-href="/product-detail/{{bundle.ubp_pd_id}}/{{bundle.pd_name | spaceless}}">{{bundle.pd_name}}</a></h4>
                             <h5 ng-if="bundle.ubp_p_is_bundle!=1"><img src="img/grammeter.png" class="img-responsive gramimg">{{bundle.p_qty}}</h5>
 
-                            <div ng-if="bundle.ct_is_bundel='true'">
+                            <div ng-if="bundle.ubp_p_is_bundle==true">
                                 <h6 class="detail-text" ng-repeat="bp in bundle.product">-
-                                    {{bp.pd_name}}<strong> {{bp.p_quantity}}</strong>
+                                    {{bp.pd_name}} (<strong> {{bp.p_quantity}}</strong>)
                                 </h6>
                             </div>
                             <div class="col-xs-4 col-sm-6 col-md-4 col-lg-6 mobile-pad no-pad">
@@ -59,7 +59,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-4 mybundleit" style="margin-top: 10px;" id="summary-desktop">
+        <div class="col-md-4 mybundleit" style="margin-top: 10px;" id="">
             <div class="summary bnd-products">
                 <h4 class="order">Order Summary</h4>
                 <div id="subtotal">

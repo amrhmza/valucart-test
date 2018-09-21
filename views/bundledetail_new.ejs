@@ -264,7 +264,7 @@ let products= productData.product;
                                     </button>
                                 </div>
                             </div>
-                            <div class=" col-lg-6 col-md-8 col-sm-6 col-xs-12" ng-if="loggedStatus == true">
+                            <div class=" col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide" ng-class="loggedStatus == true?'showele':''" ng-if="loggedStatus == true">
 
                                 <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info btn-add-to-cart">
@@ -283,7 +283,7 @@ let products= productData.product;
                                 </ul>
 
                             </div>
-                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12" ng-if="loggedStatus != true">
+                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide"  ng-class="loggedStatus != true?'showele':''" ng-if="loggedStatus != true">
                                 <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info  btn-add-to-cart">
                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -486,7 +486,7 @@ let products= productData.product;
                                     <h5>
                                     <img src="img/grammeter.png" class=" img-responsive gramimg">
                                     <%= alt.p_quantity;%> <strong>X
-                                        <%= pro.pbm_qty;%></strong>
+                                        <%= pro.pba_qty;%></strong>
                                    </h5>
                                     <h6 class="dis-price hide">
                                         225.00 AED
@@ -538,13 +538,14 @@ let products= productData.product;
             </button>
         </div>
 
-        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart" ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus == true?'showele':''" ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-        <button ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart" ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+        <button ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus != true?'showele':''" ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
             <div class="dropdown btndropdown">
-            <button class="btn  dropdown-toggle ebtn" type="button" data-toggle="dropdown"><img src="img/menu.png" alt="">
-            <span class="caret"></span></button>
+        <button class="btn  dropdown-toggle ebtn temphide" ng-class="loggedStatus == true?'showele':''"  type="button" data-toggle="dropdown"><img src="img/menu.png" alt="">
+            <span class="caret"></span>
+        </button>
             <ul class="dropdown-menu dropdown-menu-right addtocartddp" role="menu">
             <li class="addtobundle a-deactive addtobundleTitle">
             + Add to bundle

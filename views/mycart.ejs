@@ -18,20 +18,23 @@
             <h6 class="Give-a-name-for-your-bundle" id="mybnd-desktop-text">
                     This is your bundle name 
                 </h6>
-                <div  id="mybnd-desktop" class="row pendingcart" style="padding: 15px 0;border: 1px #333333 solid;margin:0">
+                <div  id="mybnd-desktop" class="row pendingcart temphide"  ng-class="showele" style="padding: 15px 0;border: 1px #333333 solid;margin:0">
                     <div class="col-md-9 col-sm-9 col-xs-8 bn-list">
                     <form name="updateBundleName" method="POST">
-                            <h5 style="display: inline-block;" class="newBundleName"ng-hide="edit_title"><%= pendingBundle[0].ub_name %></h5>
+                            <h5 style="display: inline-block;" class="newBundleName" ng-hide="edit_title"><%= pendingBundle[0].ub_name %></h5>
                             <input type="text" name="bundlename" class="form-control-static title-input" value="<%= pendingBundle[0].ub_name %>" ng-show="edit_title">
                             <input type="hidden" name="bundleid" value="<%= pendingBundle[0].ub_id %>">
-                            <input type="submit" style="display:none">
+                            <input type="submit" id="submiteditn" style="display:none">
                     </form>
                     </div>
                     
                            
-                    <div class="col-md-3 bn-img text-right">
-                        <a ng-click="change_title()" style="margin-right:20px">
+                    <div class="col-md-3 col-sm-3 col-xs-4 bn-img text-right">
+                        <a ng-hide="edit_title" ng-click="change_title()" style="margin-right:20px">
                             <img src="img/edit-bundle.png" alt="edit-bundle" />
+                        </a>
+                        <a ng-show="edit_title" ng-click="save_title()" style="margin-right:20px">
+                        <img src="img/edit-bundle.png" alt="edit-bundle" />
                         </a>
                         <a confirmed-click="deleteBundle(<%= pendingBundle[0].ub_id %>,this)" ng-confirm-click="Do you want to remove this bundle.?" class="bundlebtn">
                             <img src="img/bn-del.png" alt="bn-edit">
@@ -144,7 +147,7 @@
                                     </div>
                         </div>
                         <% if(data.length>0){ %>
-                            <div class="col-lg-4 col-md-4 col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;" id="summary-desktop">
+                            <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;">
                                 <div class="summary">
                                     <h4 class="order">Order Summary</h4>
                                     <div id="subtotal">

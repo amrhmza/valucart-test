@@ -215,7 +215,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-lg-6 col-md-8 col-sm-12" ng-if="loggedStatus == true">
+                                <div class="col-xs-12 col-lg-6 col-md-8 col-sm-12 temphide" ng-class="loggedStatus == true?'showele':''" ng-if="loggedStatus == true">
                                     <button class="btn btn-info hidden-xs" ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                         <img src="img/addtocart.png" class="img-responsive addtocart" /> Add to cart</button>
 
@@ -236,16 +236,16 @@
                                     </ul>
 
                                 </div>
-                                <div class="col-xs-12 col-md-6" ng-if="loggedStatus != true">
+                                <div class="col-xs-12 col-md-6 temphide" ng-class="loggedStatus != true?'showele':''" ng-if="loggedStatus != true">
                                     <a ng-click="addtocartOffline(<%= data.response[0].pd_id %>)">
                                         <button class="btn btn-info">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </a>
                                 </div>
                             </div>
-                            <% if(!data.response[0].stock_status){ %>
+                           <!-- <% if(!data.response[0].stock_status){ %>
                             <span class="outofstock">Out of Stock</span>
-                            <% } %>
+                            <% } %> -->
                         </div>
                     </div>
                 </div>

@@ -246,7 +246,7 @@ let products= productData.product;
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-xs-12" ng-if="loggedStatus == true">
+                                    <div class="col-md-6 col-xs-12 temphide" ng-class="loggedStatus == true?'showele':''" ng-if="loggedStatus == true">
 
                                         <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info btn-add-to-cart">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -264,16 +264,16 @@ let products= productData.product;
                                         </ul>
 
                                     </div>
-                                    <div class="col-md-6 col-xs-12" ng-if="loggedStatus != true">
+                                    <div class="col-md-6 col-xs-12 temphide" ng-class="loggedStatus != true?'showele':''" ng-if="loggedStatus != true">
                                         <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)" class="btn btn-info  btn-add-to-cart">
                                             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
                                     </div>
 
                                 </div>
 
-                                <% if(!productData.stock_status){ %>
+                              <!--  <% if(!productData.stock_status){ %>
                                     <span class="outofstock">Out of Stock</span>
-                                    <% } %>
+                                    <% } %> -->
                             </div>
                         </div>
                     </div>
