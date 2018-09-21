@@ -9178,6 +9178,8 @@ select:valid + .form-control-placeholder {
     color: #5b5b5b;
     font-size: 18px;
     margin-bottom: 25px !important;
+    line-height: 22px;
+    font-weight: 400;
   }
 
   .productdetailpage .productpanel h6 {
@@ -9191,8 +9193,9 @@ select:valid + .form-control-placeholder {
   .productdetailpage .productpanel .gramimg {
     display: inline-block;
     margin-right: 5px;
-    height: 15px;
-    width: 15px;
+    height: 22px;
+    width: 22px;
+    vertical-align: sub;
   }
 
   .productdetailpage .productpanel .productcountdiv {
@@ -9719,8 +9722,8 @@ select:valid + .form-control-placeholder {
   }
 
   .mycart .btn-proceed,
-  .btn-proceed:hover,
-  .btn-proceed:focus {
+  .mycart .btn-proceed:hover,
+  .mycart .btn-proceed:focus {
     display: inline-block;
     padding: 6px 12px;
     font-size: 14px;

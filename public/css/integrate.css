@@ -1445,8 +1445,22 @@ h4.newproductpanel {
     margin-top: 40px;
   }
   .cart-label {
-    top: 4px;
+    top: 6px;
+    right: 0;
   }
+  .cartdiv-mob{
+    padding-right: 0;
+    padding-top: 5px;
+  }
+  .title-anchor-btn {
+    font-size: 10px;
+    text-decoration: none;
+    border: 1px solid #323232;
+    padding: 10px;
+    background: #323232;
+    color: #fff;
+    margin-bottom: 20px;
+}
   .navtop2 .desktopsearch {
     padding: 16px 50px 23px 19px;
     font-size: 13px;
@@ -1517,6 +1531,25 @@ h4.newproductpanel {
   .btncenter {
     text-align: center;
   }
+  .bn-img img{
+    height: 20px;
+    margin-top: 10px;
+  }
+  #mybnd-desktop .title-input {
+    background: #fbfbfb;
+    border: 0px solid;
+    color: black;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+#mybnd-desktop .newBundleName {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.myorderdetail .cancelquestion{
+  padding-left: 15px;
+}
 }
 .rowpadd0 {
   padding: 0;
