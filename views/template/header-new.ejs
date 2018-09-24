@@ -113,7 +113,7 @@
         <div class="v-container">
             <ul class="list-inline headerlist">
                 <li>
-                    <a href="#">
+                    <a href="tel:+97142231188">
                         <p style="margin: 0px;padding-right: 5px;">
                             <img class="img-responsive topnavlocationimg" src="img/phone.png">+971 4 2231188</p>
                     </a>
@@ -191,7 +191,7 @@
                     </span>
                 </div> -->
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                    <div class="nav-bar v-nav-var">
+                    <div class="nav-bar v-nav-var hidden-lg hidden-md hidden-sm" onclick="openNav()">
                         <img src="img/menu-icon@2x.png">
                     </div>
                     <% if(typeof home_new != "undefined"){ %>
@@ -266,8 +266,8 @@
                             <!-- <span class="cart-label">0</span> -->
                         </li>
                         <li>
-                            <img src="img/profile-icon.svg" class="prof-icon">
-                            <a href="#" class="prof-lbl">Log In / </a><a href="#" class="prof-lbl">Sign Up</a>
+                            <img data-referrer="intro" data-toggle="modal" data-target="#myModal" src="img/profile-icon.svg" class="prof-icon">
+                            <a data-referrer="intro" data-toggle="modal" data-target="#myModal" class="prof-lbl" >Log In / Sign Up</a>
                         </li>
                         <%
                         } 
@@ -286,7 +286,7 @@
                         from the
                         convenience of your home.</span></strong>
                 <img src="img/vc-batch-w.svg" width="32">
-                <a href="" class="more-btn">Shop now</a>
+                <a href="/product-listing" class="more-btn">Shop now</a>
             </div>
         </div>
     </div>

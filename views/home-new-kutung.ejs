@@ -5,102 +5,75 @@
   <div class="v-container">
     <!-- Slider -->
     <div class="vc-bn-carousel owl-carousel owl-theme">
+      <% 
+                let bannerList= data.response.banner;
+                bannerList.sort(function(a, b){
+                    return a.hb_order - b.hb_order;
+                });
+                var no=0;
+                if (bannerList) {
+                    bannerList.forEach(function(slides){
+                        if(slides.hb_image)
+                        %>
       <div class="item">
-        <img src="img/bn1.jpg" alt="" class="desk">
-        <img src="img/bn1.png" alt="" class="mob">
+        <img src="<%= slides.hb_image %>" alt="" class="desk">
+        <img src="<%= slides.hb_image %>" alt="" class="mob">
       </div>
-      <div class="item">
-        <img src="img/bn1.jpg" alt="" class="desk">
-        <img src="img/bn1.png" alt="" class="mob">
-      </div>
-      <div class="item">
-        <img src="img/bn1.jpg" alt="" class="desk">
-        <img src="img/bn1.png" alt="" class="mob">
-      </div>
+      <%
+          })
+      }
+      %>
     </div>
 
     <!-- Ad banner -->
     <div class="col-xs-12 no-pd">
       <div class="col-lg-6 col-md-6 col-sm-6 ad-box">
-        <a href=""><img src="img/huge.png" alt="VALUZONE BUNDLES" class="img-responsive"></a>
+        <a href="/bundle-list"><img src="img/huge.png" alt="VALUZONE BUNDLES" class="img-responsive"></a>
       </div>
+      <% 
+      if(cookies){
+          var userData=JSON.parse(cookies);
+            if(userData.status=="success"){
+      %>
       <div class="col-lg-6 col-md-6 col-sm-6 ad-box-2">
-        <a href=""><img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"></a>
+        <a href="/create-bundle"><img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"></a>
       </div>
+      <% } } else{ %>
+      <div class="col-lg-6 col-md-6 col-sm-6 ad-box-2">
+        <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal"><img src="img/big.png" alt="BUILD YOUR OWN BUNDLES"
+            class="img-responsive pull-right"></a>
+      </div>
+      <% } %>
     </div>
 
     <!-- Products -->
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
         <h2 class="pr-ttl">Most Popular ValuZone Bundles</h2>
-        <a href="" class="v-btn">View all</a>
+        <a href="/bundle-list" class="v-btn">View all</a>
       </div>
       <div class="col-xs-12 no-pd pro-cont">
         <div class="pro-cr-1 owl-carousel owl-theme pro-cr pop-zone">
+          <% 
+        let bundle_category= data.response.bundle_category;
+        if (bundle_category) {
+        bundle_category.forEach(function(bundle){
+          var pb_name= bundle.pb_name;
+          var pb_url= pb_name.replace(/\s+/g, '-').toUpperCase();
+        %>
           <div class="item">
-            <a href="">
-              <img src="img/products/Organic-bundles.png" alt="Organic bundles">
+            <a href="bundle-detail/<%= bundle.pb_id+'/'+pb_url%>">
+              <img src="<%= bundle.pb_image %>" alt="<%= bundle.pb_name %>">
               <div class="pr-dt">
-                <span>Organic bundles</span>
+                <span>
+                  <%= bundle.pb_name %></span>
               </div>
             </a>
           </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Breakfast-bundles.png" alt="Breakfast bundles">
-              <div class="pr-dt">
-                <span>Breakfast bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Household-bundles.png" alt="Household bundles">
-              <div class="pr-dt">
-                <span>Household bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Snack-bundles.png" alt="Snack bundles">
-              <div class="pr-dt">
-                <span>Snack bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Organic-bundles.png" alt="Organic bundles">
-              <div class="pr-dt">
-                <span>Organic bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Breakfast-bundles.png" alt="Breakfast bundles">
-              <div class="pr-dt">
-                <span>Breakfast bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Household-bundles.png" alt="Household bundles">
-              <div class="pr-dt">
-                <span>Household bundles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Snack-bundles.png" alt="Snack bundles">
-              <div class="pr-dt">
-                <span>Snack bundles</span>
-              </div>
-            </a>
-          </div>
+          <%
+        })
+        }
+       %>
         </div>
       </div>
     </div>
@@ -108,106 +81,35 @@
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
         <h2 class="pr-ttl">Shop by category</h2>
-        <a href="" class="v-btn">View all</a>
+        <a href="/category/product" class="v-btn">View all</a>
       </div>
       <div class="col-xs-12 no-pd pro-cont cat-sec">
         <div class="pro-cr-2 owl-carousel owl-theme pro-cr">
+          <% 
+            let category= data.response.category;
+            category.sort(function(a, b){
+                return a.hc_order - b.hc_order;
+            });
+            var no=0;
+            if (category) {
+                category.forEach(function(cat){
+                var catname= cat.c_name;
+                var hc_url= catname.replace(/\s+/g, '-').toUpperCase();
+        %>
           <div class="item">
-            <a href="">
-              <img src="img/products/Beverages.png" alt="Beverages">
+            <a href="/product-listing/<%= cat.c_id+'/'+hc_url%>">
+              <img src="<%= cat.hc_image; %>" alt="Beverages">
               <div class="pr-dt">
-                <span>Beverages</span>
+                <span>
+                  <%= cat.c_name;%></span>
               </div>
             </a>
           </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Biscuits.png" alt="Biscuits & Cakes">
-              <div class="pr-dt">
-                <span>BISCUITS & CAKES</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Air-toilet-freshner.png" alt="Air & Toilet Freshner">
-              <div class="pr-dt">
-                <span>Air & Toilet Freshner</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Olives-pickles.png" alt="Olives & Pickles">
-              <div class="pr-dt">
-                <span>Olives & Pickles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Preserves.png" alt="Preserves">
-              <div class="pr-dt">
-                <span>Preserves</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Snacks-nuts.png" alt="Snacks & Nuts">
-              <div class="pr-dt">
-                <span>Snacks & Nuts</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Beverages.png" alt="Beverages">
-              <div class="pr-dt">
-                <span>Beverages</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Biscuits.png" alt="Biscuits & Cakes">
-              <div class="pr-dt">
-                <span>BISCUITS & CAKES</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Air-toilet-freshner.png" alt="Air & Toilet Freshner">
-              <div class="pr-dt">
-                <span>Air & Toilet Freshner</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Olives-pickles.png" alt="Olives & Pickles">
-              <div class="pr-dt">
-                <span>Olives & Pickles</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Preserves.png" alt="Preserves">
-              <div class="pr-dt">
-                <span>Preserves</span>
-              </div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="">
-              <img src="img/products/Snacks-nuts.png" alt="Snacks & Nuts">
-              <div class="pr-dt">
-                <span>Snacks & Nuts</span>
-              </div>
-            </a>
-          </div>
+          <%
+        });
+    }
+    %>
+
         </div>
       </div>
     </div>
@@ -351,21 +253,18 @@
       </div>
       <div class="col-xs-12 no-pd pro-cont brand-cr">
         <div class="pro-cr-1 owl-carousel owl-theme pro-cr">
+          <% 
+            let home_brand= data.response.home_brand;
+            if (home_brand) {
+              home_brand.forEach(function(brand){
+            %>
           <div class="item">
-            <img src="img/brands/Kelloggs.png" alt="Kellogg's">
+            <a href="product-listing/#!?brand=<%= brand.b_id %>"><img src="<%= brand.b_image %>" alt="<%= brand.b_name %>"></a>
           </div>
-          <div class="item">
-            <img src="img/brands/Comfort.png" alt="Comfort">
-          </div>
-          <div class="item">
-            <img src="img/brands/Johnsons.png" alt="Johnsons">
-          </div>
-          <div class="item">
-            <img src="img/brands/Nestle.png" alt="Nestle">
-          </div>
-          <div class="item">
-            <img src="img/brands/Regilait.png" alt="Regilait">
-          </div>
+          <%
+        })
+        }
+       %>
         </div>
       </div>
     </div>

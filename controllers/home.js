@@ -10,7 +10,7 @@ let get_data = async cookies => {
         Authorization: "Bearer " + cookies.token
       };
     }
-    let response = await axios.get("/dashboard/get", getparam);
+    let response = await axios.get("/dashboard/get/v2", getparam);
     return response.data.results;
   } catch (error) {
     throw error;
