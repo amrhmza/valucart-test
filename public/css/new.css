@@ -88,22 +88,20 @@ body {
 }
 
 .searchnav .input-group.head-new-search input::placeholder {
-    color: #BEBEBE;
-    font-size: 14px;
-    font-weight: 300;
-}
-
-.searchnav .input-group.head-new-search input::-ms-input-placeholder {
-    color: #BEBEBE;
-    font-size: 14px;
-    font-weight: 300;
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
 }
 
 .searchnav .input-group.head-new-search input:-ms-input-placeholder {
-    color: #BEBEBE;
-    font-size: 14px;
-    font-weight: 300;
+    /* Internet Explorer 10-11 */
+    color: #000;
 }
+
+.searchnav .input-group.head-new-search input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #000;
+}
+
 
 .head-new-search img {
     width: 18px;
@@ -194,9 +192,18 @@ body {
 }
 
 .more-btn {
-    background: #000;
     color: #fff;
-    padding: 4px 10px;
+    padding: 4px 30px 4px 10px;
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
+    background-size: 12px;
+}
+
+.more-btn:hover,
+.more-btn:focus {
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
+    color: #fff;
+    background-size: 12px;
+    text-decoration: none;
 }
 
 /* Banner carousel */
@@ -229,7 +236,7 @@ body {
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button span {
-    background: url(../img/arrow-2.svg) center no-repeat;
+    background: url(../img/next-arrow@2x.png) center no-repeat;
     display: inline-block;
     padding: 26px;
 }
@@ -356,7 +363,7 @@ body {
 }
 
 .pro-cr.owl-carousel .owl-nav button span {
-    background: url(../img/arrow-2.svg) no-repeat center center / 40%;
+    background: url(../img/next-arrow@2x.png) no-repeat center center / 40%;
     display: inline-block;
     padding: 10px 15px;
     position: relative;
@@ -575,6 +582,10 @@ body {
 }
 
 @media only screen and (max-width: 1024px) {
+    .vail-text {
+        display: none;
+    }
+
     .pro-cr a {
         width: auto;
     }
@@ -600,9 +611,13 @@ body {
 
     .wl-txt,
     .no-item-lbl,
-    .prof-lbl,
-    .searchnav {
+    .prof-lbl {
         display: none;
+    }
+
+    .searchnav {
+        display: block;
+        margin-bottom: 10px;
     }
 
     .wishlist-icon {
@@ -691,4 +706,9 @@ body {
 
 .owl-carousel .owl-item img.mob {
     display: none;
+}
+
+.vail-text {
+    display: inline-block;
+    font-size: 14px;
 }
