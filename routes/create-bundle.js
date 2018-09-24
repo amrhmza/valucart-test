@@ -15,7 +15,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     console.log(check);
     if (check.results.status == 200 && check.results.response.length > 0) {
       var checkmsg =
-        "Pending Bundle is there with you can update that Name here";
+        "You have a pending Bundle. You can continue with the same Bundle name or edit the Bundle name.";
       var name = check.results.response[0].ub_name;
     } else {
       var checkmsg = "Give a name for your bundle";
@@ -24,6 +24,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     res.render("newbundle", {
       menudata: menudata,
       angular: false,
+      search: 0,
       customjs: false,
       cookies: cookies,
       name: name,

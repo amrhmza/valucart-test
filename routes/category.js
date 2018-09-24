@@ -13,7 +13,7 @@ router.get("/product", async (req, res, next) => {
       cookies: cookies,
       menudata: menudata,
       menudataa: menudata.response,
-      // search: 0,
+      search: 0,
       angular: false,
       customjs: false,
       pageto: "product-listing"

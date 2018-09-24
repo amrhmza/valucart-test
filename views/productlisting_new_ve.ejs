@@ -80,8 +80,8 @@
                                             <% if(data.product_config.cat_filter.length>0){
                                             data.product_config.cat_filter.forEach(function(cat){ 
                                             %>
-                                                <a data-toggle="collapse" ng-click="filters('cat',<%= cat.main_cat_id %>)" href="#collapsea<%= cat.main_cat_id %>">
-                                                    <div class="panel-heading">
+                                                <a data-toggle="collapse" ng-click="filters('cat',<%= cat.main_cat_id %>)">
+                                                    <div class="panel-heading"  style="background: none">
                                                         <h4 class="panel-title">
                                                             <%= cat.main_cat_name %>
                                                         </h4>
