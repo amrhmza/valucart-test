@@ -4,7 +4,7 @@ const getHome = require("../controllers/home.js");
 const getMenu = require("../controllers/category_menu.js");
 
 /* GET home page. */
-router.get("/", async (req, res, next) => {
+router.get("/home", async (req, res, next) => {
   //console.log("Cookies :  ", req.cookies);
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
@@ -31,7 +31,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 /* GET home page. */
-router.get("/home-kutung", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   //console.log("Cookies :  ", req.cookies);
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
@@ -42,7 +42,7 @@ router.get("/home-kutung", async (req, res, next) => {
       menudata: menudata,
       angular: false,
       customjs: false,
-      cookies: cookies,
+      cookies: cookies
     });
   } catch (error) {
     console.log(error);
