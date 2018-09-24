@@ -16,7 +16,7 @@ app.controller("select_area", function(
       toastr.warning("Please select area!");
     } else {
       localStorage.setItem("area", $scope.area);
-      window.location.href = "/intro";
+      window.location.href = "/";
     }
   };
 });
