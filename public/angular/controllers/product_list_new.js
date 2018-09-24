@@ -245,6 +245,8 @@ app.controller("product_listing", function(
         break;
       case "sub_cat":
         $location.search("sub_cat", p1);
+        $location.search("cat", null);
+        delete querydata.queryparam.cat;
         $scope.getlist();
         break;
       case "price":
