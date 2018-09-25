@@ -1663,7 +1663,7 @@ ul.breadcrumb li a:hover {
 }
 
 .productlistpage .productpanel {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
   border: none;
   text-align: left;
 }
@@ -8359,7 +8359,7 @@ select:valid+.form-control-placeholder {
   }
 
   .productlistpage .productpanel {
-    background-color: #f6f6f6;
+    background-color: #ffffff;
     border: none;
     text-align: left;
     min-height: 305px;
@@ -8883,7 +8883,7 @@ select:valid+.form-control-placeholder {
   }
 
   .productlistpage .productpanel {
-    background-color: #f6f6f6;
+    background-color: #ffffff;
     border: none;
     text-align: left;
     height: auto;

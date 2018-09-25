@@ -20,6 +20,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       cookies: cookies,
       angular: true,
       customjs: true,
+      home_new: true,
       jslist: [
         "angular/app.js",
         "angular/factory/product_list.js",
@@ -50,6 +51,7 @@ router.get("/", async (req, res, next) => {
       cookies: cookies,
       angular: true,
       customjs: true,
+      home_new: true,
       jslist: [
         "angular/app.js",
         "angular/factory/product_list_new.js",
@@ -81,6 +83,7 @@ router.get("/valucartexclusives", async (req, res, next) => {
       cookies: cookies,
       angular: true,
       customjs: true,
+      home_new: true,
       jslist: [
         "angular/app.js",
         "angular/factory/product_list_new.js",

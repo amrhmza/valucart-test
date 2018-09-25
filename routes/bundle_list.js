@@ -20,6 +20,7 @@ router.get("/", async (req, res, next) => {
       menudata: menudata,
       angular: true,
       customjs: true,
+      home_new: true,
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_list_new.js",
@@ -52,6 +53,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       menudata: menudata,
       angular: true,
       customjs: true,
+      home_new: true,
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_list.js",
