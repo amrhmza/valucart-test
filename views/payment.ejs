@@ -81,7 +81,7 @@
                             <h3 class=""><span ng-bind-html="coupon"></span>
                                 <i class="fa fa-trash-o trash text-danger" aria-hidden="true" ng-click="removeCoupon()"></i>
                             </h3>
-                            <article class="coupon-success" ng-bind-html="couponInfo"></article>
+                           <!-- <article class="coupon-success" ng-bind-html="couponInfo"></article>-->
                         </div>
                         <div id="subtotal">
                             <h5 class="total">Subtotal</h5>
@@ -93,7 +93,7 @@
                         </div>
                         <div id="delivery">
                             <h5 class="total">Delivery Charges</h5>
-                            <h5 class="total" style="float: right;">15.00 AED</h5>
+                            <h5 class="total" style="float: right;" ng-bind-html="dc+' AED'">15.00 AED</h5>
                         </div>
                         <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
                             <h5 class="total">
@@ -110,12 +110,12 @@
                                 <span>(inclusive of 5%VAT)</span>
                             </h5>
                             <h5 class="total" style="float: right;">
-                                <strong class="c_gtotal" ng-bind-html="(cartGrand + 15)|number : 2"></strong>
+                                <strong class="c_gtotal" ng-bind-html="(cartGrand + dc)|number : 2"></strong>
                                 <strong> AED</strong>
                             </h5>
                         </div>
                     </div>
-                    <form action="/checkout/process" method="POST">
+                    <form action="/checkout/process" id="cartsubmit" method="POST">
 
                         <% if(typeof data!="undefined"){
                         data.cart_id.forEach(function(cart){ 
@@ -129,7 +129,8 @@
                                 <input type="hidden" name="shipping_address_id" value="{{address_id}}">
                                 <input type="hidden" name="order_type" value="{{disabled}}">
                                 <input type="hidden" name="coupon" value="{{coupon}}">
-                                <button ng-if="disabled!=''" type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                <input type="hidden" name="dc" value="{{dc}}">
+                                <button ng-if="disabled!=''" type="button" ng-click="checkorder_value(cartGrand)" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
                                     to checkout</button>
 
                     </form>
@@ -143,7 +144,8 @@
     </div>
     <script>
         app.constant("cartData", {
-            'cartSum': <%= data.subtotal %> 
+            'cartSum': <%= data.subtotal %> ,
+            'dc': <%= data.dc %> 
             });
     </script>
     <% include template/footer %>
