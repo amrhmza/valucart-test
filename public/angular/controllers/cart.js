@@ -14,6 +14,7 @@ app.controller("cart", function(
   $scope.showele = "showele";
   $scope.qty = 1;
   $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
+  $scope.dc = $scope.cartGrand > 250 ? 0 : 10;
   $scope.edit_title = 0;
   $scope.addtocart = function(data) {
     product_details
@@ -135,16 +136,14 @@ app.controller("cart", function(
 
   $scope.cartTotal = function() {
     var ctotal = 0.0;
-    var delivery_charge = 15.0;
     angular.forEach(angular.element(".productcount"), function(value, key) {
       var a = angular.element(value);
       ctotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
     });
     $scope.subGrand = parseFloat(ctotal).toFixed(2);
-    $scope.cartGrand = (
-      parseFloat(ctotal) + parseFloat(delivery_charge)
-    ).toFixed(2);
+    $scope.dc = parseFloat(ctotal).toFixed(2) >= 250 ? 0 : 10;
+    $scope.cartGrand = (parseFloat(ctotal) + parseFloat($scope.dc)).toFixed(2);
   };
   $scope.cartTotal();
   $scope.verifyToken = function(coupon) {
@@ -281,5 +280,12 @@ app.controller("cart", function(
   }
   $scope.save_title = function() {
     cp.onsubmit();
+  };
+  $scope.checkorder_value = function(order_value) {
+    if (order_value < 50) {
+      toastr.warning("Order Value should be more then 50 AED!");
+    } else {
+      $("#cartsubmit").submit();
+    }
   };
 });

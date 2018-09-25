@@ -159,7 +159,7 @@
                                     </div>
                                     <div id="delivery">
                                         <h5 class="total">Delivery Charges</h5>
-                                        <h5 class="total" style="float: right;">15.00 AED</h5>
+                                        <h5 class="total" style="float: right;" ng-bind-html="dc+' AED'">15.00 AED</h5>
                                     </div>
                                     <div id="savings" style="margin-top: 20px" ng-if="cartsaving" class="">
 
@@ -184,7 +184,7 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <form action="checkout" method="POST">
+                                <form action="checkout" id="cartsubmit" method="POST">
                                     <% if(data!="undefined"){
                                     data.forEach(function(cart){ 
                                     %>
@@ -196,7 +196,7 @@
 												 <input type="hidden" name="subtotal" value="{{subGrand}}" />
                                                     <input type="hidden" name="total" value="{{cartGrand}}" />
                                                     <input type="hidden" name="coupon" value="{{coupon}}" />
-                                                    <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                                    <button type="button" ng-click="checkorder_value(subGrand)" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
                                                         to checkout</button>
                                 </form>
                             </div>
@@ -211,7 +211,7 @@
                                         <hr>
                                         <div id="delivery">
                                             <h5 class="total">Delivery Charges</h5>
-                                            <h5 class="total" style="float: right;">15.00 AED</h5>
+                                            <h5 class="total" style="float: right;" ng-bind-html="dc+ AED"></h5>
                                         </div>
                                         <div id="savings" style="margin-top: 20px" class="hidden">
                                             <h5 class="total">
@@ -227,7 +227,7 @@
                                                 <span>(inclusive of 5%VAT)</span>
                                             </h5>
                                             <h5 class="total" style="float: right;">
-                                                <strong ng-bind-html="((cartGrand) + 15)|number : 2"></strong><strong> AED</strong>
+                                                <strong ng-bind-html="((cartGrand))|number : 2"></strong><strong> AED</strong>
                                             </h5>
                                         </div>
                                         <a href="">
@@ -249,7 +249,7 @@
 														 <input type="hidden" name="subtotal" value="{{subGrand}}" />
                                                             <input type="hidden" name="total" value="{{cartGrand}}" />
                                                             <input type="hidden" name="coupon" value="{{coupon}}" />
-                                                            <button type="submit" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
+                                                            <button type="button" class="btn-proceed btn-checkout" style="margin-bottom: 10px">Proceed
                                                                 to checkout</button>
                                         </form>
                                     </div>
