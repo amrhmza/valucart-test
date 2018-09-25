@@ -17,7 +17,8 @@
                         %>
       <div class="item">
         <img src="<%= slides.hb_image %>" alt="" class="desk">
-        <img src="<%= slides.hb_image %>" alt="" class="mob">
+        <!-- <img src="<%= slides.hb_image %>" alt="" class="mob"> -->
+        <img src="img/bn1.png" alt="" class="mob">
       </div>
       <%
           })
@@ -27,21 +28,35 @@
 
     <!-- Ad banner -->
     <div class="col-xs-12 no-pd">
-      <div class="col-lg-6 col-md-6 col-sm-6 ad-box">
-        <a href="/bundle-list"><img src="img/huge.png" alt="VALUZONE BUNDLES" class="img-responsive"></a>
+      <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box">
+        <a href="/bundle-list">
+          <h2>VALUZONE<br>BUNDLES</h2>
+          <p>Choose from a range of pre-configured bundles and save huge</p>
+          <span class="spn-btn">Shop now</span>
+          <!--<img src="img/huge.png" alt="VALUZONE BUNDLES" class="img-responsive">-->
+        </a>
       </div>
       <% 
       if(cookies){
           var userData=JSON.parse(cookies);
             if(userData.status=="success"){
       %>
-      <div class="col-lg-6 col-md-6 col-sm-6 ad-box-2">
-        <a href="/create-bundle"><img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"></a>
+      <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box vc-ad-box-2">
+        <a href="/create-bundle">
+          <!-- <img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"> -->
+          <h2>BUILD YOUR<br>OWN BUNDLES</h2>
+          <p>Create your own bundle from over 300 products and save big upto 25%</p>
+          <span class="spn-btn">Shop now</span>
+        </a>
       </div>
       <% } } else{ %>
-      <div class="col-lg-6 col-md-6 col-sm-6 ad-box-2">
-        <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal"><img src="img/big.png" alt="BUILD YOUR OWN BUNDLES"
-            class="img-responsive pull-right"></a>
+      <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box vc-ad-box-2">
+        <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+          <!-- <img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"> -->
+          <h2>BUILD YOUR<br>OWN BUNDLES</h2>
+          <p>Create your own bundle from over 300 products and save big upto 25%</p>
+          <span class="spn-btn">Shop now</span>
+        </a>
       </div>
       <% } %>
     </div>
@@ -49,7 +64,7 @@
     <!-- Products -->
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
-        <h2 class="pr-ttl">Most Popular ValuZone Bundles</h2>
+        <h2 class="pr-ttl">ValuZone Bundles</h2>
         <a href="/bundle-list" class="v-btn">View all</a>
       </div>
       <div class="col-xs-12 no-pd pro-cont">

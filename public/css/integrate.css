@@ -661,7 +661,7 @@ a {
   position: absolute;
   color: #14bdcd;
   top: 10px;
-  right: 45px;
+  right: 35px;
   display: none;
 }
 
@@ -1020,8 +1020,8 @@ a.highlight {
 
 /* .btn.btn-default.productplus.cart-qty-plus::before {
   content: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png) !important;
-  width: 45px !important;
-  height: 45px !important;
+  width: 35px !important;
+  height: 35px !important;
   display: inline-block !important;
 } */
 .productlistpage .productpanel .productcountdiv .productplus,
@@ -1032,8 +1032,8 @@ a.highlight {
 .confirm-product .productpanel .productcountdiv .productplus,
 .editbundlelist .productpanel .productcountdiv .productplus .i.fa.fa-plus {
   content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png");
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   display: inline-block;
   font-size: 11px;
 }
@@ -1047,8 +1047,8 @@ a.highlight {
 .editbundlelist .productpanel .productcountdiv .productplus {
   padding: 0px;
   /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/plus.png);*/
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   display: inline-block;
   border-radius: 50%;
   margin: auto;
@@ -1062,8 +1062,8 @@ a.highlight {
 .confirm-product .productpanel .productcountdiv .productminus,
 .editbundlelist .productpanel .productcountdiv .productminus .i.fa.fa-minus {
   content: url("https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png");
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   /* font-size: 11px; */
 }
 
@@ -1075,8 +1075,8 @@ a.highlight {
 .editbundlelist .productpanel .productcountdiv .productminus {
   padding: 0px;
   /* background-image: url(https://s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);*/
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   margin: auto;
   border: 0;
@@ -1523,7 +1523,7 @@ h4.newproductpanel {
   .choosecatagory form input[type="radio"] + label {
     font-size: 13px;
     padding: 7px 20px;
-    height: 45px;
+    height: 35px;
   }
 
   .choosecatagory .radiorow ul li {

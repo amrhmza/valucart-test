@@ -1,3 +1,31 @@
+@font-face {
+    font-family: 'Helvetica Neue LT Pro 45 Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Neue LT Pro 45 Light'), url('../fonts/HelveticaNeueLTPro-Lt.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Neue LT Pro 55 Roman'), url('../fonts/HelveticaNeueLTPro-Roman.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Pro 65 Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Neue LT Pro 65 Medium'), url('../fonts/HelveticaNeueLTPro-Md.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Pro 95 Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Neue LT Pro 95 Black'), url('../fonts/HelveticaNeueLTPro-Blk.woff') format('woff');
+}
+
 body {
     background: #f8f8f8;
 }
@@ -19,6 +47,10 @@ body {
     background: #F3F7F8;
     padding-top: 4px;
     padding-bottom: 6px;
+}
+
+.headerlist {
+    font-family: 'Helvetica Neue LT Pro 45 Light';
 }
 
 .headerlist.list-inline>li {
@@ -62,8 +94,9 @@ body {
 }
 
 .navtop {
-    height: 66px !important;
     border: 1px solid #DFEAEE;
+    height: 66px !important;
+    padding-top: 16px;
 }
 
 .navbar-brand {
@@ -75,16 +108,18 @@ body {
 /* Search */
 .searchnav {
     float: left;
+    width: 43%;
 }
 
 .searchnav .input-group input {
-    font-size: 14px;
+    font-size: 16x;
 }
 
 .searchnav .input-group.head-new-search input {
     color: #000;
-    padding: 4px;
+    font-family: 'Helvetica Neue LT Pro 45 Light';
     height: auto;
+    padding: 4px;
 }
 
 .searchnav .input-group.head-new-search input::placeholder {
@@ -102,6 +137,22 @@ body {
     color: #000;
 }
 
+/* Mobile Search */
+.mob-search input {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: 'Helvetica Neue LT Pro 45 Light';
+    height: auto;
+    padding: 4px 15px;
+}
+
+.mob-search input:focus {
+    border: 0;
+    box-shadow: none;
+    outline: none;
+}
+
 
 .head-new-search img {
     width: 18px;
@@ -110,11 +161,12 @@ body {
 
 .navlist {
     display: flex;
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
 }
 
 .navlist li {
     align-self: center;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 30px;
     margin: 0;
 }
 
@@ -141,7 +193,7 @@ body {
 }
 
 .wishlist-icon {
-    height: 17px;
+    height: 20px;
 }
 
 .cart-icon {
@@ -151,17 +203,12 @@ body {
 }
 
 .prof-icon {
-    width: 20px;
+    width: 22px;
 }
 
 .no-item-lbl {
     font-size: 13px;
     opacity: 0.5;
-}
-
-.navtop {
-    height: 76px;
-    padding-top: 16px;
 }
 
 .head-new-search {
@@ -183,6 +230,7 @@ body {
 }
 
 .offer-sec strong {
+    font-family: 'Helvetica Neue LT Pro 65 Medium';
     font-size: 20px;
     font-weight: 500;
 }
@@ -268,20 +316,52 @@ body {
     display: none;
 }
 
-.ad-box {
-    padding-left: 0;
-    padding-right: 5px;
+.vc-ad-box {
+    background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom 15px / 50%;
+    border-right: 4px solid #fff;
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
+    padding: 50px 50px;
 }
 
-.ad-box-2 {
-    padding-left: 5px;
-    padding-right: 0;
+.vc-ad-box a {
+    text-decoration: none;
+}
+
+.vc-ad-box-2 {
+    background-image: url(../img/big-offer.png);
+    border-left: 4px solid #fff;
+    border-right: 0;
+}
+
+.vc-ad-box h2 {
+    color: #000000;
+    font-size: 50px;
+    font-family: 'Helvetica Neue LT Pro 95 Black';
+    margin: 0;
+}
+
+.vc-ad-box p {
+    color: #000000;
+    font-size: 16px;
+    max-width: 40%;
+    margin: 30px 0 40px 0;
+}
+
+.spn-btn {
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 24px center;
+    background-size: 14px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 14px 50px 14px 30px;
 }
 
 /* Products */
 .pr-ttl {
     background: url(../img/vc-batch.svg) no-repeat;
     color: #000000;
+    font-family: 'Helvetica Neue LT Pro 95 Black';
     font-size: 24px;
     font-weight: 800;
     float: left;
@@ -297,6 +377,7 @@ body {
 
 .v-btn {
     color: #8505FF;
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
     font-size: 18px;
     float: right;
     margin-top: 8px;
@@ -308,6 +389,7 @@ body {
 }
 
 .pro-cr a {
+    align-self: center;
     color: #000000;
     display: inline-block;
     margin: 0 40px;
@@ -318,6 +400,7 @@ body {
 
 .pro-cr a span {
     display: block;
+    font-family: 'Helvetica Neue LT Pro 65 Medium';
     font-size: 16px;
     font-weight: 500;
     margin-top: 10px;
@@ -391,7 +474,7 @@ body {
 
 .cat-sec {
     background: transparent;
-    padding: 60px 40px 60px 54px;
+    padding: 60px 40px 60px 40px;
 }
 
 .cat-sec .item {
@@ -402,10 +485,11 @@ body {
     background: #fff;
     border-radius: 50%;
     height: 240px;
-    width: 240px;
     display: flex;
     justify-content: center;
+    margin: auto;
     padding: 40px 20px 20px 20px;
+    width: 240px;
 }
 
 .cat-sec .owl-carousel .owl-item img {
@@ -433,6 +517,7 @@ body {
 .brand-cr .item {
     display: flex;
     height: 100px;
+    justify-content: center;
 }
 
 .brand-cr .owl-carousel .owl-item img {
@@ -462,38 +547,37 @@ body {
 
 .dwn-app h2 {
     color: #000000;
+    font-family: 'Helvetica Neue LT Pro 95 Black';
     font-size: 36px;
     font-weight: 700;
 }
 
 .dwn-app h3 {
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
     font-size: 26px;
     font-weight: 400;
     margin-top: 10px;
 }
 
 .dwn-app p {
+    font-family: 'Helvetica Neue LT Pro 45 Light';
     font-size: 18px;
     font-weight: 400;
     margin-top: 50px;
 }
 
 .dwn-app-txt {
-    padding: 86px 0 80px 60px;
+    padding: 86px 0 80px 0px;
 }
 
-.mb-src {}
+.mb-src img {
+    margin: auto;
+}
 
 .how-to {
     background: #fff;
     border-top: 1px solid #DEDEDE;
     margin-top: 40px;
-}
-
-.how-to .pr-ttl {
-    background: url(../img/vc-batch.svg) no-repeat 20px 0px/ 36%;
-    line-height: 28px;
-    padding: 58px 0 40px 0px;
 }
 
 .how-to ul {
@@ -537,6 +621,7 @@ body {
 }
 
 .how-to ul li h3 {
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
@@ -544,6 +629,7 @@ body {
 
 .how-to ul li span {
     color: #8505FF;
+    font-family: 'Helvetica Neue LT Pro 45 Light';
     font-size: 18px;
     opacity: 0.4;
     width: 100%;
@@ -564,20 +650,45 @@ body {
     margin-top: 0;
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    .vc-ad-box {
+        padding: 40px;
+    }
+
+    .vc-ad-box h2 {
+        font-size: 34px;
+    }
+
+    .vc-ad-box {
+        background-size: 52%;
+    }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .navlist li {
         padding: 0 0 0 10px;
     }
 
-    .searchnav {
-        width: 226px;
+    .how-to ul li {
+        padding: 60px 30px 80px 30px;
     }
 
+    .how-to ul li h3 {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
     .navlist li {
         padding: 0 0 0 10px;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+    .how-to .pr-ttl {
+        line-height: 24px;
+        padding: 68px 0 40px 0px;
+        font-size: 17px;
     }
 }
 
@@ -601,12 +712,73 @@ body {
     .owl-carousel .owl-item img.mob {
         display: block !important;
     }
+
+    .vc-ad-box {
+        background-size: 47%;
+    }
+
+    .vc-ad-box-2,
+    .vc-ad-box {
+        padding: 30px 25px;
+    }
+
+    .vc-ad-box h2 {
+        font-size: 24px;
+    }
+
+    .vc-ad-box p {
+        font-size: 12px;
+        margin: 12px 0 20px 0;
+        max-width: 52%;
+    }
+
+    .spn-btn {
+        padding: 14px 50px 12px 30px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
 
+    .v-container {
+        width: 100%;
+    }
+
+    .v-nav-var {
+        margin: 0;
+    }
+
+    .navbar-brand {
+        padding: 0;
+        margin-left: 32px;
+    }
+
+    .searchnav .input-group.head-new-search input {
+        display: none;
+    }
+
+    .searchnav .input-group {
+        width: 40%;
+        border: 0;
+    }
+
     .vc-bn-carousel {
-        margin: 8px 0 2px 0;
+        margin: 8px 0 8px 0;
+    }
+
+    .navtop {
+        height: 58px !important;
+        padding: 15px 6px 15px 15px;
+    }
+
+    .more-btn {
+        padding: 4px 20px 4px 10px;
+        width: 10px;
+        overflow: hidden;
+        text-indent: -400px;
+    }
+
+    .pro-cont {
+        padding: 30px 40px;
     }
 
     .wl-txt,
@@ -617,20 +789,15 @@ body {
 
     .searchnav {
         display: block;
-        margin-bottom: 10px;
+        margin: 0 4px 0 0 !important;
     }
 
-    .wishlist-icon {
-        height: 28px;
+    .cat-sec {
+        padding: 0px 40px 0px 40px;
     }
 
     .cart-icon {
-        width: 26px;
         margin-top: 0 !important;
-    }
-
-    .prof-icon {
-        width: 28px;
     }
 
     .navlist li {
@@ -638,14 +805,14 @@ body {
     }
 
     .offer-sec strong {
-        font-size: 13px;
-        line-height: 30px;
-        width: 42%;
+        font-size: 15px;
+        line-height: 32px;
+        width: 74%;
         overflow: hidden;
     }
 
     .pro-hd {
-        padding-top: 0;
+        padding: 20px 15px 6px 15px;
     }
 
     .mb-src img {
@@ -672,35 +839,78 @@ body {
         padding-bottom: 28px;
     }
 
-    .how-to .pr-ttl {
-        background: url(../img/vc-batch.svg) no-repeat center / 6%;
-        padding: 86px 0 0px 0px;
-        float: none;
-        text-align: center;
-    }
-
     .how-to ul li {
         width: 100%;
         border: 1px solid #DEDEDE;
+        border-top: 0;
+    }
+
+    .how-to ul li:first-child {
+        border-top: 1px solid #DEDEDE;
     }
 
     .pr-ttl {
-        background: url(../img/vc-batch.svg) no-repeat center / 50px;
-        font-size: 22px;
-        line-height: 29px;
-        padding: 120px 0 0px 0px;
-        text-align: center;
-        width: 100%;
+        background: url(../img/vc-batch.svg) no-repeat top left / 24px;
+        font-size: 18px;
+        line-height: 25px;
+        padding: 3px 0 0px 30px;
+    }
+
+    .v-btn {
+        font-size: 13px;
     }
 
     .dwn-app:after {
         display: none;
     }
 
-    .ad-box-2,
-    .ad-box {
+    .mob-search input::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        font-size: 10px !important;
+    }
+
+    .mob-search input:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        font-size: 10px !important;
+    }
+
+    .mob-search input::-ms-input-placeholder {
+        /* Microsoft Edge */
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+
+    .vc-ad-box-2,
+    .vc-ad-box {
+        border: 0;
         margin-top: 6px;
-        padding: 0;
+        padding: 20px 15px;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .navlist li {
+        padding: 0 0 0 2px;
+    }
+
+    .offer-sec strong {
+        width: 84%;
+    }
+
+    .spn-btn {
+        padding: 10px 40px 8px 16px;
+        background: #000 url(../img/vector-smart-object.png) no-repeat right 16px center / 12%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .how-to .pr-ttl {
+        background: url(../img/vc-batch.svg) no-repeat 20px 30px/ 36%;
+        line-height: 28px;
+        padding: 78px 0 40px 0px;
+        font-size: 20px;
     }
 }
 

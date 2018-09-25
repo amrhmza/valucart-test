@@ -409,3 +409,13 @@ $('.pro-cr-3').owlCarousel({
     }
   }
 });
+
+$('.searchnavMob').click(function () {
+  $(this).toggleClass('active');
+
+  if ($(this).hasClass('active')) {
+    $('.mob-search').slideDown();
+  } else {
+    $('.mob-search').slideUp();
+  }
+});
