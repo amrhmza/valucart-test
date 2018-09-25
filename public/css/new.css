@@ -159,6 +159,12 @@ body {
     margin: 0 0 0 6px;
 }
 
+.headerlist li a,
+.headerlist li a:hover,
+.headerlist .dropdown.open>a {
+    color: #8505FF;
+}
+
 .navlist {
     display: flex;
     font-family: 'Helvetica Neue LT Pro 55 Roman';
@@ -168,6 +174,14 @@ body {
     align-self: center;
     padding: 0 0 0 30px;
     margin: 0;
+}
+
+.navlist li .navbar-brand1 {
+    margin-top: 8px;
+}
+
+.navlist .cart-label {
+    top: 0;
 }
 
 /* Wishlist */
@@ -197,7 +211,7 @@ body {
 }
 
 .cart-icon {
-    width: 17px;
+    width: 21px;
     float: left;
     margin: 10px 10px 0 0 !important;
 }
@@ -375,12 +389,15 @@ body {
     padding: 44px 0 16px 0;
 }
 
-.v-btn {
+.v-btn,
+.v-btn:hover,
+.v-btn:focus {
     color: #8505FF;
     font-family: 'Helvetica Neue LT Pro 55 Roman';
     font-size: 18px;
     float: right;
     margin-top: 8px;
+    text-decoration: none;
 }
 
 .pro-cont {

@@ -462,7 +462,7 @@ button.btn.btn-info.logot {
   .ebtn:active,
   .ebtn:focus,
   .ebtn:active:focus {
-    padding: 9px !important;
+    padding: 0px !important;
   }
 }
 
