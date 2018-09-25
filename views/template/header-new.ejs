@@ -115,15 +115,15 @@
                 <li>
                     <a href="tel:+97142231188">
                         <p style="margin: 0px;padding-right: 5px;">
-                            <img class="img-responsive topnavlocationimg" src="img/phone.png">+971 4 2231188</p>
+                            <img src="img/phone.svg" width="14"> +971 4 2231188</p>
                     </a>
                 </li>
                 <li>
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
-                            <img class="img-responsive topnavlocationimg" src="img/locationtop.png">
-                            <span class="current_city">Al Karama, Dubai</span>
-                            <i class="fa fa-edit"></i>
+                            <img src="img/location.svg" width="14">
+                            <span class="current_city"> Al Karama, Dubai</span>
+                            <i class="fa fa-angle-down"></i>
                         </p>
                     </a>
                 </li>
@@ -191,31 +191,42 @@
                     </span>
                 </div> -->
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                    <div class="nav-bar v-nav-var hidden-lg hidden-md hidden-sm" onclick="openNav()">
-                        <img src="img/menu-icon@2x.png">
+                    <div class="nav-bar v-nav-var" onclick="openNav()">
+                        <img src="img/navbar.svg" alt="" width="18">
                     </div>
                     <% if(typeof home_new != "undefined"){ %>
                     <a href="/">
-                        <img src="img/logo1.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                        <img src="img/logo.svg" class="img-responsive navbar-brand" alt="valucart-logo">
                     </a>
                     <% } else { %>
                     <a href="/">
                         <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
                     </a>
                     <% } %>
-                    <div class="searchnav">
+                    <div class="searchnav hidden-sm hidden-xs">
                         <form>
                             <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
-                                <div class="input-group-btn">
-                                    <img src="img/search-icon@2x.png" class="img-responsive searchicon" />
-                                </div>
-                                <input type="text" class="form-control desktopsearch" placeholder="Type brand name OR product category">
+                                <label class="input-group-btn" for="searchLbl">
+                                    <img src="img/search.svg" class="img-responsive searchicon" />
+                                </label>
+                                <input type="text" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                     <ul class="list-inline navlist">
+                        <li class="hidden-lg hidden-md">
+                            <div class="searchnav searchnavMob">
+                                <form>
+                                    <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
+                                        <label class="input-group-btn" for="searchLbl">
+                                            <img src="img/search.svg" class="searchicon" />
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
                         <% 
                         if(cookies){
                             var userData=JSON.parse(cookies);
@@ -224,7 +235,8 @@
                         <li class="hidden-xs">
                             <a href="mywishlist">
                                 <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/fav-1.png" class="img-responsive navbar-brand1" alt="valucart-logo" style="margin-right: 10px;">
+                                <img src="img/wishlist.svg" class="img-responsive navbar-brand1" alt="valucart-logo"
+                                    style="margin-right: 10px;">
                                 <% } else { %>
                                 <img src="img/wishlist.png" class="img-responsive navbar-brand1" alt="valucart-logo"
                                     style="margin-right: 10px;">
@@ -249,7 +261,7 @@
                         <li>
                             <a data-toggle="modal" data-target="#myModal" class="wishlist-lbl">
                                 <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/fav-1.png" class="img-responsive navbar-brand1 wishlist-icon" alt="valucart-logo"
+                                <img src="img/wishlist.svg" class="navbar-brand1 wishlist-icon" alt="valucart-logo"
                                     style="margin-right: 10px;">
                                 <% } else { %>
                                 <img src="img/wishlist.png" class="img-responsive navbar-brand1 wishlist-icon" alt="valucart-logo"
@@ -266,8 +278,10 @@
                             <!-- <span class="cart-label">0</span> -->
                         </li>
                         <li>
-                            <img data-referrer="intro" data-toggle="modal" data-target="#myModal" src="img/profile-icon.svg" class="prof-icon">
-                            <a data-referrer="intro" data-toggle="modal" data-target="#myModal" class="prof-lbl" >Log In / Sign Up</a>
+                            <img data-referrer="intro" data-toggle="modal" data-target="#myModal" src="img/profile-icon.svg"
+                                class="prof-icon">
+                            <a data-referrer="intro" data-toggle="modal" data-target="#myModal" class="prof-lbl">Log In
+                                / Sign Up</a>
                         </li>
                         <%
                         } 
@@ -280,12 +294,17 @@
     </div>
     <div class="container-fluid no-pd">
         <div class="v-container">
+            <div class="mob-search" style="display: none;">
+                <input type="text" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
+            </div>
             <div class="offer-sec">
-                <strong>Choose from over 10000+ products! <span class="vail-text"> Avail the best online prices and
-                        shop
-                        from the
-                        convenience of your home.</span></strong>
-                <img src="img/vc-batch-w.svg" width="32">
+                <strong>
+                    Choose from over 10000+ products! <span class="vail-text hidden-md hidden-sm hidden-xs"> Avail the
+                        best online prices
+                        and shop
+                        from the convenience of your home.</span>
+                </strong>
+                <img src="img/vc-batch-w.svg" width="32" class="hidden-sm hidden-xs">
                 <a href="/product-listing" class="more-btn">Shop now</a>
             </div>
         </div>
