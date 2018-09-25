@@ -692,6 +692,7 @@ left:-50px;
 
 .selectareabtn {
   width: fit-content !important;
+  width: auto !important;
   padding: 18px 50px !important;
 }
 
@@ -6368,6 +6369,7 @@ select:valid+.form-control-placeholder {
     background-color: #cb78ff;
     color: #fff;
     width: fit-content;
+    width:auto;
     padding: 5px !important;
     margin-bottom: -15px;
     position: relative;
@@ -6737,7 +6739,7 @@ select:valid+.form-control-placeholder {
     font-weight: 600;
     margin-top: 45px;
     padding: 20px;
-    font-size: 42px;
+    font-size: 24px;
     margin-bottom: 0;
   }
 
@@ -6811,7 +6813,7 @@ select:valid+.form-control-placeholder {
     left: 0px !important;
     z-index: 2;
     padding: 5px;
-    top: -35px;
+    top: 0px;
   }
 
   .change-pwd form {
