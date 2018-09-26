@@ -939,3 +939,9 @@ body {
     display: inline-block;
     font-size: 14px;
 }
+
+.ebtn {
+    width: 38px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
