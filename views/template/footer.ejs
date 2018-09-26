@@ -240,18 +240,18 @@
 
     </div>
 </div>
-<script>
+<!--<script>
     var city_name = localStorage.getItem('city_name');
     if (city_name != '') {
         $(".current_city").html(city_name);
     }
-</script>
+</script>-->
 <script>
-    var city = localStorage.getItem('city');
-    var area = localStorage.getItem('area');
-    if (city == null || area == null) {
-        window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
-    }
+    // var city = localStorage.getItem('city');
+    // var area = localStorage.getItem('area');
+    // if (city == null || area == null) {
+    //     window.location.replace("<%= process.env.PROTOCOL+baseURL %>/city");
+    // }
     $('#forgot_pass').click(function () {
         $('#myModal').modal('hide');
         $('#forgot_password').modal('show');
