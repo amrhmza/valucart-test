@@ -42,6 +42,7 @@ router.get("/", async (req, res, next) => {
       menudata: menudata,
       angular: false,
       customjs: false,
+      catdrop: 1,
       cookies: cookies
     });
   } catch (error) {
