@@ -25,3 +25,18 @@ div#mybnd-desktop.pendingcart.temphide.showele {
 .temphide.showele {
   display: inline-block !important;
 }
+.temphide.showsum {
+  display: block !important;
+}
+.p-l-10 {
+  padding-left: 10px;
+}
+.color-warn {
+  color: #ea6547;
+}
+.color-ok {
+  color: #860cf5;
+}
+.color-success {
+  color: green;
+}

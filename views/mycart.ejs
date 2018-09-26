@@ -148,12 +148,36 @@
                         </div>
                         <% if(data.length>0){ %>
                             <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;">
-                                <div class="summary">
+                                <div class="summary temphide" ng-class="subGrand?'showsum':''">
                                     <h4 class="order">Order Summary</h4>
+                                    <div class="row" ng-if="subGrand<50">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-warn">
+                                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10">
+                                            <p>Minimum order amound is <span class="color-warn">50 AED</span>.<br> Add more items to complete your order</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="subGrand<250 && subGrand>=50">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-ok">
+                                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10">
+                                            <p>Add <span class="color-ok">{{(250-subGrand) | number:2}} AED</span> of products on your to quality for FREE Delivary</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="subGrand>=250">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-success">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10 color-success">
+                                            <p>Your order is eligible for FREE Delivary</p>
+                                        </div>
+                                    </div>
                                     <div id="subtotal">
                                         <h5 class="total">Subtotal</h5>
                                         <h5 class="total" style="float: right;">
-                                            <span class="c_subtotal" >{{subGrand}}
+                                            <span class="c_subtotal" ng-bind-html="subGrand">
                                             </span> AED</h5>
                                         <hr>
                                     </div>
@@ -177,8 +201,7 @@
                                             <span>(inclusive of 5%VAT)</span>
                                         </h5>
                                         <h5 class="total" style="float: right;">
-                                            <strong class="c_gtotal" >{{cartGrand}}
-
+                                            <strong class="c_gtotal" ng-bind-html="cartGrand">
                                             </strong>
                                             <strong> AED</strong>
                                         </h5>
@@ -203,7 +226,31 @@
                             </div>
                             <% }%>
                                 <% if(data.length>0){ %>
-                                    <div class="col-md-4 no-pad summary summary1" id="summary-mobile">
+                                    <div class="col-md-4 no-pad summary summary1 temphide"  ng-class="subGrand?'showsum':''" id="summary-mobile">
+                                    <div class="row" ng-if="subGrand<50">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-warn">
+                                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10">
+                                            <p>Minimum order amound is <span class="color-warn">50 AED</span>.<br> Add more items to complete your order</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="subGrand<250 && subGrand>=50">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-ok">
+                                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10">
+                                            <p>Add <span class="color-ok">{{(250-subGrand) | number:2}} AED</span> of products on your to quality for FREE Delivary</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="subGrand>=250">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 color-success">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11 p-l-10 color-success">
+                                            <p>Your order is eligible for FREE Delivary</p>
+                                        </div>
+                                    </div>
                                         <div id="subtotal">
                                             <h5 class="total">Subtotal</h5>
                                             <h5 class="total" style="float: right;"><strong ng-bind-html="subGrand |number : 2"></strong>
