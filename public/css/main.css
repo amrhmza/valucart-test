@@ -1040,13 +1040,13 @@ a:hover {
 }
 
 .navtop2 a {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 18px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: -0.4px;
-  color: #2e2e2e;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    /* font-style: normal; */
+    /* font-stretch: normal; */
+    letter-spacing: -0.4px;
+    color: #2e2e2e;
 }
 
 .navtop2 .desktopsearch {

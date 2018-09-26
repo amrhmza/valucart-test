@@ -419,3 +419,17 @@ $('.searchnavMob').click(function () {
     $('.mob-search').slideUp();
   }
 });
+
+function catResize() {
+  if ($(window).height() < 1058) {
+    var categoryList = $(window).height();
+    $('.lnt-category').height(categoryList - 207);
+    $('.lnt-subcategory').height(categoryList - 207);
+  }
+}
+
+catResize();
+
+$(window).resize(function () {
+  catResize();
+});

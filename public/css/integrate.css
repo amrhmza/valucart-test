@@ -391,9 +391,9 @@ select:valid+.form-control-placeholder {
 }
 
 .line-navbar-two .lnt-dropdown-mega-menu .lnt-subcategroy-carousel-wrap .lnt-subcategory ul li:last-child {
-  padding: 20px 20px;
-  background-image: url(../img/arrowbg.png);
-  background-position: 80% 50%;
+  padding: 8px 20px;
+  /* background-image: url(../img/arrowbg.png);
+  background-position: 80% 50%; */
 }
 
 a.btn-bundle {
@@ -869,7 +869,7 @@ a {
   .confirm-product .productpanel .productcountdiv .productminus,
   .editbundlelist .productpanel .productcountdiv .productminus .i.fa.fa-minus {
     content: url(https: //s3.eu-central-1.amazonaws.com/valuecartdevbucket/assets/minus.png);
-      width: 25px !important;
+    width: 25px !important;
     height: 25px !important;
     /* font-size: 11px; */
     padding: 3px;
@@ -1520,7 +1520,7 @@ h4.newproductpanel {
     height: auto;
   }
 
-  .choosecatagory form input[type="radio"] + label {
+  .choosecatagory form input[type="radio"]+label {
     font-size: 13px;
     padding: 7px 20px;
     height: 35px;
@@ -1687,17 +1687,17 @@ h4.newproductpanel {
   border: 2px solid #17becd;
 }
 
-.mobil-bundledetailview .radios input[type="radio"]:checked + .radio {
+.mobil-bundledetailview .radios input[type="radio"]:checked+.radio {
   /*        background-color: #241009;*/
   border: 2px solid #17becd;
   border-radius: 0px;
 }
 
-.mobil-bundledetailview .radios input[type="radio"]:checked + .radio::before {
+.mobil-bundledetailview .radios input[type="radio"]:checked+.radio::before {
   background: #17becd;
 }
 
-.mobil-bundledetailview .radios input[type="radio"]:checked + .radio::after {
+.mobil-bundledetailview .radios input[type="radio"]:checked+.radio::after {
   /*    background: #17becd;*/
   border: 2px solid #17becd;
 }
