@@ -87,7 +87,7 @@ $(".desktopsearch")
     )
     .appendTo(ul);
 };
-$(".sb-search-input")
+$("#searchLblm")
   .autocomplete({
     delay: 100,
     minLength: 1,

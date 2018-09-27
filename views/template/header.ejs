@@ -220,7 +220,7 @@
                             <div class="searchnav searchnavMob">
                                 <form>
                                     <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
-                                        <label class="input-group-btn" for="searchLbl">
+                                        <label class="input-group-btn" for="searchLblm">
                                             <img src="img/search.svg" class="searchicon" />
                                         </label>
                                     </div>
@@ -295,7 +295,7 @@
     <div class="container-fluid no-pd">
         <div class="v-container">
             <div class="mob-search" style="display: none;">
-                <input type="text" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
+                <input type="text" class="form-control desktopsearch" id="searchLblm" placeholder="Type brand name OR product category">
             </div>
             <div class="offer-sec">
                 <strong>
@@ -418,7 +418,7 @@
                         <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives">
                         ValuCart Exclusives</a>
                 </div>
-                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="z-index: 1000;">
+                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 hidden " style="z-index: 1000;">
                     <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
                         <form class="mobsearchform">
                             <input class="sb-search-input desktopsearch" placeholder="Type brand name OR product category"

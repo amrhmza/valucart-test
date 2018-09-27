@@ -22,13 +22,13 @@
                                 <p class="paymentmobtitle hidden-md hidden-sm hidden-lg">Payment options</p>
                                 <p class="paymentmobsubtitle hidden-md hidden-sm hidden-lg">2 items, To pay: 120AFD</p>
                                 <form>
-                                    <div class="card-mode">
+                                    <div class="card-mode" style="display:none">
                                         <div class="radio">
                                             <input type="radio" id="test1" value="1" ng-model="disabled" name="radio-group" />
                                             <label for="test1">Credit/Debit card</label>
                                         </div>
                                     </div>
-                                    <div style="padding: 15px 25px;">
+                                    <div style="padding: 15px 25px;display:none">
                                         <div class="form-group marg-btm" style="margin-top: 30px;">
                                             <input type="text" id="card" class="form-control form-control1">
                                             <label class="form-control-placeholder" for="name">CARD NUMBER</label>
@@ -55,7 +55,7 @@
                                     <div class="card-mode" style="margin-top: 30px;margin-bottom: 30px;">
                                         <div class="radio">
                                             <input type="radio" value="2" ng-model="disabled" id="test2" name="radio-group">
-                                            <label for="test2">Cash on Delivery</label>
+                                            <label for="test2">Cash on Delivery / Card on Delivery</label>
                                         </div>
                                     </div>
                                 </form>
