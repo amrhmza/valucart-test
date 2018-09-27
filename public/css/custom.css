@@ -44,6 +44,6 @@ select#city,
 select#area {
   background-color: #dddddd;
 }
-.navbar-brand1 {
+.navbar-brand1.ad {
   height: 33px;
 }
