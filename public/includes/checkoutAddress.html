@@ -80,16 +80,26 @@
                         </div>
                     </div>
                     <div class="form-group marg-btm" style="margin-top: 35px;">
-                        <input type="text" id="city" name="city" class="form-control form-control1">
-                        <label class="form-control-placeholder" for="city">CITY</label>
-                    </div>
-                    <div class="form-group marg-btm" style="margin-top: 35px;">
                         <input type="text" id="street" name="street" class="form-control form-control1">
                         <label class="form-control-placeholder" for="street">ROAD/STREET</label>
                     </div>
                     <div class="form-group marg-btm" style="margin-top: 35px;">
                         <input type="text" id="flat" name="flat" class="form-control form-control1">
                         <label class="form-control-placeholder" for="flat">FLOOR/FLAT NO</label>
+                    </div>
+                    <div class="form-group marg-btm1" style="margin-top: 35px;">
+                        <select class="form-control" id="city" name="city_id" ng-model="city_id" ng-change="getarea(city_id)"
+                            ng-init="city_id=<%=oldAdr.a_city_id%>" ng-options="value.city_id as value.city_name for (key, value)  in city">
+                            <option value="">Select City</option>
+                        </select>
+                        <label class="form-control-placeholder" for="city">CITY</label>
+                    </div>
+                    <div class="form-group marg-btm1" style="margin-top: 35px;">
+                        <select class="form-control" id="area" name="area_id" ng-model="area_id" ng-init="area_id=<%=oldAdr.a_area_id%>"
+                            ng-options="value.area_id as value.area_name for (key, value)  in area">
+                            <option value="">Select Area</option>
+                        </select>
+                        <label class="form-control-placeholder" for="area">Area</label>
                     </div>
                     <div class="form-group marg-btm" style="margin-top: 35px;">
                         <input type="text" id="postalcode" name="postalcode" class="form-control form-control1">

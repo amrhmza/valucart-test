@@ -46,8 +46,8 @@ app.constant("config", {
   addWishList: baseurl + "/wishList/addproducttowishlist",
   removeWishList: baseurl + "/wishList/removewishlist",
   change_password: baseurl + "/auth/resetpassword",
-  addAddress: baseurl + "/userProfile/addnewaddress",
-  updateAddress: baseurl + "/userProfile/updateaddress",
+  addAddress: baseurl + "/userProfile/addnewaddress/v2",
+  updateAddress: baseurl + "/userProfile/updateaddress/v2",
   changeDefaultAddress: baseurl + "/userProfile/makedefaultaddress",
   removeAddress: baseurl + "/userProfile/deleteaddress",
   user_profileUpdate: baseurl + "/userProfile/update",
@@ -66,7 +66,8 @@ app.constant("config", {
   checkCoupon: baseurl + "/coupon/applyCoupon",
   deleteUserBundle: baseurl + "/user_bundle/bundleDelete/delete",
   createWithproduct: baseurl + "/user_bundle/createWithproduct/post",
-  cancelorder: baseurl + "/order/"
+  cancelorder: baseurl + "/order/",
+  getcityarealist: baseurl + "/userProfile/getcityarealist"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

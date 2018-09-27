@@ -21,6 +21,21 @@ app.controller("checkout", function(
     $scope.address_id = data;
   };
   addNewAddress
+    .cityarea_get()
+    .then(function(response) {
+      $scope.city = response.data.results;
+    })
+    .catch(function(response) {
+      console.log(response);
+    });
+
+  $scope.getarea = function(index) {
+    let i = _.findIndex($scope.city, function(o) {
+      return o.city_id == index;
+    });
+    $scope.area = $scope.city[i].area;
+  };
+  addNewAddress
     .getlist()
     .then(function(response) {
       var addArr = response.data.results.response;
@@ -67,9 +82,14 @@ app.controller("checkout", function(
         elem.street.focus();
         a = 1;
       }
-      if (!elem.city.value) {
+      if (!elem.city_id.value) {
         toastr.error("City is Required");
-        elem.city.focus();
+        elem.city_id.focus();
+        a = 1;
+      }
+      if (!elem.area_id.value) {
+        toastr.error("Area is Required");
+        elem.area_id.focus();
         a = 1;
       }
       if (!elem.postalcode.value) {
@@ -93,7 +113,8 @@ app.controller("checkout", function(
           a_phone: elem.phone_no.value,
           a_address_1: elem.flat.value,
           a_address_2: elem.street.value,
-          a_city: elem.city.value,
+          a_city_id: _.trimStart(elem.city_id.value, "number:"),
+          a_area_id: _.trimStart(elem.area_id.value, "number:"),
           a_pincode: elem.postalcode.value,
           a_is_default: elem.is_default.checked
         };

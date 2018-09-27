@@ -40,3 +40,7 @@ div#mybnd-desktop.pendingcart.temphide.showele {
 .color-success {
   color: green;
 }
+select#city,
+select#area {
+  background-color: #dddddd;
+}

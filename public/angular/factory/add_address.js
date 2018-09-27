@@ -94,6 +94,26 @@ app.factory("addNewAddress", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    cityarea_get: function() {
+      //console.log(formData);
+      var q = $q.defer();
+      var suggestURL = config.getcityarealist;
+      $http({
+        method: "GET",
+        url: suggestURL,
+        type: "json",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });
