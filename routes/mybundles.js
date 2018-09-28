@@ -92,7 +92,7 @@ router.post(
       );
       if (createBundle) {
         res.writeHead(302, {
-          Location: "/category/product"
+          Location: "/product-listing"
         });
         res.end();
       }
