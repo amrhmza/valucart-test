@@ -17,7 +17,6 @@ app.controller("bundle_details", function(
   $scope.review = myrev.data.prr_comment;
   var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;
-
   var postReview = function(postData, userAuth) {
     postBundleReview
       .postReview(postData, userAuth)
@@ -371,5 +370,66 @@ app.controller("bundle_details", function(
         console.log(response);
         toastr.warning(response.data.error.msg);
       }); */
+  };
+  $scope.addToBundleWithoutid = function($event, data, pb_id) {
+    let allok = 1;
+    var alternativeArray = new Array();
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        const element = data[key];
+        if (element.alternatives != "") {
+          let alters = element.alternatives;
+          for (const key in alters) {
+            if (alters.hasOwnProperty(key)) {
+              const element_alter = alters[key];
+              var selValue = $(
+                "input[name=rGroup_" + element_alter.pba_pbm_id + "]:checked"
+              ).val();
+              if (typeof selValue == "undefined") {
+                allok = 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (allok == 1) {
+      for (const key in $scope.c) {
+        if ($scope.c.hasOwnProperty(key)) {
+          const element = $scope.c[key];
+          alternativeArray.push(parseInt(element));
+        }
+      }
+      // If Customer Selected alternatives
+      var productId = pb_id;
+      var productQty = parseInt($(".productcount").val());
+      let productData = {
+        product_id: productId,
+        product_qty: productQty,
+        is_bundle: true,
+        bundel_items: alternativeArray
+      };
+
+      userbundle
+        .updateBundleWithoutBundleId(productData)
+        .then(function(response) {
+          console.log(response);
+          var res = response.data;
+          if (response.status == "200") {
+            toastr.success(res.results.msg);
+            var cartOldQty = localStorage.getItem("bundleCount");
+            var newCartQty = parseInt(cartOldQty) + parseInt(1);
+            localStorage.setItem("cartCount", newCartQty);
+          } else {
+            toastr.warning(res.error.msg);
+          }
+        })
+        .catch(function(response) {
+          console.log(response);
+          toastr.warning(response.data.error.msg);
+        });
+    } else {
+      toastr.warning("Please Select Alternative Products!!");
+    }
   };
 });

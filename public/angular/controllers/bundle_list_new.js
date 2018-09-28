@@ -76,6 +76,7 @@ app.controller("bundle_listing", function(
           ? JSON.parse($.cookie("vcartAuth"))
           : "";
         $scope.loggedStatus = userAuth.status == "success" ? true : false;
+        $scope.liststate = response.data.results.msg;
         let listdata = response.data.results.response;
         if (listdata != "") {
           angular.forEach(listdata, function(value, key) {
@@ -424,6 +425,65 @@ app.controller("bundle_listing", function(
             })
             .catch(function(response) {
               console.log(response);
+              toastr.warning(response.data.error.msg);
+            });
+        }
+      })
+      .catch(function(response) {
+        toastr.warning(response.data.results.msg);
+      });
+  };
+
+  $scope.addToBundleWithoutBundleId = function($event, pb_id) {
+    var qty = parseInt($("input[name=qty_" + pb_id + "]").val());
+    //console.log(pb_id);
+    bundle_details
+      .getBundleDetail(pb_id)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          let alter = [];
+          var proList = response.data.results.response[0].product;
+          if (proList) {
+            angular.forEach(proList, function(value, key) {
+              let is_alternaitve = value.pbm_is_alternative == 0 ? false : true;
+              var pd_id = "";
+              var alternatives = value.alternatives;
+              if (is_alternaitve) {
+                angular.forEach(alternatives, function(val, i) {
+                  if (val.pba_is_default == 1) {
+                    pd_id = val.pba_pd_id;
+                  }
+                });
+              } else {
+                var pd_id = value.pd_id;
+              }
+              alter.push(pd_id);
+            });
+          }
+          let productData = {
+            product_id: pb_id,
+            product_qty: qty,
+            is_bundle: true,
+            bundel_items: alter
+          };
+          userbundle
+            .updateBundleWithoutBundleId(productData)
+            .then(function(response) {
+              console.log(response);
+              var res = response.data;
+              if (response.status == "200") {
+                toastr.success(res.results.msg);
+                var cartOldQty = localStorage.getItem("bundleCount");
+                var newCartQty = parseInt(cartOldQty) + parseInt(1);
+                localStorage.setItem("cartCount", newCartQty);
+                $(".cart-label").text(newCartQty);
+              } else {
+                toastr.warning(res.error.msg);
+              }
+            })
+            .catch(function(response) {
               toastr.warning(response.data.error.msg);
             });
         }

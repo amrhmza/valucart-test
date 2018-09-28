@@ -3,13 +3,22 @@ const axios = require("axios");
 var _ = require("lodash");
 // const Logger = require("../lib/logger").Logger;
 
-let get_data = async (querydata, cat_id) => {
+let get_data = async (querydata, cat_id, cookies) => {
   try {
     querydata["cat_id"] = cat_id;
     let response = {};
     let getparam = axios_config;
-    getparam["params"] = { cat_id: cat_id };
-    let product_filter = await axios.get("product/filter/get", getparam);
+    if (cookies) {
+      getparam["headers"] = {
+        Authorization: "Bearer " + cookies.token
+      };
+    } else {
+      delete getparam["headers"];
+    }
+    let product_filter = await axios.get(
+      "product/filter/get?cat_id=" + cat_id,
+      getparam
+    );
     if (_.isEmpty(product_filter.data.results.response) == true) {
       // throw product_filter;
     }
@@ -20,10 +29,17 @@ let get_data = async (querydata, cat_id) => {
     throw error;
   }
 };
-let get_datav2 = async querydata => {
+let get_datav2 = async (querydata, cookies) => {
   try {
     let response = {};
     let getparam = axios_config;
+    if (cookies) {
+      getparam["headers"] = {
+        Authorization: "Bearer " + cookies.token
+      };
+    } else {
+      delete getparam["headers"];
+    }
     let product_filter = await axios.get("product/filter/get/v2", getparam);
     if (_.isEmpty(product_filter.data.results.response) == true) {
       // throw product_filter;

@@ -87,6 +87,28 @@ app.factory("userbundle", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    updateBundleWithoutBundleId: function(data) {
+      var q = $q.defer();
+      let token = $.cookie("vcartAuth")
+        ? JSON.parse($.cookie("vcartAuth"))
+        : "";
+      $http({
+        method: "POST",
+        url: config.update_mybundle_singlewithoutbundleid,
+        type: "json",
+        data: data,
+        headers: {
+          Authorization: "Bearer " + token.token
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

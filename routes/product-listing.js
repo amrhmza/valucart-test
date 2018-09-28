@@ -9,8 +9,14 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let querydata = req.query;
-    let cat_id = req.param("cat_id");
-    let data = await productListing.get_data(querydata, cat_id);
+    let cat_id = req.params.cat_id;
+    let data = await productListing.get_data(
+      querydata,
+      cat_id,
+      JSON.parse(cookies)
+    );
+    console.log(JSON.parse(cookies));
+
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
     res.render("productlisting", {
@@ -41,7 +47,7 @@ router.get("/", async (req, res, next) => {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let querydata = req.query;
     let cat_id = req.param("cat_id");
-    let data = await productListing.get_datav2(querydata);
+    let data = await productListing.get_datav2(querydata, JSON.parse(cookies));
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
     res.render("productlisting_new", {

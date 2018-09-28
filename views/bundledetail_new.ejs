@@ -1,6 +1,7 @@
 <%include template/header %>
 <% 
 let productData= data.response[0]; 
+let productstate= data.msg; 
 let products= productData.product;
 %>
 <!--    Breadcrumb-->
@@ -264,8 +265,9 @@ let products= productData.product;
                                     </button>
                                 </div>
                             </div>
-                            <div class=" col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide" ng-class="loggedStatus == true?'showele':''" ng-if="loggedStatus == true">
-
+                            <div class=" col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide" ng-class="loggedStatus == true?'showele':''"
+                                ng-if="loggedStatus == true">
+                                <% if(productstate!="VCGT"){%>
                                 <button ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info btn-add-to-cart">
                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -281,9 +283,14 @@ let products= productData.product;
                                             <!--( <span>{{bundle.product_count}}</span> )--></a>
                                     </li>
                                 </ul>
-
+                                <% }else{ %>
+                                <button ng-click="addToBundleWithoutid($event,<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
+                                    class="btn btn-info  btn-add-to-cart">
+                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to Bundle</button>
+                                <% } %>
                             </div>
-                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide"  ng-class="loggedStatus != true?'showele':''" ng-if="loggedStatus != true">
+                            <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 temphide" ng-class="loggedStatus != true?'showele':''"
+                                ng-if="loggedStatus!=true">
                                 <button ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)"
                                     class="btn btn-info  btn-add-to-cart">
                                     <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
@@ -424,7 +431,7 @@ let products= productData.product;
 
     <div class="container mobil-bundledetailview hidden-lg hidden-md hidden-sm visible-xs">
         <div class="row radios">
-        <% 
+            <% 
                     j=0;
         products.forEach(function(pro){     
             if(pro){
@@ -434,32 +441,33 @@ let products= productData.product;
                     %>
             <div class="col-xs-12 mb-70">
                 <input type="radio" name="rGroup_<%= pro.pbm_id %>" class="hide" ng-checked="c[<%= pro.pd_id %>]"
-                ng-model="c[<%= pro.pd_id %>]" />
-                    <div class="panel panel-default productpanel newproductpanel" >
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-8">
-                                    <h4 class="newproductpanel">
-                                    <%=j%>. <%=pro.pd_name%>
-                                    </h4>
-                                    <h5>
+                    ng-model="c[<%= pro.pd_id %>]" />
+                <div class="panel panel-default productpanel newproductpanel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <h4 class="newproductpanel">
+                                    <%=j%>.
+                                    <%=pro.pd_name%>
+                                </h4>
+                                <h5>
                                     <img src="img/grammeter.png" class="img-responsive gramimg">
                                     <%= pro.p_quantity%> <strong>X
                                         <%= pro.pbm_qty;%></strong>
-                                   </h5>
-                                    <h6 class="dis-price hidden">
-                                        225.00 AED
-                                    </h6>
-                                    <h6 class="hidden">
+                                </h5>
+                                <h6 class="dis-price hidden">
+                                    225.00 AED
+                                </h6>
+                                <h6 class="hidden">
                                     <%=pro.p_price;%> AED
-                                    </h6>
-                                </div>
-                                <div class="col-xs-4">
-                                    <img src="<%=pro.p_image%>" class="img-responsive productimg">
-                                </div>
+                                </h6>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="<%=pro.p_image%>" class="img-responsive productimg">
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
             <% 
         }else{
@@ -474,25 +482,26 @@ let products= productData.product;
             %>
             <div class="col-sm-12 mb-9">
                 <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rrGroup_<%= alt.pba_pbm_id %>"
-                value="<%= alt.pd_id;%>" id="rr<%= alt.pd_id+'_'+i+'_'+j;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
+                    value="<%= alt.pd_id;%>" id="rr<%= alt.pd_id+'_'+i+'_'+j;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />
                 <label class="radio m-o" for="rr<%= alt.pd_id+'_'+i+'_'+j;%>">
                     <div class="panel panel-default productpanel newproductpanel">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-8">
                                     <h4 class="newproductpanel">
-                                    <%=j%>. <%= alt.pd_name;%>
+                                        <%=j%>.
+                                        <%= alt.pd_name;%>
                                     </h4>
                                     <h5>
-                                    <img src="img/grammeter.png" class=" img-responsive gramimg">
-                                    <%= alt.p_quantity;%> <strong>X
-                                        <%= alt.pba_qty;%></strong>
-                                   </h5>
+                                        <img src="img/grammeter.png" class=" img-responsive gramimg">
+                                        <%= alt.p_quantity;%> <strong>X
+                                            <%= alt.pba_qty;%></strong>
+                                    </h5>
                                     <h6 class="dis-price hide">
                                         225.00 AED
                                     </h6>
                                     <h6 class="hidden">
-                                    <%=alt.p_price;%> AED
+                                        <%=alt.p_price;%> AED
                                     </h6>
                                 </div>
                                 <div class="col-xs-4">
@@ -506,13 +515,13 @@ let products= productData.product;
             <%
         });
     %>
-    <%
+            <%
     }
     }
     })
-    %>   
+    %>
+        </div>
     </div>
-</div>
 
     <!-- mobile view bundle list -->
 
@@ -537,28 +546,35 @@ let products= productData.product;
                 <i class="fa fa-plus"></i>
             </button>
         </div>
-
-        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus == true?'showele':''" ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+        <% if(productstate!="VCGT"){%>
+        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus == true?'showele':''"
+            ng-click="addtocart(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
             <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-        <button ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus != true?'showele':''" ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
-            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-            <div class="dropdown btndropdown">
-        <button class="btn  dropdown-toggle ebtn temphide" ng-class="loggedStatus == true?'showele':''"  type="button" data-toggle="dropdown"><img src="img/menu.png" alt="">
-            <span class="caret"></span>
-        </button>
+        <div class="dropdown btndropdown">
+            <button class="btn  dropdown-toggle ebtn temphide" ng-class="loggedStatus == true?'showele':''" type="button"
+                data-toggle="dropdown"><img src="img/menu.png" alt="">
+                <span class="caret"></span>
+            </button>
             <ul class="dropdown-menu dropdown-menu-right addtocartddp" role="menu">
-            <li class="addtobundle a-deactive addtobundleTitle">
-            + Add to bundle
-        </li>
-        <li ng-repeat="bundle in mybundles"> <a ng-click="addToBundle($event, bundle.ub_id, bundle.product_count, <%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">{{bundle.ub_name}}
-                <!--( <span>{{bundle.product_count}}</span> )--></a>
-        </li>
+                <li class="addtobundle a-deactive addtobundleTitle">
+                    + Add to bundle
+                </li>
+                <li ng-repeat="bundle in mybundles"> <a ng-click="addToBundle($event, bundle.ub_id, bundle.product_count, <%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">{{bundle.ub_name}}
+                        <!--( <span>{{bundle.product_count}}</span> )--></a>
+                </li>
             </ul>
-          </div>
-          
+        </div>
+
+
+        <button ng-if="loggedStatus != true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus != true?'showele':''"
+            ng-click="addtocartOffline(<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+        <% }else{%>
+        <button ng-if="loggedStatus == true" class="btn btn-info  btn-add-to-cart temphide" ng-class="loggedStatus == true?'showele':''"
+            ng-click="addToBundleWithoutid($event,<%= JSON.stringify(productData.product) %>,<%= productData.pb_id %>)">
+            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to Bundle</button>
+        <% } %>
     </div>
-
-
     <div class="container productdetail">
         <div id="exTab1" class="container">
             <div class="tabheader">

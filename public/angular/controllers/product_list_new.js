@@ -79,7 +79,7 @@ app.controller("product_listing", function(
           ? JSON.parse($.cookie("vcartAuth"))
           : "";
         $scope.loggedStatus = userAuth.status == "success" ? true : false;
-
+        $scope.liststate = response.data.results.msg;
         let listdata = response.data.results.response;
         if (listdata != "") {
           angular.forEach(listdata, function(value, key) {
@@ -419,6 +419,32 @@ app.controller("product_listing", function(
             .element($event.currentTarget)
             .find("span")
             .html(parseInt(bundleQty) + 1);
+        } else {
+          toastr.warning(res.error.msg);
+        }
+      })
+      .catch(function(response) {
+        console.log(response);
+        toastr.warning(response.data.error.msg);
+      });
+  };
+  $scope.addToBundleWithoutBundleId = function($event, productId) {
+    var productQty = parseInt($("input[name=qty_" + productId + "]").val());
+    let productData = {
+      product_id: productId,
+      product_qty: productQty,
+      is_bundle: false
+    };
+    userbundle
+      .updateBundleWithoutBundleId(productData)
+      .then(function(response) {
+        var res = response.data;
+        if (response.status == "200") {
+          toastr.success(res.results.msg);
+          var cartOldQty = localStorage.getItem("bundleCount");
+          var newCartQty = parseInt(cartOldQty) + parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
         } else {
           toastr.warning(res.error.msg);
         }

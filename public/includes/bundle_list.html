@@ -78,29 +78,38 @@
                     </a>
                 </div> -->
                 <div ng-if="loggedStatus==true">
-                    <div class="btn-group hidden-xs hidden-sm">
-                        <button class="btn btn-info" ng-click="addtocart(product.pb_id, 1)">
-                            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart
-                        </button>
-                        <button type="button" class="btn btn-primary ebtn" data-toggle="dropdown">
-                            <img src="img/menu.png" alt="">
-                        </button>
-                        <ul class="dropdown-menu addtocartddp" role="menu">
-                            <li class="addtobundle a-deactive addtobundleTitle">
-                                + Add to bundle
-                            </li>
-                            <li ng-repeat="bundle in mybundles">
-                                <a ng-click="addToBundle($event, bundle.ub_id, product.pb_id, bundle.product_count)">{{bundle.ub_name}}
-                                    <!-- ( <span>{{bundle.product_count}}</span> ) --></a>
-                            </li>
-                        </ul>
+                    <div ng-if="liststate!='VCGT'">
+                        <div class="btn-group hidden-xs hidden-sm">
+                            <button class="btn btn-info" ng-click="addtocart(product.pb_id, 1)">
+                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart
+                            </button>
+                            <button type="button" class="btn btn-primary ebtn" data-toggle="dropdown">
+                                <img src="img/menu.png" alt="">
+                            </button>
+                            <ul class="dropdown-menu addtocartddp" role="menu">
+                                <li class="addtobundle a-deactive addtobundleTitle">
+                                    + Add to bundle
+                                </li>
+                                <li ng-repeat="bundle in mybundles">
+                                    <a ng-click="addToBundle($event, bundle.ub_id, product.pb_id, bundle.product_count)">{{bundle.ub_name}}
+                                        <!-- ( <span>{{bundle.product_count}}</span> ) --></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group hidden-md hidden-lg">
+                            <button type="button" class="btn btn-info" ng-click="addtocart(product.pb_id, 1)">
+                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
+                            <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup{{product.pb_id}}">
+                                <img src="img/menu.png" alt="">
+                            </button>
+                        </div>
                     </div>
-                    <div class="btn-group hidden-md hidden-lg">
-                        <button type="button" class="btn btn-info" ng-click="addtocart(product.pb_id, 1)">
-                            <img src="img/addtocart.png" class="img-responsive addtocart"> Add to cart</button>
-                        <button type="button" class="btn btn-primary ebtn" data-toggle="modal" data-target="#lab-slide-bottom-popup{{product.pb_id}}">
-                            <img src="img/menu.png" alt="">
-                        </button>
+                    <div ng-if="liststate=='VCGT'">
+                        <div class="btn-group">
+                            <button class="btn btn-info logot" ng-click="addToBundleWithoutBundleId($event, product.pb_id)">
+                                <img src="img/addtocart.png" class="img-responsive addtocart"> Add to Bundle
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div ng-if="loggedStatus != true">

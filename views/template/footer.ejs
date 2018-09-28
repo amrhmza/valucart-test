@@ -310,10 +310,19 @@
                 }
             }).done(function (resp) {
                 if (resp.results.status == "200") {
-                    var cartList = resp.results.response.cartItems;
-                    var cartCount = (typeof cartList != "undefined") ? cartList.length : 0;
-                    localStorage.cartCount = (cartCount > 0) ? cartCount : 0;
-                    $(".cart-label").text(cartCount);
+                    if(resp.results.response.pendingBundle.length>0){
+                        $("#bundleicon").removeClass("hide");
+                        localStorage.bundleCount = (resp.results.response.pendingBundle[0].c > 0) ? resp.results.response.pendingBundle[0].c : 0;
+                        var cartCount = (resp.results.response.pendingBundle[0].c > 0) ? resp.results.response.pendingBundle[0].c : 0;
+                        $("#bundleicon a").attr("href","/mybundles/view/"+resp.results.response.pendingBundle[0].ub_id)
+                        $(".cart-label").text(cartCount);
+                    }else{
+                        $("#carticon").removeClass("hide");
+                        var cartList = resp.results.response.cartItems;
+                        var cartCount = (typeof cartList != "undefined") ? cartList.length : 0;
+                        localStorage.cartCount = (cartCount > 0) ? cartCount : 0;
+                        $(".cart-label").text(cartCount);
+                    }
                 }
             }).fail(function (r) {
                 console.log(JSON.stringify(r));

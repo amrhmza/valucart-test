@@ -216,7 +216,8 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-lg-6 col-md-8 col-sm-12 temphide" ng-class="loggedStatus == true?'showele':''" ng-if="loggedStatus == true">
-                                    <button class="btn btn-info hidden-xs" ng-click="addtocart(<%= data.response[0].pd_id %>)">
+                                <% if(data.msg!="VCGT"){%>    
+                                <button class="btn btn-info hidden-xs" ng-click="addtocart(<%= data.response[0].pd_id %>)">
                                         <img src="img/addtocart.png" class="img-responsive addtocart" /> Add to cart</button>
 
                                     <button type="button" class="hidden-xs hidden-sm btn btn-primary ebtn bdtd bdtd-toogle"
@@ -234,7 +235,11 @@
                                             </a>
                                         </li>
                                     </ul>
-
+                                <% }else{ %>
+                                    <button ng-click="addToBundleWithoutid(<%= data.response[0].pd_id %>)"
+                                    class="btn btn-info  btn-add-to-cart">
+                                    <img src="img/addtocart.png" class="img-responsive addtocart"> Add to Bundle</button>
+                                <% } %>
                                 </div>
                                 <div class="col-xs-12 col-md-6 temphide" ng-class="loggedStatus != true?'showele':''" ng-if="loggedStatus != true">
                                     <a ng-click="addtocartOffline(<%= data.response[0].pd_id %>)">
