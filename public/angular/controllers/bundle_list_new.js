@@ -391,11 +391,17 @@ app.controller("bundle_listing", function(
               if (is_alternaitve) {
                 angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    pd_id = val.pba_pd_id;
+                    pd_id = {
+                      p_id: parseInt(val.pba_pd_id),
+                      is_alternaitve: true
+                    };
                   }
                 });
               } else {
-                var pd_id = value.pd_id;
+                var pd_id = {
+                  p_id: parseInt(value.pd_id),
+                  is_alternaitve: false
+                };
               }
               alter.push(pd_id);
             });
@@ -453,11 +459,17 @@ app.controller("bundle_listing", function(
               if (is_alternaitve) {
                 angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    pd_id = val.pba_pd_id;
+                    pd_id = {
+                      p_id: parseInt(val.pba_pd_id),
+                      is_alternaitve: true
+                    };
                   }
                 });
               } else {
-                var pd_id = value.pd_id;
+                var pd_id = {
+                  p_id: parseInt(value.pd_id),
+                  is_alternaitve: false
+                };
               }
               alter.push(pd_id);
             });

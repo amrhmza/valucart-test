@@ -279,7 +279,6 @@ app.controller("bundle_details", function(
 
   $scope.addToBundle = function($event, bundleId, bundleQty, data, pb_id) {
     let allok = 1;
-    var alternativeArray = new Array();
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         const element = data[key];
@@ -300,10 +299,16 @@ app.controller("bundle_details", function(
       }
     }
     if (allok == 1) {
+      let alter = [];
       for (const key in $scope.c) {
         if ($scope.c.hasOwnProperty(key)) {
           const element = $scope.c[key];
-          alternativeArray.push(parseInt(element));
+          let is_alternaitve = element == key ? false : true;
+          let alter_data = {
+            p_id: parseInt(element),
+            is_alternaitve: is_alternaitve
+          };
+          alter.push(alter_data);
         }
       }
       // If Customer Selected alternatives
@@ -314,7 +319,7 @@ app.controller("bundle_details", function(
         product_id: productId,
         product_qty: productQty,
         is_bundle: true,
-        bundel_items: alternativeArray
+        bundel_items: alter
       };
 
       userbundle
@@ -373,7 +378,6 @@ app.controller("bundle_details", function(
   };
   $scope.addToBundleWithoutid = function($event, data, pb_id) {
     let allok = 1;
-    var alternativeArray = new Array();
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         const element = data[key];
@@ -394,10 +398,16 @@ app.controller("bundle_details", function(
       }
     }
     if (allok == 1) {
+      let alter = [];
       for (const key in $scope.c) {
         if ($scope.c.hasOwnProperty(key)) {
           const element = $scope.c[key];
-          alternativeArray.push(parseInt(element));
+          let is_alternaitve = element == key ? false : true;
+          let alter_data = {
+            p_id: parseInt(element),
+            is_alternaitve: is_alternaitve
+          };
+          alter.push(alter_data);
         }
       }
       // If Customer Selected alternatives
@@ -407,7 +417,7 @@ app.controller("bundle_details", function(
         product_id: productId,
         product_qty: productQty,
         is_bundle: true,
-        bundel_items: alternativeArray
+        bundel_items: alter
       };
 
       userbundle
