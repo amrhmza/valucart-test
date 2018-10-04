@@ -63,7 +63,7 @@
                         <%= pro.ct_discount_percentage %>%
                     </p>
                     <% } %>
-                    <img src="<%= pro.p_image %>" class="img-responsive productimg">
+                    <img src="<%= pro.ct_is_user_bundle==true?'img/byob.png':pro.p_image %>" class="img-responsive productimg">
                 </div>
                 <div class=" col-md-4 col-sm-3 text-left">
                     <h4>
@@ -71,7 +71,17 @@
                     </h4>
                     <% if(typeof pro.product!="undefined"){ %>
                     <ul class="productdesclist hidden-xs">
-                        <% pro.product.forEach(function(products){ %>
+                        <% pro.product.forEach(function(products){
+                        if(pro.ct_is_user_bundle==true){    
+                        %>
+                        <li>-
+                            <%=products.pd_name %>
+                            <span class="productgrade">
+                                X
+                                <%= products.ubp_qty %>
+                            </span>
+                        </li>
+                        <%}else{ %>
                         <li>-
                             <%=products.pd_name %>
                             <span class="productgrade">
@@ -79,7 +89,7 @@
                                 <%= products.ctb_qty %>
                             </span>
                         </li>
-                        <% }) %>
+                        <%} }) %>
                     </ul>
                     <% }else{
                                     %>
@@ -116,13 +126,13 @@
 
                 </div>
                 <div class="col-sm-3 text-center">
-                    <% if(pro.pdt_price!=null){ %>
+                    <% if(pro.pdt_price!=null || pro.pdt_price!=0){ %>
                     <!-- <h5 class="offeredprice">
                                     <%= pro.price %> AED
                                 </h5> -->
                     <h6 class="price">
                         <%= pro.ct_quantity %> X
-                        <%= pro.pdt_price %> AED
+                        <%= pro.ct_price %> AED
                     </h6>
                     <% }else{ %>
                     <h6 class="price">
