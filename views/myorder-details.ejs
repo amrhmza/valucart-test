@@ -277,7 +277,7 @@
                                     <%= data.order_data.o_savings_via_coupon %>
                                 </p> -->
                                     <p class="payvalue">
-                                        <%= Number( parseFloat(data.order_data.o_total).toFixed(2) - parseFloat(10).toFixed(2)) + Number(parseFloat(data.order_data.o_savings_via_coupon).toFixed(2)) %>
+                                        <%= (Number(parseFloat(data.order_data.o_total).toFixed(2) - parseFloat(10).toFixed(2)) + Number(parseFloat(data.order_data.o_savings_via_coupon).toFixed(2))).toFixed(2) %>
                                         AED
                                     </p>
                                 </div>
