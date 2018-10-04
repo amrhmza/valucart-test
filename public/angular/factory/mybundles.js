@@ -24,7 +24,11 @@ app.factory("mybundle_addtocart", function($http, config, $q) {
     },
     addToCart: function(data) {
       var q = $q.defer();
-      var suggestURL = config.addToCart;
+      // var suggestURL = config.addToCart;
+      var data = {
+        ub_id: data
+      };
+      var suggestURL = config.adduserbundletocart;
       let token = $.cookie("vcartAuth")
         ? JSON.parse($.cookie("vcartAuth"))
         : "";
