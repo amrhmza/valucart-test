@@ -1008,7 +1008,7 @@ a.highlight {
 }
 
 .productlistpage .productimg {
-  /* height: unset; */
+  max-height: 150px;
   margin-bottom: unset;
 }
 
@@ -1801,4 +1801,10 @@ div#mybnd-desktop.pendingcart {
   .padding0-xs {
     padding: 0;
   }
+}
+.productviewpanel::before {
+  background-color: #fff !important;
+}
+.gallery {
+  background-color: white !important;
 }

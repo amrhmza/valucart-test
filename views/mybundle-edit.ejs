@@ -1,111 +1,108 @@
 <% include template/header %>
-    <!--  bundle  Product  starts here-->
-    <div class="bnd-products bnd-details" ng-app="myapp" ng-controller="userbundle">
-        <form name="user_bundle" method="POST">
-            <div class="container-fluid create-bundle" style="margin-top: 20px;">
-                <div class="container">
-                    <div class="row" id="cBundle-desktop">
-                        <h4>
-                            <img src="img/choose-bundle.png" alt="choose-bundle" /> My bundles</h4>
+<!--  bundle  Product  starts here-->
+<div class="bnd-products bnd-details" ng-app="myapp" ng-controller="userbundle">
+    <form name="user_bundle" method="POST">
+        <div class="container-fluid create-bundle" style="margin-top: 20px;">
+            <div class="container">
+                <div class="row" id="cBundle-desktop">
+                    <h4>
+                        <img src="img/choose-bundle.png" alt="choose-bundle" /> My bundles</h4>
+                </div>
+
+                <div class="row">
+                    <div class="edit-bundle">
+                        <h5 style="display: inline-block;" ng-bind-html="mybundle_name" ng-hide="edit_title"></h5>
+                        <input type="text" name="bundlename" ng-model="mybundle_name" class="form-control-static title-input"
+                            ng-value="mybundle_name" ng-show="edit_title">
+                        <a ng-click="change_title()">
+                            <img src="img/edit-bundle.png" alt="edit-bundle" />
+                        </a>
                     </div>
-                    
-                    <div class="row">
-                        <div class="edit-bundle">
-                            <h5 style="display: inline-block;" ng-bind-html="mybundle_name" ng-hide="edit_title"></h5>
-                            <input type="text" name="bundlename" ng-model="mybundle_name" class="form-control-static title-input" ng-value="mybundle_name" ng-show="edit_title">
-                            <a ng-click="change_title()">
-                                <img src="img/edit-bundle.png" alt="edit-bundle" />
-                            </a>
-                        </div>
-                        <!--<div class="input-group">
+                    <!--<div class="input-group">
                         <input type="text" ng-model="mybundle_name" value="" class="form-control Rounded-Rectangle-5">
                         <span class="input-group-btn" style="right: 23px;">
                             <button class="Rounded-Rectangle-5" type="button"><img src="img/edit-bundle.png" alt="edit-bundle" /></button>
                         </span> </div>-->
-                    </div>
                 </div>
             </div>
-            <div class="container-fluid mycart">
-                <div ng-include="'includes/userbundle.html'"></div>
-            </div>
-            <!-- Modal -->
-            <div id="bundleedit" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>Name</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_name}}" disabled>
-                                        <!-- <label class="form-control-placeholder" for="name">Name</label> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>Routine</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_dates.ub_no_days}} Days" disabled>
-                                        <!-- <label class="form-control-placeholder" for="del_date">Next delivery date</label> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>Next Delivery date</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_dates.ub_next_delivery_date | date}}" disabled>
-                                        <!-- <label class="form-control-placeholder" for="del_date">Next delivery date</label> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>Last Delivery date</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_dates.ub_last_delivery_date | date}}" disabled>
-                                        <!-- <label class="form-control-placeholder" for="pdel_date">Previous delivery date</label> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>Start date</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_dates.ub_start_date | date}}" disabled>
-                                        <!-- <label class="form-control-placeholder" for="sdate">Start date</label> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group marg-btm">
-                                        <p>End date</p>
-                                        <input type="text" class="form-control form-control1" value="{{mybundle_dates.ub_end_date | date}}" disabled>
-                                        <!-- <label class="form-control-placeholder" for="sdate">Start date</label> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-bottom: 30px;">
-                                <div class="col-md-3 col-xs-6">
-                                    <input type="submit" class="btn btn-proceed" value="Save" />
-                                </div>
-                                <div class="col-md-3 col-xs-6">
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close btn btn-proceedc">Cancel</button>
-                                </div>
-                                <div class="col-md-3 col-xs-6">
-                                    <a class="removebundle" href="mybundles/delete/{{ub_id}}">
-                                        <p>Remove Bundle</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+        <div class="container-fluid mycart">
+            <div ng-include="'includes/userbundle.html'"></div>
+        </div>
+        <!-- Modal -->
+        <div id="bundleedit" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                </div>
-            </div>
-            <!-- Modal Ends -->
-        </form>
-    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group marg-btm">
+                                    <h3>Are you sure want to Save this Bundle?</h3>
+                                    <p>Bundle Name</p>
+                                    <input type="text" class="form-control form-control1" value="{{mybundle_name}}"
+                                        disabled>
+                                    <!-- <label class="form-control-placeholder" for="name">Name</label> -->
+                                </div>
+                            </div>
 
-    <script>
-        app.constant("dataset", {
-            'bundleId': <%= bundleId %>
+                        </div>
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-3 col-xs-6">
+                                <input type="submit" class="btn btn-proceed" value="Save" />
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close btn btn-proceedc">Cancel</button>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <a class="removebundle" href="mybundles/delete/{{ub_id}}">
+                                    <p>Remove Bundle</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Ends -->
+        <div id="bundledelete" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group marg-btm">
+                                    <h3>Are you sure want to delete this Bundle?</h3>
+                                    <!-- <label class="form-control-placeholder" for="name">Name</label> -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-12 text-center">
+                                <a class="btn-recurring btn" href="mybundles/delete/{{ub_id}}">
+                                    <p>Remove Bundle</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    app.constant("dataset", {
+        'bundleId': <%= bundleId %>
         });
-    </script>
-    <!--     Product list ends here-->
-    <% include template/footer %>
+</script>
+<!--     Product list ends here-->
+<% include template/footer %>
