@@ -87,3 +87,6 @@ select#area {
 .font-16 {
   font-size: 16px;
 }
+.mycart .productpanel .favourite.hide-fav .trash::after {
+  width: 0;
+}

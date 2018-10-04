@@ -102,6 +102,7 @@ app.controller("cart", function(
           if (numItems < 1) {
             $(".empty-panel").removeClass("hidden");
             $("#summary-desktop").empty();
+            $("#order_summary_box").empty();
           }
           $scope.cartTotal();
           var cartOldQty = localStorage.getItem("cartCount");
