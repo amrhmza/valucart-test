@@ -69,7 +69,8 @@ app.constant("config", {
   cancelorder: baseurl + "/order/",
   getcityarealist: baseurl + "/userProfile/getcityarealist",
   update_mybundle_singlewithoutbundleid:
-    baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId"
+    baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId",
+  adduserbundletocart: baseurl + "/cart/adduserbundletocart"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
