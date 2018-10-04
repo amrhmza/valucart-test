@@ -1669,7 +1669,7 @@ ul.breadcrumb li a:hover {
 
 .productlistpage .productpanel {
   background-color: #ffffff;
-  border: 10px solid #e8e8e8;
+  border: 0;
   text-align: left;
 }
 
@@ -11526,6 +11526,6 @@ a.Shop-now {
 
 .myorderdetail .myorderpanel .panel-body,
 .productpanel .panel-body {
-  border: 10px solid #f8f8f8;
+  border: 10px solid #e8e8e8;
   background: #fff;
 }
