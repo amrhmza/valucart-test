@@ -69,11 +69,11 @@
                                                     <% }else{ %>
                                                       <img src="img/byob.png" class="img-responsive productimg">
                                                     <% } %>
-                                                        <div class="col-xs-12 favourite <%=cart.is_userbundle==true?'hide':''; %>">
+                                                        <div class="col-xs-12 favourite <%=cart.is_userbundle==true?'hide-fav':''; %>">
                                                             <button class="btn btn-favourite" confirmed-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)" ng-confirm-click="Do you want to remove this from cart?">
                                                                 <i class="fa fa-trash-o trash" aria-hidden="true" ></i>
                                                             </button>
-                                                            <div class="wishlist-heart-group">
+                                                            <div class="wishlist-heart-group <%=cart.is_userbundle==true?'hide':''; %>">
                                                                     <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"
                                                                     type="checkbox" data-type="<%=(cart.wishlist)?'remove':'add'%>" ng-click="addwish(<%=cart.product_id%>, <%=cart.is_bundle%>, $event.target)"
                                                                     <%=(cart.wishlist)? 'checked': ''%> />
