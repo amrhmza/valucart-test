@@ -75,7 +75,7 @@ app.controller("userbundle", function(
       savingstotal +=
         parseFloat(a.attr("data-savings")) * parseFloat(a.attr("data-qty"));
     });
-    var delivery_price = parseInt(15);
+    var delivery_price = parseInt(10);
     var grandtotal = parseFloat(subtotal) + parseFloat(delivery_price);
     $(".subTotal").html(subtotal + " AED");
     $(".savingsTotal").html(subtotal + " AED");

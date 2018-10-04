@@ -23,7 +23,7 @@
 
                             <div ng-if="bundle.ubp_p_is_bundle==true">
                                 <h6 class="detail-text" ng-repeat="bp in bundle.product">-
-                                    {{bp.pd_name}} (<strong> {{bp.p_quantity}}</strong>)
+                                    {{bp.pd_name}} (<strong> {{bp.ubbp_qty}}</strong>)
                                 </h6>
                             </div>
                             <div class="col-xs-4 col-sm-6 col-md-4 col-lg-6 mobile-pad no-pad">
@@ -69,7 +69,7 @@
                 </div>
                 <div id="delivery">
                     <h5 class="total">Delivery Charges</h5>
-                    <h5 class="total" style="float: right;">15.00 AED</h5>
+                    <h5 class="total" style="float: right;">10.00 AED</h5>
                 </div>
                 <!-- 
                     <div id="savings" style="margin-top: 20px">
@@ -88,7 +88,7 @@
                         <span>(inclusive of 5%VAT)</span>
                     </h5>
                     <h5 class="total" style="float: right;">
-                        <strong class="grandTotal">{{ stotal + (15)|number:2 }} AED</strong>
+                        <strong class="grandTotal">{{ stotal + (10)|number:2 }} AED</strong>
                         <strong ng-show="grand" ng-bind-html="(grandTotal |number:2) + (' AED')"></strong>
                     </h5>
                 </div>
