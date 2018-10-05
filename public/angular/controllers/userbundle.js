@@ -77,10 +77,10 @@ app.controller("userbundle", function(
     });
     var delivery_price = parseInt(10);
     var grandtotal = parseFloat(subtotal) + parseFloat(delivery_price);
-    $(".subTotal").html(subtotal + " AED");
-    $(".savingsTotal").html(subtotal + " AED");
-    $(".grandTotal").html(grandtotal + " AED");
-    $scope.grandTotal = grandtotal;
+    $(".subTotal").html(subtotal.toFixed(2) + " AED");
+    $(".savingsTotal").html(subtotal.toFixed(2) + " AED");
+    $(".grandTotal").html(grandtotal.toFixed(2) + " AED");
+    $scope.grandTotal = grandtotal.toFixed(2);
   };
 
   $scope.change_title = function() {

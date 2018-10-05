@@ -28,6 +28,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       customjs: false,
       cookies: cookies,
       name: name,
+      catdrop: 1,
       check: checkmsg
     });
   } catch (error) {
