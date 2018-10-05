@@ -374,7 +374,6 @@ let products= productData.product;
                 }else{
             %>
             <div class="container bundledetailvieww m-0 mb-30">
-                <h4 class="mtb10 colorbl">We have alternate options for you. Make your choice</h4>
                 <div class="row radios">
                     <% 
                     let alterpro= pro.alternatives;
@@ -383,6 +382,9 @@ let products= productData.product;
                             var select= (alt.pba_is_default==1)? true:false;
                             i++;
                     %>
+                    <% if(i==2){ %>
+                    <h4 class="pleft150 colorbl">We have alternate options for you. Make your choice</h4>
+                    <% } %>
                     <div class="<%= i!=1?'col-md-12 col-sm-12 pleft150 altr':'col-md-12 col-sm-12' %>" <%
                         if(alt.pba_is_default==1){ %> ng-init="c[
                         <%= alt.pba_pbm_id %>]=
@@ -483,7 +485,7 @@ let products= productData.product;
             <% 
         }else{
             %>
-            <h4 class="blue-text text-info">We have alternate options for you. Make your choice</h4>
+          
             <% 
             let alterpro= pro.alternatives;
             var i = 0;
@@ -491,6 +493,9 @@ let products= productData.product;
                     var select= (alt.pba_is_default==1)? true:false;
                     i++;
             %>
+            <% if(i==2){ %>
+            <h4 class="blue-text text-info">We have alternate options for you. Make your choice</h4>
+                    <% } %>
             <div class="col-sm-12 mb-9">
                 <input type="radio" ng-checked="<%= (alt.pba_is_default == 1) ?true:false %>" name="rrGroup_<%= alt.pba_pbm_id %>"
                     value="<%= alt.pd_id;%>" id="rr<%= alt.pd_id+'_'+i+'_'+j;%>" ng-model="c[<%= alt.pba_pbm_id %>]" />

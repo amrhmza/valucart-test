@@ -5,7 +5,7 @@ var auth = require("../lib/auth.js");
 const schedule = require("../controllers/schedule.js");
 /* GET cart page. */
 router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     if (typeof req.body.cart_id == "string") {
@@ -17,6 +17,7 @@ router.post("/", auth.ensureAuthenticated, async (req, res, next) => {
       angular: true,
       customjs: true,
       search: 0,
+      catdrop: 1,
       jslist: [
         "angular/app.js",
         "angular/factory/add_address.js",
@@ -42,9 +43,9 @@ router.post("/process", auth.ensureAuthenticated, async (req, res, next) => {
       console.log(order);
       res.redirect(
         "/checkout/success/" +
-        order.order_id[0] +
-        "/" +
-        (order.bundle_id == 0 ? "" : order.bundle_id)
+          order.order_id[0] +
+          "/" +
+          (order.bundle_id == 0 ? "" : order.bundle_id)
       );
       res.end();
     } else {
@@ -72,6 +73,7 @@ router.get(
         angular: true,
         customjs: true,
         search: 0,
+        catdrop: 1,
         jslist: [
           "angular/app.js",
           "angular/factory/add_address.js",
