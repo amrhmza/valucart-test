@@ -1,4 +1,4 @@
-app.controller("otpVerify", function (
+app.controller("otpVerify", function(
   $scope,
   $rootScope,
   $location,
@@ -13,10 +13,10 @@ app.controller("otpVerify", function (
   $scope.email = token.email;
   var cp = document.forms.formOtp,
     elem = cp.elements;
-  cp.onsubmit = function () {
+  cp.onsubmit = function() {
     var otp = "";
 
-    angular.forEach(angular.element(elem.otpvalue), function (data, key) {
+    angular.forEach(angular.element(elem.otpvalue), function(data, key) {
       otp += data.value;
     });
 
@@ -34,10 +34,10 @@ app.controller("otpVerify", function (
 
       otpVerify
         .email_verify(userData, userToken)
-        .then(function (response) {
+        .then(function(response) {
           if (response.data.error) {
             $(".otpvalue").val("");
-            console.log($(".otpvalue"))
+            console.log($(".otpvalue"));
             toastr.error(response.data.error);
           } else {
             var loc = JSON.parse($.cookie("vcartAuth"));
@@ -47,10 +47,10 @@ app.controller("otpVerify", function (
               path: "/"
             });
             toastr.success(response.data.result);
-            $window.location.href = "/intro";
+            $window.location.href = "/";
           }
         })
-        .catch(function (response) {
+        .catch(function(response) {
           $(".otpvalue").val("");
           toastr.error(response.data.error);
         });
@@ -59,11 +59,11 @@ app.controller("otpVerify", function (
       return false;
     }
   };
-  $scope.resendotp = function () {
+  $scope.resendotp = function() {
     $(".resend-btn").text("Sending...");
     otpVerify
       .resent_otp()
-      .then(function (response) {
+      .then(function(response) {
         console.log(response);
         if (response.data.error) {
           toastr.error(response.data.error);
@@ -74,7 +74,7 @@ app.controller("otpVerify", function (
           //$window.location.href = "/";
         }
       })
-      .catch(function (response) {
+      .catch(function(response) {
         console.log(response);
       });
   };
