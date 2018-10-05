@@ -12,6 +12,7 @@ router.get("/:order_id", auth.ensureAuthenticated, async (req, res, next) => {
       data: data,
       angular: false,
       search: 0,
+      catdrop: 1,
       customjs: false,
       cookies: cookies
     });

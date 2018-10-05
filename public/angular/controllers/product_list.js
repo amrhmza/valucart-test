@@ -432,7 +432,7 @@ app.controller("product_listing", function(
           toastr.success(res.results.msg);
           var cartOldQty = localStorage.getItem("bundleCount");
           var newCartQty = parseInt(cartOldQty) + parseInt(1);
-          localStorage.setItem("cartCount", newCartQty);
+          localStorage.setItem("bundleCount", newCartQty);
           $(".cart-label").text(newCartQty);
         } else {
           toastr.warning(res.error.msg);

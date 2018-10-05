@@ -133,7 +133,10 @@ app.controller("userbundle", function(
           var res = response.data.results;
           if (res.msg == "success") {
             // toastr.success("Update Successfully..!");
-            $("#bundle_options").modal("show");
+            $("#bundle_options").modal({
+              backdrop: "static",
+              keyboard: false
+            });
             // $window.location.href = "/mybundles";
           }
         })

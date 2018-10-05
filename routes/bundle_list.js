@@ -20,6 +20,7 @@ router.get("/", async (req, res, next) => {
       menudata: menudata,
       angular: true,
       customjs: true,
+      catdrop: 1,
       home_new: true,
       jslist: [
         "angular/app.js",
@@ -52,6 +53,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       cookies: cookies,
       menudata: menudata,
       angular: true,
+      catdrop: 1,
       customjs: true,
       home_new: true,
       jslist: [
