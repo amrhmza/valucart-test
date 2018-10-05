@@ -14,6 +14,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     res.render("mybundles", {
       menudata: menudata,
       data: data,
+      catdrop: 1,
       search: 0,
       cookies: cookies,
       angular: true,

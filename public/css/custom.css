@@ -90,3 +90,13 @@ select#area {
 .mycart .productpanel .favourite.hide-fav .trash::after {
   width: 0;
 }
+.btn-bundle-options,
+.btn-bundle-options:hover,
+.btn-bundle-options:active,
+.btn-bundle-options:focus,
+.btn-bundle-options:visited {
+  background: #17becd;
+  color: #fff;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
