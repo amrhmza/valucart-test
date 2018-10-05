@@ -95,8 +95,6 @@ app.controller("userbundle", function(
   var cp = document.forms.user_bundle,
     elem = cp.elements;
   cp.onsubmit = function() {
-    console.log(elem);
-
     let product_ids = [];
     let proceed = 0;
     $scope.mybundle.forEach(element => {
@@ -134,8 +132,9 @@ app.controller("userbundle", function(
         .then(function(response) {
           var res = response.data.results;
           if (res.msg == "success") {
-            toastr.success("Update Successfully..!");
-            $window.location.href = "/mybundles";
+            // toastr.success("Update Successfully..!");
+            $("#bundle_options").modal("show");
+            // $window.location.href = "/mybundles";
           }
         })
         .catch(function(response) {
@@ -217,6 +216,29 @@ app.controller("userbundle", function(
         }
       })
       .catch(function(response) {
+        toastr.warning(response.data.error.response);
+      });
+  };
+  /**
+   * Add to cart functionality for checkout button on the popup
+   */
+  $scope.bundle_checkout = function(data) {
+    mybundle_addtocart
+      .addToCart(data)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          toastr.success(response.data.results.msg);
+          var cartOldQty = localStorage.getItem("cartCount");
+          var newCartQty = parseInt(cartOldQty) + parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
+          $window.location.href = "/cart";
+        }
+      })
+      .catch(function(response) {
+        $window.location.href = "/cart";
         toastr.warning(response.data.error.response);
       });
   };

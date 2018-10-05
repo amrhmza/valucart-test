@@ -94,7 +94,8 @@
                 </div>
             </div>
 
-            <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button>
+            <button type="submit" class="btn-proceed">Save</button>
+            <!-- <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button> -->
             <button type="button" class="btn-cancel" data-toggle="modal" data-target="#bundledelete">Cancel</button>
             <div ng-if="mybundle_detail.ub_is_subscribed == '0' && mybundle_detail.ob_is_completed!=0">
                 <a href="/schedule-bundle/create/{{ub_id}}" class="btn btn-block btn-lg btn-success">Schedule</a>
@@ -113,6 +114,7 @@
             <div class="btn-align">
                 <button type="button" data-toggle="modal" data-target="#bundledelete" class="btn-cancel">Cancel</button>
                 <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button>
+                <!-- <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button> -->
             </div>
         </div>
     </div>

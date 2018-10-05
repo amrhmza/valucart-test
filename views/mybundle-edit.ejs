@@ -96,7 +96,58 @@
                 </div>
             </div>
         </div>
+        <div id="bundledelete" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group marg-btm">
+                                    <h3>Are you sure want to delete this Bundle?</h3>
+                                    <!-- <label class="form-control-placeholder" for="name">Name</label> -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-12 text-center">
+                                <a class="btn-recurring btn" href="mybundles/delete/{{ub_id}}">
+                                    <p>Remove Bundle</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
+    <div id="bundle_options" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="background-color: #e8e8e8; border-radius: 0;">
+                    <div class="modal-header">                    
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="text-center modal-title text-success">Bundle Saved Successfully</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-12 text-center">
+                                <button type="button" ng-click="bundle_checkout(ub_id)" class="btn btn-lg btn-bundle-options">
+                                    Checkout <span ng-bind-html="mybundle_name"></span>
+                                </button>
+                                <a href="/product-listing" type="button" class="btn btn-lg btn-bundle-options">
+                                    Continue Shopping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
 <script>
