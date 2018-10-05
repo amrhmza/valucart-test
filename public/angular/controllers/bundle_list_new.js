@@ -23,9 +23,11 @@ app.controller("bundle_listing", function(
     let filterdata = $location.search();
     if (filterdata.cat) {
       $scope.cat_active = filterdata.cat;
+      $scope.show = 1;
     }
     if (filterdata.sub_cat) {
       $scope.sub_cat_active = filterdata.sub_cat;
+      $scope.show = 1;
     }
     if (filterdata.price_start || filterdata.price_end) {
       let start = filterdata.price_start ? filterdata.price_start : "";
