@@ -66,8 +66,6 @@ let get_mybundle_details = async (cookies, bundleId) => {
  */
 let create_bundle_withname = async (cookies, bundlename) => {
   try {
-    console.log(bundlename);
-
     let getparam = axios_config;
     getparam["headers"] = {
       Authorization: "Bearer " + cookies.token

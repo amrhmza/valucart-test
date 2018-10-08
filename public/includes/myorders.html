@@ -19,13 +19,16 @@
 
 <div ng-repeat="product in order.product">
     <div class="panel panel-default myorderpanel mb-0">
-        <div class="panel-body">
+        <div class="panel-body bg-white">
             <div class="row">
                 <div class="row rowpadd0">
                     <p class="dis_price hidden-xs" ng-show="product.ct_discount_percentage > 0">{{product.ct_discount_percentage}}%</p>
                 </div>
-                <div class="col-md-2 col-sm-3 col-xs-4">
+                <div class="col-md-2 col-sm-3 col-xs-4" ng-if="product.ct_is_user_bundle!=true">
                     <img src={{product.p_image}} class="img-responsive productimg">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-4" ng-if="product.ct_is_user_bundle==true">
+                    <img src="img/byob.png" class="img-responsive productimg">
                 </div>
                 <div class=" col-md-4 col-sm-3  text-left">
                     <h4 class="ordertitle">
@@ -89,14 +92,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 text-center" ng-if="product.ct_discount_price">
+                <div class="col-sm-3 text-center" ng-if="product.ct_discount_price!=0 && product.ct_discount_price">
                     <!-- <h5 class="offeredprice">
                         {{product.ct_quantity}} X {{product.ct_price}} AED</h5> -->
 
                     <h6 class="price order-price">
                         {{product.ct_quantity}} X {{product.ct_discount_price}} AED</h6>
                 </div>
-                <div class="col-sm-3 text-center" ng-if="!product.ct_discount_price">
+                <div class="col-sm-3 text-center" ng-if="!product.ct_discount_price || product.ct_discount_price==0">
 
                     <h6 class="price order-price">
                         {{product.ct_quantity}} X {{product.ct_price}} AED</h6>

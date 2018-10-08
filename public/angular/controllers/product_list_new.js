@@ -28,9 +28,11 @@ app.controller("product_listing", function(
     let filterdata = $location.search();
     if (filterdata.sub_cat) {
       $scope.sub_cat_active = filterdata.sub_cat;
+      $scope.show = 1;
     }
     if (filterdata.cat) {
       $scope.cat_active = filterdata.cat;
+      $scope.show = 1;
     }
     if (filterdata.price_start || filterdata.price_end) {
       let start = filterdata.price_start ? filterdata.price_start : "";
@@ -175,36 +177,24 @@ app.controller("product_listing", function(
   console.log("Out in the prod ctrl");
 
   $scope.clearFilter = function(type) {
-    console.log("TCL: $scope.clearFilter -> type", type);
+    $scope.productData = [];
+    $scope.page = 0;
     switch (type) {
       case "cat":
-        $location.search("cat", p1);
+        $location.search("cat", null);
         $location.search("sub_cat", null);
+        delete querydata.queryparam.sub_cat;
         delete querydata.queryparam.cat;
-        delete querydata.queryparam.sub_cat;
         $scope.getlist();
-        break;
-      case "sub_cat":
-        $location.search("sub_cat", p1);
-        delete querydata.queryparam.sub_cat;
-        $scope.getlist();
+        $scope.show = 0;
+        $scope.cat_active = "";
+        $scope.sub_cat_active = "";
         break;
       case "price":
-        console.log("TCL: $scope.clearFilter -> price", "price");
-
         $location.search("price_start", null);
         $location.search("price_end", null);
         delete querydata.queryparam.price_start;
-        console.log(
-          "TCL: $scope.clearFilter -> querydata.queryparam.price_start",
-          querydata.queryparam.price_start
-        );
         delete querydata.queryparam.price_end;
-        console.log(
-          "TCL: $scope.clearFilter -> querydata.queryparam.price_end",
-          querydata.queryparam.price_end
-        );
-        console.log("TCL: $scope.clearFilter -> querydata", querydata);
         $scope.getlist();
         break;
       case "discount":
@@ -241,13 +231,17 @@ app.controller("product_listing", function(
         $location.search("cat", p1);
         $location.search("sub_cat", null);
         delete querydata.queryparam.sub_cat;
+        $scope.show = 1;
         $scope.getlist();
+        $scope.cat_active = p1;
         break;
       case "sub_cat":
-        $location.search("sub_cat", p1);
         $location.search("cat", null);
         delete querydata.queryparam.cat;
+        $location.search("sub_cat", p1);
+        $scope.show = 1;
         $scope.getlist();
+        $scope.sub_cat_active = p1;
         break;
       case "price":
         var dataChecked = $(
@@ -443,7 +437,7 @@ app.controller("product_listing", function(
           toastr.success(res.results.msg);
           var cartOldQty = localStorage.getItem("bundleCount");
           var newCartQty = parseInt(cartOldQty) + parseInt(1);
-          localStorage.setItem("cartCount", newCartQty);
+          localStorage.setItem("bundleCount", newCartQty);
           $(".cart-label").text(newCartQty);
         } else {
           toastr.warning(res.error.msg);

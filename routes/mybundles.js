@@ -14,6 +14,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     res.render("mybundles", {
       menudata: menudata,
       data: data,
+      catdrop: 1,
       search: 0,
       cookies: cookies,
       angular: true,
@@ -64,6 +65,7 @@ router.get(
       let menudata = await getMenu.get_menulist();
       res.render("mybundle-edit", {
         menudata: menudata,
+        catdrop: 1,
         cookies: cookies,
         bundleId: req.param("bundleId"),
         angular: true,

@@ -17,6 +17,7 @@ router.get("/create/:id", auth.ensureAuthenticated, async (req, res, next) => {
         angular: false,
         customjs: false,
         search: 0,
+        catdrop: 1,
         cookies: cookies
       });
     } else {
@@ -39,6 +40,7 @@ router.get("/edit/:id", auth.ensureAuthenticated, async (req, res, next) => {
         angular: false,
         customjs: false,
         search: 0,
+        catdrop: 1,
         cookies: cookies
       });
     } else {

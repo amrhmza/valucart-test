@@ -72,6 +72,7 @@
                                 Category
                             </h4>
                         </div>
+                        <span class="clearfilter1" ng-if="show==1" ng-click="clearFilter('sub_cat')">clear all</span>
                     </div>
 
                     <div class="panel panel-default">
@@ -173,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default ">
+                    <!-- <div class="panel panel-default ">
                         <a data-toggle="collapse" href="#collapse4">
                             <div class="panel-heading ">
                                 <h4 class="panel-title ">
@@ -207,7 +208,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <% } %>
             </div>
@@ -229,7 +230,7 @@
                                 <img src="img/sort.png" class="img-responsive sortimg"> SORT</option>
                             <option value="Popularity" style="background-image:url(img/popularity.png);">Popularity</option>
                             <option value="date">Latest</option>
-                            <option value="discount">Discount</option>
+                            <!-- <option value="discount">Discount</option> -->
                             <option value="price_lh">Price (Low to High)</option>
                             <option value="price_hl">Price (High to Low)</option>
                         </select>
@@ -246,23 +247,23 @@
                                 <li role="presentation" style="padding-left: 10px">Category</li>
                                 <li class="divider"></li>
                                 <div class="brandlist">
-                                <li role="presentation" style="padding-left: 10px">
-                                    <%= data.product_config["cat_filter"].cat %>
-                                </li>
-                                <li class="divider"></li>
-                                <% if(data.product_config["cat_filter"].supcat!=""){
+                                    <li role="presentation" style="padding-left: 10px">
+                                        <%= data.product_config["cat_filter"].cat %>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <% if(data.product_config["cat_filter"].supcat!=""){
                                         data.product_config["cat_filter"].supcat.forEach(function(subcat){ 
                                         %>
-                                <li role="presentation">
-                                    <a role="menuitem" ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
-                                        <%= subcat.subcat_name %>
-                                        (
-                                        <%= subcat.c %>)
-                                    </a>
-                                </li>
-                                <%  })
+                                    <li role="presentation">
+                                        <a role="menuitem" ng-click="filters('sub_cat',<%= subcat.subcat_id %>)">
+                                            <%= subcat.subcat_name %>
+                                            (
+                                            <%= subcat.c %>)
+                                        </a>
+                                    </li>
+                                    <%  })
                                     } %>
-                                    </div>
+                                </div>
                                 <li class="divider"></li>
                                 <li role="presentation" style="padding-left: 10px">Brand</li>
                                 <li role="presentation" style="margin-top: 10px">
@@ -315,7 +316,7 @@
                                     <% }i++;})
                                      } %>
                                 </ul>
-                                <li role="presentation" style="padding-left: 10px">Discounts</li>
+                               <!-- <li role="presentation" style="padding-left: 10px">Discounts</li>
                                 <ul class="list-group brandlist">
                                     <% if(data.product_config["discount_filter"]!=""){
                                         let j=0;
@@ -336,7 +337,7 @@
                                     </li>
                                     <% j++; })
                                     } %>
-                                </ul>
+                                </ul>-->
                                 <% }%>
                             </ul>
                         </div>

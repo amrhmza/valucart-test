@@ -26,6 +26,7 @@ app.controller("product_listing", function(
     let filterdata = $location.search();
     if (filterdata.sub_cat) {
       $scope.sub_cat_active = filterdata.sub_cat;
+      $scope.show = 1;
     }
     if (filterdata.price_start || filterdata.price_end) {
       let start = filterdata.price_start ? filterdata.price_start : "";
@@ -174,7 +175,26 @@ app.controller("product_listing", function(
    * @param {Number} p2
    */
   $scope.clearFilter = function(type) {
+    $scope.page = 0;
+    $scope.productData = [];
     switch (type) {
+      case "cat":
+        $location.search("cat", null);
+        $location.search("sub_cat", null);
+        delete querydata.queryparam.sub_cat;
+        delete querydata.queryparam.cat;
+        $scope.getlist();
+        $scope.show = 0;
+        $scope.cat_active = "";
+        $scope.sub_cat_active = "";
+        break;
+      case "sub_cat":
+        delete querydata.queryparam.sub_cat;
+        $location.search("sub_cat", null);
+        $scope.getlist();
+        $scope.show = 0;
+        $scope.sub_cat_active = "";
+        break;
       case "price":
         $location.search("price_start", null);
         $location.search("price_end", null);
@@ -214,7 +234,9 @@ app.controller("product_listing", function(
     switch (type) {
       case "sub_cat":
         $location.search("sub_cat", p1);
+        $scope.show = 1;
         $scope.getlist();
+        $scope.sub_cat_active = p1;
         break;
       case "price":
         var dataChecked = $(
@@ -410,7 +432,7 @@ app.controller("product_listing", function(
           toastr.success(res.results.msg);
           var cartOldQty = localStorage.getItem("bundleCount");
           var newCartQty = parseInt(cartOldQty) + parseInt(1);
-          localStorage.setItem("cartCount", newCartQty);
+          localStorage.setItem("bundleCount", newCartQty);
           $(".cart-label").text(newCartQty);
         } else {
           toastr.warning(res.error.msg);

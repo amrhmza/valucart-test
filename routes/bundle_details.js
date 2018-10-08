@@ -15,6 +15,7 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
       data: data,
       menudata: menudata,
       cookies: cookies,
+      catdrop: 1,
       angular: true,
       customjs: true,
       jslist: [

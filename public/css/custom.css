@@ -50,3 +50,53 @@ select#area {
 .bg-white {
   background: white;
 }
+.text-black {
+  color: #000;
+}
+.cont-sec {
+  counter-reset: num-li;
+}
+.cont-sec ol li {
+  font-size: 24px;
+}
+.cont-sec ol li h3 {
+  counter-reset: sub-li;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 32px;
+  margin: 30px 0 16px;
+  position: relative;
+}
+.cont-sec p,
+.cont-sec ul li {
+  margin-bottom: 20px;
+  line-height: 24px;
+}
+.cont-sec ol li p,
+.cont-sec ul li {
+  font-size: 16px;
+}
+.cont-sec ul {
+  list-style-type: disc;
+  margin-left: 0px;
+}
+.cont-sec ol li p,
+.cont-sec ul li {
+  font-size: 16px;
+}
+.font-16 {
+  font-size: 16px;
+}
+.mycart .productpanel .favourite.hide-fav .trash::after {
+  width: 0;
+}
+.btn-bundle-options,
+.btn-bundle-options:hover,
+.btn-bundle-options:active,
+.btn-bundle-options:focus,
+.btn-bundle-options:visited {
+  background: #17becd;
+  color: #fff;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}

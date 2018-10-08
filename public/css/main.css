@@ -1669,7 +1669,7 @@ ul.breadcrumb li a:hover {
 
 .productlistpage .productpanel {
   background-color: #ffffff;
-  border: 10px solid #e8e8e8;
+  border: 0;
   text-align: left;
 }
 
@@ -5093,9 +5093,9 @@ label.bundle-check {
 .myorderdetail .myorderpanel {
   box-shadow: none;
   border: none;
-  background-color: #f8f8f8;
-  padding-bottom: 20px;
+  background-color: #fff;
   border-radius: 0px;
+  margin: 20px 0;
 }
 
 .full-width-bg {
@@ -5107,6 +5107,7 @@ label.bundle-check {
   margin-bottom: 0;
   border: 0;
   border-top: 1px solid #ccc;
+  display: none;
 }
 
 .myorderdetail.adjust .myorderpanel .discountprice {
@@ -5314,6 +5315,7 @@ label.bundle-check {
   text-align: right;
   padding-bottom: 0;
   padding-right: 20px;
+  margin: 20px 0;
 }
 
 .cancelorder a {
@@ -6395,7 +6397,7 @@ select:valid+.form-control-placeholder {
     background-color: #cb78ff;
     color: #fff;
     width: fit-content;
-    width:auto;
+    width: auto;
     padding: 5px !important;
     margin-bottom: -15px;
     position: relative;
@@ -11520,4 +11522,10 @@ a.Shop-now {
 
 .btndropdown .addtocartddp {
   left: auto;
+}
+
+.myorderdetail .myorderpanel .panel-body,
+.productpanel .panel-body {
+  border: 10px solid #e8e8e8;
+  background: #fff;
 }

@@ -35,6 +35,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       cart_sum: cart_sum,
       angular: true,
       customjs: true,
+      catdrop: 1,
       jslist: [
         "angular/app.js",
         "angular/factory/cart.js",

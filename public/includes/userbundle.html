@@ -23,7 +23,7 @@
 
                             <div ng-if="bundle.ubp_p_is_bundle==true">
                                 <h6 class="detail-text" ng-repeat="bp in bundle.product">-
-                                    {{bp.pd_name}} (<strong> {{bp.p_quantity}}</strong>)
+                                    {{bp.pd_name}} (<strong> {{bp.ubbp_qty}}</strong>)
                                 </h6>
                             </div>
                             <div class="col-xs-4 col-sm-6 col-md-4 col-lg-6 mobile-pad no-pad">
@@ -54,22 +54,22 @@
                 </div>
             </div>
             <div id="shop-desktop">
-                <a href="#">
+                <a href="/product-listing">
                     <h5 class="continue-text">+ Add more products</h5>
                 </a>
             </div>
         </div>
         <div class="col-md-4 mybundleit" style="margin-top: 10px;" id="">
             <div class="summary bnd-products">
-                <h4 class="order">Order Summary</h4>
+                <h4 class="order">Bundle Summary</h4>
                 <div id="subtotal">
-                    <h5 class="total">Subtotal</h5>
-                    <h5 class="total subTotal" style="float: right;">{{stotal|number:2 }} AED</h5>
-                    <hr>
+                    <h5 class="total">Total</h5>
+                    <h5 class="total subTotal" style="float: right;">{{stotal.toFixed(2) }} AED</h5>
+
                 </div>
-                <div id="delivery">
+                <div id="delivery" class="hide">
                     <h5 class="total">Delivery Charges</h5>
-                    <h5 class="total" style="float: right;">15.00 AED</h5>
+                    <h5 class="total" style="float: right;">10.00 AED</h5>
                 </div>
                 <!-- 
                     <div id="savings" style="margin-top: 20px">
@@ -81,21 +81,22 @@
                         </h5>
                     </div>
                      -->
-                <div id="total" style="margin-top: 20px">
+                <div id="total" style="margin-top: 20px" class="hide">
                     <h5 class="total">
                         <strong>Grand total</strong>
                         <br>
                         <span>(inclusive of 5%VAT)</span>
                     </h5>
                     <h5 class="total" style="float: right;">
-                        <strong class="grandTotal">{{ stotal + (15)|number:2 }} AED</strong>
+                        <strong class="grandTotal">{{ stotal + (10)|number:2 }} AED</strong>
                         <strong ng-show="grand" ng-bind-html="(grandTotal |number:2) + (' AED')"></strong>
                     </h5>
                 </div>
             </div>
 
-            <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button>
-            <button class="btn-cancel">Cancel{{ub_is_deleted}}</button>
+            <button type="submit" class="btn-proceed">Save</button>
+            <!-- <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button> -->
+            <button type="button" class="btn-cancel" data-toggle="modal" data-target="#bundledelete">Cancel</button>
             <div ng-if="mybundle_detail.ub_is_subscribed == '0' && mybundle_detail.ob_is_completed!=0">
                 <a href="/schedule-bundle/create/{{ub_id}}" class="btn btn-block btn-lg btn-success">Schedule</a>
                 <a ng-click="bundle_addtocart(ub_id)" class="btn btn-block btn-lg btn-success">Add To Cart</a>
@@ -111,8 +112,9 @@
     <div class="row" id="summary-mobile">
         <div class="col-md-4 no-pad summary summary1">
             <div class="btn-align">
-                <button class="btn-cancel">Cancel</button>
+                <button type="button" data-toggle="modal" data-target="#bundledelete" class="btn-cancel">Cancel</button>
                 <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button>
+                <!-- <button type="button" class="btn-proceed" data-toggle="modal" data-target="#bundleedit">Save</button> -->
             </div>
         </div>
     </div>

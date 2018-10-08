@@ -34,6 +34,10 @@
     const addressbookRouter = require("../routes/addressbook");
     const category = require("../routes/category.js");
     const schedule = require("../routes/schedule.js");
+    const aboutusRouter = require("../routes/about-us.js");
+    const faqRouter = require("../routes/faq.js");
+    const termsRouter = require("../routes/terms.js");
+    const privacyRouter = require("../routes/privacy-policy.js");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -71,5 +75,9 @@
     app.use("/subscribe", subscribeRouter);
     app.use("/mywishlist", wishlistRouter);
     app.use("/addressbook", addressbookRouter);
+    app.use("/about-us", aboutusRouter);
+    app.use("/faq", faqRouter);
+    app.use("/terms-and-conditions", termsRouter);
+    app.use("/privacy-policy", privacyRouter);
   };
 })(module.exports);

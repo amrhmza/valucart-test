@@ -75,12 +75,12 @@ app.controller("userbundle", function(
       savingstotal +=
         parseFloat(a.attr("data-savings")) * parseFloat(a.attr("data-qty"));
     });
-    var delivery_price = parseInt(15);
+    var delivery_price = parseInt(10);
     var grandtotal = parseFloat(subtotal) + parseFloat(delivery_price);
-    $(".subTotal").html(subtotal + " AED");
-    $(".savingsTotal").html(subtotal + " AED");
-    $(".grandTotal").html(grandtotal + " AED");
-    $scope.grandTotal = grandtotal;
+    $(".subTotal").html(subtotal.toFixed(2) + " AED");
+    $(".savingsTotal").html(subtotal.toFixed(2) + " AED");
+    $(".grandTotal").html(grandtotal.toFixed(2) + " AED");
+    $scope.grandTotal = grandtotal.toFixed(2);
   };
 
   $scope.change_title = function() {
@@ -95,8 +95,6 @@ app.controller("userbundle", function(
   var cp = document.forms.user_bundle,
     elem = cp.elements;
   cp.onsubmit = function() {
-    console.log(elem);
-
     let product_ids = [];
     let proceed = 0;
     $scope.mybundle.forEach(element => {
@@ -134,8 +132,12 @@ app.controller("userbundle", function(
         .then(function(response) {
           var res = response.data.results;
           if (res.msg == "success") {
-            toastr.success("Update Successfully..!");
-            $window.location.href = "/mybundles";
+            // toastr.success("Update Successfully..!");
+            $("#bundle_options").modal({
+              backdrop: "static",
+              keyboard: false
+            });
+            // $window.location.href = "/mybundles";
           }
         })
         .catch(function(response) {
@@ -149,59 +151,100 @@ app.controller("userbundle", function(
   var userAuth = $.cookie("vcartAuth") ? JSON.parse($.cookie("vcartAuth")) : "";
   $scope.loggedStatus = userAuth.status == "success" ? true : false;
 
+  // $scope.bundle_addtocart = function(data) {
+  //   mybundle_addtocart
+  //     .getBundleData(data)
+  //     .then(function(response) {
+  //       console.log(response);
+  //       if (response.status == "200") {
+  //         const bundleProducts = response.data.results.response.product;
+  //         bundleProducts.forEach(pro => {
+  //           let data = {
+  //             product_id: pro.ubp_pd_id,
+  //             quantity: pro.ubp_qty,
+  //             is_bundel: pro.ubp_p_is_bundle == 0 ? false : true
+  //           };
+
+  //           /** For Bundles **/
+  //           if (pro.ubp_p_is_bundle == 1) {
+  //             let alter = [];
+  //             let alternative = pro.product;
+  //             alternative.forEach(ele => {
+  //               let alter_data = {
+  //                 pd_id: parseInt(ele.p_pd_id),
+  //                 is_alternaitve: ele.ubbp_is_alternative
+  //               };
+  //               alter.push(alter_data);
+  //             });
+  //             data.bundel_items = alter;
+  //           }
+
+  //           mybundle_addtocart
+  //             .addToCart(data)
+  //             .then(function(response) {
+  //               if (response.data.results.status != "200") {
+  //                 toastr.warning(response.data.results.msg);
+  //               } else {
+  //                 toastr.success(response.data.results.msg);
+  //                 var cartOldQty = localStorage.getItem("cartCount");
+  //                 var newCartQty = parseInt(cartOldQty) + parseInt(1);
+  //                 localStorage.setItem("cartCount", newCartQty);
+  //                 $(".cart-label").text(newCartQty);
+  //               }
+  //             })
+  //             .catch(function(response) {
+  //               toastr.warning(response.data.results.msg);
+  //             });
+  //         });
+  //         //window.location = "/cart";
+  //       }
+  //     })
+  //     .catch(function(response) {
+  //       //toastr.warning(response.data.results.msg);
+  //     });
+  // };
+
   $scope.bundle_addtocart = function(data) {
     mybundle_addtocart
-      .getBundleData(data)
+      .addToCart(data)
       .then(function(response) {
-        console.log(response);
-        if (response.status == "200") {
-          const bundleProducts = response.data.results.response.product;
-          bundleProducts.forEach(pro => {
-            let data = {
-              product_id: pro.ubp_pd_id,
-              quantity: pro.ubp_qty,
-              is_bundel: pro.ubp_p_is_bundle == 0 ? false : true
-            };
-
-            /** For Bundles **/
-            if (pro.ubp_p_is_bundle == 1) {
-              let alter = [];
-              let alternative = pro.product;
-              alternative.forEach(ele => {
-                let alter_data = {
-                  pd_id: parseInt(ele.p_pd_id),
-                  is_alternaitve: ele.ubbp_is_alternative
-                };
-                alter.push(alter_data);
-              });
-              data.bundel_items = alter;
-            }
-
-            mybundle_addtocart
-              .addToCart(data)
-              .then(function(response) {
-                if (response.data.results.status != "200") {
-                  toastr.warning(response.data.results.msg);
-                } else {
-                  toastr.success(response.data.results.msg);
-                  var cartOldQty = localStorage.getItem("cartCount");
-                  var newCartQty = parseInt(cartOldQty) + parseInt(1);
-                  localStorage.setItem("cartCount", newCartQty);
-                  $(".cart-label").text(newCartQty);
-                }
-              })
-              .catch(function(response) {
-                toastr.warning(response.data.results.msg);
-              });
-          });
-          //window.location = "/cart";
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          toastr.success(response.data.results.msg);
+          var cartOldQty = localStorage.getItem("cartCount");
+          var newCartQty = parseInt(cartOldQty) + parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
         }
       })
       .catch(function(response) {
-        //toastr.warning(response.data.results.msg);
+        toastr.warning(response.data.error.response);
       });
   };
-
+  /**
+   * Add to cart functionality for checkout button on the popup
+   */
+  $scope.bundle_checkout = function(data) {
+    mybundle_addtocart
+      .addToCart(data)
+      .then(function(response) {
+        if (response.data.results.status != "200") {
+          toastr.warning(response.data.results.msg);
+        } else {
+          toastr.success(response.data.results.msg);
+          var cartOldQty = localStorage.getItem("cartCount");
+          var newCartQty = parseInt(cartOldQty) + parseInt(1);
+          localStorage.setItem("cartCount", newCartQty);
+          $(".cart-label").text(newCartQty);
+          $window.location.href = "/cart";
+        }
+      })
+      .catch(function(response) {
+        $window.location.href = "/cart";
+        toastr.warning(response.data.error.response);
+      });
+  };
   $scope.bundle_unsbuscribe = function(data) {
     mybundle_addtocart
       .unSubscribe(data)

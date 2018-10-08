@@ -1008,7 +1008,7 @@ a.highlight {
 }
 
 .productlistpage .productimg {
-  /* height: unset; */
+  max-height: 150px;
   margin-bottom: unset;
 }
 
@@ -1801,4 +1801,29 @@ div#mybnd-desktop.pendingcart {
   .padding0-xs {
     padding: 0;
   }
+}
+.productviewpanel::before {
+  background-color: #fff !important;
+}
+.gallery {
+  background-color: white !important;
+}
+
+.clearfilter1 {
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 5px;
+  cursor: pointer;
+  position: absolute;
+  color: #14bdcd;
+  top: 46px;
+  right: 35px;
+  /* display: none; */
+}
+h4.pleft150.colorbl {
+  margin-bottom: 0;
+}
+img.img-responsive.navbar-brand2.ad {
+  height: 36px;
 }

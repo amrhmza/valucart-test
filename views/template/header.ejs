@@ -121,12 +121,12 @@
     <div class="container-fluid headertop">
         <div class="v-container">
             <ul class="list-inline headerlist">
-                <li>
+               <!-- <li>
                     <a href="tel:+97142231188">
                         <p style="margin: 0px;padding-right: 5px;">
                             <img src="img/phone.svg" width="14"> +971 4 2231188</p>
                     </a>
-                </li>
+                </li>-->
                 <li class="hidden">
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
@@ -199,8 +199,8 @@
                         <i class="fa fa-ellipsis-v"></i>
                     </span>
                 </div> -->
-                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                    <div class="nav-bar v-nav-var" onclick="openNav()">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 ">
+                    <div class="nav-bar v-nav-var hidden-lg hidden-md hidden-sm" onclick="openNav()">
                         <img src="img/navbar.svg" alt="" width="18">
                     </div>
                     <% if(typeof home_new != "undefined"){ %>
@@ -266,11 +266,9 @@
                         </li>
                         <li class="hide" id="bundleicon">
                             <a href="">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } else { %>
-                                <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } %>
+                              
+                                <img src="img/bundle_icon.svg" class="img-responsive navbar-brand2 ad" alt="valucart-logo">
+                               
                                 <span class="cart-label">0</span>
                             </a>
                         </li>
@@ -311,7 +309,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid no-pd">
+    <div class="container-fluid no-pd wt-bg">
         <div class="v-container">
             <div class="mob-search" style="display: none;">
                 <input type="text" class="form-control desktopsearch" id="searchLblm" placeholder="Type brand name OR product category">

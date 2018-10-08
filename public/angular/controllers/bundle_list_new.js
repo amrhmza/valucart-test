@@ -23,9 +23,11 @@ app.controller("bundle_listing", function(
     let filterdata = $location.search();
     if (filterdata.cat) {
       $scope.cat_active = filterdata.cat;
+      $scope.show = 1;
     }
     if (filterdata.sub_cat) {
       $scope.sub_cat_active = filterdata.sub_cat;
+      $scope.show = 1;
     }
     if (filterdata.price_start || filterdata.price_end) {
       let start = filterdata.price_start ? filterdata.price_start : "";
@@ -134,11 +136,18 @@ app.controller("bundle_listing", function(
   };
 
   $scope.clearFilter = function(type) {
+    $scope.page = 0;
+    $scope.productData = [];
     switch (type) {
-      case "sub_cat":
-        $location.search("sub_cat", p1);
+      case "cat":
+        $location.search("cat", null);
+        $location.search("sub_cat", null);
         delete querydata.queryparam.sub_cat;
+        delete querydata.queryparam.cat;
         $scope.getlist();
+        $scope.show = 0;
+        $scope.cat_active = "";
+        $scope.sub_cat_active = "";
         break;
       case "price":
         $location.search("price_start", null);
@@ -182,13 +191,17 @@ app.controller("bundle_listing", function(
         $location.search("cat", p1);
         $location.search("sub_cat", null);
         delete querydata.queryparam.sub_cat;
+        $scope.show = 1;
         $scope.getlist();
+        $scope.cat_active = p1;
         break;
       case "sub_cat":
         $location.search("cat", null);
         delete querydata.queryparam.cat;
         $location.search("sub_cat", p1);
+        $scope.show = 1;
         $scope.getlist();
+        $scope.sub_cat_active = p1;
         break;
       case "price":
         var dataChecked = $(
@@ -391,11 +404,17 @@ app.controller("bundle_listing", function(
               if (is_alternaitve) {
                 angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    pd_id = val.pba_pd_id;
+                    pd_id = {
+                      p_id: parseInt(val.pba_pd_id),
+                      is_alternaitve: true
+                    };
                   }
                 });
               } else {
-                var pd_id = value.pd_id;
+                var pd_id = {
+                  p_id: parseInt(value.pd_id),
+                  is_alternaitve: false
+                };
               }
               alter.push(pd_id);
             });
@@ -453,11 +472,17 @@ app.controller("bundle_listing", function(
               if (is_alternaitve) {
                 angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    pd_id = val.pba_pd_id;
+                    pd_id = {
+                      p_id: parseInt(val.pba_pd_id),
+                      is_alternaitve: true
+                    };
                   }
                 });
               } else {
-                var pd_id = value.pd_id;
+                var pd_id = {
+                  p_id: parseInt(value.pd_id),
+                  is_alternaitve: false
+                };
               }
               alter.push(pd_id);
             });
@@ -477,7 +502,7 @@ app.controller("bundle_listing", function(
                 toastr.success(res.results.msg);
                 var cartOldQty = localStorage.getItem("bundleCount");
                 var newCartQty = parseInt(cartOldQty) + parseInt(1);
-                localStorage.setItem("cartCount", newCartQty);
+                localStorage.setItem("bundleCount", newCartQty);
                 $(".cart-label").text(newCartQty);
               } else {
                 toastr.warning(res.error.msg);

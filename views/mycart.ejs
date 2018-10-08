@@ -54,7 +54,7 @@
                             %>
                                 <div class="panel panel-default productpanel cart_panel_<%=cart.cart_id%>">
                                     <div class="panel-body">
-                                        <div class="row bg-white ">
+                                        <div class="row ">
                                             <div class="col-xs-4">
                                                 <% if(cart.discount>0){  %>
                                                     <p class="discountprice">
@@ -64,12 +64,16 @@
                                                     <p class="no-discountprice"></p>
                                                     <%
                                                     } %>
+                                                    <% if(cart.is_userbundle!=true){ %>
                                                         <img src="<%= cart.product_image %>" class="img-responsive productimg">
-                                                        <div class="col-xs-12 favourite">
+                                                    <% }else{ %>
+                                                      <img src="img/byob.png" class="img-responsive productimg">
+                                                    <% } %>
+                                                        <div class="col-xs-12 favourite <%=cart.is_userbundle==true?'hide-fav':''; %>">
                                                             <button class="btn btn-favourite" confirmed-click="removeCart(<%=cart.cart_id%>, <%=cart.is_bundle%>, $event.target)" ng-confirm-click="Do you want to remove this from cart?">
                                                                 <i class="fa fa-trash-o trash" aria-hidden="true" ></i>
                                                             </button>
-                                                            <div class="wishlist-heart-group">
+                                                            <div class="wishlist-heart-group <%=cart.is_userbundle==true?'hide':''; %>">
                                                                     <input name="product-<%= cart.product_id %>" id="product-<%= cart.product_id %>" data-product-id="<%= cart.product_id %>"
                                                                     type="checkbox" data-type="<%=(cart.wishlist)?'remove':'add'%>" ng-click="addwish(<%=cart.product_id%>, <%=cart.is_bundle%>, $event.target)"
                                                                     <%=(cart.wishlist)? 'checked': ''%> />
@@ -91,22 +95,36 @@
                                                         </div>
                                             </div>
                                             <div class="col-xs-8 m-t-50">
-                                                <% let href=(cart.is_bundle==true)?"bundle-detail/":"product-detail/";
+                                        <% 
+                                        let href=(cart.is_bundle==true)?"bundle-detail/":"product-detail/";
                                         let hbc_name= cart.product_name.replace(/\s+/g, '-');                            
-                                       %>
+                                        %>
                                                     <h4>
+                                                       <% if(cart.is_userbundle!=true){ %>
                                                         <a href="/<%= href+cart.product_id %>/<%= hbc_name %>">
                                                             <%= cart.product_name %>
                                                         </a>
+                                                       <% }else{ %>
+                                                       <a href="mybundles/view/<%=cart.product_id %>/">
+                                                            <%= cart.product_name %>
+                                                       </a>
+                                                       <% } %>
                                                     </h4>
-                                                    <% if(cart.is_bundle==true){
-                                                cart.bundleData.forEach(function(mybundleD){   
-                                                    if(mybundleD.pd_name){      
-                                            %>
+                                                    <% if(cart.is_userbundle==true){
+                                                        cart.bundleData.forEach(function(mybundleD){   
+                                                            if(mybundleD.pd_name){     
+                                                    %>
+                                                    <h6 class="detail-text">-
+                                                            <%= mybundleD.pd_name%> <strong>X <%= mybundleD.ubp_qty%></strong>
+                                                    </h6>
+                                                    <% }})}else if(cart.is_bundle==true){
+                                                     cart.bundleData.forEach(function(mybundleD){   
+                                                     if(mybundleD.pd_name){      
+                                                    %>
                                                         <h6 class="detail-text">-
                                                             <%= mybundleD.pd_name%> <strong>X <%= mybundleD.ctb_qty%></strong>
                                                         </h6>
-                                                        <%}
+                                                    <%}
                                            })
                                           }else{
                                          %>
@@ -147,7 +165,7 @@
                                     </div>
                         </div>
                         <% if(data.length>0){ %>
-                            <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;">
+                            <div id="order_summary_box" class="col-lg-4 col-md-4 col-sm-12 hidden-xs col-md-offset-1 col-lg-offset-1" style="margin-top: 10px;">
                                 <div class="summary temphide" ng-class="subGrand?'showsum':''">
                                     <h4 class="order">Order Summary</h4>
                                     <div class="row" ng-if="subGrand<50">
@@ -163,7 +181,7 @@
                                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-md-11 col-sm-11 col-xs-11 p-l-10">
-                                            <p>Add <span class="color-ok">{{(250-subGrand) | number:2}} AED</span> of products on your to quality for FREE Delivary</p>
+                                            <p>Add <span class="color-ok">{{(250-subGrand) | number:2}} AED</span> worth of products to qualify for FREE delivery</p>
                                         </div>
                                     </div>
                                     <div class="row" ng-if="subGrand>=250">

@@ -246,11 +246,17 @@ app.controller("bundle_listing", function(
               if (is_alternaitve) {
                 angular.forEach(alternatives, function(val, i) {
                   if (val.pba_is_default == 1) {
-                    pd_id = val.pba_pd_id;
+                    var pd_id = {
+                      p_id: parseInt(value.pd_id),
+                      is_alternaitve: true
+                    };
                   }
                 });
               } else {
-                var pd_id = value.pd_id;
+                var pd_id = {
+                  p_id: parseInt(value.pd_id),
+                  is_alternaitve: false
+                };
               }
               alter.push(pd_id);
             });
@@ -270,7 +276,7 @@ app.controller("bundle_listing", function(
                 toastr.success(res.results.msg);
                 var cartOldQty = localStorage.getItem("bundleCount");
                 var newCartQty = parseInt(cartOldQty) + parseInt(1);
-                localStorage.setItem("cartCount", newCartQty);
+                localStorage.setItem("bundleCount", newCartQty);
                 $(".cart-label").text(newCartQty);
               } else {
                 toastr.warning(res.error.msg);

@@ -15,16 +15,17 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       cat_id,
       JSON.parse(cookies)
     );
-    console.log(JSON.parse(cookies));
-
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
+    let b;
+
     res.render("productlisting", {
       data: data,
       menudata: menudata,
       banner: banner,
       cookies: cookies,
       angular: true,
+      catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
       home_new: true,
       jslist: [
@@ -50,12 +51,15 @@ router.get("/", async (req, res, next) => {
     let data = await productListing.get_datav2(querydata, JSON.parse(cookies));
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
+    let b;
+    console.log(data.product_type);
     res.render("productlisting_new", {
       data: data,
       menudata: menudata,
       banner: banner,
       cookies: cookies,
       angular: true,
+      catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
       home_new: true,
       jslist: [
@@ -88,6 +92,7 @@ router.get("/valucartexclusives", async (req, res, next) => {
       banner: banner,
       cookies: cookies,
       angular: true,
+      catdrop: 1,
       customjs: true,
       home_new: true,
       jslist: [

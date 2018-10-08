@@ -23,6 +23,8 @@ let get_data = async (querydata, cat_id, cookies) => {
       // throw product_filter;
     }
     response["product_config"] = product_filter.data.results.response;
+    response["product_type"] =
+      product_filter.data.results.msg == "VCGT" ? "Bundle" : "Valuecart";
     response["querydata"] = querydata;
     return response;
   } catch (error) {
@@ -45,6 +47,8 @@ let get_datav2 = async (querydata, cookies) => {
       // throw product_filter;
     }
     response["product_config"] = product_filter.data.results.response;
+    response["product_type"] =
+      product_filter.data.results.msg == "VCGT" ? "Bundle" : "ValuCart";
     response["querydata"] = querydata;
     return response;
   } catch (error) {

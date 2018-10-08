@@ -14,6 +14,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       menudata: menudata,
       data: data,
       search: 0,
+      catdrop: 1,
       cookies: cookies,
       angular: true,
       customjs: true,
