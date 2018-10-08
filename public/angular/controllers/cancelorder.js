@@ -61,8 +61,12 @@ app.controller("cancelorder", function(
         }
       })
         .then(function(success) {
-          toastr.success(success.data.results.msg);
-          window.location = "/myorders";
+          if (success.data.results.status == 200) {
+            toastr.success(success.data.results.msg);
+            window.location = "/myorders";
+          } else {
+            toastr.warning(success.data.results.msg);
+          }
         })
         .catch(function(failure) {
           toastr.error(failure.data.error);

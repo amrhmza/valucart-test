@@ -17,10 +17,10 @@
                 %>
                 <div class="row shiplist_block">
                     <div class="col-md-9 bn-list">
-                        <h5><%=list.sl_name%> (10 items)</h5>
+                        <h5><%=list.sl_name%> <small><small>next delivery date:</small><%=moment(list.slp_next_delivery_date).format('MMM Do YYYY')%></small></h5>
                     </div>
                     <div class="col-md-3 bn-img">
-                        <a href="/myshopping/<%=list.sl_id%>" class="bundlebtn">
+                        <a href="/schedule-detail/<%=list.sl_id%>" class="bundlebtn">
                             <img src="img/bn-edit.png" alt="bn-edit" />
                         </a>
                         <a ng-click="removeShippingList(<%=list.sl_id%>, $event.target)" class="bundlebtn">

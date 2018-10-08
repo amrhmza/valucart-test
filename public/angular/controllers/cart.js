@@ -14,8 +14,36 @@ app.controller("cart", function(
   $scope.showele = "showele";
   $scope.qty = 1;
   $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
-  $scope.dc = $scope.cartGrand > 250 ? 0 : 10;
   $scope.edit_title = 0;
+  cart
+    .getsetting()
+    .then(function(response) {
+      if (response.data.results.status != "200") {
+        console.log(response.data.results);
+        $scope.dc =
+          $scope.cartGrand > parseFloat(response.data.results.deliveryFreePrice)
+            ? 0
+            : parseFloat(response.data.results.deliveryCharge);
+        $scope.deliveryFreePrice = parseFloat(
+          response.data.results.deliveryFreePrice
+        );
+        $scope.deliveryCharge = parseFloat(
+          response.data.results.deliveryCharge
+        );
+        $scope.minOrderAmt = parseFloat(response.data.results.minOrderAmt);
+      } else {
+        $scope.deliveryFreePrice = 250;
+        $scope.deliveryCharge = 10;
+        $scope.minOrderAmt = 50;
+      }
+      $scope.cartTotal();
+    })
+    .catch(function(response) {
+      // toastr.warning(response.data.results.msg);
+      $scope.deliveryFreePrice = 250;
+      $scope.deliveryCharge = 10;
+      $scope.cartTotal();
+    });
   $scope.addtocart = function(data) {
     product_details
       .addToCart($scope.qty, data)
@@ -143,10 +171,14 @@ app.controller("cart", function(
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
     });
     $scope.subGrand = parseFloat(ctotal).toFixed(2);
-    $scope.dc = parseFloat(ctotal).toFixed(2) >= 250 ? 0 : 10;
+    $scope.dc =
+      parseFloat(ctotal).toFixed(2) >= $scope.deliveryFreePrice
+        ? 0
+        : parseFloat($scope.deliveryCharge).toFixed(2);
     $scope.cartGrand = (parseFloat(ctotal) + parseFloat($scope.dc)).toFixed(2);
+    console.log($scope.dc);
   };
-  $scope.cartTotal();
+
   $scope.verifyToken = function(coupon) {
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
@@ -283,8 +315,10 @@ app.controller("cart", function(
     cp.onsubmit();
   };
   $scope.checkorder_value = function(order_value) {
-    if (order_value < 50) {
-      toastr.warning("Order Value should be more then 50 AED!");
+    if (order_value < $scope.minOrderAmt) {
+      toastr.warning(
+        `Order Value should be more then ${$scope.minOrderAmt} AED!`
+      );
     } else {
       $("#cartsubmit").submit();
     }

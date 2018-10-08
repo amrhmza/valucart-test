@@ -111,6 +111,25 @@ app.factory("cart", function($http, config, $q) {
           q.reject(err);
         });
       return q.promise;
+    },
+    getsetting: function() {
+      var q = $q.defer();
+      var suggestURL = config.settings;
+      $http({
+        method: "GET",
+        url: suggestURL,
+        type: "json",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
     }
   };
 });

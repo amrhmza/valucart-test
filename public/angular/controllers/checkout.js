@@ -20,6 +20,33 @@ app.controller("checkout", function(
   $scope.addresschange = function(data) {
     $scope.address_id = data;
   };
+  cart
+    .getsetting()
+    .then(function(response) {
+      if (response.data.results.status != "200") {
+        console.log(response.data.results);
+        $scope.dc =
+          $scope.cartGrand > parseFloat(response.data.results.deliveryFreePrice)
+            ? 0
+            : parseFloat(response.data.results.deliveryCharge);
+        $scope.deliveryFreePrice = parseFloat(
+          response.data.results.deliveryFreePrice
+        );
+        $scope.deliveryCharge = parseFloat(
+          response.data.results.deliveryCharge
+        );
+        $scope.minOrderAmt = parseFloat(response.data.results.minOrderAmt);
+      } else {
+        $scope.deliveryFreePrice = 250;
+        $scope.deliveryCharge = 10;
+        $scope.minOrderAmt = 50;
+      }
+    })
+    .catch(function(response) {
+      // toastr.warning(response.data.results.msg);
+      $scope.deliveryFreePrice = 250;
+      $scope.deliveryCharge = 10;
+    });
   addNewAddress
     .cityarea_get()
     .then(function(response) {
@@ -161,8 +188,8 @@ app.controller("checkout", function(
           $scope.cartGrand = Number(
             parseFloat(data.response.discounted_price).toFixed(2)
           );
-          if ($scope.cartGrand < 250) {
-            $scope.dc = 10;
+          if ($scope.cartGrand < $scope.deliveryFreePrice) {
+            $scope.dc = $scope.deliveryCharge;
           } else {
             $scope.dc = 0;
           }
@@ -183,8 +210,8 @@ app.controller("checkout", function(
     $scope.cartGrand = parseFloat(
       Number($scope.cartGrand) + Number($scope.cartsaving)
     );
-    if ($scope.cartGrand < 250) {
-      $scope.dc = 10;
+    if ($scope.cartGrand < $scope.deliveryFreePrice) {
+      $scope.dc = $scope.deliveryCharge;
     } else {
       $scope.dc = 0;
     }
@@ -224,8 +251,10 @@ app.controller("checkout", function(
     }
   };
   $scope.checkorder_value = function(order_value) {
-    if (order_value < 50) {
-      toastr.warning("Order Value should be more then 50 AED!");
+    if (order_value < $scope.minOrderAmt) {
+      toastr.warning(
+        `Order Value should be more then ${$scope.minOrderAmt} AED!`
+      );
     } else {
       $("#cartsubmit").submit();
     }

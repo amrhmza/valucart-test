@@ -8,7 +8,7 @@ var auth = require("../lib/auth.js");
 router.get("/:list_id", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
-    var list_id = req.param("list_id");
+    var list_id = req.params.list_id;
     let shoppingList = await getshoppingList.getshoppinglist(
       JSON.parse(cookies),
       list_id
@@ -55,4 +55,45 @@ router.get(
     }
   }
 );
+/* Create Shoping list . */
+router.get(
+  "/create-process/:order_id",
+  auth.ensureAuthenticated,
+  async (req, res, next) => {
+    try {
+      let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+      var list_id = req.params.order_id;
+      res.render("schedule_common", {
+        data: list_id,
+        angular: false,
+        customjs: false,
+        search: 0,
+        catdrop: 1,
+        cookies: cookies
+      });
+    } catch (error) {
+      console.log(error);
+
+      error_404(res);
+    }
+  }
+);
+router.post("/create", auth.ensureAuthenticated, async (req, res, next) => {
+  try {
+    var list_data = req.body;
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let shoppingList = await getshoppingList.createShoppingListv2(
+      JSON.parse(cookies),
+      list_data
+    );
+    if (shoppingList) {
+      req.flash("success", "Shopping List created successfully!!");
+    } else {
+      req.flash("warning", "Shopping List failed to create!!");
+    }
+    res.redirect("/schedule-list");
+  } catch (error) {
+    error_404(res);
+  }
+});
 module.exports = router;

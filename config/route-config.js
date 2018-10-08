@@ -64,8 +64,8 @@
     app.use("/mybundles", mybundlesRouter);
     app.use("/myorders", myordersRouter);
     app.use("/myorder-details", myorderdetailsRouter);
-    app.use("/myshopping", myshoppingRouter);
-    app.use("/myshopping-dashboard", myshoppingdashboardRouter);
+    app.use("/schedule-detail", myshoppingRouter);
+    app.use("/schedule-list", myshoppingdashboardRouter);
     app.use("/new-address", newaddressRouter);
     app.use("/order-tracking", ordertrackingRouter);
     app.use("/otp", otpRouter);

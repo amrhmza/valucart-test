@@ -55,20 +55,20 @@
                             <p class="progresstext order-m40">
                                 Near To You
                             </p>
-                            <p class="packcount">Estimated Delivery:
+                            <!-- <p class="packcount">Estimated Delivery:
                                 <span class="deliverydate">
                                 </span>
-                            </p>
+                            </p> -->
                         </div>
                         <div ng-switch-when="9">
                             <p class="progresstext order-m40">
                                 Shipped
                             </p>
-                            <p class="packcount">Estimated Delivery:
+                            <!-- <p class="packcount">Estimated Delivery:
                                 <span class="deliverydate">
                                     Aug 27th 2018
                                 </span>
-                            </p>
+                            </p> -->
                         </div>
                         <div ng-switch-when="8">
                             <p class="progresstext order-m40">
@@ -149,7 +149,7 @@
         <div ng-if="$last" class="row">
             <div class="cancelorder">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-offset-6 col-sm-6" ng-if="(order.o_order_status_id !== 8) && (order.o_order_status_id !== 12)">
+                    <div class="col-xs-6 col-sm-offset-6 col-sm-6" ng-if="((order.o_order_status_id !== 8) && (order.o_order_status_id !== 12)) && (order.o_order_status_id !== 11)">
                         <a href="/cancel-order/{{order.o_id}}" class="">
                             <img src="img/cancelimg.png" class="img-responsive cancelimg">Cancel Order</a>
                     </div>

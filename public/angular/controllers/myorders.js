@@ -27,7 +27,7 @@ app.controller("order_list", function(
           angular.forEach(listdata, function(value, key) {
             const ordDate = new Date(value.o_added_dt);
             value.o_delivery_dt = moment(ordDate)
-              .add("days", 5)
+              .add("days", 2)
               .format("MMM Do YYYY");
             $scope.orderData.push(value);
           });
