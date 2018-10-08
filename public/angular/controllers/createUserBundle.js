@@ -1,4 +1,4 @@
-app.controller("createUserBundle", function(
+app.controller("createUserBundle", function (
   $scope,
   $rootScope,
   $location,
@@ -13,24 +13,28 @@ app.controller("createUserBundle", function(
 ) {
   $scope.mybundle_name = "";
   $scope.edit_title = 0;
-  $scope.init = function() {
+  $scope.init = function () {
     // $(".loader").removeClass("hidden");
     createUserbundle
       .getDetails(order_id.order_id)
-      .then(function(response) {
+      .then(function (response) {
         // $(".loader").addClass("hidden");
         $scope.mybundle = response.data.results.response.order_products;
         $scope.mybundle_name = querydata.bundlename;
       })
-      .catch(function(response) {
+      .catch(function (response) {
         // $(".loader").addClass("hidden");
         console.log(response);
       });
   };
   $scope.init();
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
+    if (parseInt(currentVal) >= 5) {
+      toastr.warning("Cannot add more than 5 items of same product.");
+      return
+    }
     // If is not undefined
     if (!isNaN(currentVal)) {
       // Increment
@@ -48,7 +52,7 @@ app.controller("createUserBundle", function(
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -67,10 +71,10 @@ app.controller("createUserBundle", function(
     $scope.cartTotal();
   };
 
-  $scope.cartTotal = function() {
+  $scope.cartTotal = function () {
     var subtotal = 0,
       savingstotal = 0;
-    angular.forEach(angular.element(".productcount"), function(value, key) {
+    angular.forEach(angular.element(".productcount"), function (value, key) {
       var a = angular.element(value);
       subtotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
@@ -85,7 +89,7 @@ app.controller("createUserBundle", function(
     $scope.grandTotal = grandtotal;
   };
 
-  $scope.change_title = function() {
+  $scope.change_title = function () {
     if ($scope.edit_title == 0) {
       $scope.edit_title = 1;
     } else {
@@ -151,7 +155,7 @@ app.controller("createUserBundle", function(
   //user_bundle Update//
   var cp = document.forms.createBundle,
     elem = cp.elements;
-  cp.onsubmit = function() {
+  cp.onsubmit = function () {
     // $(".loader").removeClass("hidden");
     let product_ids = [];
     let proceed = 0;
@@ -193,7 +197,7 @@ app.controller("createUserBundle", function(
     if (proceed == 1) {
       createUserbundle
         .insertBundleWithProduct(insertdata)
-        .then(function(response) {
+        .then(function (response) {
           var res = response.data.results;
           if (res.msg == "success") {
             // $(".loader").addClass("hidden");
@@ -206,7 +210,7 @@ app.controller("createUserBundle", function(
             }
           }
         })
-        .catch(function(response) {
+        .catch(function (response) {
           // $(".loader").addClass("hidden");
           console.log(response);
         });

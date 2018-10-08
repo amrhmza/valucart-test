@@ -48,6 +48,10 @@ app.controller("home", function (
   $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
+    if (parseInt(currentVal) >= 5) {
+      toastr.warning("Cannot add more than 5 items of same product.");
+      return
+    }
     // If is not undefined
     if (!isNaN(currentVal)) {
       // Increment

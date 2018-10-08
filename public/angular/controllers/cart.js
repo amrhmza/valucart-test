@@ -1,4 +1,4 @@
-app.controller("cart", function(
+app.controller("cart", function (
   $scope,
   $rootScope,
   $location,
@@ -16,24 +16,28 @@ app.controller("cart", function(
   $scope.cartGrand = parseFloat(cartData.cartSum.toFixed(2));
   $scope.dc = $scope.cartGrand > 250 ? 0 : 10;
   $scope.edit_title = 0;
-  $scope.addtocart = function(data) {
+  $scope.addtocart = function (data) {
     product_details
       .addToCart($scope.qty, data)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
           window.location = "/cart";
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response.data.results.msg);
       });
   };
 
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     let qty = currentVal + 1;
+    if (parseInt(currentVal) >= 5) {
+      toastr.warning("Cannot add more than 5 items of same product.");
+      return
+    }
     // If is not undefined
     if (!isNaN(currentVal)) {
       // Increment
@@ -52,7 +56,7 @@ app.controller("cart", function(
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     let qty = currentVal - 1;
     // If is not undefined
@@ -72,16 +76,16 @@ app.controller("cart", function(
     $scope.cartTotal();
   };
 
-  $scope.updateCart = function(qty, index) {
+  $scope.updateCart = function (qty, index) {
     cart
       .quantityUpdate(qty, index)
-      .then(function(response) {})
-      .catch(function(response) {
+      .then(function (response) { })
+      .catch(function (response) {
         // toastr.warning(response.data.results.msg);
       });
   };
 
-  $scope.removeCart = function(cart_id, is_bundle, item) {
+  $scope.removeCart = function (cart_id, is_bundle, item) {
     var elem = angular.element(item);
     let productData = {
       ct_id: cart_id
@@ -93,7 +97,7 @@ app.controller("cart", function(
 
     cart
       .removeCart(productData, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         var res = response.data.results;
         if (res.status == 200) {
@@ -112,32 +116,32 @@ app.controller("cart", function(
           toastr.success(res.msg);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
-  $scope.deleteBundle = function(ub_id, e) {
+  $scope.deleteBundle = function (ub_id, e) {
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
       .removeUserbundle(ub_id, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         var res = response.data.results;
         if (res.status == "200") {
           $("#mybnd-desktop,.ub_idd,#mybnd-desktop-text").remove();
           toastr.success("User Bundle Deleted Successfully!!");
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
-  $scope.cartTotal = function() {
+  $scope.cartTotal = function () {
     var ctotal = 0.0;
-    angular.forEach(angular.element(".productcount"), function(value, key) {
+    angular.forEach(angular.element(".productcount"), function (value, key) {
       var a = angular.element(value);
       ctotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
@@ -147,14 +151,14 @@ app.controller("cart", function(
     $scope.cartGrand = (parseFloat(ctotal) + parseFloat($scope.dc)).toFixed(2);
   };
   $scope.cartTotal();
-  $scope.verifyToken = function(coupon) {
+  $scope.verifyToken = function (coupon) {
     var userAuth = typeof $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
     var usertoken = userAuth != "" ? userAuth.token : "";
     cart
       .verifyCoupon(coupon, $scope.cartGrand, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         if (response.status == 200) {
           toastr.success("Coupon valid and applied");
           let data = response.data.results;
@@ -166,19 +170,19 @@ app.controller("cart", function(
           toastr.info("Coupon not valid");
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         let data = response.data.error;
         toastr.info(data.msg);
       });
   };
-  $scope.removeCoupon = function() {
+  $scope.removeCoupon = function () {
     $scope.cartGrand += $scope.cartsaving;
     delete $scope.cartsaving;
     $scope.applied = 1;
     $scope.coupon = "";
   };
 
-  $scope.addwish = function(product_id, is_bundle, item) {
+  $scope.addwish = function (product_id, is_bundle, item) {
     var userAuth = $.cookie("vcartAuth")
       ? JSON.parse($.cookie("vcartAuth"))
       : "";
@@ -203,7 +207,7 @@ app.controller("cart", function(
 
     getWishList
       .addWish(productData, usertoken)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         var res = response.data.msg;
         if (res == "success") {
@@ -218,13 +222,13 @@ app.controller("cart", function(
           }
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log(response);
       });
   };
 
   $scope.edit_title = 0;
-  $scope.change_title = function() {
+  $scope.change_title = function () {
     if ($scope.edit_title == 0) {
       $(this)
         .find("img")
@@ -241,7 +245,7 @@ app.controller("cart", function(
   if (angular.element("#mybnd-desktop").length) {
     var cp = document.forms.updateBundleName,
       elem = cp.elements;
-    cp.onsubmit = function() {
+    cp.onsubmit = function () {
       var a = 0;
       if (!elem.bundlename.value) {
         toastr.error("Bundle name is must.");
@@ -263,7 +267,7 @@ app.controller("cart", function(
 
         cart
           .updateBundleName(userData, userToken)
-          .then(function(response) {
+          .then(function (response) {
             console.log(response);
             if (response.data.results.status == 200) {
               toastr.success("Bundle Name Updated Successfully");
@@ -273,16 +277,16 @@ app.controller("cart", function(
               toastr.warning("Somthing Went Wrong");
             }
           })
-          .catch(function(response) {
+          .catch(function (response) {
             console.log(response);
           });
       }
     };
   }
-  $scope.save_title = function() {
+  $scope.save_title = function () {
     cp.onsubmit();
   };
-  $scope.checkorder_value = function(order_value) {
+  $scope.checkorder_value = function (order_value) {
     if (order_value < 50) {
       toastr.warning("Order Value should be more then 50 AED!");
     } else {

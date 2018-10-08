@@ -1,4 +1,4 @@
-app.controller("userbundle", function(
+app.controller("userbundle", function (
   $scope,
   $rootScope,
   $location,
@@ -15,19 +15,23 @@ app.controller("userbundle", function(
   $scope.edit_title = 0;
   userbundle
     .getDetails(dataset.bundleId)
-    .then(function(response) {
+    .then(function (response) {
       $scope.mybundle_detail = response.data.results.response;
       $scope.mybundle = response.data.results.response.product;
       $scope.mybundle_dates = response.data.results.response;
       $scope.mybundle_name = response.data.results.response.ub_name;
       $scope.ub_id = response.data.results.response.ub_id;
     })
-    .catch(function(response) {
+    .catch(function (response) {
       console.log(response);
     });
-  $scope.qty_plus = function(fieldName, index) {
+  $scope.qty_plus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal + 1;
+    if (parseInt(currentVal) >= 5) {
+      toastr.warning("Cannot add more than 5 items of same product.");
+      return
+    }
     // If is not undefined
     if (!isNaN(currentVal)) {
       // Increment
@@ -46,7 +50,7 @@ app.controller("userbundle", function(
   };
 
   // This button will decrement the value till 0
-  $scope.qty_minus = function(fieldName, index) {
+  $scope.qty_minus = function (fieldName, index) {
     var currentVal = parseInt($("input[name=" + fieldName + index + "]").val());
     $scope.qty = currentVal - 1;
     // If is not undefined
@@ -65,10 +69,10 @@ app.controller("userbundle", function(
     $scope.cartTotal();
   };
 
-  $scope.cartTotal = function() {
+  $scope.cartTotal = function () {
     var subtotal = 0,
       savingstotal = 0;
-    angular.forEach(angular.element(".productcount"), function(value, key) {
+    angular.forEach(angular.element(".productcount"), function (value, key) {
       var a = angular.element(value);
       subtotal +=
         parseFloat(a.attr("data-price")) * parseFloat(a.attr("data-qty"));
@@ -83,7 +87,7 @@ app.controller("userbundle", function(
     $scope.grandTotal = grandtotal.toFixed(2);
   };
 
-  $scope.change_title = function() {
+  $scope.change_title = function () {
     if ($scope.edit_title == 0) {
       $scope.edit_title = 1;
     } else {
@@ -94,7 +98,7 @@ app.controller("userbundle", function(
   //user_bundle Update//
   var cp = document.forms.user_bundle,
     elem = cp.elements;
-  cp.onsubmit = function() {
+  cp.onsubmit = function () {
     let product_ids = [];
     let proceed = 0;
     $scope.mybundle.forEach(element => {
@@ -129,7 +133,7 @@ app.controller("userbundle", function(
     if (proceed == 1) {
       userbundle
         .editBundle(editdata)
-        .then(function(response) {
+        .then(function (response) {
           var res = response.data.results;
           if (res.msg == "success") {
             // toastr.success("Update Successfully..!");
@@ -140,7 +144,7 @@ app.controller("userbundle", function(
             // $window.location.href = "/mybundles";
           }
         })
-        .catch(function(response) {
+        .catch(function (response) {
           console.log(response);
         });
     } else {
@@ -204,10 +208,10 @@ app.controller("userbundle", function(
   //     });
   // };
 
-  $scope.bundle_addtocart = function(data) {
+  $scope.bundle_addtocart = function (data) {
     mybundle_addtocart
       .addToCart(data)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
@@ -218,17 +222,17 @@ app.controller("userbundle", function(
           $(".cart-label").text(newCartQty);
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response.data.error.response);
       });
   };
   /**
    * Add to cart functionality for checkout button on the popup
    */
-  $scope.bundle_checkout = function(data) {
+  $scope.bundle_checkout = function (data) {
     mybundle_addtocart
       .addToCart(data)
-      .then(function(response) {
+      .then(function (response) {
         if (response.data.results.status != "200") {
           toastr.warning(response.data.results.msg);
         } else {
@@ -240,15 +244,15 @@ app.controller("userbundle", function(
           $window.location.href = "/cart";
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         $window.location.href = "/cart";
         toastr.warning(response.data.error.response);
       });
   };
-  $scope.bundle_unsbuscribe = function(data) {
+  $scope.bundle_unsbuscribe = function (data) {
     mybundle_addtocart
       .unSubscribe(data)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         if (response.data.results.status != "200") {
           toastr.warning("Somthing Went Wrong..!");
@@ -256,7 +260,7 @@ app.controller("userbundle", function(
           location.reload();
         }
       })
-      .catch(function(response) {
+      .catch(function (response) {
         toastr.warning(response);
       });
   };
