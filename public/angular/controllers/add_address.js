@@ -65,11 +65,11 @@ app.controller("add_address", function(
       elem.area_id.focus();
       a = 1;
     }
-    if (!elem.postalcode.value) {
-      toastr.error("Postalcode is Required");
-      elem.postalcode.focus();
-      a = 1;
-    }
+    // if (!elem.postalcode.value) {
+    //   toastr.error("Postalcode is Required");
+    //   elem.postalcode.focus();
+    //   a = 1;
+    // }
 
     if (a == 1) {
       return false;

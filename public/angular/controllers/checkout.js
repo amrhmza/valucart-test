@@ -119,11 +119,11 @@ app.controller("checkout", function(
         elem.area_id.focus();
         a = 1;
       }
-      if (!elem.postalcode.value) {
-        toastr.error("ZIP is Required");
-        elem.postalcode.focus();
-        a = 1;
-      }
+      // if (!elem.postalcode.value) {
+      //   toastr.error("ZIP is Required");
+      //   elem.postalcode.focus();
+      //   a = 1;
+      // }
 
       if (a == 1) {
         // $(".loader").addClass("hidden");
