@@ -1,11 +1,11 @@
 <% include template/header %>
     <!--  bundle  Product  starts here-->
-    <div class="bnd-products" ng-app="myapp" ng-controller="myshippingList">
+    <div class="bnd-products">
         <div class="container-fluid create-bundle" style="margin-top: 20px;">
             <div class="container">
                 <div class="row" id="cBundle-desktop">
                     <h4>
-                        <img src="img/bundle-2.png" alt="choose-bundle" /> My Shopping</h4>
+                        <img src="img/bundle-2.png" alt="choose-bundle" /> My Schedule</h4>
                 </div>
                 <input type="hidden" class="shiplistId" value="<%=data[0].sl_id%>">
                 <% var listProducts= data[0].products %>
@@ -15,13 +15,11 @@
                 </div>
                 
                 <div class="row">
-                    <div class="edit-bundle" data-ng-init='shiplisttitle="<%= data[0].sl_name %>"'>
-                        <h5 style="display: inline-block;" ng-hide="edit_title">{{shiplisttitle}}</h5>
-                        <input type="text" name="bundlename" class="form-control-static title-input shiplistTitle" ng-show="edit_title" 
-                        ng-model="shiplisttitle" value="<%= data[0].sl_name %>" >
-                        <a class="pull-right btn-edit-title" ng-click="change_title()">
+                    <div class="edit-bundle">
+                        <h5 style="display: inline-block;" ><%= data[0].sl_name %></h5>
+                        <!--<a class="pull-right btn-edit-title" ng-click="change_title()">
                             <img src="img/edit-bundle.png" alt="edit-bundle"/>
-                        </a>
+                        </a>-->
                     </div>
                 </div>
             </div>
@@ -51,32 +49,35 @@
 
                                     <div class="col-md-3 col-xs-4 mobright">
                                         <!-- <p class="discountprice hidden-xs">-10%</p> -->
-                                        <img src=" <%=prodata.p_image%>" class="img-responsive productimg"> </div>
+                                        <img src=" <%=pro.userbundle_flag==true?'/img/byob.png':prodata.p_image%>" class="img-responsive productimg"> </div>
                                     <div class="col-md-7 col-xs-6">
                                         <p class="discountprice mob-dprice hidden-sm hidden-md hidden-lg">-10%</p>
                                         <h4><a href="<%=product_url%>"><%=pro.product_name%></a></h4>
-                                        <p><%=prodata.pd_description.substring(0, 250)%></p>
-                                        <div class="col-xs-4 col-sm-6 col-md-4 mobile-pad no-pad">
+                                        <% pro.product.forEach(function(prod){
+                                            var pname=prod.pd_name;
+                                        if(pro.userbundle_flag==true){
+                                            var pqty=prod.slpb_qty;
+                                        }else if(pro.bundle_flag==true){
+                                            var pqty=prod.product_qty;
+                                        }else{
+                                            var pqty=prod.order_qty;
+                                        }
+                                        %>
+                                        <h6 class="detail-text">-
+                                        <%=pname%> (<strong> <%=pqty%></strong>)
+                                        </h6>
+                                        <% })%>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 mobile-pad no-pad">
                                             <div class="productcountdiv button-container">
-                                                <button class="btn btn-default productminus cart-qty-minus" ng-click="qty_minus('qty_',<%=prodata.pd_id%>)" value="-">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <input type="text" name="qty_<%=prodata.pd_id%>" data-id="<%=prodata.pd_id%>" data-qty="<%=prodata.order_qty%>" data-price="<%=prodata.p_price%>" maxlength="12" value="<%=prodata.order_qty%>" class="input-text qty productcount"/>
-                                                <button class="btn btn-default productplus cart-qty-plus" ng-click="qty_plus('qty_',<%=prodata.pd_id%>)" value="+">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                                <h3><strong><%=pro.qty%></strong> Count</h3>
                                             </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-8">
-                                            <h6 class="rate">
-                                                <span><%=prodata.p_price%> AED</span> <%=prodata.p_price%> AED</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <%
-                        });
+                     });
                         %>
 
                         <!-- <div id="shop-desktop">
@@ -87,57 +88,45 @@
                     </div>
                     <div class="col-md-4 mybundleit" style="margin-top: 10px;" id="summary-desktop">
                         <div class="summary bnd-products">
-                            <h4 class="order">Order Summary</h4>
-                            <%
-                            var subtotal=0, grandtotal=0;
-                            listProducts.forEach(function(pro){
-                                var prodata= pro.product[0];
-                                subtotal += parseFloat(prodata.order_qty) * parseFloat(prodata.p_price);
-                            });
-                                grandtotal= parseFloat(subtotal) + parseFloat(15);
-                            %>
+                            <h4 class="order">Schedule Summary</h4>
                             <div id="subtotal">
-                                <h5 class="total">Subtotal</h5>
-                                <h5 class="total subTotal" style="float: right;"><%=subtotal%> AED</h5>
+                                <h5 class="total">Start Date</h5>
+                                <h5 class="total subTotal" style="float: right;"><%=moment(data[0].slp_start_date).format('MMM Do YYYY');%></h5>
                                 <hr>
                             </div>
                             <div id="delivery">
-                                <h5 class="total">Delivery Charges</h5>
-                                <h5 class="total" style="float: right;">15.00 AED</h5>
+                                <h5 class="total">End Date</h5>
+                                <h5 class="total" style="float: right;"><%=moment(data[0].slp_end_date).format('MMM Do YYYY');%></h5>
                             </div>
-                            <!-- 
-                            <div id="savings" style="margin-top: 20px">
-                                <h5 class="total">
-                                    <strong>savings</strong>
-                                </h5>
-                                <h5 class="total" style="float: right;">
-                                    <strong>7.50 AED</strong>
-                                </h5>
+                            <div id="delivery">
+                                <h5 class="total">Previous Delivery Date</h5>
+                                <h5 class="total" style="float: right;"><%= data[0].slp_last_delivery_date!=null?moment(data[0].slp_last_delivery_date).format('MMM Do YYYY'):'N-A';%></h5>
                             </div>
-                             -->
+                            <div id="delivery">
+                                <h5 class="total">Next Delivery Date</h5>
+                                <h5 class="total" style="float: right;"><%=moment(data[0].slp_next_delivery_date).format('MMM Do YYYY');%></h5>
+                            </div>
                             <div id="total" style="margin-top: 20px">
                                 <h5 class="total">
-                                    <strong>Grand total</strong>
-                                    <br>
-                                    <span>(inclusive of 5%VAT)</span>
+                                    <strong>Schedule Value</strong>
                                 </h5>
                                 <h5 class="total" style="float: right;">
-                                    <strong class="grandTotal"><%=grandtotal%> AED</strong>
+                                    <strong class="grandTotal"><%=data[0].slp_price%> AED</strong>
                                 </h5>
                             </div>
                         </div>
-                        <button type="button" class="btn-proceed" ng-click="getshiplist()">Create(1/2)</button>
-                        <button type="reset" class="btn-cancel">Cancel</button>
+                        <!--<button type="button" class="btn-proceed" ng-click="getshiplist()">Create(1/2)</button>-->
+                        <a href="/schedule-list" class="btn-cancel">GO Back</a>
                     </div>
                 </div>
-                <div class="row" id="summary-mobile">
+               <!-- <div class="row" id="summary-mobile">
                     <div class="col-md-4 no-pad summary summary1">
                         <div class="btn-align">
                             <button type="button" class="btn-cancel">Cancel</button>
                             <button type="reset" class="btn-proceed">Create(1/2)</button>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </form>
             </div>
         </div>

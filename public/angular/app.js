@@ -70,7 +70,8 @@ app.constant("config", {
   getcityarealist: baseurl + "/userProfile/getcityarealist",
   update_mybundle_singlewithoutbundleid:
     baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId",
-  adduserbundletocart: baseurl + "/cart/adduserbundletocart"
+  adduserbundletocart: baseurl + "/cart/adduserbundletocart",
+  settings: baseurl + "/settings"
 });
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

@@ -47,7 +47,30 @@ let createShoppingList = async (cookies, list_id) => {
     throw error;
   }
 };
+/**
+ *
+ * @param {object} cookies
+ * @param {number} list_id
+ */
+let createShoppingListv2 = async (cookies, postdata) => {
+  try {
+    let getparam = axios_config;
+    getparam["headers"] = {
+      Authorization: "Bearer " + cookies.token
+    };
+    let response = await axios.post("/shopping_list/v2", postdata, getparam);
+    response = response.data.results.response;
+    if (response) {
+      return response;
+    } else {
+      throw "error";
+    }
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   getshoppinglist,
-  createShoppingList
+  createShoppingList,
+  createShoppingListv2
 };

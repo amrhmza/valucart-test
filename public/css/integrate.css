@@ -1827,3 +1827,6 @@ h4.pleft150.colorbl {
 img.img-responsive.navbar-brand2.ad {
   height: 36px;
 }
+a.btn-cancel {
+  padding-top: 10px !important;
+}
