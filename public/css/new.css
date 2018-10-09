@@ -152,7 +152,8 @@
   box-shadow: none;
   font-family: "Helvetica Neue LT Pro 45 Light";
   height: auto;
-  padding: 4px 15px;
+  padding: 14px 15px;
+  letter-spacing: 1px;
 }
 
 .mob-search input:focus {
@@ -508,7 +509,7 @@
 
 .cat-sec {
   background: transparent;
-  padding: 60px 40px 60px 40px;
+  padding: 0px 40px 0px 40px;
 }
 
 .cat-sec .item {
@@ -911,6 +912,18 @@
     /* Microsoft Edge */
     font-size: 10px !important;
   }
+
+  .nt-txt-1.mob-nt {
+    display: block !important;
+  }
+
+  .desk-nt {
+    display: none !important;
+  }
+
+  .nt-txt-2 {
+    width: 100% !important;
+  }
 }
 
 @media only screen and (max-width: 667px) {
@@ -964,4 +977,29 @@
   width: 38px;
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.nt-txt-1 {
+  background: #8505ff;
+  color: #ffea1b;
+  font-size: 13px;
+  float: right;
+  padding: 5px 12px;
+  position: relative;
+  top: 9px;
+}
+
+.nt-txt-2 {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 430px;
+}
+
+.nt-txt-1.mob-nt {
+  display: none;
+  top: 1px;
+  width: 100%;
+  text-align: center;
 }
