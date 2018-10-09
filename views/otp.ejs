@@ -48,22 +48,22 @@
         </p>
         <form class="form-inline mob-inline" name="formOtp" style="margin-top: 40px;">
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1" autofocus>
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1" autofocus>
             </div>
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <div class="form-group">
-                <input type="phone" name="otpvalue" class="form-control otpvalue" maxlength="1">
+                <input type="tel" name="otpvalue" class="form-control otpvalue" maxlength="1">
             </div>
             <button class="btn btn-info submitbtn" type="submit">Submit</button>
             <p class="otp-bottom">
@@ -82,7 +82,7 @@
 </html>
 <script>
     $(document).ready(function () {
-        $(document).on("keypress", "input", function () {
+        $(document).on("keyup", "input", function () {
             $(this).parent("div").next(".form-group").find("input").focus();
         });
     });
