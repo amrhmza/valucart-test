@@ -40,6 +40,7 @@
     <!-- fontawesome-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,6 +53,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -121,12 +123,6 @@
     <div class="container-fluid headertop">
         <div class="v-container">
             <ul class="list-inline headerlist">
-               <!-- <li>
-                    <a href="tel:+97142231188">
-                        <p style="margin: 0px;padding-right: 5px;">
-                            <img src="img/phone.svg" width="14"> +971 4 2231188</p>
-                    </a>
-                </li>-->
                 <li class="hidden">
                     <a href="/city">
                         <p style="margin: 0px;padding-right: 5px;">
@@ -202,7 +198,7 @@
                         <i class="fa fa-ellipsis-v"></i>
                     </span>
                 </div> -->
-                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 ">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 ">
                     <div class="nav-bar v-nav-var hidden-lg hidden-md hidden-sm" onclick="openNav()">
                         <img src="img/navbar.svg" alt="" width="18">
                     </div>
@@ -225,8 +221,9 @@
                             </div>
                         </form>
                     </div>
+                    <marquee style="color:red" class="navbar-collapse v-nav-var hidden-sm hidden-xs"> no delivery on Friday</marquee>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <ul class="list-inline navlist">
                         <li class="hidden-lg hidden-md">
                             <div class="searchnav searchnavMob">
