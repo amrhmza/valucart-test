@@ -16,8 +16,8 @@
                         if(slides.hb_image)
                         %>
       <div class="item">
-        <img src="<%= slides.hb_image %>" alt="" class="desk">
-        <img src="<%= slides.hb_image_mobi %>" alt="" class="mob"> 
+        <a href="<%= slides.hb_external_link %>"><img src="<%= slides.hb_image %>" alt="" class="desk"></a>
+        <a href="<%= slides.hb_external_link %>"><img src="<%= slides.hb_image_mobi %>" alt="" class="mob"></a> 
         <!--<img src="img/bn1.png" alt="" class="mob">-->
       </div>
       <%

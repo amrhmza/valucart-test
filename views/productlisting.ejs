@@ -45,7 +45,7 @@
                         if(slides.hb_image)
                 %>
             <div class="item <%= (no==0)?'active':'';%>">
-                <img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"> </div>
+            <a href="<%= slides.hb_external_link %>"><img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"></a> </div>
             <%
                     no++;
                     })
