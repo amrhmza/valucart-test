@@ -1,7 +1,7 @@
-(function(routeConfig) {
+(function (routeConfig) {
   "use strict";
 
-  routeConfig.init = function(app) {
+  routeConfig.init = function (app) {
     // *** routes *** //
     const cityRouter = require("../routes/select_city");
     const areaRouter = require("../routes/select_area");
@@ -38,6 +38,7 @@
     const faqRouter = require("../routes/faq.js");
     const termsRouter = require("../routes/terms.js");
     const privacyRouter = require("../routes/privacy-policy.js");
+    const returnRouter = require("../routes/return-policy.js");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -79,5 +80,6 @@
     app.use("/faq", faqRouter);
     app.use("/terms-and-conditions", termsRouter);
     app.use("/privacy-policy", privacyRouter);
+    app.use("/return-policy", returnRouter);
   };
 })(module.exports);

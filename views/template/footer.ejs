@@ -6,10 +6,9 @@
                 <img src="img/logo.png" class="img-responsive footer-logo">
                 <ul class="footerlist">
                     <li><a href="about-us">About us</a></li>
-                    <li>Delivery policy</li>
                     <li><a href="terms-and-conditions">Terms & Conditions</a></li>
                     <li><a href="privacy-policy">Privacy policy</a></li>
-                    <li>Return policy</li>
+                    <li><a href="return-policy">Return policy</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -311,13 +310,16 @@
                 }
             }).done(function (resp) {
                 if (resp.results.status == "200") {
-                    if(resp.results.response.pendingBundle.length>0){
+                    if (resp.results.response.pendingBundle.length > 0) {
                         $("#bundleicon").removeClass("hide");
-                        localStorage.bundleCount = (resp.results.response.pendingBundle[0].c > 0) ? resp.results.response.pendingBundle[0].c : 0;
-                        var cartCount = (resp.results.response.pendingBundle[0].c > 0) ? resp.results.response.pendingBundle[0].c : 0;
-                        $("#bundleicon a").attr("href","/mybundles/view/"+resp.results.response.pendingBundle[0].ub_id)
+                        localStorage.bundleCount = (resp.results.response.pendingBundle[0].c > 0) ?
+                            resp.results.response.pendingBundle[0].c : 0;
+                        var cartCount = (resp.results.response.pendingBundle[0].c > 0) ? resp.results.response
+                            .pendingBundle[0].c : 0;
+                        $("#bundleicon a").attr("href", "/mybundles/view/" + resp.results.response.pendingBundle[
+                            0].ub_id)
                         $(".cart-label").text(cartCount);
-                    }else{
+                    } else {
                         $("#carticon").removeClass("hide");
                         var cartList = resp.results.response.cartItems;
                         var cartCount = (typeof cartList != "undefined") ? cartList.length : 0;
@@ -354,19 +356,18 @@
         // var note=localStorage.getItem('notified');
         // if(!note){
         //     localStorage.setItem('notified',1);
-            // swal({
-            //     title: 'delivery will start from 12th October!',
-            //     imageUrl: '/img/valucart-alart.png',
-            //     imageWidth: "100%",
-            //     width: 800,
-            //     imageAlt: 'Custom image',
-            //     animation: false,
-            //     showConfirmButton: false,
-            //     timer: 25000
-            //     })
-            // }
+        // swal({
+        //     title: 'delivery will start from 12th October!',
+        //     imageUrl: '/img/valucart-alart.png',
+        //     imageWidth: "100%",
+        //     width: 800,
+        //     imageAlt: 'Custom image',
+        //     animation: false,
+        //     showConfirmButton: false,
+        //     timer: 25000
+        //     })
+        // }
     });
-   
 </script>
 <% include login_post %>
 <script>

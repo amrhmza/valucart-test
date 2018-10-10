@@ -332,7 +332,9 @@ function topFunction() {
 $('.vc-bn-carousel').owlCarousel({
   loop: false,
   nav: true,
-  items: 1
+  items: 1,
+  dots: true,
+  autoplay: true
 });
 
 $('.pro-cr-1').owlCarousel({
