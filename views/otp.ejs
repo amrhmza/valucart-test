@@ -82,33 +82,21 @@
 
 </html>
 <script>
-    // $(document).ready(function () {
-    //     $(document).on("keyup", "input", function () {
-    //         $(this).parent("div").next(".form-group").find("input").focus();
-    //     });
-       
-    // });
-
+//   otp function
 $(document).ready(function () {
-   $('.otpvalue').keypress(function(event){
+   $('.otpvalue').keyup(function(e){
     var key = event.which;
-    if(key != 8 && isNaN(String.fromCharCode(key))){
-        event.preventDefault();
-    }
-     else{
-        $(this).parent("div").next(".form-group").find("input").focus();
-    }
-    }).keydown(function(e) {
-        if ((e.which == 8 || e.which == 46)) {
+        if ((key == 8 || key == 46) && $(this).text() =='') {
+            $(this).parent("div").prev(".form-group").find("input").focus();
+        } else if ((key == 8 || key == 46)) {
             $(this).val("");
             $(this).parent("div").prev(".form-group").find("input").focus();
             event.preventDefault();
-        }else if ((e.which == 8 || e.which == 46) && $(this).text() =='') {
-            $(this).parent("div").prev(".form-group").find("input").focus();
+        } else {
+             $(this).parent("div").next(".form-group").find("input").focus();
         }
     });
 });
-
 
     $(".vcartLogout").on("click", function () {
         $.removeCookie('vcartAuth', { path: '/' });
