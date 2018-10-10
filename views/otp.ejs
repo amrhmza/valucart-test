@@ -20,7 +20,7 @@
     <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
+   
     <% if(angular){ %>
         <!-- angular Libraries -->
         <script src="angular/lib/angular.min.js"></script>
@@ -71,6 +71,7 @@
                 <a class="vcartLogout text-white submitbtn">Logout</a>
             </p>
         </form>
+        
     </div>
     <footer>
         <h5>© 2018 Valucart. All rights reserved.</h5>
@@ -81,11 +82,33 @@
 
 </html>
 <script>
-    $(document).ready(function () {
-        $(document).on("keyup", "input", function () {
-            $(this).parent("div").next(".form-group").find("input").focus();
-        });
+    // $(document).ready(function () {
+    //     $(document).on("keyup", "input", function () {
+    //         $(this).parent("div").next(".form-group").find("input").focus();
+    //     });
+       
+    // });
+
+$(document).ready(function () {
+   $('.otpvalue').keypress(function(event){
+    var key = event.which;
+    if(key != 8 && isNaN(String.fromCharCode(key))){
+        event.preventDefault();
+    }
+     else{
+        $(this).parent("div").next(".form-group").find("input").focus();
+    }
+    }).keydown(function(e) {
+        if ((e.which == 8 || e.which == 46)) {
+            $(this).val("");
+            $(this).parent("div").prev(".form-group").find("input").focus();
+            event.preventDefault();
+        }else if ((e.which == 8 || e.which == 46) && $(this).text() =='') {
+            $(this).parent("div").prev(".form-group").find("input").focus();
+        }
     });
+});
+
 
     $(".vcartLogout").on("click", function () {
         $.removeCookie('vcartAuth', { path: '/' });
@@ -98,3 +121,4 @@
         location.reload(true);
     });
 </script>
+
