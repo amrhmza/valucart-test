@@ -218,12 +218,12 @@
                     </a>
                     <% } %>
                     <div class="searchnav hidden-sm hidden-xs">
-                        <form>
+                        <form action="search" method="get">
                             <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
                                 <label class="input-group-btn" for="searchLbl">
                                     <img src="img/search.svg" class="img-responsive searchicon" />
                                 </label>
-                                <input type="text" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
+                                <input type="text" name="q" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
                             </div>
                         </form>
                     </div>
@@ -564,7 +564,7 @@
                 }
                 else{
                 %>
-                <a href="#">
+                <a href="JavaScript:Void(0);">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a href="#" data-toggle="modal" data-target="#myModal">
@@ -575,7 +575,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="JavaScript:Void(0);">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a href="#" data-toggle="modal" data-target="#myModal">
