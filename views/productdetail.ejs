@@ -177,8 +177,8 @@
                                         <% if (data) %>
                                         <%= data.response[0].pd_name %>
                                     </h4>
-                                    <span class="color-red">
-                                        <%= data.response[0].stock_status_value %>
+                                    <span class="color">
+                                        <%= data.response[0].stock_status_value!=""?"only few left":"" %>
                                     </span>
                                     <h5 style="margin-bottom: 40px;">
                                         <img src="img/grammeter.png" class="img-responsive gramimg">

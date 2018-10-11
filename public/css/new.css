@@ -61,12 +61,12 @@
   font-family: "Helvetica Neue LT Pro 45 Light";
 }
 
-.headerlist.list-inline>li {
+.headerlist.list-inline > li {
   padding: 0 4px;
 }
 
 .headertop ul li a,
-.headerlist.list-inline>li p {
+.headerlist.list-inline > li p {
   color: #000000;
 }
 
@@ -169,7 +169,7 @@
 
 .headerlist li a,
 .headerlist li a:hover,
-.headerlist .dropdown.open>a {
+.headerlist .dropdown.open > a {
   color: #8505ff;
 }
 
@@ -178,7 +178,9 @@
   font-family: "Helvetica Neue LT Pro 55 Roman";
   margin-top: 12px;
 }
-
+li.af {
+  margin-top: -12px !important;
+}
 .navlist li {
   align-self: center;
   padding: 0 0 0 30px;
@@ -262,13 +264,15 @@
 .more-btn {
   color: #fff;
   padding: 4px 30px 4px 10px;
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px
+    center;
   background-size: 12px;
 }
 
 .more-btn:hover,
 .more-btn:focus {
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px
+    center;
   color: #fff;
   background-size: 12px;
   text-decoration: none;
@@ -301,7 +305,6 @@
   -moz-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button.owl-prev {
@@ -355,7 +358,8 @@
 }
 
 .vc-ad-box {
-  background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom 15px / 50%;
+  background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom
+    15px / 50%;
   border-right: 4px solid #fff;
   font-family: "Helvetica Neue LT Pro 55 Roman";
   padding: 50px 50px;
@@ -386,7 +390,8 @@
 }
 
 .spn-btn {
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 24px center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 24px
+    center;
   background-size: 14px;
   color: #fff;
   display: inline-block;
@@ -927,7 +932,6 @@
 }
 
 @media only screen and (max-width: 1247px) {
-
   .wl-txt,
   .no-item-lbl,
   .prof-lbl {
@@ -951,7 +955,8 @@
   }
 }
 
-@media only screen and (max-width: 667px) {}
+@media only screen and (max-width: 667px) {
+}
 
 @media only screen and (max-width: 568px) {
   .navlist li {
@@ -964,7 +969,8 @@
 
   .spn-btn {
     padding: 10px 40px 8px 16px;
-    background: #000 url(../img/vector-smart-object.png) no-repeat right 16px center / 12%;
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 16px
+      center / 12%;
   }
 }
 
