@@ -39,6 +39,7 @@
     const termsRouter = require("../routes/terms.js");
     const privacyRouter = require("../routes/privacy-policy.js");
     const returnRouter = require("../routes/return-policy.js");
+    const contactUs = require("../routes/contact-us.js");
 
     // *** register routes *** //
     app.use("/city", cityRouter);
@@ -81,5 +82,6 @@
     app.use("/terms-and-conditions", termsRouter);
     app.use("/privacy-policy", privacyRouter);
     app.use("/return-policy", returnRouter);
+    app.use("/contact-us", contactUs);
   };
 })(module.exports);
