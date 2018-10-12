@@ -331,7 +331,8 @@ li.af {
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button.owl-prev span,
-.pro-cr.owl-carousel .owl-nav button.owl-prev span {
+.pro-cr.owl-carousel .owl-nav button.owl-prev span,
+.bundle-cr.owl-carousel .owl-nav button.owl-prev span {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -345,7 +346,8 @@ li.af {
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button.disabled span,
-.pro-cr.owl-carousel .owl-nav button.disabled span {
+.pro-cr.owl-carousel .owl-nav button.disabled span,
+.bundle-cr.owl-carousel .owl-nav button.disabled span {
   opacity: 0.1;
 }
 
@@ -358,11 +360,16 @@ li.af {
 }
 
 .vc-ad-box {
+<<<<<<< HEAD
   background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom
     15px / 50%;
+=======
+  background: #860cf5;
+>>>>>>> origin/valuccart-oct-18
   border-right: 4px solid #fff;
   font-family: "Helvetica Neue LT Pro 55 Roman";
-  padding: 50px 50px;
+  padding: 10px 50px 4px 50px;
+  margin-top: 40px;
 }
 
 .vc-ad-box a {
@@ -376,10 +383,12 @@ li.af {
 }
 
 .vc-ad-box h2 {
-  color: #000000;
-  font-size: 50px;
+  color: #ffffff;
+  font-size: 32px;
   font-family: "Helvetica Neue LT Pro 95 Black";
-  margin: 0;
+  margin: 0 30px 0 0;
+  position: relative;
+  top: 7px;
 }
 
 .vc-ad-box p {
@@ -394,10 +403,15 @@ li.af {
     center;
   background-size: 14px;
   color: #fff;
-  display: inline-block;
   font-size: 14px;
   line-height: 24px;
   padding: 14px 50px 14px 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 50px;
+  height: 54px;
 }
 
 /* Products */
@@ -477,7 +491,8 @@ li.af {
   width: auto;
 }
 
-.pro-cr.owl-carousel .owl-nav button {
+.pro-cr.owl-carousel .owl-nav button,
+.bundle-cr.owl-carousel .owl-nav button {
   padding: 0 !important;
   height: 84px;
   width: 44px;
@@ -485,23 +500,39 @@ li.af {
   margin: auto;
 }
 
-.pro-cr.owl-carousel .owl-nav button.owl-prev {
+.pro-cr.owl-carousel .owl-nav button.owl-prev,
+.bundle-cr.owl-carousel .owl-nav button.owl-prev {
   left: -40px;
   border-radius: 0 8px 8px 0;
   box-shadow: 2px 0px 4px #dadada;
 }
 
-.pro-cr.owl-carousel .owl-nav button.owl-next {
+.bundle-cr.owl-carousel .owl-nav button.owl-prev {
+  box-shadow: -2px 0px 4px #dadada;
+}
+
+.pro-cr.owl-carousel .owl-nav button.owl-next,
+.bundle-cr.owl-carousel .owl-nav button.owl-next {
   right: -40px;
   border-radius: 8px 0px 0px 8px;
   box-shadow: -2px 0px 4px #dadada;
 }
 
-.pro-cr.owl-carousel .owl-nav button span i {
+.bundle-cr.owl-carousel .owl-nav button.owl-next {
+  box-shadow: 2px 0px 4px #dadada;
+}
+
+.pro-cr.owl-carousel .owl-nav button span i,
+.bundle-cr.owl-carousel .owl-nav button span i {
   display: none;
 }
 
-.pro-cr.owl-carousel .owl-nav button span {
+.bundle-cr.owl-carousel .owl-stage-outer {
+  padding-bottom: 0;
+}
+
+.pro-cr.owl-carousel .owl-nav button span,
+.bundle-cr.owl-carousel .owl-nav button span {
   background: url(../img/next-arrow@2x.png) no-repeat center center / 40%;
   display: inline-block;
   padding: 10px 15px;
@@ -706,20 +737,6 @@ li.af {
   margin-top: 0;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1440px) {
-  .vc-ad-box {
-    padding: 40px;
-  }
-
-  .vc-ad-box h2 {
-    font-size: 34px;
-  }
-
-  .vc-ad-box {
-    background-size: 52%;
-  }
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .navlist li {
     padding: 0 0 0 10px;
@@ -775,11 +792,7 @@ li.af {
 
   .vc-ad-box-2,
   .vc-ad-box {
-    padding: 30px 25px;
-  }
-
-  .vc-ad-box h2 {
-    font-size: 24px;
+    padding: 11px 25px 30px 25px;
   }
 
   .vc-ad-box p {
@@ -789,7 +802,7 @@ li.af {
   }
 
   .spn-btn {
-    padding: 14px 50px 12px 30px;
+    right: 30px;
   }
 }
 
@@ -947,13 +960,6 @@ li.af {
     width: 40%;
     border: 0;
   }
-
-  .vc-ad-box-2,
-  .vc-ad-box {
-    border: 0;
-    margin-top: 6px;
-    padding: 20px 15px;
-  }
 }
 
 @media only screen and (max-width: 667px) {
@@ -969,9 +975,13 @@ li.af {
   }
 
   .spn-btn {
+<<<<<<< HEAD
     padding: 10px 40px 8px 16px;
     background: #000 url(../img/vector-smart-object.png) no-repeat right 16px
       center / 12%;
+=======
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 16px center / 12%;
+>>>>>>> origin/valuccart-oct-18
   }
 }
 
@@ -1233,3 +1243,55 @@ li.af {
   font-size: 13px;
   color: #f00;
 }
+<<<<<<< HEAD
+=======
+
+.bundle-cat-img {
+  height: 80px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bundle-cat-img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 667px) {
+
+  .vc-ad-box-2,
+  .vc-ad-box {
+    padding: 10px 15px 10px 15px;
+  }
+
+  .vc-ad-box h2 {
+    font-size: 20px;
+    top: 14px;
+  }
+
+  .spn-btn {
+    padding: 10px 40px 8px 16px;
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 21px center / 26%;
+    position: initial;
+    width: 20px;
+    float: right;
+    text-indent: -1000px;
+  }
+}
+
+@media only screen and (max-width: 1248px) {
+  .bundle-cat-img {
+    height: 60px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .bundle-cat-img {
+    height: 100px;
+  }
+
+  .vc-ad-box h2 {
+    color: #ffffff;
+    font-size: 34px;
+  }
+}
+>>>>>>> origin/valuccart-oct-18
