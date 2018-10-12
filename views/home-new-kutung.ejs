@@ -28,12 +28,11 @@
 
     <!-- Ad banner -->
     <div class="col-xs-12 no-pd">
-      <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box">
+      <!--<div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box">
         <a href="/bundle-list">
           <h2>VALUZONE<br>BUNDLES</h2>
           <p>Choose from a range of pre-configured bundles and save upto 25%</p>
           <span class="spn-btn">Shop now</span>
-          <!--<img src="img/huge.png" alt="VALUZONE BUNDLES" class="img-responsive">-->
         </a>
       </div>
       <% 
@@ -43,7 +42,6 @@
       %>
       <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box vc-ad-box-2">
         <a href="/create-bundle">
-          <!-- <img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"> -->
           <h2>BUILD YOUR<br>OWN BUNDLES</h2>
           <p>Create your own bundle from over 300 products and save big upto 15%</p>
           <span class="spn-btn">Start now</span>
@@ -52,82 +50,86 @@
       <% } } else{ %>
       <div class="col-lg-6 col-md-6 col-sm-6 vc-ad-box vc-ad-box-2">
         <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
-          <!-- <img src="img/big.png" alt="BUILD YOUR OWN BUNDLES" class="img-responsive pull-right"> -->
           <h2>BUILD YOUR<br>OWN BUNDLES</h2>
           <p>Create your own bundle from over 300 products and save big upto 15%</p>
           <span class="spn-btn">Start now</span>
         </a>
       </div>
-      <% } %>
-    </div>
-
-    <!-- Products -->
-    <div class="col-xs-12 no-pd">
-      <div class="pro-hd">
+      <% } %> -->
+      <div class="pro-hd" style="padding-top: 20px">
         <h2 class="pr-ttl">ValuZone Bundles</h2>
         <a href="/bundle-list" class="v-btn">View all</a>
       </div>
-      <div class="col-xs-12 no-pd pro-cont">
-        <div class="pro-cr-1 owl-carousel owl-theme pro-cr pop-zone">
-          <% 
-        let bundle_category= data.response.bundle_category;
-        if (bundle_category) {
-        bundle_category.forEach(function(bundle){
-          var pb_name= bundle.pb_name;
-          var pb_url= pb_name.replace(/\s+/g, '-').toUpperCase();
-        %>
-          <div class="item">
-            <a href="bundle-detail/<%= bundle.pb_id+'/'+pb_url%>">
-              <img src="<%= bundle.pb_image %>" alt="<%= bundle.pb_name %>">
-              <div class="pr-dt">
-                <span>
-                  <%= bundle.pb_name %></span>
-              </div>
-            </a>
-          </div>
-          <%
-        })
-        }
-       %>
+      <div class="bundle-cr owl-carousel owl-theme">
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/160/himalaya-baby-care-bundle-(6-items)-only-aed-159"><img
+              src="img/Banner-1.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/156/taj-cleaning-bundle-(8-items)-only-99"><img src="img/Banner-2.png"
+              alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/159/eco-friendly-cleaning-bundle-(4-items)-only-aed-89"><img
+              src="img/Banner-3.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/162/filipino-food-bundle-(18-items)-only-aed-179"><img src="img/Banner-4.png"
+              alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/158/emirati-food-bundle-(17-items)-only-269"><img src="img/Banner-5.png"
+              alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/155/breakfast-bundle-(11-items)-only-139"><img src="img/Banner-6.png"
+              alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/bundle-detail/154/essential-food-bundle-(13-items)-only-169"><img src="img/Banner-7.png"
+              alt="" /></a>
         </div>
       </div>
+    </div>
+
+    <div class="col-lg-12 col-md-6 col-sm-6 vc-ad-box">
+      <h2 style="display: inline-block;">Build your own Bundle</h2>
+      <img src="img/Build-your-own-bundle-pro.png" alt="Build-your-own-bundle" height="100" />
+      <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+        <span class="spn-btn">Start now</span>
+      </a>
     </div>
 
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
-        <h2 class="pr-ttl">Shop by category</h2>
-        <a href="/category/product" class="v-btn">View all</a>
+        <h2 class="pr-ttl">Shop by Category</h2>
+        <a href="/bundle-list" class="v-btn">View all</a>
       </div>
-      <div class="col-xs-12 no-pd pro-cont cat-sec">
-        <div class="pro-cr-2 owl-carousel owl-theme pro-cr">
-          <% 
-            let category= data.response.category;
-            category.sort(function(a, b){
-                return a.hc_order - b.hc_order;
-            });
-            var no=0;
-            if (category) {
-                category.forEach(function(cat){
-                var catname= cat.c_name;
-                var hc_url= catname.replace(/\s+/g, '-').toUpperCase();
-        %>
-          <div class="item">
-            <a href="/product-listing/<%= cat.c_id+'/'+hc_url%>">
-              <img src="<%= cat.hc_image; %>" alt="Beverages">
-              <div class="pr-dt">
-                <span>
-                  <%= cat.c_name;%></span>
-              </div>
-            </a>
-          </div>
-          <%
-        });
-    }
-    %>
-
+      <div class="bundle-cr owl-carousel owl-theme">
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/737/beverages"><img src="img/cat-1.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/740/biscuits-and-cakes"><img src="img/cat-2.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/833/nuts#!?sub_cat=1187"><img src="img/cat-3.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/881/olives-&-pickles"><img src="img/cat-4.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/913/breakfast-cereal"><img src="img/cat-5.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/944/pasta"><img src="img/cat-6.png" alt="" /></a>
+        </div>
+        <div class="item">
+          <a href="https://www.valucart.com/product-listing/845/sauces-&-ketchup"><img src="img/cat-7.png" alt="" /></a>
         </div>
       </div>
     </div>
+
 
     <!-- <div class="col-xs-12 no-pd">
       <div class="pro-hd">

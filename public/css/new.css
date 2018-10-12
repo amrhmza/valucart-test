@@ -328,7 +328,8 @@
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button.owl-prev span,
-.pro-cr.owl-carousel .owl-nav button.owl-prev span {
+.pro-cr.owl-carousel .owl-nav button.owl-prev span,
+.bundle-cr.owl-carousel .owl-nav button.owl-prev span {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -342,7 +343,8 @@
 }
 
 .vc-bn-carousel.owl-carousel .owl-nav button.disabled span,
-.pro-cr.owl-carousel .owl-nav button.disabled span {
+.pro-cr.owl-carousel .owl-nav button.disabled span,
+.bundle-cr.owl-carousel .owl-nav button.disabled span {
   opacity: 0.1;
 }
 
@@ -355,10 +357,11 @@
 }
 
 .vc-ad-box {
-  background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom 15px / 50%;
+  background: #860cf5;
   border-right: 4px solid #fff;
   font-family: "Helvetica Neue LT Pro 55 Roman";
-  padding: 50px 50px;
+  padding: 10px 50px 4px 50px;
+  margin-top: 40px;
 }
 
 .vc-ad-box a {
@@ -372,10 +375,12 @@
 }
 
 .vc-ad-box h2 {
-  color: #000000;
-  font-size: 50px;
+  color: #ffffff;
+  font-size: 38px;
   font-family: "Helvetica Neue LT Pro 95 Black";
   margin: 0;
+  position: relative;
+  top: 7px;
 }
 
 .vc-ad-box p {
@@ -389,10 +394,11 @@
   background: #000 url(../img/vector-smart-object.png) no-repeat right 24px center;
   background-size: 14px;
   color: #fff;
-  display: inline-block;
   font-size: 14px;
   line-height: 24px;
   padding: 14px 50px 14px 30px;
+  float: right;
+  margin: 22px 0;
 }
 
 /* Products */
@@ -472,7 +478,8 @@
   width: auto;
 }
 
-.pro-cr.owl-carousel .owl-nav button {
+.pro-cr.owl-carousel .owl-nav button,
+.bundle-cr.owl-carousel .owl-nav button {
   padding: 0 !important;
   height: 84px;
   width: 44px;
@@ -480,23 +487,39 @@
   margin: auto;
 }
 
-.pro-cr.owl-carousel .owl-nav button.owl-prev {
+.pro-cr.owl-carousel .owl-nav button.owl-prev,
+.bundle-cr.owl-carousel .owl-nav button.owl-prev {
   left: -40px;
   border-radius: 0 8px 8px 0;
   box-shadow: 2px 0px 4px #dadada;
 }
 
-.pro-cr.owl-carousel .owl-nav button.owl-next {
+.bundle-cr.owl-carousel .owl-nav button.owl-prev {
+  box-shadow: -2px 0px 4px #dadada;
+}
+
+.pro-cr.owl-carousel .owl-nav button.owl-next,
+.bundle-cr.owl-carousel .owl-nav button.owl-next {
   right: -40px;
   border-radius: 8px 0px 0px 8px;
   box-shadow: -2px 0px 4px #dadada;
 }
 
-.pro-cr.owl-carousel .owl-nav button span i {
+.bundle-cr.owl-carousel .owl-nav button.owl-next {
+  box-shadow: 2px 0px 4px #dadada;
+}
+
+.pro-cr.owl-carousel .owl-nav button span i,
+.bundle-cr.owl-carousel .owl-nav button span i {
   display: none;
 }
 
-.pro-cr.owl-carousel .owl-nav button span {
+.bundle-cr.owl-carousel .owl-stage-outer {
+  padding-bottom: 0;
+}
+
+.pro-cr.owl-carousel .owl-nav button span,
+.bundle-cr.owl-carousel .owl-nav button span {
   background: url(../img/next-arrow@2x.png) no-repeat center center / 40%;
   display: inline-block;
   padding: 10px 15px;
@@ -1227,3 +1250,5 @@
   font-size: 13px;
   color: #f00;
 }
+
+.bundle-cr.owl-carousel .owl-item img {}

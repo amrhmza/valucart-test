@@ -444,3 +444,26 @@ $('.input-fld').blur(function () {
     $(this).parent().removeClass('filled');
   }
 });
+
+$('.bundle-cr').owlCarousel({
+  loop: false,
+  nav: true,
+  margin: 15,
+  responsive: {
+    0: {
+      items: 1,
+      nav: true
+    },
+    600: {
+      items: 1,
+      nav: false
+    },
+    1000: {
+      items: 2,
+      nav: true,
+    },
+    1248: {
+      items: 3,
+    }
+  }
+});
