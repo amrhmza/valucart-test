@@ -13,7 +13,7 @@
     </ul>
 </div>
 <!--    Breadcrumb-->
-<div class="container">
+<div class="container" ng-app="myapp" ng-controller="contactus">
     <div class="row" style="padding-top:40px; padding-bottom:40px">
         <div class="col-lg-12">
             <div class="cont-sec contact-sec">
@@ -41,43 +41,46 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 contact-form">
-                    <h2 class="text-black">Customer satisfaction is always our priority!</h2>
-                    <div class="form-group">
-                        <input type="text" name="c-name" id="c-name" class="form-control input-fld" value="">
-                        <label for="c-name">Name</label>
-                        <span class="error-msg">Please enter name</span>
-                    </div>
-                    <div class="form-group">
-                        <select name="c-about" id="c-about" class="form-control input-fld">
-                            <option></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        <label for="c-about">Message is about</label>
-                        <span class="error-msg">Please select anyone</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="c-email" id="c-email" class="form-control input-fld" value="">
-                        <label for="c-email">Registered Email id</label>
-                        <span class="error-msg">Please enter email id</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="c-mobile" id="c-mobile" class="form-control input-fld" value="">
-                        <label for="c-mobile">Mobile Number </label>
-                        <span class="error-msg">Please enter mobile number</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="c-refid" id="c-refid" class="form-control input-fld" value="">
-                        <label for="c-refid">Reference Id</label>
-                        <span class="error-msg">Please enter reference id</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="c-msg" id="c-msg" class="form-control input-fld" value="">
-                        <label for="c-msg">Message</label>
-                    </div>
-                    <div class="col-lg-12 no-pd">
-                        <button type="submit" class="btn c-btn">Submit</button>
-                    </div>
+                    <form name="contactus_form" id="contactus_form">
+                        <h2 class="text-black">Customer satisfaction is always our priority!</h2>
+                        <div class="form-group">
+                            <input type="text" name="c_name" id="c-name" class="form-control input-fld" value="">
+                            <label for="c-name">Name</label>
+                            <span class="error-msg">Please enter name</span>
+                        </div>
+                        <div class="form-group">
+                            <select name="c_about" id="c-about" class="form-control input-fld">
+                                <option></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            <label for="c-about">Message is about</label>
+                            <span class="error-msg">Please select anyone</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="c_email" id="c-email" class="form-control input-fld" value="">
+                            <label for="c-email">Registered Email id</label>
+                            <span class="error-msg">Please enter email id</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="c_mobile" id="c-mobile" class="form-control input-fld" value="">
+                            <label for="c-mobile">Mobile Number </label>
+                            <span class="error-msg">Please enter mobile number</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="c_refid" id="c-refid" class="form-control input-fld" value="">
+                            <label for="c-refid">Reference Id</label>
+                            <span class="error-msg">Please enter reference id</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="c_msg" id="c-msg" class="form-control input-fld" value="">
+                            <label for="c-msg">Message</label>
+                            <span class="error-msg">Please enter message</span>
+                        </div>
+                        <div class="col-lg-12 no-pd">
+                            <button type="submit" class="btn c-btn">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

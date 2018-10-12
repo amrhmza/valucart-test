@@ -1,15 +1,15 @@
 var app = angular
   .module("myapp", ["ngRoute", "ngMessages", "ngSanitize"])
-  .directive("onFinishRender", function($timeout) {
+  .directive("onFinishRender", function ($timeout) {
     return {
       restrict: "A",
-      link: function(scope, element, attr) {
+      link: function (scope, element, attr) {
         if (scope.$last === true) {
-          $timeout(function() {
+          $timeout(function () {
             scope.$emit(
-              attr.broadcasteventname
-                ? attr.broadcasteventname
-                : "ngRepeatFinished"
+              attr.broadcasteventname ?
+              attr.broadcasteventname :
+              "ngRepeatFinished"
             );
           });
         }
@@ -17,12 +17,12 @@ var app = angular
     };
   })
   .directive("ngConfirmClick", [
-    function() {
+    function () {
       return {
-        link: function(scope, element, attr) {
+        link: function (scope, element, attr) {
           var msg = attr.ngConfirmClick || "Are you sure?";
           var clickAction = attr.confirmedClick;
-          element.bind("click", function(event) {
+          element.bind("click", function (event) {
             if (window.confirm(msg)) {
               scope.$eval(clickAction);
             }
@@ -68,25 +68,25 @@ app.constant("config", {
   createWithproduct: baseurl + "/user_bundle/createWithproduct/post",
   cancelorder: baseurl + "/order/",
   getcityarealist: baseurl + "/userProfile/getcityarealist",
-  update_mybundle_singlewithoutbundleid:
-    baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId",
+  update_mybundle_singlewithoutbundleid: baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId",
   adduserbundletocart: baseurl + "/cart/adduserbundletocart",
-  settings: baseurl + "/settings"
+  settings: baseurl + "/settings",
+  contactus: baseurl + "/contact"
 });
-app.config(function($routeProvider, $locationProvider, $httpProvider) {
+app.config(function ($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
 });
 
-app.filter("spaceless", function() {
-  return function(input) {
+app.filter("spaceless", function () {
+  return function (input) {
     if (input) {
       return input.replace(/\s+/g, "-");
     }
   };
 });
 app.filter("toster"),
-  function() {
-    return function(type, msg) {
+  function () {
+    return function (type, msg) {
       // Display a success toast, with a title
       toastr.success("Have fun storming the castle!", "Miracle Max Says");
     };

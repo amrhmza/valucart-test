@@ -16,7 +16,10 @@ router.get("/", async (req, res, next) => {
       angular: false,
       customjs: false,
       catdrop: 1,
-      cookies: cookies
+      cookies: cookies,
+      angular: true,
+      customjs: true,
+      jslist: ["angular/app.js", "angular/controllers/contactus.js"]
     });
   } catch (error) {
     console.log(error);
