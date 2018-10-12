@@ -360,12 +360,7 @@ li.af {
 }
 
 .vc-ad-box {
-<<<<<<< HEAD
-  background: #e8e8e8 url(../img/huge-offer.png) no-repeat right 20px bottom
-    15px / 50%;
-=======
   background: #860cf5;
->>>>>>> origin/valuccart-oct-18
   border-right: 4px solid #fff;
   font-family: "Helvetica Neue LT Pro 55 Roman";
   padding: 10px 50px 4px 50px;
@@ -975,13 +970,7 @@ li.af {
   }
 
   .spn-btn {
-<<<<<<< HEAD
-    padding: 10px 40px 8px 16px;
-    background: #000 url(../img/vector-smart-object.png) no-repeat right 16px
-      center / 12%;
-=======
     background: #000 url(../img/vector-smart-object.png) no-repeat right 16px center / 12%;
->>>>>>> origin/valuccart-oct-18
   }
 }
 
