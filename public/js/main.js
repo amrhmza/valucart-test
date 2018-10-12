@@ -435,3 +435,12 @@ catResize();
 $(window).resize(function () {
   catResize();
 });
+
+$('.input-fld').blur(function () {
+  var inVal = $(this).val();
+  if (inVal != "") {
+    $(this).parent().addClass('filled');
+  } else {
+    $(this).parent().removeClass('filled');
+  }
+});
