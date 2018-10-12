@@ -376,9 +376,9 @@
 
 .vc-ad-box h2 {
   color: #ffffff;
-  font-size: 38px;
+  font-size: 32px;
   font-family: "Helvetica Neue LT Pro 95 Black";
-  margin: 0;
+  margin: 0 30px 0 0;
   position: relative;
   top: 7px;
 }
@@ -397,8 +397,12 @@
   font-size: 14px;
   line-height: 24px;
   padding: 14px 50px 14px 30px;
-  float: right;
-  margin: 22px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 50px;
+  height: 54px;
 }
 
 /* Products */
@@ -724,20 +728,6 @@
   margin-top: 0;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1440px) {
-  .vc-ad-box {
-    padding: 40px;
-  }
-
-  .vc-ad-box h2 {
-    font-size: 34px;
-  }
-
-  .vc-ad-box {
-    background-size: 52%;
-  }
-}
-
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .navlist li {
     padding: 0 0 0 10px;
@@ -793,11 +783,7 @@
 
   .vc-ad-box-2,
   .vc-ad-box {
-    padding: 30px 25px;
-  }
-
-  .vc-ad-box h2 {
-    font-size: 24px;
+    padding: 11px 25px 30px 25px;
   }
 
   .vc-ad-box p {
@@ -807,7 +793,7 @@
   }
 
   .spn-btn {
-    padding: 14px 50px 12px 30px;
+    right: 30px;
   }
 }
 
@@ -965,13 +951,6 @@
   .searchnav .input-group {
     width: 40%;
     border: 0;
-  }
-
-  .vc-ad-box-2,
-  .vc-ad-box {
-    border: 0;
-    margin-top: 6px;
-    padding: 20px 15px;
   }
 }
 
@@ -1251,4 +1230,29 @@
   color: #f00;
 }
 
-.bundle-cr.owl-carousel .owl-item img {}
+.bundle-cat-img {
+  height: 80px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bundle-cat-img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1248px) {
+  .bundle-cat-img {
+    height: 60px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .bundle-cat-img {
+    height: 100px;
+  }
+
+  .vc-ad-box h2 {
+    color: #ffffff;
+    font-size: 34px;
+  }
+}
