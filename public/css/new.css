@@ -966,7 +966,6 @@
   }
 
   .spn-btn {
-    padding: 10px 40px 8px 16px;
     background: #000 url(../img/vector-smart-object.png) no-repeat right 16px center / 12%;
   }
 }
@@ -1237,6 +1236,28 @@
 @media only screen and (max-width: 1024px) {
   .bundle-cat-img {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 667px) {
+
+  .vc-ad-box-2,
+  .vc-ad-box {
+    padding: 10px 15px 10px 15px;
+  }
+
+  .vc-ad-box h2 {
+    font-size: 20px;
+    top: 14px;
+  }
+
+  .spn-btn {
+    padding: 10px 40px 8px 16px;
+    background: #000 url(../img/vector-smart-object.png) no-repeat right 21px center / 26%;
+    position: initial;
+    width: 20px;
+    float: right;
+    text-indent: -1000px;
   }
 }
 
