@@ -91,15 +91,27 @@
         </div>
       </div>
     </div>
-
+    <% 
+    if(cookies){
+      var userData=JSON.parse(cookies);
+        if(userData.status=="success"){
+  %>
     <div class="col-xs-12 vc-ad-box">
       <h2 style="display: inline-block;">Build your own Bundle</h2>
       <img src="img/Build-your-own-bundle-pro.png" alt="Build-your-own-bundle" class="bundle-cat-img" />
-      <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+      <a  href="/create-bundle">
         <span class="spn-btn">Start now</span>
       </a>
     </div>
-
+    <% } } else{ %>
+    <div class="col-xs-12 vc-ad-box">
+    <h2 style="display: inline-block;">Build your own Bundle</h2>
+    <img src="img/Build-your-own-bundle-pro.png" alt="Build-your-own-bundle" class="bundle-cat-img" />
+    <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+      <span class="spn-btn">Start now</span>
+    </a>
+  </div>
+    <% } %> 
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
         <h2 class="pr-ttl">Shop by Category</h2>
