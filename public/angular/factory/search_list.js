@@ -1,9 +1,25 @@
-app.factory("getProductList", function($http, config, valuecartex, $q) {
+app.factory("getProductSearchList", function($http, config, valuecartex, $q) {
 
+    function getUrlParameter(param, dummyPath) {
+      var sPageURL = dummyPath || window.location.search.substring(1),
+          sURLVariables = sPageURL.split(/[&||?]/),
+          res;
+
+      for (var i = 0; i < sURLVariables.length; i += 1) {
+          var paramName = sURLVariables[i],
+              sParameterName = (paramName || '').split('=');
+
+          if (sParameterName[0] === param) {
+              res = sParameterName[1];
+          }
+      }
+
+      return res;
+  }
   return {
     getlist: function(queryParam, page) {
       var q = $q.defer();
-      var suggestURL = config.getproduct_list;
+      var suggestURL = config.getproduct_search_list;
       let data = {
         exclusive: valuecartex.data,
         page_no: page
@@ -32,6 +48,9 @@ app.factory("getProductList", function($http, config, valuecartex, $q) {
       }
       if (queryParam.order_by) {
         data["order_by"] = queryParam.order_by;
+      }
+      if (getUrlParameter('q')) {
+        data["q"] = decodeURIComponent(getUrlParameter('q'));
       }
 
       var headers = {};

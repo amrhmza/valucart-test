@@ -112,4 +112,40 @@ router.get("/valucartexclusives", async (req, res, next) => {
   }
 });
 
+/* Search Result */
+
+router.get("/search", async (req, res, next) => {
+  try {
+    let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
+    let querydata = req.query;
+    let query = req.param("q");
+    let data = await productListing.get_datav2(querydata, JSON.parse(cookies));
+    let banner = await getHome.get_data();
+    let menudata = await getMenu.get_menulist();
+    let b;
+    res.render("search", {
+      data: data,
+      menudata: menudata,
+      banner: banner,
+      cookies: cookies,
+      angular: true,
+      catdrop: data.product_type == "Bundle" ? 1 : b,
+      customjs: true,
+      home_new: true,
+      query:query,
+      jslist: [
+        "angular/app.js",
+        "angular/factory/search_list.js",
+        "angular/factory/product_details.js",
+        "angular/controllers/search_list.js",
+        "angular/factory/wishlist.js",
+        "angular/factory/userbundle.js",
+        "js/jquery.nice-select.min.js"
+      ]
+    });
+  } catch (error) {
+    error_404(res);
+  }
+});
+
 module.exports = router;

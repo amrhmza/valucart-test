@@ -78,14 +78,14 @@ app.controller("contactus", function (
                 refer_id: elem.c_refid.value,
                 message: elem.c_msg.value
             };
-            let token = JSON.parse($.cookie("vcartAuth"));
+            //let token = JSON.parse($.cookie("vcartAuth"));
             $http({
                     method: "POST",
                     url: suggestURL,
                     type: "json",
                     data: data,
                     headers: {
-                        Authorization: "Bearer " + token.token,
+                        // Authorization: "Bearer " + token.token,
                         "Content-Type": "application/json"
                     }
                 })

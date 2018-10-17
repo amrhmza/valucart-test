@@ -71,7 +71,8 @@ app.constant("config", {
   update_mybundle_singlewithoutbundleid: baseurl + "/user_bundle/addProductToUserBundleWithoutBundleId",
   adduserbundletocart: baseurl + "/cart/adduserbundletocart",
   settings: baseurl + "/settings",
-  contactus: baseurl + "/contact"
+  contactus: baseurl + "/contact",
+  getproduct_search_list: baseurl + "/search/getlist/post"
 });
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);
