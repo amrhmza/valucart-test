@@ -317,11 +317,27 @@ let products= productData.product;
             </div>
         </div>
     </div>
+    <% 
+    quantity_bundle = 0;
+    products.forEach(function(pros){ 
+        if(pros.pbm_is_alternative!=1){
+            quantity_bundle += pros.pbm_qty;
+        }else{
+            var m = 0;
+            pros.alternatives.forEach(function(alt){ 
+                m++;
+                if(alt.pba_is_default == 1){
+                    quantity_bundle += alt.pba_qty;
+                }
+            })
+        }
+    })
+    %>
     <div class="container bundledetailview">
         <div class="row">
             <div class="col-md-12 bundle-option-header">
                 <h3 class="bunlde-detail-title">Bundle details <span>(
-                        <%= productData.product.length;%> Items)</span></h3>
+                        <%= quantity_bundle;%> Items)</span></h3>
                 <p>This is a bundle created by ValuCart to give huge value for consumers. Few items in this bundle has
                     alrternate options for you to choose. Please pick your option and proceed.</p>
             </div>

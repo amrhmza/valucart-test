@@ -16,7 +16,9 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
       menudata: menudata,
       cookies: cookies,
       angular: true,
-      customjs: true,
+      header_title:(req.params.pd_name.replace(/-/g,' '))+' - Valucart',
+      description:(req.params.pd_name.replace(/-/g,' '))+' - Shop for '+(req.params.pd_name.replace(/-/g,' '))+' Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
+       customjs: true,
       jslist: [
         "angular/app.js",
         "angular/factory/product_details.js",

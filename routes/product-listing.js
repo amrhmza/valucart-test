@@ -4,6 +4,11 @@ const productListing = require("../controllers/product_list.js");
 const getHome = require("../controllers/home.js");
 const getMenu = require("../controllers/category_menu.js");
 
+function camelize(string) { 
+  string = string.toLowerCase();
+  return string.charAt(0).toUpperCase() + string.substring(1);
+}
+
 /* GET product list page. */
 router.get("/:cat_id/:cat_name", async (req, res, next) => {
   try {
@@ -27,6 +32,8 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       angular: true,
       catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
+      header_title:camelize(req.params.cat_name.replace(/-/g,' '))+' - Valucart',
+      description:camelize(req.params.cat_name.replace(/-/g,' '))+' - Shop for '+camelize(req.params.cat_name.replace(/-/g,' '))+' Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       home_new: true,
       jslist: [
         "angular/app.js",
@@ -61,6 +68,8 @@ router.get("/", async (req, res, next) => {
       angular: true,
       catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
+      header_title:"Valucart Products",
+      description:'Valucart Products - Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       home_new: true,
       jslist: [
         "angular/app.js",
@@ -132,6 +141,8 @@ router.get("/search", async (req, res, next) => {
       catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
       home_new: true,
+      header_title:camelize(decodeURIComponent(query)).replace(/-/g,' ')+' - Valucart',
+      description:camelize(decodeURIComponent(query)).replace(/-/g,' ')+' - Shop for '+camelize(decodeURIComponent(query)).replace(/-/g,' ')+' Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       query:query,
       jslist: [
         "angular/app.js",

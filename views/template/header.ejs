@@ -8,7 +8,8 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="937569373900-g6jtmi0c9e4jjvh9shnclpfehiqkcpn2.apps.googleusercontent.com">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>ValuCart</title>
+    <title><% if(typeof(header_title) != 'undefined'){ %> <%= header_title %><% }else{%> Valucart <%} %></title>
+    <meta name="Description" property="og:description" content="<% if(typeof(description) != 'undefined'){ %> <%= description %><% } %>"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127115961-1"></script>
     <script>

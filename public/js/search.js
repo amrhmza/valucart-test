@@ -1,17 +1,19 @@
-var getUrlParameter = function getUrlParameter(sParam) {
-  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-      sURLVariables = sPageURL.split('&'),
-      sParameterName,
-      i;
+var getUrlParameter = function getUrlParameter(param, dummyPath) {
+  var sPageURL = dummyPath || window.location.search.substring(1),
+      sURLVariables = sPageURL.split(/[&||?]/),
+      res;
 
-  for (i = 0; i < sURLVariables.length; i++) {
-      sParameterName = sURLVariables[i].split('=');
+  for (var i = 0; i < sURLVariables.length; i += 1) {
+      var paramName = sURLVariables[i],
+          sParameterName = (paramName || '').split('=');
 
-      if (sParameterName[0] === sParam) {
-          return sParameterName[1] === undefined ? true : sParameterName[1];
+      if (sParameterName[0] === param) {
+          res = sParameterName[1];
       }
   }
-};
+
+  return res;
+}
 
 $(".desktopsearch").keydown(function (event) {
   if (event.keyCode == 13) {
@@ -19,19 +21,23 @@ $(".desktopsearch").keydown(function (event) {
       var base_url = window.location.origin;
       window.location.replace(
 
-        base_url + "/product-listing/search?q=" + $(".desktopsearch").val()
+        base_url + "/product-listing/search?q=" + encodeURIComponent($(".desktopsearch").val())
       );
       //return false;
     }
   }
 });
 
-$(".desktopsearch").val(getUrlParameter('q'));
+if(getUrlParameter('q')){
+  $(".desktopsearch").val(decodeURIComponent(getUrlParameter('q')));
+}
+
+APIURL = 'https://localhost:3000';
 
 $(".desktopsearch")
   .autocomplete({
     delay: 100,
-    minLength: 1,
+    minLength: 3,
     source: function (request, response) {
       $.ajax({
         type: "GET",
@@ -120,7 +126,7 @@ $(".desktopsearch")
 $("#searchLblm")
   .autocomplete({
     delay: 100,
-    minLength: 1,
+    minLength: 3,
     source: function (request, response) {
       $.ajax({
         type: "GET",

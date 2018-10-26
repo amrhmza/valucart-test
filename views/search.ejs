@@ -15,48 +15,7 @@
     </ul>
 </div>
 <!--    Breadcrumb-->
-<!--    Carousel strts here-->
-<div class="container carouseldiv hidden-xs">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <% 
-            let bannerList= banner.response.banner;
-            bannerList.sort(function(a, b){
-                return a.hb_order - b.hb_order;
-            });
-            var no=0;
-            if (bannerList) {
-                bannerList.forEach(function(slides){
-                    if(slides.hb_image)
-            %>
-            <li data-target="#myCarousel" data-slide-to="<%= no++%>" class="<%= (no==1)?'active':'';%>"></li>
-            <%
-                })
-            }
-           %>
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <% 
-                var no=0;
-                if (bannerList) {
-                    bannerList.forEach(function(slides){
-                        if(slides.hb_image)
-                %>
-            <div class="item <%= (no==0)?'active':'';%>">
-            <a href="<%= slides.hb_external_link %>"><img src="<%= slides.hb_image %>" alt="Los Angeles" style="width: 100%;"></a> </div>
-            <%
-                    no++;
-                    })
-                }
-               %>
-        </div>
 
-    </div>
-
-</div>
-<!--    Carousel ends here-->
 
 <!--    Product list starts here-->
 <div class="container-fluid productlistpage product-listing-page" ng-app="myapp" ng-controller="search_listing">

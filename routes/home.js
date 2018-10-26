@@ -15,7 +15,7 @@ router.get("/home", async (req, res, next) => {
       menudata: menudata,
       angular: true,
       customjs: true,
-      cookies: cookies,
+      cookies: cookies,      
       jslist: [
         "angular/app.js",
         "angular/factory/product_details.js",
@@ -43,6 +43,8 @@ router.get("/", async (req, res, next) => {
       angular: false,
       customjs: false,
       catdrop: 1,
+      header_title:"Grocery Store - Shop for Groceries Online at ValuCart",
+      description:'Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       cookies: cookies
     });
   } catch (error) {

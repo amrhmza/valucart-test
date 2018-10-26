@@ -37,7 +37,11 @@
                     <img src="img/grammeter.png" class="img-responsive gramimg"> {{product.p_quantity}}
                 </h5>
                 <h5 ng-if="product.pdt_percentage" class="offeredprice"> {{product.p_price}} AED</h5>
-                <h6>
+                <span ng-if="product.pd_maximum_selling_price">
+                <h6 style="margin-top:40px;">
+                        <span ng-if="product.pd_maximum_selling_price">
+                                <strike style="font-size:18px;">{{product.pd_maximum_selling_price}} AED</strike>
+                            </span>
                     <span ng-if="product.pdt_price">
                         {{product.pdt_price}} AED
                     </span>
@@ -45,6 +49,18 @@
                         {{product.p_price}} AED
                     </span>
                 </h6>
+                </span>
+                <span ng-if="!product.pd_maximum_selling_price">
+                        <h6>
+                              
+                            <span ng-if="product.pdt_price">
+                                {{product.pdt_price}} AED
+                            </span>
+                            <span ng-if="!product.pdt_price">
+                                {{product.p_price}} AED
+                            </span>
+                        </h6>
+                        </span>
             </div>
             <div class="col-xs-7">
                 <img src="{{product.p_image}}" class="img-responsive productimg">
