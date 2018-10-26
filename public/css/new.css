@@ -61,12 +61,12 @@
   font-family: "Helvetica Neue LT Pro 45 Light";
 }
 
-.headerlist.list-inline > li {
+.headerlist.list-inline>li {
   padding: 0 4px;
 }
 
 .headertop ul li a,
-.headerlist.list-inline > li p {
+.headerlist.list-inline>li p {
   color: #000000;
 }
 
@@ -169,7 +169,7 @@
 
 .headerlist li a,
 .headerlist li a:hover,
-.headerlist .dropdown.open > a {
+.headerlist .dropdown.open>a {
   color: #8505ff;
 }
 
@@ -178,9 +178,11 @@
   font-family: "Helvetica Neue LT Pro 55 Roman";
   margin-top: 12px;
 }
+
 li.af {
   margin-top: -12px !important;
 }
+
 .navlist li {
   align-self: center;
   padding: 0 0 0 30px;
@@ -264,15 +266,13 @@ li.af {
 .more-btn {
   color: #fff;
   padding: 4px 30px 4px 10px;
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px
-    center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
   background-size: 12px;
 }
 
 .more-btn:hover,
 .more-btn:focus {
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px
-    center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 8px center;
   color: #fff;
   background-size: 12px;
   text-decoration: none;
@@ -393,8 +393,7 @@ li.af {
 }
 
 .spn-btn {
-  background: #000 url(../img/vector-smart-object.png) no-repeat right 24px
-    center;
+  background: #000 url(../img/vector-smart-object.png) no-repeat right 24px center;
   background-size: 14px;
   color: #fff;
   font-size: 14px;
@@ -940,6 +939,7 @@ li.af {
 }
 
 @media only screen and (max-width: 1247px) {
+
   .wl-txt,
   .no-item-lbl,
   .prof-lbl {
@@ -956,8 +956,7 @@ li.af {
   }
 }
 
-@media only screen and (max-width: 667px) {
-}
+@media only screen and (max-width: 667px) {}
 
 @media only screen and (max-width: 568px) {
   .navlist li {
@@ -1278,4 +1277,118 @@ li.af {
   .vc-ad-box h2 {
     font-size: 34px;
   }
+}
+
+/* New Menu */
+.vc-menu {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  float: left;
+  width: 100%;
+}
+
+.vc-menu ul {
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+}
+
+.vc-menu ul li {
+  display: inline-block;
+  padding: 0px 20px 0px 20px;
+}
+
+.vc-menu ul li a {
+  display: inline-block;
+  padding: 12px 0px 12px 0px;
+  text-decoration: none;
+  color: #666666;
+  font-weight: 500;
+}
+
+.vc-menu ul li>a:hover,
+.vc-menu ul li.active>a {
+  color: #111111;
+}
+
+.vc-menu ul>li.active>a {
+  border-bottom: 3px solid #8505ff;
+}
+
+.vc-menu ul li:hover .vc-sub-menu,
+.vc-menu ul li.active .vc-sub-menu {
+  display: block;
+}
+
+.vc-sub-menu {
+  display: none;
+  position: absolute;
+  top: 47px;
+  left: 0;
+  width: 100%;
+  min-height: 362px;
+  background: #fff;
+  z-index: 9;
+  padding: 10px 340px 30px 40px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.vc-sub-menu h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #8505ff;
+}
+
+.vc-sub-menu ul {
+  padding: 0;
+  float: left;
+  margin-right: 40px;
+}
+
+.vc-sub-menu ul li {
+  display: block;
+  padding: 0;
+}
+
+.vc-sub-menu ul li a {
+  padding: 6px 0;
+  font-weight: 400;
+  color: #666;
+}
+
+.vc-sub-list {
+  float: left;
+  margin-right: 40px;
+}
+
+.ft-prod {
+  width: 250px;
+  height: 320px;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.ft-prod-img {
+  text-align: center;
+  border: 1px solid #f4f4f4;
+}
+
+.ft-prod img {
+  height: 200px;
+}
+
+.ft-prod h3 {
+  font-size: 16px;
+  color: #666666;
+  line-height: 24px;
+  margin-top: 10px;
+}
+
+.ft-prod h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
 }
