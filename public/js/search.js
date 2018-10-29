@@ -115,9 +115,7 @@ $(".desktopsearch")
       .append(
         "<div class='cusui'><b>" +
         item.label +
-        "</b><br><small> - " +
-        item.desc +
-        "</small></div>"
+        "</b></div>"
       )
       .appendTo(ul);
   };
