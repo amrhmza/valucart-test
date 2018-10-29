@@ -446,9 +446,10 @@ $('.input-fld').blur(function () {
 });
 
 $('.bundle-cr').owlCarousel({
-  loop: false,
+  loop: true,
   nav: true,
   margin: 15,
+  autoplay: true,
   responsive: {
     0: {
       items: 1,
