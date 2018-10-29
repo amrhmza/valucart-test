@@ -430,6 +430,11 @@ li.af {
   top: 0px;
 }
 
+.pr-ttl a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .pro-hd {
   overflow: hidden;
   padding: 44px 0 16px 0;
@@ -441,8 +446,8 @@ li.af {
   color: #8505ff;
   font-family: "Helvetica Neue LT Pro 55 Roman";
   font-size: 18px;
-  float: right;
   margin-top: 8px;
+  margin-left: 10px;
   text-decoration: none;
 }
 
