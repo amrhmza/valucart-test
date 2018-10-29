@@ -192,7 +192,7 @@
                                 more items to complete your order</p>
                         </div>
                     </div>
-                    <div class="row" ng-if="subGrand<deliveryFreePrice && subGrand>=minOrderAmt">
+                    <div class="row" ng-if="subGrand<deliveryFreePrice && subGrand>=minOrderAmt && dc!=0">
                         <div class="col-md-1 col-sm-1 col-xs-1 color-ok">
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                         </div>
@@ -201,7 +201,7 @@
                                 of products to qualify for FREE delivery</p>
                         </div>
                     </div>
-                    <div class="row" ng-if="subGrand>=deliveryFreePrice">
+                    <div class="row" ng-if="subGrand>=deliveryFreePrice && dc!=0">
                         <div class="col-md-1 col-sm-1 col-xs-1 color-success">
                             <i class="fa fa-check" aria-hidden="true"></i>
                         </div>

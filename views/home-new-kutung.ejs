@@ -91,15 +91,27 @@
         </div>
       </div>
     </div>
-
+    <% 
+    if(cookies){
+      var userData=JSON.parse(cookies);
+        if(userData.status=="success"){
+  %>
     <div class="col-xs-12 vc-ad-box">
       <h2 style="display: inline-block;">Build your own Bundle</h2>
       <img src="img/Build-your-own-bundle-pro.png" alt="Build-your-own-bundle" class="bundle-cat-img" />
-      <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+      <a  href="/create-bundle">
         <span class="spn-btn">Start now</span>
       </a>
     </div>
-
+    <% } } else{ %>
+    <div class="col-xs-12 vc-ad-box">
+    <h2 style="display: inline-block;">Build your own Bundle</h2>
+    <img src="img/Build-your-own-bundle-pro.png" alt="Build-your-own-bundle" class="bundle-cat-img" />
+    <a data-referrer="create-bundle" data-toggle="modal" data-target="#myModal">
+      <span class="spn-btn">Start now</span>
+    </a>
+  </div>
+    <% } %> 
     <div class="col-xs-12 no-pd">
       <div class="pro-hd">
         <h2 class="pr-ttl">Shop by Category</h2>
@@ -110,7 +122,7 @@
           <a href="https://www.valucart.com/product-listing/737/beverages"><img src="img/cat-1.png" alt="" /></a>
         </div>
         <div class="item">
-          <a href="https://www.valucart.com/product-listing/740/biscuits-and-cakes"><img src="img/cat-2.png" alt="" /></a>
+          <a href="https://www.valucart.com/product-listing/897/biscuits"><img src="img/cat-2.png" alt="" /></a>
         </div>
         <div class="item">
           <a href="https://www.valucart.com/product-listing/833/nuts#!?sub_cat=1187"><img src="img/cat-3.png" alt="" /></a>
