@@ -51,4 +51,10 @@ router.get("/", async (req, res, next) => {
     error_404(res);
   }
 });
+
+/* GET home page. */
+router.get("/healthcheck", async (req, res, next) => {
+res.send('200')
+})
+
 module.exports = router;
