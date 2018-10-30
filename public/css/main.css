@@ -10705,7 +10705,7 @@ body {
   font-weight: normal;
 }
 
-.choosecatagory form input[type="radio"]+label {
+.choosecatagory form input[type="radio"]+label,.choosecatagory form input[type="radio"]+a {
   display: inline-block;
   font-family: Poppins;
   font-size: 22px;
@@ -10721,6 +10721,10 @@ body {
   height: 64px;
   border-radius: 32px;
   background-color: #ebebeb;
+}
+
+.choosecatagory form input[type="radio"]+a:hover{
+  text-decoration: none;
 }
 
 .choosecatagory form input[type="radio"]:checked+label.bundle-check {

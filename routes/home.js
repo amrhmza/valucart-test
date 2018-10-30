@@ -43,7 +43,7 @@ router.get("/", async (req, res, next) => {
       angular: false,
       customjs: false,
       catdrop: 1,
-      header_title:"Grocery Store - Shop for Groceries Online at ValuCart",
+      header_title:"ValuCart",
       description:'Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       cookies: cookies
     });

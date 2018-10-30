@@ -16,16 +16,16 @@
                                 %>
                             <li>
                                 <input type="radio" id="cat_<%= cat.c_id %>" name="cat_sel" cat_url="<%= catUrl %>" value="<%= cat.c_id %>" />
-                                <label for="cat_<%= cat.c_id %>" class="bundle-check">
+                                <a href="<%= catUrl %>">
                                     <%= cname %>
-                                </label>
+                                </a>
                             </li>
 
                             <%  }) 
                             } %>
                     </ul>
                 </div>
-                <div class="row mb150">
+                <div class="row mb150" style="display: none;">
                     <button onclick=gotolist() class="btn btn-continue" type="button">Continue Shopping
                         <img src="img/vector-smart-object.png" srcset="img/vector-smart-object@2x.png 2x,
                          img/vector-smart-object@3x.png 3x" class="Vector-Smart-Object">
