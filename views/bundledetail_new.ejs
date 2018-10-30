@@ -3,6 +3,20 @@
 let productData= data.response[0]; 
 let productstate= data.msg; 
 let products= productData.product;
+quantity_bundle = 0;
+products.forEach(function(pros){ 
+    if(pros.pbm_is_alternative!=1){
+        quantity_bundle += pros.pbm_qty;
+    }else{
+        var m = 0;
+        pros.alternatives.forEach(function(alt){ 
+            m++;
+            if(alt.pba_is_default == 1){
+                quantity_bundle += alt.pba_qty;
+            }
+        })
+    }
+})
 %>
 <!--    Breadcrumb-->
 <div class="container">
@@ -238,7 +252,7 @@ let products= productData.product;
                         <div class="row">
                             <div class="col-xs-12">
                                 <p>Pack of
-                                    <%= productData.product.length %>
+                                    <%= quantity_bundle %>
                                 </p>
                                 <h4>
                                     <%= productData.pb_name;%>
@@ -317,22 +331,7 @@ let products= productData.product;
             </div>
         </div>
     </div>
-    <% 
-    quantity_bundle = 0;
-    products.forEach(function(pros){ 
-        if(pros.pbm_is_alternative!=1){
-            quantity_bundle += pros.pbm_qty;
-        }else{
-            var m = 0;
-            pros.alternatives.forEach(function(alt){ 
-                m++;
-                if(alt.pba_is_default == 1){
-                    quantity_bundle += alt.pba_qty;
-                }
-            })
-        }
-    })
-    %>
+
     <div class="container bundledetailview">
         <div class="row">
             <div class="col-md-12 bundle-option-header">
