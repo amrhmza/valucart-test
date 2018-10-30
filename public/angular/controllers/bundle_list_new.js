@@ -80,10 +80,31 @@ app.controller("bundle_listing", function (
         $scope.loggedStatus = userAuth.status == "success" ? true : false;
         $scope.liststate = response.data.results.msg;
         let listdata = response.data.results.response;
-        if (listdata != "") {
-          angular.forEach(listdata, function (value, key) {
-            $scope.productData.push(value);
-          });
+        let qty = response.data.results.qty;
+        console.log(listdata);
+        if (listdata != "" && qty != "") {
+          angular.forEach(listdata, function (value, key) {       
+            let quantity_bundle = 0;        
+            angular.forEach(value.qty, function (avalue, key) {  
+              if (avalue.pbm_is_alternative != 1) {
+                quantity_bundle += avalue.pbm_qty;
+              } else {
+                angular.forEach(avalue.alternatives, function (alt, key) {  
+                  if (alt.pba_is_default == 1) {
+                    quantity_bundle += alt.pba_qty;
+                  }
+                })
+              }
+            })
+            value.qty = quantity_bundle;
+
+            $scope.productData.push(value);            
+          });          
+
+          
+          
+          console.log($scope.productData);
+
           $scope.nextcall = 1;
           $scope.page++;
         } else {

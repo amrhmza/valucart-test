@@ -16,6 +16,7 @@ router.get("/", async (req, res, next) => {
       angular: false,
       customjs: false,
       catdrop: 1,
+      header_title:"About Us - ValuCart",
       cookies: cookies
     });
   } catch (error) {

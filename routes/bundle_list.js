@@ -4,6 +4,11 @@ const bundle_listing = require("../controllers/bundle_list.js");
 const getHome = require("../controllers/home.js");
 const getMenu = require("../controllers/category_menu.js");
 
+function camelize(string) { 
+  string = string.toLowerCase();
+  return string.charAt(0).toUpperCase() + string.substring(1);
+}
+
 /* GET product list page. */
 router.get("/", async (req, res, next) => {
   try {
@@ -22,6 +27,8 @@ router.get("/", async (req, res, next) => {
       customjs: true,
       catdrop: 1,
       home_new: true,
+      header_title:'ValuZone Bundles - Valucart',
+      description:'ValuZone Bundles - Shop for '+'ValuZone Bundles Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_list_new.js",
@@ -55,6 +62,8 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       angular: true,
       catdrop: 1,
       customjs: true,
+      header_title:camelize(req.params.cat_name.replace(/-/g,' '))+' - Valucart',
+      description:camelize(req.params.cat_name.replace(/-/g,' '))+' - Shop for '+camelize(req.params.cat_name.replace(/-/g,' '))+' Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       home_new: true,
       jslist: [
         "angular/app.js",

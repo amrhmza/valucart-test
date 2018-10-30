@@ -18,6 +18,8 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
       catdrop: 1,
       angular: true,
       customjs: true,
+      header_title:(req.params.pb_name.replace(/-/g,' '))+' - Valucart',
+      description:(req.params.pb_name.replace(/-/g,' '))+' - Shop for '+(req.params.pb_name.replace(/-/g,' '))+' Best Online Shopping Store. Check Price and Buy Online.Free Shipping & Cash on Delivery & Best Offers',
       jslist: [
         "angular/app.js",
         "angular/factory/bundle_review.js",
