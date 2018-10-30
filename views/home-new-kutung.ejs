@@ -60,35 +60,28 @@
         
         <a href="/bundle-list" class="v-btn" style="float:none;"><h2 class="pr-ttl" style="margin-right: 14px">ValuZone Bundles</h2> <div style="margin-top:8px">View all</div></a>
       </div>
+      
       <div class="bundle-cr owl-carousel owl-theme">
+          <% 
+          if(typeof data.response.banner_bundle != 'undefined'){
+          let bannerListbundle= data.response.banner_bundle;
+          bannerListbundle.sort(function(a, b){
+              return a.hb_order - b.hb_order;
+          });
+          var no=0;
+          if (bannerListbundle) {
+              bannerListbundle.forEach(function(slides){
+                  if(slides.hb_image)
+          %>
         <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/164/himalaya-baby-care-bundle-(6-items)-only-aed-159"><img
-              src="img/Banner-1.png" alt="" /></a>
+          <a href="<%= slides.hb_external_link %>"><img
+              src="<%= slides.hb_image %>" alt="" /></a>
         </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/156/taj-cleaning-bundle-(8-items)-only-99"><img src="img/Banner-2.png"
-              alt="" /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/159/eco-friendly-cleaning-bundle-(4-items)-only-aed-89"><img
-              src="img/Banner-3.png" alt="" /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/162/filipino-food-bundle-(18-items)-only-aed-179"><img src="img/Banner-4.png"
-              alt="" /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/158/emirati-food-bundle-(17-items)-only-269"><img src="img/Banner-5.png"
-              alt="" /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/155/breakfast-bundle-(11-items)-only-139"><img src="img/Banner-6.png"
-              alt="" /></a>
-        </div>
-        <div class="item">
-          <a href="https://www.valucart.com/bundle-detail/154/essential-food-bundle-(13-items)-only-169"><img src="img/Banner-7.png"
-              alt="" /></a>
-        </div>
+        <%
+          })
+      }
+    }
+      %>     
       </div>
     </div>
     <% 
