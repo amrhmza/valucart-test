@@ -9,6 +9,16 @@ let get_menulist = async () => {
     throw error;
   }
 };
+
+let get_horizontal_menulist = async () => {
+  try {
+    let response = await axios.get("/category/horizontalmenu", axios_config);
+    return response.data.results;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
-  get_menulist
+  get_menulist,
+  get_horizontal_menulist
 };
