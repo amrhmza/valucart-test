@@ -1316,7 +1316,8 @@ li.af {
   color: #111111;
 }
 
-.vc-menu ul>li.active>a {
+.vc-menu ul>li.active>a,
+.vc-menu ul>li:hover>a {
   border-bottom: 3px solid #8505ff;
 }
 
@@ -1334,7 +1335,7 @@ li.af {
   min-height: 362px;
   background: #fff;
   z-index: 9;
-  padding: 10px 340px 30px 40px;
+  padding: 10px 0px 30px 40px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
@@ -1348,7 +1349,7 @@ li.af {
   padding: 0;
   float: left;
   margin-right: 40px;
-  width: 200px;
+  /* width: 200px; */
   margin-bottom: 20px;
 }
 
