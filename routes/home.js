@@ -37,9 +37,11 @@ router.get("/", async (req, res, next) => {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let data = await getHome.get_data(JSON.parse(cookies));
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("home-new-kutung", {
       data: data,
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       angular: false,
       customjs: false,
       catdrop: 1,

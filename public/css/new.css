@@ -1337,16 +1337,18 @@ li.af {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
-.vc-sub-menu h3 {
+.vc-sub-menu h3 a {
   font-size: 16px;
-  font-weight: 500;
-  color: #8505ff;
+  font-weight: 500!important;
+  color: #8505ff!important;
 }
 
 .vc-sub-menu ul {
   padding: 0;
   float: left;
   margin-right: 40px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .vc-sub-menu ul li {
@@ -1357,11 +1359,13 @@ li.af {
 .vc-sub-menu ul li a {
   padding: 6px 0;
   font-weight: 400;
+  font-size:12px;
   color: #666;
+  text-transform: capitalize;
 }
 
 .vc-sub-list {
-  float: left;
+  display: inline-block;
   margin-right: 40px;
 }
 

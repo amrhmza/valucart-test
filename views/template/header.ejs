@@ -13,11 +13,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127115961-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-          gtag('config', 'UA-127115961-1');
-        </script>
+        gtag('config', 'UA-127115961-1');
+    </script>
     <base href="<%= process.env.PROTOCOL+baseURL %>/">
     <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
 
@@ -76,21 +76,21 @@
         // }
     </script>
     <% if(angular){ %>
-    <!-- angular Libraries -->
-    <script src="angular/lib/angular.min.js"></script>
-    <script src="angular/lib/angular-route.min.js"></script>
-    <script src="angular/lib/angular-aria.min.js"></script>
-    <script src="angular/lib/angular-messages.min.js"></script>
-    <script src="angular/lib/angular-sanitize.min.js"></script>
-    <%  } %>
-    <% if(customjs){ 
+        <!-- angular Libraries -->
+        <script src="angular/lib/angular.min.js"></script>
+        <script src="angular/lib/angular-route.min.js"></script>
+        <script src="angular/lib/angular-aria.min.js"></script>
+        <script src="angular/lib/angular-messages.min.js"></script>
+        <script src="angular/lib/angular-sanitize.min.js"></script>
+        <%  } %>
+            <% if(customjs){ 
     jslist.forEach(function(js){ %>
-    <script src="<%- js %>"></script>
-    <% })
+                <script src="<%- js %>"></script>
+                <% })
     } %>
-    <% home_new=true;  if(home_new != "undefined"){ %>
-    <style>
-        .col-md-offset-4 {
+                    <% home_new=true;  if(home_new != "undefined"){ %>
+                        <style>
+                            .col-md-offset-4 {
                                 margin-left: 10%;
                             }
 
@@ -108,11 +108,12 @@
                                 }
                             }
                         </style>
-    <% } %>
+                        <% } %>
 </head>
 
 <body>
-    <button onclick="topFunction()" id="gotoTop" title="Go to top"><img src="img/totop.png" class="img-responsive totopimg" /></button>
+    <button onclick="topFunction()" id="gotoTop" title="Go to top"><img src="img/totop.png" class="img-responsive totopimg"
+        /></button>
 
     <div class="loader hidden">
         <div class="center">
@@ -143,52 +144,52 @@
                 var userData=JSON.parse(cookies);
                 if(userData.status=="success"){
                 %>
-                <li>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-responsive topnavlocationimg" src="img/user.png">
-                            <%=(userData.username).toUpperCase();%>
-                            <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="myorders">My Orders</a>
-                            </li>
-                            <li>
-                                <a href="profile">Profile</a>
-                            </li>
-                            <li>
-                                <a href="addressbook">Address Book</a>
-                            </li>
-                            <li>
-                                <a href="change-password">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="mywishlist">My Wish List</a>
-                            </li>
-                            <li>
-                                <a href="mybundles">My Bundles</a>
-                            </li>
-                            <li>
-                                <a href="/schedule-list">My Schedule</a>
-                            </li>
-                            <li class="logout-btn">
-                                <a href="#" class="vcartLogout">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="img-responsive topnavlocationimg" src="img/user.png">
+                                <%=(userData.username).toUpperCase();%>
+                                    <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="myorders">My Orders</a>
+                                </li>
+                                <li>
+                                    <a href="profile">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="addressbook">Address Book</a>
+                                </li>
+                                <li>
+                                    <a href="change-password">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="mywishlist">My Wish List</a>
+                                </li>
+                                <li>
+                                    <a href="mybundles">My Bundles</a>
+                                </li>
+                                <li>
+                                    <a href="/schedule-list">My Schedule</a>
+                                </li>
+                                <li class="logout-btn">
+                                    <a href="#" class="vcartLogout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                </li>
-                <%
+                    </li>
+                    <%
                     }
                 }
                 else{
                 %>
-                <!-- <li>
+                        <!-- <li>
                     <a href="#" class="refererLogin" data-referrer="intro" data-toggle="modal" data-target="#myModal">
                         <img class="img-responsive topnavlocationimg" src="img/user.png">Login/Signup</a>
                 </li> -->
-                <%    
+                        <%    
                 }
                 %>
             </ul>
@@ -209,26 +210,25 @@
                         <img src="img/navbar.svg" alt="" width="18">
                     </div>
                     <% if(typeof home_new != "undefined"){ %>
-                    <a href="/">
-                        <img src="img/logo.svg" class="img-responsive navbar-brand" alt="valucart-logo">
-                    </a>
-                    <% } else { %>
-                    <a href="/">
-                        <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
-                    </a>
-                    <% } %>
-                    <div class="searchnav hidden-sm hidden-xs">
-                        <form action="search" method="get">
-                            <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
-                                <label class="input-group-btn" for="searchLbl">
-                                    <img src="img/search.svg" class="img-responsive searchicon" />
-                                </label>
-                                <input type="text" name="q" class="form-control desktopsearch" id="searchLbl"
-                                    placeholder="Type brand name OR product category">
-                            </div>
-                        </form>
-                    </div>
-                    <!--<marquee style="color:red" class="navbar-collapse v-nav-var hidden-sm hidden-xs"> no delivery on Friday</marquee>-->
+                        <a href="/">
+                            <img src="img/logo.svg" class="img-responsive navbar-brand" alt="valucart-logo">
+                        </a>
+                        <% } else { %>
+                            <a href="/">
+                                <img src="img/logo.png" class="img-responsive navbar-brand" alt="valucart-logo">
+                            </a>
+                            <% } %>
+                                <div class="searchnav hidden-sm hidden-xs">
+                                    <form action="search" method="get">
+                                        <div class="input-group  <%=(typeof home_new != 'undefined')?'head-new-search':'' %>">
+                                            <label class="input-group-btn" for="searchLbl">
+                                                <img src="img/search.svg" class="img-responsive searchicon" />
+                                            </label>
+                                            <input type="text" name="q" class="form-control desktopsearch" id="searchLbl" placeholder="Type brand name OR product category">
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--<marquee style="color:red" class="navbar-collapse v-nav-var hidden-sm hidden-xs"> no delivery on Friday</marquee>-->
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-8 col-xs-6">
                     <ul class="list-inline navlist">
@@ -248,66 +248,61 @@
                             var userData=JSON.parse(cookies);
                         if(userData.status=="success"){
                         %>
-                        <li class="hidden-xs af">
-                            <a href="mywishlist">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/wishlist.svg" class="img-responsive navbar-brand1 ad" alt="valucart-logo"
-                                    style="margin-right: 10px;">
-                                <% } else { %>
-                                <img src="img/wishlist.png" class="img-responsive navbar-brand1 ad" alt="valucart-logo"
-                                    style="margin-right: 10px;">
-                                <% } %>
-                                <span class="cart-label">0</span>
-                            </a>
-                        </li>
-                        <li class="hide af" id="carticon">
-                            <a href="/cart">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } else { %>
-                                <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
-                                <% } %>
-                                <span class="cart-label">0</span>
-                            </a>
+                            <li class="hidden-xs af">
+                                <a href="mywishlist">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/wishlist.svg" class="img-responsive navbar-brand1 ad" alt="valucart-logo" style="margin-right: 10px;">
+                                        <% } else { %>
+                                            <img src="img/wishlist.png" class="img-responsive navbar-brand1 ad" alt="valucart-logo" style="margin-right: 10px;">
+                                            <% } %>
+                                                <span class="cart-label">0</span>
+                                </a>
+                            </li>
+                            <li class="hide af" id="carticon">
+                                <a href="/cart">
+                                    <% if(typeof home_new != "undefined"){ %>
+                                        <img src="img/cart-1.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                        <% } else { %>
+                                            <img src="img/cart.png" class="img-responsive navbar-brand2" alt="valucart-logo">
+                                            <% } %>
+                                                <span class="cart-label">0</span>
+                                </a>
 
-                        </li>
-                        <li class="hide af" id="bundleicon">
-                            <a href="">
+                            </li>
+                            <li class="hide af" id="bundleicon">
+                                <a href="">
 
-                                <img src="img/bundle_icon.svg" class="img-responsive navbar-brand2 ad" alt="valucart-logo">
+                                    <img src="img/bundle_icon.svg" class="img-responsive navbar-brand2 ad" alt="valucart-logo">
 
-                                <span class="cart-label">0</span>
-                            </a>
-                        </li>
-                        <% }
+                                    <span class="cart-label">0</span>
+                                </a>
+                            </li>
+                            <% }
                         } else{
                         %>
-                        <li>
-                            <a data-toggle="modal" data-target="#myModal" class="wishlist-lbl">
-                                <% if(typeof home_new != "undefined"){ %>
-                                <img src="img/wishlist.svg" class="navbar-brand1 wishlist-icon" alt="valucart-logo"
-                                    style="margin-right: 10px;">
-                                <% } else { %>
-                                <img src="img/wishlist.png" class="img-responsive navbar-brand1 wishlist-icon" alt="valucart-logo"
-                                    style="margin-right: 10px;">
-                                <% } %>
-                                <span class="wl-txt">Wishlist</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="modal" data-target="#myModal" class="cart-lbl">
-                                <img src="img/shopping-bag.svg" class="cart-icon">
-                                <span class="no-item-lbl"></span>
-                            </a>
-                            <!-- <span class="cart-label">0</span> -->
-                        </li>
-                        <li>
-                            <img data-referrer="intro" data-toggle="modal" data-target="#myModal" src="img/profile-icon.svg"
-                                class="prof-icon">
-                            <a data-referrer="intro" data-toggle="modal" data-target="#myModal" class="prof-lbl">Log In
-                                / Sign Up</a>
-                        </li>
-                        <%
+                                <li>
+                                    <a data-toggle="modal" data-target="#myModal" class="wishlist-lbl">
+                                        <% if(typeof home_new != "undefined"){ %>
+                                            <img src="img/wishlist.svg" class="navbar-brand1 wishlist-icon" alt="valucart-logo" style="margin-right: 10px;">
+                                            <% } else { %>
+                                                <img src="img/wishlist.png" class="img-responsive navbar-brand1 wishlist-icon" alt="valucart-logo" style="margin-right: 10px;">
+                                                <% } %>
+                                                    <span class="wl-txt">Wishlist</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#myModal" class="cart-lbl">
+                                        <img src="img/shopping-bag.svg" class="cart-icon">
+                                        <span class="no-item-lbl"></span>
+                                    </a>
+                                    <!-- <span class="cart-label">0</span> -->
+                                </li>
+                                <li>
+                                    <img data-referrer="intro" data-toggle="modal" data-target="#myModal" src="img/profile-icon.svg" class="prof-icon">
+                                    <a data-referrer="intro" data-toggle="modal" data-target="#myModal" class="prof-lbl">Log
+                                        In / Sign Up</a>
+                                </li>
+                                <%
                         } 
                         %>
                     </ul>
@@ -324,10 +319,8 @@
             </div>
             <div class="offer-sec">
                 <strong>
-                    Choose from over 5000+ products! <span class="vail-text hidden hidden-sm hidden-xs"> Avail the
-                        best online prices
-                        and shop
-                        from the convenience of your home.</span>
+                    Choose from over 5000+ products! <span class="vail-text hidden hidden-sm hidden-xs"> Avail the best online
+                        prices and shop from the convenience of your home.</span>
                 </strong>
                 <img src="img/vc-batch-w.svg" width="32" class="hidden-sm hidden-xs">
                 <a href="product-listing" class="more-btn">Shop now</a>
@@ -336,12 +329,51 @@
             <div class="vc-menu">
                 <div class="v-container">
                     <ul>
-                        <li class="active">
-                            <a href="">Food Cupboard</a>
-                            <div class="vc-sub-menu">
-                                <div class="vc-sub-list">
-                                    <h3>Skin Care</h3>
-                                    <ul>
+                        <% if(typeof horizontalmenu != 'undefined'){
+                            let menu = horizontalmenu.response;
+                            let i = 0;
+                            menu.forEach(function(menus){
+                        %>
+                            <li class="">
+                                <a href=""><%= menus.groupcategory %></a>
+                                <div class="vc-sub-menu">
+                                    <% menus.category.forEach(function(menusal){ 
+                                        var cname= menusal.c_name;
+                                        var cat_url_name = cname.trim().replace(/\s+/g, '-').toUpperCase();
+                                        var catUrl= 'product-listing/'+menusal.c_id+'/'+cat_url_name;                                        
+                                        
+                                        %>
+                                        <div class="vc-sub-list">
+                                            <h3><a href="<%= catUrl %>">
+                                                <%= menusal.c_name %>
+                                            </a>
+                                            </h3>
+                                           
+                                                        <% if(typeof menusal.subcategory != 'undefined'){
+                                              let km = 0;
+                                                menusal.subcategory.forEach(function(sub){
+
+                                                    var scname= sub.c_name;
+                                                    var scat_url_name = scname.trim().replace(/\s+/g, '-').toUpperCase();
+                                                    var scatUrl='product-listing/'+sub.c_parent_id+'/'+scat_url_name+'#!?sub_cat='+sub.c_id;
+                                             
+                                                    
+                                                    if(km==0){
+                                                        %>
+                                                        <ul>
+                                                        <%
+                                                    }
+                                                    
+                                                    %>
+                                                            <li><a href="<%= scatUrl %>"><%= sub.c_name.toLowerCase(); %></a></li>
+                                                    <% if(km==7){
+                                                        %>
+                                                    </ul>
+                                                        <%
+                                                        km=0;
+                                                    }else{km++;}     }) } %>
+                                                
+                                                    <!-- <ul>
                                         <li><a href="">Body Cream</a></li>
                                         <li><a href="">Face Cream</a></li>
                                         <li><a href="">Cream</a></li>
@@ -349,18 +381,14 @@
                                         <li><a href="">Lotion</a></li>
                                         <li><a href="">Tummy Butter</a></li>
                                         <li><a href="">Body Lotion</a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="">Body Cream</a></li>
-                                        <li><a href="">Face Cream</a></li>
-                                        <li><a href="">Cream</a></li>
-                                        <li><a href="">Talc</a></li>
-                                        <li><a href="">Lotion</a></li>
-                                        <li><a href="">Tummy Butter</a></li>
-                                        <li><a href="">Body Lotion</a></li>
-                                    </ul>
+                                    </ul> -->
+                                        </div>
+                                        <% }) %>
                                 </div>
-                                <div class="vc-sub-list">
+                            </li>
+                            <% i++; })  } %>
+
+                                <!-- <div class="vc-sub-list">
                                     <h3>Hair Care</h3>
                                     <ul>
                                         <li><a href="">Hair Cream</a></li>
@@ -386,46 +414,44 @@
                                         <li><a href="">Hair Colour</a></li>
                                         <li><a href="">Hair Fall Treatment</a></li>
                                     </ul>
-                                </div>
-                                <div class="ft-prod">
+                                </div> -->
+                                <!-- <div class="ft-prod">
                                     <div class="ft-prod-img">
                                         <img src="https://s3.eu-central-1.amazonaws.com/assets.valucart.com/product_images/1540222604341_thumb_3504105027148.png"
                                             alt="MUSTELA MUSTI EAU DE SOIN 50ML" />
                                     </div>
                                     <h3>MUSTELA MUSTI <br> EAU DE SOIN 50M</h3>
                                     <h2>55.00 AED</h2>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="">Fresh Food</a></li>
+                                </div> -->
+
+                                <!-- <li><a href="">Fresh Food</a></li>
                         <li><a href="">Baby &amp; Kids</a></li>
                         <li><a href="">Healthy &amp; Beauty</a></li>
-                        <li><a href="">Household</a></li>
+                        <li><a href="">Household</a></li> -->
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <% if(typeof catdrop=="undefined"){ %>
-    <div class="container-fluid navtop2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 hidden-xs">
-                    <nav class="navbar navbar-static-top line-navbar-two">
-                        <div class="container" style="padding-left: 0px;">
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="line-navbar-collapse-2">
-                                <ul class="nav navbar-nav lnt-nav-mega">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-expanded="false">
-                                            Categories
-                                        </a>
-                                        <div class="dropdown-menu" role="menu">
-                                            <div class="lnt-dropdown-mega-menu">
-                                                <!-- List of categories -->
-                                                <ul class="lnt-category list-unstyled">
-                                                    <% 
+        <div class="container-fluid navtop2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <nav class="navbar navbar-static-top line-navbar-two">
+                            <div class="container" style="padding-left: 0px;">
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="line-navbar-collapse-2">
+                                    <ul class="nav navbar-nav lnt-nav-mega">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                Categories
+                                            </a>
+                                            <div class="dropdown-menu" role="menu">
+                                                <div class="lnt-dropdown-mega-menu">
+                                                    <!-- List of categories -->
+                                                    <ul class="lnt-category list-unstyled">
+                                                        <% 
                                                     let menuList= (typeof menudata != 'undefined')?menudata.response:[];
                                                     var no=0;
                                                     if (menuList) {
@@ -436,234 +462,234 @@
                                                             var catUrl= 'product-listing/'+cat.c_id+'/'+cat_url_name;
                                                                
                                                     %>
-                                                    <li class="<%= (no==1)?'active':''; %>">
-                                                        <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
-                                                            <%= cat.c_name;%>
-                                                        </a>
-                                                    </li>
-                                                    <%
+                                                            <li class="<%= (no==1)?'active':''; %>">
+                                                                <a href="<%= catUrl;%>" data-root="#subcategory-<%= cat.c_id;%>">
+                                                                    <%= cat.c_name;%>
+                                                                </a>
+                                                            </li>
+                                                            <%
                                                         });
                                                     }
                                                     %>
-                                                </ul>
-                                                <!-- Subcategory and carousel wrap -->
-                                                <div class="lnt-subcategroy-carousel-wrap container-fluid">
-                                                    <% 
+                                                    </ul>
+                                                    <!-- Subcategory and carousel wrap -->
+                                                    <div class="lnt-subcategroy-carousel-wrap container-fluid">
+                                                        <% 
                                                     var no=0;
                                                     if (menuList) {
                                                         menuList.forEach(function(cat){
                                                             no++;
                                                     %>
-                                                    <div id="subcategory-<%= cat.c_id;%>" class="<%= (no==1)?'active':''; %>">
-                                                        <!-- Sub categories list-->
-                                                        <div class="lnt-subcategory col-sm-6 col-md-6">
-                                                            <!--<h3 class="lnt-category-name">Home, garden and tools</h3>-->
-                                                            <%
+                                                            <div id="subcategory-<%= cat.c_id;%>" class="<%= (no==1)?'active':''; %>">
+                                                                <!-- Sub categories list-->
+                                                                <div class="lnt-subcategory col-sm-6 col-md-6">
+                                                                    <!--<h3 class="lnt-category-name">Home, garden and tools</h3>-->
+                                                                    <%
                                                             let subcatList = cat.sub_cat; 
                                                             if (subcatList) {
                                                             %>
-                                                            <ul class="list-unstyled col-sm-12">
-                                                                <%
+                                                                        <ul class="list-unstyled col-sm-12">
+                                                                            <%
                                                                 subcatList.forEach(function(scat){
                                                                     var scname= scat.c_name;
                                                                     var scat_url_name = scname.trim().replace(/\s+/g, '-').toUpperCase();
                                                                     var scatUrl='product-listing/'+scat.c_parent_id+'/'+scat_url_name+'#!?sub_cat='+scat.c_id;
                                                                 %>
-                                                                <li>
-                                                                    <a href="<%= scatUrl%>">
-                                                                        <%=scat.c_name%>
-                                                                    </a>
-                                                                </li>
-                                                                <%
+                                                                                <li>
+                                                                                    <a href="<%= scatUrl%>">
+                                                                                        <%=scat.c_name%>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <%
                                                                 });
                                                                 %>
-                                                                <!-- <li>
+                                                                                    <!-- <li>
                                                                     <a style="color: #14bdcd; text-decoration: underline; font-weight: 500;" href="#">See all New & trending</a>
                                                                 </li> -->
-                                                            </ul>
-                                                            <%
+                                                                        </ul>
+                                                                        <%
                                                             }
                                                             %>
-                                                        </div>
-                                                    </div>
-                                                    <%
+                                                                </div>
+                                                            </div>
+                                                            <%
                                                         });
                                                     }
                                                     %>
-                                                    <!-- /subcategory ends -->
+                                                                <!-- /subcategory ends -->
+                                                    </div>
+                                                    <!-- /.lnt-subcategroy-carousel-wrap -->
                                                 </div>
-                                                <!-- /.lnt-subcategroy-carousel-wrap -->
+                                                <!-- /.lnt-dropdown-mega-menu -->
                                             </div>
-                                            <!-- /.lnt-dropdown-mega-menu -->
-                                        </div>
-                                        <!-- /.dropdown-menu -->
-                                    </li>
-                                    <!-- /.dropdown -->
-                                </ul>
-                                <!-- /.lnt-nav-mega -->
-                                <!-- /.lnt-search-form -->
-                                <!-- /.lnt-shopping-cart -->
+                                            <!-- /.dropdown-menu -->
+                                        </li>
+                                        <!-- /.dropdown -->
+                                    </ul>
+                                    <!-- /.lnt-nav-mega -->
+                                    <!-- /.lnt-search-form -->
+                                    <!-- /.lnt-shopping-cart -->
+                                </div>
+                                <!-- /.navbar-collapse -->
                             </div>
-                            <!-- /.navbar-collapse -->
-                        </div>
-                        <!-- /.container -->
-                    </nav>
-                    <!--nav navbar-nav-->
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 hidden hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
-                    <a href="/product-listing/valucartexclusives">
-                        <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives">
-                        ValuCart Exclusives</a>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 hidden " style="z-index: 1000;">
-                    <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
-                        <form class="mobsearchform">
-                            <input class="sb-search-input desktopsearch" placeholder="Type brand name OR product category"
-                                type="text" value="" name="search" id="search">
-                            <input class="sb-search-submit" type="button" value="">
-                            <span class="sb-icon-search"></span>
-                        </form>
+                            <!-- /.container -->
+                        </nav>
+                        <!--nav navbar-nav-->
                     </div>
-                </div>
-                <div class="hidden-md hidden hidden-sm hidden-lg vivible-xs col-xs-6">
-                    <a href="/city">
-                        <p class="navlocation">
-                            <img class="img-responsive navlocationimg" src="img/location.png"> <span class="current_city">Al
-                                Karama, Dubai</span></p>
-                    </a>
+                    <div class="col-lg-4 col-md-4 col-sm-4 hidden hidden-xs text-left" style="padding-top: 8px; z-index: 1000;">
+                        <a href="/product-listing/valucartexclusives">
+                            <img src="img/exclusive.png" class="img-responsive exclusiveimg" alt="Valucart Exclusives"> ValuCart
+                            Exclusives</a>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-4 col-xs-12 hidden " style="z-index: 1000;">
+                        <div id="sb-search" class="sb-search column hidden-md hidden-sm hidden-lg">
+                            <form class="mobsearchform">
+                                <input class="sb-search-input desktopsearch" placeholder="Type brand name OR product category" type="text" value="" name="search"
+                                    id="search">
+                                <input class="sb-search-submit" type="button" value="">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="hidden-md hidden hidden-sm hidden-lg vivible-xs col-xs-6">
+                        <a href="/city">
+                            <p class="navlocation">
+                                <img class="img-responsive navlocationimg" src="img/location.png"> <span class="current_city">Al
+                                    Karama, Dubai</span></p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <% } %>
-    <!-- mobile menu -->
-    <div id="mobileview" class="mobileview1" style="display: none">
-        <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
-            <div class="sideheader">
-                <img src="img/blacklogo.png" class="img-responsive navbar-brand-mob" alt="valucart-logo">
-                <a href="javascript:void(0)" style="display: inline-block;" class="closebtn" onclick="closeNav()">&times;</a>
-            </div>
-            <div class="tab">
-                <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
-                    <img class="svg" src="img/user.svg" alt="" />
-                    <br>My Account</button>
-                <button class="tablinks button1" onclick="openCity(event, 'categories')">
-                    <img class="svg" src="img/shop.svg" alt="" />
-                    <br>Categories</button>
-                <a href="/product-listing/valucartexclusives" class="hidden"><button class="tablinks button1">
-                        <img class="svg" src="img/valucart.svg" alt="" />
-                        <br>ValuCart Exclusives</button></a>
-            </div>
-            <div id="account" class="tabcontent">
-                <% 
+        <% } %>
+            <!-- mobile menu -->
+            <div id="mobileview" class="mobileview1" style="display: none">
+                <div id="mySidenav" class="sidenav" style="overflow-y: scroll;">
+                    <div class="sideheader">
+                        <img src="img/blacklogo.png" class="img-responsive navbar-brand-mob" alt="valucart-logo">
+                        <a href="javascript:void(0)" style="display: inline-block;" class="closebtn" onclick="closeNav()">&times;</a>
+                    </div>
+                    <div class="tab">
+                        <button class="tablinks button1" onclick="openCity(event, 'account')" id="defaultOpen">
+                            <img class="svg" src="img/user.svg" alt="" />
+                            <br>My Account</button>
+                        <button class="tablinks button1" onclick="openCity(event, 'categories')">
+                            <img class="svg" src="img/shop.svg" alt="" />
+                            <br>Categories</button>
+                        <a href="/product-listing/valucartexclusives" class="hidden"><button class="tablinks button1">
+                                <img class="svg" src="img/valucart.svg" alt="" />
+                                <br>ValuCart Exclusives</button></a>
+                    </div>
+                    <div id="account" class="tabcontent">
+                        <% 
                     if(cookies){
                     var userData=JSON.parse(cookies);
                     if(userData.status=="success"){
                %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels">
-                            <%=(userData.username).toUpperCase();%>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="myorders">
-                            <h4 class="panel-title panels">My Orders
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="profile">
-                            <h4 class="panel-title panels">Profile
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="addressbook">
-                            <h4 class="panel-title panels">Address Book
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="change-password">
-                            <h4 class="panel-title panels">Change Password
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="mywishlist">
-                            <h4 class="panel-title panels">My Wish List
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="mybundles">
-                            <h4 class="panel-title panels">My bundles
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="vcartLogout">
-                            <h4 class="panel-title panels">Logout
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-                <%
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title panels">
+                                        <%=(userData.username).toUpperCase();%>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="myorders">
+                                        <h4 class="panel-title panels">My Orders
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="profile">
+                                        <h4 class="panel-title panels">Profile
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="addressbook">
+                                        <h4 class="panel-title panels">Address Book
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="change-password">
+                                        <h4 class="panel-title panels">Change Password
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="mywishlist">
+                                        <h4 class="panel-title panels">My Wish List
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a href="mybundles">
+                                        <h4 class="panel-title panels">My bundles
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a class="vcartLogout">
+                                        <h4 class="panel-title panels">Logout
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <%
                     }
                 }
                 else{
                 %>
-                <a href="JavaScript:Void(0);">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="#" data-toggle="modal" data-target="#myModal">
-                                <h4 class="panel-title panels">Login
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </h4>
-                            </a>
-                        </div>
-                    </div>
-                </a>
-                <a href="JavaScript:Void(0);">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="#" data-toggle="modal" data-target="#myModal">
-                                <h4 class="panel-title panels">Signup
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </h4>
-                            </a>
-                        </div>
-                    </div>
-                </a>
-                <%    
+                                <a href="JavaScript:Void(0);">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                                <h4 class="panel-title panels">Login
+                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="JavaScript:Void(0);">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                                <h4 class="panel-title panels">Signup
+                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <%    
                 }
                 %>
-            </div>
-            <div id="categories" class="tabcontent">
-                <% 
+                    </div>
+                    <div id="categories" class="tabcontent">
+                        <% 
                    
                 let menuList= (typeof menudata != 'undefined')?menudata.response:[];
                 var no=0;
@@ -675,102 +701,102 @@
                             var catUrl= 'product-listing/'+cat.c_id+'/'+cat_url_name;
                                
                 %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels" data-href="<%= catUrl;%>">
-                            <a href="<%= catUrl;%>">
-                                <h4 class="panel-title panels">
-                                    <%= cat.c_name;%>
-                                </h4>
-                            </a>
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <%
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title panels" data-href="<%= catUrl;%>">
+                                        <a href="<%= catUrl;%>">
+                                            <h4 class="panel-title panels">
+                                                <%= cat.c_name;%>
+                                            </h4>
+                                        </a>
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    </h4>
+                                </div>
+                            </div>
+                            <%
                         });
                     }
                  %>
+                    </div>
+                    <div id="offers" class="tabcontent">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> News & Trending
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels">Holiday shop
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Chilled
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Food & Cupboard
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Drinks
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> health & Beauty
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Baby & toddler
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> household
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> pet
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title panels"> Home & Outdoor
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="offers" class="tabcontent">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> News & Trending
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels">Holiday shop
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Chilled
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Food & Cupboard
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Drinks
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> health & Beauty
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Baby & toddler
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> household
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> pet
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title panels"> Home & Outdoor
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--    Navigation ends here-->
-    <!-- <div id="status"></div> -->
-    <!-- 
+            <!--    Navigation ends here-->
+            <!-- <div id="status"></div> -->
+            <!-- 
 <!-- Facebook login or logout button -->
-    <!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
+            <!-- <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">login</a> -->
 
-    <!-- Display user profile data -->
-    <!-- <div id="userData"></div> -->
+            <!-- Display user profile data -->
+            <!-- <div id="userData"></div> -->
