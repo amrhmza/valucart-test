@@ -25,6 +25,9 @@
   .line-navbar-two {
     display: none;
   }
+  .vc-menu {
+    display: none;
+  }
 }
 
 .line-navbar-two .navbar-right {
