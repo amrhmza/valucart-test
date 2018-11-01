@@ -13,11 +13,12 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     let data = "";
     let address_id = "";
     let menudata = await getMenu.get_menulist();
-
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("new-address", {
       address_id: address_id,
       data: data,
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       cookies: cookies,
       angular: true,
       customjs: true,

@@ -13,8 +13,10 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       ""
     );
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("myshopping-dashboard", {
       data: shopingList,
+      horizontalmenu:horizontalmenu,
       menudata: menudata,
       angular: true,
       customjs: true,

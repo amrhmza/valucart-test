@@ -11,9 +11,11 @@ router.get("/:pd_id/:pd_name", async (req, res, next) => {
     // let pd_name = req.param("pd_name");
     let data = await productDetail.get_data(pd_id, cookies);
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("productdetail", {
       data: data,
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       cookies: cookies,
       angular: true,
       header_title:(req.params.pd_name.replace(/-/g,' '))+' - Valucart',

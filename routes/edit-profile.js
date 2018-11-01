@@ -10,9 +10,11 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     var udata = JSON.parse(cookies);
     let data = await getProfile.get_data(udata);
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("edit-profile", {
       data: data,
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       cookies: cookies,
       angular: true,
       customjs: true,
