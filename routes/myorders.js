@@ -9,9 +9,11 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     let data = await myOrders.get_data(JSON.parse(cookies));
     res.render("myorders", {
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       data: data,
       search: 0,
       catdrop: 1,

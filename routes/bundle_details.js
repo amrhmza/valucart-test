@@ -10,11 +10,13 @@ router.get("/:pb_id/:pb_name", async (req, res, next) => {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let data = await getBundle.get_data(pb_id, cookies);
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     //console.log(data);
     res.render("bundledetail_new", {
       data: data,
       menudata: menudata,
       cookies: cookies,
+      horizontalmenu:horizontalmenu,
       catdrop: 1,
       angular: true,
       customjs: true,

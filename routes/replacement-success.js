@@ -7,10 +7,12 @@ router.get("/", async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("replacement-success", {
       menudata: menudata,
       angular: false,
       customjs: false,
+      horizontalmenu:horizontalmenu,
       cookies: cookies
     });
   } catch (error) {

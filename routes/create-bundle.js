@@ -12,6 +12,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let check = await userbundle.checkpendingBundle(JSON.parse(cookies));
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     console.log(check);
     if (check.results.status == 200 && check.results.response.length > 0) {
       var checkmsg =
@@ -23,6 +24,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     }
     res.render("newbundle", {
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       angular: false,
       search: 0,
       customjs: false,

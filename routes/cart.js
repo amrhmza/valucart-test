@@ -10,6 +10,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
   try {
     let cookies = !req.cookies.vcartAuth ? false : req.cookies.vcartAuth;
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     let datas = await cart.get_data(JSON.parse(cookies));
     // if (_.isEmpty(data) == true) {
     //   throw data;
@@ -31,6 +32,7 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
       data: data,
       pendingBundle: pendingBundle,
       cookies: cookies,
+      horizontalmenu:horizontalmenu,
       menudata: menudata,
       cart_sum: cart_sum,
       angular: true,

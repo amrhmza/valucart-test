@@ -22,6 +22,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
     );
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     let b;
 
     res.render("productlisting", {
@@ -30,6 +31,7 @@ router.get("/:cat_id/:cat_name", async (req, res, next) => {
       banner: banner,
       cookies: cookies,
       angular: true,
+      horizontalmenu:horizontalmenu,
       catdrop: data.product_type == "Bundle" ? 1 : b,
       customjs: true,
       header_title:camelize(req.params.cat_name.replace(/-/g,' '))+' - Valucart',

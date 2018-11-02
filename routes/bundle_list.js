@@ -18,10 +18,12 @@ router.get("/", async (req, res, next) => {
     let data = await bundle_listing.get_datav2(querydata);
     let banner = await getHome.get_data();
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
     res.render("bundle-listing_new", {
       data: data,
       banner: banner,
       cookies: cookies,
+      horizontalmenu:horizontalmenu,
       menudata: menudata,
       angular: true,
       customjs: true,

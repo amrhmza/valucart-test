@@ -10,9 +10,12 @@ router.get("/", auth.ensureAuthenticated, async (req, res, next) => {
     var udata = JSON.parse(cookies);
     let data = await getAddress.get_address(udata, "");
     let menudata = await getMenu.get_menulist();
+    let horizontalmenu = await getMenu.get_horizontal_menulist();
+
     res.render("addressbook", {
       data: data,
       menudata: menudata,
+      horizontalmenu:horizontalmenu,
       cookies: cookies,
       angular: true,
       customjs: true,
