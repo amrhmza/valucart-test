@@ -15,6 +15,20 @@ var getUrlParameter = function getUrlParameter(param, dummyPath) {
   return res;
 }
 
+
+$('.searchicon').on('click',function(e){
+if($(".desktopsearch").val() != "" && $(".desktopsearch").val().length > 2){
+  var base_url = window.location.origin;
+      window.location.replace(
+
+        base_url + "/product-listing/search?q=" + encodeURIComponent($(".desktopsearch").val())
+  );
+}else{
+  return false;
+}
+
+})
+
 $(".desktopsearch").keydown(function (event) {
   if (event.keyCode == 13) {
     if ($(".desktopsearch").val().length > 0) {

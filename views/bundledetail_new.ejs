@@ -201,33 +201,64 @@ products.forEach(function(pros){
                                             <!-- Indicators -->
 
                                             <ol class="carousel-indicators">
-                                                <% 
-                                                 var no=0;
-                                                 products.forEach(function(pro){     
-                                                 if(pro.p_image){
-                                                %>
-                                                    <li data-target="#productCarousel" class="<%=(no==0?'active':'');%>" data-slide-to="<%=no++;%>"></li>
-                                                    <%
-                                                }
-                                                }); 
-                                               %>
+
+                                                    <% 
+                                                    var no=0;
+                                                    products.forEach(function(pro){     
+                                                        if(pro){
+                                                            if(pro.pbm_is_alternative==0)
+                                                            {
+                                                            no++;
+                                                    %>
+                                                    <li  data-target="#productCarousel" class="<%=(no==1?'active':'');%>" data-slide-to="<%=no;%>"></li>
+                                                        <%
+                                                    }
+                                                    else{
+                                                        var proAlters= pro.alternatives;
+                                                        proAlters.forEach(function (alt){
+                                                            no++;
+                                                        %>
+                                                        <li  data-target="#productCarousel" class="<%=(no==1?'active':'');%>" data-slide-to="<%=no;%>"></li>
+                                                            <%
+                                                                });
+                                                            }
+                                                        }
+                                                    }); 
+                                                    %>
+                                               
                                             </ol>
 
                                             <!-- Wrapper for slides -->
                                             <div class="carousel-inner">
-                                                <% 
-                                            var no=0;
-                                            products.forEach(function(pro){     
-                                                if(pro.p_image){
-                                       %>
-                                                    <div class="item <%= (no==0)?'active':'';%>">
-                                                        <img src="<%= pro.p_image%>" alt="" style="height: 250px;margin: auto;">
-                                                    </div>
-                                                    <%
-                                                no++; 
-                                                }
-                                            }); 
-                                        %>
+
+                                                    <% 
+                                                    var no=0;
+                                                    products.forEach(function(pro){     
+                                                        if(pro){
+                                                            if(pro.pbm_is_alternative==0)
+                                                            {
+                                                            no++;
+                                                    %>
+                                                    <div class="item <%= (no==1)?'active':'';%>">
+                                                            <img src="<%= pro.p_image%>" alt="" style="height: 250px;margin: auto;">
+                                                        </div>
+                                                        <%
+                                                    }
+                                                    else{
+                                                        var proAlters= pro.alternatives;
+                                                        proAlters.forEach(function (alt){
+                                                            no++;
+                                                        %>
+                                                        <div class="item <%= (no==1)?'active':'';%>">
+                                                                <img src="<%= alt.p_image%>" alt="" style="height: 250px;margin: auto;">
+                                                            </div>
+                                                            <%
+                                                                });
+                                                            }
+                                                        }
+                                                    }); 
+                                                    %>
+                                               
                                             </div>
                                         </div>
 

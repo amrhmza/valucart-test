@@ -91,6 +91,26 @@ app.factory("cart", function($http, config, $q) {
         });
       return q.promise;
     },
+    checkQuantity: function(userData) {
+      var q = $q.defer();
+      var suggestURL = config.checkQuantity;
+      $http({
+        method: "POST",
+        url: suggestURL,
+        type: "json",
+        headers: {
+          Authorization: "Bearer " + userData,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(success) {
+          q.resolve(success);
+        })
+        .catch(function(err) {
+          q.reject(err);
+        });
+      return q.promise;
+    },
     updateBundleName: function(data, userData) {
       var q = $q.defer();
       var suggestURL = config.updateBundleName;

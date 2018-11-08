@@ -72,7 +72,8 @@ app.constant("config", {
   adduserbundletocart: baseurl + "/cart/adduserbundletocart",
   settings: baseurl + "/settings",
   contactus: baseurl + "/contact",
-  getproduct_search_list: baseurl + "/search/getlist/post"
+  getproduct_search_list: baseurl + "/search/getlist/post",
+  checkQuantity: baseurl + "/cart/checkquantity"
 });
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
   // $locationProvider.html5Mode(true);

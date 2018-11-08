@@ -185,16 +185,13 @@
                                         <% if (data) %>
                                         <%= data.response[0].p_quantity %>
                                     </h5>
-                                    <%
-                                        if(data.response[0].pdt_percentage>0){
-                                        %>
-                                    <h5 style="display: inline-block" class="offeredprice m-0">
-                                        <%= data.response[0].p_price;%> AED
-                                    </h5>
+                                    <% if (data.response[0].pd_maximum_selling_price){ %>
+                                    <strike style="font-size:18px;"><%=data.response[0].pd_maximum_selling_price%> AED</strike>
                                     <% } %>
+                                    
                                     <h6 style="margin-bottom: 40px;">
                                         <% if (data) %>
-                                        <%= (data.response[0].pdt_price)?data.response[0].pdt_price:data.response[0].p_price %>
+                                        <%= (data.response[0].pd_valucart_price)?data.response[0].pd_valucart_price:data.response[0].p_price %>
                                         AED
                                     </h6>
                                 </div>

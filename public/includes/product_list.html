@@ -37,26 +37,26 @@
                 <!-- <h5 ng-if="product.pdt_percentage" class="offeredprice"> {{product.p_price}} AED</h5> -->
                 <span ng-if="product.pd_maximum_selling_price">
                     <h6 style="margin-top:40px;">
-                        <span ng-if="product.pd_maximum_selling_price && product.pd_maximum_selling_price > product.pdt_price && product.pd_maximum_selling_price > product.p_price">
+                        <span ng-if="product.pd_maximum_selling_price">
                             <strike style="font-size:18px;">{{product.pd_maximum_selling_price}} AED</strike>
                         </span>
-                        <span ng-if="product.pdt_price">
-                            {{product.pdt_price}} AED
+                        <span ng-if="product.pd_valucart_price">
+                            {{product.pd_valucart_price}} AED
                         </span>
-                        <span ng-if="!product.pdt_price">
-                            {{product.p_price}} AED
-                        </span>
+                        <!-- <span ng-if="!product.pd_valucart_price">
+                            {{product.pd_valucart_price}} AED1
+                        </span> -->
                     </h6>
                 </span>
                 <span ng-if="!product.pd_maximum_selling_price">
                     <h6>
 
-                        <span ng-if="product.pdt_price">
-                            {{product.pdt_price}} AED
+                        <span ng-if="product.pd_valucart_price">
+                            {{product.pd_valucart_price}} AED
                         </span>
-                        <span ng-if="!product.pdt_price">
-                            {{product.p_price}} AED
-                        </span>
+                        <!-- <span ng-if="!product.pd_valucart_price">
+                            {{product.pd_valucart_price}} AED3
+                        </span> -->
                     </h6>
                 </span>
             </div>

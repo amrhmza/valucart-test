@@ -67,20 +67,9 @@ app.controller("cart", function (
       return
     }
     // If is not undefined
-    if (!isNaN(currentVal)) {
-      // Increment
-      $("input[name=" + fieldName + index + "]").val(currentVal + 1);
-      $("input[name=" + fieldName + index + "]").attr(
-        "data-qty",
-        currentVal + 1
-      );
-    } else {
-      // Otherwise put a 0 there
-      $("input[name=" + fieldName + index + "]").val(1);
-      $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
-    }
-    $scope.updateCart(qty, index);
-    $scope.cartTotal();
+    
+    $scope.updateCart(qty, index,0,fieldName,index,currentVal);
+    
   };
 
   // This button will decrement the value till 0
@@ -89,25 +78,53 @@ app.controller("cart", function (
     let qty = currentVal - 1;
     // If is not undefined
     if (!isNaN(currentVal) && currentVal > 1) {
-      // Increment
-      $("input[name=" + fieldName + index + "]").val(currentVal - 1);
-      $("input[name=" + fieldName + index + "]").attr(
-        "data-qty",
-        currentVal - 1
-      );
-      $scope.updateCart(qty, index);
+      // Increment      
+      $scope.updateCart(qty, index,1,fieldName,index,currentVal);
     } else {
       // Otherwise put a 0 there
       $("input[name=" + fieldName + index + "]").val(1);
       $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
+      $scope.cartTotal();
     }
-    $scope.cartTotal();
+   
   };
 
-  $scope.updateCart = function (qty, index) {
+  $scope.updateCart = function (qty, index1,c,fieldName="",index="",currentVal=0) {
     cart
-      .quantityUpdate(qty, index)
-      .then(function (response) { })
+      .quantityUpdate(qty, index1)
+      .then(function (response) { 
+        if(response.data.results.response == true && c==1){
+          $("input[name=" + fieldName + index + "]").val(currentVal - 1);
+          $("input[name=" + fieldName + index + "]").attr(
+            "data-qty",
+            currentVal - 1
+          );
+
+          $scope.cartTotal();
+
+        }else if(response.data.results.response == true && c==0){
+          if (!isNaN(currentVal)) {
+            // Increment
+            $("input[name=" + fieldName + index + "]").val(currentVal + 1);
+            $("input[name=" + fieldName + index + "]").attr(
+              "data-qty",
+              currentVal + 1
+            );
+          } else {
+            // Otherwise put a 0 there
+            $("input[name=" + fieldName + index + "]").val(1);
+            $("input[name=" + fieldName + index + "]").attr("data-qty", 1);
+          }
+
+          $scope.cartTotal();
+          
+        }else{
+          toastr.warning(
+            `There is no stock for the item - `+ response.data.results.response[0]
+          );
+        }
+
+      })
       .catch(function (response) {
         // toastr.warning(response.data.results.msg);
       });
@@ -324,7 +341,31 @@ app.controller("cart", function (
         `Order Value should be more then ${$scope.minOrderAmt} AED!`
       );
     } else {
-      $("#cartsubmit").submit();
+      //$("#cartsubmit").submit();
+
+      var userAuth = typeof $.cookie("vcartAuth")
+          ? JSON.parse($.cookie("vcartAuth"))
+          : "";
+
+      var usertoken = userAuth != "" ? userAuth.token : "";
+
+    cart
+      .checkQuantity(usertoken)
+      .then(function (response) {
+        if(response.data.results == true){
+          $("#cartsubmit").submit();
+        }else{
+
+          for(var i=0;i<response.data.results.length;i++){
+
+          toastr.warning(
+            `There is no stock for the item - `+ response.data.results[i] 
+          );
+
+          }
+        }
+      })
+      
     }
   };
 });
